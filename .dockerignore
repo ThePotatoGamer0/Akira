@@ -1,0 +1,12 @@
+node_modules
+webui/client/node_modules
+webui/server/node_modules
+docs/node_modules
+dist
+webui/client/dist
+docs/dist
+.git
+.env
+init.lock
+prisma/*.db
+prisma/*.db-journal

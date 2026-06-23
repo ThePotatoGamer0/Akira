@@ -1,0 +1,13 @@
+{
+  "name": "akira-docs",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^4.16.19"
+  }
+}

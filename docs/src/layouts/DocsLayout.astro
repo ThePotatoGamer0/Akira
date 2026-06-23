@@ -1,0 +1,77 @@
+---
+import "../styles/docs-shared.css";
+import CommandCard from "../components/CommandCard.astro";
+import BuffTierTable from "../components/BuffTierTable.astro";
+import ThemeInit from "../components/ThemeInit.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    command?: string;
+    shortcuts?: string;
+  };
+  section: string;
+  slug: string;
+}
+
+const { frontmatter, section, slug } = Astro.props;
+const title = `${frontmatter.title} — Akira docs`;
+const showShortcuts =
+  frontmatter.shortcuts && frontmatter.shortcuts !== "—" && frontmatter.shortcuts.trim() !== "";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={frontmatter.description} />
+    <title>{title}</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <ThemeInit />
+  </head>
+  <body>
+    <ThemeToggle />
+    <div class="wrapper doc-page">
+      <header class="doc-header">
+        <a href="/" class="doc-home-link">← Back to docs home</a>
+        <div class="doc-kana">ア キ ラ</div>
+      </header>
+
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="crumb-sep">/</span>
+        <span>{section}</span>
+        <span class="crumb-sep">/</span>
+        <span>{slug}</span>
+      </nav>
+
+      <h1 class="doc-title">
+        <span class="doc-title-accent">{frontmatter.title}</span>
+      </h1>
+      <p class="doc-lede">{frontmatter.description}</p>
+
+      {
+        frontmatter.command ? (
+          <CommandCard name={frontmatter.command} shortcuts={showShortcuts ? frontmatter.shortcuts : undefined} />
+        ) : null
+      }
+
+      <article class="doc-prose">
+        <slot />
+      </article>
+
+      {slug === "server-pool" ? <BuffTierTable /> : null}
+
+      <footer class="doc-footer">
+        <div class="doc-footer-name"><span>Akira</span> — Documentation</div>
+        <div class="doc-footer-note">Made with care for a small group of friends.</div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,199 @@
+---
+// Akira documentation landing page
+import "../styles/docs-shared.css";
+import "../styles/docs-home.css";
+import ThemeInit from "../components/ThemeInit.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akira — Documentation</title>
+  <meta name="description" content="Akira Discord card bot — docs for commands, economy, prestige, and more." />
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <ThemeInit />
+</head>
+<body>
+
+<ThemeToggle />
+<div class="wrapper home-page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="hero-kana">ア キ ラ — Documentation</div>
+      <h1>Meet <span>Akira</span></h1>
+      <p class="hero-sub">Your server's personal card collecting companion — built for the shows you actually watch.</p>
+    </div>
+    <div class="hero-badge">Friend group bot &nbsp;·&nbsp; <strong>v1.0</strong></div>
+  </div>
+
+  <!-- GETTING STARTED -->
+  <div class="section-label s1">Getting started</div>
+  <div class="start-strip">
+    <a href="/getting-started/what-is-akira" class="start-card">
+      <div class="start-num">1</div>
+      <div>
+        <div class="start-title">What is Akira?</div>
+        <div class="start-desc">A curated, cosy card bot for friend groups — Karuta-adjacent without the coldness.</div>
+      </div>
+    </a>
+    <a href="/getting-started/your-first-card" class="start-card">
+      <div class="start-num">2</div>
+      <div>
+        <div class="start-title">Your first card</div>
+        <div class="start-desc">React on a drop, say hi to Akira, and welcome the card into your binder.</div>
+      </div>
+    </a>
+    <a href="/getting-started/importing-from-karuta" class="start-card">
+      <div class="start-num">3</div>
+      <div>
+        <div class="start-title">Importing from Karuta</div>
+        <div class="start-desc">Bring a k!spreadsheet CSV and Akira will match what she can from her pool.</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- WEBUI -->
+  <div class="section-label s2">WebUI</div>
+  <p class="webui-intro">
+    Akira's browser app sits alongside Discord: <a href="/webui/authentication">two sign-in paths</a> (embedded vs normal browser), then <a href="/webui/collection">collection</a>, <a href="/webui/economy-and-leaderboard">economy &amp; leaderboard</a>, and <strong>admin</strong> when your account allows. Feature depth is still growing — those pages say what exists today.
+  </p>
+  <div class="start-strip">
+    <a href="/webui/authentication" class="start-card">
+      <div class="start-num">1</div>
+      <div>
+        <div class="start-title">Authentication</div>
+        <div class="start-desc">Discord Activity auto-sign-in vs browser username, DM code, and optional WebUI-only password.</div>
+      </div>
+    </a>
+    <a href="/webui/collection" class="start-card">
+      <div class="start-num">2</div>
+      <div>
+        <div class="start-title">Collection</div>
+        <div class="start-desc">Grid and card viewer from Home — filters and search are not built yet.</div>
+      </div>
+    </a>
+    <a href="/webui/economy-and-leaderboard" class="start-card">
+      <div class="start-num">3</div>
+      <div>
+        <div class="start-title">Economy &amp; leaderboard</div>
+        <div class="start-desc">Bits, shop, and pool panels plus a leaderboard view; still maturing next to Discord.</div>
+      </div>
+    </a>
+  </div>
+  <p class="webui-deploy">The WebUI is hosted by your server — use the URL your admin configures (separate from this documentation site).</p>
+
+  <!-- ECONOMY & PRESTIGE -->
+  <div class="section-label s3">Economy &amp; progression</div>
+  <div class="topic-grid">
+    <a href="/economy/bits" class="topic-card" style="--card-accent: var(--gold)">
+      <div class="topic-icon">🪙</div>
+      <div class="topic-title">Bits</div>
+      <div class="topic-desc">Akira's only currency. Earned from drops, dailies and burns — spent on buffs and cosmetics.</div>
+    </a>
+    <a href="/economy/server-pool" class="topic-card" style="--card-accent: var(--accent3)">
+      <div class="topic-icon">🎲</div>
+      <div class="topic-title">Server buff pool</div>
+      <div class="topic-desc">Pool bits together daily for a chance at server-wide buffs. Five tiers, zero guarantees.</div>
+    </a>
+    <a href="/economy/personal-milestone" class="topic-card" style="--card-accent: var(--accent)">
+      <div class="topic-icon">🏅</div>
+      <div class="topic-title">Personal milestones</div>
+      <div class="topic-desc">Your private contribution track. Hit thresholds for guaranteed personal buffs — gets harder each time.</div>
+    </a>
+    <a href="/prestige/overview" class="topic-card topic-card--wide" style="--card-accent: var(--accent2)">
+      <div class="topic-icon">✨</div>
+      <div class="topic-title">Prestige</div>
+      <div class="topic-desc">Five milestones unlocks prestige — but you don't have to take it. Tough it out long enough and Akira rewards you with a frame variant nobody else is likely to ever own.</div>
+    </a>
+  </div>
+
+  <!-- COMMANDS -->
+  <div class="section-label s4">Commands</div>
+  <div class="cmd-grid">
+    <a href="/commands/drop" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>drop</div>
+      <div class="cmd-desc">Akira places three cards in the channel for your friends to react to.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/grab" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>grab</div>
+      <div class="cmd-desc">Reserve the card matching your number reaction once your cooldown allows.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/collection" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>collection</div>
+      <div class="cmd-desc">Browse your personal binder — every card Akira has ever handed you.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/burn" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>burn</div>
+      <div class="cmd-desc">Akira will lovingly reduce a card to bits while playing the burn animation.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/multiburn" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>multiburn</div>
+      <div class="cmd-desc">Bulk burn with filters. Akira spotlights the best card going up in flames.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/daily" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>daily</div>
+      <div class="cmd-desc">Claim your daily bits — including any prestige passive you have earned.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/wishlist" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>wishlist</div>
+      <div class="cmd-desc">Unlimited slots. Akira pings you the moment a wishlisted character drops.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/trade" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>trade</div>
+      <div class="cmd-desc">Negotiate a fair swap with another player. Akira keeps it honest.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/give" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>give</div>
+      <div class="cmd-desc">Move a single card to a friend with a clear audit trail.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/shop" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>shop</div>
+      <div class="cmd-desc">Spend bits on temporary personal buffs — drop boosters, grab protection and more.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/lookup" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>lookup</div>
+      <div class="cmd-desc">Search the card pool by character or series name.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/cooldowns" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>cooldowns</div>
+      <div class="cmd-desc">Akira shows when you can grab or drop again so you are never left guessing.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/dye" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>dye</div>
+      <div class="cmd-desc">Tint a card with a cosmetic dye from your inventory.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/userinfo" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>userinfo</div>
+      <div class="cmd-desc">Akira summarises a player's bits, prestige, milestones and flex stats.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-name"><span>Akira</span> — Documentation</div>
+    <div class="footer-note">Made with care for a small group of friends.</div>
+  </div>
+
+</div>
+
+</body>
+</html>

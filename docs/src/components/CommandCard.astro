@@ -1,0 +1,63 @@
+---
+interface Props {
+  name: string;
+  shortcuts?: string;
+}
+
+const { name, shortcuts } = Astro.props;
+---
+
+<div class="command-meta">
+  <div class="command-meta__primary">
+    <span class="command-meta__slash">/</span>
+    <span class="command-meta__name">{name}</span>
+  </div>
+  {shortcuts ? <div class="command-meta__short">Shortcuts: {shortcuts}</div> : null}
+</div>
+
+<style>
+  .command-meta {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 12px var(--shadow-tint);
+  }
+
+  .command-meta::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+
+  .command-meta__primary {
+    display: flex;
+    align-items: baseline;
+    gap: 0.2rem;
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .command-meta__slash {
+    color: var(--accent);
+    font-weight: 400;
+    font-size: 0.9em;
+    opacity: 0.75;
+  }
+
+  .command-meta__short {
+    margin-top: 0.45rem;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--muted);
+  }
+</style>

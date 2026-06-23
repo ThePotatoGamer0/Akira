@@ -1,0 +1,33 @@
+# Akira
+
+> A Discord card collecting bot built for small friend groups. A curated, personal alternative to Karuta — only characters from anime the server actually watches.
+
+## Docs
+- Full reference: /llms-full.txt
+- Commands: /commands/{name}
+- Economy: /economy/{bits,server-pool,personal-milestone}
+- Prestige: /prestige/overview
+- Getting started: /getting-started/{what-is-akira,your-first-card,importing-from-karuta}
+- WebUI: /webui/{authentication,collection,economy-and-leaderboard}
+
+## Summary
+Akira drops anime character cards in a Discord channel. Users grab cards by reacting with number emojis. Cards are collected, traded, burned for currency (bits), and customised with frames and dyes. The card pool is hand-picked by the server — not pulled from every anime ever made.
+
+Akira has a warm, human-like personality. All responses are written in first person as Akira.
+
+## Key concepts
+- Cards: character + frame + print number + quality tier (1-5)
+- Bits: the only currency. Earned from drops, daily rewards, burns.
+- Wishlist: unlimited slots, pings user when a wishlisted character drops
+- Server buff pool: daily communal pot that can unlock server-wide buffs
+- Personal milestone: private contribution track with guaranteed personal buffs
+- Prestige: repeatable system unlocked after 5 milestones, awards exclusive frames and passive bits bonus
+- CSV import: accepts Karuta k!spreadsheet exports to migrate collections
+
+## Tech
+- Discord.js v14, TypeScript, Node.js ESM
+- SQLite via Prisma ORM
+- Hosted on Raspberry Pi 5 via Docker
+- WebUI: React + Express (also available as a Discord Activity)
+- Docs: Astro static site
+- Card assets: pre-generated APNG animations served as static files

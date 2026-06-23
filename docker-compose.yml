@@ -1,0 +1,65 @@
+services:
+  init:
+    build: .
+    platform: linux/arm64
+    command: ["node", "dist/init/index.js"]
+    volumes:
+      - akira-db:/app/prisma
+      - akira-assets:/app/assets
+      - akira-input:/app/input
+    env_file: .env
+    environment:
+      DATABASE_URL: file:/app/prisma/akira.db
+    restart: "no"
+
+  bot:
+    build: .
+    platform: linux/arm64
+    command: ["node", "dist/bot/index.js"]
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    volumes:
+      - akira-db:/app/prisma
+      - akira-assets:/app/assets
+    env_file: .env
+    environment:
+      DATABASE_URL: file:/app/prisma/akira.db
+    restart: unless-stopped
+
+  webui-server:
+    build:
+      context: .
+      dockerfile: webui/server/Dockerfile
+    platform: linux/arm64
+    volumes:
+      - akira-db:/app/prisma
+      - akira-assets:/app/assets
+      - akira-input:/app/input
+    env_file: .env
+    environment:
+      DATABASE_URL: file:/app/prisma/akira.db
+      BOT_INTERNAL_URL: http://bot:3847
+    depends_on:
+      bot:
+        condition: service_started
+    restart: unless-stopped
+
+  webui-client:
+    build:
+      context: .
+      dockerfile: webui/client/Dockerfile
+    platform: linux/arm64
+    restart: unless-stopped
+
+  docs:
+    build:
+      context: .
+      dockerfile: docs/Dockerfile
+    platform: linux/arm64
+    restart: unless-stopped
+
+volumes:
+  akira-db:
+  akira-assets:
+  akira-input:

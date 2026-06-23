@@ -1,0 +1,13 @@
+---
+---
+<script is:inline>
+  (function () {
+    try {
+      var k = "akira-docs-theme";
+      var s = localStorage.getItem(k);
+      var p = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      var t = s === "dark" || s === "light" ? s : p ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>

@@ -1,0 +1,444 @@
+/* Shared design system — home + article pages */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Motion (used on home + article pages) ── */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes badge-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.88) translateY(4px);
+  }
+  70% {
+    transform: scale(1.04) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+:root {
+  color-scheme: light;
+  --ink: #1a1225;
+  --ink2: #3d2f5a;
+  --muted: #7a6a90;
+  --bg: #f7f4fc;
+  --surface: #ffffff;
+  --accent: #7c4dff;
+  --accent2: #e040fb;
+  --accent3: #ff6b9d;
+  --gold: #ffb830;
+  --border: #e8e0f5;
+  --radius: 14px;
+  --code-bg: rgba(124, 77, 255, 0.08);
+  --glow-a: rgba(124, 77, 255, 0.08);
+  --glow-b: rgba(224, 64, 251, 0.07);
+  --glow-c: rgba(255, 107, 157, 0.04);
+  --discord-pre-bg: #313338;
+  --discord-pre-text: #dbdee1;
+  --discord-avatar-bg: #4f545c;
+  --discord-name: #f2f3f5;
+  --shadow-tint: rgba(124, 77, 255, 0.06);
+  --table-head-bg: rgba(124, 77, 255, 0.04);
+  --table-stripe: rgba(124, 77, 255, 0.03);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #ece9f3;
+  --ink2: #c4b8d9;
+  --muted: #9a90b0;
+  --bg: #0f0c14;
+  --surface: #1a1624;
+  --accent: #a78bfa;
+  --accent2: #e879f5;
+  --accent3: #ff7eb3;
+  --gold: #fbbf24;
+  --border: #2d2640;
+  --code-bg: rgba(167, 139, 250, 0.12);
+  --glow-a: rgba(124, 77, 255, 0.14);
+  --glow-b: rgba(224, 64, 251, 0.1);
+  --glow-c: rgba(255, 107, 157, 0.06);
+  --discord-pre-bg: #1e1f22;
+  --discord-pre-text: #dbdee1;
+  --discord-avatar-bg: #4f545c;
+  --discord-name: #f2f3f5;
+  --shadow-tint: rgba(0, 0, 0, 0.35);
+  --table-head-bg: rgba(167, 139, 250, 0.08);
+  --table-stripe: rgba(167, 139, 250, 0.04);
+}
+
+body {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 20%, var(--glow-a) 0%, transparent 50%),
+    radial-gradient(circle at 85% 80%, var(--glow-b) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, var(--glow-c) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+/* ── Doc page chrome ── */
+.doc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.75rem 0 1.25rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fade-in 0.55s ease 0.05s forwards;
+}
+
+.doc-home-link {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  animation: fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards;
+}
+
+.doc-home-link:hover {
+  color: var(--accent2);
+}
+
+.doc-kana {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  color: var(--muted);
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fade-in 0.55s ease 0.14s forwards;
+}
+
+.crumb {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 1.75rem;
+  font-weight: 400;
+  opacity: 0;
+  animation: fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.16s forwards;
+}
+
+.crumb a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.crumb a:hover {
+  text-decoration: underline;
+}
+
+.crumb-sep {
+  opacity: 0.45;
+  margin: 0 0.35rem;
+}
+
+/* ── Article typography (markdown) ── */
+.doc-prose {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.doc-prose > :first-child {
+  margin-top: 0;
+}
+
+.doc-prose h2 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 2.25rem 0 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.doc-prose h3 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--ink2);
+}
+
+.doc-prose p {
+  margin: 0.85rem 0;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.doc-prose ul,
+.doc-prose ol {
+  margin: 0.85rem 0;
+  padding-left: 1.35rem;
+  color: var(--ink2);
+}
+
+.doc-prose li {
+  margin: 0.35rem 0;
+}
+
+.doc-prose strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.doc-prose a {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.doc-prose a:hover {
+  color: var(--accent2);
+}
+
+.doc-prose code {
+  font-family: ui-monospace, monospace;
+  font-size: 0.88em;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  padding: 0.12rem 0.4rem;
+  border-radius: 6px;
+  color: var(--ink2);
+}
+
+/* Fenced blocks: Discord dark-mode message row (Anon + slash command as message body) */
+.doc-prose pre {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin: 1.15rem 0;
+  padding: 0.45rem 0.9rem 0.65rem 0.55rem !important;
+  background: var(--discord-pre-bg) !important;
+  background-color: var(--discord-pre-bg) !important;
+  color: var(--discord-pre-text) !important;
+  border: none !important;
+  border-radius: 6px !important;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  overflow-x: auto;
+}
+
+/* Anonymous avatar placeholder (initial + Discord-like circle) */
+.doc-prose pre::before {
+  content: "A";
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: 0.1rem;
+  border-radius: 50%;
+  background: var(--discord-avatar-bg);
+  color: var(--discord-name);
+  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 2.5rem;
+  text-align: center;
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.doc-prose pre code {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  background: none !important;
+  border: none;
+  padding: 0;
+  padding-top: 0.05rem;
+  font-family:
+    "gg sans",
+    "DM Sans",
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.375;
+  color: var(--discord-pre-text) !important;
+}
+
+/* Display name row — “Anon” */
+.doc-prose pre code::before {
+  content: "Anon";
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--discord-name) !important;
+  line-height: 1.25;
+  margin-bottom: 0.15rem;
+}
+
+/* Command / Shiki spans: keep legible on dark canvas (github-light tokens are dark) */
+.doc-prose pre code .line,
+.doc-prose pre code span {
+  font-family:
+    "gg sans",
+    "DM Sans",
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+  font-size: 0.95rem;
+  color: var(--discord-pre-text) !important;
+}
+
+.doc-page h1.doc-title {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.35rem);
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem;
+  opacity: 0;
+  animation: fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+.doc-page h1.doc-title .doc-title-accent {
+  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.doc-page .doc-lede {
+  font-size: 1.05rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: -0.5rem 0 1.5rem;
+  max-width: 36rem;
+  opacity: 0;
+  animation: fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+
+.doc-page .command-meta {
+  opacity: 0;
+  animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.34s forwards;
+}
+
+.doc-page .doc-prose {
+  opacity: 0;
+  animation: fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.38s forwards;
+}
+
+.doc-page .tier-section {
+  opacity: 0;
+  animation: fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.42s forwards;
+}
+
+/* ── Footer (compact, article pages) ── */
+.doc-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fade-in 0.65s ease 0.5s forwards;
+}
+
+.doc-footer-name {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.doc-footer-name span {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.doc-footer-note {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 300;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    padding: 0 1.25rem 3rem;
+  }
+
+  .doc-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

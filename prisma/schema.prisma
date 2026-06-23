@@ -1,0 +1,132 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum CardQuality {
+  COMMON
+  UNCOMMON
+  RARE
+  EPIC
+  LEGENDARY
+}
+
+enum CooldownType {
+  GRAB
+  DROP
+  DAILY
+}
+
+model Series {
+  id         String      @id @default(cuid())
+  name       String
+  slug       String      @unique
+  characters Character[]
+}
+
+model Character {
+  id        String     @id @default(cuid())
+  name      String
+  slug      String
+  seriesId  String
+  series    Series     @relation(fields: [seriesId], references: [id], onDelete: Cascade)
+  cards     Card[]
+  wishlists Wishlist[]
+
+  @@unique([seriesId, slug])
+}
+
+model Card {
+  id          String      @id @default(cuid())
+  characterId String
+  character   Character   @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  frameId     Int
+  printNumber Int
+  quality     CardQuality
+  ownerId     String?
+  owner       User?       @relation(fields: [ownerId], references: [id], onDelete: SetNull)
+  tag         String?
+  alias       String?
+  dye         String?
+  obtainedAt  DateTime    @default(now())
+
+  @@index([ownerId])
+  @@index([characterId, frameId])
+}
+
+model User {
+  id                  String                 @id @default(cuid())
+  discordId           String                 @unique
+  /** Cached Discord login handle for WebUI username lookup (friend-group scale). */
+  discordUsername     String?                @unique
+  /** What Akira calls you in WebUI copy and bot greetings (falls back to Discord handle). */
+  preferredName       String?
+  passwordHash        String?
+  isAdmin             Boolean                @default(false)
+  bits                Int                    @default(0)
+  prestigeLevel       Int                    @default(0)
+  milestoneCount      Int                    @default(0)
+  milestoneProgress   Int                    @default(0)
+  passiveBitsBonus    Int                    @default(0)
+  cards               Card[]
+  wishlists           Wishlist[]
+  poolContributions   UserPoolContribution[]
+  inventory           Inventory[]
+  cooldowns           Cooldown[]
+}
+
+model Wishlist {
+  id          String    @id @default(cuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  characterId String
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, characterId])
+}
+
+model ServerPool {
+  id         String    @id @default(cuid())
+  guildId    String    @unique
+  totalBits  Int       @default(0)
+  lastReset  DateTime?
+  activeBuff String?
+  buffTier   Int       @default(0)
+  buffExpiry DateTime?
+}
+
+model UserPoolContribution {
+  id      String @id @default(cuid())
+  userId  String
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  guildId String
+  bits    Int
+  date    String
+
+  @@index([userId, guildId, date])
+}
+
+model Inventory {
+  id       String @id @default(cuid())
+  userId   String
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  itemType String
+  quantity Int    @default(1)
+
+  @@unique([userId, itemType])
+  @@index([userId])
+}
+
+model Cooldown {
+  id        String       @id @default(cuid())
+  userId    String
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      CooldownType
+  expiresAt DateTime
+
+  @@unique([userId, type])
+}

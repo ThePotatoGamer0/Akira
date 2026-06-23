@@ -1,0 +1,340 @@
+# Akira — Full Reference
+
+> Last updated: 2026
+> Akira is a Discord card collecting bot for small friend groups. This file is the complete technical and design reference intended for LLM consumption. All features, mechanics, thresholds, and design decisions are documented here.
+
+---
+
+## What is Akira?
+
+Akira is a curated Discord card collecting bot inspired by Karuta. Unlike Karuta, which pulls from every anime ever made, Akira's card pool is hand-picked by the server — only characters from shows the friend group actually watches. This removes the friction of sifting through thousands of irrelevant cards and makes every drop feel meaningful.
+
+Akira has a warm, human-like personality. The bot is referred to as Akira and speaks in first person in all responses. Example: "Akira couldn't find that character" rather than "Error: not found". This is intentional — the human name and personality create emotional attachment and make the bot feel like a presence rather than a tool.
+
+---
+
+## Card System
+
+### What a card is
+Each card represents an anime character. A card has:
+- Character name and series
+- Frame (decorative border, cosmetic)
+- Print number (lower = rarer, assigned on drop)
+- Quality tier (1–5, affects burn value and prestige heuristics)
+- Dye (optional cosmetic tint)
+- Tag (user-defined organisational label)
+- Alias (user-defined nickname for the card)
+- Obtained date and timestamp
+
+### Card assets
+Every card is pre-generated at init time. For each character × frame combination there are three files:
+- `normal.png` — static image, Discord converts to WebP automatically
+- `shiny.apng` — looping idle animation with shimmer/glow effect. Designed to loop seamlessly: the last frame eases back to match the first frame so there is no visible snap point.
+- `burn.apng` — burn animation. Sequence: fade in from transparent (frames 1–3) → flames consume upward (frames 4–8) → fade to transparent (frames 9–10) → loop. The fade in/out makes the loop seamless and gives the card a moment to be seen before it burns.
+
+Files use the `.apng` extension explicitly. Discord only serves APNG files inline as animation if the extension is `.apng` — files with `.png` extension are converted to WebP by Discord's CDN, which strips animation data.
+
+Asset paths follow this structure:
+```
+assets/cards/{series_slug}/{character_slug}/{frame_id}/normal.png
+assets/cards/{series_slug}/{character_slug}/{frame_id}/shiny.apng
+assets/cards/{series_slug}/{character_slug}/{frame_id}/burn.apng
+```
+
+Source art and frames live in:
+```
+input/characters/{series_slug}/{character_slug}.png
+input/frames/frame_{id}.png
+input/showcase/         ← handpicked cards for the Akira's Gift animation
+```
+
+### Akira's Gift animation
+When a user receives a prestige frame reward, Akira plays a special animation stored at `assets/frames/gift/{frame_id}.apng`. The sequence is: title card "Akira's Gift" with the frame border visible → cards from the showcase folder cycle rapidly in the center → slows and holds on a final card → loops. The same animation template is used for every frame — only the frame border changes. Designed to loop seamlessly.
+
+---
+
+## Commands
+
+All commands are Discord slash commands. Akira responds in first person in all cases.
+
+### /drop
+Places three cards in the configured drop channel. Users react with 1️⃣ 2️⃣ 3️⃣ to grab a card. Subject to drop cooldown. If a server buff is active that increases drop frequency, additional drops may occur automatically.
+
+### /grab (reaction-based)
+Grabbing is done via emoji reaction on a drop, not a slash command. Reacting with the number emoji corresponding to the card position claims that card for the user, subject to grab cooldown.
+
+### /collection [user]
+Displays a user's card collection. Browsable grid. Defaults to the invoking user if no user is specified.
+
+### /view [card code]
+Shows detailed information about a specific card including character, series, frame, print number, quality, dye, tag, alias, and obtained date.
+
+### /burn <card code>
+Destroys a card and awards bits. Plays the card's `burn.apng` animation. Burn value is affected by quality tier and any active burn value buff.
+
+### /multiburn <filters>
+Burns multiple cards at once using filters (by series, quality, tag, etc). Determines the "best" card in the selection using this priority order: highest quality tier → lowest print number → most wishlisted by other players. Plays the burn animation for that best card only. Caption shows how many cards were burned and how many bits were received, and names the best card that was sacrificed.
+
+### /daily
+Claims the daily bits reward. Amount includes any permanent passive bits bonus from prestige levels. Can only be claimed once per day.
+
+### /wishlist [user]
+Shows the wishlist of a user. Defaults to the invoking user. Wishlist slots are unlimited — this is an intentional design decision to lower friction for new players.
+
+### /wishadd <character name>
+Adds a character to the user's wishlist. Akira will mention the user whenever a card featuring that character appears in a drop.
+
+### /wishremove <character name>
+Removes a character from the user's wishlist.
+
+### /lookup <character name>
+Searches the card pool by character or series name. Returns matching characters and their series.
+
+### /trade <user> <your card code> <their card code>
+Initiates a card trade with another user. Both users must confirm. One card each.
+
+### /give <user> <card code>
+Transfers a single card to another user with no exchange required.
+
+### /tag <tag name> [card code]
+Applies a tag to a card for organisational purposes. Tags are user-created labels.
+
+### /tagcreate <tag name> <emoji>
+Creates a new tag. Tag names must be alphanumeric with dashes or underscores. Emoji cannot be a custom server emoji.
+
+### /tagdelete <tag name>
+Deletes a tag. Removes the tag from any cards that have it.
+
+### /untag [card code]
+Removes a tag from a card.
+
+### /alias <card code> <alias>
+Gives a card a personal nickname. Visible only to the owner.
+
+### /cooldowns [user]
+Shows the current grab cooldown and drop cooldown for a user.
+
+### /reminders [action]
+Toggles DM reminders for cooldown expiry. Akira DMs the user when their grab or drop cooldown ends.
+
+### /shop
+Opens the bits shop. Available items are temporary personal buffs.
+
+### /buy <item code>
+Purchases an item from the shop using bits.
+
+### /inventory [user]
+Shows a user's inventory of owned items.
+
+### /dye <card code> <dye code>
+Applies a cosmetic dye to a card from the user's inventory.
+
+### /userinfo [user]
+Shows a summary of a player including bits balance, prestige level, milestone count, milestone progress, passive bits bonus, and collection size.
+
+### /pool
+Shows the current server buff pool state including total bits contributed today, active buff if any, buff tier, and chance percentage.
+
+### /contribute <amount>
+Contributes bits to the server buff pool. The contributed amount also counts toward the user's personal milestone counter.
+
+### /prestige
+Available after 5 milestone claims. Resets the milestone counter to the base threshold (1k) and awards a prestige frame and a permanent passive bits bonus increment. Optional — the user chooses when to prestige.
+
+---
+
+## Economy
+
+### Bits
+Bits are the only currency in Akira. There are no premium currencies, no real-money purchases, no gems, no tickets. This is intentional — Akira is a friend group bot and pay-to-win mechanics would damage the social dynamic.
+
+**Sources of bits:**
+- Grabbing a card from a drop (small amount)
+- Claiming the daily reward
+- Burning cards (amount based on quality tier)
+- Passive prestige bonus (added to daily reward)
+
+**Sinks for bits:**
+- Personal buffs from the shop
+- Contributing to the server buff pool
+
+### Personal buffs (shop items)
+Temporary buffs purchasable with bits. Active for a fixed duration after use.
+- Drop rate booster: increases frequency of card drops
+- Grab protection: prevents others from taking a card the user was reacting to
+- Burn value booster: increases bits received from burns for a window
+
+---
+
+## Server Buff Pool
+
+A daily communal mechanic. Users contribute bits to a shared server pool. At daily reset, the pool total is evaluated against tier thresholds. If the threshold for a tier is met, there is a percentage chance that tier's buff activates for the following day. The pool resets to zero after the roll regardless of outcome.
+
+### Tier thresholds and effects
+
+| Tier | Bits required | Effect | Chance of activating |
+|------|--------------|--------|---------------------|
+| 0 | 0 | No buff | 100% (guaranteed no buff) |
+| 1 | 500 | +1 extra drop per hour | 40% |
+| 2 | 1,500 | Drop cooldown halved | 55% |
+| 3 | 3,000 | Rare card guaranteed in every drop | 60% |
+| 4 | 6,000 | Double burn value all day | 65% |
+| 5 | 12,000 | All tier 1–4 effects combined | 75% |
+
+The chance mechanic is intentional. Hitting the threshold unlocks the possibility, not the certainty. This preserves the gambling feel and makes the reveal the next day exciting rather than transactional.
+
+Only the highest threshold met is evaluated. If the pool reaches 6,000 bits, a tier 4 roll is made — not separate rolls for tiers 1 through 4.
+
+---
+
+## Personal Milestone System
+
+Every bit contributed to the server pool also counts toward a private personal milestone counter. This counter is separate from the pool total and persists across days — it only resets when the user claims a milestone reward.
+
+### Milestone thresholds (per cycle)
+Each time a milestone is claimed, the next threshold is higher — diminishing returns by design.
+
+Cycle 1: 1,000 bits
+Cycle 2: 2,000 bits
+Cycle 3: 3,500 bits
+Cycle 4: 5,500 bits
+Cycle 5: 8,000 bits
+Cycle 6: 11,000 bits
+Cycle 7: 15,000 bits
+Cycle 8: 20,000 bits
+(continues increasing)
+
+### Milestone rewards
+When the user hits their current threshold, they receive a guaranteed personal buff. The tier of that buff scales with how much they overshot the threshold — going 500 bits over still feels meaningfully better than hitting it exactly.
+
+This system exists as a safety net for the server buff pool. Even if the pool roll fails, heavy contributors are rewarded personally.
+
+### Toughing it out
+After 5 milestone claims, prestige becomes available. The user does not have to prestige immediately. If they continue without prestiging, the thresholds keep climbing but the buff scaling also increases. Players who delay prestige for a long time are rewarded with a higher-tier prestige frame variant as recognition of the harder path they took.
+
+---
+
+## Prestige System
+
+Prestige is a repeatable progression system unlocked after completing 5 milestone claim cycles. It is optional — the user can continue playing without prestiging indefinitely, with increasing thresholds and scaling rewards as a trade-off.
+
+### Prestige rewards (always)
+- An exclusive cosmetic frame (variant depends on when prestige is taken — see below)
+- A permanent passive bits bonus added to daily rewards (stacks with each prestige level)
+
+### Frame variants by prestige timing
+- Prestige at exactly 5 milestone claims: standard prestige frame
+- Prestige at 7 or more milestone claims: veteran variant of the prestige frame
+- Prestige at 10 or more milestone claims: a unique frame variant that almost nobody else will ever obtain
+
+### On prestiging
+The milestone counter resets to the base threshold (1,000 bits for the next cycle). The prestige level increments by 1. The passive bits bonus increases permanently. The frame is added to the user's inventory and the Akira's Gift animation plays.
+
+### Prestige is repeatable
+There is no prestige cap. Each subsequent prestige follows the same structure. The frame awarded may vary depending on timing.
+
+---
+
+## Card Asset Pipeline (technical)
+
+### Init phase
+Runs once on setup or whenever new content is added. Heavy lifting:
+1. Composites all character art + frame combinations using sharp and node-canvas
+2. Generates normal.png, shiny.apng, burn.apng for every combination
+3. Generates Akira's Gift APNG for every frame
+4. Seeds the database with series, character, and card data
+5. Registers Discord slash commands
+6. Creates init.lock at start, deletes it on clean completion
+
+### Run phase (the bot)
+Lightweight. On startup checks for init.lock:
+- If init.lock exists: comes online immediately, sets Discord status to "Akira is getting ready...", responds to all commands with a friendly waiting message. Uses fs.watchFile on the lock file to detect when init completes, then unlocks all commands and updates status.
+- If init.lock does not exist: normal operation immediately.
+
+### Animation design principles
+- Shiny APNG: looping idle. Last frame must ease back to match first frame. No visible snap on loop. Uses a sine-wave opacity curve so the shimmer naturally returns to its origin.
+- Burn APNG: looping by design. Fades in → burns → fades to transparent → loops. The loop point is transparent-to-transparent so Discord's repeat behaviour looks intentional.
+- Akira's Gift APNG: loops as a showcase reel. Cycling never fully stops — it slows and holds briefly then accelerates back into cycling.
+
+---
+
+## WebUI
+
+A React frontend served both as a standalone browser site and as a Discord Activity (embedded within Discord itself). The same codebase handles both contexts.
+
+### Auth: Discord Activity (inside Discord)
+The @discord/embedded-app-sdk provides the user's Discord ID directly. No login screen is shown. The client sends an X-Discord-User-Id header with every API request. The Express backend trusts this header when the request originates from a Discord Activity iframe origin.
+
+### Auth: Browser (outside Discord, e.g. at school on a network that blocks discord.com)
+1. User enters their Discord username
+2. Backend asks the bot to DM a one-time verification code to that Discord user
+3. User enters the code on the site — proves they control that Discord account
+4. First time: prompted to set a site password
+5. Subsequent logins: Discord username + site password → session cookie
+
+This flow avoids OAuth entirely. The browser never touches discord.com — only the bot server does, which is hosted at home and not subject to school network blocks.
+
+### WebUI features
+- Browse personal card collection
+- View card details and animations
+- Check bits balance
+- View and contribute to server buff pool
+- View personal milestone progress
+- Access shop
+- View leaderboard
+- Admin panel: manage card pool, trigger asset regeneration
+
+---
+
+## Database Models (Prisma SQLite)
+
+- Series: id, name, slug
+- Character: id, name, slug, seriesId
+- Card: id, characterId, frameId, printNumber, quality (enum 1–5), ownerId, tag, alias, dye, obtainedAt
+- User: id, discordId, discordUsername, passwordHash, bits, prestigeLevel, milestoneCount, milestoneProgress, passiveBitsBonus, isAdmin
+- Wishlist: id, userId, characterId
+- ServerPool: id, guildId, totalBits, lastReset, activeBuff, buffTier, buffExpiry
+- UserPoolContribution: id, userId, guildId, bits, date
+- Inventory: id, userId, itemType, quantity
+- Cooldown: id, userId, type (enum: GRAB, DROP), expiresAt
+
+---
+
+## Infrastructure
+
+- Hosted on Raspberry Pi 5 (ARM64) at home
+- Docker Compose with services: init, bot, webui-server, webui-client, docs
+- Nginx Proxy Manager handles external routing
+- SQLite database in a named Docker volume (akira-db)
+- Pre-generated card assets in a named Docker volume (akira-assets)
+- Source art in a named Docker volume (akira-input)
+- Bot and webui-server share the akira-db volume
+- Init service runs once and exits; bot depends on init completing successfully
+
+---
+
+## Design Decisions and Rationale
+
+**Why curated card pool?**
+Karuta's strength (thousands of characters) is a friction point for small groups. New players see cards from shows they've never heard of and feel no connection. A curated pool means every drop is relevant to someone in the server.
+
+**Why unlimited wishlist slots?**
+Karuta gates wishlist slots behind purchases. For a friend group bot this creates unnecessary friction for the exact players Akira is trying to onboard. Removing the cap costs nothing at small scale and removes a barrier to engagement.
+
+**Why no black market, clans, or nodes?**
+These systems require large player populations to function meaningfully. Black market needs volume for auctions. Clans and nodes need enough players for territory wars. Workers are an idle game mechanic that only pays off over a long grind. At friend group scale these systems feel hollow rather than engaging.
+
+**Why single currency?**
+Multiple currencies (bits, gems, tickets) create confusion and enable pay-to-win. For a friend group bot, simplicity and fairness matter more than monetisation levers.
+
+**Why APNG over GIF?**
+GIF has a 256 colour palette limit that produces visibly poor results on anime art (gradient-heavy illustrations). APNG supports full colour and autoplays inline in Discord when served with the `.apng` extension. Discord converts `.png` files to WebP (stripping animation), but leaves `.apng` files untouched.
+
+**Why pre-generate all assets?**
+On-demand rendering introduces latency and complexity. At friend group scale (25 characters × 10 frames × 3 files = 750 files) pre-generation is trivial and results in instant file serving with zero render queue.
+
+**Why SQLite over PostgreSQL?**
+No separate database server to run or maintain. File-based, lives in a Docker volume, trivially backed up. At friend group scale there are no concurrent write patterns that SQLite cannot handle. Prisma makes migration to PostgreSQL straightforward if needed in future.
+
+**Why the name Akira?**
+A genuine Japanese name that fits the anime aesthetic naturally without feeling forced. Short, memorable, easy to type. Having a human name creates emotional attachment — users naturally refer to the bot in third person and feel like they are interacting with a presence rather than a utility.

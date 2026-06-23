@@ -1,0 +1,699 @@
+/* Akira WebUI — aligned with documentation design system */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes badge-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.88) translateY(4px);
+  }
+  70% {
+    transform: scale(1.04) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+:root {
+  color-scheme: light;
+  --ink: #1a1225;
+  --ink2: #3d2f5a;
+  --muted: #7a6a90;
+  --bg: #f7f4fc;
+  --surface: #ffffff;
+  --accent: #7c4dff;
+  --accent2: #e040fb;
+  --accent3: #ff6b9d;
+  --gold: #ffb830;
+  --border: #e8e0f5;
+  --radius: 14px;
+  --code-bg: rgba(124, 77, 255, 0.08);
+  --glow-a: rgba(124, 77, 255, 0.08);
+  --glow-b: rgba(224, 64, 251, 0.07);
+  --glow-c: rgba(255, 107, 157, 0.04);
+  --shadow-tint: rgba(124, 77, 255, 0.06);
+  --card-hover-bg: #faf7ff;
+  --home-shadow-strong: rgba(124, 77, 255, 0.12);
+  --home-gradient-start: rgba(124, 77, 255, 0.06);
+  --home-gradient-end: rgba(224, 64, 251, 0.04);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #ece9f3;
+  --ink2: #c4b8d9;
+  --muted: #9a90b0;
+  --bg: #0f0c14;
+  --surface: #1a1624;
+  --accent: #a78bfa;
+  --accent2: #e879f5;
+  --accent3: #ff7eb3;
+  --gold: #fbbf24;
+  --border: #2d2640;
+  --code-bg: rgba(167, 139, 250, 0.12);
+  --glow-a: rgba(124, 77, 255, 0.14);
+  --glow-b: rgba(224, 64, 251, 0.1);
+  --glow-c: rgba(255, 107, 157, 0.06);
+  --shadow-tint: rgba(0, 0, 0, 0.35);
+  --card-hover-bg: rgba(167, 139, 250, 0.1);
+  --home-shadow-strong: rgba(0, 0, 0, 0.45);
+  --home-gradient-start: rgba(167, 139, 250, 0.14);
+  --home-gradient-end: rgba(232, 121, 245, 0.1);
+}
+
+body {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 20%, var(--glow-a) 0%, transparent 50%),
+    radial-gradient(circle at 85% 80%, var(--glow-b) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, var(--glow-c) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.webui-root {
+  padding-top: 0.5rem;
+}
+
+a {
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--accent2);
+  text-decoration: underline;
+}
+
+/* ── Theme toggle (matches docs) ── */
+.theme-toggle-host {
+  position: fixed;
+  top: max(0.85rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right));
+  z-index: 200;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.65rem;
+  height: 2.65rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink2);
+  cursor: pointer;
+  box-shadow: 0 2px 12px var(--shadow-tint);
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.theme-toggle:active {
+  transform: scale(0.96);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.theme-toggle__icon {
+  flex-shrink: 0;
+}
+
+.theme-toggle__moon {
+  display: none;
+}
+
+html[data-theme="dark"] .theme-toggle__sun {
+  display: none;
+}
+
+html[data-theme="dark"] .theme-toggle__moon {
+  display: block;
+}
+
+/* ── Chrome: nav ── */
+.webui-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.75rem 0 1rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fade-in 0.55s ease 0.05s forwards;
+}
+
+.webui-kana {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+  opacity: 0;
+  animation: fade-in 0.55s ease 0.1s forwards;
+}
+
+.webui-brand {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: clamp(1.35rem, 3.5vw, 1.85rem);
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.webui-brand .gradient-text {
+  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.webui-badge {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--muted);
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  animation: badge-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+}
+
+.webui-badge strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.webui-nav {
+  display: flex;
+  gap: 0.35rem 1rem;
+  flex-wrap: wrap;
+  padding: 0.85rem 0 0.25rem;
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  animation: fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
+}
+
+.webui-nav a {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink2);
+  text-decoration: none;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.webui-nav a:hover {
+  color: var(--accent);
+  text-decoration: none;
+  background: var(--code-bg);
+  border-color: var(--border);
+}
+
+.webui-nav a.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--code-bg);
+}
+
+/* ── Main content stagger ── */
+.webui-main {
+  opacity: 0;
+  animation: fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+.webui-lede {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0 0 1.35rem;
+  max-width: 38rem;
+}
+
+.webui-lede code {
+  font-family: ui-monospace, monospace;
+  font-size: 0.88em;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  padding: 0.1rem 0.35rem;
+  border-radius: 6px;
+  color: var(--ink2);
+}
+
+/* ── Hero (home) ── */
+.webui-hero {
+  padding: 2.5rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+.webui-hero-kana {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  opacity: 0;
+  animation: fade-in 0.6s ease 0.08s forwards;
+}
+
+.webui-hero h1 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+}
+
+.webui-hero h1 .gradient-text {
+  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.webui-hero-sub {
+  font-size: 1.02rem;
+  font-weight: 300;
+  color: var(--muted);
+  margin-top: 1rem;
+  max-width: 28rem;
+  line-height: 1.6;
+  font-style: italic;
+  opacity: 0;
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.28s forwards;
+}
+
+.webui-section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 2rem 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  animation: fade-in 0.5s ease 0.35s forwards;
+}
+
+.webui-section-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Page headings ── */
+.page-title {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: clamp(1.35rem, 3vw, 1.65rem);
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+  opacity: 0;
+  animation: fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
+}
+
+.page-title .gradient-text {
+  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* ── Home link cards ── */
+.webui-link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.webui-link-grid li {
+  margin: 0;
+}
+
+.webui-link-card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.15rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+  transition:
+    border-color 0.25s,
+    transform 0.25s,
+    box-shadow 0.25s;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.webui-link-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--home-gradient-start), var(--home-gradient-end));
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+}
+
+.webui-link-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px var(--home-shadow-strong);
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.webui-link-card:hover::after {
+  opacity: 1;
+}
+
+.webui-link-grid li:nth-child(1) .webui-link-card {
+  animation-delay: 0.2s;
+}
+.webui-link-grid li:nth-child(2) .webui-link-card {
+  animation-delay: 0.28s;
+}
+.webui-link-grid li:nth-child(3) .webui-link-card {
+  animation-delay: 0.36s;
+}
+.webui-link-grid li:nth-child(4) .webui-link-card {
+  animation-delay: 0.44s;
+}
+
+.webui-link-grid li:nth-child(5) .webui-link-card {
+  animation-delay: 0.52s;
+}
+
+.webui-link-grid li:nth-child(6) .webui-link-card {
+  animation-delay: 0.6s;
+}
+
+/* ── Panels & forms ── */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.35rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 24px var(--shadow-tint);
+  opacity: 0;
+  animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+}
+
+.panel h2 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.65rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel h2 .gradient-text {
+  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.panel h3 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink2);
+  margin: 0 0 0.5rem;
+}
+
+.panel p {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--ink2);
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+.panel form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.panel label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink2);
+  display: block;
+}
+
+.panel [role="alert"] {
+  color: var(--accent3);
+  font-size: 0.88rem;
+  margin-top: 0.5rem;
+}
+
+.webui-auth-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.webui-auth-stack .secondary {
+  align-self: flex-start;
+}
+
+button {
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.55rem 1.15rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin-top: 0.35rem;
+  margin-right: 0.5rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 2px 12px var(--shadow-tint);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px var(--home-shadow-strong);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button.secondary {
+  background: var(--code-bg);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  animation: none;
+  background-size: auto;
+}
+
+button.secondary:hover {
+  border-color: var(--accent);
+}
+
+input {
+  width: 100%;
+  max-width: 24rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin: 0.35rem 0 0.85rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: var(--surface);
+  color: var(--ink);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--code-bg);
+}
+
+/* ── Collection & shared widgets ── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.thumb {
+  width: 100%;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px var(--shadow-tint);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.thumb:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 28px var(--home-shadow-strong);
+}
+
+.webui-muted {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.webui-fade {
+  opacity: 0;
+  animation: fade-in 0.5s ease 0.1s forwards;
+}
+
+.webui-alert {
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--ink);
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    padding: 0 1.25rem 3rem;
+  }
+
+  .webui-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .webui-badge {
+    white-space: normal;
+  }
+}
