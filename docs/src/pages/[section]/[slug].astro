@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import DocsLayout from "../../layouts/DocsLayout.astro";
 
-type Section = "commands" | "economy" | "prestige" | "getting-started" | "webui";
+type Section = "commands" | "economy" | "prestige" | "getting-started" | "webui" | "contributing";
 
 const titles: Record<Section, string> = {
   commands: "Commands",
@@ -10,10 +10,11 @@ const titles: Record<Section, string> = {
   prestige: "Prestige",
   "getting-started": "Getting started",
   webui: "WebUI",
+  contributing: "Contributing",
 };
 
 export async function getStaticPaths() {
-  const SECTIONS: Section[] = ["commands", "economy", "prestige", "getting-started", "webui"];
+  const SECTIONS: Section[] = ["commands", "economy", "prestige", "getting-started", "webui", "contributing"];
   const out: {
     params: { section: Section; slug: string };
     props: { section: Section };
