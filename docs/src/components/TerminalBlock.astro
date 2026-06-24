@@ -13,7 +13,10 @@ const { language = "bash" } = Astro.props;
       <span class="dot yellow"></span>
       <span class="dot green"></span>
     </div>
-    {language && <span class="terminal-lang">{language}</span>}
+    <div class="terminal-actions">
+      {language && <span class="terminal-lang">{language}</span>}
+      <button class="copy-btn" aria-label="Copy to clipboard">Copy</button>
+    </div>
   </div>
   <pre class="terminal-pre"><code class="terminal-code"><slot /></code></pre>
 </div>
@@ -52,6 +55,12 @@ const { language = "bash" } = Astro.props;
   .yellow { background: #ffbd2e; }
   .green { background: #27c93f; }
 
+  .terminal-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
   .terminal-lang {
     font-family: monospace;
     font-size: 0.8rem;
@@ -60,21 +69,84 @@ const { language = "bash" } = Astro.props;
     letter-spacing: 0.05em;
   }
 
+  .copy-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--muted);
+    border-radius: 4px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+    font-family: monospace;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+  }
+
   .terminal-pre {
-    margin: 0;
-    padding: 1.25rem;
-    overflow-x: auto;
-    /* Force override any global markdown pre styles */
+    margin: 0 !important;
+    padding: 1.25rem !important;
+    overflow-x: auto !important;
+    /* Reset the global flex layout from the Discord messages */
+    display: block !important;
     background: transparent !important;
     border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Kill the global Discord Avatar placeholder */
+  .terminal-pre::before {
+    content: none !important;
+    display: none !important;
   }
 
   .terminal-code {
-    font-family: monospace;
-    font-size: 0.95rem;
-    color: var(--ink);
-    /* Force override any global markdown code styles */
+    font-family: monospace !important;
+    font-size: 0.95rem !important;
+    color: var(--ink) !important;
     background: transparent !important;
     padding: 0 !important;
+    display: block !important;
+  }
+
+  /* Kill the global "Anon" display name */
+  .terminal-code::before {
+    content: none !important;
+    display: none !important;
   }
 </style>
+
+<script>
+  const blocks = document.querySelectorAll('.terminal-block');
+  
+  blocks.forEach((block) => {
+    const btn = block.querySelector('.copy-btn');
+    const code = block.querySelector('.terminal-code');
+    
+    if (btn && code) {
+      btn.addEventListener('click', async () => {
+        try {
+          const textToCopy = code.textContent.trim();
+          await navigator.clipboard.writeText(textToCopy);
+          
+          const originalText = btn.textContent;
+          btn.textContent = 'Copied!';
+          btn.style.color = '#27c93f';
+          btn.style.borderColor = '#27c93f';
+          
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.color = '';
+            btn.style.borderColor = '';
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy text', err);
+          btn.textContent = 'Error';
+        }
+      });
+    }
+  });
+</script>
