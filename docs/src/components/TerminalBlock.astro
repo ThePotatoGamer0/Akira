@@ -1,0 +1,80 @@
+---
+interface Props {
+  language?: string;
+}
+
+const { language = "bash" } = Astro.props;
+---
+
+<div class="terminal-block">
+  <div class="terminal-header">
+    <div class="terminal-dots">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+    </div>
+    {language && <span class="terminal-lang">{language}</span>}
+  </div>
+  <pre class="terminal-pre"><code class="terminal-code"><slot /></code></pre>
+</div>
+
+<style>
+  .terminal-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin: 2rem 0;
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--shadow-tint);
+  }
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .terminal-dots {
+    display: flex;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .red { background: #ff5f56; }
+  .yellow { background: #ffbd2e; }
+  .green { background: #27c93f; }
+
+  .terminal-lang {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .terminal-pre {
+    margin: 0;
+    padding: 1.25rem;
+    overflow-x: auto;
+    /* Force override any global markdown pre styles */
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .terminal-code {
+    font-family: monospace;
+    font-size: 0.95rem;
+    color: var(--ink);
+    /* Force override any global markdown code styles */
+    background: transparent !important;
+    padding: 0 !important;
+  }
+</style>

@@ -2,6 +2,7 @@
 title: Local environment setup
 description: A complete, step-by-step beginner's guide to setting up the Akira project on your computer.
 ---
+import TerminalBlock from '../../components/TerminalBlock.astro';
 
 <!-- FUTURE EDITORS: Please add installation instructions for macOS and other Linux distributions (Ubuntu, Fedora, etc.) below as needed. -->
 
@@ -20,10 +21,10 @@ To install these tools, run the following commands or use the installers for you
 
 Open your terminal (or Command Prompt/PowerShell) and download the project files using Git:
 
-```bash
-git clone [https://github.com/YOUR_USERNAME/Akira.git](https://github.com/YOUR_USERNAME/Akira.git)
+<TerminalBlock language="bash">
+git clone https://github.com/YOUR_USERNAME/Akira.git
 cd Akira
-```
+</TerminalBlock>
 
 ## 3. Install project dependencies
 
@@ -31,9 +32,9 @@ The project relies on external libraries (like React and Discord.js). **npm** (N
 
 In the root of the `Akira` folder, run:
 
-```bash
+<TerminalBlock language="bash">
 npm install
-```
+</TerminalBlock>
 
 ## 4. Prepare the database
 
@@ -41,9 +42,9 @@ Akira uses Prisma to talk to the database. For local development, it creates a s
 
 Generate the database schema and the local database file by running:
 
-```bash
+<TerminalBlock language="bash">
 npx prisma db push
-```
+</TerminalBlock>
 
 ## 5. Start the development servers
 
@@ -52,16 +53,16 @@ Because Akira is a monorepo, it has several moving parts (the Discord bot, the W
 Open separate terminal windows for each part of the project you want to work on and run their start commands:
 
 - **To run the Astro documentation site:**
-```bash
+  <TerminalBlock language="bash">
   cd docs
   npm run dev
-  ```
+  </TerminalBlock>
 
 - **To run the WebUI Client:**
-```bash
+  <TerminalBlock language="bash">
   cd webui/client
   npm run dev
-  ```
+  </TerminalBlock>
 
 - **To run the Bot or Server:**
   Run your standard build/start scripts from the root directory as defined in the main `package.json`.
