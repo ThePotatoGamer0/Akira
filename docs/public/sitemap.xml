@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Root -->
+  <url><loc>https://akira.potatogamer.uk/</loc></url>
+
+  <!-- Commands -->
+  <url><loc>https://akira.potatogamer.uk/commands/burn/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/commands/collection/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/commands/cooldowns/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/commands/daily/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/commands/drop/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/commands/dye/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/commands/give/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/commands/grab/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/commands/lookup/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/commands/multiburn/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/commands/shop/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/commands/trade/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/commands/userinfo/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/commands/wishlist/</loc></url>
+
+  <!-- Contributing -->
+  <url><loc>https://akira.potatogamer.uk/contributing/adding-characters/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/contributing/code/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/contributing/documentation/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/contributing/local-setup/</loc></url>
+
+  <!-- Economy -->
+  <url><loc>https://akira.potatogamer.uk/economy/bits/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/economy/personal-milestone/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/economy/server-pool/</loc></url>
+
+  <!-- Getting Started -->
+  <url><loc>https://akira.potatogamer.uk/getting-started/importing-from-karuta/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/getting-started/what-is-akira/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/getting-started/your-first-card/</loc></url>
+
+  <!-- Prestige -->
+  <url><loc>https://akira.potatogamer.uk/prestige/overview/</loc></url>
+
+  <!-- WebUI -->
+  <url><loc>https://akira.potatogamer.uk/webui/authentication/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/webui/collection/</loc></url>
+  <url><loc>https://akira.potatogamer.uk/webui/economy-and-leaderboard/</loc></url>
+</urlset>
