@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM --platform=linux/arm64 node:22-bookworm-slim AS base
+FROM node:22-bookworm-slim AS base
 WORKDIR /app
 
 RUN apt-get update \
