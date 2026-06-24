@@ -13,7 +13,7 @@ services:
     restart: "no"
 
   bot:
-    build: .
+    image: ghcr.io/thepotatogamer0/akira-bot:latest
     platform: linux/arm64
     command: ["node", "dist/bot/index.js"]
     depends_on:

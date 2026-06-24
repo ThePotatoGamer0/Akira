@@ -31,5 +31,3 @@ Akira has a warm, human-like personality. All responses are written in first per
 - WebUI: React + Express (also available as a Discord Activity)
 - Docs: Astro static site
 - Card assets: pre-generated APNG animations served as static files
-
-gitempty
