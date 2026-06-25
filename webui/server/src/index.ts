@@ -1,5 +1,6 @@
 import "dotenv/config";
 import path from "node:path";
+import fs from "node:fs";
 import cors from "cors";
 import express from "express";
 import session from "express-session";
@@ -79,6 +80,16 @@ app.use(
 );
 
 const cardsStatic = path.join(REPO_ROOT, "assets", "cards");
+
+// --- DEBUGGING BLOCK ---
+console.log(`\n[Akira Boot] Expected static cards directory: ${cardsStatic}`);
+if (!fs.existsSync(cardsStatic)) {
+  console.warn(`[Akira Warning] The static directory DOES NOT EXIST! REPO_ROOT might be misconfigured.\n`);
+} else {
+  console.log(`[Akira Boot] Static directory found. Serving images...\n`);
+}
+// -----------------------
+
 app.use("/api/static/cards", express.static(cardsStatic));
 
 app.use("/auth", authRouter);

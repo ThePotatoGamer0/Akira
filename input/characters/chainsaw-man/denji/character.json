@@ -1,0 +1,21 @@
+{
+  "id": "csm-denji",
+  "name": "Denji",
+  "aliases": ["Chainsaw Man", "Hero of Hell"],
+  "description": "A young man who merges with the chainsaw devil, Pochita, to become Chainsaw Man.",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "denji-base",
+      "name": "Public Safety Rookie",
+      "rarity": "Common",
+      "image": "base.png"
+    },
+    {
+      "id": "denji-transformed",
+      "name": "The Chainsaw Devil",
+      "rarity": "Rare",
+      "image": "transformed.png"
+    }
+  ]
+}

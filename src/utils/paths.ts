@@ -24,3 +24,15 @@ export function ensureDir(dir: string): void {
 export function cardAssetDir(seriesSlug: string, characterSlug: string, frameId: number): string {
   return path.join(DIR_ASSETS_CARDS, seriesSlug, characterSlug, String(frameId));
 }
+
+/**
+ * Resolves the specific absolute file paths for a card variant's images
+ */
+export function resolveCardFiles(seriesSlug: string, characterSlug: string, variantId: string, frameId: number) {
+  const baseDir = cardAssetDir(seriesSlug, `${characterSlug}-${variantId}`, frameId);
+  return {
+    normal: path.join(baseDir, "normal.png"),
+    shiny: path.join(baseDir, "shiny.apng"),
+    burn: path.join(baseDir, "burn.apng"),
+  };
+}

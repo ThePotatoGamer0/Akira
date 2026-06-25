@@ -1,12 +1,25 @@
-node_modules
-webui/client/node_modules
-webui/server/node_modules
-docs/node_modules
-dist
-webui/client/dist
-docs/dist
+# Git and metadata
 .git
+.github
+.gitignore
+README.md
+
+# Package manager caches
+node_modules
+.npm
+
+# Production build outputs
+dist
+build
+.astro
+
+# Strip frontend and documentation from the backend build context
+docs/
+webui/client/
+
+# Local environment files and databases
 .env
+.env.local
+*.db
+*.db-journal
 init.lock
-prisma/*.db
-prisma/*.db-journal

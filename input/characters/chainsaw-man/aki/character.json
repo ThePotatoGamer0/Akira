@@ -1,0 +1,23 @@
+{
+  "id": "csm-aki",
+  "name": "Aki Hayakawa",
+  "aliases": [
+    "Gun Fiend"
+  ],
+  "description": "A solemn Public Safety Devil Hunter working under Makima's squad who seeks revenge against the Gun Devil.",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "aki-base",
+      "name": "Fox Contract Hunter",
+      "rarity": "Common",
+      "image": "base.png"
+    },
+    {
+      "id": "aki-curse",
+      "name": "Curse Devil's Price",
+      "rarity": "Rare",
+      "image": "curse_devil.png"
+    }
+  ]
+}

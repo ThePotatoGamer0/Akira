@@ -16,9 +16,26 @@ import { encodeApng } from "../../utils/apng.js";
 import { pngBufferToRgba } from "../../renderer/frames-to-rgba.js";
 import sharp from "sharp";
 
-export type CharacterEntry = {
+export type CardVariantJson = {
+  id: string;
+  name: string;
+  rarity: string;
+  image: string;
+};
+
+export type CharacterJsonData = {
+  id: string;
+  name: string;
+  aliases?: string[];
+  description?: string;
+  gender?: string;
+  cards: CardVariantJson[];
+};
+
+export type VariantAssetEntry = {
   seriesSlug: string;
   characterSlug: string;
+  variantId: string;
   pngPath: string;
 };
 
@@ -33,19 +50,37 @@ function listFramePaths(): { id: number; path: string }[] {
   return out.sort((a, b) => a.id - b.id);
 }
 
-export function listCharacters(): CharacterEntry[] {
+export function listVariantAssets(): VariantAssetEntry[] {
   if (!fs.existsSync(DIR_INPUT_CHARACTERS)) return [];
-  const out: CharacterEntry[] = [];
+  const out: VariantAssetEntry[] = [];
+
   for (const seriesSlug of fs.readdirSync(DIR_INPUT_CHARACTERS)) {
     const seriesDir = path.join(DIR_INPUT_CHARACTERS, seriesSlug);
     if (!fs.statSync(seriesDir).isDirectory()) continue;
-    for (const file of fs.readdirSync(seriesDir)) {
-      if (!file.endsWith(".png")) continue;
-      out.push({
-        seriesSlug,
-        characterSlug: path.basename(file, ".png"),
-        pngPath: path.join(seriesDir, file),
-      });
+
+    for (const characterSlug of fs.readdirSync(seriesDir)) {
+      const charDir = path.join(seriesDir, characterSlug);
+      if (!fs.statSync(charDir).isDirectory()) continue;
+
+      const jsonPath = path.join(charDir, "character.json");
+      if (!fs.existsSync(jsonPath)) continue;
+
+      try {
+        const data: CharacterJsonData = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
+        for (const card of data.cards) {
+          const pngPath = path.join(charDir, card.image);
+          if (fs.existsSync(pngPath)) {
+            out.push({
+              seriesSlug,
+              characterSlug,
+              variantId: card.id,
+              pngPath,
+            });
+          }
+        }
+      } catch (err) {
+        console.error(`Failed to parse metadata at ${jsonPath}:`, err);
+      }
     }
   }
   return out;
@@ -59,32 +94,33 @@ function parseProgress(done: number, total: number, label: string): void {
 export async function generateAllCardAssets(): Promise<void> {
   ensureDir(DIR_ASSETS_CARDS);
   const frames = listFramePaths();
-  const chars = listCharacters();
-  if (frames.length === 0 || chars.length === 0) {
-    console.warn("Skipping card assets: need frames in input/frames and art in input/characters.");
+  const variants = listVariantAssets();
+  if (frames.length === 0 || variants.length === 0) {
+    console.warn("Skipping card assets: need frames in input/frames and art variation files configured via character.json templates.");
     return;
   }
-  const total = chars.length * frames.length * 3;
+  const total = variants.length * frames.length * 3;
   let done = 0;
-  for (const c of chars) {
+  for (const v of variants) {
     for (const fr of frames) {
-      const outDir = cardAssetDir(c.seriesSlug, c.characterSlug, fr.id);
+      // Directs outputs using variant IDs instead of global layout blocks
+      const outDir = cardAssetDir(v.seriesSlug, `${v.characterSlug}-${v.variantId}`, fr.id);
       ensureDir(outDir);
       const normalPath = path.join(outDir, "normal.png");
       const shinyPath = path.join(outDir, "shiny.apng");
       const burnPath = path.join(outDir, "burn.apng");
 
-      const normal = await renderNormalCard(c.pngPath, fr.path);
+      const normal = await renderNormalCard(v.pngPath, fr.path);
       fs.writeFileSync(normalPath, normal);
       done++;
       parseProgress(done, total, "Generating cards...");
 
-      const shiny = await renderShinyApng(c.pngPath, fr.path);
+      const shiny = await renderShinyApng(v.pngPath, fr.path);
       fs.writeFileSync(shinyPath, shiny);
       done++;
       parseProgress(done, total, "Generating cards...");
 
-      const burn = await renderBurnApng(c.pngPath, fr.path);
+      const burn = await renderBurnApng(v.pngPath, fr.path);
       fs.writeFileSync(burnPath, burn);
       done++;
       parseProgress(done, total, "Generating cards...");
@@ -92,7 +128,6 @@ export async function generateAllCardAssets(): Promise<void> {
   }
 }
 
-/** Minimal looping gift APNG: template until full title + showcase sequence exists. */
 export async function generateGiftAnimations(): Promise<void> {
   ensureDir(DIR_ASSETS_FRAMES_GIFT);
   const frames = listFramePaths();
@@ -102,15 +137,14 @@ export async function generateGiftAnimations(): Promise<void> {
       if (f.endsWith(".png")) showcase.push(path.join(DIR_INPUT_SHOWCASE, f));
     }
   }
-  const fallbackChar = listCharacters()[0];
+  const fallbackVariant = listVariantAssets()[0];
   const total = frames.length;
   let done = 0;
   for (const fr of frames) {
     const outPath = path.join(DIR_ASSETS_FRAMES_GIFT, `${fr.id}.apng`);
-    const art =
-      showcase[0] ?? fallbackChar?.pngPath;
+    const art = showcase[0] ?? fallbackVariant?.pngPath;
     if (!art) {
-      console.warn("Skipping gift animations: no showcase PNGs and no characters.");
+      console.warn("Skipping gift animations: no showcase PNGs and no character variants.");
       return;
     }
     const card = await renderNormalCard(art, fr.path);

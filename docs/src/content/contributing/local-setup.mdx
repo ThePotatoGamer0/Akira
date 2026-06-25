@@ -58,14 +58,23 @@ Open separate terminal windows for each part of the project you want to work on 
   npm run dev
   </TerminalBlock>
 
-- **To run the WebUI Client:**
+- **To run the WebUI (requires both Client and Server):**
+  In one terminal window, start the server:
+  <TerminalBlock language="bash">
+  cd webui/server
+  npm run dev
+  </TerminalBlock>
+  In a second terminal window, start the client:
   <TerminalBlock language="bash">
   cd webui/client
   npm run dev
   </TerminalBlock>
 
-- **To run the Bot or Server:**
-  Run your standard build/start scripts from the root directory as defined in the main `package.json`.
+- **To run the Discord Bot (required for WebUI account creation):**
+  From the root directory of the project, run:
+  <TerminalBlock language="bash">
+  npm run dev
+  </TerminalBlock>
 
 You are now ready to make changes to the code!
 

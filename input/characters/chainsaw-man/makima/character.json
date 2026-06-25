@@ -1,0 +1,23 @@
+{
+  "id": "csm-makima",
+  "name": "Makima",
+  "aliases": [
+    "Control Devil"
+  ],
+  "description": "A high-ranking Public Safety Devil Hunter who takes Denji in as her human pet.",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "makima-base",
+      "name": "Chief of Special Division 4",
+      "rarity": "Common",
+      "image": "base.png"
+    },
+    {
+      "id": "makima-control",
+      "name": "The Control Devil",
+      "rarity": "Rare",
+      "image": "control_devil.png"
+    }
+  ]
+}

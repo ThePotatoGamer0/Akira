@@ -1,0 +1,24 @@
+{
+  "id": "csm-kobenis-car",
+  "name": "Kobeni's Car",
+  "aliases": [
+    "The True Hero of Chainsaw Man",
+    "Fiat 500"
+  ],
+  "description": "An exceptionally durable vehicle that won the official Chainsaw Man character popularity poll over several actual human beings.",
+  "gender": "Object",
+  "cards": [
+    {
+      "id": "kobenis-car-base",
+      "name": "Mint Condition Fiat",
+      "rarity": "Rare",
+      "image": "base.png"
+    },
+    {
+      "id": "kobenis-car-wreck",
+      "name": "Totaled Over a Cliff",
+      "rarity": "Secret Rare",
+      "image": "wrecked.png"
+    }
+  ]
+}

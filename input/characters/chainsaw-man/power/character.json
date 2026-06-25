@@ -1,0 +1,24 @@
+{
+  "id": "csm-power",
+  "name": "Power",
+  "aliases": [
+    "Blood Fiend",
+    "President Power"
+  ],
+  "description": "A Blood Fiend and Public Safety Devil Hunter who lives with Denji and Aki.",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "power-base",
+      "name": "Public Safety Fiend",
+      "rarity": "Common",
+      "image": "base.png"
+    },
+    {
+      "id": "power-blood-devil",
+      "name": "The Blood Devil",
+      "rarity": "Rare",
+      "image": "blood_devil.png"
+    }
+  ]
+}

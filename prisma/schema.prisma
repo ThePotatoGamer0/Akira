@@ -29,21 +29,34 @@ model Series {
 }
 
 model Character {
-  id        String     @id @default(cuid())
-  name      String
-  slug      String
-  seriesId  String
-  series    Series     @relation(fields: [seriesId], references: [id], onDelete: Cascade)
-  cards     Card[]
-  wishlists Wishlist[]
+  id          String        @id @default(cuid())
+  name        String
+  slug        String
+  seriesId    String
+  description String?
+  gender      String?
+  aliases     String?       // Stored as stringified JSON array
+  series      Series        @relation(fields: [seriesId], references: [id], onDelete: Cascade)
+  variants    CardVariant[]
+  wishlists   Wishlist[]
 
   @@unique([seriesId, slug])
 }
 
-model Card {
-  id          String      @id @default(cuid())
+model CardVariant {
+  id          String      @id
   characterId String
   character   Character   @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  name        String
+  rarity      String
+  image       String
+  cards       Card[]
+}
+
+model Card {
+  id          String      @id @default(cuid())
+  variantId   String
+  variant     CardVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
   frameId     Int
   printNumber Int
   quality     CardQuality
@@ -55,7 +68,7 @@ model Card {
   obtainedAt  DateTime    @default(now())
 
   @@index([ownerId])
-  @@index([characterId, frameId])
+  @@index([variantId, frameId])
 }
 
 model User {

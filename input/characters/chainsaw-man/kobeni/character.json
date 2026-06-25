@@ -1,0 +1,23 @@
+{
+  "id": "csm-kobeni",
+  "name": "Kobeni Higashiyama",
+  "aliases": [
+    "Kobeni"
+  ],
+  "description": "An incredibly anxious Public Safety Devil Hunter who is surprisingly capable when pushed to her absolute limit.",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "kobeni-base",
+      "name": "Panicking Rookie",
+      "rarity": "Common",
+      "image": "base.png"
+    },
+    {
+      "id": "kobeni-combat",
+      "name": "Lethal Agility",
+      "rarity": "Rare",
+      "image": "combat.png"
+    }
+  ]
+}
