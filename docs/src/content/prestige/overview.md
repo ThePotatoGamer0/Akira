@@ -3,7 +3,7 @@ title: Prestige overview
 description: Repeatable prestige paths, exclusive frames, and passive daily bits.
 ---
 
-Akira will walk you through prestige once you have claimed **five** [personal milestones](/economy/personal-milestone) — you are never forced, but the rewards scale if you wait. Day-to-day income still flows through [daily](/commands/daily) and the wider [bits](/economy/bits) rules.
+Akira will walk you through prestige once you have claimed **five** [personal milestones](/economy/personal-milestone) - you are never forced, but the rewards scale if you wait. Day-to-day income still flows through [daily](/commands/daily) and the wider [bits](/economy/bits) rules.
 
 ## Frames
 
@@ -13,7 +13,7 @@ Akira will walk you through prestige once you have claimed **five** [personal mi
 
 ## Daily bonus
 
-Each prestige level stacks a small permanent daily bits bump — layered on top of your normal [daily](/commands/daily) claim — so long-time players feel the love without breaking balance for newcomers.
+Each prestige level stacks a small permanent daily bits bump - layered on top of your normal [daily](/commands/daily) claim - so long-time players feel the love without breaking balance for newcomers.
 
 ## Repeatable
 

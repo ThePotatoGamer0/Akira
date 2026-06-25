@@ -1,4 +1,4 @@
-/* Shared design system — home + article pages */
+/* Shared design system - home + article pages */
 *,
 *::before,
 *::after {
@@ -323,7 +323,7 @@ body::before {
   color: var(--discord-pre-text) !important;
 }
 
-/* Display name row — “Anon” */
+/* Display name row - “Anon” */
 .doc-prose pre code::before {
   content: "Anon";
   display: block;

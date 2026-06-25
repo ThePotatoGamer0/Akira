@@ -19,7 +19,7 @@ export function InitTrigger(props: {
   return (
     <div className="panel">
       <h3>Asset generation</h3>
-      <p>This kicks off `npm run generate` on the server — it can take a long time.</p>
+      <p>This kicks off `npm run generate` on the server - it can take a long time.</p>
       <button type="button" onClick={() => void run()}>
         Regenerate card assets
       </button>

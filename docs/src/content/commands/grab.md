@@ -5,7 +5,7 @@ command: grab
 shortcuts: g
 ---
 
-Akira will help with **/grab** — You need a free grab slot and the card must still be unclaimed on a live [drop](/commands/drop).
+Akira will help with **/grab** - You need a free grab slot and the card must still be unclaimed on a live [drop](/commands/drop).
 
 ## Parameters
 
@@ -20,10 +20,10 @@ Parameters are still settling in for slash commands; check in-game `/help` for t
 ## Tips
 
 - Your reaction number must match the card you want, and you need a free grab when the drop is still live.
-- Grab cooldown is separate from drop cooldown — use [cooldowns](/commands/cooldowns) if you are unsure which timer is blocking you.
+- Grab cooldown is separate from drop cooldown - use [cooldowns](/commands/cooldowns) if you are unsure which timer is blocking you.
 
 ## See also
 
-- [Drop](/commands/drop) — start a three-card round
-- [Cooldowns](/commands/cooldowns) — grab vs drop timers
-- [Collection](/commands/collection) — view cards after a successful grab
+- [Drop](/commands/drop) - start a three-card round
+- [Cooldowns](/commands/cooldowns) - grab vs drop timers
+- [Collection](/commands/collection) - view cards after a successful grab

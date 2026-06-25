@@ -46,7 +46,7 @@ export function startInternalApi(bot: Client): void {
       }
       const user = await bot.users.fetch(json.discordId);
       await user.send(
-        `Hey — it's Akira. Your WebUI sign-in code is **${json.code}**. It expires in a few minutes. Don't share it with anyone!`,
+        `Hey - it's Akira. Your WebUI sign-in code is **${json.code}**. It expires in a few minutes. Don't share it with anyone!`,
       );
       res.writeHead(204).end();
     } catch (e) {

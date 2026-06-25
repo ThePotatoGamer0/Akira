@@ -6,7 +6,7 @@ export async function sendVerificationDm(discordId: string, code: string): Promi
   const secret = process.env["AKIRA_INTERNAL_SECRET"] ?? "";
   if (!base || !secret) {
     console.warn(
-      "[webui] BOT_INTERNAL_URL or AKIRA_INTERNAL_SECRET missing — verification code (dev only):",
+      "[webui] BOT_INTERNAL_URL or AKIRA_INTERNAL_SECRET missing - verification code (dev only):",
       code,
       "discordId:",
       discordId,

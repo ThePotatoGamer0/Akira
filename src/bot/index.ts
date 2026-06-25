@@ -79,7 +79,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
   const cmd = commandMap.get(interaction.commandName);
   if (!cmd) {
     await interaction.reply({
-      content: "Akira doesn't recognize that command — try `/help`.",
+      content: "Akira doesn't recognize that command - try `/help`.",
       ephemeral: true,
     });
     return;

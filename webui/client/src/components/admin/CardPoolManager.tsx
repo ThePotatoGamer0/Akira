@@ -47,7 +47,7 @@ export function CardPoolManager(props: {
       setMsg(j.error ?? "Could not add");
       return;
     }
-    setMsg("Character added — run asset generation to render new cards.");
+    setMsg("Character added - run asset generation to render new cards.");
     setCharacterName("");
     setCharacterSlug("");
     await load();

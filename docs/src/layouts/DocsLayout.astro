@@ -18,9 +18,9 @@ interface Props {
 }
 
 const { frontmatter, section, slug } = Astro.props;
-const title = `${frontmatter.title} — Akira docs`;
+const title = `${frontmatter.title} - Akira docs`;
 const showShortcuts =
-  frontmatter.shortcuts && frontmatter.shortcuts !== "—" && frontmatter.shortcuts.trim() !== "";
+  frontmatter.shortcuts && frontmatter.shortcuts !== "-" && frontmatter.shortcuts.trim() !== "";
 ---
 
 <!doctype html>
@@ -71,7 +71,7 @@ const showShortcuts =
       {slug === "server-pool" ? <BuffTierTable /> : null}
 
       <footer class="doc-footer">
-        <div class="doc-footer-name"><span>Akira</span> — Documentation</div>
+        <div class="doc-footer-name"><span>Akira</span> - Documentation</div>
         <div class="doc-footer-note">Made with care for a small group of friends.</div>
         <div style="margin-top: 1rem;">
           <SocialLinks />

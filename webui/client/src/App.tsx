@@ -91,7 +91,7 @@ export function App() {
     <WebUiShell>
       <header className="webui-header">
         <div>
-          <div className="webui-kana">ア キ ラ — WebUI</div>
+          <div className="webui-kana">ア キ ラ - WebUI</div>
           <div className="webui-brand">
             <span className="gradient-text">Akira</span>
           </div>

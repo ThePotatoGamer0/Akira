@@ -78,6 +78,6 @@ adminRouter.post("/init", (_req, res) => {
   runGenerateDetached();
   res.status(202).json({
     status: "started",
-    message: "Akira queued a full asset regeneration — this can take a while.",
+    message: "Akira queued a full asset regeneration - this can take a while.",
   });
 });

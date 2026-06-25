@@ -40,7 +40,7 @@ export function ShopPanel(props: {
       <ul style={{ listStyle: "none", padding: 0 }}>
         {items.map((i) => (
           <li key={i.id} style={{ marginBottom: "0.75rem" }}>
-            <strong>{i.name}</strong> — {i.priceBits} bits
+            <strong>{i.name}</strong> - {i.priceBits} bits
             <div style={{ fontSize: "0.9rem", color: "var(--muted)" }}>{i.description}</div>
             <button type="button" onClick={() => void buy(i.id)} style={{ marginTop: "0.35rem" }}>
               Buy

@@ -1,6 +1,6 @@
 # Akira
 
-> A Discord card collecting bot built for small friend groups. A curated, personal alternative to Karuta — only characters from anime the server actually watches.
+> A Discord card collecting bot built for small friend groups. A curated, personal alternative to Karuta - only characters from anime the server actually watches.
 
 ## Docs
 - Full reference: /llms-full.txt
@@ -11,7 +11,7 @@
 - WebUI: /webui/{authentication,collection,economy-and-leaderboard}
 
 ## Summary
-Akira drops anime character cards in a Discord channel. Users grab cards by reacting with number emojis. Cards are collected, traded, burned for currency (bits), and customised with frames and dyes. The card pool is hand-picked by the server — not pulled from every anime ever made.
+Akira drops anime character cards in a Discord channel. Users grab cards by reacting with number emojis. Cards are collected, traded, burned for currency (bits), and customised with frames and dyes. The card pool is hand-picked by the server - not pulled from every anime ever made.
 
 Akira has a warm, human-like personality. All responses are written in first person as Akira.
 

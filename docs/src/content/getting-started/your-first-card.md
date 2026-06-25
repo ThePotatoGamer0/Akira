@@ -3,7 +3,7 @@ title: Your first card
 description: React on a drop, say hi to Akira, and welcome the card into your binder.
 ---
 
-When a friend runs [drop](/commands/drop), three cards appear — react with 1️⃣ 2️⃣ or 3️⃣, then use [grab](/commands/grab) to claim the matching slot while the [drop](/commands/drop) is still live.
+When a friend runs [drop](/commands/drop), three cards appear - react with 1️⃣ 2️⃣ or 3️⃣, then use [grab](/commands/grab) to claim the matching slot while the [drop](/commands/drop) is still live.
 
 ## After the grab
 

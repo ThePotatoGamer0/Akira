@@ -28,7 +28,7 @@ export function SetPasswordScreen(props: {
       <h2>
         Set your <span className="gradient-text">site password</span>
       </h2>
-      <p>Akira will use this for the browser WebUI only — keep it different from your Discord password.</p>
+      <p>Akira will use this for the browser WebUI only - keep it different from your Discord password.</p>
       <form onSubmit={(e) => void save(e)}>
         <label>
           Password (8+ characters)

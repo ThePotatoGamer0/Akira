@@ -5,7 +5,7 @@ command: drop
 shortcuts: d
 ---
 
-Akira will help with **/drop** — Channel must be configured by your admin. Three cards appear; react with 1️⃣ 2️⃣ or 3️⃣, then claim with [grab](/commands/grab) when your cooldown allows.
+Akira will help with **/drop** - Channel must be configured by your admin. Three cards appear; react with 1️⃣ 2️⃣ or 3️⃣, then claim with [grab](/commands/grab) when your cooldown allows.
 
 ## Parameters
 
@@ -20,10 +20,10 @@ Parameters are still settling in for slash commands; check in-game `/help` for t
 ## Tips
 
 - Drops only work in the channel your server admin configured; if nothing happens, ask them to check Akira’s drop settings.
-- Three cards appear at once — pick your reaction (1️⃣ 2️⃣ 3️⃣) before someone else grabs the one you wanted.
+- Three cards appear at once - pick your reaction (1️⃣ 2️⃣ 3️⃣) before someone else grabs the one you wanted.
 
 ## See also
 
-- [Grab](/commands/grab) — claim a card from a live drop
-- [Cooldowns](/commands/cooldowns) — when you can drop or grab again
-- [Wishlist](/commands/wishlist) — get pinged when a character you want appears in a drop
+- [Grab](/commands/grab) - claim a card from a live drop
+- [Cooldowns](/commands/cooldowns) - when you can drop or grab again
+- [Wishlist](/commands/wishlist) - get pinged when a character you want appears in a drop

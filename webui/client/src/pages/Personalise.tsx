@@ -43,7 +43,7 @@ export function PersonalisePage(props: {
       <p className="webui-lede">
         Choose how Akira addresses you in the WebUI home greeting and in <code>/ping</code> and{" "}
         <code>/help</code>. Leave blank to use your Discord handle (
-        <strong>{props.me.discordUsername ?? "—"}</strong>).
+        <strong>{props.me.discordUsername ?? "-"}</strong>).
       </p>
 
       <div className="panel">

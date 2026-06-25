@@ -23,7 +23,7 @@ economyRouter.post("/shop/buy", authMiddleware, async (req, res) => {
   }
   const u = req.user!;
   if (u.bits < item.priceBits) {
-    res.status(400).json({ error: "Not enough bits for that — keep collecting!" });
+    res.status(400).json({ error: "Not enough bits for that - keep collecting!" });
     return;
   }
   await prisma.$transaction([

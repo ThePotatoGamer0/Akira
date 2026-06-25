@@ -2,7 +2,7 @@ import UPNG from "upng-js";
 
 /**
  * Build an APNG from RGBA8 frame buffers (width × height × 4 bytes per frame).
- * `delaysMs` — per-frame delay in milliseconds (APNG delay_num / 1000).
+ * `delaysMs` - per-frame delay in milliseconds (APNG delay_num / 1000).
  */
 export function encodeApng(frames: Buffer[], width: number, height: number, delaysMs: number[]): Buffer {
   if (frames.length === 0) {

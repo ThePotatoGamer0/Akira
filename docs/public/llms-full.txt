@@ -1,4 +1,4 @@
-# Akira — Full Reference
+# Akira - Full Reference
 
 > Last updated: 2026
 > Akira is a Discord card collecting bot for small friend groups. This file is the complete technical and design reference intended for LLM consumption. All features, mechanics, thresholds, and design decisions are documented here.
@@ -7,9 +7,9 @@
 
 ## What is Akira?
 
-Akira is a curated Discord card collecting bot inspired by Karuta. Unlike Karuta, which pulls from every anime ever made, Akira's card pool is hand-picked by the server — only characters from shows the friend group actually watches. This removes the friction of sifting through thousands of irrelevant cards and makes every drop feel meaningful.
+Akira is a curated Discord card collecting bot inspired by Karuta. Unlike Karuta, which pulls from every anime ever made, Akira's card pool is hand-picked by the server - only characters from shows the friend group actually watches. This removes the friction of sifting through thousands of irrelevant cards and makes every drop feel meaningful.
 
-Akira has a warm, human-like personality. The bot is referred to as Akira and speaks in first person in all responses. Example: "Akira couldn't find that character" rather than "Error: not found". This is intentional — the human name and personality create emotional attachment and make the bot feel like a presence rather than a tool.
+Akira has a warm, human-like personality. The bot is referred to as Akira and speaks in first person in all responses. Example: "Akira couldn't find that character" rather than "Error: not found". This is intentional - the human name and personality create emotional attachment and make the bot feel like a presence rather than a tool.
 
 ---
 
@@ -28,11 +28,11 @@ Each card represents an anime character. A card has:
 
 ### Card assets
 Every card is pre-generated at init time. For each character × frame combination there are three files:
-- `normal.png` — static image, Discord converts to WebP automatically
-- `shiny.apng` — looping idle animation with shimmer/glow effect. Designed to loop seamlessly: the last frame eases back to match the first frame so there is no visible snap point.
-- `burn.apng` — burn animation. Sequence: fade in from transparent (frames 1–3) → flames consume upward (frames 4–8) → fade to transparent (frames 9–10) → loop. The fade in/out makes the loop seamless and gives the card a moment to be seen before it burns.
+- `normal.png` - static image, Discord converts to WebP automatically
+- `shiny.apng` - looping idle animation with shimmer/glow effect. Designed to loop seamlessly: the last frame eases back to match the first frame so there is no visible snap point.
+- `burn.apng` - burn animation. Sequence: fade in from transparent (frames 1–3) → flames consume upward (frames 4–8) → fade to transparent (frames 9–10) → loop. The fade in/out makes the loop seamless and gives the card a moment to be seen before it burns.
 
-Files use the `.apng` extension explicitly. Discord only serves APNG files inline as animation if the extension is `.apng` — files with `.png` extension are converted to WebP by Discord's CDN, which strips animation data.
+Files use the `.apng` extension explicitly. Discord only serves APNG files inline as animation if the extension is `.apng` - files with `.png` extension are converted to WebP by Discord's CDN, which strips animation data.
 
 Asset paths follow this structure:
 ```
@@ -49,7 +49,7 @@ input/showcase/         ← handpicked cards for the Akira's Gift animation
 ```
 
 ### Akira's Gift animation
-When a user receives a prestige frame reward, Akira plays a special animation stored at `assets/frames/gift/{frame_id}.apng`. The sequence is: title card "Akira's Gift" with the frame border visible → cards from the showcase folder cycle rapidly in the center → slows and holds on a final card → loops. The same animation template is used for every frame — only the frame border changes. Designed to loop seamlessly.
+When a user receives a prestige frame reward, Akira plays a special animation stored at `assets/frames/gift/{frame_id}.apng`. The sequence is: title card "Akira's Gift" with the frame border visible → cards from the showcase folder cycle rapidly in the center → slows and holds on a final card → loops. The same animation template is used for every frame - only the frame border changes. Designed to loop seamlessly.
 
 ---
 
@@ -79,7 +79,7 @@ Burns multiple cards at once using filters (by series, quality, tag, etc). Deter
 Claims the daily bits reward. Amount includes any permanent passive bits bonus from prestige levels. Can only be claimed once per day.
 
 ### /wishlist [user]
-Shows the wishlist of a user. Defaults to the invoking user. Wishlist slots are unlimited — this is an intentional design decision to lower friction for new players.
+Shows the wishlist of a user. Defaults to the invoking user. Wishlist slots are unlimited - this is an intentional design decision to lower friction for new players.
 
 ### /wishadd <character name>
 Adds a character to the user's wishlist. Akira will mention the user whenever a card featuring that character appears in a drop.
@@ -139,14 +139,14 @@ Shows the current server buff pool state including total bits contributed today,
 Contributes bits to the server buff pool. The contributed amount also counts toward the user's personal milestone counter.
 
 ### /prestige
-Available after 5 milestone claims. Resets the milestone counter to the base threshold (1k) and awards a prestige frame and a permanent passive bits bonus increment. Optional — the user chooses when to prestige.
+Available after 5 milestone claims. Resets the milestone counter to the base threshold (1k) and awards a prestige frame and a permanent passive bits bonus increment. Optional - the user chooses when to prestige.
 
 ---
 
 ## Economy
 
 ### Bits
-Bits are the only currency in Akira. There are no premium currencies, no real-money purchases, no gems, no tickets. This is intentional — Akira is a friend group bot and pay-to-win mechanics would damage the social dynamic.
+Bits are the only currency in Akira. There are no premium currencies, no real-money purchases, no gems, no tickets. This is intentional - Akira is a friend group bot and pay-to-win mechanics would damage the social dynamic.
 
 **Sources of bits:**
 - Grabbing a card from a drop (small amount)
@@ -183,16 +183,16 @@ A daily communal mechanic. Users contribute bits to a shared server pool. At dai
 
 The chance mechanic is intentional. Hitting the threshold unlocks the possibility, not the certainty. This preserves the gambling feel and makes the reveal the next day exciting rather than transactional.
 
-Only the highest threshold met is evaluated. If the pool reaches 6,000 bits, a tier 4 roll is made — not separate rolls for tiers 1 through 4.
+Only the highest threshold met is evaluated. If the pool reaches 6,000 bits, a tier 4 roll is made - not separate rolls for tiers 1 through 4.
 
 ---
 
 ## Personal Milestone System
 
-Every bit contributed to the server pool also counts toward a private personal milestone counter. This counter is separate from the pool total and persists across days — it only resets when the user claims a milestone reward.
+Every bit contributed to the server pool also counts toward a private personal milestone counter. This counter is separate from the pool total and persists across days - it only resets when the user claims a milestone reward.
 
 ### Milestone thresholds (per cycle)
-Each time a milestone is claimed, the next threshold is higher — diminishing returns by design.
+Each time a milestone is claimed, the next threshold is higher - diminishing returns by design.
 
 Cycle 1: 1,000 bits
 Cycle 2: 2,000 bits
@@ -205,7 +205,7 @@ Cycle 8: 20,000 bits
 (continues increasing)
 
 ### Milestone rewards
-When the user hits their current threshold, they receive a guaranteed personal buff. The tier of that buff scales with how much they overshot the threshold — going 500 bits over still feels meaningfully better than hitting it exactly.
+When the user hits their current threshold, they receive a guaranteed personal buff. The tier of that buff scales with how much they overshot the threshold - going 500 bits over still feels meaningfully better than hitting it exactly.
 
 This system exists as a safety net for the server buff pool. Even if the pool roll fails, heavy contributors are rewarded personally.
 
@@ -216,10 +216,10 @@ After 5 milestone claims, prestige becomes available. The user does not have to 
 
 ## Prestige System
 
-Prestige is a repeatable progression system unlocked after completing 5 milestone claim cycles. It is optional — the user can continue playing without prestiging indefinitely, with increasing thresholds and scaling rewards as a trade-off.
+Prestige is a repeatable progression system unlocked after completing 5 milestone claim cycles. It is optional - the user can continue playing without prestiging indefinitely, with increasing thresholds and scaling rewards as a trade-off.
 
 ### Prestige rewards (always)
-- An exclusive cosmetic frame (variant depends on when prestige is taken — see below)
+- An exclusive cosmetic frame (variant depends on when prestige is taken - see below)
 - A permanent passive bits bonus added to daily rewards (stacks with each prestige level)
 
 ### Frame variants by prestige timing
@@ -254,7 +254,7 @@ Lightweight. On startup checks for init.lock:
 ### Animation design principles
 - Shiny APNG: looping idle. Last frame must ease back to match first frame. No visible snap on loop. Uses a sine-wave opacity curve so the shimmer naturally returns to its origin.
 - Burn APNG: looping by design. Fades in → burns → fades to transparent → loops. The loop point is transparent-to-transparent so Discord's repeat behaviour looks intentional.
-- Akira's Gift APNG: loops as a showcase reel. Cycling never fully stops — it slows and holds briefly then accelerates back into cycling.
+- Akira's Gift APNG: loops as a showcase reel. Cycling never fully stops - it slows and holds briefly then accelerates back into cycling.
 
 ---
 
@@ -268,11 +268,11 @@ The @discord/embedded-app-sdk provides the user's Discord ID directly. No login 
 ### Auth: Browser (outside Discord, e.g. at school on a network that blocks discord.com)
 1. User enters their Discord username
 2. Backend asks the bot to DM a one-time verification code to that Discord user
-3. User enters the code on the site — proves they control that Discord account
+3. User enters the code on the site - proves they control that Discord account
 4. First time: prompted to set a site password
 5. Subsequent logins: Discord username + site password → session cookie
 
-This flow avoids OAuth entirely. The browser never touches discord.com — only the bot server does, which is hosted at home and not subject to school network blocks.
+This flow avoids OAuth entirely. The browser never touches discord.com - only the bot server does, which is hosted at home and not subject to school network blocks.
 
 ### WebUI features
 - Browse personal card collection
@@ -337,4 +337,4 @@ On-demand rendering introduces latency and complexity. At friend group scale (25
 No separate database server to run or maintain. File-based, lives in a Docker volume, trivially backed up. At friend group scale there are no concurrent write patterns that SQLite cannot handle. Prisma makes migration to PostgreSQL straightforward if needed in future.
 
 **Why the name Akira?**
-A genuine Japanese name that fits the anime aesthetic naturally without feeling forced. Short, memorable, easy to type. Having a human name creates emotional attachment — users naturally refer to the bot in third person and feel like they are interacting with a presence rather than a utility.
+A genuine Japanese name that fits the anime aesthetic naturally without feeling forced. Short, memorable, easy to type. Having a human name creates emotional attachment - users naturally refer to the bot in third person and feel like they are interacting with a presence rather than a utility.

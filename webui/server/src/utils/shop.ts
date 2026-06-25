@@ -17,7 +17,7 @@ export const SHOP_ITEMS: ShopItem[] = [
   {
     id: "grab_shield",
     name: "Grab protection",
-    description: "A short window where grabs cost you less stress — perfect for busy days.",
+    description: "A short window where grabs cost you less stress - perfect for busy days.",
     priceBits: 350,
     durationHours: 12,
   },

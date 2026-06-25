@@ -39,7 +39,7 @@ function serializeMe(u: {
 
 function activityForbidden(res: Response): void {
   res.status(400).json({
-    error: "That step is for the browser WebUI — you're already signed in with Discord here.",
+    error: "That step is for the browser WebUI - you're already signed in with Discord here.",
   });
 }
 
@@ -72,7 +72,7 @@ authRouter.post("/init", async (req, res) => {
     res.status(502).json({ error: "Akira couldn't reach the bot to send your DM. Try again soon." });
     return;
   }
-  res.json({ status: "pending", message: "Akira slid into your DMs with a code — check Discord." });
+  res.json({ status: "pending", message: "Akira slid into your DMs with a code - check Discord." });
 });
 
 authRouter.post("/verify", async (req, res) => {
@@ -94,7 +94,7 @@ authRouter.post("/verify", async (req, res) => {
   }
   const user = await prisma.user.findUnique({ where: { id: userId } });
   if (!user) {
-    res.status(400).json({ error: "Something got mixed up — try the flow again." });
+    res.status(400).json({ error: "Something got mixed up - try the flow again." });
     return;
   }
   if (!user.passwordHash) {
@@ -137,7 +137,7 @@ authRouter.post("/password", async (req, res) => {
   }
 
   if (password.length < 8) {
-    res.status(400).json({ error: "Pick a password with at least 8 characters — Akira worries about short ones." });
+    res.status(400).json({ error: "Pick a password with at least 8 characters - Akira worries about short ones." });
     return;
   }
   const pending = req.session.pendingUserId;

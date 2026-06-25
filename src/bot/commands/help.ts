@@ -12,7 +12,7 @@ export const help: AkiraCommand = {
     const name = akiraAddressName(user ?? { discordUsername: interaction.user.username });
     await interaction.reply({
       content:
-        `**${name}** — Akira collects cards with you — drops, grabs, burning for bits, dailies, and more. ` +
+        `**${name}** - Akira collects cards with you - drops, grabs, burning for bits, dailies, and more. ` +
         "Try `/ping` and watch this space as the rest of the commands come online! " +
         "Running `/ping` or `/help` also saves your Discord name so the browser WebUI can find you.",
       ephemeral: true,
