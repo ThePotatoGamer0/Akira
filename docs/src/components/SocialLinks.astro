@@ -1,0 +1,55 @@
+---
+import { siDiscord, siGithub } from 'simple-icons';
+
+const socials = [
+  {
+    name: 'Discord',
+    url: 'https://discord.gg/H7BcjqtYgs',
+    icon: siDiscord
+  },
+  {
+    name: 'GitHub',
+    url: 'https://github.com/thepotatogamer0/akira',
+    icon: siGithub
+  }
+];
+---
+
+<div class="social-links">
+  {socials.map((social) => (
+    <a 
+      href={social.url} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      aria-label={social.name} 
+      title={social.name}
+      set:html={social.icon.svg}
+      style={`--brand-color: #${social.icon.hex};`}
+    />
+  ))}
+</div>
+
+<style>
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .social-links a {
+    color: var(--theme-text, inherit);
+    display: inline-flex;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .social-links a:hover {
+    color: var(--brand-color);
+    transform: scale(1.1);
+  }
+
+  .social-links :global(svg) {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+  }
+</style>

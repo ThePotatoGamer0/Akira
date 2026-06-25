@@ -1,4 +1,15 @@
 declare module 'astro:content' {
+	interface Render {
+		'.mdx': Promise<{
+			Content: import('astro').MarkdownInstance<{}>['Content'];
+			headings: import('astro').MarkdownHeading[];
+			remarkPluginFrontmatter: Record<string, any>;
+			components: import('astro').MDXInstance<{}>['components'];
+		}>;
+	}
+}
+
+declare module 'astro:content' {
 	interface RenderResult {
 		Content: import('astro/runtime/server/index.js').AstroComponentFactory;
 		headings: import('astro').MarkdownHeading[];
@@ -239,6 +250,36 @@ declare module 'astro:content' {
   collection: "commands";
   data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
+};
+"contributing": {
+"adding-characters.md": {
+	id: "adding-characters.md";
+  slug: "adding-characters";
+  body: string;
+  collection: "contributing";
+  data: any
+} & { render(): Render[".md"] };
+"code.md": {
+	id: "code.md";
+  slug: "code";
+  body: string;
+  collection: "contributing";
+  data: any
+} & { render(): Render[".md"] };
+"documentation.md": {
+	id: "documentation.md";
+  slug: "documentation";
+  body: string;
+  collection: "contributing";
+  data: any
+} & { render(): Render[".md"] };
+"local-setup.mdx": {
+	id: "local-setup.mdx";
+  slug: "local-setup";
+  body: string;
+  collection: "contributing";
+  data: any
+} & { render(): Render[".mdx"] };
 };
 "economy": {
 "bits.md": {

@@ -10,6 +10,7 @@
   "dependencies": {
     "@astrojs/mdx": "^3.1.9",
     "@astrojs/sitemap": "^3.7.3",
-    "astro": "^4.16.19"
+    "astro": "^4.16.19",
+    "simple-icons": "^16.24.0"
   }
 }
