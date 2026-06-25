@@ -5,6 +5,10 @@ import "../styles/docs-home.css";
 import ThemeInit from "../components/ThemeInit.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import SocialLinks from "../components/SocialLinks.astro";
+
+// Pull in the package.json files to grab their version strings dynamically
+import docsPkg from "../../package.json";
+import botPkg from "../../../package.json";
 ---
 
 <!DOCTYPE html>
@@ -29,7 +33,11 @@ import SocialLinks from "../components/SocialLinks.astro";
       <h1>Meet <span>Akira</span></h1>
       <p class="hero-sub">Your server's personal card collecting companion — built for the shows you actually watch.</p>
     </div>
-    <div class="hero-badge">Friend group bot &nbsp;·&nbsp; <strong>v1.0</strong></div>
+    
+    <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start;">
+      <div class="hero-badge">Akira Bot &nbsp;·&nbsp; <strong>v{botPkg.version}</strong></div>
+      <div class="hero-badge">Documentation &nbsp;·&nbsp; <strong>v{docsPkg.version}</strong></div>
+    </div>
   </div>
 
   <div class="section-label s1">Getting started</div>
@@ -213,6 +221,5 @@ import SocialLinks from "../components/SocialLinks.astro";
 
 </div>
 
-1
 </body>
 </html>
