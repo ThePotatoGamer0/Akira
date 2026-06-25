@@ -4,6 +4,7 @@ import CommandCard from "../components/CommandCard.astro";
 import BuffTierTable from "../components/BuffTierTable.astro";
 import ThemeInit from "../components/ThemeInit.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
+import SocialLinks from "../components/SocialLinks.astro";
 
 interface Props {
   frontmatter: {
@@ -72,6 +73,9 @@ const showShortcuts =
       <footer class="doc-footer">
         <div class="doc-footer-name"><span>Akira</span> — Documentation</div>
         <div class="doc-footer-note">Made with care for a small group of friends.</div>
+        <div style="margin-top: 1rem;">
+          <SocialLinks />
+        </div>
       </footer>
     </div>
   </body>
