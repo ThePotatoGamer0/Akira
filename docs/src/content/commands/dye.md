@@ -2,7 +2,7 @@
 title: Dye
 description: Akira will tint a card with a cosmetic dye from your inventory.
 command: dye
-shortcuts: -
+shortcuts: None
 ---
 
 Akira will help with **/dye** - Pure flair - your stats stay the same. Dyes often come from [shop](/commands/shop) or server-specific rewards.

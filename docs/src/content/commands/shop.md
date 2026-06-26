@@ -2,7 +2,7 @@
 title: Shop
 description: Akira will open the bits shop so you can buy temporary personal buffs.
 command: shop
-shortcuts: -
+shortcuts: None
 ---
 
 Akira will help with **/shop** - Items include drop luck, grab protection, and burn value boosts. You pay in [bits](/economy/bits); this is separate from [server pool](/economy/server-pool) buffs.

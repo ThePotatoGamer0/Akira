@@ -2,7 +2,7 @@
 title: Lookup
 description: Akira will search the public card pool by character or series name.
 command: lookup
-shortcuts: -
+shortcuts: None
 ---
 
 Akira will help with **/lookup** - Great for planning [wishlists](/commands/wishlist) or admiring art you do not own yet.

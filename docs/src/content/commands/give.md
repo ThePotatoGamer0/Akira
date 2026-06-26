@@ -2,7 +2,7 @@
 title: Give
 description: Akira will move a single card from you to a friend with a clear audit trail.
 command: give
-shortcuts: -
+shortcuts: None
 ---
 
 Akira will help with **/give** - Good for gifts; gifts are one-way unless you use [trade](/commands/trade).

@@ -2,7 +2,7 @@
 title: Trade
 description: Akira will help you negotiate a fair swap with another player.
 command: trade
-shortcuts: -
+shortcuts: None
 ---
 
 Akira will help with **/trade** - Usually pairs with a confirmation step so nobody trades away a favourite by accident. One-way transfers use [give](/commands/give) instead.
