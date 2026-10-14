@@ -1,29 +1,44 @@
 ---
 title: Burn
-description: Akira will lovingly reduce a card to bits while playing the burn.apng animation.
+description: Destroy a card you own and take its bits.
 command: burn
 shortcuts: b
 ---
 
-Akira will help with **/burn** - Target your card by id or selector; confirm because Akira takes burns seriously. For many at once, see [multiburn](/commands/multiburn).
+**/burn** deletes a card you own, plays the burn animation, and pays bits from its quality.
+
+| Quality | Bits |
+| --- | --- |
+| Common | 10 |
+| Uncommon | 25 |
+| Rare | 50 |
+| Epic | 100 |
+| Legendary | 250 |
 
 ## Parameters
 
-Parameters are still settling in for slash commands; check in-game `/help` for the live option list. Akira keeps descriptions short so slash autocomplete stays readable.
+| Name | Required | What it is |
+| --- | --- | --- |
+| `card_id` | Yes | The 7 character card code. |
+
+## Aliases
+
+`b`. `ab fmbl40r` burns that card. `ab` alone is ignored.
 
 ## Example usage
 
 ```
-/burn
+/burn card_id:fmbl40r
+ab fmbl40r
 ```
 
 ## Tips
 
-- Burns are permanent - double-check the card id or selector before you confirm.
-- The burn animation uses `.apng` assets so Discord shows every frame smoothly during the sequence.
+- Burns are permanent.
+- [Multiburn](/commands/multiburn) is not finished.
 
 ## See also
 
-- [Multiburn](/commands/multiburn) - bulk burn with filters
-- [Bits](/economy/bits) - what you get when a card becomes bits
-- [Shop](/commands/shop) - spend bits on buffs
+- [Bits](/economy/bits)
+- [View](/commands/view)
+- [Command list](/commands/reference)

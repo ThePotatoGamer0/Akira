@@ -12,8 +12,9 @@ When you are [signed in](/webui/authentication), your cards live under **Collect
 
 ## What you see
 
-- Your cards appear as a **grid of thumbnails** (art and print number under each).
-- **Click** a card to focus it; a **viewer** shows that card in more detail so you are not squinting at a tiny tile.
+- Your cards appear as a **grid of thumbnails**, with the character name and print number under each.
+- The picture is the framed card. Cards without their own frame use the server's default frame. The first time a card is opened, Akira draws that image, so it can take a moment. Later opens use the saved picture.
+- **Click** a card to focus it. The viewer shows the same image larger, plus series, frame, quality, and print. A legendary card can switch to its shiny animation.
 
 That is the whole flow for browsing in the browser today: open Collection, scroll the grid, tap what you want to inspect.
 

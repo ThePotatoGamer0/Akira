@@ -3,12 +3,13 @@ title: Bits - the only currency
 description: Akira uses bits for shops, pool donations, and bragging rights.
 ---
 
-Akira uses **bits** everywhere in the economy: you earn them from [drops](/commands/drop), [daily](/commands/daily) claims, and [burning](/commands/burn) cards, then spend them in the [shop](/commands/shop), give some to the [server buff pool](/economy/server-pool), and watch them feed [personal milestones](/economy/personal-milestone).
+Akira uses **bits** as the currency. You earn them from a [grab](/commands/grab), a [daily](/commands/daily) claim, and [burning](/commands/burn) a card. The [shop](/commands/shop) and [server buff pool](/economy/server-pool) describe where bits are meant to go. Those commands are not finished, so nothing spends bits yet.
 
 ## Bits income
 
-- [Drop](/commands/drop) rewards and [daily](/commands/daily) streaks keep everyone moving.
-- Burning surplus cards - [burn](/commands/burn) or [multiburn](/commands/multiburn) - turns them into bits; multiburn spotlights the stand-out card in the batch.
+- A grab pays **5** bits.
+- Daily pays **100** bits, plus the passive bonus on your profile, once every 24 hours.
+- Burning a card pays from its quality: common 10, uncommon 25, rare 50, epic 100, legendary 250.
 
 ## Bits spending
 

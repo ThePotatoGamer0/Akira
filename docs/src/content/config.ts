@@ -13,4 +13,5 @@ export const collections = {
   prestige: defineCollection({ type: "content", schema }),
   "getting-started": defineCollection({ type: "content", schema }),
   webui: defineCollection({ type: "content", schema }),
+  contributing: defineCollection({ type: "content", schema }),
 };

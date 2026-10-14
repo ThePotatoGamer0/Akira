@@ -1,15 +1,25 @@
 ---
 title: Wishlist
-description: Akira will track characters you dream about and ping you when they appear in drops.
+description: Watch characters and get pinged when one of them is in a drop.
 command: wishlist
-shortcuts: wl
+shortcuts: wl, wa, wish, wishadd, wr, wishremove
 ---
 
-Akira will help with **/wishlist** - Unlimited slots. She pings you when a watched character appears in a [drop](/commands/drop).
+**/wishlist** has three subcommands. Show lists a wishlist. Add and remove change yours. When a drop includes a character you watch, Akira mentions you on that drop.
 
 ## Parameters
 
-Parameters are still settling in for slash commands; check in-game `/help` for the live option list. Akira keeps descriptions short so slash autocomplete stays readable.
+| Subcommand | Parameters |
+| --- | --- |
+| `show` | `user` optional. Defaults to you. A bare `awl` uses show. |
+| `add` | `character` required. Several words are one name. |
+| `remove` | `character` required. |
+
+## Aliases
+
+`wl` shows a wishlist. `wa`, `wish`, and `wishadd` add. `wr` and `wishremove` remove.
+
+`awa Power` adds Power. `awr tanjirou kamado` removes that name. `awa` with no name is ignored.
 
 ## Example usage
 
@@ -17,15 +27,14 @@ Parameters are still settling in for slash commands; check in-game `/help` for t
 /wishlist show
 /wishlist add character:Denji
 /wishlist remove character:Denji
+awl
+awa Denji
+awr Denji
 ```
-
-## Tips
-
-- Slots are unlimited. Add a character by name so Akira can match them when someone drops.
-- You get pinged when a wishlisted character shows up. The drop only stays open for a couple of minutes.
 
 ## See also
 
-- [Lookup](/commands/lookup) - check spelling and pool coverage before adding names
-- [Drop](/commands/drop) - where wish hits appear
-- [Grab](/commands/grab) - claim the card before someone else
+- [Lookup](/commands/lookup)
+- [Drop](/commands/drop)
+- [Grab](/commands/grab)
+- [Command list](/commands/reference)

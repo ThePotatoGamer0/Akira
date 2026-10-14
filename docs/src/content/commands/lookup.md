@@ -1,29 +1,37 @@
 ---
 title: Lookup
-description: Akira will search the public card pool by character or series name.
+description: Search the card pool by character or series, then page through that character's editions.
 command: lookup
-shortcuts: None
+shortcuts: lu, search, find
 ---
 
-Akira will help with **/lookup** - Great for planning [wishlists](/commands/wishlist) or admiring art you do not own yet.
+**/lookup** answers with a numbered list and a menu. Pick a character to see the series, wishlist count, aliases, how many prints exist, and how many are in circulation. Buttons move between editions. An edition is one card image for that character. The portrait in the corner is that edition's art.
 
 ## Parameters
 
-Parameters are still settling in for slash commands; check in-game `/help` for the live option list. Akira keeps descriptions short so slash autocomplete stays readable.
+| Name | Required | What it is |
+| --- | --- | --- |
+| `name` | Yes | A character, series, or alias. Several words count as one name. |
+
+## Aliases
+
+`lu`, `search`, and `find`. `alu tanjirou kamado` searches that whole name. `alu` alone is ignored.
 
 ## Example usage
 
 ```
-/lookup
+/lookup name:Denji
+alu denji
+asearch Chainsaw Man
 ```
 
 ## Tips
 
-- Searches hit the public pool - useful for checking spelling before you add something to your **/wishlist**.
-- Results are browse-only here; owning a card still means pulling it from a [drop](/commands/drop) or receiving it via [trade](/commands/trade) or [give](/commands/give).
+- Up to 25 matches are listed. Exact names come first, then names that start with the search, then names that contain it.
+- Owning the card still means grabbing it from a [drop](/commands/drop).
 
 ## See also
 
-- [Wishlist](/commands/wishlist) - track names you care about
-- [Collection](/commands/collection) - what you actually own
-- [Drop](/commands/drop) - how new cards enter the server
+- [Wishlist](/commands/wishlist)
+- [Collection](/commands/collection)
+- [Command list](/commands/reference)

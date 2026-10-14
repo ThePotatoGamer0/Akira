@@ -1,29 +1,27 @@
 ---
 title: Dye
-description: Akira will tint a card with a cosmetic dye from your inventory.
+description: Tint a card. The command exists and is not finished.
 command: dye
-shortcuts: None
 ---
 
-Akira will help with **/dye** - Pure flair - your stats stay the same. Dyes often come from [shop](/commands/shop) or server-specific rewards.
+**/dye** is registered. Akira replies that dyes are not wired up yet. A legendary card is already shiny from its quality. Dye would be another way to make a card shiny, and it is not available.
 
 ## Parameters
 
-Parameters are still settling in for slash commands; check in-game `/help` for the live option list. Akira keeps descriptions short so slash autocomplete stays readable.
+None.
+
+## Aliases
+
+No short alias. `adye` works.
 
 ## Example usage
 
 ```
 /dye
+adye
 ```
-
-## Tips
-
-- Dyes are cosmetic - rarity, burn value, and collection stats stay tied to the underlying card.
-- You need a dye in inventory first; if **/dye** complains, check [shop](/commands/shop) or how your server awards cosmetics.
 
 ## See also
 
-- [Shop](/commands/shop)
-- [Collection](/commands/collection) - see the tinted card in your binder
-- [Lookup](/commands/lookup) - check the card’s base art in the pool before you commit a dye
+- [View](/commands/view)
+- [Command list](/commands/reference)

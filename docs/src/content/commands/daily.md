@@ -1,29 +1,33 @@
 ---
 title: Daily
-description: Akira will hand you your daily bits bonus, including any prestige passive you have earned.
+description: Claim 100 bits, plus any passive bonus, once every 24 hours.
 command: daily
-shortcuts: None
 ---
 
-Akira will help with **/daily** - Once per day per user; stacks with server buffs when those are live (see [Server buff pool](/economy/server-pool)). [Prestige](/prestige/overview) adds a passive bump on top over time.
+**/daily** pays 100 bits, plus the passive bits bonus stored on your profile. The next claim waits 24 hours.
 
 ## Parameters
 
-Parameters are still settling in for slash commands; check in-game `/help` for the live option list. Akira keeps descriptions short so slash autocomplete stays readable.
+None.
+
+## Aliases
+
+No short alias. `adaily` works.
 
 ## Example usage
 
 ```
 /daily
+adaily
 ```
 
 ## Tips
 
-- Claim once per day per user; if a prestige passive adds extra bits, it rolls into the same **/daily** payout when applicable.
-- Server-wide buffs can change how much you earn day to day - the message should reflect what was active when you claimed.
+- Turn on a [reminder](/commands/reminders) if you want a DM when daily is ready again.
+- Shop buffs and the server pool do not change this payout yet. Those commands are not finished.
 
 ## See also
 
-- [Bits](/economy/bits) - currency overview
-- [Prestige overview](/prestige/overview) - extra daily bits from prestige
-- [Shop](/commands/shop) - separate temporary buffs you buy with bits
+- [Bits](/economy/bits)
+- [Cooldowns](/commands/cooldowns)
+- [Reminders](/commands/reminders)

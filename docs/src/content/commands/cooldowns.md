@@ -1,29 +1,35 @@
 ---
 title: Cooldowns
-description: Akira will show when you can grab or drop again so you are not left guessing.
+description: See whether grab, drop, and daily are ready.
 command: cooldowns
-shortcuts: cd
+shortcuts: cd, timers
 ---
 
-Akira will help with **/cooldowns** - Purely informational; pair with reminders for pings. Timers tie to [drop](/commands/drop) and [grab](/commands/grab) separately.
+**/cooldowns** shows Grab, Drop, and Daily for one player. Each line says the timer is ready, or how long is left.
+
+Grab is 5 minutes, drop is 20 minutes, and daily is 24 hours. They do not share a clock.
 
 ## Parameters
 
-Parameters are still settling in for slash commands; check in-game `/help` for the live option list. Akira keeps descriptions short so slash autocomplete stays readable.
+| Name | Required | What it is |
+| --- | --- | --- |
+| `user` | No | A mention. Defaults to you. |
+
+## Aliases
+
+`cd` and `timers`. `acd` and `atimers` work. `acd @friend` looks at that person.
 
 ## Example usage
 
 ```
 /cooldowns
+acd
+acd <@123>
 ```
-
-## Tips
-
-- **/cooldowns** is read-only - it shows timers but does not reset them; buffs and server rules still govern the real clocks.
-- Grab and drop cooldowns are independent; seeing one at zero does not mean the other is ready yet.
 
 ## See also
 
+- [Reminders](/commands/reminders)
 - [Drop](/commands/drop)
 - [Grab](/commands/grab)
-- [Shop](/commands/shop) - some buffs change how cooldowns *feel* day to day
+- [Daily](/commands/daily)

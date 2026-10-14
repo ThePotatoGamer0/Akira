@@ -65,91 +65,66 @@ When a user receives a prestige frame reward, Akira plays a special animation st
 
 ## Commands
 
-All commands are Discord slash commands. Akira responds in first person in all cases.
+Slash commands and text commands call the same handlers. The text prefix defaults to `a` (`AKIRA_PREFIX` changes it). `adrop` and `a drop` are the same. The words after the command must be exactly the parameters that command accepts. Extra words are ignored. A character name may be several words. A card code or reminder action is one word. An optional user must be a Discord mention. The full command name always works. Short aliases are extra names. When an admin has enabled `aoverridekaruta`, that server also accepts `k` and `k!`.
 
 ### /drop
-Places three cards in the configured drop channel (`DISCORD_DROP_CHANNEL_ID` for `DISCORD_GUILD_ID`, or a stored guild drop channel). Users react with 1️⃣ 2️⃣ 3️⃣ to grab a card. Drop cooldown is 20 minutes. The drop stays open for 2 minutes. Unclaimed cards are not saved. Server buffs that change drop frequency are not active yet.
+Parameters: none. Aliases: `d`.
+Places three cards in the configured drop channel as one picture. Drop cooldown is 20 minutes. The drop stays open for 2 minutes. Unclaimed cards are not saved.
 
-### /grab (reaction-based)
-Grabbing is done via emoji reaction on a drop, not a slash command. Reacting with the number emoji corresponding to the card position claims that card, assigns the next print for that image, and pays 5 bits. Grab cooldown is 5 minutes.
+### Grab (reaction only)
+No slash command and no alias. React 1️⃣ 2️⃣ or 3️⃣ on the drop. A successful grab mints a 7 character card code, assigns the next print, and pays 5 bits. Grab cooldown is 5 minutes. `av` with no code then opens that card.
 
 ### /collection [user]
-Displays a user's card collection. Browsable grid. Defaults to the invoking user if no user is specified.
+Parameters: optional user mention. Aliases: `c`, `col`.
+Lists owned cards, ten per page. Each line is code, stars, print, frame, series, and character.
 
-### /view [card code]
-Shows detailed information about a specific card including character, series, frame, print number, quality, dye, tag, alias, and obtained date.
+### /view <card_id>
+Parameters: `card_id` required on slash. Prefix `v` or `view` with no code uses the last grabbed card. Alias: `v`.
+Shows the framed card, code, stars, print, frame, series, and character.
 
-### /burn <card code>
-Destroys a card and awards bits. Plays the card's `burn.apng` animation. Burn value by quality: Common 10, Uncommon 25, Rare 50, Epic 100, Legendary 250. Burn-value buffs are not active yet.
+### /burn <card_id>
+Parameters: required 7 character code. Alias: `b`.
+Destroys an owned card and plays the burn animation. Bits: Common 10, Uncommon 25, Rare 50, Epic 100, Legendary 250.
 
-### /multiburn <filters>
-Burns multiple cards at once using filters (by series, quality, tag, etc). Determines the "best" card in the selection using this priority order: highest quality tier → lowest print number → most wishlisted by other players. Plays the burn animation for that best card only. Caption shows how many cards were burned and how many bits were received, and names the best card that was sacrificed.
+### /lookup <name>
+Parameters: required name (character, series, or alias). Aliases: `lu`, `search`, `find`.
+Numbered results and a menu. Selecting one shows editions (card variants), a portrait, print count, and circulation. Buttons swap editions.
+
+### /wishlist
+`show` optional user. `add` required character. `remove` required character.
+Aliases: `wl` (show, or the next word if it is add, remove, or show). Add: `wa`, `wish`, `wishadd`. Remove: `wr`, `wishremove`.
+Wishlist slots are unlimited. Akira mentions the player when that character is in a drop.
 
 ### /daily
-Claims 100 bits plus any permanent `passiveBitsBonus`. Can be claimed once every 24 hours.
-
-### /wishlist show [user]
-Shows the wishlist of a user. Defaults to the invoking user. Wishlist slots are unlimited. This is intentional, to lower friction for new players.
-
-### /wishlist add <character name>
-Adds a character to the user's wishlist. Akira mentions the user when a card featuring that character appears in a drop.
-
-### /wishlist remove <character name>
-Removes a character from the user's wishlist.
-
-### /lookup <character name>
-Searches the card pool by character or series name. Returns matching characters and their series.
-
-### /trade <user> <your card code> <their card code>
-Initiates a card trade with another user. Both users must confirm. One card each.
-
-### /give <user> <card code>
-Transfers a single card to another user with no exchange required.
-
-### /tag <tag name> [card code]
-Applies a tag to a card for organisational purposes. Tags are user-created labels.
-
-### /tagcreate <tag name> <emoji>
-Creates a new tag. Tag names must be alphanumeric with dashes or underscores. Emoji cannot be a custom server emoji.
-
-### /tagdelete <tag name>
-Deletes a tag. Removes the tag from any cards that have it.
-
-### /untag [card code]
-Removes a tag from a card.
-
-### /alias <card code> <alias>
-Gives a card a personal nickname. Visible only to the owner.
+Parameters: none. No short alias (`adaily`).
+Pays 100 bits plus `passiveBitsBonus`. Once every 24 hours.
 
 ### /cooldowns [user]
-Shows the current grab cooldown and drop cooldown for a user.
+Parameters: optional user mention. Aliases: `cd`, `timers`.
+Shows grab (5 minutes), drop (20 minutes), and daily (24 hours).
 
 ### /reminders [action]
-Toggles DM reminders for cooldown expiry. Akira DMs the user when their grab or drop cooldown ends.
+Parameters: optional `action` of `daily`, `drop`, or `grab`. Aliases: `rm`, `remind`.
+No action lists those three with a bell if the DM is on. An action toggles the DM for when that cooldown ends.
 
-### /shop
-Opens the bits shop. Available items are temporary personal buffs.
-
-### /buy <item code>
-Purchases an item from the shop using bits.
-
-### /inventory [user]
-Shows a user's inventory of owned items.
-
-### /dye <card code> <dye code>
-Applies a cosmetic dye to a card from the user's inventory.
+### /frame
+`show` has no parameters. `default` requires a frame id and a server admin. `card` requires `card_id` and `action` (a frame id or `clear`). No short alias (`aframe`).
+A null frame on a card uses `GuildConfig.defaultFrameId`.
 
 ### /userinfo [user]
-Shows a summary of a player including bits balance, prestige level, milestone count, milestone progress, passive bits bonus, and collection size.
+Parameters: optional user mention. Aliases: `ui`, `whois`.
+Bits, card count, prestige level, milestones claimed, milestone progress, and daily bonus.
 
-### /pool
-Shows the current server buff pool state including total bits contributed today, active buff if any, buff tier, and chance percentage.
+### /help and /ping
+Parameters: none. No short aliases (`ahelp`, `aping`). Both save the Discord username used by WebUI sign-in.
 
-### /contribute <amount>
-Contributes bits to the server buff pool. The contributed amount also counts toward the user's personal milestone counter.
+### aoverridekaruta
+Text only. No parameters. Server admin. Confirmation embed. Enabling also accepts `k` and `k!` in that server. Run it again to disable. Change Karuta's prefix before enabling.
 
-### /prestige
-Available after 5 milestone claims. Resets the milestone counter to the base threshold (1k) and awards a prestige frame and a permanent passive bits bonus increment. Optional - the user chooses when to prestige.
+### Not finished
+These reply that the feature is not wired up. They take no parameters.
+`/multiburn` (`mb`), `/give` (`g`), `/trade`, `/shop` (`is`, `itemshop`), `/inventory` (`i`, `inv`, `items`), `/tags` (`t`, `tl`, `taglist`), `/dye`, `/pool`, `/import`.
+There is no `/buy`, `/tag`, `/tagcreate`, `/untag`, `/alias`, `/contribute`, or `/prestige` command.
 
 ---
 
@@ -159,7 +134,7 @@ Available after 5 milestone claims. Resets the milestone counter to the base thr
 Bits are the only currency in Akira. There are no premium currencies, no real-money purchases, no gems, no tickets. This is intentional - Akira is a friend group bot and pay-to-win mechanics would damage the social dynamic.
 
 **Sources of bits:**
-- Grabbing a card from a drop (small amount)
+- Grabbing a card from a drop (5 bits)
 - Claiming the daily reward
 - Burning cards (amount based on quality tier)
 - Passive prestige bonus (added to daily reward)

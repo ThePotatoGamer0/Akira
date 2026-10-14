@@ -11,18 +11,18 @@
 - WebUI: /webui/{authentication,collection,economy-and-leaderboard}
 
 ## Summary
-Akira drops anime character cards in a Discord channel. Users grab cards by reacting with number emojis. Cards are collected, traded, burned for currency (bits), and customised with frames and dyes. The card pool is hand-picked by the server - not pulled from every anime ever made.
+Akira drops three anime character cards in a Discord channel. Players grab one by reacting with a number emoji. Owned cards can be viewed, listed, and burned for bits. Text commands use the prefix `a` by default (`AKIRA_PREFIX` overrides it). Slash commands exist for the same actions except grab and `overridekaruta`.
 
-Akira has a warm, human-like personality. All responses are written in first person as Akira.
+Playable: drop, grab (reaction), view, collection, lookup, wishlist, burn, daily, cooldowns, reminders, frame, userinfo, help, ping. Registered but not finished: multiburn, give, trade, shop, inventory, tags, dye, pool, import.
 
 ## Key concepts
-- Cards: character art + frame + print number + quality (Common through Legendary). Base arts are equally likely. Alternate arts are rarer. Only Legendary is shiny.
-- Bits: the only currency. Earned from drops, daily rewards, burns.
-- Wishlist: unlimited slots, pings user when a wishlisted character drops
-- Server buff pool: daily communal pot that can unlock server-wide buffs
-- Personal milestone: private contribution track with guaranteed personal buffs
-- Prestige: repeatable system unlocked after 5 milestones, awards exclusive frames and passive bits bonus
-- CSV import: accepts Karuta k!spreadsheet exports to migrate collections
+- Cards: character art + frame + print number + quality (Common through Legendary). Base arts are equally likely. Alternate arts are rarer. Only Legendary is shiny. Card codes are 7 characters. A card with no frame of its own uses the server default.
+- Prefix: `adrop` and `a drop` are the same. Extra words mean the message is not a command. Short aliases are listed on /commands/reference.
+- Bits: grab pays 5, daily pays 100 plus passiveBitsBonus, burn pays 10/25/50/100/250 by quality. Shop, pool, and dyes do not spend bits yet.
+- Wishlist: unlimited. Akira mentions the player when a watched character is in a drop.
+- Reminders: DM when daily, drop, or grab is ready.
+- Server default frame: `aframe default <id>` (admin). `aframe card <code> <id|clear>` sets one card.
+- Series: `npm run portraits -- <slug>`, then `npm run portraits:install`, then `npm run init`.
 
 ## Tech
 - Discord.js v14, TypeScript, Node.js ESM

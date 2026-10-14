@@ -1,30 +1,37 @@
 ---
 title: Drop
-description: Akira will place three cards in the drop channel for your friends to react to.
+description: Place three cards in the drop channel for people to grab.
 command: drop
 shortcuts: d
 ---
 
-Akira will help with **/drop** - The channel has to be the server's drop channel. Three cards appear, and the number reaction itself claims one while your grab cooldown allows.
+**/drop** puts three cards in the server's drop channel. The message is one picture of the three cards side by side. Anyone can react to claim one.
 
 ## Parameters
 
-Parameters are still settling in for slash commands; check in-game `/help` for the live option list. Akira keeps descriptions short so slash autocomplete stays readable.
+None.
+
+## Aliases
+
+`d`. `adrop` and `ad` both drop.
 
 ## Example usage
 
 ```
 /drop
+ad
 ```
 
 ## Tips
 
-- Drops only work in the configured channel. Set `DISCORD_DROP_CHANNEL_ID` for the guild in `DISCORD_GUILD_ID`, or ask an admin to store a channel on the guild.
-- Three cards appear at once. React with 1️⃣ 2️⃣ or 3️⃣ to take that card. The drop stays open for 2 minutes, and your own drop cooldown is 20 minutes.
-- Every character's base image is equally likely. Alternate arts are harder to roll. Quality, including a shiny legendary, is rolled separately and does not change the picture.
+- The channel is `DISCORD_DROP_CHANNEL_ID`, or the channel stored for that server.
+- The drop stays open for 2 minutes. Your next drop waits 20 minutes.
+- Each card is a separate draw. The same character can appear more than once. Base art is equally likely. Alternate arts are rarer. Quality is rolled on its own and does not change which picture was drawn. Only a legendary is shiny.
+- When the drop expires, the message gains a line that the cards can no longer be grabbed.
 
 ## See also
 
-- [Grab](/commands/grab) - claim a card from a live drop
-- [Cooldowns](/commands/cooldowns) - when you can drop or grab again
-- [Wishlist](/commands/wishlist) - get pinged when a character you want appears in a drop
+- [Grab](/commands/grab)
+- [Cooldowns](/commands/cooldowns)
+- [Wishlist](/commands/wishlist)
+- [Command list](/commands/reference)
