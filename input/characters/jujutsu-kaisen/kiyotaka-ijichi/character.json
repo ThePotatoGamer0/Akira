@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-kiyotaka-ijichi",
+  "name": "Kiyotaka Ijichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-kiyotaka-ijichi-base",
+      "name": "Kiyotaka Ijichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

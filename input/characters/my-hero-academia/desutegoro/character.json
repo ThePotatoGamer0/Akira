@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-desutegoro",
+  "name": "Desutegoro",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-desutegoro-base",
+      "name": "Desutegoro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

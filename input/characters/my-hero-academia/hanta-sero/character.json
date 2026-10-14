@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-hanta-sero",
+  "name": "Hanta Sero",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-hanta-sero-base",
+      "name": "Hanta Sero",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

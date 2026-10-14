@@ -1,0 +1,13 @@
+{
+  "id": "death-note-masahiko-kida",
+  "name": "Masahiko Kida",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-masahiko-kida-base",
+      "name": "Masahiko Kida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

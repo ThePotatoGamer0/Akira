@@ -1,0 +1,13 @@
+{
+  "id": "naruto-kurenai-yuuhi",
+  "name": "Kurenai Yuuhi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-kurenai-yuuhi-base",
+      "name": "Kurenai Yuuhi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

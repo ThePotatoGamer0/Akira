@@ -1,0 +1,13 @@
+{
+  "id": "chainsaw-man-kishibe",
+  "name": "Kishibe",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "chainsaw-man-kishibe-base",
+      "name": "Kishibe",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

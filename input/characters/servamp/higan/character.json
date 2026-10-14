@@ -1,0 +1,13 @@
+{
+  "id": "servamp-higan",
+  "name": "Higan",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-higan-base",
+      "name": "Higan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

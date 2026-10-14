@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-nomu-u-s-j",
+  "name": "Nomu (U.S.J.)",
+  "gender": null,
+  "cards": [
+    {
+      "id": "my-hero-academia-nomu-u-s-j-base",
+      "name": "Nomu (U.S.J.)",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

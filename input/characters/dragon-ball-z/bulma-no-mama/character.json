@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-bulma-no-mama",
+  "name": "Bulma no Mama",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dragon-ball-z-bulma-no-mama-base",
+      "name": "Bulma no Mama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

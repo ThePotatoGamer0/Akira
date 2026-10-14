@@ -1,0 +1,13 @@
+{
+  "id": "death-note-mary-kenwood",
+  "name": "Mary Kenwood",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "death-note-mary-kenwood-base",
+      "name": "Mary Kenwood",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

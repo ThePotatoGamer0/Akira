@@ -1,0 +1,13 @@
+{
+  "id": "death-note-shidoh",
+  "name": "Shidoh",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-shidoh-base",
+      "name": "Shidoh",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

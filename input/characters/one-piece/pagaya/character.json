@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-pagaya",
+  "name": "Pagaya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-pagaya-base",
+      "name": "Pagaya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

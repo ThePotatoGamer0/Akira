@@ -1,0 +1,13 @@
+{
+  "id": "naruto-sasuke-uchiha",
+  "name": "Sasuke Uchiha",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-sasuke-uchiha-base",
+      "name": "Sasuke Uchiha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

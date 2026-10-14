@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-inosuke-hashibira",
+  "name": "Inosuke Hashibira",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-inosuke-hashibira-base",
+      "name": "Inosuke Hashibira",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

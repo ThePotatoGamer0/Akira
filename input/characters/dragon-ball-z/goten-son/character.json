@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-goten-son",
+  "name": "Goten Son",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-goten-son-base",
+      "name": "Goten Son",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

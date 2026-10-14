@@ -1,0 +1,13 @@
+{
+  "id": "sk8-the-infinity-chinen-no-haha",
+  "name": "Chinen no Haha",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-chinen-no-haha-base",
+      "name": "Chinen no Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "naruto-shukaku",
+  "name": "Shukaku",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-shukaku-base",
+      "name": "Shukaku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

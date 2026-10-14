@@ -1,0 +1,13 @@
+{
+  "id": "chainsaw-man-kitsune-no-akuma",
+  "name": "Kitsune no Akuma",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "chainsaw-man-kitsune-no-akuma-base",
+      "name": "Kitsune no Akuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

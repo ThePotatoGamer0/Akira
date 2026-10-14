@@ -1,0 +1,13 @@
+{
+  "id": "sk8-the-infinity-harry",
+  "name": "Harry",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-harry-base",
+      "name": "Harry",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

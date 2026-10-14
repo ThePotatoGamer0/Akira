@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-koukichi-muta",
+  "name": "Koukichi Muta",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-koukichi-muta-base",
+      "name": "Koukichi Muta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-gakuhou-asano",
+  "name": "Gakuhou Asano",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "assassination-classroom-gakuhou-asano-base",
+      "name": "Gakuhou Asano",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

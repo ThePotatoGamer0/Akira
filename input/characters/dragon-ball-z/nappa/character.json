@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-nappa",
+  "name": "Nappa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-nappa-base",
+      "name": "Nappa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

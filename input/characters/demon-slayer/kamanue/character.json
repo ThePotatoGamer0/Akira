@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-kamanue",
+  "name": "Kamanue",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-kamanue-base",
+      "name": "Kamanue",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

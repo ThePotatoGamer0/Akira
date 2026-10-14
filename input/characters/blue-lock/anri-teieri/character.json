@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-anri-teieri",
+  "name": "Anri Teieri",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-lock-anri-teieri-base",
+      "name": "Anri Teieri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

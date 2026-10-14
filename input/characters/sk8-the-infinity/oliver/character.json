@@ -1,0 +1,13 @@
+{
+  "id": "sk8-the-infinity-oliver",
+  "name": "Oliver",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-oliver-base",
+      "name": "Oliver",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

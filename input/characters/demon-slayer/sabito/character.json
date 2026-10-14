@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-sabito",
+  "name": "Sabito",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-sabito-base",
+      "name": "Sabito",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

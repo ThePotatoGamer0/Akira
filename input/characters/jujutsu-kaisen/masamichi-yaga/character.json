@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-masamichi-yaga",
+  "name": "Masamichi Yaga",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-masamichi-yaga-base",
+      "name": "Masamichi Yaga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

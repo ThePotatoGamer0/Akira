@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-garp",
+  "name": "Garp",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-garp-base",
+      "name": "Garp",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

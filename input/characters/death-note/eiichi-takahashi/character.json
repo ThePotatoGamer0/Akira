@@ -1,0 +1,13 @@
+{
+  "id": "death-note-eiichi-takahashi",
+  "name": "Eiichi Takahashi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-eiichi-takahashi-base",
+      "name": "Eiichi Takahashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

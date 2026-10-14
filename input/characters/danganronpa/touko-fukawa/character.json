@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-touko-fukawa",
+  "name": "Touko Fukawa",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-touko-fukawa-base",
+      "name": "Touko Fukawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

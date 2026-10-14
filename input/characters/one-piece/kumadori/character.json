@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-kumadori",
+  "name": "Kumadori",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-kumadori-base",
+      "name": "Kumadori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

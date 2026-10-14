@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-bubbles",
+  "name": "Bubbles",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-bubbles-base",
+      "name": "Bubbles",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "death-note-kiyomi-takada",
+  "name": "Kiyomi Takada",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "death-note-kiyomi-takada-base",
+      "name": "Kiyomi Takada",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

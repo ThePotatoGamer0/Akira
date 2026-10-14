@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-nezu",
+  "name": "Nezu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-nezu-base",
+      "name": "Nezu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

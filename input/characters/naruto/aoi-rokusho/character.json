@@ -1,0 +1,13 @@
+{
+  "id": "naruto-aoi-rokusho",
+  "name": "Aoi Rokusho",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-aoi-rokusho-base",
+      "name": "Aoi Rokusho",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

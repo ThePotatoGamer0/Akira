@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-bra",
+  "name": "Bra",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dragon-ball-z-bra-base",
+      "name": "Bra",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

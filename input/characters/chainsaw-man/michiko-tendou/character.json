@@ -1,0 +1,13 @@
+{
+  "id": "chainsaw-man-michiko-tendou",
+  "name": "Michiko Tendou",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "chainsaw-man-michiko-tendou-base",
+      "name": "Michiko Tendou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-takeda",
+  "name": "Takeda",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-takeda-base",
+      "name": "Takeda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

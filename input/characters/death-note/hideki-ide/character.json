@@ -1,0 +1,13 @@
+{
+  "id": "death-note-hideki-ide",
+  "name": "Hideki Ide",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-hideki-ide-base",
+      "name": "Hideki Ide",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

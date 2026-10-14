@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-murata",
+  "name": "Murata",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-murata-base",
+      "name": "Murata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

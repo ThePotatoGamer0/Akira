@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-pu-ar",
+  "name": "Pu'ar",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dragon-ball-z-pu-ar-base",
+      "name": "Pu'ar",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

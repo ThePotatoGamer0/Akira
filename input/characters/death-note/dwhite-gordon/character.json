@@ -1,0 +1,13 @@
+{
+  "id": "death-note-dwhite-gordon",
+  "name": "Dwhite Gordon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-dwhite-gordon-base",
+      "name": "Dwhite Gordon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

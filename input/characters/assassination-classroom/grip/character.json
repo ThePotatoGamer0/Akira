@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-grip",
+  "name": "Grip",
+  "gender": null,
+  "cards": [
+    {
+      "id": "assassination-classroom-grip-base",
+      "name": "Grip",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

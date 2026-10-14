@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-sansa-tamakawa",
+  "name": "Sansa Tamakawa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "my-hero-academia-sansa-tamakawa-base",
+      "name": "Sansa Tamakawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

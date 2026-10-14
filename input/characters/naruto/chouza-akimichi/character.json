@@ -1,0 +1,13 @@
+{
+  "id": "naruto-chouza-akimichi",
+  "name": "Chouza Akimichi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-chouza-akimichi-base",
+      "name": "Chouza Akimichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

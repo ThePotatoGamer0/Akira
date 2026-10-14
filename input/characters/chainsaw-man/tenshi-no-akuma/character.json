@@ -1,0 +1,13 @@
+{
+  "id": "chainsaw-man-tenshi-no-akuma",
+  "name": "Tenshi no Akuma",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "chainsaw-man-tenshi-no-akuma-base",
+      "name": "Tenshi no Akuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

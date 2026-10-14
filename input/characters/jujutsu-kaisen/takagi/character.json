@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-takagi",
+  "name": "Takagi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-takagi-base",
+      "name": "Takagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-tanjirou-kamado",
+  "name": "Tanjirou Kamado",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-tanjirou-kamado-base",
+      "name": "Tanjirou Kamado",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

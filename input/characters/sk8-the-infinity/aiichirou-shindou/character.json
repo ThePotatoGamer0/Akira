@@ -1,0 +1,13 @@
+{
+  "id": "sk8-the-infinity-aiichirou-shindou",
+  "name": "Aiichirou Shindou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-aiichirou-shindou-base",
+      "name": "Aiichirou Shindou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

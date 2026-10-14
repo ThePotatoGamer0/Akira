@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-takuma-ino",
+  "name": "Takuma Ino",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-takuma-ino-base",
+      "name": "Takuma Ino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

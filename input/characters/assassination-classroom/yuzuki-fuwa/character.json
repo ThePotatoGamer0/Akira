@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-yuzuki-fuwa",
+  "name": "Yuzuki Fuwa",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "assassination-classroom-yuzuki-fuwa-base",
+      "name": "Yuzuki Fuwa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

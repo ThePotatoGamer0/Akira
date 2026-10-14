@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-shanks",
+  "name": "Shanks",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-shanks-base",
+      "name": "Shanks",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "naruto-gamabunta",
+  "name": "Gamabunta",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-gamabunta-base",
+      "name": "Gamabunta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

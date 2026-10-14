@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-majin-boo",
+  "name": "Majin Boo",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-majin-boo-base",
+      "name": "Majin Boo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

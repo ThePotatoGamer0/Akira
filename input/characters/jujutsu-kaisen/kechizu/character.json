@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-kechizu",
+  "name": "Kechizu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-kechizu-base",
+      "name": "Kechizu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

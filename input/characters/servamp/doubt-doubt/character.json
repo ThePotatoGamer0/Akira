@@ -1,0 +1,13 @@
+{
+  "id": "servamp-doubt-doubt",
+  "name": "Doubt Doubt",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-doubt-doubt-base",
+      "name": "Doubt Doubt",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

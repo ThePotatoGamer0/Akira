@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-piccolo",
+  "name": "Piccolo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-piccolo-base",
+      "name": "Piccolo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

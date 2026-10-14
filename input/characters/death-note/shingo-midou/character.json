@@ -1,0 +1,13 @@
+{
+  "id": "death-note-shingo-midou",
+  "name": "Shingo Midou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-shingo-midou-base",
+      "name": "Shingo Midou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

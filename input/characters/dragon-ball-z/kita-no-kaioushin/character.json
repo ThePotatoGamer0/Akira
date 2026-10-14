@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-kita-no-kaioushin",
+  "name": "Kita no Kaioushin",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-kita-no-kaioushin-base",
+      "name": "Kita no Kaioushin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

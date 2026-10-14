@@ -1,0 +1,13 @@
+{
+  "id": "naruto-pakkun",
+  "name": "Pakkun",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-pakkun-base",
+      "name": "Pakkun",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-rin-itoshi",
+  "name": "Rin Itoshi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-rin-itoshi-base",
+      "name": "Rin Itoshi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

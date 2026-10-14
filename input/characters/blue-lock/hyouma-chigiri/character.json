@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-hyouma-chigiri",
+  "name": "Hyouma Chigiri",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-hyouma-chigiri-base",
+      "name": "Hyouma Chigiri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

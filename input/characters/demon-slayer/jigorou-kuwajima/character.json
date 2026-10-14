@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-jigorou-kuwajima",
+  "name": "Jigorou Kuwajima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-jigorou-kuwajima-base",
+      "name": "Jigorou Kuwajima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

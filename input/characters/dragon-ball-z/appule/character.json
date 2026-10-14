@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-appule",
+  "name": "Appule",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-appule-base",
+      "name": "Appule",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-mister-satan",
+  "name": "Mister Satan",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-mister-satan-base",
+      "name": "Mister Satan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

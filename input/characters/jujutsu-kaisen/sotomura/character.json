@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-sotomura",
+  "name": "Sotomura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-sotomura-base",
+      "name": "Sotomura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

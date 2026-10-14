@@ -1,0 +1,13 @@
+{
+  "id": "chainsaw-man-yakuza",
+  "name": "Yakuza",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "chainsaw-man-yakuza-base",
+      "name": "Yakuza",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

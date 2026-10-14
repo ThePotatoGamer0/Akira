@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-kaede-kayano",
+  "name": "Kaede Kayano",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "assassination-classroom-kaede-kayano-base",
+      "name": "Kaede Kayano",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

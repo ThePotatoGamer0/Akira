@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-miss-monday",
+  "name": "Miss Monday",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-miss-monday-base",
+      "name": "Miss Monday",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

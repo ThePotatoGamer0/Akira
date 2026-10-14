@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-kunudon",
+  "name": "Kunudon",
+  "gender": null,
+  "cards": [
+    {
+      "id": "assassination-classroom-kunudon-base",
+      "name": "Kunudon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

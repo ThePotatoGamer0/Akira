@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-sekijiro-kan",
+  "name": "Sekijiro Kan",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-sekijiro-kan-base",
+      "name": "Sekijiro Kan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

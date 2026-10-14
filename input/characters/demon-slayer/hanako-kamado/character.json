@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-hanako-kamado",
+  "name": "Hanako Kamado",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-hanako-kamado-base",
+      "name": "Hanako Kamado",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

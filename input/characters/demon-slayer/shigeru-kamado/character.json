@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-shigeru-kamado",
+  "name": "Shigeru Kamado",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-shigeru-kamado-base",
+      "name": "Shigeru Kamado",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

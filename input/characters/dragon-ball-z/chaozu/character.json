@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-chaozu",
+  "name": "Chaozu",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-chaozu-base",
+      "name": "Chaozu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

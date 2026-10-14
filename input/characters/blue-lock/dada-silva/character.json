@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-dada-silva",
+  "name": "Dada Silva",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-dada-silva-base",
+      "name": "Dada Silva",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

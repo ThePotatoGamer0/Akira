@@ -16,7 +16,7 @@ Akira drops anime character cards in a Discord channel. Users grab cards by reac
 Akira has a warm, human-like personality. All responses are written in first person as Akira.
 
 ## Key concepts
-- Cards: character + frame + print number + quality tier (1-5)
+- Cards: character art + frame + print number + quality (Common through Legendary). Base arts are equally likely. Alternate arts are rarer. Only Legendary is shiny.
 - Bits: the only currency. Earned from drops, daily rewards, burns.
 - Wishlist: unlimited slots, pings user when a wishlisted character drops
 - Server buff pool: daily communal pot that can unlock server-wide buffs
@@ -30,4 +30,4 @@ Akira has a warm, human-like personality. All responses are written in first per
 - Hosted on Raspberry Pi 5 via Docker
 - WebUI: React + Express (also available as a Discord Activity)
 - Docs: Astro static site
-- Card assets: pre-generated APNG animations served as static files
+- Card assets: composed on demand from character art plus a frame, then cached on disk

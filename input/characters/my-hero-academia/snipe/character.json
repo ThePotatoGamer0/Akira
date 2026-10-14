@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-snipe",
+  "name": "Snipe",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-snipe-base",
+      "name": "Snipe",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-eita-otoya",
+  "name": "Eita Otoya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-eita-otoya-base",
+      "name": "Eita Otoya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

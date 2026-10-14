@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-junko-enoshima",
+  "name": "Junko Enoshima",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-junko-enoshima-base",
+      "name": "Junko Enoshima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

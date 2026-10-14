@@ -1,0 +1,13 @@
+{
+  "id": "chainsaw-man-beam",
+  "name": "Beam",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "chainsaw-man-beam-base",
+      "name": "Beam",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

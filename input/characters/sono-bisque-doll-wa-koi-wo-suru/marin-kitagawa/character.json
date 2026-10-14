@@ -1,0 +1,13 @@
+{
+  "id": "sono-bisque-doll-wa-koi-wo-suru-marin-kitagawa",
+  "name": "Marin Kitagawa",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sono-bisque-doll-wa-koi-wo-suru-marin-kitagawa-base",
+      "name": "Marin Kitagawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

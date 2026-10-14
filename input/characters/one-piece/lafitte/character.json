@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-lafitte",
+  "name": "Lafitte",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-lafitte-base",
+      "name": "Lafitte",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

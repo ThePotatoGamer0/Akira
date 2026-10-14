@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-kurogiri",
+  "name": "Kurogiri",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-kurogiri-base",
+      "name": "Kurogiri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

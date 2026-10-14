@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-kaigaku",
+  "name": "Kaigaku",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-kaigaku-base",
+      "name": "Kaigaku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

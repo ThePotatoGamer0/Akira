@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-gin-gagamaru",
+  "name": "Gin Gagamaru",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-gin-gagamaru-base",
+      "name": "Gin Gagamaru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-zoro-roronoa",
+  "name": "Zoro Roronoa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-zoro-roronoa-base",
+      "name": "Zoro Roronoa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

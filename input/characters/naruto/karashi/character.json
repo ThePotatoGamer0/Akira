@@ -1,0 +1,13 @@
+{
+  "id": "naruto-karashi",
+  "name": "Karashi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-karashi-base",
+      "name": "Karashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

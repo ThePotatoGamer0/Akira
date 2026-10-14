@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-gem",
+  "name": "Gem",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-gem-base",
+      "name": "Gem",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-blueno",
+  "name": "Blueno",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-blueno-base",
+      "name": "Blueno",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

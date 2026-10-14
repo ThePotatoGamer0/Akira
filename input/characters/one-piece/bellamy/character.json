@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-bellamy",
+  "name": "Bellamy",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-bellamy-base",
+      "name": "Bellamy",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

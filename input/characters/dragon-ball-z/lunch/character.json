@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-lunch",
+  "name": "Lunch",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dragon-ball-z-lunch-base",
+      "name": "Lunch",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

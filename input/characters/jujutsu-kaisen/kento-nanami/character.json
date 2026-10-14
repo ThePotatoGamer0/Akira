@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-kento-nanami",
+  "name": "Kento Nanami",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-kento-nanami-base",
+      "name": "Kento Nanami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

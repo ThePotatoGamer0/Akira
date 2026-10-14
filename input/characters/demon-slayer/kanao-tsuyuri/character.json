@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-kanao-tsuyuri",
+  "name": "Kanao Tsuyuri",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "demon-slayer-kanao-tsuyuri-base",
+      "name": "Kanao Tsuyuri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

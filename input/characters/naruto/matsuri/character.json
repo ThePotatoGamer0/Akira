@@ -1,0 +1,13 @@
+{
+  "id": "naruto-matsuri",
+  "name": "Matsuri",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-matsuri-base",
+      "name": "Matsuri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

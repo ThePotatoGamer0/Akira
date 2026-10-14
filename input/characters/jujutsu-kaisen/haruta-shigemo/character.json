@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-haruta-shigemo",
+  "name": "Haruta Shigemo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-haruta-shigemo-base",
+      "name": "Haruta Shigemo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

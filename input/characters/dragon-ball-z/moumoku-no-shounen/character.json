@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-moumoku-no-shounen",
+  "name": "Moumoku no Shounen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-moumoku-no-shounen-base",
+      "name": "Moumoku no Shounen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

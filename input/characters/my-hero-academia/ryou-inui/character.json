@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-ryou-inui",
+  "name": "Ryou Inui",
+  "gender": null,
+  "cards": [
+    {
+      "id": "my-hero-academia-ryou-inui-base",
+      "name": "Ryou Inui",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

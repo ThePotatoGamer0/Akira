@@ -1,0 +1,13 @@
+{
+  "id": "sono-bisque-doll-wa-koi-wo-suru-daia-yahiro",
+  "name": "Daia Yahiro",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sono-bisque-doll-wa-koi-wo-suru-daia-yahiro-base",
+      "name": "Daia Yahiro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

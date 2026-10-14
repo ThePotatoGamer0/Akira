@@ -1,0 +1,13 @@
+{
+  "id": "chainsaw-man-tomato-no-akuma",
+  "name": "Tomato no Akuma",
+  "gender": null,
+  "cards": [
+    {
+      "id": "chainsaw-man-tomato-no-akuma-base",
+      "name": "Tomato no Akuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

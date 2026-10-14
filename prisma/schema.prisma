@@ -44,20 +44,23 @@ model Character {
 }
 
 model CardVariant {
-  id          String      @id
-  characterId String
-  character   Character   @relation(fields: [characterId], references: [id], onDelete: Cascade)
-  name        String
-  rarity      String
-  image       String
-  cards       Card[]
+  id           String        @id
+  characterId  String
+  character    Character     @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  name         String
+  rarity       String
+  image        String
+  cards        Card[]
+  dropSlots    DropSlot[]
+  printCounter PrintCounter?
 }
 
 model Card {
-  id          String      @id @default(cuid())
+  id          String      @id
   variantId   String
   variant     CardVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
-  frameId     Int
+  /** Null uses the server's default frame. A number is a frame chosen for this card. */
+  frameId     Int?
   printNumber Int
   quality     CardQuality
   ownerId     String?
@@ -66,6 +69,7 @@ model Card {
   alias       String?
   dye         String?
   obtainedAt  DateTime    @default(now())
+  dropSlot    DropSlot?
 
   @@index([ownerId])
   @@index([variantId, frameId])
@@ -85,11 +89,15 @@ model User {
   milestoneCount      Int                    @default(0)
   milestoneProgress   Int                    @default(0)
   passiveBitsBonus    Int                    @default(0)
+  /** Card code from the player's latest successful grab. Bare `av` opens this. */
+  lastGrabbedCardId   String?
   cards               Card[]
   wishlists           Wishlist[]
   poolContributions   UserPoolContribution[]
   inventory           Inventory[]
   cooldowns           Cooldown[]
+  reminders           Reminder[]
+  claimedSlots        DropSlot[]
 }
 
 model Wishlist {
@@ -142,4 +150,59 @@ model Cooldown {
   expiresAt DateTime
 
   @@unique([userId, type])
+}
+
+model Reminder {
+  id     String       @id @default(cuid())
+  userId String
+  user   User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type   CooldownType
+
+  @@unique([userId, type])
+}
+
+model GuildConfig {
+  guildId       String  @id
+  dropChannelId String?
+  /** Also accept Karuta's k and k! prefixes. Incompatible with Karuta on those prefixes. */
+  karutaPrefix  Boolean @default(false)
+  /** Frame drawn on cards that do not have one of their own. */
+  defaultFrameId Int @default(0)
+}
+
+model PrintCounter {
+  variantId String      @id
+  variant   CardVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+  nextPrint Int         @default(1)
+}
+
+model Drop {
+  id        String     @id @default(cuid())
+  guildId   String
+  channelId String
+  messageId String     @unique
+  createdAt    DateTime   @default(now())
+  expiresAt    DateTime
+  expiryPosted Boolean    @default(false)
+  slots        DropSlot[]
+
+  @@index([guildId])
+}
+
+model DropSlot {
+  id          String       @id @default(cuid())
+  dropId      String
+  drop        Drop         @relation(fields: [dropId], references: [id], onDelete: Cascade)
+  position    Int
+  variantId   String
+  variant     CardVariant  @relation(fields: [variantId], references: [id], onDelete: Cascade)
+  quality     CardQuality
+  /** Null uses the server's default frame when the drop is shown. */
+  frameId     Int?
+  claimedById String?
+  claimedBy   User?        @relation(fields: [claimedById], references: [id], onDelete: SetNull)
+  cardId      String?      @unique
+  card        Card?        @relation(fields: [cardId], references: [id], onDelete: SetNull)
+
+  @@unique([dropId, position])
 }

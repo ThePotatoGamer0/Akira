@@ -1,0 +1,13 @@
+{
+  "id": "death-note-lind-l-tailor",
+  "name": "Lind L. Tailor",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-lind-l-tailor-base",
+      "name": "Lind L. Tailor",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

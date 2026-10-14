@@ -1,0 +1,13 @@
+{
+  "id": "chainsaw-man-hiru-no-akuma",
+  "name": "Hiru no Akuma",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "chainsaw-man-hiru-no-akuma-base",
+      "name": "Hiru no Akuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

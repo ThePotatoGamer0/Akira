@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-recoome",
+  "name": "Recoome",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-recoome-base",
+      "name": "Recoome",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

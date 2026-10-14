@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-aguri-yukimura",
+  "name": "Aguri Yukimura",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "assassination-classroom-aguri-yukimura-base",
+      "name": "Aguri Yukimura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -7,17 +7,20 @@ export function CardViewer(props: { card: CollectionCard | null }) {
     return <p>Pick a card to see it up close.</p>;
   }
   const c = props.card;
-  const src = shiny ? c.assets.shiny : c.assets.normal;
+  const canShiny = c.quality === "LEGENDARY" || Boolean(c.dye);
+  const src = canShiny && shiny ? c.assets.shiny : c.assets.normal;
   return (
     <div className="panel">
-      <div style={{ display: "flex", gap: "0.5rem", marginBottom: "0.75rem" }}>
-        <button type="button" className={!shiny ? undefined : "secondary"} onClick={() => setShiny(false)}>
-          Normal
-        </button>
-        <button type="button" className={shiny ? undefined : "secondary"} onClick={() => setShiny(true)}>
-          Shiny (APNG)
-        </button>
-      </div>
+      {canShiny ? (
+        <div style={{ display: "flex", gap: "0.5rem", marginBottom: "0.75rem" }}>
+          <button type="button" className={!shiny ? undefined : "secondary"} onClick={() => setShiny(false)}>
+            Normal
+          </button>
+          <button type="button" className={shiny ? undefined : "secondary"} onClick={() => setShiny(true)}>
+            Shiny (APNG)
+          </button>
+        </div>
+      ) : null}
       <img
         src={src}
         alt={c.character.name}

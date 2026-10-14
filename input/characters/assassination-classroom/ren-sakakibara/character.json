@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-ren-sakakibara",
+  "name": "Ren Sakakibara",
+  "gender": null,
+  "cards": [
+    {
+      "id": "assassination-classroom-ren-sakakibara-base",
+      "name": "Ren Sakakibara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

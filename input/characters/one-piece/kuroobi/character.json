@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-kuroobi",
+  "name": "Kuroobi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-kuroobi-base",
+      "name": "Kuroobi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

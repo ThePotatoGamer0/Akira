@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-denki-kaminari",
+  "name": "Denki Kaminari",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-denki-kaminari-base",
+      "name": "Denki Kaminari",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

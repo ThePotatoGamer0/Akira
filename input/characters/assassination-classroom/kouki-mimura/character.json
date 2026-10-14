@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-kouki-mimura",
+  "name": "Kouki Mimura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "assassination-classroom-kouki-mimura-base",
+      "name": "Kouki Mimura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

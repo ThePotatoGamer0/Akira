@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-iyo-isagi",
+  "name": "Iyo Isagi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-lock-iyo-isagi-base",
+      "name": "Iyo Isagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

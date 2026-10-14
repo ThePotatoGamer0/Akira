@@ -1,0 +1,13 @@
+{
+  "id": "death-note-light-yagami",
+  "name": "Light Yagami",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-light-yagami-base",
+      "name": "Light Yagami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

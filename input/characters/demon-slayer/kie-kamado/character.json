@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-kie-kamado",
+  "name": "Kie Kamado",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-kie-kamado-base",
+      "name": "Kie Kamado",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

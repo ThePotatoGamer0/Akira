@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-yoichi-isagi",
+  "name": "Yoichi Isagi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-yoichi-isagi-base",
+      "name": "Yoichi Isagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

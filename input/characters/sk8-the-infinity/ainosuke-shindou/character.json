@@ -1,0 +1,13 @@
+{
+  "id": "sk8-the-infinity-ainosuke-shindou",
+  "name": "Ainosuke Shindou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-ainosuke-shindou-base",
+      "name": "Ainosuke Shindou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

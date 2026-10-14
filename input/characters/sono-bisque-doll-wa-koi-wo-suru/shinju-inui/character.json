@@ -1,0 +1,13 @@
+{
+  "id": "sono-bisque-doll-wa-koi-wo-suru-shinju-inui",
+  "name": "Shinju Inui",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sono-bisque-doll-wa-koi-wo-suru-shinju-inui-base",
+      "name": "Shinju Inui",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

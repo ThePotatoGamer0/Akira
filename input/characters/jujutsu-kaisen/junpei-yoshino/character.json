@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-junpei-yoshino",
+  "name": "Junpei Yoshino",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-junpei-yoshino-base",
+      "name": "Junpei Yoshino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

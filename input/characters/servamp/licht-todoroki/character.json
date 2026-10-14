@@ -1,0 +1,13 @@
+{
+  "id": "servamp-licht-todoroki",
+  "name": "Licht Todoroki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-licht-todoroki-base",
+      "name": "Licht Todoroki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

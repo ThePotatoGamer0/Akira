@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-chousou",
+  "name": "Chousou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-chousou-base",
+      "name": "Chousou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-keisuke-wanima",
+  "name": "Keisuke Wanima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-keisuke-wanima-base",
+      "name": "Keisuke Wanima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

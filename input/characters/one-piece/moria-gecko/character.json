@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-moria-gecko",
+  "name": "Moria Gecko",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-moria-gecko-base",
+      "name": "Moria Gecko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

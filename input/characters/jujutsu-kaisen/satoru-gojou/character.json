@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-satoru-gojou",
+  "name": "Satoru Gojou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-satoru-gojou-base",
+      "name": "Satoru Gojou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

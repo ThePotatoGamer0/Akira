@@ -1,0 +1,13 @@
+{
+  "id": "naruto-kiba-inuzuka",
+  "name": "Kiba Inuzuka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-kiba-inuzuka-base",
+      "name": "Kiba Inuzuka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

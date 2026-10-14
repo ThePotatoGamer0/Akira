@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-nezuko-kamado",
+  "name": "Nezuko Kamado",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "demon-slayer-nezuko-kamado-base",
+      "name": "Nezuko Kamado",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

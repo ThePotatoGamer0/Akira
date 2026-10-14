@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-byakuya-togami",
+  "name": "Byakuya Togami",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-byakuya-togami-base",
+      "name": "Byakuya Togami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-julian-loki",
+  "name": "Julian Loki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-julian-loki-base",
+      "name": "Julian Loki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

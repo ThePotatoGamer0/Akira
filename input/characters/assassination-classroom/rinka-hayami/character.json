@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-rinka-hayami",
+  "name": "Rinka Hayami",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "assassination-classroom-rinka-hayami-base",
+      "name": "Rinka Hayami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "sono-bisque-doll-wa-koi-wo-suru-tae-hanaoka",
+  "name": "Tae Hanaoka",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sono-bisque-doll-wa-koi-wo-suru-tae-hanaoka-base",
+      "name": "Tae Hanaoka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

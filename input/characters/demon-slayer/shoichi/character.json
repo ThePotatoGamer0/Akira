@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-shoichi",
+  "name": "Shoichi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-shoichi-base",
+      "name": "Shoichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

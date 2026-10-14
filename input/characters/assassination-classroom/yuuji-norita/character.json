@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-yuuji-norita",
+  "name": "Yuuji Norita",
+  "gender": null,
+  "cards": [
+    {
+      "id": "assassination-classroom-yuuji-norita-base",
+      "name": "Yuuji Norita",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

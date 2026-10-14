@@ -1,0 +1,13 @@
+{
+  "id": "naruto-kabuto-yakushi",
+  "name": "Kabuto Yakushi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-kabuto-yakushi-base",
+      "name": "Kabuto Yakushi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

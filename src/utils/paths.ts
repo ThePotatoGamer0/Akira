@@ -21,18 +21,44 @@ export function ensureDir(dir: string): void {
   fs.mkdirSync(dir, { recursive: true });
 }
 
-export function cardAssetDir(seriesSlug: string, characterSlug: string, frameId: number): string {
-  return path.join(DIR_ASSETS_CARDS, seriesSlug, characterSlug, String(frameId));
+const SAFE_SEGMENT = /^[a-zA-Z0-9_-]+$/;
+
+export function variantArtPath(seriesSlug: string, characterSlug: string, imageFile: string): string {
+  return path.join(DIR_INPUT_CHARACTERS, seriesSlug, characterSlug, imageFile);
 }
 
-/**
- * Resolves the specific absolute file paths for a card variant's images
- */
-export function resolveCardFiles(seriesSlug: string, characterSlug: string, variantId: string, frameId: number) {
-  const baseDir = cardAssetDir(seriesSlug, `${characterSlug}-${variantId}`, frameId);
-  return {
-    normal: path.join(baseDir, "normal.png"),
-    shiny: path.join(baseDir, "shiny.apng"),
-    burn: path.join(baseDir, "burn.apng"),
-  };
+export function printCacheKey(printNumber: number | null): string {
+  if (printNumber === null) return "preview";
+  return `p${printNumber}`;
+}
+
+export function dyeCacheKey(dye: string | null): string {
+  if (!dye) return "none";
+  if (!SAFE_SEGMENT.test(dye)) return "custom";
+  return dye;
+}
+
+export function cardCacheFile(input: {
+  variantId: string;
+  frameId: number;
+  printKey: string;
+  dyeKey: string;
+  fileName: "normal.png" | "shiny.apng" | "burn.apng";
+}): string {
+  for (const part of [input.variantId, input.printKey, input.dyeKey]) {
+    if (!SAFE_SEGMENT.test(part)) {
+      throw new Error(`Unsafe cache key: ${part}`);
+    }
+  }
+  if (!Number.isInteger(input.frameId) || input.frameId < 0) {
+    throw new Error("Unsafe frame id");
+  }
+  return path.join(
+    DIR_ASSETS_CARDS,
+    input.variantId,
+    String(input.frameId),
+    input.printKey,
+    input.dyeKey,
+    input.fileName,
+  );
 }

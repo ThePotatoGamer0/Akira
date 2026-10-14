@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-gohan-son",
+  "name": "Gohan Son",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-gohan-son-base",
+      "name": "Gohan Son",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-shouto-todoroki",
+  "name": "Shouto Todoroki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-shouto-todoroki-base",
+      "name": "Shouto Todoroki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

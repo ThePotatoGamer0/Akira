@@ -1,0 +1,13 @@
+{
+  "id": "chainsaw-man-akane-sawatari",
+  "name": "Akane Sawatari ",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "chainsaw-man-akane-sawatari-base",
+      "name": "Akane Sawatari ",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

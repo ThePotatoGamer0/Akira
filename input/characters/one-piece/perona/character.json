@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-perona",
+  "name": "Perona",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-perona-base",
+      "name": "Perona",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

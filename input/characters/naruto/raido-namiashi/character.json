@@ -1,0 +1,13 @@
+{
+  "id": "naruto-raido-namiashi",
+  "name": "Raido Namiashi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-raido-namiashi-base",
+      "name": "Raido Namiashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

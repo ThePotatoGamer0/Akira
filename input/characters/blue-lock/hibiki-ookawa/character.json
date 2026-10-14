@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-hibiki-ookawa",
+  "name": "Hibiki Ookawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-hibiki-ookawa-base",
+      "name": "Hibiki Ookawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

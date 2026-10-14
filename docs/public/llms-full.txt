@@ -16,36 +16,46 @@ Akira has a warm, human-like personality. The bot is referred to as Akira and sp
 ## Card System
 
 ### What a card is
-Each card represents an anime character. A card has:
+A character can have several images. The primary image is the base variant (`id` ending in `-base`). Any other image is an alternate art. Players do not own templates. A grabbed card is an instance with:
 - Character name and series
-- Frame (decorative border, cosmetic)
-- Print number (lower = rarer, assigned on drop)
-- Quality tier (1–5, affects burn value and prestige heuristics)
-- Dye (optional cosmetic tint)
-- Tag (user-defined organisational label)
-- Alias (user-defined nickname for the card)
+- Which image (variant)
+- Frame (decorative border, cosmetic; drops use frame 0 until frame cosmetics exist)
+- Print number (assigned when the card is claimed; lower means earlier)
+- Quality (`COMMON`, `UNCOMMON`, `RARE`, `EPIC`, `LEGENDARY`)
+- Dye (optional cosmetic tint; not built yet)
+- Tag and alias (not built yet)
 - Obtained date and timestamp
 
+### Drop odds
+Two separate rolls:
+
+- Which art. Every base image has weight 100, so one character's base is as likely as another's. A base stays in that pool even if its rarity label says Rare (Kobeni's car is the current example). Alternate arts are harder: Rare weight 15, Secret Rare weight 3.
+- Quality on that copy. Weights are Common 60, Uncommon 25, Rare 10, Epic 4, Legendary 1. Quality changes burn value. Only `LEGENDARY` is shown shiny. It does not change which picture was drawn.
+
 ### Card assets
-Every card is pre-generated at init time. For each character × frame combination there are three files:
-- `normal.png` - static image, Discord converts to WebP automatically
-- `shiny.apng` - looping idle animation with shimmer/glow effect. Designed to loop seamlessly: the last frame eases back to match the first frame so there is no visible snap point.
-- `burn.apng` - burn animation. Sequence: fade in from transparent (frames 1–3) → flames consume upward (frames 4–8) → fade to transparent (frames 9–10) → loop. The fade in/out makes the loop seamless and gives the card a moment to be seen before it burns.
+Images are composed the first time a drop or a view needs them, then cached. Init does not pre-render the whole catalog. A cache miss composites character art under the frame and draws the name and print from `input/frames/{id}/config.json`.
 
-Files use the `.apng` extension explicitly. Discord only serves APNG files inline as animation if the extension is `.apng` - files with `.png` extension are converted to WebP by Discord's CDN, which strips animation data.
+- `normal.png` - static image
+- `shiny.apng` - looping shimmer, used for Legendary (and dyed cards once dye exists)
+- `burn.apng` - burn animation, composed when a card is burned
 
-Asset paths follow this structure:
+Files use the `.apng` extension explicitly. Discord only serves APNG files inline as animation if the extension is `.apng`. Files with a `.png` extension are converted to WebP by Discord's CDN, which strips animation data.
+
+Cached paths:
 ```
-assets/cards/{series_slug}/{character_slug}/{frame_id}/normal.png
-assets/cards/{series_slug}/{character_slug}/{frame_id}/shiny.apng
-assets/cards/{series_slug}/{character_slug}/{frame_id}/burn.apng
+assets/cards/{variant_id}/{frame_id}/preview/none/normal.png
+assets/cards/{variant_id}/{frame_id}/p{print}/none/normal.png
+assets/cards/{variant_id}/{frame_id}/p{print}/none/shiny.apng
+assets/cards/{variant_id}/{frame_id}/p{print}/none/burn.apng
 ```
 
 Source art and frames live in:
 ```
-input/characters/{series_slug}/{character_slug}.png
-input/frames/frame_{id}.png
-input/showcase/         ← handpicked cards for the Akira's Gift animation
+input/characters/{series_slug}/{character_slug}/character.json
+input/characters/{series_slug}/{character_slug}/{image}.png
+input/frames/{id}/frame.png
+input/frames/{id}/config.json
+input/showcase/         ← reserved for a future Akira's Gift animation
 ```
 
 ### Akira's Gift animation
@@ -58,10 +68,10 @@ When a user receives a prestige frame reward, Akira plays a special animation st
 All commands are Discord slash commands. Akira responds in first person in all cases.
 
 ### /drop
-Places three cards in the configured drop channel. Users react with 1️⃣ 2️⃣ 3️⃣ to grab a card. Subject to drop cooldown. If a server buff is active that increases drop frequency, additional drops may occur automatically.
+Places three cards in the configured drop channel (`DISCORD_DROP_CHANNEL_ID` for `DISCORD_GUILD_ID`, or a stored guild drop channel). Users react with 1️⃣ 2️⃣ 3️⃣ to grab a card. Drop cooldown is 20 minutes. The drop stays open for 2 minutes. Unclaimed cards are not saved. Server buffs that change drop frequency are not active yet.
 
 ### /grab (reaction-based)
-Grabbing is done via emoji reaction on a drop, not a slash command. Reacting with the number emoji corresponding to the card position claims that card for the user, subject to grab cooldown.
+Grabbing is done via emoji reaction on a drop, not a slash command. Reacting with the number emoji corresponding to the card position claims that card, assigns the next print for that image, and pays 5 bits. Grab cooldown is 5 minutes.
 
 ### /collection [user]
 Displays a user's card collection. Browsable grid. Defaults to the invoking user if no user is specified.
@@ -70,21 +80,21 @@ Displays a user's card collection. Browsable grid. Defaults to the invoking user
 Shows detailed information about a specific card including character, series, frame, print number, quality, dye, tag, alias, and obtained date.
 
 ### /burn <card code>
-Destroys a card and awards bits. Plays the card's `burn.apng` animation. Burn value is affected by quality tier and any active burn value buff.
+Destroys a card and awards bits. Plays the card's `burn.apng` animation. Burn value by quality: Common 10, Uncommon 25, Rare 50, Epic 100, Legendary 250. Burn-value buffs are not active yet.
 
 ### /multiburn <filters>
 Burns multiple cards at once using filters (by series, quality, tag, etc). Determines the "best" card in the selection using this priority order: highest quality tier → lowest print number → most wishlisted by other players. Plays the burn animation for that best card only. Caption shows how many cards were burned and how many bits were received, and names the best card that was sacrificed.
 
 ### /daily
-Claims the daily bits reward. Amount includes any permanent passive bits bonus from prestige levels. Can only be claimed once per day.
+Claims 100 bits plus any permanent `passiveBitsBonus`. Can be claimed once every 24 hours.
 
-### /wishlist [user]
-Shows the wishlist of a user. Defaults to the invoking user. Wishlist slots are unlimited - this is an intentional design decision to lower friction for new players.
+### /wishlist show [user]
+Shows the wishlist of a user. Defaults to the invoking user. Wishlist slots are unlimited. This is intentional, to lower friction for new players.
 
-### /wishadd <character name>
-Adds a character to the user's wishlist. Akira will mention the user whenever a card featuring that character appears in a drop.
+### /wishlist add <character name>
+Adds a character to the user's wishlist. Akira mentions the user when a card featuring that character appears in a drop.
 
-### /wishremove <character name>
+### /wishlist remove <character name>
 Removes a character from the user's wishlist.
 
 ### /lookup <character name>
@@ -238,13 +248,13 @@ There is no prestige cap. Each subsequent prestige follows the same structure. T
 ## Card Asset Pipeline (technical)
 
 ### Init phase
-Runs once on setup or whenever new content is added. Heavy lifting:
-1. Composites all character art + frame combinations using sharp and node-canvas
-2. Generates normal.png, shiny.apng, burn.apng for every combination
-3. Generates Akira's Gift APNG for every frame
-4. Seeds the database with series, character, and card data
-5. Registers Discord slash commands
-6. Creates init.lock at start, deletes it on clean completion
+Runs once on setup or whenever new content is added:
+1. Checks that frame folders and character art exist. It does not pre-render every combination.
+2. Seeds the database with series, characters, and card variants
+3. Registers Discord slash commands
+4. Creates init.lock at start, deletes it on clean completion
+
+Card images are composed later, on the first drop or view, and written into `assets/cards`.
 
 ### Run phase (the bot)
 Lightweight. On startup checks for init.lock:
@@ -289,14 +299,19 @@ This flow avoids OAuth entirely. The browser never touches discord.com - only th
 ## Database Models (Prisma SQLite)
 
 - Series: id, name, slug
-- Character: id, name, slug, seriesId
-- Card: id, characterId, frameId, printNumber, quality (enum 1–5), ownerId, tag, alias, dye, obtainedAt
-- User: id, discordId, discordUsername, passwordHash, bits, prestigeLevel, milestoneCount, milestoneProgress, passiveBitsBonus, isAdmin
+- Character: id, name, slug, seriesId, description, gender, aliases
+- CardVariant: id, characterId, name, rarity (label for alternate-art weight; bases ignore it), image
+- Card: id, variantId, frameId, printNumber, quality (COMMON through LEGENDARY), ownerId, tag, alias, dye, obtainedAt
+- PrintCounter: variantId, nextPrint
+- Drop: id, guildId, channelId, messageId, createdAt, expiresAt
+- DropSlot: id, dropId, position (1-3), variantId, quality, frameId, claimedById, cardId
+- GuildConfig: guildId, dropChannelId
+- User: id, discordId, discordUsername, preferredName, passwordHash, bits, prestigeLevel, milestoneCount, milestoneProgress, passiveBitsBonus, isAdmin
 - Wishlist: id, userId, characterId
 - ServerPool: id, guildId, totalBits, lastReset, activeBuff, buffTier, buffExpiry
 - UserPoolContribution: id, userId, guildId, bits, date
 - Inventory: id, userId, itemType, quantity
-- Cooldown: id, userId, type (enum: GRAB, DROP), expiresAt
+- Cooldown: id, userId, type (enum: GRAB, DROP, DAILY), expiresAt
 
 ---
 
@@ -306,7 +321,7 @@ This flow avoids OAuth entirely. The browser never touches discord.com - only th
 - Docker Compose with services: init, bot, webui-server, webui-client, docs
 - Nginx Proxy Manager handles external routing
 - SQLite database in a named Docker volume (akira-db)
-- Pre-generated card assets in a named Docker volume (akira-assets)
+- Cached card images in a named Docker volume (akira-assets)
 - Source art in a named Docker volume (akira-input)
 - Bot and webui-server share the akira-db volume
 - Init service runs once and exits; bot depends on init completing successfully
@@ -330,8 +345,8 @@ Multiple currencies (bits, gems, tickets) create confusion and enable pay-to-win
 **Why APNG over GIF?**
 GIF has a 256 colour palette limit that produces visibly poor results on anime art (gradient-heavy illustrations). APNG supports full colour and autoplays inline in Discord when served with the `.apng` extension. Discord converts `.png` files to WebP (stripping animation), but leaves `.apng` files untouched.
 
-**Why pre-generate all assets?**
-On-demand rendering introduces latency and complexity. At friend group scale (25 characters × 10 frames × 3 files = 750 files) pre-generation is trivial and results in instant file serving with zero render queue.
+**Why compose cards on demand?**
+Print numbers are only known when someone claims a card, and frames carry text positions for the name and print. Pre-rendering every variant, frame, and animation up front could not include that text, and it had to be redone whenever a frame changed. A cache miss is one composite. Repeat views read the file.
 
 **Why SQLite over PostgreSQL?**
 No separate database server to run or maintain. File-based, lives in a Docker volume, trivially backed up. At friend group scale there are no concurrent write patterns that SQLite cannot handle. Prisma makes migration to PostgreSQL straightforward if needed in future.

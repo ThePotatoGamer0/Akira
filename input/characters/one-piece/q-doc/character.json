@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-q-doc",
+  "name": "Q Doc",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-q-doc-base",
+      "name": "Q Doc",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

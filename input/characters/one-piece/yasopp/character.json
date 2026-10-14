@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-yasopp",
+  "name": "Yasopp",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-yasopp-base",
+      "name": "Yasopp",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

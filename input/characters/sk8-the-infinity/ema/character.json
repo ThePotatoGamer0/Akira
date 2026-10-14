@@ -1,0 +1,13 @@
+{
+  "id": "sk8-the-infinity-ema",
+  "name": "Ema",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-ema-base",
+      "name": "Ema",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

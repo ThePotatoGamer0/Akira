@@ -1,0 +1,13 @@
+{
+  "id": "death-note-quillsh-wammy",
+  "name": "Quillsh Wammy",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-quillsh-wammy-base",
+      "name": "Quillsh Wammy",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

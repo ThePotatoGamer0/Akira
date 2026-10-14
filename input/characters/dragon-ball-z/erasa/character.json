@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-erasa",
+  "name": "Erasa",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dragon-ball-z-erasa-base",
+      "name": "Erasa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

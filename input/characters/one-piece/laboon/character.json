@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-laboon",
+  "name": "Laboon",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-piece-laboon-base",
+      "name": "Laboon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-yakon",
+  "name": "Yakon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-yakon-base",
+      "name": "Yakon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-hotaru-haganezuka",
+  "name": "Hotaru Haganezuka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-hotaru-haganezuka-base",
+      "name": "Hotaru Haganezuka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

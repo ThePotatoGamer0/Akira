@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-apis",
+  "name": "Apis",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-piece-apis-base",
+      "name": "Apis",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

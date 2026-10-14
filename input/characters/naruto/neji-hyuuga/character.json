@@ -1,0 +1,13 @@
+{
+  "id": "naruto-neji-hyuuga",
+  "name": "Neji Hyuuga",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-neji-hyuuga-base",
+      "name": "Neji Hyuuga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

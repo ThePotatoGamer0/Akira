@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-tsunojou-oni",
+  "name": "Tsunojou Oni",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-tsunojou-oni-base",
+      "name": "Tsunojou Oni",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

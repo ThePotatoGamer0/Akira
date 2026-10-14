@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-yahaba",
+  "name": "Yahaba",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-yahaba-base",
+      "name": "Yahaba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

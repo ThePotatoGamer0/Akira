@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-kyouka-jirou",
+  "name": "Kyouka Jirou",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "my-hero-academia-kyouka-jirou-base",
+      "name": "Kyouka Jirou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

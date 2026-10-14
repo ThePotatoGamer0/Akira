@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-sakonji-urokodaki",
+  "name": "Sakonji Urokodaki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-sakonji-urokodaki-base",
+      "name": "Sakonji Urokodaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

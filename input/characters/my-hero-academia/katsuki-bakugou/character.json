@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-katsuki-bakugou",
+  "name": "Katsuki Bakugou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-katsuki-bakugou-base",
+      "name": "Katsuki Bakugou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

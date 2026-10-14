@@ -1,0 +1,13 @@
+{
+  "id": "servamp-lawless",
+  "name": "Lawless",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-lawless-base",
+      "name": "Lawless",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

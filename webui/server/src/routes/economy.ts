@@ -42,10 +42,14 @@ economyRouter.post("/shop/buy", authMiddleware, async (req, res) => {
   res.json({ ok: true, itemId: item.id, name: item.name });
 });
 
+function configuredGuildId(): string {
+  return process.env["DISCORD_GUILD_ID"] ?? process.env["AKIRA_GUILD_ID"] ?? "";
+}
+
 economyRouter.get("/pool", authMiddleware, async (req, res) => {
-  const guildId = process.env["AKIRA_GUILD_ID"] ?? "";
+  const guildId = configuredGuildId();
   if (!guildId) {
-    res.status(503).json({ error: "Server pool isn't configured yet (missing AKIRA_GUILD_ID)." });
+    res.status(503).json({ error: "Server pool isn't configured yet (missing DISCORD_GUILD_ID)." });
     return;
   }
   let pool = await prisma.serverPool.findUnique({ where: { guildId } });
@@ -69,7 +73,7 @@ economyRouter.get("/pool", authMiddleware, async (req, res) => {
 });
 
 economyRouter.post("/pool/contribute", authMiddleware, async (req, res) => {
-  const guildId = process.env["AKIRA_GUILD_ID"] ?? "";
+  const guildId = configuredGuildId();
   if (!guildId) {
     res.status(503).json({ error: "Server pool isn't configured yet." });
     return;

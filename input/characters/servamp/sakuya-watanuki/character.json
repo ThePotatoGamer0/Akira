@@ -1,0 +1,13 @@
+{
+  "id": "servamp-sakuya-watanuki",
+  "name": "Sakuya Watanuki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-sakuya-watanuki-base",
+      "name": "Sakuya Watanuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

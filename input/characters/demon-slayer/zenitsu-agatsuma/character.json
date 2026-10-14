@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-zenitsu-agatsuma",
+  "name": "Zenitsu Agatsuma",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-zenitsu-agatsuma-base",
+      "name": "Zenitsu Agatsuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

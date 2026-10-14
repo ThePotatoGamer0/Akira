@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-rokuro",
+  "name": "Rokuro",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-rokuro-base",
+      "name": "Rokuro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

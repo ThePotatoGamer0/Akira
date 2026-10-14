@@ -1,0 +1,13 @@
+{
+  "id": "servamp-yully",
+  "name": "Yully",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "servamp-yully-base",
+      "name": "Yully",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

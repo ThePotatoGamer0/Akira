@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-bardock",
+  "name": "Bardock",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-bardock-base",
+      "name": "Bardock",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

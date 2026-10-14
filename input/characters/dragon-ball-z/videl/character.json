@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-videl",
+  "name": "Videl",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dragon-ball-z-videl-base",
+      "name": "Videl",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

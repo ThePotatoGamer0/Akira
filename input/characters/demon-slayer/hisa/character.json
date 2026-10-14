@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-hisa",
+  "name": "Hisa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-hisa-base",
+      "name": "Hisa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

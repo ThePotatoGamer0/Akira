@@ -1,0 +1,13 @@
+{
+  "id": "naruto-rock-lee",
+  "name": "Rock Lee",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-rock-lee-base",
+      "name": "Rock Lee",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

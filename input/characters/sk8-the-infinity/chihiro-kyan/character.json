@@ -1,0 +1,13 @@
+{
+  "id": "sk8-the-infinity-chihiro-kyan",
+  "name": "Chihiro Kyan",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-chihiro-kyan-base",
+      "name": "Chihiro Kyan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

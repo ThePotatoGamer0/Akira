@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-mondo-oowada",
+  "name": "Mondo Oowada",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-mondo-oowada-base",
+      "name": "Mondo Oowada",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

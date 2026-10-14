@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-sakura-oogami",
+  "name": "Sakura Oogami",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-sakura-oogami-base",
+      "name": "Sakura Oogami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

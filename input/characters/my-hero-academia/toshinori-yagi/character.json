@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-toshinori-yagi",
+  "name": "Toshinori Yagi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-toshinori-yagi-base",
+      "name": "Toshinori Yagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

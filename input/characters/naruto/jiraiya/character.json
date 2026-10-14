@@ -1,0 +1,13 @@
+{
+  "id": "naruto-jiraiya",
+  "name": "Jiraiya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-jiraiya-base",
+      "name": "Jiraiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

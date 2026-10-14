@@ -1,0 +1,13 @@
+{
+  "id": "naruto-gamakichi",
+  "name": "Gamakichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-gamakichi-base",
+      "name": "Gamakichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

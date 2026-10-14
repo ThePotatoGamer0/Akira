@@ -1,0 +1,13 @@
+{
+  "id": "servamp-yumikage-tsukimitsu",
+  "name": "Yumikage Tsukimitsu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-yumikage-tsukimitsu-base",
+      "name": "Yumikage Tsukimitsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

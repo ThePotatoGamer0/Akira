@@ -1,0 +1,13 @@
+{
+  "id": "chainsaw-man-yuurei-no-akuma",
+  "name": "Yuurei no Akuma",
+  "gender": null,
+  "cards": [
+    {
+      "id": "chainsaw-man-yuurei-no-akuma-base",
+      "name": "Yuurei no Akuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

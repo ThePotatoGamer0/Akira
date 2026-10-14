@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-kyoujurou-rengoku",
+  "name": "Kyoujurou Rengoku",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-kyoujurou-rengoku-base",
+      "name": "Kyoujurou Rengoku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-dende",
+  "name": "Dende",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-dende-base",
+      "name": "Dende",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

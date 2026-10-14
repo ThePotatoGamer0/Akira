@@ -1,0 +1,13 @@
+{
+  "id": "sk8-the-infinity-reki-kyan",
+  "name": "Reki Kyan",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-reki-kyan-base",
+      "name": "Reki Kyan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

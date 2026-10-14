@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-koutarou-takebayashi",
+  "name": "Koutarou Takebayashi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "assassination-classroom-koutarou-takebayashi-base",
+      "name": "Koutarou Takebayashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "sono-bisque-doll-wa-koi-wo-suru-miori-gojou",
+  "name": "Miori Gojou",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sono-bisque-doll-wa-koi-wo-suru-miori-gojou-base",
+      "name": "Miori Gojou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

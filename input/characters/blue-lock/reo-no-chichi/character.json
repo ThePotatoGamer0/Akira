@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-reo-no-chichi",
+  "name": "Reo no Chichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-reo-no-chichi-base",
+      "name": "Reo no Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

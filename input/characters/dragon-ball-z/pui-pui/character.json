@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-pui-pui",
+  "name": "Pui Pui",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-pui-pui-base",
+      "name": "Pui Pui",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

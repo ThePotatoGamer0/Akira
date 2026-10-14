@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-tamayo",
+  "name": "Tamayo",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "demon-slayer-tamayo-base",
+      "name": "Tamayo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

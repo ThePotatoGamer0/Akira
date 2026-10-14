@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-tomohito-sugino",
+  "name": "Tomohito Sugino",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "assassination-classroom-tomohito-sugino-base",
+      "name": "Tomohito Sugino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

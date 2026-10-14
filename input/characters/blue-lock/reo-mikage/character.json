@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-reo-mikage",
+  "name": "Reo Mikage",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-reo-mikage-base",
+      "name": "Reo Mikage",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

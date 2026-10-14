@@ -1,0 +1,13 @@
+{
+  "id": "naruto-mubi",
+  "name": "Mubi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-mubi-base",
+      "name": "Mubi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "sk8-the-infinity-hiromi-higa",
+  "name": "Hiromi Higa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-hiromi-higa-base",
+      "name": "Hiromi Higa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

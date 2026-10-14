@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-kanata-ubuyashiki",
+  "name": "Kanata Ubuyashiki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-kanata-ubuyashiki-base",
+      "name": "Kanata Ubuyashiki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

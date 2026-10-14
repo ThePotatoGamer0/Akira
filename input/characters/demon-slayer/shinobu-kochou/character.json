@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-shinobu-kochou",
+  "name": "Shinobu Kochou",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "demon-slayer-shinobu-kochou-base",
+      "name": "Shinobu Kochou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

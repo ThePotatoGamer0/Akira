@@ -1,0 +1,13 @@
+{
+  "id": "naruto-kamikiri-fuma",
+  "name": "Kamikiri Fuma",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-kamikiri-fuma-base",
+      "name": "Kamikiri Fuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

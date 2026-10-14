@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-takeo-kamado",
+  "name": "Takeo Kamado",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-takeo-kamado-base",
+      "name": "Takeo Kamado",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

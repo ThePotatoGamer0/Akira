@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-gyoumei-himejima",
+  "name": "Gyoumei Himejima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-gyoumei-himejima-base",
+      "name": "Gyoumei Himejima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

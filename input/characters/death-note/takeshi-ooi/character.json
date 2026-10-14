@@ -1,0 +1,13 @@
+{
+  "id": "death-note-takeshi-ooi",
+  "name": "Takeshi Ooi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-takeshi-ooi-base",
+      "name": "Takeshi Ooi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

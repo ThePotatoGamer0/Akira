@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-celestia-ludenberg",
+  "name": "Celestia Ludenberg",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-celestia-ludenberg-base",
+      "name": "Celestia Ludenberg",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

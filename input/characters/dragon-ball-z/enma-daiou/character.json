@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-enma-daiou",
+  "name": "Enma Daiou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-enma-daiou-base",
+      "name": "Enma Daiou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

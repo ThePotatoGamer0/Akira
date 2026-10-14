@@ -1,0 +1,13 @@
+{
+  "id": "naruto-jirocho-wasabi",
+  "name": "Jirocho Wasabi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-jirocho-wasabi-base",
+      "name": "Jirocho Wasabi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

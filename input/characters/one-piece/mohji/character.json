@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-mohji",
+  "name": "Mohji",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-mohji-base",
+      "name": "Mohji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

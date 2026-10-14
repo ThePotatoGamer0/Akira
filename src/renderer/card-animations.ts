@@ -1,11 +1,9 @@
 import sharp from "sharp";
 import { encodeApng } from "../utils/apng.js";
-import { renderNormalCard } from "./composite-static.js";
 import { pngBufferToRgba } from "./frames-to-rgba.js";
 
 /** Placeholder loop: subtle opacity pulse for shimmer (replace with full effect later). */
-export async function renderShinyApng(characterPngPath: string, framePngPath: string): Promise<Buffer> {
-  const base = await renderNormalCard(characterPngPath, framePngPath);
+export async function renderShinyApng(base: Buffer): Promise<Buffer> {
   const meta = await sharp(base).metadata();
   const w = meta.width ?? 0;
   const h = meta.height ?? 0;
@@ -25,8 +23,7 @@ export async function renderShinyApng(characterPngPath: string, framePngPath: st
 }
 
 /** burn.apng structure: fade in → flames up → fade out → loop (10 frames). */
-export async function renderBurnApng(characterPngPath: string, framePngPath: string): Promise<Buffer> {
-  const base = await renderNormalCard(characterPngPath, framePngPath);
+export async function renderBurnApng(base: Buffer): Promise<Buffer> {
   const meta = await sharp(base).metadata();
   const w = meta.width ?? 0;
   const h = meta.height ?? 0;

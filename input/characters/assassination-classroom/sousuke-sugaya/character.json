@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-sousuke-sugaya",
+  "name": "Sousuke Sugaya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "assassination-classroom-sousuke-sugaya-base",
+      "name": "Sousuke Sugaya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

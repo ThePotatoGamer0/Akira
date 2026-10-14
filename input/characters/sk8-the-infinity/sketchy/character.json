@@ -1,0 +1,13 @@
+{
+  "id": "sk8-the-infinity-sketchy",
+  "name": "Sketchy",
+  "gender": null,
+  "cards": [
+    {
+      "id": "sk8-the-infinity-sketchy-base",
+      "name": "Sketchy",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-nail",
+  "name": "Nail",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-nail-base",
+      "name": "Nail",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "servamp-tsurugi-kamiya",
+  "name": "Tsurugi Kamiya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-tsurugi-kamiya-base",
+      "name": "Tsurugi Kamiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

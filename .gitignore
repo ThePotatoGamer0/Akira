@@ -6,3 +6,4 @@ dist/
 init.lock
 
 /src/generated/prisma
+/input/portraits

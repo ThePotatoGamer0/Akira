@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-shouta-aizawa",
+  "name": "Shouta Aizawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-shouta-aizawa-base",
+      "name": "Shouta Aizawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

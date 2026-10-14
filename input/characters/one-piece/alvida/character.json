@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-alvida",
+  "name": "Alvida",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-alvida-base",
+      "name": "Alvida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

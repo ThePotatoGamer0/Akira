@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-mahito",
+  "name": "Mahito",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-mahito-base",
+      "name": "Mahito",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

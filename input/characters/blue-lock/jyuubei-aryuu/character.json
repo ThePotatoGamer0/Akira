@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-jyuubei-aryuu",
+  "name": "Jyuubei Aryuu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-jyuubei-aryuu-base",
+      "name": "Jyuubei Aryuu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

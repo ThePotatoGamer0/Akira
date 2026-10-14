@@ -1,0 +1,13 @@
+{
+  "id": "death-note-l-lawliet",
+  "name": "L Lawliet",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-l-lawliet-base",
+      "name": "L Lawliet",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

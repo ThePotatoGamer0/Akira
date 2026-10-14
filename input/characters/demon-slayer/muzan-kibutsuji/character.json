@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-muzan-kibutsuji",
+  "name": "Muzan Kibutsuji",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-muzan-kibutsuji-base",
+      "name": "Muzan Kibutsuji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

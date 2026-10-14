@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-aoi-kanzaki",
+  "name": "Aoi Kanzaki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "demon-slayer-aoi-kanzaki-base",
+      "name": "Aoi Kanzaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

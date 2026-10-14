@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-kenyu-yukimiya",
+  "name": "Kenyu Yukimiya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-kenyu-yukimiya-base",
+      "name": "Kenyu Yukimiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

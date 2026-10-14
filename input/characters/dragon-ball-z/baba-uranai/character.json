@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-baba-uranai",
+  "name": "Baba Uranai",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-baba-uranai-base",
+      "name": "Baba Uranai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

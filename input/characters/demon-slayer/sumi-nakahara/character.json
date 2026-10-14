@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-sumi-nakahara",
+  "name": "Sumi Nakahara",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-sumi-nakahara-base",
+      "name": "Sumi Nakahara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

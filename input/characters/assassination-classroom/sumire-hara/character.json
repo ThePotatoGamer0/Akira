@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-sumire-hara",
+  "name": "Sumire Hara",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "assassination-classroom-sumire-hara-base",
+      "name": "Sumire Hara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-kagaya-ubuyashiki",
+  "name": "Kagaya Ubuyashiki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-kagaya-ubuyashiki-base",
+      "name": "Kagaya Ubuyashiki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

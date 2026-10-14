@@ -1,0 +1,13 @@
+{
+  "id": "sk8-the-infinity-tamashiro",
+  "name": "Tamashiro",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-tamashiro-base",
+      "name": "Tamashiro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

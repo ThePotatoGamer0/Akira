@@ -1,0 +1,13 @@
+{
+  "id": "sk8-the-infinity-miki",
+  "name": "Miki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-miki-base",
+      "name": "Miki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

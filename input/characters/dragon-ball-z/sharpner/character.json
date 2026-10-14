@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-sharpner",
+  "name": "Sharpner",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-sharpner-base",
+      "name": "Sharpner",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

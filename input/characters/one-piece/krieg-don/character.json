@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-krieg-don",
+  "name": "Krieg Don",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-krieg-don-base",
+      "name": "Krieg Don",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

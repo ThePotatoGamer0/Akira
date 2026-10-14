@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-tashigi",
+  "name": "Tashigi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-tashigi-base",
+      "name": "Tashigi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

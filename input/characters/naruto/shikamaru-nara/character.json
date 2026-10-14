@@ -1,0 +1,13 @@
+{
+  "id": "naruto-shikamaru-nara",
+  "name": "Shikamaru Nara",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-shikamaru-nara-base",
+      "name": "Shikamaru Nara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

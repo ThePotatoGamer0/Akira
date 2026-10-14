@@ -1,0 +1,13 @@
+{
+  "id": "sk8-the-infinity-takashi",
+  "name": "Takashi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-takashi-base",
+      "name": "Takashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-chachamaru",
+  "name": "Chachamaru",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-chachamaru-base",
+      "name": "Chachamaru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

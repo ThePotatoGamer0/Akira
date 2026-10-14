@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-doctor-hogback",
+  "name": "Doctor Hogback",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-piece-doctor-hogback-base",
+      "name": "Doctor Hogback",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

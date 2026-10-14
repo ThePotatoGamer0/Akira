@@ -1,0 +1,13 @@
+{
+  "id": "death-note-hirokazu-ukita",
+  "name": "Hirokazu Ukita",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-hirokazu-ukita-base",
+      "name": "Hirokazu Ukita",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

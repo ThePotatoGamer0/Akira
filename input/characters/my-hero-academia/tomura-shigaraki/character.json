@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-tomura-shigaraki",
+  "name": "Tomura Shigaraki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-tomura-shigaraki-base",
+      "name": "Tomura Shigaraki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

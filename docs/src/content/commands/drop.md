@@ -5,7 +5,7 @@ command: drop
 shortcuts: d
 ---
 
-Akira will help with **/drop** - Channel must be configured by your admin. Three cards appear; react with 1️⃣ 2️⃣ or 3️⃣, then claim with [grab](/commands/grab) when your cooldown allows.
+Akira will help with **/drop** - The channel has to be the server's drop channel. Three cards appear, and the number reaction itself claims one while your grab cooldown allows.
 
 ## Parameters
 
@@ -19,8 +19,9 @@ Parameters are still settling in for slash commands; check in-game `/help` for t
 
 ## Tips
 
-- Drops only work in the channel your server admin configured; if nothing happens, ask them to check Akira’s drop settings.
-- Three cards appear at once - pick your reaction (1️⃣ 2️⃣ 3️⃣) before someone else grabs the one you wanted.
+- Drops only work in the configured channel. Set `DISCORD_DROP_CHANNEL_ID` for the guild in `DISCORD_GUILD_ID`, or ask an admin to store a channel on the guild.
+- Three cards appear at once. React with 1️⃣ 2️⃣ or 3️⃣ to take that card. The drop stays open for 2 minutes, and your own drop cooldown is 20 minutes.
+- Every character's base image is equally likely. Alternate arts are harder to roll. Quality, including a shiny legendary, is rolled separately and does not change the picture.
 
 ## See also
 

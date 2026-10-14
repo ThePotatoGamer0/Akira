@@ -1,0 +1,13 @@
+{
+  "id": "naruto-kin-tsuchi",
+  "name": "Kin Tsuchi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-kin-tsuchi-base",
+      "name": "Kin Tsuchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

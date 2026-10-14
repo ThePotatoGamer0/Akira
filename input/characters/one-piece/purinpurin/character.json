@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-purinpurin",
+  "name": "Purinpurin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-purinpurin-base",
+      "name": "Purinpurin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

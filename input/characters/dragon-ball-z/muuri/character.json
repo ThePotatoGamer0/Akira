@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-muuri",
+  "name": "Muuri",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-muuri-base",
+      "name": "Muuri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

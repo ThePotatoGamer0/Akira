@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-toyo",
+  "name": "Toyo",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-toyo-base",
+      "name": "Toyo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-kirara-hazama",
+  "name": "Kirara Hazama",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "assassination-classroom-kirara-hazama-base",
+      "name": "Kirara Hazama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

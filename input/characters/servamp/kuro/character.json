@@ -1,0 +1,13 @@
+{
+  "id": "servamp-kuro",
+  "name": "Kuro",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-kuro-base",
+      "name": "Kuro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

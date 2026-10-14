@@ -1,0 +1,13 @@
+{
+  "id": "sk8-the-infinity-nanaka-kyan",
+  "name": "Nanaka Kyan",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-nanaka-kyan-base",
+      "name": "Nanaka Kyan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

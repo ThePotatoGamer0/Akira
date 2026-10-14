@@ -1,0 +1,13 @@
+{
+  "id": "sono-bisque-doll-wa-koi-wo-suru-kaoru-gojou",
+  "name": "Kaoru Gojou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sono-bisque-doll-wa-koi-wo-suru-kaoru-gojou-base",
+      "name": "Kaoru Gojou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

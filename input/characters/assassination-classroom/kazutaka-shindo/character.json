@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-kazutaka-shindo",
+  "name": "Kazutaka Shindo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "assassination-classroom-kazutaka-shindo-base",
+      "name": "Kazutaka Shindo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

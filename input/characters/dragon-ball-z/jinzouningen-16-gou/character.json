@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-jinzouningen-16-gou",
+  "name": "Jinzouningen 16-gou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-jinzouningen-16-gou-base",
+      "name": "Jinzouningen 16-gou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

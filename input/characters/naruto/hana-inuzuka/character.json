@@ -1,0 +1,13 @@
+{
+  "id": "naruto-hana-inuzuka",
+  "name": "Hana Inuzuka",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-hana-inuzuka-base",
+      "name": "Hana Inuzuka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

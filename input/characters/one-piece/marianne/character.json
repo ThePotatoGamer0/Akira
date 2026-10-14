@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-marianne",
+  "name": "Marianne",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-marianne-base",
+      "name": "Marianne",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

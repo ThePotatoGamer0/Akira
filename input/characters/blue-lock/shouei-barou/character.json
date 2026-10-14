@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-shouei-barou",
+  "name": "Shouei Barou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-shouei-barou-base",
+      "name": "Shouei Barou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

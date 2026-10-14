@@ -1,0 +1,13 @@
+{
+  "id": "naruto-kimimaro-kaguya",
+  "name": "Kimimaro Kaguya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-kimimaro-kaguya-base",
+      "name": "Kimimaro Kaguya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

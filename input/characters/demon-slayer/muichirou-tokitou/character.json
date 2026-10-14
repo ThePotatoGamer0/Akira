@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-muichirou-tokitou",
+  "name": "Muichirou Tokitou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-muichirou-tokitou-base",
+      "name": "Muichirou Tokitou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

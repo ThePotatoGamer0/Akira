@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-momo-yaoyorozu",
+  "name": "Momo Yaoyorozu",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "my-hero-academia-momo-yaoyorozu-base",
+      "name": "Momo Yaoyorozu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

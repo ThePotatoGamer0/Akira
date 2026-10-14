@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-panda",
+  "name": "Panda",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-panda-base",
+      "name": "Panda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

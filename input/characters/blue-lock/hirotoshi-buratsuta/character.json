@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-hirotoshi-buratsuta",
+  "name": "Hirotoshi Buratsuta",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-hirotoshi-buratsuta-base",
+      "name": "Hirotoshi Buratsuta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

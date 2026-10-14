@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-absalom",
+  "name": "Absalom",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-absalom-base",
+      "name": "Absalom",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

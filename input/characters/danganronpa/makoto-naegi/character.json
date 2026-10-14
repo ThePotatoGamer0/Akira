@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-makoto-naegi",
+  "name": "Makoto Naegi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-makoto-naegi-base",
+      "name": "Makoto Naegi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

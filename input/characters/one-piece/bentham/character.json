@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-bentham",
+  "name": "Bentham",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-bentham-base",
+      "name": "Bentham",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "naruto-ryuugan",
+  "name": "Ryuugan",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-ryuugan-base",
+      "name": "Ryuugan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

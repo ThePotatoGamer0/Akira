@@ -1,0 +1,13 @@
+{
+  "id": "naruto-dosu-kinuta",
+  "name": "Dosu Kinuta",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-dosu-kinuta-base",
+      "name": "Dosu Kinuta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

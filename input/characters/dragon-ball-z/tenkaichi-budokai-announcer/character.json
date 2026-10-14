@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-tenkaichi-budokai-announcer",
+  "name": "Tenkaichi Budokai Announcer",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-tenkaichi-budokai-announcer-base",
+      "name": "Tenkaichi Budokai Announcer",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

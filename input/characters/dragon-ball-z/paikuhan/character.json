@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-paikuhan",
+  "name": "Paikuhan",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-paikuhan-base",
+      "name": "Paikuhan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

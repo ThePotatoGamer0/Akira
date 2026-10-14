@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-pandaman",
+  "name": "Pandaman",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-pandaman-base",
+      "name": "Pandaman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-marco",
+  "name": "Marco",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-marco-base",
+      "name": "Marco",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

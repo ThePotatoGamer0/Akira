@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-piccolo-daimaou",
+  "name": "Piccolo Daimaou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-piccolo-daimaou-base",
+      "name": "Piccolo Daimaou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

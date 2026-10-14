@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-jeice",
+  "name": "Jeice",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-jeice-base",
+      "name": "Jeice",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

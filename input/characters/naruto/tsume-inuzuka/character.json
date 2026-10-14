@@ -1,0 +1,13 @@
+{
+  "id": "naruto-tsume-inuzuka",
+  "name": "Tsume Inuzuka",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-tsume-inuzuka-base",
+      "name": "Tsume Inuzuka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

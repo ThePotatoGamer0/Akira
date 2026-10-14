@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-yudai-imamura",
+  "name": "Yudai Imamura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-yudai-imamura-base",
+      "name": "Yudai Imamura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

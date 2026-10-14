@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-josei-kisha",
+  "name": "Josei Kisha",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "my-hero-academia-josei-kisha-base",
+      "name": "Josei Kisha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "naruto-meizu",
+  "name": "Meizu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-meizu-base",
+      "name": "Meizu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

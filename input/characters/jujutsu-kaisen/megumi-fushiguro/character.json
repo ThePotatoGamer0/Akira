@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-megumi-fushiguro",
+  "name": "Megumi Fushiguro",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-megumi-fushiguro-base",
+      "name": "Megumi Fushiguro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

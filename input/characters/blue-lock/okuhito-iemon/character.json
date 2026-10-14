@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-okuhito-iemon",
+  "name": "Okuhito Iemon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-okuhito-iemon-base",
+      "name": "Okuhito Iemon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

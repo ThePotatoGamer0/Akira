@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-shita-oni",
+  "name": "Shita Oni",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-shita-oni-base",
+      "name": "Shita Oni",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

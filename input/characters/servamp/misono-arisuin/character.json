@@ -1,0 +1,13 @@
+{
+  "id": "servamp-misono-arisuin",
+  "name": "Misono Arisuin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-misono-arisuin-base",
+      "name": "Misono Arisuin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

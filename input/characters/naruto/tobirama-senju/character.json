@@ -1,0 +1,13 @@
+{
+  "id": "naruto-tobirama-senju",
+  "name": "Tobirama Senju",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-tobirama-senju-base",
+      "name": "Tobirama Senju",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

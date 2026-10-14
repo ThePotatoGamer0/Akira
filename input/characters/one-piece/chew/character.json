@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-chew",
+  "name": "Chew",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-chew-base",
+      "name": "Chew",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

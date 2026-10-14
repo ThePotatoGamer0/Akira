@@ -1,0 +1,13 @@
+{
+  "id": "assassination-classroom-megu-kataoka",
+  "name": "Megu Kataoka",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "assassination-classroom-megu-kataoka-base",
+      "name": "Megu Kataoka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

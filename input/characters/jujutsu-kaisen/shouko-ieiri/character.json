@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-shouko-ieiri",
+  "name": "Shouko Ieiri",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-shouko-ieiri-base",
+      "name": "Shouko Ieiri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

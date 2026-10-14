@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-roger-gold",
+  "name": "Roger Gold",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-roger-gold-base",
+      "name": "Roger Gold",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

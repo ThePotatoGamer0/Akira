@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-crocodile",
+  "name": "Crocodile",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-crocodile-base",
+      "name": "Crocodile",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

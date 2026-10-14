@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-jinzouningen-18-gou",
+  "name": "Jinzouningen 18-gou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-jinzouningen-18-gou-base",
+      "name": "Jinzouningen 18-gou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

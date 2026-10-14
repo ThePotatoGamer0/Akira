@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-seito-kaichou",
+  "name": "Seito Kaichou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-seito-kaichou-base",
+      "name": "Seito Kaichou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

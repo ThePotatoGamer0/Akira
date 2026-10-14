@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-higashi-no-kaioushin",
+  "name": "Higashi no Kaioushin",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-higashi-no-kaioushin-base",
+      "name": "Higashi no Kaioushin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

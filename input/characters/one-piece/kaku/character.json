@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-kaku",
+  "name": "Kaku",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-kaku-base",
+      "name": "Kaku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

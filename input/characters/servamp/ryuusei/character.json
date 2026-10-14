@@ -1,0 +1,13 @@
+{
+  "id": "servamp-ryuusei",
+  "name": "Ryuusei",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-ryuusei-base",
+      "name": "Ryuusei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

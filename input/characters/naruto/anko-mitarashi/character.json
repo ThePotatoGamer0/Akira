@@ -1,0 +1,13 @@
+{
+  "id": "naruto-anko-mitarashi",
+  "name": "Anko Mitarashi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-anko-mitarashi-base",
+      "name": "Anko Mitarashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

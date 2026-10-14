@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-kasumi-miwa",
+  "name": "Kasumi Miwa",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-kasumi-miwa-base",
+      "name": "Kasumi Miwa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

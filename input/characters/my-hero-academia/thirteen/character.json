@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-thirteen",
+  "name": "Thirteen",
+  "gender": null,
+  "cards": [
+    {
+      "id": "my-hero-academia-thirteen-base",
+      "name": "Thirteen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

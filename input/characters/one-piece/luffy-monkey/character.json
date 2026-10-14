@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-luffy-monkey",
+  "name": "Luffy Monkey",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-luffy-monkey-base",
+      "name": "Luffy Monkey",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

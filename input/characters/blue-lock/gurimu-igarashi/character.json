@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-gurimu-igarashi",
+  "name": "Gurimu Igarashi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-gurimu-igarashi-base",
+      "name": "Gurimu Igarashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

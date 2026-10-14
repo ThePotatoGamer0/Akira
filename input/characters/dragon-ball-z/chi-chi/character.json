@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-chi-chi",
+  "name": "Chi-Chi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dragon-ball-z-chi-chi-base",
+      "name": "Chi-Chi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

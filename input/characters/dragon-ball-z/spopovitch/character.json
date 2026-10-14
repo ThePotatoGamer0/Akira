@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-spopovitch",
+  "name": "Spopovitch",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-spopovitch-base",
+      "name": "Spopovitch",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

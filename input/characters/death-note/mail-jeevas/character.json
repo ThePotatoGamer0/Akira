@@ -1,0 +1,13 @@
+{
+  "id": "death-note-mail-jeevas",
+  "name": "Mail Jeevas",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-mail-jeevas-base",
+      "name": "Mail Jeevas",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

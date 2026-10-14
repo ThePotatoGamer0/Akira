@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-kumo-oni-chichi",
+  "name": "Kumo Oni Chichi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-kumo-oni-chichi-base",
+      "name": "Kumo Oni Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "naruto-temari",
+  "name": "Temari",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-temari-base",
+      "name": "Temari",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

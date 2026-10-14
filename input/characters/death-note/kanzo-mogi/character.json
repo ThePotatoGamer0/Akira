@@ -1,0 +1,13 @@
+{
+  "id": "death-note-kanzo-mogi",
+  "name": "Kanzo Mogi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-kanzo-mogi-base",
+      "name": "Kanzo Mogi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-vegeta",
+  "name": "Vegeta",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-vegeta-base",
+      "name": "Vegeta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

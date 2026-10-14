@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-gyuumaou",
+  "name": "Gyuumaou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-gyuumaou-base",
+      "name": "Gyuumaou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

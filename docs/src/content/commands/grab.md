@@ -1,26 +1,23 @@
 ---
 title: Grab
-description: Akira will reserve the card matching your number reaction once your grab cooldown allows it.
-command: grab
-shortcuts: g
+description: React on a live drop to claim that card. There is no separate slash command.
 ---
 
-Akira will help with **/grab** - You need a free grab slot and the card must still be unclaimed on a live [drop](/commands/drop).
+Grabbing is the number reaction on a [drop](/commands/drop). 1️⃣ takes the first card, 2️⃣ the second, and 3️⃣ the third. Akira checks that the drop is still open, the card is free, and your grab cooldown has finished.
 
-## Parameters
+## Example
 
-Parameters are still settling in for slash commands; check in-game `/help` for the live option list. Akira keeps descriptions short so slash autocomplete stays readable.
-
-## Example usage
+React on the drop message:
 
 ```
-/grab
+1️⃣
 ```
 
 ## Tips
 
-- Your reaction number must match the card you want, and you need a free grab when the drop is still live.
-- Grab cooldown is separate from drop cooldown - use [cooldowns](/commands/cooldowns) if you are unsure which timer is blocking you.
+- Grab cooldown is 5 minutes and is separate from the drop cooldown. [Cooldowns](/commands/cooldowns) shows both.
+- A drop closes after 2 minutes. Unclaimed cards are not added to anyone's collection.
+- Claiming mints the card, gives it the next print number for that image, and pays a few bits.
 
 ## See also
 

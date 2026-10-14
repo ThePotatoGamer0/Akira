@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-robin-nico",
+  "name": "Robin Nico",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-robin-nico-base",
+      "name": "Robin Nico",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

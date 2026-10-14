@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-seishirou-nagi",
+  "name": "Seishirou Nagi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-seishirou-nagi-base",
+      "name": "Seishirou Nagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-asahi-naruhaya",
+  "name": "Asahi Naruhaya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-asahi-naruhaya-base",
+      "name": "Asahi Naruhaya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

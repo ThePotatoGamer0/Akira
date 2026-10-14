@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-cell",
+  "name": "Cell",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-cell-base",
+      "name": "Cell",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

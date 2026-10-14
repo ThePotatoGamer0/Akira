@@ -1,27 +1,33 @@
 import type { AkiraCommand } from "../../types/commands.js";
+import { burn } from "./burn.js";
+import { collection } from "./collection.js";
+import { cooldowns } from "./cooldowns.js";
+import { daily } from "./daily.js";
+import { drop } from "./drop.js";
+import { frame } from "./frame.js";
 import { help } from "./help.js";
-import { ping } from "./ping.js";
 import {
-  burn,
-  collection,
-  cooldowns,
-  daily,
-  drop,
-  grab,
+  dye,
+  give,
   importCsv,
-  lookup,
+  inventory,
   multiburn,
-  reminders,
-  view,
-} from "./phase1.js";
-import { give, tags, trade, userinfo, wishlist } from "./phase2.js";
-import { dye, frameCmd, inventory, pool, shop } from "./phase3.js";
+  pool,
+  shop,
+  tags,
+  trade,
+} from "./later.js";
+import { reminders } from "./reminders.js";
+import { lookup } from "./lookup.js";
+import { ping } from "./ping.js";
+import { userinfo } from "./userinfo.js";
+import { view } from "./view.js";
+import { wishlist } from "./wishlist.js";
 
 export const commands: AkiraCommand[] = [
   ping,
   help,
   drop,
-  grab,
   collection,
   view,
   burn,
@@ -39,8 +45,8 @@ export const commands: AkiraCommand[] = [
   shop,
   pool,
   dye,
-  frameCmd,
+  frame,
   inventory,
 ];
 
-export const commandMap = new Map(commands.map((c) => [c.data.name, c]));
+export const commandMap = new Map(commands.map((command) => [command.data.name, command]));

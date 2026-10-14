@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-iceburg",
+  "name": "Iceburg",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-iceburg-base",
+      "name": "Iceburg",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

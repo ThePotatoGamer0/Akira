@@ -1,0 +1,13 @@
+{
+  "id": "sk8-the-infinity-langa-hasegawa",
+  "name": "Langa Hasegawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-langa-hasegawa-base",
+      "name": "Langa Hasegawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

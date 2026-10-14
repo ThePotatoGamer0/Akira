@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-susamaru",
+  "name": "Susamaru",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-susamaru-base",
+      "name": "Susamaru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

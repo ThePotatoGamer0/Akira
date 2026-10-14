@@ -1,0 +1,13 @@
+{
+  "id": "naruto-hanabi-hyuuga",
+  "name": "Hanabi Hyuuga",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-hanabi-hyuuga-base",
+      "name": "Hanabi Hyuuga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-ken-ishiyama",
+  "name": "Ken Ishiyama",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-ken-ishiyama-base",
+      "name": "Ken Ishiyama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

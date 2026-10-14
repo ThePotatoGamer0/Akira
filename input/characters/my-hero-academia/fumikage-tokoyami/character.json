@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-fumikage-tokoyami",
+  "name": "Fumikage Tokoyami",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-fumikage-tokoyami-base",
+      "name": "Fumikage Tokoyami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

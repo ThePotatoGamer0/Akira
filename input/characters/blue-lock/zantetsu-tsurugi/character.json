@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-zantetsu-tsurugi",
+  "name": "Zantetsu Tsurugi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-zantetsu-tsurugi-base",
+      "name": "Zantetsu Tsurugi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

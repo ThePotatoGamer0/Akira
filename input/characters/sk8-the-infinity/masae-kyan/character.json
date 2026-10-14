@@ -1,0 +1,13 @@
+{
+  "id": "sk8-the-infinity-masae-kyan",
+  "name": "Masae Kyan",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-masae-kyan-base",
+      "name": "Masae Kyan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

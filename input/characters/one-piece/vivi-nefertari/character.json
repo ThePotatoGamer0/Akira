@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-vivi-nefertari",
+  "name": "Vivi Nefertari",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-vivi-nefertari-base",
+      "name": "Vivi Nefertari",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-mina-ashido",
+  "name": "Mina Ashido",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "my-hero-academia-mina-ashido-base",
+      "name": "Mina Ashido",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

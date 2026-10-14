@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-juuzou-kumiya",
+  "name": "Juuzou Kumiya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-juuzou-kumiya-base",
+      "name": "Juuzou Kumiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

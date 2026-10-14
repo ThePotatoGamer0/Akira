@@ -1,0 +1,13 @@
+{
+  "id": "chainsaw-man-taiyou",
+  "name": "Taiyou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "chainsaw-man-taiyou-base",
+      "name": "Taiyou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dragon-ball-z-tao-pai-pai",
+  "name": "Tao Pai Pai",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-tao-pai-pai-base",
+      "name": "Tao Pai Pai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

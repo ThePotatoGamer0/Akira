@@ -1,0 +1,13 @@
+{
+  "id": "naruto-shino-aburame",
+  "name": "Shino Aburame",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-shino-aburame-base",
+      "name": "Shino Aburame",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

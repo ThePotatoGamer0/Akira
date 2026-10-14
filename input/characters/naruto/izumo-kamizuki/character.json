@@ -1,0 +1,13 @@
+{
+  "id": "naruto-izumo-kamizuki",
+  "name": "Izumo Kamizuki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-izumo-kamizuki-base",
+      "name": "Izumo Kamizuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

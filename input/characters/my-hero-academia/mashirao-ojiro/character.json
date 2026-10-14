@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-mashirao-ojiro",
+  "name": "Mashirao Ojiro",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-mashirao-ojiro-base",
+      "name": "Mashirao Ojiro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-cindry-victoria",
+  "name": "Cindry Victoria",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-cindry-victoria-base",
+      "name": "Cindry Victoria",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

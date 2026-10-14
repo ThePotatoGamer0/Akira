@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-kuro",
+  "name": "Kuro",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-kuro-base",
+      "name": "Kuro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

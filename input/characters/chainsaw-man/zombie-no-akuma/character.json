@@ -1,0 +1,13 @@
+{
+  "id": "chainsaw-man-zombie-no-akuma",
+  "name": "Zombie no Akuma",
+  "gender": null,
+  "cards": [
+    {
+      "id": "chainsaw-man-zombie-no-akuma-base",
+      "name": "Zombie no Akuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

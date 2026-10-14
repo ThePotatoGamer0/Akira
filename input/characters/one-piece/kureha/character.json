@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-kureha",
+  "name": "Kureha",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-kureha-base",
+      "name": "Kureha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

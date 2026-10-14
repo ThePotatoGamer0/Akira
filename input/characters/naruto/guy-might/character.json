@@ -1,0 +1,13 @@
+{
+  "id": "naruto-guy-might",
+  "name": "Guy Might",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-guy-might-base",
+      "name": "Guy Might",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

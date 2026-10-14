@@ -1,0 +1,13 @@
+{
+  "id": "demon-slayer-ozaki",
+  "name": "Ozaki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "demon-slayer-ozaki-base",
+      "name": "Ozaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

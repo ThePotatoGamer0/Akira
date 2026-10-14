@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-all-for-one",
+  "name": "All For One",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-all-for-one-base",
+      "name": "All For One",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

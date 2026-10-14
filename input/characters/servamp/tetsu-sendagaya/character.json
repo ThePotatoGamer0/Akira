@@ -1,0 +1,13 @@
+{
+  "id": "servamp-tetsu-sendagaya",
+  "name": "Tetsu Sendagaya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-tetsu-sendagaya-base",
+      "name": "Tetsu Sendagaya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

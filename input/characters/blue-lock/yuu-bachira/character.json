@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-yuu-bachira",
+  "name": "Yuu Bachira",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-lock-yuu-bachira-base",
+      "name": "Yuu Bachira",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

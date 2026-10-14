@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-issei-isagi",
+  "name": "Issei Isagi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-issei-isagi-base",
+      "name": "Issei Isagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

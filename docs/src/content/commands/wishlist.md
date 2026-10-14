@@ -5,7 +5,7 @@ command: wishlist
 shortcuts: wl
 ---
 
-Akira will help with **/wishlist** - Unlimited slots; Akira gets excited when she routes a wish hit to you. [Drops](/commands/drop) are where those pings usually fire.
+Akira will help with **/wishlist** - Unlimited slots. She pings you when a watched character appears in a [drop](/commands/drop).
 
 ## Parameters
 
@@ -14,13 +14,15 @@ Parameters are still settling in for slash commands; check in-game `/help` for t
 ## Example usage
 
 ```
-/wishlist
+/wishlist show
+/wishlist add character:Denji
+/wishlist remove character:Denji
 ```
 
 ## Tips
 
-- Slots are unlimited - add characters by name so Akira can match pool entries when someone **/drops**.
-- You get pinged when a wishlisted character shows up; keep notification settings in mind so you do not miss a grab window.
+- Slots are unlimited. Add a character by name so Akira can match them when someone drops.
+- You get pinged when a wishlisted character shows up. The drop only stays open for a couple of minutes.
 
 ## See also
 

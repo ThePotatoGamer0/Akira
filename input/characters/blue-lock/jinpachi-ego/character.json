@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-jinpachi-ego",
+  "name": "Jinpachi Ego",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-jinpachi-ego-base",
+      "name": "Jinpachi Ego",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

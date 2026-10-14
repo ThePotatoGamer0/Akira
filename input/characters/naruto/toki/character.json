@@ -1,0 +1,13 @@
+{
+  "id": "naruto-toki",
+  "name": "Toki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-toki-base",
+      "name": "Toki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

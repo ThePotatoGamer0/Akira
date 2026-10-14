@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-minoru-mineta",
+  "name": "Minoru Mineta",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-minoru-mineta-base",
+      "name": "Minoru Mineta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

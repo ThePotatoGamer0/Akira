@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { displayFrameId, serverDefaultFrame } from "../../../../src/game/frames.js";
 import { prisma } from "../db/client.js";
 import { authMiddleware } from "../middleware/auth.js";
 
@@ -26,17 +27,19 @@ collectionRouter.get("/:userId", async (req, res) => {
     orderBy: [{ obtainedAt: "desc" }],
   });
 
+  const serverFrame = await serverDefaultFrame(process.env["DISCORD_GUILD_ID"] ?? null);
   res.json({
     cards: cards.map((c) => {
       const { character: ch } = c.variant;
-      // Fixed: Replaced the slash with a hyphen between ch.slug and c.variant.id to match the physical directory
-      const base = `/api/static/cards/${ch.series.slug}/${ch.slug}-${c.variant.id}/${c.frameId}`;
+      const dye = c.dye && /^[a-zA-Z0-9_-]+$/.test(c.dye) ? c.dye : "none";
+      const frameId = displayFrameId(c.frameId, serverFrame);
+      const base = `/api/static/cards/${c.variant.id}/${frameId}/p${c.printNumber}/${dye}`;
       
       return {
         id: c.id,
         printNumber: c.printNumber,
         quality: c.quality,
-        frameId: c.frameId,
+        frameId,
         tag: c.tag,
         alias: c.alias,
         dye: c.dye,

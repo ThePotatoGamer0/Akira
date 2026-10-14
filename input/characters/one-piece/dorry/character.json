@@ -1,0 +1,13 @@
+{
+  "id": "one-piece-dorry",
+  "name": "Dorry",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-dorry-base",
+      "name": "Dorry",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

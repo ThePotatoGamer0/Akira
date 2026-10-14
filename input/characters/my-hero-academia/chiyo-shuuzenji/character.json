@@ -1,0 +1,13 @@
+{
+  "id": "my-hero-academia-chiyo-shuuzenji",
+  "name": "Chiyo  Shuuzenji",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "my-hero-academia-chiyo-shuuzenji-base",
+      "name": "Chiyo  Shuuzenji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

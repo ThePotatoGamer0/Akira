@@ -1,0 +1,13 @@
+{
+  "id": "naruto-zaku-abumi",
+  "name": "Zaku Abumi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-zaku-abumi-base",
+      "name": "Zaku Abumi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

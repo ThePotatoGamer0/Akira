@@ -1,0 +1,13 @@
+{
+  "id": "jujutsu-kaisen-wasuke-itadori",
+  "name": "Wasuke Itadori",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-wasuke-itadori-base",
+      "name": "Wasuke Itadori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

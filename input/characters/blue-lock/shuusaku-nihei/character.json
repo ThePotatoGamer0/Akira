@@ -1,0 +1,13 @@
+{
+  "id": "blue-lock-shuusaku-nihei",
+  "name": "Shuusaku Nihei",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-shuusaku-nihei-base",
+      "name": "Shuusaku Nihei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}
