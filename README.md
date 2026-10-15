@@ -13,8 +13,8 @@ On the Pi, create `/home/james/akira-data/`. Set the variables below in the Port
 | `DISCORD_TOKEN` | The bot token. |
 | `DISCORD_CLIENT_ID` | The application id. |
 | `DISCORD_CLIENT_SECRET` | The application secret. The activity uses it to match a Discord username to a player. |
-| `DISCORD_GUILD_ID` | Your server, so slash commands register there. Leave empty to register them globally. |
-| `DISCORD_DROP_CHANNEL_ID` | The channel drops go to, until you set one in Discord. |
+| `DISCORD_GUILD_ID` | The server that already has a drop channel from `DISCORD_DROP_CHANNEL_ID`. Slash commands register in every server she joins. Leave the guild id empty to register slash commands globally instead. |
+| `DISCORD_DROP_CHANNEL_ID` | The drop channel for `DISCORD_GUILD_ID`. Other servers stay quiet until an admin runs `aset` in the channel they want. |
 | `AKIRA_INTERNAL_SECRET` | A long random string. The API uses it to ask the bot to send sign-in codes. |
 | `SESSION_SECRET` | A different long random string for login cookies. |
 | `WEBUI_ORIGINS` | The client’s public address, for example `https://akira.vercel.app`. Several addresses are separated by commas. |

@@ -77,6 +77,8 @@ These commands answer, then say the feature is not wired up. They take no parame
 
 ## Server admin
 
+[`/set`](/commands/set) has no parameters. An admin runs it in the channel where cards should drop. Until someone does, Akira ignores commands in that server. `aset` is the text form.
+
 [`aoverridekaruta`](/commands/override-karuta) is text only. An admin gets an **Are you sure?** prompt. Yes makes that server also accept `k` and `k!`. Change Karuta's prefix before turning it on. Run it again to turn it off.
 
 ## See also

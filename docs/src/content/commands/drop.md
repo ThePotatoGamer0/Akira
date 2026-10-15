@@ -24,7 +24,7 @@ ad
 
 ## Tips
 
-- The channel is `DISCORD_DROP_CHANNEL_ID`, or the channel stored for that server.
+- An admin runs `aset` in a channel to choose it. Until then, Akira ignores commands in that server. `DISCORD_DROP_CHANNEL_ID` still counts for the server in `DISCORD_GUILD_ID`.
 - The drop stays open for 2 minutes. Your next drop waits 20 minutes, or less while a drop-cooldown buff is on you. `/cooldowns` shows the wait you actually have.
 - [Quality over quantity](/commands/shop) makes the drop one card. [Four cards](/commands/shop) makes it four, and adds a fourth grab reaction. If both are on, the drop is one card.
 - For the first 20 seconds, if someone else takes a card, you can grab that same card and take it back. Akira says you fought them off. They keep the grab cooldown from the attempt. You get the card, 5 bits, and your own grab cooldown.

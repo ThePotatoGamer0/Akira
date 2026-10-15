@@ -32,11 +32,24 @@ function keepGlobalCommand(command: APIApplicationCommand) {
   return rest;
 }
 
+function slashBody(extra?: AkiraCommand[]) {
+  return [...commands, ...(extra ?? [])].map((c) => c.data.toJSON());
+}
+
+/** Guild commands show up quickly. Call this for every server the bot is in. */
+export async function registerGuildCommands(targetGuildId: string, extra?: AkiraCommand[]): Promise<void> {
+  if (!token || !clientId) {
+    throw new Error("DISCORD_TOKEN and DISCORD_CLIENT_ID are required to register commands.");
+  }
+  const rest = new REST({ version: "10" }).setToken(token);
+  await rest.put(Routes.applicationGuildCommands(clientId, targetGuildId), { body: slashBody(extra) });
+}
+
 export async function registerSlashCommands(extra?: AkiraCommand[]): Promise<void> {
   if (!token || !clientId) {
     throw new Error("DISCORD_TOKEN and DISCORD_CLIENT_ID are required to register commands.");
   }
-  const slash = [...commands, ...(extra ?? [])].map((c) => c.data.toJSON());
+  const slash = slashBody(extra);
   const rest = new REST({ version: "10" }).setToken(token);
 
   if (guildId) {
