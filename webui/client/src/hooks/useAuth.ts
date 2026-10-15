@@ -4,6 +4,11 @@ import { useDiscordSDK } from "./useDiscordSDK.js";
 
 const apiBase = (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
 
+export function apiUrl(path: string): string {
+  if (/^https?:\/\//.test(path)) return path;
+  return `${apiBase}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
 function discordActivityContext(): boolean {
   const list = window.location.ancestorOrigins;
   if (!list || list.length === 0) return false;

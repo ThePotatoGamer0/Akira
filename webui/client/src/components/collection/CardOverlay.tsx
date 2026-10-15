@@ -5,11 +5,12 @@ import { QualityStars, TagMark } from "../marks.js";
 import { frameLabel } from "../../lib/frames.js";
 import { qualityCondition, showsShiny } from "../../lib/quality.js";
 import type { CollectionCard, CollectionStudio } from "../../types/index.js";
+import { apiUrl } from "../../hooks/useAuth.js";
 
 function assetUrl(card: CollectionCard, frameId: number, shiny: boolean): string {
   const dye = card.dye && /^[a-zA-Z0-9_-]+$/.test(card.dye) ? card.dye : "none";
   const file = shiny ? "shiny.apng" : "normal.png";
-  return `/api/static/cards/${card.variant.id}/${frameId}/p${card.printNumber}/${dye}/${file}`;
+  return apiUrl(`/api/static/cards/${card.variant.id}/${frameId}/p${card.printNumber}/${dye}/${file}`);
 }
 
 export function CardOverlay(props: {
