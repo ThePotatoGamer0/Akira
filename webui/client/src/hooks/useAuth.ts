@@ -7,7 +7,7 @@ export { apiFetch, apiUrl } from "../lib/api.js";
 
 export function useAuth() {
   const clientId = import.meta.env.VITE_DISCORD_CLIENT_ID;
-  const { state: sdkState, connect } = useDiscordSDK(clientId);
+  const { state: sdkState, connect, layout } = useDiscordSDK(clientId);
 
   const [me, setMe] = useState<Me | null>(null);
   const [loading, setLoading] = useState(true);
@@ -70,6 +70,7 @@ export function useAuth() {
 
   return {
     isDiscordActivity,
+    activityLayout: layout,
     discordSdk: sdkState.status === "ready" ? sdkState.sdk : undefined,
     discordUserId,
     me,

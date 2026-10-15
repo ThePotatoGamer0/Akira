@@ -15,9 +15,31 @@ import "./styles.css";
 
 type AuthView = "login" | "verify" | "setpass";
 
+function CompactActivity(props: { name?: string; loading: boolean; error: string | null }) {
+  let line = "Signed in";
+  if (props.error) line = props.error;
+  else if (props.loading) line = "Signing in…";
+  else if (props.name) line = `Signed in as ${props.name}`;
+  return (
+    <div className="webui-pip">
+      <div className="webui-pip-brand">Akira</div>
+      <p className="webui-pip-line">{line}</p>
+    </div>
+  );
+}
+
 export function App() {
   const auth = useAuth();
   const [authView, setAuthView] = useState<AuthView>("login");
+  const compact = auth.activityLayout === "pip" || auth.activityLayout === "grid";
+
+  if (compact) {
+    return (
+      <WebUiShell compact>
+        <CompactActivity name={auth.me?.displayName} loading={auth.loading} error={auth.error} />
+      </WebUiShell>
+    );
+  }
 
   if (auth.loading) {
     return (

@@ -134,6 +134,49 @@ body::before {
   padding-top: 0.5rem;
 }
 
+.webui-pip-root {
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+.webui-pip {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.7rem;
+}
+
+.webui-pip-brand {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.35rem, 16vw, 2.4rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.webui-pip-line {
+  margin: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: clamp(0.68rem, 4.2vw, 0.92rem);
+  font-weight: 500;
+  color: var(--muted);
+}
+
 a {
   color: var(--accent);
   font-weight: 500;
