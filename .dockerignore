@@ -12,10 +12,17 @@ node_modules
 dist
 build
 .astro
+src/generated
 
-# Strip frontend and documentation from the backend build context
+# The client and the docs site are deployed on Vercel, not in this image.
 docs/
 webui/client/
+
+# Card image cache is created on the Pi and kept in a volume.
+assets/cards
+
+# Portrait downloads are not needed once character art is installed.
+input/portraits
 
 # Local environment files and databases
 .env
@@ -23,3 +30,4 @@ webui/client/
 *.db
 *.db-journal
 init.lock
+.cursor

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Me } from "../types/index.js";
 import { useDiscordSDK } from "./useDiscordSDK.js";
 
-const apiBase = import.meta.env.VITE_API_URL ?? "";
+const apiBase = (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
 
 function discordActivityContext(): boolean {
   const list = window.location.ancestorOrigins;

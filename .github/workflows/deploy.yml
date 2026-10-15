@@ -1,5 +1,7 @@
 name: Build and Push Image
 
+# Publishes the Pi image (bot and WebUI API) on every push to main.
+
 on:
   push:
     branches:

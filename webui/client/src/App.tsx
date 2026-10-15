@@ -38,8 +38,7 @@ export function App() {
   }
 
   if (!auth.isDiscordActivity && !auth.me) {
-    const fetchBrowser = (path: string, init?: RequestInit) =>
-      fetch(path, { ...init, credentials: "include" });
+    const fetchBrowser = auth.fetchApi;
 
     if (authView === "verify") {
       return (

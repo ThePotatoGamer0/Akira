@@ -1,2 +1,43 @@
 # Akira
- The Akira Discord bot.
+
+The Discord bot and the WebUI API run together on the Pi. The docs site and the WebUI client run on Vercel.
+
+## Pi (Portainer)
+
+Each push to `main` builds this image in GitHub Actions and publishes `ghcr.io/thepotatogamer0/akira-bot:latest`. The build includes an arm64 copy for the Pi. In Portainer, add a stack from `docker-compose.yml` and pull that image. After a later push, pull the image again and recreate the container.
+
+Set these in the stack environment:
+
+| Name | What it is |
+| --- | --- |
+| `DISCORD_TOKEN` | The bot token. |
+| `DISCORD_CLIENT_ID` | The application id. |
+| `DISCORD_GUILD_ID` | Your server, so slash commands register there. Leave empty to register them globally. |
+| `DISCORD_DROP_CHANNEL_ID` | The channel drops go to, until you set one in Discord. |
+| `AKIRA_INTERNAL_SECRET` | A long random string. The API uses it to ask the bot to send sign-in codes. |
+| `SESSION_SECRET` | A different long random string for login cookies. |
+| `WEBUI_ORIGINS` | The client’s public address, for example `https://akira.vercel.app`. Several addresses are separated by commas. |
+
+The stack publishes port **3333**. That is the API. Put HTTPS in front of it (Caddy, Traefik, or a Cloudflare tunnel). The browser will not keep a login cookie for a Vercel site unless the API is HTTPS.
+
+Two volumes stay on the Pi:
+
+- `akira-data` is the database.
+- `akira-cards` is the generated card pictures.
+
+Character art is inside the image. After you add characters, push to `main` and pull the new image on the Pi.
+
+The first start seeds the catalog and registers slash commands. That can take a few minutes. Portainer should show the container healthy once `http://127.0.0.1:3333/health` answers.
+
+## Vercel
+
+Create two projects from this repository.
+
+**Client.** Root directory `webui/client`. Framework Vite. Set these before the first build:
+
+- `VITE_API_URL` is the API’s public address, with no slash at the end. Example: `https://akira-api.example.com`
+- `VITE_DISCORD_CLIENT_ID` is the same application id as on the Pi, for the Discord Activity.
+
+**Docs.** Root directory `docs`. Framework Astro. No API variables.
+
+`WEBUI_ORIGINS` on the Pi must include the client’s Vercel address. After you change it, redeploy the stack. Signing in from the Vercel site sends the browser to the Pi, and the cookie is allowed because that origin was listed.

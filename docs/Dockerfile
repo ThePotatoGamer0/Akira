@@ -1,4 +1,5 @@
 # syntax=docker/dockerfile:1
+# The docs site is deployed on Vercel (root directory docs), not on the Pi.
 # Build from repository root: docker build -f docs/Dockerfile .
 FROM --platform=linux/arm64 node:22-bookworm-slim AS build
 WORKDIR /app

@@ -1,4 +1,5 @@
 # syntax=docker/dockerfile:1
+# The Pi uses the Dockerfile at the repository root, which runs the bot and this API together.
 # Build from repository root: docker build -f webui/server/Dockerfile .
 FROM --platform=linux/arm64 node:22-bookworm-slim
 WORKDIR /app

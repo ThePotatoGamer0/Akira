@@ -25,6 +25,15 @@ const extra = (process.env["WEBUI_ORIGINS"] ?? "")
   .map((s) => s.trim())
   .filter(Boolean);
 
+const crossSite = extra.some((origin) => {
+  try {
+    const url = new URL(origin);
+    return url.protocol === "https:" && url.hostname !== "localhost";
+  } catch {
+    return false;
+  }
+});
+
 app.set("trust proxy", 1);
 
 app.use(
@@ -72,8 +81,9 @@ app.use(
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      sameSite: process.env["NODE_ENV"] === "production" ? "lax" : "lax",
-      secure: process.env["COOKIE_SECURE"] === "1",
+      sameSite: crossSite ? "none" : "lax",
+      secure: crossSite || process.env["COOKIE_SECURE"] === "1",
+      partitioned: crossSite,
       maxAge: 30 * 24 * 60 * 60 * 1000,
     },
   }),
