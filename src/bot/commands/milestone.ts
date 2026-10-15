@@ -8,9 +8,9 @@ import { sendGameError } from "../reply.js";
 export const milestone: AkiraCommand = {
   data: new SlashCommandBuilder()
     .setName("milestone")
-    .setDescription("See this cycle's milestone bar")
-    .addSubcommand((sub) => sub.setName("show").setDescription("List the ten tiers and where you are"))
-    .addSubcommand((sub) => sub.setName("claim").setDescription("Take the next milestone payout")),
+    .setDescription("See this cycle's bar. The first step is 250 bits, then each step doubles.")
+    .addSubcommand((sub) => sub.setName("show").setDescription("List all ten steps, from 250 bits up to 128,000"))
+    .addSubcommand((sub) => sub.setName("claim").setDescription("Take the next payout when the bar has reached it")),
   execute: async (interaction: ChatInputCommandInteraction, _client: Client) => {
     try {
       const sub = interaction.options.getSubcommand();
@@ -24,7 +24,7 @@ export const milestone: AkiraCommand = {
       const user = await ensureUser(interaction.user.id, interaction.user.username);
       const view = await economySnapshot(user.id, interaction.guildId);
       const rows = view.milestones.map((row) => {
-        const mark = row.claimed ? "claimed" : `${row.cost.toLocaleString("en-US")} given, pays ${row.payout.toLocaleString("en-US")}`;
+        const mark = row.claimed ? "claimed" : `${row.cost.toLocaleString("en-US")} bits, pays ${row.payout.toLocaleString("en-US")}`;
         const extra = row.prestige ? ` Prestige reward: ${row.prestige}` : "";
         return `${row.step}. ${mark}.${extra}`;
       });

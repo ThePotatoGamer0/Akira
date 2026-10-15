@@ -170,7 +170,7 @@ Parameters: none. Aliases: `i`, `inv`, `items`.
 Lists shop, server, and prestige buffs separately, then a combined result. An empty source is omitted.
 
 ### /milestone
-`show` or `claim`. Lists the ten steps. Claim pays the next step's bits and does not stamp a prestige percent.
+`show` or `claim`. Lists the ten steps. The first step is 250 bits and pays 200. Each step doubles, up to 128,000 bits paying 30,000. Claim pays the next step's bits and does not stamp a prestige percent.
 
 ### /prestige
 Parameters: none. Always says how far the next milestone is and what waiting would add. After milestone 5 is claimed, a confirm button resets the bar and stamps permanents for every step past 5 that was claimed. Prestige at 5 keeps none. Prestige at 10 keeps all five percents. A second prestige at 10 makes each of those 2%. Cards, bits, tags, and frames stay. Daily bits do not increase.
@@ -210,16 +210,16 @@ Only pool gifts fill the bar. Costs double. The payout is always less than the s
 
 | Step | Cost | Pays | Prestige after this |
 |------|------|------|---------------------|
-| 1 | 500 | 200 | |
-| 2 | 1,000 | 350 | |
-| 3 | 2,000 | 600 | |
-| 4 | 4,000 | 1,000 | |
-| 5 | 8,000 | 2,000 | Opens prestige. No percent. |
-| 6 | 16,000 | 3,500 | Burns pay 1% more |
-| 7 | 32,000 | 6,000 | Grab cooldown 1% shorter |
-| 8 | 64,000 | 10,000 | Drop cooldown 1% shorter |
-| 9 | 128,000 | 18,000 | Mints a little more likely |
-| 10 | 256,000 | 30,000 | Main characters 1% more likely |
+| 1 | 250 | 200 | |
+| 2 | 500 | 350 | |
+| 3 | 1,000 | 600 | |
+| 4 | 2,000 | 1,000 | |
+| 5 | 4,000 | 2,000 | Opens prestige. No percent. |
+| 6 | 8,000 | 3,500 | Burns pay 1% more |
+| 7 | 16,000 | 6,000 | Grab cooldown 1% shorter |
+| 8 | 32,000 | 10,000 | Drop cooldown 1% shorter |
+| 9 | 64,000 | 18,000 | Mints a little more likely |
+| 10 | 128,000 | 30,000 | Main characters 1% more likely |
 
 There is no step past 10.
 

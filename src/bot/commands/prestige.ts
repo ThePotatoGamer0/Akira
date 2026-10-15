@@ -58,7 +58,7 @@ export async function handlePrestigeButton(interaction: ButtonInteraction): Prom
     const result = await prestigeCycle(interaction.user.id, interaction.user.username);
     const kept = result.kept.length > 0 ? result.kept.join(" ") : "No permanent buffs were stamped.";
     await interaction.update({
-      content: `Prestige ${result.prestigeLevel}. The bar is back at the 500-bit milestone. ${kept}`,
+      content: `Prestige ${result.prestigeLevel}. The bar is back at the 250-bit milestone. ${kept}`,
       components: [],
     });
   } catch (err) {
