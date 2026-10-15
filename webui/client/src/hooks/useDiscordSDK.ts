@@ -1,10 +1,35 @@
 import { useCallback, useState } from "react";
 import { DiscordSDK } from "@discord/embedded-app-sdk";
+import { apiFetch } from "../lib/api.js";
 
 type State =
   | { status: "idle" | "loading" }
-  | { status: "ready"; discordUserId: string; sdk: DiscordSDK }
+  | { status: "ready"; discordUserId: string; accessToken: string; sdk: DiscordSDK }
   | { status: "error"; message: string };
+
+/**
+ * Discord launches the activity with `frame_id` in the query, inside discord.com
+ * or a discordsays.com frame. A normal visit to the site has neither.
+ */
+export function isDiscordActivityContext(): boolean {
+  const params = new URLSearchParams(window.location.search);
+  if (params.has("frame_id")) return true;
+  const list = window.location.ancestorOrigins;
+  if (!list) return false;
+  for (let i = 0; i < list.length; i++) {
+    const origin = list.item(i);
+    if (!origin) continue;
+    try {
+      const host = new URL(origin).hostname;
+      if (host === "discord.com" || host.endsWith(".discord.com") || host === "discordsays.com" || host.endsWith(".discordsays.com")) {
+        return true;
+      }
+    } catch {
+      /* ignore */
+    }
+  }
+  return false;
+}
 
 /**
  * Initialise the Discord Embedded App SDK (Activity context only).
@@ -21,12 +46,31 @@ export function useDiscordSDK(clientId: string | undefined) {
     try {
       const sdk = new DiscordSDK(clientId);
       await sdk.ready();
-      const { user } = await sdk.commands.authenticate({});
-      if (!user?.id) {
-        setState({ status: "error", message: "Discord did not return a user id." });
+      const { code } = await sdk.commands.authorize({
+        client_id: clientId,
+        response_type: "code",
+        state: "",
+        scope: ["identify"],
+      });
+      const res = await apiFetch("/auth/activity", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code }),
+      });
+      const body = (await res.json().catch(() => null)) as { accessToken?: string; error?: string } | null;
+      if (!res.ok || !body?.accessToken) {
+        setState({
+          status: "error",
+          message: body?.error ?? "Discord didn't accept that sign-in.",
+        });
         return;
       }
-      setState({ status: "ready", discordUserId: user.id, sdk });
+      const { user } = await sdk.commands.authenticate({ access_token: body.accessToken });
+      if (!user?.id) {
+        setState({ status: "error", message: "Discord did not return a user." });
+        return;
+      }
+      setState({ status: "ready", discordUserId: user.id, accessToken: body.accessToken, sdk });
     } catch (e) {
       setState({
         status: "error",
