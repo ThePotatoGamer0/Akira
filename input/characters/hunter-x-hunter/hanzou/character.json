@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-hanzou",
+  "name": "Hanzou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-hanzou-base",
+      "name": "Hanzou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

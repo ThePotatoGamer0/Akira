@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-super-tamao",
+  "name": "Super Tamao",
+  "gender": null,
+  "cards": [
+    {
+      "id": "shangri-la-frontier-super-tamao-base",
+      "name": "Super Tamao",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

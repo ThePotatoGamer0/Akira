@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-senkou-no-flash",
+  "name": "Senkou no Flash",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-senkou-no-flash-base",
+      "name": "Senkou no Flash",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

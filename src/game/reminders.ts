@@ -1,4 +1,5 @@
 import type { CooldownType } from "../generated/prisma/client.js";
+import { icon } from "../utils/icons.js";
 import { prisma } from "../db/client.js";
 import { formatDuration } from "./display.js";
 import { GameError } from "./errors.js";
@@ -26,7 +27,7 @@ export function reminderLabel(action: ReminderAction): string {
 }
 
 export function reminderLine(action: ReminderAction, enabled: boolean, remainingMs: number): string {
-  const bell = enabled ? "🔔" : "🔕";
+  const bell = enabled ? icon("bell") : icon("bell-off");
   const label = reminderLabel(action);
   if (remainingMs <= 0) return `${bell} **${label}** is ready`;
   return `${bell} **${label}** is available in \`${formatDuration(remainingMs)}\``;

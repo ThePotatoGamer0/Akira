@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-chougoukin-kurobikari",
+  "name": "Chougoukin Kurobikari",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-chougoukin-kurobikari-base",
+      "name": "Chougoukin Kurobikari",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

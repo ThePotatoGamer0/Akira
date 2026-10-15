@@ -1,0 +1,13 @@
+{
+  "id": "frieren-minami-no-yuusha",
+  "name": "Minami no Yuusha",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-minami-no-yuusha-base",
+      "name": "Minami no Yuusha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

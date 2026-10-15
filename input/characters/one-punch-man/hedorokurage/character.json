@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-hedorokurage",
+  "name": "Hedorokurage",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-hedorokurage-base",
+      "name": "Hedorokurage",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

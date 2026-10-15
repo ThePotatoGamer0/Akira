@@ -9,17 +9,17 @@ import {
   decideClaim,
   DROP_COOLDOWN_MS,
   DROP_OPEN_MS,
-  DROP_SLOT_COUNT,
   formatRemaining,
   GRAB_BITS,
-  GRAB_COOLDOWN_MS,
   issuePrint,
   rollArts,
   rollQuality,
   type Quality,
 } from "./balance.js";
+import { dropWeight } from "./buffs.js";
 import { mintCardCode } from "./codes.js";
 import { GameError } from "./errors.js";
+import { activeEffects } from "./live-buffs.js";
 import { ensureUser } from "./users.js";
 
 const variantInclude = {
@@ -48,6 +48,7 @@ export type PreparedDrop = {
   channelId: string;
   userId: string;
   dropperDiscordId: string;
+  dropCooldownMs: number;
   expiresAt: Date;
   slots: PresentedSlot[];
   wishlistDiscordIds: string[];
@@ -64,6 +65,8 @@ type VariantRow = {
     id: string;
     name: string;
     slug: string;
+    role: string | null;
+    seriesId: string;
     series: { slug: string; name: string };
   };
 };
@@ -153,10 +156,19 @@ export async function prepareDrop(input: {
     throw new GameError("empty", "Akira doesn't have any card art to drop yet.");
   }
 
+  const effects = await activeEffects(user.id, input.guildId);
   const rng = input.rng ?? Math.random;
-  const rolled = rollArts(variants, rng, DROP_SLOT_COUNT);
+  const rolled = rollArts(variants, rng, effects.cardCount, (variant) =>
+    dropWeight({
+      variantId: variant.id,
+      rarity: variant.rarity,
+      seriesId: variant.character.seriesId,
+      role: variant.character.role,
+      effects,
+    }),
+  );
   const slots = rolled.map((variant, index) =>
-    slotFromVariant(index + 1, variant, rollQuality(rng), frameId),
+    slotFromVariant(index + 1, variant, rollQuality(rng, effects.legendaryWeight), frameId),
   );
   const wishes = await wishlistDiscordIds(slots.map((slot) => slot.characterId));
 
@@ -165,6 +177,7 @@ export async function prepareDrop(input: {
     channelId: input.channelId,
     userId: user.id,
     dropperDiscordId: input.discordId,
+    dropCooldownMs: effects.dropCooldownMs,
     expiresAt: new Date(Date.now() + DROP_OPEN_MS),
     slots,
     wishlistDiscordIds: wishes.filter((id) => id !== input.discordId),
@@ -172,7 +185,7 @@ export async function prepareDrop(input: {
 }
 
 export async function commitDrop(prepared: PreparedDrop, messageId: string): Promise<void> {
-  const expiresAt = new Date(Date.now() + DROP_COOLDOWN_MS);
+  const expiresAt = new Date(Date.now() + prepared.dropCooldownMs);
   await prisma.$transaction(async (tx) => {
     const existing = await tx.cooldown.findUnique({
       where: { userId_type: { userId: prepared.userId, type: "DROP" } },
@@ -190,6 +203,7 @@ export async function commitDrop(prepared: PreparedDrop, messageId: string): Pro
         channelId: prepared.channelId,
         messageId,
         expiresAt: prepared.expiresAt,
+        dropperId: prepared.userId,
         slots: {
           create: prepared.slots.map((slot) => ({
             position: slot.position,
@@ -232,6 +246,7 @@ function present(drop: DropWithSlots, wishlistIds: string[], serverFrame: number
     channelId: drop.channelId,
     userId: "",
     dropperDiscordId: "",
+    dropCooldownMs: DROP_COOLDOWN_MS,
     expiresAt: drop.expiresAt,
     wishlistDiscordIds: wishlistIds,
     slots: drop.slots
@@ -283,6 +298,8 @@ export type ClaimResult = {
   quality: Quality;
   characterName: string;
   bits: number;
+  /** Discord id of the player who grabbed first, when the dropper took the card back. */
+  foughtOffDiscordId: string | null;
   presentation: DropPresentation;
 };
 
@@ -293,11 +310,16 @@ export async function claimReaction(input: {
   username: string;
 }): Promise<ClaimResult> {
   const user = await ensureUser(input.discordId, input.username);
+  const dropGuild = await prisma.drop.findUnique({
+    where: { messageId: input.messageId },
+    select: { guildId: true },
+  });
+  const grabMs = (await activeEffects(user.id, dropGuild?.guildId ?? null)).grabCooldownMs;
 
   const claimed = await prisma.$transaction(async (tx) => {
     const drop = await tx.drop.findUnique({
       where: { messageId: input.messageId },
-      include: { slots: true },
+      include: { slots: { include: { claimedBy: true, card: true } } },
     });
     if (!drop) {
       throw new GameError("missing", "Akira couldn't find that drop.");
@@ -313,12 +335,58 @@ export async function claimReaction(input: {
     const decision = decideClaim({
       now: Date.now(),
       expiresAt: drop.expiresAt.getTime(),
+      dropCreatedAt: drop.createdAt.getTime(),
       slotClaimed: slot.claimedById !== null,
+      claimerIsDropper: drop.dropperId !== null && drop.dropperId === user.id,
+      claimedByDropper: drop.dropperId !== null && slot.claimedById === drop.dropperId,
       grabReadyAt: grab ? grab.expiresAt.getTime() : null,
     });
     if (!decision.ok) {
       const remaining = grab ? Math.max(0, grab.expiresAt.getTime() - Date.now()) : 0;
       throw new GameError(decision.reason, claimFailureMessage(decision.reason, remaining));
+    }
+
+    if (decision.foughtOff) {
+      const sniper = slot.claimedBy;
+      const card = slot.card;
+      if (!sniper || !card) {
+        throw new GameError("taken", claimFailureMessage("taken", 0));
+      }
+      const moved = await tx.dropSlot.updateMany({
+        where: { id: slot.id, claimedById: sniper.id },
+        data: { claimedById: user.id },
+      });
+      if (moved.count !== 1) {
+        throw new GameError("taken", claimFailureMessage("taken", 0));
+      }
+      await tx.card.update({
+        where: { id: card.id },
+        data: { ownerId: user.id },
+      });
+      const sniperRow = await tx.user.findUnique({ where: { id: sniper.id } });
+      await tx.user.update({
+        where: { id: sniper.id },
+        data: {
+          bits: Math.max(0, (sniperRow?.bits ?? 0) - GRAB_BITS),
+          lastGrabbedCardId: sniperRow?.lastGrabbedCardId === card.id ? null : (sniperRow?.lastGrabbedCardId ?? null),
+        },
+      });
+      await tx.user.update({
+        where: { id: user.id },
+        data: { bits: { increment: GRAB_BITS } },
+      });
+      const grabExpires = new Date(Date.now() + grabMs);
+      await tx.cooldown.upsert({
+        where: { userId_type: { userId: user.id, type: "GRAB" } },
+        create: { userId: user.id, type: "GRAB", expiresAt: grabExpires },
+        update: { expiresAt: grabExpires },
+      });
+      return {
+        cardId: card.id,
+        printNumber: card.printNumber,
+        quality: slot.quality,
+        foughtOffDiscordId: sniper.discordId,
+      };
     }
 
     const taken = await tx.dropSlot.updateMany({
@@ -362,7 +430,7 @@ export async function claimReaction(input: {
       where: { id: user.id },
       data: { bits: { increment: GRAB_BITS } },
     });
-    const grabExpires = new Date(Date.now() + GRAB_COOLDOWN_MS);
+    const grabExpires = new Date(Date.now() + grabMs);
     await tx.cooldown.upsert({
       where: { userId_type: { userId: user.id, type: "GRAB" } },
       create: { userId: user.id, type: "GRAB", expiresAt: grabExpires },
@@ -373,6 +441,7 @@ export async function claimReaction(input: {
       cardId: card.id,
       printNumber: printed.printNumber,
       quality: slot.quality,
+      foughtOffDiscordId: null,
     };
   });
 

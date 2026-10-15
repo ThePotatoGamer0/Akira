@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-felix-argyle",
+  "name": "Felix Argyle",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-felix-argyle-base",
+      "name": "Felix Argyle",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

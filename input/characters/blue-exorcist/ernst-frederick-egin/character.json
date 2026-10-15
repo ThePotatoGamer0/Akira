@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-ernst-frederick-egin",
+  "name": "Ernst Frederick Egin",
+  "gender": null,
+  "cards": [
+    {
+      "id": "blue-exorcist-ernst-frederick-egin-base",
+      "name": "Ernst Frederick Egin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

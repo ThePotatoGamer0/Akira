@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-hector",
+  "name": "Hector",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-hector-base",
+      "name": "Hector",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

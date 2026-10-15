@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-bakko",
+  "name": "Bakko",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-bakko-base",
+      "name": "Bakko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

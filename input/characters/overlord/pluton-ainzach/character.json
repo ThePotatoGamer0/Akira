@@ -1,0 +1,13 @@
+{
+  "id": "overlord-pluton-ainzach",
+  "name": "Pluton Ainzach",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-pluton-ainzach-base",
+      "name": "Pluton Ainzach",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

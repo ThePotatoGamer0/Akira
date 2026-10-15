@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-delamain",
+  "name": "Delamain",
+  "gender": null,
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-delamain-base",
+      "name": "Delamain",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

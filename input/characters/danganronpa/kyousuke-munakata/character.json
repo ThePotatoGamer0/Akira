@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-kyousuke-munakata",
+  "name": "Kyousuke Munakata",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-kyousuke-munakata-base",
+      "name": "Kyousuke Munakata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

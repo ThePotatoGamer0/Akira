@@ -1,0 +1,14 @@
+{
+  "id": "yarichin-bitch-club-yuu-kashima",
+  "name": "Yuu Kashima",
+  "gender": null,
+  "cards": [
+    {
+      "id": "yarichin-bitch-club-yuu-kashima-base",
+      "name": "Yuu Kashima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

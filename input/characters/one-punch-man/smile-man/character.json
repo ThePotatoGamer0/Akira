@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-smile-man",
+  "name": "Smile Man",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-smile-man-base",
+      "name": "Smile Man",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

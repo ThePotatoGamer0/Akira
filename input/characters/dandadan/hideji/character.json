@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-hideji",
+  "name": "Hideji",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dandadan-hideji-base",
+      "name": "Hideji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

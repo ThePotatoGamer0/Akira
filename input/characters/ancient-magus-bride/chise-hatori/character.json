@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-chise-hatori",
+  "name": "Chise Hatori",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-chise-hatori-base",
+      "name": "Chise Hatori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

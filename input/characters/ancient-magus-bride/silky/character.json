@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-silky",
+  "name": "Silky",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-silky-base",
+      "name": "Silky",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

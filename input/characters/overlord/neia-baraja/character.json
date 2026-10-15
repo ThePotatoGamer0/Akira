@@ -1,0 +1,13 @@
+{
+  "id": "overlord-neia-baraja",
+  "name": "Neia Baraja",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-neia-baraja-base",
+      "name": "Neia Baraja",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

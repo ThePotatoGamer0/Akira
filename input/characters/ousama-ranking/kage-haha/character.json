@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-kage-haha",
+  "name": "Kage Haha",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ousama-ranking-kage-haha-base",
+      "name": "Kage Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

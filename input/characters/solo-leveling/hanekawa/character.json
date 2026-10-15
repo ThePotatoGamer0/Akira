@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-hanekawa",
+  "name": "Hanekawa",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "solo-leveling-hanekawa-base",
+      "name": "Hanekawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

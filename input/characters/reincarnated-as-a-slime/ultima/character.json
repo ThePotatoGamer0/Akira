@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-ultima",
+  "name": "Ultima",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-ultima-base",
+      "name": "Ultima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

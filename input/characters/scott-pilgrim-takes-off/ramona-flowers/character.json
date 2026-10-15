@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-ramona-flowers",
+  "name": "Ramona Flowers",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-ramona-flowers-base",
+      "name": "Ramona Flowers",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-puri-puri-prisoner",
+  "name": "Puri-Puri Prisoner",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-puri-puri-prisoner-base",
+      "name": "Puri-Puri Prisoner",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

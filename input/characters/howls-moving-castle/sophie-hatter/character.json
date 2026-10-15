@@ -1,0 +1,13 @@
+{
+  "id": "howls-moving-castle-sophie-hatter",
+  "name": "Sophie Hatter",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "howls-moving-castle-sophie-hatter-base",
+      "name": "Sophie Hatter",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

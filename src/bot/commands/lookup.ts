@@ -13,8 +13,10 @@ import {
   type StringSelectMenuInteraction,
 } from "discord.js";
 import { QUALITIES } from "../../game/balance.js";
-import { editionCirculation, getLookupCharacter, searchCharacters } from "../../game/cards.js";
+import { LOOKUP_PAGE_SIZE, editionCirculation, getLookupCharacter, searchCharacters } from "../../game/cards.js";
+import { editionIndexForVariant, editionOrder } from "../../game/editions.js";
 import { qualityStars } from "../../game/display.js";
+import { icon } from "../../utils/icons.js";
 import { variantArtPath } from "../../utils/paths.js";
 import type { AkiraCommand } from "../../types/commands.js";
 import { sendGameError } from "../reply.js";
@@ -39,13 +41,7 @@ function aliasCount(raw: string | null): number {
   }
 }
 
-function editionOrder<T extends { id: string; name: string }>(variants: T[]): T[] {
-  return variants.slice().sort((a, b) => {
-    const base = Number(b.id.endsWith("-base")) - Number(a.id.endsWith("-base"));
-    if (base !== 0) return base;
-    return a.name.localeCompare(b.name);
-  });
-}
+export { editionIndexForVariant };
 
 function count(value: number): string {
   return value.toLocaleString("en-GB");
@@ -53,9 +49,39 @@ function count(value: number): string {
 
 type ListedCharacter = Awaited<ReturnType<typeof searchCharacters>>["characters"][number];
 
-function resultsPayload(userId: string, query: string, total: number, characters: ListedCharacter[]) {
+function resultsButtons(userId: string, query: string, page: number, total: number) {
+  if (total <= LOOKUP_PAGE_SIZE) return [];
+  const pages = Math.max(1, Math.ceil(total / LOOKUP_PAGE_SIZE));
+  const packed = packQuery(query);
+  const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
+    new ButtonBuilder()
+      .setCustomId(`lookup:page:${userId}:first:0:${packed}`)
+      .setEmoji(icon("skip-back"))
+      .setStyle(ButtonStyle.Secondary)
+      .setDisabled(page <= 0),
+    new ButtonBuilder()
+      .setCustomId(`lookup:page:${userId}:prev:${page - 1}:${packed}`)
+      .setEmoji(icon("chevron-left"))
+      .setStyle(ButtonStyle.Primary)
+      .setDisabled(page <= 0),
+    new ButtonBuilder()
+      .setCustomId(`lookup:page:${userId}:next:${page + 1}:${packed}`)
+      .setEmoji(icon("chevron-right"))
+      .setStyle(ButtonStyle.Primary)
+      .setDisabled(page >= pages - 1),
+    new ButtonBuilder()
+      .setCustomId(`lookup:page:${userId}:last:${pages - 1}:${packed}`)
+      .setEmoji(icon("skip-forward"))
+      .setStyle(ButtonStyle.Secondary)
+      .setDisabled(page >= pages - 1),
+  );
+  return [row];
+}
+
+function resultsPayload(userId: string, query: string, total: number, page: number, characters: ListedCharacter[]) {
+  const start = page * LOOKUP_PAGE_SIZE;
   const lines = characters.map((character, index) =>
-    `${index + 1}. \`${character._count.wishlists}\` · ${character.series.name} · **${character.name}**`,
+    `${start + index + 1}. \`${character._count.wishlists}\` · ${character.series.name} · **${character.name}**`,
   );
   const embed = new EmbedBuilder()
     .setTitle("Character Results")
@@ -64,13 +90,13 @@ function resultsPayload(userId: string, query: string, total: number, characters
       [
         `<@${userId}>, please select a character using the menu below.`,
         "",
-        `Showing characters 1-${characters.length} of ${total}`,
+        `Showing characters ${start + 1}-${start + characters.length} of ${total}`,
         "",
         lines.join("\n"),
       ].join("\n"),
     );
   const menu = new StringSelectMenuBuilder()
-    .setCustomId(`lookup:pick:${userId}:${packQuery(query)}`)
+    .setCustomId(`lookup:pick:${userId}:${page}:${packQuery(query)}`)
     .setPlaceholder("Select a character")
     .addOptions(
       characters.map((character) => ({
@@ -80,10 +106,10 @@ function resultsPayload(userId: string, query: string, total: number, characters
       })),
     );
   const row = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(menu);
-  return { embeds: [embed], components: [row] };
+  return { embeds: [embed], components: [row, ...resultsButtons(userId, query, page, total)] };
 }
 
-async function detailPayload(userId: string, query: string, characterId: string, editionIndex: number) {
+async function detailPayload(userId: string, query: string, characterId: string, editionIndex: number, resultsPage: number) {
   const character = await getLookupCharacter(characterId);
   if (!character) {
     return {
@@ -136,24 +162,43 @@ async function detailPayload(userId: string, query: string, characterId: string,
   }
 
   const packed = packQuery(query);
+  const page = Math.max(0, resultsPage);
   const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
     new ButtonBuilder()
-      .setCustomId(`lookup:back:${userId}:${packed}`)
+      .setCustomId(`lookup:back:${userId}:${page}:${packed}`)
       .setLabel("Back")
       .setStyle(ButtonStyle.Secondary),
     new ButtonBuilder()
-      .setCustomId(`lookup:ed:${index - 1}:${character.id}:${userId}:${packed}`)
-      .setEmoji("◀️")
+      .setCustomId(`lookup:ed:${index - 1}:${character.id}:${userId}:${page}:${packed}`)
+      .setEmoji(icon("chevron-left"))
       .setStyle(ButtonStyle.Primary)
       .setDisabled(index <= 0),
     new ButtonBuilder()
-      .setCustomId(`lookup:ed:${index + 1}:${character.id}:${userId}:${packed}`)
-      .setEmoji("▶️")
+      .setCustomId(`lookup:ed:${index + 1}:${character.id}:${userId}:${page}:${packed}`)
+      .setEmoji(icon("chevron-right"))
       .setStyle(ButtonStyle.Primary)
       .setDisabled(index >= editions.length - 1),
   );
 
   return { content: null, embeds: [embed], components: [row], files };
+}
+
+/** Character lookup for one edition, the page `alu` opens for the last grab. */
+export async function replyCharacterEdition(
+  interaction: ChatInputCommandInteraction,
+  characterId: string,
+  variantId: string,
+  query: string,
+): Promise<void> {
+  const character = await getLookupCharacter(characterId);
+  const index = character ? editionIndexForVariant(character.variants, variantId) : 0;
+  const payload = await detailPayload(interaction.user.id, query, characterId, index, 0);
+  await interaction.reply({
+    embeds: payload.embeds,
+    components: payload.components,
+    files: payload.files,
+    ...(payload.content ? { content: payload.content } : {}),
+  });
 }
 
 export const lookup: AkiraCommand = {
@@ -166,7 +211,7 @@ export const lookup: AkiraCommand = {
   execute: async (interaction: ChatInputCommandInteraction, _client: Client) => {
     const name = interaction.options.getString("name", true);
     try {
-      const { total, characters } = await searchCharacters(name);
+      const { total, page, characters } = await searchCharacters(name);
       if (total === 0) {
         await interaction.reply({
           content: `Akira couldn't find anything matching "${name.trim()}".`,
@@ -174,7 +219,7 @@ export const lookup: AkiraCommand = {
         });
         return;
       }
-      await interaction.reply(resultsPayload(interaction.user.id, name, total, characters));
+      await interaction.reply(resultsPayload(interaction.user.id, name, total, page, characters));
     } catch (err) {
       await sendGameError(interaction, err);
     }
@@ -182,37 +227,63 @@ export const lookup: AkiraCommand = {
 };
 
 export async function handleLookupSelect(interaction: StringSelectMenuInteraction): Promise<boolean> {
-  const match = /^lookup:pick:(\d+):([A-Za-z0-9_-]+)$/.exec(interaction.customId);
+  const match = /^lookup:pick:(\d+):(\d+):([A-Za-z0-9_-]+)$/.exec(interaction.customId)
+    ?? /^lookup:pick:(\d+):([A-Za-z0-9_-]+)$/.exec(interaction.customId);
   if (!match) return false;
   const characterId = interaction.values[0];
   if (!characterId) return true;
-  const payload = await detailPayload(match[1]!, unpackQuery(match[2]!), characterId, 0);
+  const hasPage = match.length === 4;
+  const userId = match[1]!;
+  const page = hasPage ? Number(match[2]) : 0;
+  const packed = hasPage ? match[3]! : match[2]!;
+  const payload = await detailPayload(userId, unpackQuery(packed), characterId, 0, page);
   await interaction.update(payload);
   return true;
 }
 
+async function showResults(userId: string, query: string, page: number) {
+  const found = await searchCharacters(query, page);
+  if (found.total === 0) {
+    return {
+      content: `Akira couldn't find anything matching "${query}".`,
+      embeds: [],
+      components: [],
+      attachments: [],
+    };
+  }
+  return { ...resultsPayload(userId, query, found.total, found.page, found.characters), attachments: [] };
+}
+
 export async function handleLookupButton(interaction: ButtonInteraction): Promise<boolean> {
-  const back = /^lookup:back:(\d+):([A-Za-z0-9_-]+)$/.exec(interaction.customId);
-  if (back) {
-    const userId = back[1]!;
-    const query = unpackQuery(back[2]!);
-    const { total, characters } = await searchCharacters(query);
-    if (total === 0) {
-      await interaction.update({
-        content: `Akira couldn't find anything matching "${query}".`,
-        embeds: [],
-        components: [],
-        attachments: [],
-      });
-      return true;
-    }
-    await interaction.update({ ...resultsPayload(userId, query, total, characters), attachments: [] });
+  const pageButton = /^lookup:page:(\d+):(first|prev|next|last):(-?\d+):([A-Za-z0-9_-]+)$/.exec(interaction.customId);
+  const oldPageButton = pageButton ? null : /^lookup:page:(\d+):(-?\d+):([A-Za-z0-9_-]+)$/.exec(interaction.customId);
+  if (pageButton) {
+    await interaction.update(await showResults(pageButton[1]!, unpackQuery(pageButton[4]!), Number(pageButton[3])));
+    return true;
+  }
+  if (oldPageButton) {
+    await interaction.update(await showResults(oldPageButton[1]!, unpackQuery(oldPageButton[3]!), Number(oldPageButton[2])));
     return true;
   }
 
-  const edition = /^lookup:ed:(\d+):([a-z0-9]+):(\d+):([A-Za-z0-9_-]+)$/.exec(interaction.customId);
+  const back = /^lookup:back:(\d+):(\d+):([A-Za-z0-9_-]+)$/.exec(interaction.customId)
+    ?? /^lookup:back:(\d+):([A-Za-z0-9_-]+)$/.exec(interaction.customId);
+  if (back) {
+    const hasPage = back.length === 4;
+    const userId = back[1]!;
+    const page = hasPage ? Number(back[2]) : 0;
+    const packed = hasPage ? back[3]! : back[2]!;
+    await interaction.update(await showResults(userId, unpackQuery(packed), page));
+    return true;
+  }
+
+  const edition = /^lookup:ed:(-?\d+):([a-z0-9]+):(\d+):(\d+):([A-Za-z0-9_-]+)$/.exec(interaction.customId)
+    ?? /^lookup:ed:(-?\d+):([a-z0-9]+):(\d+):([A-Za-z0-9_-]+)$/.exec(interaction.customId);
   if (!edition) return false;
-  const payload = await detailPayload(edition[3]!, unpackQuery(edition[4]!), edition[2]!, Number(edition[1]));
+  const hasPage = edition.length === 6;
+  const resultsPage = hasPage ? Number(edition[4]) : 0;
+  const packed = hasPage ? edition[5]! : edition[4]!;
+  const payload = await detailPayload(edition[3]!, unpackQuery(packed), edition[2]!, Number(edition[1]), resultsPage);
   await interaction.update(payload);
   return true;
 }

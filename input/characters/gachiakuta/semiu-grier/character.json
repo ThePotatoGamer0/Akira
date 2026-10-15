@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-semiu-grier",
+  "name": "Semiu Grier",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "gachiakuta-semiu-grier-base",
+      "name": "Semiu Grier",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

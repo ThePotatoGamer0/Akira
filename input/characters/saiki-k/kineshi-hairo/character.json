@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-kineshi-hairo",
+  "name": "Kineshi Hairo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-kineshi-hairo-base",
+      "name": "Kineshi Hairo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

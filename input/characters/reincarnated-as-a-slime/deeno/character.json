@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-deeno",
+  "name": "Deeno",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-deeno-base",
+      "name": "Deeno",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

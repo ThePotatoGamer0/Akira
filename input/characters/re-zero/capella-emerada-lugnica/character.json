@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-capella-emerada-lugnica",
+  "name": "Capella Emerada Lugnica",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-capella-emerada-lugnica-base",
+      "name": "Capella Emerada Lugnica",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-ryuunosuke-tanaka",
+  "name": "Ryuunosuke Tanaka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-ryuunosuke-tanaka-base",
+      "name": "Ryuunosuke Tanaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

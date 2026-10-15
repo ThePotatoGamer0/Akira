@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-hatagami-g5",
+  "name": "Hatagami G5",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-hatagami-g5-base",
+      "name": "Hatagami G5",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

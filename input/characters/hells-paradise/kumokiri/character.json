@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-kumokiri",
+  "name": "Kumokiri",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-kumokiri-base",
+      "name": "Kumokiri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

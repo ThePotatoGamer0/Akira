@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-narrator",
+  "name": "Narrator",
+  "gender": null,
+  "cards": [
+    {
+      "id": "evangelion-narrator-base",
+      "name": "Narrator",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

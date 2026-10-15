@@ -1,0 +1,13 @@
+{
+  "id": "overlord-margrave-urovana",
+  "name": "Margrave Urovana",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "overlord-margrave-urovana-base",
+      "name": "Margrave Urovana",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

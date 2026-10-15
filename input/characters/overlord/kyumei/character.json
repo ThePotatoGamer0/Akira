@@ -1,0 +1,13 @@
+{
+  "id": "overlord-kyumei",
+  "name": "Kyumei",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-kyumei-base",
+      "name": "Kyumei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

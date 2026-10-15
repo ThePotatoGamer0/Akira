@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-bojji",
+  "name": "Bojji",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-bojji-base",
+      "name": "Bojji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

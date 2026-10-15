@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-sakura-himegami",
+  "name": "Sakura Himegami",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-sakura-himegami-base",
+      "name": "Sakura Himegami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

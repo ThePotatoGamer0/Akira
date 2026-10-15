@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-regulus-corneas",
+  "name": "Regulus Corneas",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-regulus-corneas-base",
+      "name": "Regulus Corneas",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

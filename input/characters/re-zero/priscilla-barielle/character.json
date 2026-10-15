@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-priscilla-barielle",
+  "name": "Priscilla Barielle",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-priscilla-barielle-base",
+      "name": "Priscilla Barielle",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

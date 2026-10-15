@@ -1,0 +1,13 @@
+{
+  "id": "overlord-renner-theiere-chardelon-ryle-vaiself",
+  "name": "Renner Theiere Chardelon Ryle Vaiself",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-renner-theiere-chardelon-ryle-vaiself-base",
+      "name": "Renner Theiere Chardelon Ryle Vaiself",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

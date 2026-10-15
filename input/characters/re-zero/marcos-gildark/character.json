@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-marcos-gildark",
+  "name": "Marcos Gildark",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-marcos-gildark-base",
+      "name": "Marcos Gildark",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

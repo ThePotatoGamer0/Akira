@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-gouka-no-flame",
+  "name": "Gouka no Flame",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-gouka-no-flame-base",
+      "name": "Gouka no Flame",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

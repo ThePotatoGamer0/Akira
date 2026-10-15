@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yuusuke-takinoue",
+  "name": "Yuusuke Takinoue",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-yuusuke-takinoue-base",
+      "name": "Yuusuke Takinoue",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

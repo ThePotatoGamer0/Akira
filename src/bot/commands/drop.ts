@@ -1,5 +1,5 @@
 import { SlashCommandBuilder, type ChatInputCommandInteraction, type Client } from "discord.js";
-import { SLOT_EMOJIS } from "../../game/balance.js";
+import { icon } from "../../utils/icons.js";
 import { commitDrop, prepareDrop } from "../../game/drops.js";
 import { GameError } from "../../game/errors.js";
 import type { AkiraCommand } from "../../types/commands.js";
@@ -9,7 +9,7 @@ import { renderDropMessage } from "../drop-message.js";
 import { sendGameError } from "../reply.js";
 
 export const drop: AkiraCommand = {
-  data: new SlashCommandBuilder().setName("drop").setDescription("Set three cards down in the drop channel"),
+  data: new SlashCommandBuilder().setName("drop").setDescription("Set cards down in the drop channel"),
   execute: async (interaction: ChatInputCommandInteraction, _client: Client) => {
     if (!interaction.guildId || !interaction.channelId) {
       await interaction.reply({
@@ -39,8 +39,9 @@ export const drop: AkiraCommand = {
         channelId: prepared.channelId,
         expiresAt: prepared.expiresAt,
       });
-      for (const emoji of SLOT_EMOJIS) {
-        await message.react(emoji);
+      const slotIcons = ["slot-1", "slot-2", "slot-3", "slot-4"] as const;
+      for (const key of slotIcons.slice(0, prepared.slots.length)) {
+        await message.react(icon(key));
       }
     } catch (err) {
       if (interaction.deferred && !committed) {

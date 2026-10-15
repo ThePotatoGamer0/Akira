@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-gnomulas-ridd",
+  "name": "Gnomulas Ridd",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-gnomulas-ridd-base",
+      "name": "Gnomulas Ridd",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

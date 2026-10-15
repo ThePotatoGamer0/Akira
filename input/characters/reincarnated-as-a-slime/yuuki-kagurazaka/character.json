@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-yuuki-kagurazaka",
+  "name": "Yuuki Kagurazaka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-yuuki-kagurazaka-base",
+      "name": "Yuuki Kagurazaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

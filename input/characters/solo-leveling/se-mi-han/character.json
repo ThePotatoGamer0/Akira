@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-se-mi-han",
+  "name": "Se-Mi Han",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "solo-leveling-se-mi-han-base",
+      "name": "Se-Mi Han",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

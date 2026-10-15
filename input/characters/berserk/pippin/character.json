@@ -1,0 +1,13 @@
+{
+  "id": "berserk-pippin",
+  "name": "Pippin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "berserk-pippin-base",
+      "name": "Pippin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

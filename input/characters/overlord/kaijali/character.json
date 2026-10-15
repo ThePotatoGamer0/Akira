@@ -1,0 +1,13 @@
+{
+  "id": "overlord-kaijali",
+  "name": "Kaijali",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-kaijali-base",
+      "name": "Kaijali",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

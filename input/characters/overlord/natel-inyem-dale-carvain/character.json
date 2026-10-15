@@ -1,0 +1,13 @@
+{
+  "id": "overlord-natel-inyem-dale-carvain",
+  "name": "Natel Inyem Dale Carvain",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-natel-inyem-dale-carvain-base",
+      "name": "Natel Inyem Dale Carvain",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

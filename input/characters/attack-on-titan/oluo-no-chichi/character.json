@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-oluo-no-chichi",
+  "name": "Oluo no Chichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-oluo-no-chichi-base",
+      "name": "Oluo no Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

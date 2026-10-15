@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-keiji-itami",
+  "name": "Keiji Itami",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-keiji-itami-base",
+      "name": "Keiji Itami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

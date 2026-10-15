@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-haragiri",
+  "name": "Haragiri",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-haragiri-base",
+      "name": "Haragiri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

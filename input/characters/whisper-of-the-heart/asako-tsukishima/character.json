@@ -1,0 +1,13 @@
+{
+  "id": "whisper-of-the-heart-asako-tsukishima",
+  "name": "Asako Tsukishima",
+  "gender": null,
+  "cards": [
+    {
+      "id": "whisper-of-the-heart-asako-tsukishima-base",
+      "name": "Asako Tsukishima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

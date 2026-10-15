@@ -36,17 +36,17 @@ Two separate rolls:
 Images are composed the first time a drop or a view needs them, then cached. Init does not pre-render the whole catalog. A cache miss composites character art under the frame and draws the name and print from `input/frames/{id}/config.json`.
 
 - `normal.png` - static image
-- `shiny.apng` - looping shimmer, used for Legendary (and dyed cards once dye exists)
-- `burn.apng` - burn animation, composed when a card is burned
+- `shiny.gif` - looping shimmer, used for Legendary (and dyed cards once dye exists)
+- `burn.gif` - burn animation, composed when a card is burned
 
-Files use the `.apng` extension explicitly. Discord only serves APNG files inline as animation if the extension is `.apng`. Files with a `.png` extension are converted to WebP by Discord's CDN, which strips animation data.
+Discord does not animate APNG attachments, so shiny cards, burns, and a drop that contains a shiny card are GIF. A drop with no shiny cards stays a PNG.
 
 Cached paths:
 ```
 assets/cards/{variant_id}/{frame_id}/preview/none/normal.png
 assets/cards/{variant_id}/{frame_id}/p{print}/none/normal.png
-assets/cards/{variant_id}/{frame_id}/p{print}/none/shiny.apng
-assets/cards/{variant_id}/{frame_id}/p{print}/none/burn.apng
+assets/cards/{variant_id}/{frame_id}/p{print}/none/shiny.gif
+assets/cards/{variant_id}/{frame_id}/p{print}/none/burn.gif
 ```
 
 Source art and frames live in:
@@ -58,8 +58,8 @@ input/frames/{id}/config.json
 input/showcase/         ← reserved for a future Akira's Gift animation
 ```
 
-### Akira's Gift animation
-When a user receives a prestige frame reward, Akira plays a special animation stored at `assets/frames/gift/{frame_id}.apng`. The sequence is: title card "Akira's Gift" with the frame border visible → cards from the showcase folder cycle rapidly in the center → slows and holds on a final card → loops. The same animation template is used for every frame - only the frame border changes. Designed to loop seamlessly.
+### Frames
+Dark (frame 0) and Yellow (frame 1) are the frames in the game. Prestige does not grant a frame. The showcase folder is unused.
 
 ---
 
@@ -69,14 +69,15 @@ Slash commands and text commands call the same handlers. The text prefix default
 
 ### /drop
 Parameters: none. Aliases: `d`.
-Places three cards in the configured drop channel as one picture. Drop cooldown is 20 minutes. The drop stays open for 2 minutes. Unclaimed cards are not saved.
+Places cards in the configured drop channel as one picture. A normal drop is three cards. Quality over quantity makes it one. Four cards makes it four, and never five. If both are active, the drop is one card. Drop cooldown is 20 minutes, 10 with the shop or server reducer, and 5 when both are active. A prestige percent shortens that further. The drop stays open for 2 minutes. Unclaimed cards are not saved. For the first 20 seconds, if someone else grabs a card, the dropper can grab that same card and take it back. The message says they fought the other player off. The other player keeps their grab cooldown.
 
 ### Grab (reaction only)
-No slash command and no alias. React 1️⃣ 2️⃣ or 3️⃣ on the drop. A successful grab mints a 7 character card code, assigns the next print, and pays 5 bits. Grab cooldown is 5 minutes. `av` with no code then opens that card.
+No slash command and no alias. React 1️⃣ 2️⃣ or 3️⃣ on the drop. A four-card drop also accepts 4️⃣. A successful grab mints a 7 character card code, assigns the next print, and pays 5 bits. Grab cooldown is 5 minutes, 2 minutes 30 seconds with one reducer, and 1 minute 15 seconds with both. A prestige percent shortens that further. `av` with no code then opens that card.
 
-### /collection [user]
-Parameters: optional user mention. Aliases: `c`, `col`.
+### /collection [user] [filters]
+Parameters: optional user mention. Optional filters. Aliases: `c`, `col`.
 Lists owned cards, ten per page. Each line is code, stars, print, frame, series, and character.
+Filters are `type:value` or `type is value`. `s` series, `c` character, `e` edition (1 is the base art), `t` tag, `q` quality from 1 common to 5 legendary, `o:#` low prints first, `o:w` most wishlisted first. A value runs until the next filter. `ac hello` is ignored.
 
 ### /view <card_id>
 Parameters: `card_id` required on slash. Prefix `v` or `view` with no code uses the last grabbed card. Alias: `v`.
@@ -87,8 +88,8 @@ Parameters: required 7 character code. Alias: `b`.
 Destroys an owned card and plays the burn animation. Bits: Common 10, Uncommon 25, Rare 50, Epic 100, Legendary 250.
 
 ### /lookup <name>
-Parameters: required name (character, series, or alias). Aliases: `lu`, `search`, `find`.
-Numbered results and a menu. Selecting one shows editions (card variants), a portrait, print count, and circulation. Buttons swap editions.
+Parameters: `name` required on slash (character, series, or alias). Aliases: `lu`, `search`, `find`.
+Numbered results, 25 per page, and a menu. Page buttons show the rest of the matches. Selecting one shows editions (card variants), a portrait, print count, and circulation. Buttons swap editions. Back returns to that results page. Prefix `alu` with no name opens that page for the last grabbed card, on the edition that was grabbed. `av` still shows the exact copy.
 
 ### /wishlist
 `show` optional user. `add` required character. `remove` required character.
@@ -113,7 +114,7 @@ A null frame on a card uses `GuildConfig.defaultFrameId`.
 
 ### /userinfo [user]
 Parameters: optional user mention. Aliases: `ui`, `whois`.
-Bits, card count, prestige level, milestones claimed, milestone progress, and daily bonus.
+Bits, card count, prestige level, milestones this cycle, bits given this cycle, and any daily bonus already stored.
 
 ### /help and /ping
 Parameters: none. No short aliases (`ahelp`, `aping`). Both save the Discord username used by WebUI sign-in.
@@ -121,102 +122,111 @@ Parameters: none. No short aliases (`ahelp`, `aping`). Both save the Discord use
 ### aoverridekaruta
 Text only. No parameters. Server admin. Confirmation embed. Enabling also accepts `k` and `k!` in that server. Run it again to disable. Change Karuta's prefix before enabling.
 
+### /give user card_id
+Parameters: required `user` mention and required `card_id`. Alias: `g`.
+Offers your card. Both players press the check mark before it moves. Either can cancel. Expires after 5 minutes.
+
+### /trade user card_id their_card
+Parameters: required `user`, `card_id`, and `their_card`. No short alias (`atrade`).
+Offers your card for one of theirs. The image is the two cards with a swap arrow between them. Both players press the check mark. Either can cancel. Expires after 5 minutes.
+
+### /tag tag_name [card_ids]
+Parameters: required `tag_name`. Optional `card_ids`, space-separated 7 character codes. Alias: `t`.
+No codes tags the last grabbed card. The emoji sits on the left of the card line. Untagged cards use ◾. `at the store` is not a command.
+
+### /taglist [user]
+Parameters: optional user mention. Aliases: `tags`, `tl`.
+Lists that player's tags, each emoji, and how many cards use it.
+
+### /tagcreate tag_name emoji
+Parameters: required name and emoji. Aliases: `tagadd`, `ta`, `tc`.
+Names are one word: letters, numbers, `-` and `_`. Server emojis are not allowed.
+
+### /tagdelete tag_name
+Parameters: required name. Aliases: `tagremove`, `tr`, `td`.
+Deletes the tag and clears it from that player's cards. Giving or trading a card also clears its tag.
+
+### /untag [card_ids]
+Parameters: optional `card_ids`, space-separated 7 character codes. Alias: `ut`.
+No codes untags the last grabbed card. The line goes back to ◾.
+
+### /multiburn tag_name
+Parameters: required `tag_name`. Alias: `mb`.
+Burns every card on that tag. Asks first: the confirmation says how many cards and names the rarest. Cards in an open give or trade are left alone. Pays the same bits as burn.
+
 ### Not finished
 These reply that the feature is not wired up. They take no parameters.
-`/multiburn` (`mb`), `/give` (`g`), `/trade`, `/shop` (`is`, `itemshop`), `/inventory` (`i`, `inv`, `items`), `/tags` (`t`, `tl`, `taglist`), `/dye`, `/pool`, `/import`.
-There is no `/buy`, `/tag`, `/tagcreate`, `/untag`, `/alias`, `/contribute`, or `/prestige` command.
+`/dye`, `/import`.
+
+### /shop
+Parameters: none. Aliases: `is`, `itemshop`.
+Opens an embed of the first personal buff, with previous, next, and buy. There is no `/shop buy`. Buying starts a timer. Buying again extends the time left. The seven buffs are drop cooldown (400 bits, 24h, 10 minutes), grab cooldown (350, 12h, 2 minutes 30 seconds), burn value (300, 24h, `/burn` pays double), four cards (500, 24h), shiny luck (600, 24h, mints 1 in 51), featured series (450, 24h, that series is twice as likely and stays locked to the series shown at purchase), and quality over quantity (500, 24h, one card and main characters are much more likely).
+
+### /pool
+`show` or `give` with a required bit amount. `apool` is show. `apool give 200` moves 200 bits into the server pot and the player's milestone bar.
+
+### /inventory
+Parameters: none. Aliases: `i`, `inv`, `items`.
+Lists shop, server, and prestige buffs separately, then a combined result. An empty source is omitted.
+
+### /milestone
+`show` or `claim`. Lists the ten steps. Claim pays the next step's bits and does not stamp a prestige percent.
+
+### /prestige
+Parameters: none. Always says how far the next milestone is and what waiting would add. After milestone 5 is claimed, a confirm button resets the bar and stamps permanents for every step past 5 that was claimed. Prestige at 5 keeps none. Prestige at 10 keeps all five percents. A second prestige at 10 makes each of those 2%. Cards, bits, tags, and frames stay. Daily bits do not increase.
 
 ---
 
 ## Economy
 
 ### Bits
-Bits are the only currency in Akira. There are no premium currencies, no real-money purchases, no gems, no tickets. This is intentional - Akira is a friend group bot and pay-to-win mechanics would damage the social dynamic.
+Bits are the only currency. Grabbing pays 5. Daily pays 100, plus any bonus already stored on the profile, once every 24 hours. New prestiges do not add to daily. Burning one card pays 10, 25, 50, 100, or 250 by quality. Burn value doubles a single `/burn`. Multiburn pays the plain table.
 
-**Sources of bits:**
-- Grabbing a card from a drop (5 bits)
-- Claiming the daily reward
-- Burning cards (amount based on quality tier)
-- Passive prestige bonus (added to daily reward)
+Bits leave the wallet in two ways. The shop buys a personal timed buff. A pool gift enters the server pot and the giver's milestone bar. Shop purchases do not fill the bar. Cards, tags, and frames are never wiped by spending or prestiging.
 
-**Sinks for bits:**
-- Personal buffs from the shop
-- Contributing to the server buff pool
+### Shop
+Seven personal buffs. Buying starts the clock. Buying the same one again adds the duration onto the time left. Featured series, burn value, and quality over quantity are shop-only.
 
-### Personal buffs (shop items)
-Temporary buffs purchasable with bits. Active for a fixed duration after use.
-- Drop rate booster: increases frequency of card drops
-- Grab protection: prevents others from taking a card the user was reacting to
-- Burn value booster: increases bits received from burns for a window
+A normal mint is 1 in 100 cards (legendary is the only shiny drop). Shiny luck from the shop or the server alone is 1 in 51. Both together is 1 in 34. Player-facing copy says those odds, not a weight.
 
----
+Quality over quantity forces one card even if four cards is also active. Four cards never becomes five. Main characters are the AniList MAIN cast. Supporting characters, and characters with no role, can still drop.
 
-## Server Buff Pool
+### Server pool
+One pot per server. At midnight UTC, if the pot is under 500 bits, nothing is applied and the bits stay. At 500 or more, the pot is spent to 0 and the chosen buff lasts 24 hours. The roll also runs at startup if that night was missed, and the result is announced in the drop channel.
 
-A daily communal mechanic. Users contribute bits to a shared server pool. At daily reset, the pool total is evaluated against tier thresholds. If the threshold for a tier is met, there is a percentage chance that tier's buff activates for the following day. The pool resets to zero after the roll regardless of outcome.
+The tier is the highest reached. One buff is chosen from that tier and every tier below it. Tier 4 chooses two different buffs from tiers 1 to 3.
 
-### Tier thresholds and effects
+| Tier | Bits | Choice |
+|------|------|--------|
+| 1 | 500 | Grab cooldown, always |
+| 2 | 2,000 | One of grab cooldown, drop cooldown, or shiny luck |
+| 3 | 2,500 | One of those, or four cards |
+| 4 | 5,000 | Two different buffs from the tier 3 list |
 
-| Tier | Bits required | Effect | Chance of activating |
-|------|--------------|--------|---------------------|
-| 0 | 0 | No buff | 100% (guaranteed no buff) |
-| 1 | 500 | +1 extra drop per hour | 40% |
-| 2 | 1,500 | Drop cooldown halved | 55% |
-| 3 | 3,000 | Rare card guaranteed in every drop | 60% |
-| 4 | 6,000 | Double burn value all day | 65% |
-| 5 | 12,000 | All tier 1–4 effects combined | 75% |
+Shop and server cooldown reducers stop at 5 minutes for drop and 1 minute 15 seconds for grab. Shiny luck stops at 1 in 34. Prestige percents apply after those floors.
 
-The chance mechanic is intentional. Hitting the threshold unlocks the possibility, not the certainty. This preserves the gambling feel and makes the reveal the next day exciting rather than transactional.
+### Milestones
+Only pool gifts fill the bar. Costs double. The payout is always less than the step. Leftover progress stays. Claim one step at a time. Claiming pays bits and does not grant the prestige percent.
 
-Only the highest threshold met is evaluated. If the pool reaches 6,000 bits, a tier 4 roll is made - not separate rolls for tiers 1 through 4.
+| Step | Cost | Pays | Prestige after this |
+|------|------|------|---------------------|
+| 1 | 500 | 200 | |
+| 2 | 1,000 | 350 | |
+| 3 | 2,000 | 600 | |
+| 4 | 4,000 | 1,000 | |
+| 5 | 8,000 | 2,000 | Opens prestige. No percent. |
+| 6 | 16,000 | 3,500 | Burns pay 1% more |
+| 7 | 32,000 | 6,000 | Grab cooldown 1% shorter |
+| 8 | 64,000 | 10,000 | Drop cooldown 1% shorter |
+| 9 | 128,000 | 18,000 | Mints a little more likely |
+| 10 | 256,000 | 30,000 | Main characters 1% more likely |
 
----
+There is no step past 10.
 
-## Personal Milestone System
+### Prestige
+Optional once milestone 5 is claimed. Confirming resets the bar and the claim count to 0 and stamps a permanent for every step past 5 that was claimed. Prestige at 5 stamps nothing. Prestige at 7 keeps the step 6 and step 7 percents. Prestige at 10 keeps all five. Each later prestige adds another 1% to every buff that prestige included, so two prestiges at 10 is 2% on all five.
 
-Every bit contributed to the server pool also counts toward a private personal milestone counter. This counter is separate from the pool total and persists across days - it only resets when the user claims a milestone reward.
-
-### Milestone thresholds (per cycle)
-Each time a milestone is claimed, the next threshold is higher - diminishing returns by design.
-
-Cycle 1: 1,000 bits
-Cycle 2: 2,000 bits
-Cycle 3: 3,500 bits
-Cycle 4: 5,500 bits
-Cycle 5: 8,000 bits
-Cycle 6: 11,000 bits
-Cycle 7: 15,000 bits
-Cycle 8: 20,000 bits
-(continues increasing)
-
-### Milestone rewards
-When the user hits their current threshold, they receive a guaranteed personal buff. The tier of that buff scales with how much they overshot the threshold - going 500 bits over still feels meaningfully better than hitting it exactly.
-
-This system exists as a safety net for the server buff pool. Even if the pool roll fails, heavy contributors are rewarded personally.
-
-### Toughing it out
-After 5 milestone claims, prestige becomes available. The user does not have to prestige immediately. If they continue without prestiging, the thresholds keep climbing but the buff scaling also increases. Players who delay prestige for a long time are rewarded with a higher-tier prestige frame variant as recognition of the harder path they took.
-
----
-
-## Prestige System
-
-Prestige is a repeatable progression system unlocked after completing 5 milestone claim cycles. It is optional - the user can continue playing without prestiging indefinitely, with increasing thresholds and scaling rewards as a trade-off.
-
-### Prestige rewards (always)
-- An exclusive cosmetic frame (variant depends on when prestige is taken - see below)
-- A permanent passive bits bonus added to daily rewards (stacks with each prestige level)
-
-### Frame variants by prestige timing
-- Prestige at exactly 5 milestone claims: standard prestige frame
-- Prestige at 7 or more milestone claims: veteran variant of the prestige frame
-- Prestige at 10 or more milestone claims: a unique frame variant that almost nobody else will ever obtain
-
-### On prestiging
-The milestone counter resets to the base threshold (1,000 bits for the next cycle). The prestige level increments by 1. The passive bits bonus increases permanently. The frame is added to the user's inventory and the Akira's Gift animation plays.
-
-### Prestige is repeatable
-There is no prestige cap. Each subsequent prestige follows the same structure. The frame awarded may vary depending on timing.
+`/prestige` always says the bits still to give and what waiting would add. Before step 5 there is no confirm button. Prestige does not grant a frame and does not add a daily bits bonus.
 
 ---
 
@@ -237,9 +247,9 @@ Lightweight. On startup checks for init.lock:
 - If init.lock does not exist: normal operation immediately.
 
 ### Animation design principles
-- Shiny APNG: looping idle. Last frame must ease back to match first frame. No visible snap on loop. Uses a sine-wave opacity curve so the shimmer naturally returns to its origin.
-- Burn APNG: looping by design. Fades in → burns → fades to transparent → loops. The loop point is transparent-to-transparent so Discord's repeat behaviour looks intentional.
-- Akira's Gift APNG: loops as a showcase reel. Cycling never fully stops - it slows and holds briefly then accelerates back into cycling.
+- Shiny GIF: a diagonal band sweeps from the top-left to the bottom-right, brightening the art under it. The core of the band is white and the edges carry a light prismatic tint. The loop restarts after the band has left the card.
+- Burn GIF: fade in, flames, fade out, then loop.
+- Akira's Gift: not built. The reserved idea is a looping showcase reel.
 
 ---
 
@@ -263,10 +273,12 @@ This flow avoids OAuth entirely. The browser never touches discord.com - only th
 - Browse personal card collection
 - View card details and animations
 - Check bits balance
-- View and contribute to server buff pool
-- View personal milestone progress
-- Access shop
-- View leaderboard
+- Buy the seven shop buffs
+- See the server pot, tonight's choices, and the live buffs, and give bits
+- See the milestone bar and claim a step
+- Prestige with the same confirm as Discord
+- See shop, server, and prestige buffs with the combined sentences
+- Stats rankings (the old leaderboard link opens Stats)
 - Admin panel: manage card pool, trigger asset regeneration
 
 ---
@@ -317,8 +329,8 @@ These systems require large player populations to function meaningfully. Black m
 **Why single currency?**
 Multiple currencies (bits, gems, tickets) create confusion and enable pay-to-win. For a friend group bot, simplicity and fairness matter more than monetisation levers.
 
-**Why APNG over GIF?**
-GIF has a 256 colour palette limit that produces visibly poor results on anime art (gradient-heavy illustrations). APNG supports full colour and autoplays inline in Discord when served with the `.apng` extension. Discord converts `.png` files to WebP (stripping animation), but leaves `.apng` files untouched.
+**Why GIF for animations?**
+Discord shows an APNG attachment as a still image. GIF attachments play. The palette is limited to 256 colours, which is the tradeoff for the shimmer and the burn to move in chat.
 
 **Why compose cards on demand?**
 Print numbers are only known when someone claims a card, and frames carry text positions for the name and print. Pre-rendering every variant, frame, and animation up front could not include that text, and it had to be redone whenever a frame changed. A cache miss is one composite. Repeat views read the file.

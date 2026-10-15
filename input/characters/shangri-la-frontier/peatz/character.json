@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-peatz",
+  "name": "Peatz",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-peatz-base",
+      "name": "Peatz",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

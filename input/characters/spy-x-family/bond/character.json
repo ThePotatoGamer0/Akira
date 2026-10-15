@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-bond",
+  "name": "Bond",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-bond-base",
+      "name": "Bond",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

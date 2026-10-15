@@ -1,0 +1,13 @@
+{
+  "id": "overlord-lakyus-alvein-dale-aindra",
+  "name": "Lakyus Alvein Dale Aindra",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-lakyus-alvein-dale-aindra-base",
+      "name": "Lakyus Alvein Dale Aindra",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

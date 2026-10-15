@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-lev-aldrecht",
+  "name": "Lev Aldrecht",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-lev-aldrecht-base",
+      "name": "Lev Aldrecht",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

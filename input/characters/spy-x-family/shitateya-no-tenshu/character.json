@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-shitateya-no-tenshu",
+  "name": "Shitateya no Tenshu",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "spy-x-family-shitateya-no-tenshu-base",
+      "name": "Shitateya no Tenshu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

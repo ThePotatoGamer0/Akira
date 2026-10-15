@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-hae-in-cha",
+  "name": "Hae-In Cha",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "solo-leveling-hae-in-cha-base",
+      "name": "Hae-In Cha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

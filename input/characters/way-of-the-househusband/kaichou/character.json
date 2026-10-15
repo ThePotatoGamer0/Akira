@@ -1,0 +1,13 @@
+{
+  "id": "way-of-the-househusband-kaichou",
+  "name": "Kaichou",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "way-of-the-househusband-kaichou-base",
+      "name": "Kaichou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

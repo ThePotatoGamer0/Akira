@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-osa",
+  "name": "Osa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-osa-base",
+      "name": "Osa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

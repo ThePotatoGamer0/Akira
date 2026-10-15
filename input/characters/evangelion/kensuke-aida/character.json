@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-kensuke-aida",
+  "name": "Kensuke Aida",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "evangelion-kensuke-aida-base",
+      "name": "Kensuke Aida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

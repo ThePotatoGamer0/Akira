@@ -1,0 +1,13 @@
+{
+  "id": "berserk-yami-no-kemono",
+  "name": "Yami no Kemono",
+  "gender": null,
+  "cards": [
+    {
+      "id": "berserk-yami-no-kemono-base",
+      "name": "Yami no Kemono",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-kohzou-fuyutsuki",
+  "name": "Kohzou Fuyutsuki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "evangelion-kohzou-fuyutsuki-base",
+      "name": "Kohzou Fuyutsuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

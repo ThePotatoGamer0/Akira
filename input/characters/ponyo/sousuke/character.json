@@ -1,0 +1,13 @@
+{
+  "id": "ponyo-sousuke",
+  "name": "Sousuke",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ponyo-sousuke-base",
+      "name": "Sousuke",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

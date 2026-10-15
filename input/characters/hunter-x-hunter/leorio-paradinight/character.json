@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-leorio-paradinight",
+  "name": "Leorio Paradinight",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-leorio-paradinight-base",
+      "name": "Leorio Paradinight",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -10,6 +10,7 @@ type ManifestEntry = {
   slug: string;
   name: string;
   gender: string | null;
+  role?: string;
   file: string;
 };
 
@@ -23,6 +24,7 @@ function characterRecord(seriesSlug: string, entry: ManifestEntry) {
     id: `${seriesSlug}-${entry.slug}`,
     name: entry.name,
     gender: entry.gender,
+    role: entry.role === "MAIN" || entry.role === "SUPPORTING" ? entry.role : undefined,
     cards: [
       {
         id: `${seriesSlug}-${entry.slug}-base`,
@@ -56,9 +58,16 @@ for (const seriesSlug of seriesSlugs) {
     const imagePath = path.join(charDir, "base.png");
     fs.mkdirSync(charDir, { recursive: true });
 
+    const role = entry.role === "MAIN" || entry.role === "SUPPORTING" ? entry.role : null;
     if (!fs.existsSync(jsonPath)) {
       fs.writeFileSync(jsonPath, JSON.stringify(characterRecord(seriesSlug, entry), null, 2) + "\n");
       created += 1;
+    } else if (role) {
+      const existing = JSON.parse(fs.readFileSync(jsonPath, "utf8")) as { role?: string };
+      if (existing.role !== role) {
+        existing.role = role;
+        fs.writeFileSync(jsonPath, JSON.stringify(existing, null, 2) + "\n");
+      }
     }
 
     if (!fs.existsSync(imagePath)) {

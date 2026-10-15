@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-ryuuichi-naruhodou",
+  "name": "Ryuuichi Naruhodou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ace-attorney-ryuuichi-naruhodou-base",
+      "name": "Ryuuichi Naruhodou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

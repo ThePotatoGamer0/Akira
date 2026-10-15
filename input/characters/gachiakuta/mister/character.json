@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-mister",
+  "name": "Mister",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-mister-base",
+      "name": "Mister",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

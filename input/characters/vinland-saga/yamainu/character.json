@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-yamainu",
+  "name": "Yamainu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-yamainu-base",
+      "name": "Yamainu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

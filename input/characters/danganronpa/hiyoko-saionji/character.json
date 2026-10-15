@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-hiyoko-saionji",
+  "name": "Hiyoko Saionji",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-hiyoko-saionji-base",
+      "name": "Hiyoko Saionji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

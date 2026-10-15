@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { fitCharacterName, splitName } from "./name-fit.js";
+import { fitCharacterName, fitSingleLine, splitName } from "./name-fit.js";
 
 const width = (text: string, fontSize: number) => text.length * fontSize;
 
@@ -12,15 +12,15 @@ test("a longer name breaks where the lines are closest", () => {
   assert.deepEqual(splitName("Mary Anne Smith", (text) => text.length), ["Mary Anne", "Smith"]);
 });
 
-test("a short name stays on one line at the frame size", () => {
+test("a short name grows to fill the name band", () => {
   const lines = fitCharacterName({
     name: "Denji",
-    fontSize: 48,
+    fontSize: 26,
     maxWidth: 300,
     maxHeight: 60,
     measure: width,
   });
-  assert.deepEqual(lines, [{ text: "Denji", fontSize: 48 }]);
+  assert.deepEqual(lines, [{ text: "Denji", fontSize: 60 }]);
 });
 
 test("a long name uses two lines, then a smaller size when the band is short", () => {
@@ -50,4 +50,16 @@ test("one long word shrinks instead of breaking mid-word", () => {
   assert.equal(lines.length, 1);
   assert.equal(lines[0]?.text, "Supercalifragilistic");
   assert.ok((lines[0]?.fontSize ?? 48) < 48);
+});
+
+test("a long series title shrinks to one line", () => {
+  const fitted = fitSingleLine({
+    text: "Hello",
+    fontSize: 20,
+    maxWidth: 60,
+    measure: width,
+  });
+  assert.equal(fitted.text, "Hello");
+  assert.equal(fitted.fontSize, 12);
+  assert.ok(width(fitted.text, fitted.fontSize) <= 60);
 });

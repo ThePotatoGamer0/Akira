@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-reita-toritsuka",
+  "name": "Reita Toritsuka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-reita-toritsuka-base",
+      "name": "Reita Toritsuka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

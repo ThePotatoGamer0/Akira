@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-miyagawa",
+  "name": "Miyagawa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-miyagawa-base",
+      "name": "Miyagawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

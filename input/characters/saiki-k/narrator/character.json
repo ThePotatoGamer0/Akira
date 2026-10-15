@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-narrator",
+  "name": "Narrator",
+  "gender": null,
+  "cards": [
+    {
+      "id": "saiki-k-narrator-base",
+      "name": "Narrator",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

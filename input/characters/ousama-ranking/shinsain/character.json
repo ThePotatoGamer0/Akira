@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-shinsain",
+  "name": "Shinsain",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ousama-ranking-shinsain-base",
+      "name": "Shinsain",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

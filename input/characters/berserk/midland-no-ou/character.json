@@ -1,0 +1,13 @@
+{
+  "id": "berserk-midland-no-ou",
+  "name": "Midland no Ou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "berserk-midland-no-ou-base",
+      "name": "Midland no Ou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

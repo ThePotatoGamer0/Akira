@@ -7,7 +7,7 @@ shortcuts: cd, timers
 
 **/cooldowns** shows Grab, Drop, and Daily for one player. Each line says the timer is ready, or how long is left.
 
-Grab is 5 minutes, drop is 20 minutes, and daily is 24 hours. They do not share a clock.
+A normal grab is 5 minutes, a normal drop is 20 minutes, and daily is 24 hours. They do not share a clock. While a shop or server cooldown buff is on you, the grab or drop line is already the shorter wait. A prestige percent can shave a little more off after that. Daily does not change.
 
 ## Parameters
 

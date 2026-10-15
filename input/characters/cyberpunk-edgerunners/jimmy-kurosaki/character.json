@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-jimmy-kurosaki",
+  "name": "Jimmy Kurosaki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-jimmy-kurosaki-base",
+      "name": "Jimmy Kurosaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

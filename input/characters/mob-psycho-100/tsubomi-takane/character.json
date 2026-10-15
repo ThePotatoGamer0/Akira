@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-tsubomi-takane",
+  "name": "Tsubomi Takane",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "mob-psycho-100-tsubomi-takane-base",
+      "name": "Tsubomi Takane",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-amaimon",
+  "name": "Amaimon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-exorcist-amaimon-base",
+      "name": "Amaimon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

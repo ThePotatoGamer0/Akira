@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-kaya",
+  "name": "Kaya",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-kaya-base",
+      "name": "Kaya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

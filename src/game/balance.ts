@@ -13,6 +13,8 @@ export const DROP_COOLDOWN_MS = 20 * 60 * 1000;
 export const GRAB_COOLDOWN_MS = 5 * 60 * 1000;
 export const DROP_OPEN_MS = 2 * 60 * 1000;
 export const DAILY_COOLDOWN_MS = 24 * 60 * 60 * 1000;
+/** Opening window where the dropper can take back a card someone else grabbed. */
+export const DROP_PROTECTION_MS = 20 * 1000;
 
 export const GRAB_BITS = 5;
 export const DAILY_BITS = 100;
@@ -37,10 +39,10 @@ export function isBaseVariant(variantId: string): boolean {
   return variantId.endsWith("-base");
 }
 
-/** Bases share one weight. Alternate arts are harder, using the rarity label. */
+/** Common and Rare bases share one weight. Secret Rare stays the rarest, even on a base. Alternate arts use the rarity label. */
 export function artWeight(variantId: string, rarity: string): number {
-  if (isBaseVariant(variantId)) return BASE_ART_WEIGHT;
   if (rarity === "Secret Rare") return SECRET_RARE_ALT_WEIGHT;
+  if (isBaseVariant(variantId)) return BASE_ART_WEIGHT;
   if (rarity === "Rare") return RARE_ALT_WEIGHT;
   return DEFAULT_ALT_WEIGHT;
 }
@@ -61,21 +63,25 @@ export function pickWeighted<T extends { weight: number }>(items: readonly T[], 
   return items[items.length - 1]!;
 }
 
-export function rollQuality(rng: () => number): Quality {
-  return pickWeighted(QUALITY_TABLE, rng).quality;
+export function rollQuality(rng: () => number, legendaryWeight = 1): Quality {
+  const table = QUALITY_TABLE.map((row) =>
+    row.quality === "LEGENDARY" ? { quality: row.quality, weight: legendaryWeight } : row,
+  );
+  return pickWeighted(table, rng).quality;
 }
 
 export function rollArts<T extends { id: string; rarity: string }>(
   variants: readonly T[],
   rng: () => number,
   count = DROP_SLOT_COUNT,
+  weightOf: (variant: T) => number = (variant) => artWeight(variant.id, variant.rarity),
 ): T[] {
   if (variants.length === 0) {
     throw new Error("Cannot roll from an empty catalog");
   }
   const table = variants.map((variant) => ({
     variant,
-    weight: artWeight(variant.id, variant.rarity),
+    weight: weightOf(variant),
   }));
   return Array.from({ length: count }, () => pickWeighted(table, rng).variant);
 }
@@ -100,28 +106,43 @@ export function issuePrint(currentNext: number): { printNumber: number; nextPrin
 }
 
 export type ClaimDecision =
-  | { ok: true }
+  | { ok: true; foughtOff: boolean }
   | { ok: false; reason: "expired" | "taken" | "cooldown" };
 
 export function decideClaim(input: {
   now: number;
   expiresAt: number;
+  dropCreatedAt: number;
   slotClaimed: boolean;
+  claimerIsDropper: boolean;
+  claimedByDropper: boolean;
   grabReadyAt: number | null;
 }): ClaimDecision {
   if (input.now >= input.expiresAt) return { ok: false, reason: "expired" };
-  if (input.slotClaimed) return { ok: false, reason: "taken" };
   if (input.grabReadyAt !== null && input.now < input.grabReadyAt) {
     return { ok: false, reason: "cooldown" };
   }
-  return { ok: true };
+  const protectedUntil = input.dropCreatedAt + DROP_PROTECTION_MS;
+  if (input.slotClaimed) {
+    const canFightOff = input.claimerIsDropper && !input.claimedByDropper && input.now < protectedUntil;
+    if (canFightOff) return { ok: true, foughtOff: true };
+    return { ok: false, reason: "taken" };
+  }
+  return { ok: true, foughtOff: false };
 }
 
 export function formatRemaining(ms: number): string {
   if (ms <= 0) return "ready";
   const totalSec = Math.ceil(ms / 1000);
-  const minutes = Math.floor(totalSec / 60);
+  const hours = Math.floor(totalSec / 3600);
+  const minutes = Math.floor((totalSec % 3600) / 60);
   const seconds = totalSec % 60;
+  if (hours > 0) {
+    const hourLabel = `${hours} ${hours === 1 ? "hour" : "hours"}`;
+    if (minutes <= 0) return hourLabel;
+    const minuteLabel = `${minutes} ${minutes === 1 ? "minute" : "minutes"}`;
+    return `${hourLabel} ${minuteLabel}`;
+  }
   if (minutes <= 0) return `${seconds}s`;
   return `${minutes}m ${seconds}s`;
 }
@@ -135,13 +156,18 @@ export function claimFailureMessage(
   return `Akira needs you to wait ${formatRemaining(grabRemainingMs)} before grabbing again.`;
 }
 
-export const SLOT_EMOJIS = ["1️⃣", "2️⃣", "3️⃣"] as const;
+export const SLOT_EMOJIS = ["1️⃣", "2️⃣", "3️⃣", "4️⃣"] as const;
 
 export function positionFromEmoji(name: string | null | undefined): number | null {
   if (!name) return null;
+  if (name === "ak_slot_1") return 1;
+  if (name === "ak_slot_2") return 2;
+  if (name === "ak_slot_3") return 3;
+  if (name === "ak_slot_4") return 4;
   const normalized = name.replace(/\uFE0F/g, "");
   if (normalized === "1⃣") return 1;
   if (normalized === "2⃣") return 2;
   if (normalized === "3⃣") return 3;
+  if (normalized === "4⃣") return 4;
   return null;
 }

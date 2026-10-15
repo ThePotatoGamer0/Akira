@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-gwee-hatchling",
+  "name": "Gwee Hatchling",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-gwee-hatchling-base",
+      "name": "Gwee Hatchling",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

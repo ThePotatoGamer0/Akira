@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-katsuo-tanaka",
+  "name": "Katsuo Tanaka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-katsuo-tanaka-base",
+      "name": "Katsuo Tanaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

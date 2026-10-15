@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-silva-zoldyck",
+  "name": "Silva Zoldyck",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-silva-zoldyck-base",
+      "name": "Silva Zoldyck",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

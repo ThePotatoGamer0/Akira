@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-gaiye",
+  "name": "Gaiye",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-gaiye-base",
+      "name": "Gaiye",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-ebina",
+  "name": "Ebina",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-ebina-base",
+      "name": "Ebina",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

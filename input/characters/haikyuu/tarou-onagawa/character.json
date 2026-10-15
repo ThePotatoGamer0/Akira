@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-tarou-onagawa",
+  "name": "Tarou Onagawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-tarou-onagawa-base",
+      "name": "Tarou Onagawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

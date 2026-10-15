@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-flatwoods-monster",
+  "name": "Flatwoods Monster",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dandadan-flatwoods-monster-base",
+      "name": "Flatwoods Monster",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

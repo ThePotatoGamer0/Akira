@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-satou",
+  "name": "Satou",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-satou-base",
+      "name": "Satou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

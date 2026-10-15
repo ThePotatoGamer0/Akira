@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-tact",
+  "name": "Tact",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-tact-base",
+      "name": "Tact",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

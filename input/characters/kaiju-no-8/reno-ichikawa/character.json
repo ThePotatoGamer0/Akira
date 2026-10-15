@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-reno-ichikawa",
+  "name": "Reno Ichikawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-reno-ichikawa-base",
+      "name": "Reno Ichikawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

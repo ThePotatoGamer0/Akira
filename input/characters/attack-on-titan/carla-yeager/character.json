@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-carla-yeager",
+  "name": "Carla Yeager",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-carla-yeager-base",
+      "name": "Carla Yeager",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

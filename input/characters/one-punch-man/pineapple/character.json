@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-pineapple",
+  "name": "Pineapple",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-pineapple-base",
+      "name": "Pineapple",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-ichi-mezato",
+  "name": "Ichi Mezato",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "mob-psycho-100-ichi-mezato-base",
+      "name": "Ichi Mezato",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

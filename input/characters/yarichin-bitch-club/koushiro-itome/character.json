@@ -1,0 +1,14 @@
+{
+  "id": "yarichin-bitch-club-koushiro-itome",
+  "name": "Koushiro Itome",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "yarichin-bitch-club-koushiro-itome-base",
+      "name": "Koushiro Itome",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

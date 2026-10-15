@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-jerome-karlsthal",
+  "name": "Jerome Karlsthal",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-jerome-karlsthal-base",
+      "name": "Jerome Karlsthal",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

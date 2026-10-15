@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-kyouju",
+  "name": "Kyouju",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-kyouju-base",
+      "name": "Kyouju",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

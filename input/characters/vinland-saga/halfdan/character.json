@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-halfdan",
+  "name": "Halfdan",
+  "gender": null,
+  "cards": [
+    {
+      "id": "vinland-saga-halfdan-base",
+      "name": "Halfdan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

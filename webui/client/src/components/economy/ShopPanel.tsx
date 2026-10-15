@@ -25,29 +25,33 @@ export function ShopPanel(props: {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ itemId: id }),
     });
-    const j = (await res.json()) as { error?: string; name?: string };
+    const j = (await res.json()) as { error?: string; name?: string; seriesName?: string | null };
     if (!res.ok) {
       setMsg(j.error ?? "Could not purchase");
       return;
     }
-    setMsg(`Akira tucked ${j.name} into your inventory.`);
+    const series = j.seriesName ? ` ${j.seriesName} stays locked.` : "";
+    setMsg(`Bought ${j.name}.${series}`);
     props.onBought?.();
   }
 
   return (
     <div className="panel">
       <h3>Shop</h3>
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        {items.map((i) => (
-          <li key={i.id} style={{ marginBottom: "0.75rem" }}>
-            <strong>{i.name}</strong> - {i.priceBits} bits
-            <div style={{ fontSize: "0.9rem", color: "var(--muted)" }}>{i.description}</div>
-            <button type="button" onClick={() => void buy(i.id)} style={{ marginTop: "0.35rem" }}>
+      <div className="shop-grid">
+        {items.map((item) => (
+          <article key={item.id} className="shop-card">
+            <h4>{item.name}</h4>
+            <p>{item.description}</p>
+            <p className="shop-card__meta">
+              {item.durationHours} hours · {item.priceBits.toLocaleString()} bits
+            </p>
+            <button type="button" onClick={() => void buy(item.id)}>
               Buy
             </button>
-          </li>
+          </article>
         ))}
-      </ul>
+      </div>
       {msg ? <p>{msg}</p> : null}
     </div>
   );

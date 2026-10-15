@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-fengming",
+  "name": "Fengming",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-fengming-base",
+      "name": "Fengming",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

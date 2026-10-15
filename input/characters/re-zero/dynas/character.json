@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-dynas",
+  "name": "Dynas",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-dynas-base",
+      "name": "Dynas",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

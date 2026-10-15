@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-ganriki",
+  "name": "Ganriki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-ganriki-base",
+      "name": "Ganriki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

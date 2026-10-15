@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-masahide-tokuda",
+  "name": "Masahide Tokuda",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-masahide-tokuda-base",
+      "name": "Masahide Tokuda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-jou-togame",
+  "name": "Jou Togame",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-jou-togame-base",
+      "name": "Jou Togame",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

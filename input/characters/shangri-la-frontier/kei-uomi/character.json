@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-kei-uomi",
+  "name": "Kei Uomi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-kei-uomi-base",
+      "name": "Kei Uomi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

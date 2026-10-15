@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-knuckle-bine",
+  "name": "Knuckle Bine",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-knuckle-bine-base",
+      "name": "Knuckle Bine",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "frieren-methode",
+  "name": "Methode",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "frieren-methode-base",
+      "name": "Methode",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

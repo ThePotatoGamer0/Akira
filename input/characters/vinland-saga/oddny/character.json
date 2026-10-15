@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-oddny",
+  "name": "Oddný",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "vinland-saga-oddny-base",
+      "name": "Oddný",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

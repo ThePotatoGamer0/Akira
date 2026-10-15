@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-tatsuma-suguro",
+  "name": "Tatsuma Suguro",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-exorcist-tatsuma-suguro-base",
+      "name": "Tatsuma Suguro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

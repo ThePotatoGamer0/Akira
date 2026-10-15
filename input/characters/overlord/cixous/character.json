@@ -1,0 +1,13 @@
+{
+  "id": "overlord-cixous",
+  "name": "Cixous",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-cixous-base",
+      "name": "Cixous",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

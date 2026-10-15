@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-seki-u",
+  "name": "Seki-u",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-seki-u-base",
+      "name": "Seki-u",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

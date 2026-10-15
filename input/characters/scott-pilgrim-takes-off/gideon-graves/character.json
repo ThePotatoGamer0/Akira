@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-gideon-graves",
+  "name": "Gideon Graves",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-gideon-graves-base",
+      "name": "Gideon Graves",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-bro-santa",
+  "name": "Bro Santa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-bro-santa-base",
+      "name": "Bro Santa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

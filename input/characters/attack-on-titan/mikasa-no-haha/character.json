@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-mikasa-no-haha",
+  "name": "Mikasa no Haha",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-mikasa-no-haha-base",
+      "name": "Mikasa no Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

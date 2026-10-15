@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-nobuteru-irihata",
+  "name": "Nobuteru Irihata",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-nobuteru-irihata-base",
+      "name": "Nobuteru Irihata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

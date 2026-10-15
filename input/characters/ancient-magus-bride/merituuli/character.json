@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-merituuli",
+  "name": "Merituuli",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-merituuli-base",
+      "name": "Merituuli",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-juichi-kitou",
+  "name": "Juichi Kitou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dandadan-juichi-kitou-base",
+      "name": "Juichi Kitou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "frieren-eisen",
+  "name": "Eisen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-eisen-base",
+      "name": "Eisen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

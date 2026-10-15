@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-glenda-attley",
+  "name": "Glenda Attley",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-glenda-attley-base",
+      "name": "Glenda Attley",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -24,7 +24,7 @@ adaily
 ## Tips
 
 - Turn on a [reminder](/commands/reminders) if you want a DM when daily is ready again.
-- Shop buffs and the server pool do not change this payout yet. Those commands are not finished.
+- The shop, the server pool, and prestige do not change this payout. If your profile already has a daily bonus, that amount is still added.
 
 ## See also
 

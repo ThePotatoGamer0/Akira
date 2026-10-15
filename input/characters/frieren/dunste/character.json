@@ -1,0 +1,13 @@
+{
+  "id": "frieren-dunste",
+  "name": "Dünste",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-dunste-base",
+      "name": "Dünste",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

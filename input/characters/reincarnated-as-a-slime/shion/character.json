@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-shion",
+  "name": "Shion",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-shion-base",
+      "name": "Shion",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

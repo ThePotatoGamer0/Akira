@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-kaori-suzumeda",
+  "name": "Kaori Suzumeda",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "haikyuu-kaori-suzumeda-base",
+      "name": "Kaori Suzumeda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

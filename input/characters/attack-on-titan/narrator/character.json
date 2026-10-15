@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-narrator",
+  "name": "Narrator",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-narrator-base",
+      "name": "Narrator",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

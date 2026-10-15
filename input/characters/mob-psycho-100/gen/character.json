@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-gen",
+  "name": "Gen",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-gen-base",
+      "name": "Gen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

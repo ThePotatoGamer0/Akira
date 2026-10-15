@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-yusuke-sakurai",
+  "name": "Yusuke  Sakurai",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-yusuke-sakurai-base",
+      "name": "Yusuke  Sakurai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-fubuki",
+  "name": "Fubuki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-punch-man-fubuki-base",
+      "name": "Fubuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

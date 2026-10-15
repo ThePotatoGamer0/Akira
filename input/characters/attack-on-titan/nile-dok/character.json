@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-nile-dok",
+  "name": "Nile Dok",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-nile-dok-base",
+      "name": "Nile Dok",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

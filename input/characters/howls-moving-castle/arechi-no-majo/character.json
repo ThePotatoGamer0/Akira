@@ -1,0 +1,13 @@
+{
+  "id": "howls-moving-castle-arechi-no-majo",
+  "name": "Arechi no Majo",
+  "gender": null,
+  "cards": [
+    {
+      "id": "howls-moving-castle-arechi-no-majo-base",
+      "name": "Arechi no Majo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

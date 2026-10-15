@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-maomao",
+  "name": "Maomao",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-maomao-base",
+      "name": "Maomao",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

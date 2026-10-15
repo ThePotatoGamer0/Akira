@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { isCardCode, mintCardCode, randomCardCode } from "./codes.js";
-import { cardSummaryLine, cooldownLine, formatDuration, grabAnnouncement, qualityStars } from "./display.js";
+import { cardSummaryLine, cooldownLine, fightOffAnnouncement, formatDuration, grabAnnouncement, qualityStars } from "./display.js";
 
 test("card codes are 7 lowercase letters or digits", () => {
   const code = randomCardCode(() => 0);
@@ -28,6 +28,8 @@ test("durations read like a cooldown clock", () => {
   assert.equal(formatDuration(45_000), "45 seconds");
   assert.equal(formatDuration(60_000), "1 minute");
   assert.equal(formatDuration(10 * 60_000), "10 minutes");
+  assert.equal(formatDuration(10 * 60 * 60_000), "10 hours");
+  assert.equal(formatDuration((23 * 60 + 41) * 60_000), "23 hours 41 minutes");
   assert.equal(cooldownLine("Grab", 10 * 60_000), "**Grab** is available in `10 minutes`");
   assert.equal(cooldownLine("Drop", 0), "**Drop** is ready");
 });
@@ -41,7 +43,19 @@ test("collection and grab lines use the short code", () => {
     seriesName: "Servamp",
     characterName: "Tetsu Sendagaya",
   });
-  assert.equal(line, "`v8znvrx` · ★★★★★ · #52066 · `2` · Servamp · **Tetsu Sendagaya**");
+  assert.equal(line, "◾`v8znvrx` · ★★★★★ · #52066 · `2` · Servamp · **Tetsu Sendagaya**");
+  assert.equal(
+    cardSummaryLine({
+      cardId: "4bqz1p6",
+      quality: "COMMON",
+      printNumber: 1,
+      frameId: 0,
+      seriesName: "Death Note",
+      characterName: "Halle Bullook",
+      tagEmoji: "⭐",
+    }),
+    "⭐`4bqz1p6` · ★☆☆☆☆ · #1 · `0` · Death Note · **Halle Bullook**",
+  );
   assert.match(qualityStars("COMMON"), /★☆☆☆☆/);
   assert.match(
     grabAnnouncement({
@@ -51,5 +65,15 @@ test("collection and grab lines use the short code", () => {
       quality: "COMMON",
     }),
     /took the \*\*Lobelia\*\* card `v8phzmj`! Unfortunately, it was badly \*\*damaged\*\*/,
+  );
+  assert.equal(
+    fightOffAnnouncement({
+      dropperDiscordId: "1",
+      sniperDiscordId: "2",
+      characterName: "The Commander",
+      cardId: "v8ppgb1",
+      quality: "COMMON",
+    }),
+    "<@1> fought off <@2> and took the **The Commander** card `v8ppgb1`! Unfortunately, it was badly **damaged**.",
   );
 });

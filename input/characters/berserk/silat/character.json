@@ -1,0 +1,13 @@
+{
+  "id": "berserk-silat",
+  "name": "Silat",
+  "gender": null,
+  "cards": [
+    {
+      "id": "berserk-silat-base",
+      "name": "Silat",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

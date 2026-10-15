@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-gelgar",
+  "name": "Gelgar",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-gelgar-base",
+      "name": "Gelgar",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

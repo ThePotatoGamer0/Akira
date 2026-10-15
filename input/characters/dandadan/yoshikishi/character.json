@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-yoshikishi",
+  "name": "Yoshikishi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dandadan-yoshikishi-base",
+      "name": "Yoshikishi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

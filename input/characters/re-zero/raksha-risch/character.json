@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-raksha-risch",
+  "name": "Raksha Risch",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-raksha-risch-base",
+      "name": "Raksha Risch",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

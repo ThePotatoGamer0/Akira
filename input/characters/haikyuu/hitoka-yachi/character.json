@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-hitoka-yachi",
+  "name": "Hitoka Yachi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "haikyuu-hitoka-yachi-base",
+      "name": "Hitoka Yachi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

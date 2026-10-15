@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-haruto-keats",
+  "name": "Haruto Keats",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-haruto-keats-base",
+      "name": "Haruto Keats",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

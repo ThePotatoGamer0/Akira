@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-shun-kaidou",
+  "name": "Shun Kaidou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-shun-kaidou-base",
+      "name": "Shun Kaidou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

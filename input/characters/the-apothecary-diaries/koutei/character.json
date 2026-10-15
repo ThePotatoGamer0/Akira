@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-koutei",
+  "name": "Koutei",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-koutei-base",
+      "name": "Koutei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

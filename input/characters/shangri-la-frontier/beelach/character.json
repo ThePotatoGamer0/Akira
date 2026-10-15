@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-beelach",
+  "name": "Beelach",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-beelach-base",
+      "name": "Beelach",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

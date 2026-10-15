@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-fabio-zaccheroni",
+  "name": "Fabio Zaccheroni",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-fabio-zaccheroni-base",
+      "name": "Fabio Zaccheroni",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

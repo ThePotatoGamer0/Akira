@@ -1,0 +1,13 @@
+{
+  "id": "howls-moving-castle-madge",
+  "name": "Madge",
+  "gender": null,
+  "cards": [
+    {
+      "id": "howls-moving-castle-madge-base",
+      "name": "Madge",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

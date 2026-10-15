@@ -1,0 +1,13 @@
+{
+  "id": "overlord-davernoch",
+  "name": "Davernoch",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-davernoch-base",
+      "name": "Davernoch",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

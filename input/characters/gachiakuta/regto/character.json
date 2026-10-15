@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-regto",
+  "name": "Regto",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-regto-base",
+      "name": "Regto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

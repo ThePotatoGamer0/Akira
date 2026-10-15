@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-hiroshi-kumagawa",
+  "name": "Hiroshi Kumagawa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-hiroshi-kumagawa-base",
+      "name": "Hiroshi Kumagawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

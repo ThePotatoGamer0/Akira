@@ -3,6 +3,25 @@ import { loadFrame, listFrames } from "../utils/frames.js";
 import { DEFAULT_FRAME_ID } from "./balance.js";
 import { GameError } from "./errors.js";
 
+const FRAME_NAMES: Record<number, string> = {
+  0: "dark",
+  1: "yellow",
+};
+
+/** Short name for a frame. Unknown frames stay as their number. */
+export function frameName(id: number): string {
+  return FRAME_NAMES[id] ?? String(id);
+}
+
+/** `dark`, `yellow`, or a frame number. Anything else is not a frame. */
+export function parseFrameToken(token: string): number | null {
+  const key = token.trim().toLowerCase();
+  if (key === "dark") return 0;
+  if (key === "yellow") return 1;
+  if (!/^\d+$/.test(key)) return null;
+  return Number(key);
+}
+
 /** The frame a card should be drawn with. A chosen frame wins. Otherwise the server default. */
 export function displayFrameId(specific: number | null, serverDefault: number): number {
   if (specific !== null && loadFrame(specific)) return specific;
@@ -25,7 +44,7 @@ export function frameIdsOnDisk(): number[] {
 
 export async function setServerDefaultFrame(guildId: string, frameId: number): Promise<void> {
   if (!loadFrame(frameId)) {
-    throw new GameError("missing-frame", `Akira doesn't have a frame \`${frameId}\`.`);
+    throw new GameError("missing-frame", `Akira doesn't have a frame \`${frameName(frameId)}\`.`);
   }
   await prisma.guildConfig.upsert({
     where: { guildId },
@@ -46,7 +65,7 @@ export async function setCardFrame(discordId: string, cardId: string, frameId: n
     throw new GameError("not-owner", "Akira only changes frames on cards you own.");
   }
   if (frameId !== null && !loadFrame(frameId)) {
-    throw new GameError("missing-frame", `Akira doesn't have a frame \`${frameId}\`.`);
+    throw new GameError("missing-frame", `Akira doesn't have a frame \`${frameName(frameId)}\`.`);
   }
   await prisma.card.update({
     where: { id: card.id },

@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-isabel-no-chichi",
+  "name": "Isabel no Chichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-isabel-no-chichi-base",
+      "name": "Isabel no Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

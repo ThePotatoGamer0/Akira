@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-shinji-watari",
+  "name": "Shinji Watari",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-shinji-watari-base",
+      "name": "Shinji Watari",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "cyberpunk-edgerunners-weak-kingsley",
+  "name": "Weak Kingsley",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-weak-kingsley-base",
+      "name": "Weak Kingsley",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

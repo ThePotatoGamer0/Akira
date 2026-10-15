@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-kousuke-sakunami",
+  "name": "Kousuke Sakunami",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-kousuke-sakunami-base",
+      "name": "Kousuke Sakunami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

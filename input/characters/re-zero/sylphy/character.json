@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-sylphy",
+  "name": "Sylphy",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-sylphy-base",
+      "name": "Sylphy",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

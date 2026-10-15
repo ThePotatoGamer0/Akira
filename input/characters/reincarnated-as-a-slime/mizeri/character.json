@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-mizeri",
+  "name": "Mizeri",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-mizeri-base",
+      "name": "Mizeri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

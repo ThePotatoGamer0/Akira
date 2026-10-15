@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-carrol-campbell",
+  "name": "Carrol Campbell",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-carrol-campbell-base",
+      "name": "Carrol Campbell",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

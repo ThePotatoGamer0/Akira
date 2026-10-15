@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-kumo",
+  "name": "Kumo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-kumo-base",
+      "name": "Kumo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

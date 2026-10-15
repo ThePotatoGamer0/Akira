@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-garfiel-tinsel",
+  "name": "Garfiel Tinsel",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-garfiel-tinsel-base",
+      "name": "Garfiel Tinsel",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

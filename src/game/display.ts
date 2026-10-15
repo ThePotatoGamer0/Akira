@@ -1,3 +1,4 @@
+import { icon } from "../utils/icons.js";
 import type { Quality } from "./balance.js";
 
 export const DROP_EXPIRED_LINE = "*This drop has expired and the cards can no longer be grabbed.*";
@@ -20,7 +21,7 @@ const GRAB_CONDITION: Record<Quality, string> = {
 
 export function qualityStars(quality: string): string {
   const filled = STARS[quality as Quality] ?? 1;
-  return `${"★".repeat(filled)}${"☆".repeat(5 - filled)}`;
+  return `${icon("star").repeat(filled)}${icon("star-outline").repeat(5 - filled)}`;
 }
 
 export function formatDuration(ms: number): string {
@@ -60,8 +61,15 @@ export function cardSummaryLine(input: {
   frameId: number;
   seriesName: string;
   characterName: string;
+  /** Emoji for this card's tag. Untagged cards use the square icon. */
+  tagEmoji?: string;
 }): string {
-  return `\`${input.cardId}\` · ${qualityStars(input.quality)} · #${input.printNumber} · \`${input.frameId}\` · ${input.seriesName} · **${input.characterName}**`;
+  const mark = input.tagEmoji ?? icon("square");
+  return `${mark}\`${input.cardId}\` · ${qualityStars(input.quality)} · #${input.printNumber} · \`${input.frameId}\` · ${input.seriesName} · **${input.characterName}**`;
+}
+
+function grabCondition(quality: string): string {
+  return GRAB_CONDITION[quality as Quality] ?? GRAB_CONDITION.COMMON;
 }
 
 export function grabAnnouncement(input: {
@@ -70,6 +78,15 @@ export function grabAnnouncement(input: {
   cardId: string;
   quality: string;
 }): string {
-  const condition = GRAB_CONDITION[input.quality as Quality] ?? GRAB_CONDITION.COMMON;
-  return `<@${input.discordId}> took the **${input.characterName}** card \`${input.cardId}\`! ${condition}`;
+  return `<@${input.discordId}> took the **${input.characterName}** card \`${input.cardId}\`! ${grabCondition(input.quality)}`;
+}
+
+export function fightOffAnnouncement(input: {
+  dropperDiscordId: string;
+  sniperDiscordId: string;
+  characterName: string;
+  cardId: string;
+  quality: string;
+}): string {
+  return `<@${input.dropperDiscordId}> fought off <@${input.sniperDiscordId}> and took the **${input.characterName}** card \`${input.cardId}\`! ${grabCondition(input.quality)}`;
 }

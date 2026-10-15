@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-shouhei-fukunaga",
+  "name": "Shouhei Fukunaga",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-shouhei-fukunaga-base",
+      "name": "Shouhei Fukunaga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

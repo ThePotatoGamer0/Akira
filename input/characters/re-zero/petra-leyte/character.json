@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-petra-leyte",
+  "name": "Petra Leyte",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-petra-leyte-base",
+      "name": "Petra Leyte",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

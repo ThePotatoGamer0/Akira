@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-sirius-romanee-conti",
+  "name": "Sirius Romanée-Conti",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-sirius-romanee-conti-base",
+      "name": "Sirius Romanée-Conti",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

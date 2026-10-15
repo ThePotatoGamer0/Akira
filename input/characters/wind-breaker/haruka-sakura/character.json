@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-haruka-sakura",
+  "name": "Haruka Sakura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-haruka-sakura-base",
+      "name": "Haruka Sakura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

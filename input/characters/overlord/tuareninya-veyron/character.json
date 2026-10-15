@@ -1,0 +1,13 @@
+{
+  "id": "overlord-tuareninya-veyron",
+  "name": "Tuareninya Veyron",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-tuareninya-veyron-base",
+      "name": "Tuareninya Veyron",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

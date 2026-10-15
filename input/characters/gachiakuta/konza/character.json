@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-konza",
+  "name": "Konza",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-konza-base",
+      "name": "Konza",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

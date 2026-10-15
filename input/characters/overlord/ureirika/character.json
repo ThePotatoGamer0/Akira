@@ -1,0 +1,13 @@
+{
+  "id": "overlord-ureirika",
+  "name": "Ureirika",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-ureirika-base",
+      "name": "Ureirika",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

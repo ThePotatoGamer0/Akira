@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-shija",
+  "name": "Shija",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hells-paradise-shija-base",
+      "name": "Shija",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

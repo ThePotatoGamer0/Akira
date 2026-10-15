@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-namekujarasu",
+  "name": "Namekujarasu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-namekujarasu-base",
+      "name": "Namekujarasu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

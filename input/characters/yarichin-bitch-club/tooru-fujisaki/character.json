@@ -1,0 +1,14 @@
+{
+  "id": "yarichin-bitch-club-tooru-fujisaki",
+  "name": "Tooru Fujisaki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "yarichin-bitch-club-tooru-fujisaki-base",
+      "name": "Tooru Fujisaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

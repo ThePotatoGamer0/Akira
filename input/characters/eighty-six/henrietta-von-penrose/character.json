@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-henrietta-von-penrose",
+  "name": "Henrietta von Penrose",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "eighty-six-henrietta-von-penrose-base",
+      "name": "Henrietta von Penrose",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

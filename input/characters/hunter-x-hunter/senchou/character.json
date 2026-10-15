@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-senchou",
+  "name": "Senchou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-senchou-base",
+      "name": "Senchou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

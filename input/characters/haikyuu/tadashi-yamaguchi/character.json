@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-tadashi-yamaguchi",
+  "name": "Tadashi Yamaguchi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-tadashi-yamaguchi-base",
+      "name": "Tadashi Yamaguchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

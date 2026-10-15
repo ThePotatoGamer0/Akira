@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-hakuou",
+  "name": "Hakuou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ousama-ranking-hakuou-base",
+      "name": "Hakuou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

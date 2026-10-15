@@ -1,0 +1,13 @@
+{
+  "id": "howls-moving-castle-howl",
+  "name": "Howl",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "howls-moving-castle-howl-base",
+      "name": "Howl",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-nina-rantz",
+  "name": "Nina Rantz",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "eighty-six-nina-rantz-base",
+      "name": "Nina Rantz",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

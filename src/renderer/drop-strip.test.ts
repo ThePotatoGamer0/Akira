@@ -1,8 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import sharp from "sharp";
-import UPNG from "upng-js";
-import { encodeApng } from "../utils/apng.js";
+import { encodeGif } from "../utils/gif.js";
 import { DROP_STRIP_GAP, renderDropStrip } from "./drop-strip.js";
 
 async function solid(width: number, height: number, color: { r: number; g: number; b: number }): Promise<Buffer> {
@@ -36,33 +35,43 @@ test("a still drop is one png three cards wide", async () => {
   assert.equal(data[blue + 2], 255);
 });
 
-test("one shiny card makes the strip an apng", async () => {
+test("one shiny card makes the strip a gif", async () => {
   const still = await solid(32, 32, { r: 10, g: 20, b: 30 });
-  const bright = Buffer.alloc(32 * 32 * 4, 255);
-  const dim = Buffer.alloc(32 * 32 * 4, 20);
-  const shiny = encodeApng([bright, dim], 32, 32, [60, 80]);
+  const bright = Buffer.alloc(32 * 32 * 4);
+  const dim = Buffer.alloc(32 * 32 * 4);
+  for (let i = 0; i < bright.length; i += 4) {
+    bright[i] = 255;
+    bright[i + 1] = 255;
+    bright[i + 2] = 255;
+    bright[i + 3] = 255;
+    dim[i] = 20;
+    dim[i + 1] = 20;
+    dim[i + 2] = 20;
+    dim[i + 3] = 255;
+  }
+  const shiny = await encodeGif([bright, dim], 32, 32, [60, 80]);
   const strip = await renderDropStrip([
     { image: still, animated: false },
     { image: shiny, animated: true },
     { image: still, animated: false },
   ]);
   assert.equal(strip.animated, true);
-  const bytes = strip.data.buffer.slice(strip.data.byteOffset, strip.data.byteOffset + strip.data.byteLength) as ArrayBuffer;
-  const decoded = UPNG.decode(bytes);
+  assert.equal(strip.data.subarray(0, 6).toString(), "GIF89a");
+  const meta = await sharp(strip.data, { animated: true }).metadata();
   const gap = DROP_STRIP_GAP;
-  assert.equal(decoded.width, 96 + gap * 4);
-  assert.equal(decoded.height, 32 + gap * 2);
-  assert.equal(decoded.frames.length, 2);
-  assert.equal(decoded.frames[0]?.delay, 60);
-  assert.equal(decoded.frames[1]?.delay, 80);
-  const frames = UPNG.toRGBA8(decoded);
-  assert.equal(frames.length, 2);
-  const first = new Uint8Array(frames[0]!);
-  const second = new Uint8Array(frames[1]!);
+  assert.equal(meta.width, 96 + gap * 4);
+  assert.equal(meta.pageHeight, 32 + gap * 2);
+  assert.equal(meta.pages, 2);
+  assert.deepEqual(meta.delay, [60, 80]);
+  const raw = await sharp(strip.data, { animated: true }).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const width = meta.width ?? 0;
+  const height = meta.pageHeight ?? 0;
+  const first = raw.data.subarray(0, width * height * 4);
+  const second = raw.data.subarray(width * height * 4);
   const stillX = gap;
   const shinyX = gap + 32 + gap;
   const y = gap;
-  const at = (x: number) => (y * decoded.width + x) * 4;
+  const at = (x: number) => (y * width + x) * 4;
   assert.equal(first[at(stillX)], 10);
   assert.equal(first[at(shinyX)], 255);
   assert.equal(second[at(shinyX)], 20);

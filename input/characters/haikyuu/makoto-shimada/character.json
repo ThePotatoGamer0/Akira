@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-makoto-shimada",
+  "name": "Makoto Shimada",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-makoto-shimada-base",
+      "name": "Makoto Shimada",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

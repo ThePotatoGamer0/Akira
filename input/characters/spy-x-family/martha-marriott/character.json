@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-martha-marriott",
+  "name": "Martha Marriott",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "spy-x-family-martha-marriott-base",
+      "name": "Martha Marriott",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

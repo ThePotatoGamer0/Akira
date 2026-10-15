@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-matthew-mcmahon",
+  "name": "Matthew McMahon",
+  "gender": null,
+  "cards": [
+    {
+      "id": "spy-x-family-matthew-mcmahon-base",
+      "name": "Matthew McMahon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

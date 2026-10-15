@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-hitch-dreyse",
+  "name": "Hitch Dreyse",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-hitch-dreyse-base",
+      "name": "Hitch Dreyse",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "berserk-mule-wolflame",
+  "name": "Mule Wolflame",
+  "gender": null,
+  "cards": [
+    {
+      "id": "berserk-mule-wolflame-base",
+      "name": "Mule Wolflame",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

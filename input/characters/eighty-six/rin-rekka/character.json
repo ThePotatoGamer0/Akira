@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-rin-rekka",
+  "name": "Rin Rekka",
+  "gender": null,
+  "cards": [
+    {
+      "id": "eighty-six-rin-rekka-base",
+      "name": "Rin Rekka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-otoko-tenin",
+  "name": "Otoko Tenin",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-otoko-tenin-base",
+      "name": "Otoko Tenin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

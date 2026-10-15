@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-tarou",
+  "name": "Tarou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-tarou-base",
+      "name": "Tarou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-suiren",
+  "name": "Suiren",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-suiren-base",
+      "name": "Suiren",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

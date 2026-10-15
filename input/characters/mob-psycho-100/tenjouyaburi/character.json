@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-tenjouyaburi",
+  "name": "Tenjouyaburi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-tenjouyaburi-base",
+      "name": "Tenjouyaburi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

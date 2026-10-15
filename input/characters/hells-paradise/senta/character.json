@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-senta",
+  "name": "Senta",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-senta-base",
+      "name": "Senta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

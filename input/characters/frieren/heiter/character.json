@@ -1,0 +1,13 @@
+{
+  "id": "frieren-heiter",
+  "name": "Heiter",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-heiter-base",
+      "name": "Heiter",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

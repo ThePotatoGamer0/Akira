@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-ju-hui-lee",
+  "name": "Ju-Hui Lee",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "solo-leveling-ju-hui-lee-base",
+      "name": "Ju-Hui Lee",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

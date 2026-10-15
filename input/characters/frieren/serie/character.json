@@ -1,0 +1,13 @@
+{
+  "id": "frieren-serie",
+  "name": "Serie",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "frieren-serie-base",
+      "name": "Serie",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

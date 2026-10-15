@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-lizbeth-sargant",
+  "name": "Lizbeth Sargant",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-lizbeth-sargant-base",
+      "name": "Lizbeth Sargant",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

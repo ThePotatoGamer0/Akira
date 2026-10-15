@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-krista-lenz",
+  "name": "Krista Lenz",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-krista-lenz-base",
+      "name": "Krista Lenz",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

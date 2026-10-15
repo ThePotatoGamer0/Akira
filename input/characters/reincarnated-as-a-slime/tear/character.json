@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-tear",
+  "name": "Tear",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-tear-base",
+      "name": "Tear",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

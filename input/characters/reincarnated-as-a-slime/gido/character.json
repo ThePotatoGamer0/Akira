@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-gido",
+  "name": "Gido",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-gido-base",
+      "name": "Gido",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

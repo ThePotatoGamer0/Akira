@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-chi-yul-song",
+  "name": "Chi-Yul Song",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-chi-yul-song-base",
+      "name": "Chi-Yul Song",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

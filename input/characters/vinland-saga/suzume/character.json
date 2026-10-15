@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-suzume",
+  "name": "Suzume",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-suzume-base",
+      "name": "Suzume",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-rachins-hoffman",
+  "name": "Rachins Hoffman",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-rachins-hoffman-base",
+      "name": "Rachins Hoffman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

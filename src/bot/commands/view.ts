@@ -4,6 +4,7 @@ import { displayFrameId, serverDefaultFrame } from "../../game/frames.js";
 import { ensureCardImage, visualKind } from "../../game/compose.js";
 import { GameError } from "../../game/errors.js";
 import type { AkiraCommand } from "../../types/commands.js";
+import { emojiForTag, tagEmojisForDiscord } from "../../game/tags.js";
 import { buildCardMessage } from "../card-embed.js";
 import { sendGameError } from "../reply.js";
 
@@ -29,13 +30,15 @@ export const view: AkiraCommand = {
         characterSlug: card.variant.character.slug,
         imageFile: card.variant.image,
         characterName: card.variant.character.name,
+        seriesName: card.variant.character.series.name,
         frameId,
         printNumber: card.printNumber,
         dye: card.dye,
       };
       await ensureCardImage({ ...imageRequest, kind: "normal" });
       const imagePath = await ensureCardImage({ ...imageRequest, kind });
-      const fileName = kind === "shiny" ? "card.apng" : "card.png";
+      const fileName = kind === "shiny" ? "card.gif" : "card.png";
+      const tags = card.owner ? await tagEmojisForDiscord(card.owner.discordId) : new Map<string, string>();
       await interaction.reply(buildCardMessage({
         cardId: card.id,
         discordId: card.owner?.discordId ?? null,
@@ -51,6 +54,7 @@ export const view: AkiraCommand = {
         variantName: card.variant.name,
         imagePath,
         fileName,
+        tagEmoji: emojiForTag(tags, card.tag),
       }));
     } catch (err) {
       await sendGameError(interaction, err);

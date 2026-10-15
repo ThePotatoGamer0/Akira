@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yuuki-shibayama",
+  "name": "Yuuki Shibayama",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-yuuki-shibayama-base",
+      "name": "Yuuki Shibayama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

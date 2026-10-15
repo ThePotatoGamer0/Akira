@@ -1,0 +1,13 @@
+{
+  "id": "frieren-land",
+  "name": "Land",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-land-base",
+      "name": "Land",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

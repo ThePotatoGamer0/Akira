@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-kanako-kasugasaki",
+  "name": "Kanako Kasugasaki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-kanako-kasugasaki-base",
+      "name": "Kanako Kasugasaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

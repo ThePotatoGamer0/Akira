@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-ibuki-mioda",
+  "name": "Ibuki Mioda",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-ibuki-mioda-base",
+      "name": "Ibuki Mioda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

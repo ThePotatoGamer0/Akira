@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-maki-kuwana",
+  "name": "Maki Kuwana",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-period-maki-kuwana-base",
+      "name": "Maki Kuwana",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

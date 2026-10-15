@@ -1,0 +1,13 @@
+{
+  "id": "frieren-lawine",
+  "name": "Lawine",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "frieren-lawine-base",
+      "name": "Lawine",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "princess-mononoke-kodama",
+  "name": "Kodama",
+  "gender": null,
+  "cards": [
+    {
+      "id": "princess-mononoke-kodama-base",
+      "name": "Kodama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

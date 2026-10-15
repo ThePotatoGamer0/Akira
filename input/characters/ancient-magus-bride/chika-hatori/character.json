@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-chika-hatori",
+  "name": "Chika Hatori",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-chika-hatori-base",
+      "name": "Chika Hatori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

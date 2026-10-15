@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-okusama",
+  "name": "Okusama",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "vinland-saga-okusama-base",
+      "name": "Okusama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

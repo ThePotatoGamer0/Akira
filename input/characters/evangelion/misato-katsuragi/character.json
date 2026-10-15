@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-misato-katsuragi",
+  "name": "Misato Katsuragi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "evangelion-misato-katsuragi-base",
+      "name": "Misato Katsuragi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

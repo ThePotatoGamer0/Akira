@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-meleoron",
+  "name": "Meleoron",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-meleoron-base",
+      "name": "Meleoron",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

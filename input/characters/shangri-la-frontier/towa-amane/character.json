@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-towa-amane",
+  "name": "Towa Amane",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-towa-amane-base",
+      "name": "Towa Amane",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

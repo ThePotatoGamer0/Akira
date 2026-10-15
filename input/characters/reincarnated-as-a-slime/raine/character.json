@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-raine",
+  "name": "Raine",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-raine-base",
+      "name": "Raine",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

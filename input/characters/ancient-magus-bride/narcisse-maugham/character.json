@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-narcisse-maugham",
+  "name": "Narcisse Maugham",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-narcisse-maugham-base",
+      "name": "Narcisse Maugham",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

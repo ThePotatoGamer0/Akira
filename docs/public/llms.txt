@@ -13,12 +13,12 @@
 ## Summary
 Akira drops three anime character cards in a Discord channel. Players grab one by reacting with a number emoji. Owned cards can be viewed, listed, and burned for bits. Text commands use the prefix `a` by default (`AKIRA_PREFIX` overrides it). Slash commands exist for the same actions except grab and `overridekaruta`.
 
-Playable: drop, grab (reaction), view, collection, lookup, wishlist, burn, daily, cooldowns, reminders, frame, userinfo, help, ping. Registered but not finished: multiburn, give, trade, shop, inventory, tags, dye, pool, import.
+Playable: drop, grab (reaction), view, collection, lookup, wishlist, burn, multiburn, give, trade, tag, taglist, tagcreate, tagdelete, untag, daily, cooldowns, reminders, frame, userinfo, help, ping, shop, inventory, pool, milestone, prestige. Registered but not finished: dye, import.
 
 ## Key concepts
 - Cards: character art + frame + print number + quality (Common through Legendary). Base arts are equally likely. Alternate arts are rarer. Only Legendary is shiny. Card codes are 7 characters. A card with no frame of its own uses the server default.
 - Prefix: `adrop` and `a drop` are the same. Extra words mean the message is not a command. Short aliases are listed on /commands/reference.
-- Bits: grab pays 5, daily pays 100 plus passiveBitsBonus, burn pays 10/25/50/100/250 by quality. Shop, pool, and dyes do not spend bits yet.
+- Bits: grab pays 5, daily pays 100 plus any bonus already stored, burn pays 10/25/50/100/250 by quality. Shop buys timed personal buffs. Pool gifts fill the server pot and the player's milestone bar. Prestige does not add daily bits. Dye and import are not finished.
 - Wishlist: unlimited. Akira mentions the player when a watched character is in a drop.
 - Reminders: DM when daily, drop, or grab is ready.
 - Server default frame: `aframe default <id>` (admin). `aframe card <code> <id|clear>` sets one card.

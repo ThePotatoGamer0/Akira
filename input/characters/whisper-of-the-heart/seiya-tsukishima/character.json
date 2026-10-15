@@ -1,0 +1,13 @@
+{
+  "id": "whisper-of-the-heart-seiya-tsukishima",
+  "name": "Seiya Tsukishima",
+  "gender": null,
+  "cards": [
+    {
+      "id": "whisper-of-the-heart-seiya-tsukishima-base",
+      "name": "Seiya Tsukishima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

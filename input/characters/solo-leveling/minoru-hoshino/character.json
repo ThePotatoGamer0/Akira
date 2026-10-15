@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-minoru-hoshino",
+  "name": "Minoru Hoshino",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-minoru-hoshino-base",
+      "name": "Minoru Hoshino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

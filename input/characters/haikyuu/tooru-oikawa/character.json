@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-tooru-oikawa",
+  "name": "Tooru Oikawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-tooru-oikawa-base",
+      "name": "Tooru Oikawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

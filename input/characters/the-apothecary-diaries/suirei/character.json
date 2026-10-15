@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-suirei",
+  "name": "Suirei",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-suirei-base",
+      "name": "Suirei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

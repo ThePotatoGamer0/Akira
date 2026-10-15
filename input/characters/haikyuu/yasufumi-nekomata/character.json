@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yasufumi-nekomata",
+  "name": "Yasufumi Nekomata",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-yasufumi-nekomata-base",
+      "name": "Yasufumi Nekomata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

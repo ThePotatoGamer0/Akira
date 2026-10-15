@@ -1,22 +1,38 @@
 ---
 title: Personal milestones
-description: Your private progress track fed by pool contributions, separate from the daily pool roll.
+description: A bar that fills only when you give bits to the server. Each step pays a little back.
 ---
 
-**Personal milestones** are *your* progression meter - fed by bits and pool-style contributions - while the [server buff pool](/economy/server-pool) handles the guild-wide daily roll. Both sit on top of the same [bits](/economy/bits) economy.
+Your **milestone bar** fills only when you [give bits to the server pool](/commands/pool). Shop purchases do not count. The bar is yours. The pot is the server's. The same gift updates both.
 
-## Bits income
+Each step costs twice the one before it. Five is meant to be reachable. Ten is a long push. There is no step past 10. Leftover bits stay on the bar, and you claim one step at a time.
 
-- [Drops](/commands/drop) and [daily](/commands/daily) claims keep everyone moving.
-- [Burn](/commands/burn) and [multiburn](/commands/multiburn) convert surplus cards into bits; multiburn picks the flashiest “goodbye” card in the set.
+Claiming pays the bits immediately. It does not grant the prestige reward on that row. That reward is stamped only if you [prestige](/prestige/overview) after the step is claimed.
 
-## Bits spending
+## The ten steps
 
-- Personal [shop](/commands/shop) buffs are priced for a tiny guild: small prices, cosy upsides.
-- [Pool](/economy/server-pool) donations are voluntary gifts to everyone - Akira still tracks how they feed *your* milestone bar.
+| Step | Bits you need to have given | Bits you get back | If you prestige after this |
+| --- | --- | --- | --- |
+| 1 | 500 | 200 | |
+| 2 | 1,000 | 350 | |
+| 3 | 2,000 | 600 | |
+| 4 | 4,000 | 1,000 | |
+| 5 | 8,000 | 2,000 | Prestige opens. No permanent buff. |
+| 6 | 16,000 | 3,500 | Burns pay 1% more. |
+| 7 | 32,000 | 6,000 | Grab cooldown is 1% shorter. |
+| 8 | 64,000 | 10,000 | Drop cooldown is 1% shorter. |
+| 9 | 128,000 | 18,000 | Mints are a little more likely. |
+| 10 | 256,000 | 30,000 | Main characters are 1% more likely. |
+
+The "bits you need" is the size of that step, not a running total of the whole cycle. After you claim step 1, the 500 is spent from the bar and step 2 asks for another 1,000.
+
+[`/milestone`](/commands/milestone) lists all ten, which step you are on, how many bits are left until the next one, and which prestige buffs you would keep if you prestiged right now. `/milestone claim` takes the next payout when the bar has reached it.
+
+The Economy page shows the same list and a Claim button when a step is ready.
 
 ## See also
 
-- [Bits](/economy/bits) - currency overview
-- [Server buff pool](/economy/server-pool) - communal tiers (reference table on that page)
-- [Prestige overview](/prestige/overview) - after **five** milestone claims, prestige opens (optional)
+- [Milestone command](/commands/milestone)
+- [Prestige](/prestige/overview)
+- [Server buff pool](/economy/server-pool)
+- [Bits](/economy/bits)

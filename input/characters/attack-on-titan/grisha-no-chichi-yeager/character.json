@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-grisha-no-chichi-yeager",
+  "name": "Grisha no Chichi Yeager",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-grisha-no-chichi-yeager-base",
+      "name": "Grisha no Chichi Yeager",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

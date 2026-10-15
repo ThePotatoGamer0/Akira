@@ -1,0 +1,13 @@
+{
+  "id": "princess-mononoke-eboshi-gozen",
+  "name": "Eboshi Gozen",
+  "gender": null,
+  "cards": [
+    {
+      "id": "princess-mononoke-eboshi-gozen-base",
+      "name": "Eboshi Gozen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

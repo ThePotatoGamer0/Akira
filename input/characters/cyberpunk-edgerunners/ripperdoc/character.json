@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-ripperdoc",
+  "name": "Ripperdoc",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-ripperdoc-base",
+      "name": "Ripperdoc",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

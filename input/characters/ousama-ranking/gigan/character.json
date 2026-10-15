@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-gigan",
+  "name": "Gigan",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-gigan-base",
+      "name": "Gigan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

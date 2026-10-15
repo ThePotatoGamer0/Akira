@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-melzargard",
+  "name": "Melzargard",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-melzargard-base",
+      "name": "Melzargard",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-fukegao",
+  "name": "Fukegao",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-fukegao-base",
+      "name": "Fukegao",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

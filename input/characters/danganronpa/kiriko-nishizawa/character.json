@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-kiriko-nishizawa",
+  "name": "Kiriko Nishizawa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "danganronpa-kiriko-nishizawa-base",
+      "name": "Kiriko Nishizawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-biscuit-krueger",
+  "name": "Biscuit Krueger",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-biscuit-krueger-base",
+      "name": "Biscuit Krueger",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

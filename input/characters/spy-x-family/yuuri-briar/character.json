@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-yuuri-briar",
+  "name": "Yuuri Briar",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-yuuri-briar-base",
+      "name": "Yuuri Briar",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

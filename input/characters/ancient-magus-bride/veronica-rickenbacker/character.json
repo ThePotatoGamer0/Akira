@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-veronica-rickenbacker",
+  "name": "Veronica Rickenbacker",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-veronica-rickenbacker-base",
+      "name": "Veronica Rickenbacker",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-phinks-magcub",
+  "name": "Phinks Magcub",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-phinks-magcub-base",
+      "name": "Phinks Magcub",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

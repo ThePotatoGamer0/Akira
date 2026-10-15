@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-konekomaru-miwa",
+  "name": "Konekomaru Miwa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-exorcist-konekomaru-miwa-base",
+      "name": "Konekomaru Miwa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

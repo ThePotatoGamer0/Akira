@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-kiritaka-muse",
+  "name": "Kiritaka Muse",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-kiritaka-muse-base",
+      "name": "Kiritaka Muse",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

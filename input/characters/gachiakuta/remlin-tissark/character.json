@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-remlin-tissark",
+  "name": "Remlin Tissark",
+  "gender": null,
+  "cards": [
+    {
+      "id": "gachiakuta-remlin-tissark-base",
+      "name": "Remlin Tissark",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

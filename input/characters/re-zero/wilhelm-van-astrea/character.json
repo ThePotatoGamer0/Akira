@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-wilhelm-van-astrea",
+  "name": "Wilhelm van Astrea",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-wilhelm-van-astrea-base",
+      "name": "Wilhelm van Astrea",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

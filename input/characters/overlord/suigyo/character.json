@@ -1,0 +1,13 @@
+{
+  "id": "overlord-suigyo",
+  "name": "Suigyo",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-suigyo-base",
+      "name": "Suigyo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

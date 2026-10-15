@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-winston-wheeler",
+  "name": "Winston Wheeler",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-winston-wheeler-base",
+      "name": "Winston Wheeler",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

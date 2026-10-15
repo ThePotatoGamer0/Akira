@@ -1,6 +1,5 @@
 import sharp from "sharp";
-import UPNG from "upng-js";
-import { encodeApng } from "../utils/apng.js";
+import { encodeGif } from "../utils/gif.js";
 
 export type DropStripCard = {
   image: Buffer;
@@ -30,22 +29,28 @@ type DecodedCard = {
   delays: number[];
 };
 
-function arrayBuffer(image: Buffer): ArrayBuffer {
-  return image.buffer.slice(image.byteOffset, image.byteOffset + image.byteLength) as ArrayBuffer;
-}
-
-function decodeCard(image: Buffer): DecodedCard {
-  const decoded = UPNG.decode(arrayBuffer(image));
-  const rgba = UPNG.toRGBA8(decoded);
-  const frames = rgba.map((frame) => Buffer.from(frame));
-  const delays = decoded.frames.map((frame) => frame.delay);
-  const expected = decoded.width * decoded.height * 4;
-  for (const frame of frames) {
-    if (frame.byteLength !== expected) {
-      throw new Error(`drop strip: expected ${expected} bytes per frame, got ${frame.byteLength}`);
-    }
+async function decodeCard(image: Buffer): Promise<DecodedCard> {
+  const meta = await sharp(image, { animated: true }).metadata();
+  const width = meta.width ?? 0;
+  const height = meta.pageHeight ?? meta.height ?? 0;
+  const pages = meta.pages ?? 1;
+  if (!width || !height) throw new Error("drop strip: card has no size");
+  const { data, info } = await sharp(image, { animated: true, pages: -1 })
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+  if (info.channels !== 4) throw new Error("drop strip: expected 4 channels");
+  const frameBytes = width * height * 4;
+  const frames: Buffer[] = [];
+  for (let page = 0; page < pages; page++) {
+    const start = page * frameBytes;
+    frames.push(Buffer.from(data.subarray(start, start + frameBytes)));
   }
-  return { width: decoded.width, height: decoded.height, frames, delays };
+  const delays = frames.map((_, index) => {
+    const delay = meta.delay?.[index] ?? 0;
+    return delay > 0 ? delay : 60;
+  });
+  return { width, height, frames, delays };
 }
 
 function stitchRgba(cards: DecodedCard[], frameIndex: number): { data: Buffer; width: number; height: number } {
@@ -88,7 +93,7 @@ async function stitchStill(images: Buffer[]): Promise<Buffer> {
     .toBuffer();
 }
 
-/** Place drop cards in a row. A still strip is PNG. Any shiny card makes the whole strip an APNG. */
+/** Place drop cards in a row. A still strip is PNG. Any shiny card makes the whole strip a GIF. */
 export async function renderDropStrip(cards: DropStripCard[]): Promise<DropStrip> {
   if (cards.length === 0) throw new Error("drop strip: no cards");
   const animated = cards.some((card) => card.animated);
@@ -96,7 +101,7 @@ export async function renderDropStrip(cards: DropStripCard[]): Promise<DropStrip
     return { data: await stitchStill(cards.map((card) => card.image)), animated: false };
   }
 
-  const decoded = cards.map((card) => decodeCard(card.image));
+  const decoded = await Promise.all(cards.map((card) => decodeCard(card.image)));
   const lead = decoded.reduce((best, card) => (card.frames.length > best.frames.length ? card : best));
   const frameCount = Math.max(lead.frames.length, 1);
   const first = stitchRgba(decoded, 0);
@@ -107,5 +112,5 @@ export async function renderDropStrip(cards: DropStripCard[]): Promise<DropStrip
     const delay = lead.delays[i] ?? 0;
     delays.push(delay > 0 ? delay : 60);
   }
-  return { data: encodeApng(frames, first.width, first.height, delays), animated: true };
+  return { data: await encodeGif(frames, first.width, first.height, delays), animated: true };
 }

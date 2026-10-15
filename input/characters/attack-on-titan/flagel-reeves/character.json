@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-flagel-reeves",
+  "name": "Flagel  Reeves",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-flagel-reeves-base",
+      "name": "Flagel  Reeves",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

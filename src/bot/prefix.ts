@@ -4,6 +4,8 @@ import {
   type Message,
   type User,
 } from "discord.js";
+import { isCardCode } from "../game/codes.js";
+import { filtersAreInvocable } from "../game/filters.js";
 import type { AkiraCommand } from "../types/commands.js";
 
 export function commandPrefix(): string {
@@ -40,9 +42,16 @@ const LEGACY_ALIASES: Record<string, { command: string; subcommand?: string }> =
   itemshop: { command: "shop" },
   rm: { command: "reminders" },
   remind: { command: "reminders" },
-  t: { command: "tags" },
-  tl: { command: "tags" },
-  taglist: { command: "tags" },
+  t: { command: "tag" },
+  tl: { command: "taglist" },
+  tags: { command: "taglist" },
+  tagadd: { command: "tagcreate" },
+  ta: { command: "tagcreate" },
+  tc: { command: "tagcreate" },
+  tagremove: { command: "tagdelete" },
+  tr: { command: "tagdelete" },
+  td: { command: "tagdelete" },
+  ut: { command: "untag" },
 };
 
 export function resolveLegacyCommand(name: string): { command: string; subcommand?: string } {
@@ -58,6 +67,23 @@ type CommandOption = {
 
 function isUserToken(token: string): boolean {
   return /^<@!?\d+>$/.test(token);
+}
+
+/** Card codes and reminder actions are one word. A character name takes the rest of the message. */
+function isSingleToken(field: CommandOption): boolean {
+  return field.name === "card_id" || field.name === "their_card" || field.name === "action" || field.name === "tag_name" || field.name === "emoji";
+}
+
+function isCardIdList(field: CommandOption): boolean {
+  return field.name === "card_ids";
+}
+
+function isFilterField(field: CommandOption): boolean {
+  return field.name === "filters";
+}
+
+function isCardToken(token: string): boolean {
+  return isCardCode(token.toLowerCase());
 }
 
 function optionFields(options: CommandOption[], rest: string, forcedSubcommand?: string): { fields: CommandOption[]; args: string[] } {
@@ -91,7 +117,17 @@ export function invocationIsExpected(command: AkiraCommand, rest: string, forced
       else if (required) return false;
       continue;
     }
-    if (field.type === ApplicationCommandOptionType.String && field.name !== "card_id" && field.name !== "action") {
+    if (isCardIdList(field)) {
+      const start = index;
+      while (index < args.length && isCardToken(args[index] ?? "")) index += 1;
+      if (index < args.length) return false;
+      if (required && index === start) return false;
+      continue;
+    }
+    if (isFilterField(field)) {
+      return filtersAreInvocable(args.slice(index).join(" "));
+    }
+    if (field.type === ApplicationCommandOptionType.String && !isSingleToken(field)) {
       if (index >= args.length) return !required;
       return true;
     }
@@ -118,10 +154,28 @@ export function prefixOptionValues(fields: CommandOption[], args: string[]): Map
   let index = 0;
   for (const field of fields) {
     if (field.type === ApplicationCommandOptionType.User) {
-      if (index < args.length && isUserToken(args[index] ?? "")) index += 1;
+      const token = args[index] ?? "";
+      if (index < args.length && isUserToken(token)) {
+        values.set(field.name, token.replace(/\D/g, ""));
+        index += 1;
+      }
       continue;
     }
-    if (field.type === ApplicationCommandOptionType.String && field.name !== "card_id" && field.name !== "action") {
+    if (isCardIdList(field)) {
+      const ids: string[] = [];
+      while (index < args.length && isCardToken(args[index] ?? "")) {
+        ids.push((args[index] ?? "").toLowerCase());
+        index += 1;
+      }
+      if (ids.length > 0) values.set(field.name, ids.join(" "));
+      continue;
+    }
+    if (isFilterField(field)) {
+      const rest = args.slice(index).join(" ");
+      if (rest) values.set(field.name, rest);
+      break;
+    }
+    if (field.type === ApplicationCommandOptionType.String && !isSingleToken(field)) {
       if (index < args.length) values.set(field.name, args.slice(index).join(" "));
       break;
     }
@@ -246,7 +300,8 @@ export function createPrefixInteraction(
     options: {
       getSubcommand: () => sub,
       getString: (name: string, required?: boolean) => {
-        const value = optionValues.get(name) ?? (name === "card_id" ? "" : argText);
+        const exact = name === "card_id" || name === "their_card" || name === "action" || name === "tag_name" || name === "emoji" || name === "card_ids" || name === "filters";
+        const value = optionValues.get(name) ?? (exact ? "" : argText);
         if (!value) {
           if (required) throw new Error(`Akira needs a ${name.replaceAll("_", " ")} for that.`);
           return null;
@@ -263,7 +318,12 @@ export function createPrefixInteraction(
         if (!Number.isInteger(parsed)) return null;
         return parsed;
       },
-      getUser: (_name?: string): User | null => mentioned,
+      getUser: (name?: string): User | null => {
+        if (name && optionValues.has(name)) {
+          return message.mentions.users.get(optionValues.get(name) ?? "") ?? null;
+        }
+        return mentioned;
+      },
     },
     reply: async (payload: ReplyBody) => {
       if (state.sent) return state.sent.edit(publicBody(payload) as never);

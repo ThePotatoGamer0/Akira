@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-grucius",
+  "name": "Grucius",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-grucius-base",
+      "name": "Grucius",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

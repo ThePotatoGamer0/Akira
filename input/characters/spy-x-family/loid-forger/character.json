@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-loid-forger",
+  "name": "Loid Forger",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-loid-forger-base",
+      "name": "Loid Forger",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

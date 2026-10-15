@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-animalia",
+  "name": "Animalia",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-animalia-base",
+      "name": "Animalia",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

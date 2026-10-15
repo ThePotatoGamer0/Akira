@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-shinonome",
+  "name": "Shinonome",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-shinonome-base",
+      "name": "Shinonome",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

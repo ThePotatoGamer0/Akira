@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-bacchus",
+  "name": "Bacchus",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-bacchus-base",
+      "name": "Bacchus",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

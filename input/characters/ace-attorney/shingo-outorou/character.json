@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-shingo-outorou",
+  "name": "Shingo Outorou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-shingo-outorou-base",
+      "name": "Shingo Outorou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

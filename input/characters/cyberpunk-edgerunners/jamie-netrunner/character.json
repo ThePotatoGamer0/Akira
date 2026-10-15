@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-jamie-netrunner",
+  "name": "Jamie (Netrunner)",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-jamie-netrunner-base",
+      "name": "Jamie (Netrunner)",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

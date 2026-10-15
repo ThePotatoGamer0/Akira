@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-billy-squire",
+  "name": "Billy Squire",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-billy-squire-base",
+      "name": "Billy Squire",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

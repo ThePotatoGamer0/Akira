@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yui-michimiya",
+  "name": "Yui Michimiya",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "haikyuu-yui-michimiya-base",
+      "name": "Yui Michimiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

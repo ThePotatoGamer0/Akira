@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-sigrid-wachmann",
+  "name": "Sigrid Wachmann",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-sigrid-wachmann-base",
+      "name": "Sigrid Wachmann",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

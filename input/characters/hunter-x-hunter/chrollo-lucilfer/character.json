@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-chrollo-lucilfer",
+  "name": "Chrollo Lucilfer",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-chrollo-lucilfer-base",
+      "name": "Chrollo Lucilfer",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

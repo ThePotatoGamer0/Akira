@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-falco-grice",
+  "name": "Falco Grice",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-falco-grice-base",
+      "name": "Falco Grice",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

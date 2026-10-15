@@ -1,0 +1,13 @@
+{
+  "id": "overlord-hamusuke",
+  "name": "Hamusuke",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-hamusuke-base",
+      "name": "Hamusuke",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

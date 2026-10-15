@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-tomohiko-gouryoku",
+  "name": "Tomohiko Gouryoku",
+  "gender": null,
+  "cards": [
+    {
+      "id": "danganronpa-tomohiko-gouryoku-base",
+      "name": "Tomohiko Gouryoku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

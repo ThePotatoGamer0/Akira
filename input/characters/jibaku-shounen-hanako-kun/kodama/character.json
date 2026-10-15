@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-kodama",
+  "name": "Kodama",
+  "gender": null,
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-kodama-base",
+      "name": "Kodama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

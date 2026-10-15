@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-sasha-touzan",
+  "name": "Sasha Touzan",
+  "gender": null,
+  "cards": [
+    {
+      "id": "eighty-six-sasha-touzan-base",
+      "name": "Sasha Touzan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

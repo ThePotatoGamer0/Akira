@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-renge-houshakuji",
+  "name": "Renge Houshakuji",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-renge-houshakuji-base",
+      "name": "Renge Houshakuji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

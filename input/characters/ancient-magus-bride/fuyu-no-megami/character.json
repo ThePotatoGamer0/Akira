@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-fuyu-no-megami",
+  "name": "Fuyu no Megami",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-fuyu-no-megami-base",
+      "name": "Fuyu no Megami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

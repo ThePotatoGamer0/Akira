@@ -34,8 +34,8 @@ export function Home(props: { me: Me | null }) {
           </Link>
         </li>
         <li>
-          <Link to="/leaderboard" className="webui-link-card">
-            Leaderboard
+          <Link to="/stats" className="webui-link-card">
+            Stats
           </Link>
         </li>
         <li>

@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-shion",
+  "name": "Shion",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-shion-base",
+      "name": "Shion",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -17,6 +17,10 @@ const PAGE_SIZE = 25;
 const ANILIST_SEARCH: Record<string, string | null> = {
   "demon-slayer": "Kimetsu no Yaiba",
   invincible: null,
+  pokemon: "Pocket Monsters",
+  "yarichin-bitch-club": "Yarichin☆Bitch-bu",
+  "haikyuu-2nd-season": "Haikyuu!! 2nd Season",
+  "cyberpunk-edgerunners": "Cyberpunk: Edgerunners",
 };
 
 function searchTitle(seriesSlug: string): string | null {

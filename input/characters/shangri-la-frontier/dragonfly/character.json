@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-dragonfly",
+  "name": "Dragonfly",
+  "gender": null,
+  "cards": [
+    {
+      "id": "shangri-la-frontier-dragonfly-base",
+      "name": "Dragonfly",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

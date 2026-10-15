@@ -1,0 +1,13 @@
+{
+  "id": "overlord-scama-elbero",
+  "name": "Scama Elbero",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-scama-elbero-base",
+      "name": "Scama Elbero",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

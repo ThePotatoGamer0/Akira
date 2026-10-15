@@ -1,0 +1,13 @@
+{
+  "id": "way-of-the-househusband-shufu",
+  "name": "Shufu",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "way-of-the-househusband-shufu-base",
+      "name": "Shufu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

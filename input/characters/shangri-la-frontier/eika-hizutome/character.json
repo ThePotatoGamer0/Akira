@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-eika-hizutome",
+  "name": "Eika Hizutome",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-eika-hizutome-base",
+      "name": "Eika Hizutome",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

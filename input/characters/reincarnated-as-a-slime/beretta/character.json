@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-beretta",
+  "name": "Beretta",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-beretta-base",
+      "name": "Beretta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

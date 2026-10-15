@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-marcel-galliard",
+  "name": "Marcel Galliard",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-marcel-galliard-base",
+      "name": "Marcel Galliard",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

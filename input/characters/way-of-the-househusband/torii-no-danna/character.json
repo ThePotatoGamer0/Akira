@@ -1,0 +1,13 @@
+{
+  "id": "way-of-the-househusband-torii-no-danna",
+  "name": "Torii no Danna",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "way-of-the-househusband-torii-no-danna-base",
+      "name": "Torii no Danna",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

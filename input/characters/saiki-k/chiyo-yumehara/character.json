@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-chiyo-yumehara",
+  "name": "Chiyo Yumehara",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "saiki-k-chiyo-yumehara-base",
+      "name": "Chiyo Yumehara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

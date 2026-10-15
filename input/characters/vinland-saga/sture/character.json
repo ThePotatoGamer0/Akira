@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-sture",
+  "name": "Sture",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-sture-base",
+      "name": "Sture",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

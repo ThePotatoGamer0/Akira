@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-hanako",
+  "name": "Hanako",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-hanako-base",
+      "name": "Hanako",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

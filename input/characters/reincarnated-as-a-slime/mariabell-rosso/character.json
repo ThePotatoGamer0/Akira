@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-mariabell-rosso",
+  "name": "Mariabell Rosso",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-mariabell-rosso-base",
+      "name": "Mariabell Rosso",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

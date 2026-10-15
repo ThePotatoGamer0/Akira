@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-keiji",
+  "name": "Keiji",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-keiji-base",
+      "name": "Keiji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

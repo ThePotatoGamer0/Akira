@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-eren-yeager",
+  "name": "Eren Yeager",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-eren-yeager-base",
+      "name": "Eren Yeager",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

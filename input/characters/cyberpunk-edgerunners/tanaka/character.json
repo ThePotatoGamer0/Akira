@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-tanaka",
+  "name": "Tanaka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-tanaka-base",
+      "name": "Tanaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

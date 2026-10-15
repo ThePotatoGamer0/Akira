@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-puhat",
+  "name": "Puhat",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-puhat-base",
+      "name": "Puhat",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

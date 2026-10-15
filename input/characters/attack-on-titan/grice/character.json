@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-grice",
+  "name": "Grice",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-grice-base",
+      "name": "Grice",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

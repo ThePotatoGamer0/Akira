@@ -1,0 +1,13 @@
+{
+  "id": "overlord-brain-unglaus",
+  "name": "Brain Unglaus",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-brain-unglaus-base",
+      "name": "Brain Unglaus",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

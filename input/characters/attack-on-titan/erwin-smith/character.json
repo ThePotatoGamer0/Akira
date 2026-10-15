@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-erwin-smith",
+  "name": "Erwin Smith",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-erwin-smith-base",
+      "name": "Erwin Smith",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

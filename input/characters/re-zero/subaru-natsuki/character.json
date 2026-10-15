@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-subaru-natsuki",
+  "name": "Subaru Natsuki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-subaru-natsuki-base",
+      "name": "Subaru Natsuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

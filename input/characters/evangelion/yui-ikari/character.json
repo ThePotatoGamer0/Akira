@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-yui-ikari",
+  "name": "Yui Ikari",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "evangelion-yui-ikari-base",
+      "name": "Yui Ikari",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

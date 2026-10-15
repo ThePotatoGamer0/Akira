@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-fine-tybur",
+  "name": "Fine Tybur",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-fine-tybur-base",
+      "name": "Fine Tybur",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

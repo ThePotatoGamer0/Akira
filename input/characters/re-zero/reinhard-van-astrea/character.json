@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-reinhard-van-astrea",
+  "name": "Reinhard van Astrea",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-reinhard-van-astrea-base",
+      "name": "Reinhard van Astrea",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

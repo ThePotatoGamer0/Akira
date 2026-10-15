@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-fuchi",
+  "name": "Fuchi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-fuchi-base",
+      "name": "Fuchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

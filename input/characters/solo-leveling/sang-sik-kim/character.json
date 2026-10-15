@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-sang-sik-kim",
+  "name": "Sang-Sik Kim",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-sang-sik-kim-base",
+      "name": "Sang-Sik Kim",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

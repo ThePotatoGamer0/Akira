@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-cheol-jin-lee",
+  "name": "Cheol-Jin Lee",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-cheol-jin-lee-base",
+      "name": "Cheol-Jin Lee",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-eld-s-lover",
+  "name": "Eld's Lover",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-eld-s-lover-base",
+      "name": "Eld's Lover",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

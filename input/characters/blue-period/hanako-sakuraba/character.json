@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-hanako-sakuraba",
+  "name": "Hanako Sakuraba",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-period-hanako-sakuraba-base",
+      "name": "Hanako Sakuraba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-nessie",
+  "name": "Nessie",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dandadan-nessie-base",
+      "name": "Nessie",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

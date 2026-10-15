@@ -1,0 +1,13 @@
+{
+  "id": "overlord-nemu-emmot",
+  "name": "Nemu Emmot",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-nemu-emmot-base",
+      "name": "Nemu Emmot",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-yukinari-arima",
+  "name": "Yukinari Arima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-yukinari-arima-base",
+      "name": "Yukinari Arima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

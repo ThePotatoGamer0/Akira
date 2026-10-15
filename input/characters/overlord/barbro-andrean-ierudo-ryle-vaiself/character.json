@@ -1,0 +1,13 @@
+{
+  "id": "overlord-barbro-andrean-ierudo-ryle-vaiself",
+  "name": "Barbro Andrean Ierudo Ryle Vaiself",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "overlord-barbro-andrean-ierudo-ryle-vaiself-base",
+      "name": "Barbro Andrean Ierudo Ryle Vaiself",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

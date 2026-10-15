@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-kazuhito-narita",
+  "name": "Kazuhito Narita",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-kazuhito-narita-base",
+      "name": "Kazuhito Narita",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

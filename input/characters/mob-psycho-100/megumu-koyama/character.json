@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-megumu-koyama",
+  "name": "Megumu Koyama",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-megumu-koyama-base",
+      "name": "Megumu Koyama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-hikari-horaki",
+  "name": "Hikari Horaki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "evangelion-hikari-horaki-base",
+      "name": "Hikari Horaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

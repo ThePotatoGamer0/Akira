@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-kaval",
+  "name": "Kaval",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-kaval-base",
+      "name": "Kaval",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

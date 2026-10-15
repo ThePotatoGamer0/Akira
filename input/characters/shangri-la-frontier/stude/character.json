@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-stude",
+  "name": "Stude",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-stude-base",
+      "name": "Stude",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

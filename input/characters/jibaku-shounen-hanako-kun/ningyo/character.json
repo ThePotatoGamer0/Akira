@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-ningyo",
+  "name": "Ningyo",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-ningyo-base",
+      "name": "Ningyo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

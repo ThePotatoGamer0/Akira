@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-moses-no-haha",
+  "name": "Moses no Haha",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-moses-no-haha-base",
+      "name": "Moses no Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

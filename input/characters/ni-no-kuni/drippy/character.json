@@ -1,0 +1,14 @@
+{
+  "id": "ni-no-kuni-drippy",
+  "name": "Drippy",
+  "gender": "Male",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "ni-no-kuni-drippy-base",
+      "name": "Drippy",
+      "rarity": "Secret Rare",
+      "image": "base.png"
+    }
+  ]
+}

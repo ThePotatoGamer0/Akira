@@ -1,0 +1,13 @@
+{
+  "id": "cyberpunk-edgerunners-avida-yang",
+  "name": "Avida Yang",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-avida-yang-base",
+      "name": "Avida Yang",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-isaac-farrar",
+  "name": "Isaac Farrar",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-isaac-farrar-base",
+      "name": "Isaac Farrar",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-manjirou",
+  "name": "Manjirou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dandadan-manjirou-base",
+      "name": "Manjirou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

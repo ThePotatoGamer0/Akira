@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-shenmei",
+  "name": "Shenmei",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-shenmei-base",
+      "name": "Shenmei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

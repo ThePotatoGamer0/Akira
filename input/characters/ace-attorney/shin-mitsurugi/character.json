@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-shin-mitsurugi",
+  "name": "Shin Mitsurugi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-shin-mitsurugi-base",
+      "name": "Shin Mitsurugi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

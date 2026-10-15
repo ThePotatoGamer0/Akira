@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-hikari-shinomiya",
+  "name": "Hikari Shinomiya",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "kaiju-no-8-hikari-shinomiya-base",
+      "name": "Hikari Shinomiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

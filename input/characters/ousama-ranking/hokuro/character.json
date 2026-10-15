@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-hokuro",
+  "name": "Hokuro",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-hokuro-base",
+      "name": "Hokuro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

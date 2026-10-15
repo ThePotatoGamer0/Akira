@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-chadwick-curtis",
+  "name": "Chadwick Curtis",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-chadwick-curtis-base",
+      "name": "Chadwick Curtis",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

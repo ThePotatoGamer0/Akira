@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-super-custom-yo649z-mk-ii",
+  "name": "Super Custom YO649Z Mk. II",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-super-custom-yo649z-mk-ii-base",
+      "name": "Super Custom YO649Z Mk. II",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

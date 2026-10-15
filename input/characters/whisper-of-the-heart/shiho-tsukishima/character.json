@@ -1,0 +1,13 @@
+{
+  "id": "whisper-of-the-heart-shiho-tsukishima",
+  "name": "Shiho Tsukishima",
+  "gender": null,
+  "cards": [
+    {
+      "id": "whisper-of-the-heart-shiho-tsukishima-base",
+      "name": "Shiho Tsukishima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

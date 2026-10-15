@@ -1,0 +1,13 @@
+{
+  "id": "overlord-eclair-ecleir-eicler",
+  "name": "Eclair Ecleir Eicler",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-eclair-ecleir-eicler-base",
+      "name": "Eclair Ecleir Eicler",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

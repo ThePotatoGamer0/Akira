@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-nodoka-hanaka",
+  "name": "Nodoka Hanaka",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ace-attorney-nodoka-hanaka-base",
+      "name": "Nodoka Hanaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

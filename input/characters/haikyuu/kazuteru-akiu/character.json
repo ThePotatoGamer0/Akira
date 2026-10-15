@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-kazuteru-akiu",
+  "name": "Kazuteru Akiu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-kazuteru-akiu-base",
+      "name": "Kazuteru Akiu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

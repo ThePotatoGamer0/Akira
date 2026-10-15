@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-evil-tennensui",
+  "name": "Evil Tennensui",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-evil-tennensui-base",
+      "name": "Evil Tennensui",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

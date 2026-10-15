@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-hawthorn-spirit",
+  "name": "Hawthorn Spirit",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-hawthorn-spirit-base",
+      "name": "Hawthorn Spirit",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

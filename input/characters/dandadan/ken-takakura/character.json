@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-ken-takakura",
+  "name": "Ken Takakura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dandadan-ken-takakura-base",
+      "name": "Ken Takakura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

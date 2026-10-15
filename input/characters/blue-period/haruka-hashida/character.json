@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-haruka-hashida",
+  "name": "Haruka Hashida",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-period-haruka-hashida-base",
+      "name": "Haruka Hashida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

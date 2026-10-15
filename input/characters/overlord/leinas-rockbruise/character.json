@@ -1,0 +1,13 @@
+{
+  "id": "overlord-leinas-rockbruise",
+  "name": "Leinas Rockbruise",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-leinas-rockbruise-base",
+      "name": "Leinas Rockbruise",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

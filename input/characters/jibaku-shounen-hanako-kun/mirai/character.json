@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-mirai",
+  "name": "Mirai",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-mirai-base",
+      "name": "Mirai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

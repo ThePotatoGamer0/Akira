@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-pieck-chichi",
+  "name": "Pieck Chichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-pieck-chichi-base",
+      "name": "Pieck Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

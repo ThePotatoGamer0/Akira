@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-gabimaru",
+  "name": "Gabimaru",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-gabimaru-base",
+      "name": "Gabimaru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

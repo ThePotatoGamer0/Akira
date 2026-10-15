@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-gaia",
+  "name": "Gaia",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-gaia-base",
+      "name": "Gaia",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

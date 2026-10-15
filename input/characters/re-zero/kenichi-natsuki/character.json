@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-kenichi-natsuki",
+  "name": "Kenichi Natsuki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-kenichi-natsuki-base",
+      "name": "Kenichi Natsuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

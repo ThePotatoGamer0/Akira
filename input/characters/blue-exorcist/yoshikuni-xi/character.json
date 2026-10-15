@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-yoshikuni-xi",
+  "name": "Yoshikuni XI",
+  "gender": null,
+  "cards": [
+    {
+      "id": "blue-exorcist-yoshikuni-xi-base",
+      "name": "Yoshikuni XI",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

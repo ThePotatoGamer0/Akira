@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-zofia",
+  "name": "Zofia",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-zofia-base",
+      "name": "Zofia",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

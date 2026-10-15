@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-beru",
+  "name": "Beru ",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-beru-base",
+      "name": "Beru ",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-albis",
+  "name": "Albis",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-albis-base",
+      "name": "Albis",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "howls-moving-castle-suliman",
+  "name": "Suliman",
+  "gender": null,
+  "cards": [
+    {
+      "id": "howls-moving-castle-suliman-base",
+      "name": "Suliman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

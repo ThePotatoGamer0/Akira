@@ -1,0 +1,13 @@
+{
+  "id": "overlord-hekkeran-termite",
+  "name": "Hekkeran Termite",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-hekkeran-termite-base",
+      "name": "Hekkeran Termite",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-frederica-rosenfort",
+  "name": "Frederica Rosenfort",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "eighty-six-frederica-rosenfort-base",
+      "name": "Frederica Rosenfort",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

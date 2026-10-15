@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-toshirou",
+  "name": "Toshirou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dandadan-toshirou-base",
+      "name": "Toshirou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

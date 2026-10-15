@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-jong-in-choi",
+  "name": "Jong-In Choi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-jong-in-choi-base",
+      "name": "Jong-In Choi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

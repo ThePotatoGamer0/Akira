@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-reid-astrea",
+  "name": "Reid Astrea",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-reid-astrea-base",
+      "name": "Reid Astrea",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "overlord-zanac-valleon-igana-ryle-vaiself",
+  "name": "Zanac Valleon Igana Ryle Vaiself",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-zanac-valleon-igana-ryle-vaiself-base",
+      "name": "Zanac Valleon Igana Ryle Vaiself",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-shigeru-yahaba",
+  "name": "Shigeru Yahaba",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-shigeru-yahaba-base",
+      "name": "Shigeru Yahaba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-camellia",
+  "name": "Camellia",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-camellia-base",
+      "name": "Camellia",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

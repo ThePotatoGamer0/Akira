@@ -38,12 +38,14 @@ export function dyeCacheKey(dye: string | null): string {
   return dye;
 }
 
+export type CardCacheFileName = "normal.png" | "shiny.gif" | "shiny.apng" | "burn.gif" | "burn.apng";
+
 export function cardCacheFile(input: {
   variantId: string;
   frameId: number;
   printKey: string;
   dyeKey: string;
-  fileName: "normal.png" | "shiny.apng" | "burn.apng";
+  fileName: CardCacheFileName;
 }): string {
   for (const part of [input.variantId, input.printKey, input.dyeKey]) {
     if (!SAFE_SEGMENT.test(part)) {

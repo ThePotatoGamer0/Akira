@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-chizuru-sasaki",
+  "name": "Chizuru Sasaki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "haikyuu-chizuru-sasaki-base",
+      "name": "Chizuru Sasaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

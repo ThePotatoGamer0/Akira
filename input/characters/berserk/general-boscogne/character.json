@@ -1,0 +1,13 @@
+{
+  "id": "berserk-general-boscogne",
+  "name": "General Boscogne",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "berserk-general-boscogne-base",
+      "name": "General Boscogne",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

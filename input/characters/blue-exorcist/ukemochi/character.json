@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-ukemochi",
+  "name": "Ukemochi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-exorcist-ukemochi-base",
+      "name": "Ukemochi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

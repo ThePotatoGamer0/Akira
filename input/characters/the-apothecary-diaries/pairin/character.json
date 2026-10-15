@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-pairin",
+  "name": "Pairin",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-pairin-base",
+      "name": "Pairin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-myeong-jo",
+  "name": "Myeong Jo",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-myeong-jo-base",
+      "name": "Myeong Jo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

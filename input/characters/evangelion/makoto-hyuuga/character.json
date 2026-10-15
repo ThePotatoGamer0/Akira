@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-makoto-hyuuga",
+  "name": "Makoto Hyuuga",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "evangelion-makoto-hyuuga-base",
+      "name": "Makoto Hyuuga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

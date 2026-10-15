@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-bad",
+  "name": "Bad",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-bad-base",
+      "name": "Bad",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

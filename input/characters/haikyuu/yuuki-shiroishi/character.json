@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yuuki-shiroishi",
+  "name": "Yuuki Shiroishi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-yuuki-shiroishi-base",
+      "name": "Yuuki Shiroishi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

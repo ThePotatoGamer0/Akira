@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-adachi-matagorou",
+  "name": "Adachi Matagorou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-adachi-matagorou-base",
+      "name": "Adachi Matagorou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

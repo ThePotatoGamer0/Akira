@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-leon-cromwell",
+  "name": "Leon Cromwell",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-leon-cromwell-base",
+      "name": "Leon Cromwell",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

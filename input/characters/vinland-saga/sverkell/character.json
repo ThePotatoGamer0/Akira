@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-sverkell",
+  "name": "Sverkell",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-sverkell-base",
+      "name": "Sverkell",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

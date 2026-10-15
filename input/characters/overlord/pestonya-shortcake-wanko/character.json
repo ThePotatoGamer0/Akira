@@ -1,0 +1,13 @@
+{
+  "id": "overlord-pestonya-shortcake-wanko",
+  "name": "Pestonya Shortcake Wanko",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-pestonya-shortcake-wanko-base",
+      "name": "Pestonya Shortcake Wanko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

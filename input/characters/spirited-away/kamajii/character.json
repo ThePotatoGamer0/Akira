@@ -1,0 +1,13 @@
+{
+  "id": "spirited-away-kamajii",
+  "name": "Kamajii",
+  "gender": null,
+  "cards": [
+    {
+      "id": "spirited-away-kamajii-base",
+      "name": "Kamajii",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

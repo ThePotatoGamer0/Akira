@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-felt",
+  "name": "Felt",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-felt-base",
+      "name": "Felt",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

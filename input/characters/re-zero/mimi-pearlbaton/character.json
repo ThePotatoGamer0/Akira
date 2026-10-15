@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-mimi-pearlbaton",
+  "name": "Mimi Pearlbaton",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-mimi-pearlbaton-base",
+      "name": "Mimi Pearlbaton",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

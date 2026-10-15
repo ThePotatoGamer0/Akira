@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-mana-iwamaki",
+  "name": "Mana Iwamaki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-mana-iwamaki-base",
+      "name": "Mana Iwamaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

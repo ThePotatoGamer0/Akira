@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-menchi",
+  "name": "Menchi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-menchi-base",
+      "name": "Menchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-orthos",
+  "name": "Orthos",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-orthos-base",
+      "name": "Orthos",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

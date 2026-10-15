@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-saibanchou",
+  "name": "Saibanchou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-saibanchou-base",
+      "name": "Saibanchou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

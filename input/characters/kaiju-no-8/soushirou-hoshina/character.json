@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-soushirou-hoshina",
+  "name": "Soushirou Hoshina",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-soushirou-hoshina-base",
+      "name": "Soushirou Hoshina",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

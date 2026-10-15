@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-chou-mouse",
+  "name": "Chou Mouse",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-chou-mouse-base",
+      "name": "Chou Mouse",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

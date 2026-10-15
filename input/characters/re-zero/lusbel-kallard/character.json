@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-lusbel-kallard",
+  "name": "Lusbel Kallard",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-lusbel-kallard-base",
+      "name": "Lusbel Kallard",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

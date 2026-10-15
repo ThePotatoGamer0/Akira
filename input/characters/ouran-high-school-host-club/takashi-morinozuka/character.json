@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-takashi-morinozuka",
+  "name": "Takashi Morinozuka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-takashi-morinozuka-base",
+      "name": "Takashi Morinozuka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

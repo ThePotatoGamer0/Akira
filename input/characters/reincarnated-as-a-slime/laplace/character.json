@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-laplace",
+  "name": "Laplace",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-laplace-base",
+      "name": "Laplace",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

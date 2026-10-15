@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-wakatoshi-ushijima",
+  "name": "Wakatoshi Ushijima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-wakatoshi-ushijima-base",
+      "name": "Wakatoshi Ushijima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

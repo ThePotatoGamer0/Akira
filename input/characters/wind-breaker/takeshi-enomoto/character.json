@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-takeshi-enomoto",
+  "name": "Takeshi Enomoto",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-takeshi-enomoto-base",
+      "name": "Takeshi Enomoto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

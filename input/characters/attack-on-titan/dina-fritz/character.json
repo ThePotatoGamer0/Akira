@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-dina-fritz",
+  "name": "Dina Fritz",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-dina-fritz-base",
+      "name": "Dina Fritz",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

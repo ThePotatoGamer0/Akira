@@ -1,0 +1,13 @@
+{
+  "id": "overlord-nigredo",
+  "name": "Nigredo",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-nigredo-base",
+      "name": "Nigredo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

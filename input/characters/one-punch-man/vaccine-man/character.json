@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-vaccine-man",
+  "name": "Vaccine Man",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-vaccine-man-base",
+      "name": "Vaccine Man",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

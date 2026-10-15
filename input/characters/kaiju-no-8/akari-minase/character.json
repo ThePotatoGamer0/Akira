@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-akari-minase",
+  "name": "Akari Minase",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "kaiju-no-8-akari-minase-base",
+      "name": "Akari Minase",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

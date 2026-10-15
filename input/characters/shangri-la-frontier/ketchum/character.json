@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-ketchum",
+  "name": "Ketchum",
+  "gender": null,
+  "cards": [
+    {
+      "id": "shangri-la-frontier-ketchum-base",
+      "name": "Ketchum",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

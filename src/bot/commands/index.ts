@@ -6,17 +6,15 @@ import { daily } from "./daily.js";
 import { drop } from "./drop.js";
 import { frame } from "./frame.js";
 import { help } from "./help.js";
-import {
-  dye,
-  give,
-  importCsv,
-  inventory,
-  multiburn,
-  pool,
-  shop,
-  tags,
-  trade,
-} from "./later.js";
+import { dye, importCsv } from "./later.js";
+import { inventory } from "./inventory.js";
+import { milestone } from "./milestone.js";
+import { pool } from "./pool.js";
+import { prestige } from "./prestige.js";
+import { shop } from "./shop.js";
+import { multiburn } from "./multiburn.js";
+import { tag, tagcreate, tagdelete, taglist, untag } from "./tag.js";
+import { give, trade } from "./transfer.js";
 import { reminders } from "./reminders.js";
 import { lookup } from "./lookup.js";
 import { ping } from "./ping.js";
@@ -37,13 +35,19 @@ export const commands: AkiraCommand[] = [
   lookup,
   reminders,
   importCsv,
-  tags,
+  tag,
+  taglist,
+  tagcreate,
+  tagdelete,
+  untag,
   wishlist,
   give,
   trade,
   userinfo,
   shop,
   pool,
+  milestone,
+  prestige,
   dye,
   frame,
   inventory,

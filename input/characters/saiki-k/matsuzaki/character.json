@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-matsuzaki",
+  "name": "Matsuzaki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-matsuzaki-base",
+      "name": "Matsuzaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-meili-portroute",
+  "name": "Meili Portroute",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-meili-portroute-base",
+      "name": "Meili Portroute",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

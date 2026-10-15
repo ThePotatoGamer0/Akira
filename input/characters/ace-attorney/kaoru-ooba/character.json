@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-kaoru-ooba",
+  "name": "Kaoru Ooba",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ace-attorney-kaoru-ooba-base",
+      "name": "Kaoru Ooba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

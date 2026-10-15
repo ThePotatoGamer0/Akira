@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-titania",
+  "name": "Titania",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-titania-base",
+      "name": "Titania",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-song-i-han",
+  "name": "Song-I Han",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "solo-leveling-song-i-han-base",
+      "name": "Song-I Han",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

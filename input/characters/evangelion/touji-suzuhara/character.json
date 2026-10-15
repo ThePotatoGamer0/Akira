@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-touji-suzuhara",
+  "name": "Touji Suzuhara",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "evangelion-touji-suzuhara-base",
+      "name": "Touji Suzuhara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

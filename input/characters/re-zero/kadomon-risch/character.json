@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-kadomon-risch",
+  "name": "Kadomon Risch",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-kadomon-risch-base",
+      "name": "Kadomon Risch",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

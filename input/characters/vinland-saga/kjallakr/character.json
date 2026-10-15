@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-kjallakr",
+  "name": "Kjallakr",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-kjallakr-base",
+      "name": "Kjallakr",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

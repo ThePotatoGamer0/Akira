@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-phoenix-otoko",
+  "name": "Phoenix Otoko",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-phoenix-otoko-base",
+      "name": "Phoenix Otoko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

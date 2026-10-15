@@ -15,6 +15,8 @@ test("composites character art, the frame, and a print number", async (t) => {
   }
   assert.equal(frame.characterName?.horizontalAnchor, "center");
   assert.equal(frame.printNumber?.horizontalAnchor, "right");
+  assert.ok(frame.seriesName);
+  assert.ok((frame.printNumber?.y ?? 600) < 585);
   const name = frame.characterName;
   const print = frame.printNumber;
   const texts = [];

@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-masashi-yahari",
+  "name": "Masashi Yahari",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ace-attorney-masashi-yahari-base",
+      "name": "Masashi Yahari",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

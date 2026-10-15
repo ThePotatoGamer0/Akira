@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-elsa-granhiert",
+  "name": "Elsa Granhiert",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-elsa-granhiert-base",
+      "name": "Elsa Granhiert",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

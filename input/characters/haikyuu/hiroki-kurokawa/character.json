@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-hiroki-kurokawa",
+  "name": "Hiroki Kurokawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-hiroki-kurokawa-base",
+      "name": "Hiroki Kurokawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

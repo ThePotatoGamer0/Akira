@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-maximillion-galactica",
+  "name": "Maximillion Galactica",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-maximillion-galactica-base",
+      "name": "Maximillion Galactica",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

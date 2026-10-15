@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-hahaoya",
+  "name": "Hahaoya",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ousama-ranking-hahaoya-base",
+      "name": "Hahaoya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

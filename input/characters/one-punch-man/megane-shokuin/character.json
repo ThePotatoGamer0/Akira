@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-megane-shokuin",
+  "name": "Megane Shokuin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-megane-shokuin-base",
+      "name": "Megane Shokuin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

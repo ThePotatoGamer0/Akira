@@ -19,6 +19,7 @@ export type FrameAsset = {
   id: number;
   imagePath: string;
   characterName: TextStyle | null;
+  seriesName: TextStyle | null;
   printNumber: TextStyle | null;
 };
 
@@ -62,21 +63,23 @@ export function loadFrame(id: number): FrameAsset | null {
   if (!fs.existsSync(imagePath)) return null;
 
   let characterName: TextStyle | null = null;
+  let seriesName: TextStyle | null = null;
   let printNumber: TextStyle | null = null;
   const configPath = path.join(dir, "config.json");
   if (fs.existsSync(configPath)) {
     try {
       const parsed = JSON.parse(fs.readFileSync(configPath, "utf8")) as {
-        textElements?: { characterName?: RawText; printNumber?: RawText };
+        textElements?: { characterName?: RawText; seriesName?: RawText; printNumber?: RawText };
       };
       characterName = readStyle(parsed.textElements?.characterName);
+      seriesName = readStyle(parsed.textElements?.seriesName);
       printNumber = readStyle(parsed.textElements?.printNumber);
     } catch (err) {
       console.error(`Akira couldn't read the frame config at ${configPath}:`, err);
     }
   }
 
-  return { id, imagePath, characterName, printNumber };
+  return { id, imagePath, characterName, seriesName, printNumber };
 }
 
 export function listFrames(): FrameAsset[] {

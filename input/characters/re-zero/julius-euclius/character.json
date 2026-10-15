@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-julius-euclius",
+  "name": "Julius Euclius",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-julius-euclius-base",
+      "name": "Julius Euclius",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

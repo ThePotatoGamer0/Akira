@@ -1,29 +1,41 @@
 ---
-title: Economy & leaderboard in the WebUI
-description: What the Economy and Leaderboard pages show you today, and how complete they feel.
+title: Economy in the WebUI
+description: The same shop, pool, milestones, and prestige as the bot, on one page.
 ---
 
-Once you are [signed in](/webui/authentication), both pages are linked from **Home**: **Economy & pool** and **Leaderboard**.
+Once you are [signed in](/webui/authentication), **Economy** is linked from Home. It does the same things as the Discord commands. Buying here spends the same bits and starts the same timers.
 
-## Economy & pool
+## Your bits
 
-This page is meant to give you a **browser-friendly** view of money and the **shared server pot**:
+The number at the top is how many bits you are carrying. It updates after a purchase, a pool gift, a milestone claim, or a prestige.
 
-- **Your bits** - how many bits you are carrying, in plain numbers.
-- **Shop** - buy or manage shop-style bits spending from here when your server supports it. The list and layout may still feel lighter than typing [**/shop**](/commands/shop) in Discord; more items and polish may appear later.
-- **Server pool** - chip in bits toward the guild pot and see how the pool is doing, in the same spirit as the bot (rules and tiers are explained in [**Bits**](/economy/bits) and [**Server buff pool**](/economy/server-pool) if you want the full picture).
+## Shop
 
-Expect this screen to **evolve** - it might look a bit bare or change layout as features catch up with Discord.
+Seven cards, in the same order as [`/shop`](/commands/shop). Each one shows the name, what it does, how long it lasts, the cost, and a Buy button. Featured series includes today's series name. Buy is the same purchase as the button under the Discord embed.
+
+## Server pool
+
+The pot, the tier, which buffs can be chosen tonight, and the buffs that are already live. Once the pot reaches a tier, that night's buff is applied. Type an amount and add it to the pool. That gift also fills your milestone bar, the same as [`/pool give`](/commands/pool).
+
+## Milestones
+
+All ten steps, how far along the bar you are, and a Claim button when the next step is ready. Claiming pays the bits. It does not grant the prestige reward. That reward is only stamped if you prestige after the step is claimed. The amounts are on [Personal milestones](/economy/personal-milestone).
+
+## Prestige
+
+The same reminder as [`/prestige`](/commands/prestige): how many bits are left until the next milestone, and what waiting would add. After milestone 5, **Prestige** asks you to confirm. Confirm resets the bar. Keep the bar leaves it alone.
+
+## Buffs
+
+Shop, server, and prestige are listed separately, then a Together section with the same sentences as [`/inventory`](/commands/inventory). A group with nothing is left out.
 
 ## Leaderboard
 
-**Leaderboard** shows how players stack up - rankings in a table, based on whatever your server is tracking right now.
-
-Early versions might show **few columns**, **no filters**, or a **short list**. If it looks empty or minimal, it is usually because the feature set is still growing, not because you did something wrong.
+The Leaderboard link on the site opens Stats. Rankings live there with the rest of the server's numbers.
 
 ## See also
 
 - [WebUI authentication](/webui/authentication)
-- [Collection in the WebUI](/webui/collection)
 - [Bits](/economy/bits)
-- [Prestige overview](/prestige/overview)
+- [Server buff pool](/economy/server-pool)
+- [Prestige](/prestige/overview)

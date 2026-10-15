@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-kirio-kamiya",
+  "name": "Kirio Kamiya",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ace-attorney-kirio-kamiya-base",
+      "name": "Kirio Kamiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

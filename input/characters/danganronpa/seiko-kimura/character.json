@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-seiko-kimura",
+  "name": "Seiko Kimura",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-seiko-kimura-base",
+      "name": "Seiko Kimura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

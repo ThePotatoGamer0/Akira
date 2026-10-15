@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-isaac-netero",
+  "name": "Isaac Netero",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-isaac-netero-base",
+      "name": "Isaac Netero",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

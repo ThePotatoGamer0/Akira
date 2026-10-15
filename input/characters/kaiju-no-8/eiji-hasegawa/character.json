@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-eiji-hasegawa",
+  "name": "Eiji Hasegawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-eiji-hasegawa-base",
+      "name": "Eiji Hasegawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

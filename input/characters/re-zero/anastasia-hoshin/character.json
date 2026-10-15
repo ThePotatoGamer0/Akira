@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-anastasia-hoshin",
+  "name": "Anastasia Hoshin",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-anastasia-hoshin-base",
+      "name": "Anastasia Hoshin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

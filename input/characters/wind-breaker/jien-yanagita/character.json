@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-jien-yanagita",
+  "name": "Jien Yanagita",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-jien-yanagita-base",
+      "name": "Jien Yanagita",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

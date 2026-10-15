@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-kairou-mikuri",
+  "name": "Kairou Mikuri",
+  "gender": null,
+  "cards": [
+    {
+      "id": "eighty-six-kairou-mikuri-base",
+      "name": "Kairou Mikuri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

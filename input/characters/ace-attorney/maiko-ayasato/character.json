@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-maiko-ayasato",
+  "name": "Maiko Ayasato",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-maiko-ayasato-base",
+      "name": "Maiko Ayasato",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

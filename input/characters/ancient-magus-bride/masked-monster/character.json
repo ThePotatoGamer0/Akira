@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-masked-monster",
+  "name": "Masked Monster",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-masked-monster-base",
+      "name": "Masked Monster",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

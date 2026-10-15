@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-gris-rubion",
+  "name": "Gris Rubion",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-gris-rubion-base",
+      "name": "Gris Rubion",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

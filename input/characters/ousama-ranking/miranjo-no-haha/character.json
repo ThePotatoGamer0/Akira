@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-miranjo-no-haha",
+  "name": "Miranjo no Haha",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ousama-ranking-miranjo-no-haha-base",
+      "name": "Miranjo no Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-raiden-shuga",
+  "name": "Raiden Shuga",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-raiden-shuga-base",
+      "name": "Raiden Shuga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

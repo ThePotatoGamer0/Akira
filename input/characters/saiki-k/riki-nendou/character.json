@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-riki-nendou",
+  "name": "Riki Nendou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-riki-nendou-base",
+      "name": "Riki Nendou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

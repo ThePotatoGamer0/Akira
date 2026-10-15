@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-yule-no-futago",
+  "name": "Yule no Futago",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-yule-no-futago-base",
+      "name": "Yule no Futago",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

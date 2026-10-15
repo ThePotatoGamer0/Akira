@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-wallace-wells",
+  "name": "Wallace Wells",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-wallace-wells-base",
+      "name": "Wallace Wells",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

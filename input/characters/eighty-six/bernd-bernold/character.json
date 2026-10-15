@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-bernd-bernold",
+  "name": "Bernd Bernold",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-bernd-bernold-base",
+      "name": "Bernd Bernold",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

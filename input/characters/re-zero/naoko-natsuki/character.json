@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-naoko-natsuki",
+  "name": "Naoko Natsuki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-naoko-natsuki-base",
+      "name": "Naoko Natsuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

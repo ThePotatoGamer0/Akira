@@ -14,15 +14,23 @@ The full command name always works after the prefix (`acollection`). The short a
 | Command | Parameters | Aliases |
 | --- | --- | --- |
 | [`/drop`](/commands/drop) | None. Has to be used in the drop channel. | `d` |
-| [Grab](/commands/grab) | No command. React 1️⃣ 2️⃣ or 3️⃣ on the drop. | |
-| [`/collection`](/commands/collection) | `user` optional. A mention. Defaults to you. | `c`, `col` |
+| [Grab](/commands/grab) | No command. React 1️⃣ 2️⃣ or 3️⃣ on the drop. A four-card drop also takes 4️⃣. | |
+| [`/collection`](/commands/collection) | `user` optional. A mention. Defaults to you. Optional filters: `s:` series, `c:` character, `e:` edition, `t:` tag, `q:` quality 1-5, `o:#` low prints, `o:w` wishlists. `type is value` works too. | `c`, `col` |
 | [`/view`](/commands/view) | `card_id` required for `/view`. Prefix `av` or `aview` with no code opens the card you just grabbed. | `v` |
 | [`/burn`](/commands/burn) | `card_id` required. The 7 character code. | `b` |
-| [`/lookup`](/commands/lookup) | `name` required. Character, series, or alias. Several words are fine. | `lu`, `search`, `find` |
+| [`/multiburn`](/commands/multiburn) | `tag_name` required. Burns every card on that tag after a confirmation. | `mb` |
+| [`/lookup`](/commands/lookup) | `name` required for `/lookup`. Character, series, or alias. Several words are fine. Prefix `alu` with no name opens the character of the last grab, on that edition. | `lu`, `search`, `find` |
 | [`/wishlist`](/commands/wishlist) | `show` with optional `user`. `add` with required `character`. `remove` with required `character`. | `wl`. Add: `wa`, `wish`, `wishadd`. Remove: `wr`, `wishremove`. |
 | [`/frame`](/commands/frame) | `show`. `default` with required `frame` id (admin). `card` with required `card_id` and `action` (`clear` or a frame id). | |
+| [`/give`](/commands/give) | `user` and `card_id`, both required. Both players press the check mark. | `g` |
+| [`/trade`](/commands/trade) | `user`, `card_id`, and `their_card`, all required. Both players press the check mark. | |
+| [`/tag`](/commands/tag) | `tag_name` required. `card_ids` optional, space-separated. No codes tags the last grab. | `t` |
+| [`/taglist`](/commands/taglist) | `user` optional. | `tags`, `tl` |
+| [`/tagcreate`](/commands/tagcreate) | `tag_name` and `emoji`, both required. Server emojis are not allowed. | `tagadd`, `ta`, `tc` |
+| [`/tagdelete`](/commands/tagdelete) | `tag_name` required. | `tagremove`, `tr`, `td` |
+| [`/untag`](/commands/untag) | `card_ids` optional, space-separated. No codes untags the last grab. | `ut` |
 
-Examples: `ad`, `ac`, `av`, `av fmbl40r`, `alu denji`, `awl`, `awa Power`, `awr Power`, `aframe`, `aframe default 1`, `aframe card fmbl40r clear`.
+Examples: `ad`, `ac`, `av`, `av fmbl40r`, `alu denji`, `awl`, `awa Power`, `awr Power`, `aframe`, `aframe default 1`, `aframe card fmbl40r clear`, `agive @friend fmbl40r`, `atrade @friend fmbl40r abc1234`.
 
 ## Timers
 
@@ -33,6 +41,18 @@ Examples: `ad`, `ac`, `av`, `av fmbl40r`, `alu denji`, `awl`, `awa Power`, `awr 
 | [`/reminders`](/commands/reminders) | `action` optional: `daily`, `drop`, or `grab`. Omit it to see the list. | `rm`, `remind` |
 
 Examples: `acd`, `atimers`, `adaily`, `areminders`, `areminders drop`, `arm drop`.
+
+## Bits
+
+| Command | Parameters | Aliases |
+| --- | --- | --- |
+| [`/shop`](/commands/shop) | None. Opens the first buff. Previous, next, and buy are buttons. | `is`, `itemshop` |
+| [`/inventory`](/commands/inventory) | None. | `i`, `inv`, `items` |
+| [`/pool`](/commands/pool) | `show`, or `give` with a required bit amount. | |
+| [`/milestone`](/commands/milestone) | `show`, or `claim`. | |
+| [`/prestige`](/commands/prestige) | None. A confirm button appears after milestone 5 is claimed. | |
+
+Examples: `ais`, `ai`, `apool`, `apool give 200`, `amilestone`, `amilestone claim`, `aprestige`.
 
 ## Players
 
@@ -50,17 +70,10 @@ These commands answer, then say the feature is not wired up. They take no parame
 
 | Command | Aliases |
 | --- | --- |
-| [`/multiburn`](/commands/multiburn) | `mb` |
-| [`/give`](/commands/give) | `g` |
-| [`/trade`](/commands/trade) | |
-| [`/shop`](/commands/shop) | `is`, `itemshop` |
-| [`/inventory`](/commands/inventory) | `i`, `inv`, `items` |
-| [`/tags`](/commands/tags) | `t`, `tl`, `taglist` |
 | [`/dye`](/commands/dye) | |
-| [`/pool`](/commands/pool) | |
 | [`/import`](/commands/import) | |
 
-`ai` and `at` only run when there is nothing after them. `ai is cool` is a normal sentence.
+`ai` only runs when there is nothing after it. `ai is cool` is a normal sentence. `at` is tag, so `at fav` tags a card and `at the store` is left alone.
 
 ## Server admin
 

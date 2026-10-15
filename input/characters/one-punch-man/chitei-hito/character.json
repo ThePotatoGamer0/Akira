@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-chitei-hito",
+  "name": "Chitei Hito",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-chitei-hito-base",
+      "name": "Chitei Hito",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

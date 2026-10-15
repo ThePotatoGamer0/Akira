@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-joel-garland",
+  "name": "Joel Garland",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-joel-garland-base",
+      "name": "Joel Garland",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

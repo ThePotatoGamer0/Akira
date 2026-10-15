@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-gu-hyeon-kim",
+  "name": "Gu-Hyeon Kim",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-gu-hyeon-kim-base",
+      "name": "Gu-Hyeon Kim",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

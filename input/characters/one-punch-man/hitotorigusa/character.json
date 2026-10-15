@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-hitotorigusa",
+  "name": "Hitotorigusa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-hitotorigusa-base",
+      "name": "Hitotorigusa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

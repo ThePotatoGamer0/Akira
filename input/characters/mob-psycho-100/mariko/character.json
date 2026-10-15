@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-mariko",
+  "name": "Mariko",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-mariko-base",
+      "name": "Mariko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

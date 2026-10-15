@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-ayumu-moritake",
+  "name": "Ayumu Moritake",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-ayumu-moritake-base",
+      "name": "Ayumu Moritake",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

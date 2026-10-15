@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-touma-hiragi",
+  "name": "Touma Hiragi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-touma-hiragi-base",
+      "name": "Touma Hiragi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

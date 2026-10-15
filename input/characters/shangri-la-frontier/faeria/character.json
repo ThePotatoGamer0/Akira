@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-faeria",
+  "name": "Faeria",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-faeria-base",
+      "name": "Faeria",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

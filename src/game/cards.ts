@@ -1,6 +1,8 @@
 import { prisma } from "../db/client.js";
 import { isCardCode, mintCardCode } from "./codes.js";
+import { editionNumber } from "./editions.js";
 import { GameError } from "./errors.js";
+import { applyCardFilters, type CardFilter } from "./filters.js";
 import { ensureUser, findUserByDiscordId } from "./users.js";
 
 export const COLLECTION_PAGE_SIZE = 10;
@@ -14,20 +16,43 @@ const cardInclude = {
   owner: true,
 } as const;
 
-export async function listCollection(discordId: string, page = 0) {
+const collectionInclude = {
+  variant: {
+    include: {
+      character: {
+        include: {
+          series: true,
+          variants: { select: { id: true, name: true } },
+          _count: { select: { wishlists: true } },
+        },
+      },
+    },
+  },
+  owner: true,
+} as const;
+
+export async function listCollection(discordId: string, page = 0, filter: CardFilter = {}) {
   const user = await findUserByDiscordId(discordId);
-  if (!user) return { total: 0, cards: [], page: 0 };
-  const total = await prisma.card.count({ where: { ownerId: user.id } });
-  const pages = Math.max(1, Math.ceil(total / COLLECTION_PAGE_SIZE));
-  const safePage = Math.min(Math.max(0, page), pages - 1);
-  const cards = await prisma.card.findMany({
+  if (!user) return { total: 0, cards: [], page: 0, owned: 0 };
+  const ownedCards = await prisma.card.findMany({
     where: { ownerId: user.id },
-    include: cardInclude,
-    orderBy: { obtainedAt: "desc" },
-    skip: safePage * COLLECTION_PAGE_SIZE,
-    take: COLLECTION_PAGE_SIZE,
+    include: collectionInclude,
   });
-  return { total, cards, page: safePage };
+  const filtered = applyCardFilters(
+    ownedCards.map((card) => ({
+      ...card,
+      edition: editionNumber(card.variant.character.variants, card.variant.id),
+      wishlistCount: card.variant.character._count.wishlists,
+      seriesName: card.variant.character.series.name,
+      characterName: card.variant.character.name,
+    })),
+    filter,
+  );
+  const total = filtered.length;
+  const pages = Math.max(1, Math.ceil(total / COLLECTION_PAGE_SIZE));
+  const safePage = total === 0 ? 0 : Math.min(Math.max(0, page), pages - 1);
+  const cards = filtered.slice(safePage * COLLECTION_PAGE_SIZE, safePage * COLLECTION_PAGE_SIZE + COLLECTION_PAGE_SIZE);
+  return { total, cards, page: safePage, owned: ownedCards.length };
 }
 
 export async function getCard(cardId: string) {
@@ -99,9 +124,12 @@ function lookupScore(name: string, slug: string, query: string): number {
   return 2;
 }
 
-export async function searchCharacters(query: string) {
+/** Discord select menus hold 25 options, so lookup pages are this long. */
+export const LOOKUP_PAGE_SIZE = 25;
+
+export async function searchCharacters(query: string, page = 0) {
   const q = normalize(query);
-  if (!q) return { total: 0, characters: [] };
+  if (!q) return { total: 0, page: 0, characters: [] };
   const all = await prisma.character.findMany({ include: lookupInclude });
   const matched = all
     .filter((character) => {
@@ -119,7 +147,11 @@ export async function searchCharacters(query: string) {
       if (score !== 0) return score;
       return a.name.localeCompare(b.name);
     });
-  return { total: matched.length, characters: matched.slice(0, 25) };
+  const total = matched.length;
+  const pages = Math.max(1, Math.ceil(total / LOOKUP_PAGE_SIZE));
+  const safePage = Math.min(Math.max(0, page), pages - 1);
+  const start = safePage * LOOKUP_PAGE_SIZE;
+  return { total, page: safePage, characters: matched.slice(start, start + LOOKUP_PAGE_SIZE) };
 }
 
 export async function getLookupCharacter(id: string) {

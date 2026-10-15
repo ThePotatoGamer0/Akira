@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-gaoshun",
+  "name": "Gaoshun",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-gaoshun-base",
+      "name": "Gaoshun",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

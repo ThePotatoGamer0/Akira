@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-mayu-ooba",
+  "name": "Mayu Ooba",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-period-mayu-ooba-base",
+      "name": "Mayu Ooba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

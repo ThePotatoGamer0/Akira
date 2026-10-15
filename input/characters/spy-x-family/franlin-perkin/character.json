@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-franlin-perkin",
+  "name": "Franlin Perkin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-franlin-perkin-base",
+      "name": "Franlin Perkin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

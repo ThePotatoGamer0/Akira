@@ -17,6 +17,7 @@ export type CharacterJsonData = {
   aliases?: string[];
   description?: string;
   gender?: string;
+  role?: "MAIN" | "SUPPORTING";
   cards: CardVariantJson[];
 };
 

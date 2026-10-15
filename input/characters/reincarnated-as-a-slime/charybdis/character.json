@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-charybdis",
+  "name": "Charybdis",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-charybdis-base",
+      "name": "Charybdis",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

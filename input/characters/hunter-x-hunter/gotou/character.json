@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-gotou",
+  "name": "Gotou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-gotou-base",
+      "name": "Gotou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

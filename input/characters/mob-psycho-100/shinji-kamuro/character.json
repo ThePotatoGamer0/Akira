@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-shinji-kamuro",
+  "name": "Shinji Kamuro",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-shinji-kamuro-base",
+      "name": "Shinji Kamuro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

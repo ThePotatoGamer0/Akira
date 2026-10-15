@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-lippo",
+  "name": "Lippo",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-lippo-base",
+      "name": "Lippo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-kazuma-chaya",
+  "name": "Kazuma Chaya",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-kazuma-chaya-base",
+      "name": "Kazuma Chaya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

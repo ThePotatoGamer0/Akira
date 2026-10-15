@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-rintarou-numajiri",
+  "name": "Rintarou Numajiri",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-rintarou-numajiri-base",
+      "name": "Rintarou Numajiri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

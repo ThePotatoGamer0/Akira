@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-thorfinn-karlsefni",
+  "name": "Thorfinn Karlsefni",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-thorfinn-karlsefni-base",
+      "name": "Thorfinn Karlsefni",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-chise-oosen",
+  "name": "Chise Oosen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-chise-oosen-base",
+      "name": "Chise Oosen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

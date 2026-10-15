@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-kouji-takao",
+  "name": "Kouji Takao",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "evangelion-kouji-takao-base",
+      "name": "Kouji Takao",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

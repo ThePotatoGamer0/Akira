@@ -3,9 +3,12 @@ import test from "node:test";
 import { collection } from "./commands/collection.js";
 import { drop } from "./commands/drop.js";
 import { frame } from "./commands/frame.js";
-import { inventory, tags } from "./commands/later.js";
-import { lookup } from "./commands/lookup.js";
+import { inventory } from "./commands/inventory.js";
+import { multiburn } from "./commands/multiburn.js";
+import { tag, tagcreate, tagdelete, taglist, untag } from "./commands/tag.js";
+import { editionIndexForVariant, lookup } from "./commands/lookup.js";
 import { reminders } from "./commands/reminders.js";
+import { give, trade } from "./commands/transfer.js";
 import { view } from "./commands/view.js";
 import { wishlist } from "./commands/wishlist.js";
 import { invocationIsExpected, matchPrefixedCommand, parsePrefixedCommand, resolveLegacyCommand, viewCardArgument } from "./prefix.js";
@@ -30,7 +33,16 @@ test("karuta shortcuts map onto akira commands", () => {
   assert.deepEqual(resolveLegacyCommand("wr"), { command: "wishlist", subcommand: "remove" });
   assert.deepEqual(resolveLegacyCommand("drop"), { command: "drop" });
   assert.deepEqual(resolveLegacyCommand("i"), { command: "inventory" });
-  assert.deepEqual(resolveLegacyCommand("t"), { command: "tags" });
+  assert.deepEqual(resolveLegacyCommand("t"), { command: "tag" });
+  assert.deepEqual(resolveLegacyCommand("tl"), { command: "taglist" });
+  assert.deepEqual(resolveLegacyCommand("tags"), { command: "taglist" });
+  assert.deepEqual(resolveLegacyCommand("tagadd"), { command: "tagcreate" });
+  assert.deepEqual(resolveLegacyCommand("ta"), { command: "tagcreate" });
+  assert.deepEqual(resolveLegacyCommand("tc"), { command: "tagcreate" });
+  assert.deepEqual(resolveLegacyCommand("tagremove"), { command: "tagdelete" });
+  assert.deepEqual(resolveLegacyCommand("tr"), { command: "tagdelete" });
+  assert.deepEqual(resolveLegacyCommand("td"), { command: "tagdelete" });
+  assert.deepEqual(resolveLegacyCommand("ut"), { command: "untag" });
   assert.deepEqual(resolveLegacyCommand("rm"), { command: "reminders" });
   assert.equal(resolveLegacyCommand("jobboard").command, "jobboard");
   assert.equal(resolveLegacyCommand("clan").command, "clan");
@@ -45,6 +57,10 @@ test("a prefix command runs only when the arguments are exactly what it accepts"
   assert.equal(invocationIsExpected(collection, ""), true);
   assert.equal(invocationIsExpected(collection, "<@123>"), true);
   assert.equal(invocationIsExpected(collection, "hello"), false);
+  assert.equal(invocationIsExpected(collection, "s:Death Note"), true);
+  assert.equal(invocationIsExpected(collection, "s is My Hero Academia q:4"), true);
+  assert.equal(invocationIsExpected(collection, "<@123> c is Izuku Midoriya o:#"), true);
+  assert.equal(invocationIsExpected(collection, "o:i"), true);
   assert.equal(invocationIsExpected(lookup, ""), false);
   assert.equal(invocationIsExpected(lookup, "denji"), true);
   assert.equal(invocationIsExpected(lookup, "tanjirou kamado"), true);
@@ -54,8 +70,24 @@ test("a prefix command runs only when the arguments are exactly what it accepts"
   assert.equal(invocationIsExpected(wishlist, "Denji", "add"), true);
   assert.equal(invocationIsExpected(inventory, ""), true);
   assert.equal(invocationIsExpected(inventory, "is cool"), false);
-  assert.equal(invocationIsExpected(tags, ""), true);
-  assert.equal(invocationIsExpected(tags, "the store"), false);
+  assert.equal(invocationIsExpected(tag, "fav"), true);
+  assert.equal(invocationIsExpected(tag, "fav abc1234 def5678"), true);
+  assert.equal(invocationIsExpected(tag, ""), false);
+  assert.equal(invocationIsExpected(tag, "the store"), false);
+  assert.equal(invocationIsExpected(taglist, ""), true);
+  assert.equal(invocationIsExpected(taglist, "<@123>"), true);
+  assert.equal(invocationIsExpected(taglist, "hello"), false);
+  assert.equal(invocationIsExpected(tagcreate, "fav ⭐"), true);
+  assert.equal(invocationIsExpected(tagcreate, "fav"), false);
+  assert.equal(invocationIsExpected(tagcreate, "fav ⭐ extra"), false);
+  assert.equal(invocationIsExpected(tagdelete, "fav"), true);
+  assert.equal(invocationIsExpected(tagdelete, "fav please"), false);
+  assert.equal(invocationIsExpected(untag, ""), true);
+  assert.equal(invocationIsExpected(untag, "abc1234 def5678"), true);
+  assert.equal(invocationIsExpected(untag, "hello"), false);
+  assert.equal(invocationIsExpected(multiburn, "fav"), true);
+  assert.equal(invocationIsExpected(multiburn, ""), false);
+  assert.equal(invocationIsExpected(multiburn, "fav please"), false);
   assert.equal(invocationIsExpected(reminders, ""), true);
   assert.equal(invocationIsExpected(reminders, "drop"), true);
   assert.equal(invocationIsExpected(reminders, "drop extra"), false);
@@ -65,6 +97,12 @@ test("a prefix command runs only when the arguments are exactly what it accepts"
   assert.equal(invocationIsExpected(frame, "card fmbl40r 2"), true);
   assert.equal(invocationIsExpected(frame, "card fmbl40r clear"), true);
   assert.equal(invocationIsExpected(frame, "card fmbl40r clear extra"), false);
+  assert.equal(invocationIsExpected(give, "<@123> fmbl40r"), true);
+  assert.equal(invocationIsExpected(give, "fmbl40r"), false);
+  assert.equal(invocationIsExpected(give, "<@123> fmbl40r extra"), false);
+  assert.equal(invocationIsExpected(trade, "<@123> fmbl40r abc1234"), true);
+  assert.equal(invocationIsExpected(trade, "<@123> fmbl40r"), false);
+  assert.equal(invocationIsExpected(trade, "<@123> fmbl40r abc1234 extra"), false);
 });
 
 test("karuta prefixes are accepted only when they are enabled for the match", () => {
@@ -80,4 +118,14 @@ test("a bare view uses the card that was just grabbed", () => {
   assert.equal(viewCardArgument("", "fmbl40r"), "fmbl40r");
   assert.equal(viewCardArgument("", null), null);
   assert.equal(viewCardArgument("abc1234", "fmbl40r"), "abc1234");
+});
+
+test("a bare lookup opens the edition of the grabbed card", () => {
+  const variants = [
+    { id: "denji-transformed", name: "Transformed" },
+    { id: "denji-base", name: "Denji" },
+  ];
+  assert.equal(editionIndexForVariant(variants, "denji-base"), 0);
+  assert.equal(editionIndexForVariant(variants, "denji-transformed"), 1);
+  assert.equal(editionIndexForVariant(variants, "missing"), 0);
 });

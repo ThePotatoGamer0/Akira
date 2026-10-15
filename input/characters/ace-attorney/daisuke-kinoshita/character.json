@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-daisuke-kinoshita",
+  "name": "Daisuke Kinoshita",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-daisuke-kinoshita-base",
+      "name": "Daisuke Kinoshita",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

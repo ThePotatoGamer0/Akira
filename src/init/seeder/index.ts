@@ -40,12 +40,14 @@ export async function seedCatalog(): Promise<void> {
             seriesId: series.id,
             description: data.description ?? null,
             gender: data.gender ?? null,
+            role: data.role ?? null,
             aliases: data.aliases ? JSON.stringify(data.aliases) : null,
           },
           update: {
             name: data.name,
             description: data.description ?? null,
             gender: data.gender ?? null,
+            role: data.role ?? null,
             aliases: data.aliases ? JSON.stringify(data.aliases) : null,
           },
         });

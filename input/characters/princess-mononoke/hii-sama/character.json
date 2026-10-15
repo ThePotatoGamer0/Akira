@@ -1,0 +1,13 @@
+{
+  "id": "princess-mononoke-hii-sama",
+  "name": "Hii-sama",
+  "gender": null,
+  "cards": [
+    {
+      "id": "princess-mononoke-hii-sama-base",
+      "name": "Hii-sama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

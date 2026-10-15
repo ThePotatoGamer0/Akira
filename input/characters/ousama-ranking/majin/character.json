@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-majin",
+  "name": "Majin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-majin-base",
+      "name": "Majin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

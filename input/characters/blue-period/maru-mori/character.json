@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-maru-mori",
+  "name": "Maru Mori",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-period-maru-mori-base",
+      "name": "Maru Mori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

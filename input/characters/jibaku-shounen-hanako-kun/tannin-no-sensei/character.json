@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-tannin-no-sensei",
+  "name": "Tannin no Sensei",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-tannin-no-sensei-base",
+      "name": "Tannin no Sensei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

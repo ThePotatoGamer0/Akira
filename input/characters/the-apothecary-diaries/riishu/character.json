@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-riishu",
+  "name": "Riishu",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-riishu-base",
+      "name": "Riishu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

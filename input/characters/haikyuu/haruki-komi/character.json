@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-haruki-komi",
+  "name": "Haruki Komi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-haruki-komi-base",
+      "name": "Haruki Komi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

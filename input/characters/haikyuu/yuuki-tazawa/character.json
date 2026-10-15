@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yuuki-tazawa",
+  "name": "Yuuki Tazawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-yuuki-tazawa-base",
+      "name": "Yuuki Tazawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

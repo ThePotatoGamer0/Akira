@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-setsuna",
+  "name": "Setsuna",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-setsuna-base",
+      "name": "Setsuna",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

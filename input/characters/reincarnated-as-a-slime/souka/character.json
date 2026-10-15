@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-souka",
+  "name": "Souka",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-souka-base",
+      "name": "Souka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-keiun",
+  "name": "Keiun",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-keiun-base",
+      "name": "Keiun",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

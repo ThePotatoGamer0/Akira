@@ -1,0 +1,13 @@
+{
+  "id": "frieren-kanne",
+  "name": "Kanne",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "frieren-kanne-base",
+      "name": "Kanne",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

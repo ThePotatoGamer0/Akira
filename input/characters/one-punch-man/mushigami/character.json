@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-mushigami",
+  "name": "Mushigami",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-mushigami-base",
+      "name": "Mushigami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

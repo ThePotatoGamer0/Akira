@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-ethelred-ii",
+  "name": "Ethelred II",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-ethelred-ii-base",
+      "name": "Ethelred II",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

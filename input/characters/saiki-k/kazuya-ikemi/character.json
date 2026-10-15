@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-kazuya-ikemi",
+  "name": "Kazuya Ikemi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-kazuya-ikemi-base",
+      "name": "Kazuya Ikemi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-mitsuba-no-haha",
+  "name": "Mitsuba no Haha",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-mitsuba-no-haha-base",
+      "name": "Mitsuba no Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

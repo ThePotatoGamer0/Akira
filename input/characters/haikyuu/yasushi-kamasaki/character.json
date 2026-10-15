@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yasushi-kamasaki",
+  "name": "Yasushi Kamasaki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-yasushi-kamasaki-base",
+      "name": "Yasushi Kamasaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

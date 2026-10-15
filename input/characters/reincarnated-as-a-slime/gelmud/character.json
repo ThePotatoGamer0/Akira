@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-gelmud",
+  "name": "Gelmud",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-gelmud-base",
+      "name": "Gelmud",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

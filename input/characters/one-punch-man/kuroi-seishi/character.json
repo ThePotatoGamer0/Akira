@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-kuroi-seishi",
+  "name": "Kuroi Seishi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-kuroi-seishi-base",
+      "name": "Kuroi Seishi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

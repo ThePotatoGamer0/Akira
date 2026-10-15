@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-uri-reiss",
+  "name": "Uri Reiss",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-uri-reiss-base",
+      "name": "Uri Reiss",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -19,6 +19,7 @@ export async function renderDropMessage(input: {
       characterSlug: slot.characterSlug,
       imageFile: slot.imageFile,
       characterName: slot.characterName,
+      seriesName: slot.seriesName,
       frameId: slot.frameId,
       printNumber: null,
       dye: null,
@@ -28,7 +29,7 @@ export async function renderDropMessage(input: {
   }
 
   const strip = await renderDropStrip(cards);
-  const name = strip.animated ? "drop.apng" : "drop.png";
+  const name = strip.animated ? "drop.gif" : "drop.png";
   return {
     content: dropAnnouncement(input.dropperDiscordId, input.wishlistDiscordIds),
     embeds: [],

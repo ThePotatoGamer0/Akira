@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-sousuke-mitsuba",
+  "name": "Sousuke Mitsuba",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-sousuke-mitsuba-base",
+      "name": "Sousuke Mitsuba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

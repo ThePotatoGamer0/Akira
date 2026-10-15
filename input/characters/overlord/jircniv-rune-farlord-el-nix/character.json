@@ -1,0 +1,13 @@
+{
+  "id": "overlord-jircniv-rune-farlord-el-nix",
+  "name": "Jircniv Rune Farlord El Nix",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "overlord-jircniv-rune-farlord-el-nix-base",
+      "name": "Jircniv Rune Farlord El Nix",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

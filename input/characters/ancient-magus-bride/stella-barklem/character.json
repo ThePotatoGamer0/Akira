@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-stella-barklem",
+  "name": "Stella Barklem",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-stella-barklem-base",
+      "name": "Stella Barklem",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

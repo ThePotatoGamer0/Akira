@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-apeas",
+  "name": "Apeas",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-apeas-base",
+      "name": "Apeas",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

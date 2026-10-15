@@ -1,0 +1,13 @@
+{
+  "id": "overlord-cocytus",
+  "name": "Cocytus",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "overlord-cocytus-base",
+      "name": "Cocytus",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

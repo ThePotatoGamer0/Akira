@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-nezumi",
+  "name": "Nezumi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "vinland-saga-nezumi-base",
+      "name": "Nezumi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

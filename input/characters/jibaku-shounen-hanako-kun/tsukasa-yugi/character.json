@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-tsukasa-yugi",
+  "name": "Tsukasa Yugi ",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-tsukasa-yugi-base",
+      "name": "Tsukasa Yugi ",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

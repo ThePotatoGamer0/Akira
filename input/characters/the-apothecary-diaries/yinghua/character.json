@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-yinghua",
+  "name": "Yinghua",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-yinghua-base",
+      "name": "Yinghua",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

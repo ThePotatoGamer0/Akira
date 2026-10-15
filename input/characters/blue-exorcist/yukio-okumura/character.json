@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-yukio-okumura",
+  "name": "Yukio Okumura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-exorcist-yukio-okumura-base",
+      "name": "Yukio Okumura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

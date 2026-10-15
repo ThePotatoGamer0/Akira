@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-shigeo-kageyama",
+  "name": "Shigeo Kageyama",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-shigeo-kageyama-base",
+      "name": "Shigeo Kageyama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

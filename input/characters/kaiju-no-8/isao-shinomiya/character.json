@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-isao-shinomiya",
+  "name": "Isao Shinomiya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-isao-shinomiya-base",
+      "name": "Isao Shinomiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

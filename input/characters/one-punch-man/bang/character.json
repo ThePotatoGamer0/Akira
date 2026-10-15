@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-bang",
+  "name": "Bang ",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-bang-base",
+      "name": "Bang ",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

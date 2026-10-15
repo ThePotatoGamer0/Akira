@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-aira-shiratori",
+  "name": "Aira Shiratori",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dandadan-aira-shiratori-base",
+      "name": "Aira Shiratori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

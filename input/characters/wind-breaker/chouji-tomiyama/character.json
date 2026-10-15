@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-chouji-tomiyama",
+  "name": "Chouji Tomiyama",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-chouji-tomiyama-base",
+      "name": "Chouji Tomiyama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

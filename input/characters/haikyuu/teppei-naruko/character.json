@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-teppei-naruko",
+  "name": "Teppei Naruko",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-teppei-naruko-base",
+      "name": "Teppei Naruko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

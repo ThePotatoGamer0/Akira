@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-midori-nendou",
+  "name": "Midori Nendou",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "saiki-k-midori-nendou-base",
+      "name": "Midori Nendou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

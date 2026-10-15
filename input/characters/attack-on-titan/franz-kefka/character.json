@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-franz-kefka",
+  "name": "Franz Kefka",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-franz-kefka-base",
+      "name": "Franz Kefka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

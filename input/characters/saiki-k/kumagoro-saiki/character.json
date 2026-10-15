@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-kumagoro-saiki",
+  "name": "Kumagoro Saiki ",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-kumagoro-saiki-base",
+      "name": "Kumagoro Saiki ",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

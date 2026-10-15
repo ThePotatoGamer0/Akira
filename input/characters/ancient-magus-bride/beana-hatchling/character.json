@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-beana-hatchling",
+  "name": "Beana Hatchling",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-beana-hatchling-base",
+      "name": "Beana Hatchling",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

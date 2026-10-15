@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yamato-sarukui",
+  "name": "Yamato Sarukui",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-yamato-sarukui-base",
+      "name": "Yamato Sarukui",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

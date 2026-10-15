@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-gigantes-no-ko",
+  "name": "Gigantes no Ko",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-gigantes-no-ko-base",
+      "name": "Gigantes no Ko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

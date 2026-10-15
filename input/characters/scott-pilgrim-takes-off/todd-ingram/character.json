@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-todd-ingram",
+  "name": "Todd Ingram",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-todd-ingram-base",
+      "name": "Todd Ingram",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

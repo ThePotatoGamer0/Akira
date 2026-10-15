@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-mahiru-koizumi",
+  "name": "Mahiru Koizumi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-mahiru-koizumi-base",
+      "name": "Mahiru Koizumi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-geon-hui-go",
+  "name": "Geon-Hui Go",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-geon-hui-go-base",
+      "name": "Geon-Hui Go",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

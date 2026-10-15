@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-kyou-u",
+  "name": "Kyou-u",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-kyou-u-base",
+      "name": "Kyou-u",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

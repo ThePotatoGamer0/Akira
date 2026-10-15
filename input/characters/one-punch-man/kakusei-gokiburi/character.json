@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-kakusei-gokiburi",
+  "name": "Kakusei Gokiburi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-kakusei-gokiburi-base",
+      "name": "Kakusei Gokiburi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

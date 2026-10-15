@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-althea-barley",
+  "name": "Althea Barley",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-althea-barley-base",
+      "name": "Althea Barley",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

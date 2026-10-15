@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-kaijuu-juugo-gou",
+  "name": "Kaijuu Juugo-gou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "kaiju-no-8-kaijuu-juugo-gou-base",
+      "name": "Kaijuu Juugo-gou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

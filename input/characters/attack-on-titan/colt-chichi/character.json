@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-colt-chichi",
+  "name": "Colt Chichi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-colt-chichi-base",
+      "name": "Colt Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

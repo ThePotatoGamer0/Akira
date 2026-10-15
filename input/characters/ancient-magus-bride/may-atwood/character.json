@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-may-atwood",
+  "name": "May Atwood",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-may-atwood-base",
+      "name": "May Atwood",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

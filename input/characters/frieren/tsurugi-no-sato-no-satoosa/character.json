@@ -1,0 +1,13 @@
+{
+  "id": "frieren-tsurugi-no-sato-no-satoosa",
+  "name": "Tsurugi no Sato no Satoosa",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "frieren-tsurugi-no-sato-no-satoosa-base",
+      "name": "Tsurugi no Sato no Satoosa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

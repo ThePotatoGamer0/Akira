@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-utashima",
+  "name": "Utashima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-period-utashima-base",
+      "name": "Utashima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

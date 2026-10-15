@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-koigakubo",
+  "name": "Koigakubo",
+  "gender": null,
+  "cards": [
+    {
+      "id": "blue-period-koigakubo-base",
+      "name": "Koigakubo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

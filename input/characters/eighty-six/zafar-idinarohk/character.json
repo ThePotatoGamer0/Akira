@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-zafar-idinarohk",
+  "name": "Zafar Idinarohk",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-zafar-idinarohk-base",
+      "name": "Zafar Idinarohk",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-liliana-no-chichi",
+  "name": "Liliana no Chichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-liliana-no-chichi-base",
+      "name": "Liliana no Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

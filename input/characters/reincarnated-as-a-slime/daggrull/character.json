@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-daggrull",
+  "name": "Daggrull",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-daggrull-base",
+      "name": "Daggrull",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

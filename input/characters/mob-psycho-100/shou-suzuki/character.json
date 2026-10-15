@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-shou-suzuki",
+  "name": "Shou Suzuki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-shou-suzuki-base",
+      "name": "Shou Suzuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-kim-campbell",
+  "name": "Kim Campbell",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "spy-x-family-kim-campbell-base",
+      "name": "Kim Campbell",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-kuon-amane",
+  "name": "Kuon Amane",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-kuon-amane-base",
+      "name": "Kuon Amane",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

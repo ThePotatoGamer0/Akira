@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-anshi",
+  "name": "Anshi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-anshi-base",
+      "name": "Anshi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

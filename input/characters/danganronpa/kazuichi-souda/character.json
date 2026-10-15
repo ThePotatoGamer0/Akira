@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-kazuichi-souda",
+  "name": "Kazuichi Souda",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-kazuichi-souda-base",
+      "name": "Kazuichi Souda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

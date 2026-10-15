@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-theo-magath",
+  "name": "Theo Magath",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-theo-magath-base",
+      "name": "Theo Magath",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

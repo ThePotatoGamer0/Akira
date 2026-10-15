@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-yamamoto",
+  "name": "Yamamoto",
+  "gender": null,
+  "cards": [
+    {
+      "id": "blue-period-yamamoto-base",
+      "name": "Yamamoto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

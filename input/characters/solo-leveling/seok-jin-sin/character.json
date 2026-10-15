@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-seok-jin-sin",
+  "name": "Seok-Jin Sin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-seok-jin-sin-base",
+      "name": "Seok-Jin Sin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-testarossa",
+  "name": "Testarossa",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-testarossa-base",
+      "name": "Testarossa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

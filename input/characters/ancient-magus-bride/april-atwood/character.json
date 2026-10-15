@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-april-atwood",
+  "name": "April Atwood",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-april-atwood-base",
+      "name": "April Atwood",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

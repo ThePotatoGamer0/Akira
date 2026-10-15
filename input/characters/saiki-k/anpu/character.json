@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-anpu",
+  "name": "Anpu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-anpu-base",
+      "name": "Anpu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

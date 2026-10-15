@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-tom-ksaver",
+  "name": "Tom Ksaver",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-tom-ksaver-base",
+      "name": "Tom Ksaver",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

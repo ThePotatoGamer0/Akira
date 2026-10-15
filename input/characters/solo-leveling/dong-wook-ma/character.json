@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-dong-wook-ma",
+  "name": "Dong-Wook Ma",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-dong-wook-ma-base",
+      "name": "Dong-Wook Ma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

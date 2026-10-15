@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-plum-risch",
+  "name": "Plum Risch",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-plum-risch-base",
+      "name": "Plum Risch",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ponyo-fujimoto",
+  "name": "Fujimoto",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ponyo-fujimoto-base",
+      "name": "Fujimoto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

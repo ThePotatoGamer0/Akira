@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-takurou-oiwake",
+  "name": "Takurou Oiwake",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-takurou-oiwake-base",
+      "name": "Takurou Oiwake",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

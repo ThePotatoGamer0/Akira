@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-kyuuketsuki",
+  "name": "Kyuuketsuki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-kyuuketsuki-base",
+      "name": "Kyuuketsuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

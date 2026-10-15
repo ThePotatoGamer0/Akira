@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-luminous-valentine",
+  "name": "Luminous Valentine",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-luminous-valentine-base",
+      "name": "Luminous Valentine",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

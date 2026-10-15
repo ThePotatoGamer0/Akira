@@ -6,6 +6,8 @@ import {
 } from "discord.js";
 import {
   frameIdsOnDisk,
+  frameName,
+  parseFrameToken,
   serverDefaultFrame,
   setCardFrame,
   setServerDefaultFrame,
@@ -26,9 +28,9 @@ async function isAdmin(client: Client, guildId: string, userId: string): Promise
 
 function usage(prefix: string): string {
   return [
-    `Frames on disk: ${frameIdsOnDisk().map((id) => `\`${id}\``).join(", ") || "none"}.`,
-    `An admin sets the server default with \`${prefix}frame default <id>\`.`,
-    `\`${prefix}frame card <code> <id>\` gives one card that frame. \`${prefix}frame card <code> clear\` uses the server frame again.`,
+    `Frames on disk: ${frameIdsOnDisk().map((id) => `\`${frameName(id)}\``).join(", ") || "none"}.`,
+    `An admin sets the server default with \`${prefix}frame default dark\`.`,
+    `\`${prefix}frame card <code> yellow\` gives one card that frame. \`${prefix}frame card <code> clear\` uses the server frame again.`,
   ].join(" ");
 }
 
@@ -41,8 +43,8 @@ export const frame: AkiraCommand = {
       sub
         .setName("default")
         .setDescription("Set the frame for cards that don't have their own")
-        .addIntegerOption((option) =>
-          option.setName("frame").setDescription("Frame id").setRequired(true).setMinValue(0),
+        .addStringOption((option) =>
+          option.setName("frame").setDescription("dark, yellow, or a frame number").setRequired(true),
         ),
     )
     .addSubcommand((sub) =>
@@ -53,7 +55,7 @@ export const frame: AkiraCommand = {
           option.setName("card_id").setDescription("The 7 character card code").setRequired(true),
         )
         .addStringOption((option) =>
-          option.setName("action").setDescription("A frame id, or clear").setRequired(true),
+          option.setName("action").setDescription("dark, yellow, a frame number, or clear").setRequired(true),
         ),
     ),
   execute: async (interaction: ChatInputCommandInteraction, client: Client) => {
@@ -67,7 +69,7 @@ export const frame: AkiraCommand = {
       if (sub === "show") {
         const current = await serverDefaultFrame(interaction.guildId);
         await interaction.reply({
-          content: `Cards without their own frame use frame \`${current}\`. ${usage(prefix)}`,
+          content: `Cards without their own frame use \`${frameName(current)}\`. ${usage(prefix)}`,
         });
         return;
       }
@@ -76,10 +78,14 @@ export const frame: AkiraCommand = {
           await interaction.reply({ content: "Only a server admin can change the default frame." });
           return;
         }
-        const frameId = interaction.options.getInteger("frame", true);
+        const frameId = parseFrameToken(interaction.options.getString("frame", true));
+        if (frameId === null) {
+          await interaction.reply({ content: usage(prefix) });
+          return;
+        }
         await setServerDefaultFrame(interaction.guildId, frameId);
         await interaction.reply({
-          content: `Cards without their own frame now use frame \`${frameId}\`.`,
+          content: `Cards without their own frame now use \`${frameName(frameId)}\`.`,
         });
         return;
       }
@@ -90,12 +96,13 @@ export const frame: AkiraCommand = {
         await interaction.reply({ content: `\`${id}\` will use this server's default frame again.` });
         return;
       }
-      if (!/^\d+$/.test(action)) {
+      const frameId = parseFrameToken(action);
+      if (frameId === null) {
         await interaction.reply({ content: usage(prefix) });
         return;
       }
-      const id = await setCardFrame(interaction.user.id, cardId, Number(action));
-      await interaction.reply({ content: `\`${id}\` now uses frame \`${action}\`.` });
+      const id = await setCardFrame(interaction.user.id, cardId, frameId);
+      await interaction.reply({ content: `\`${id}\` now uses \`${frameName(frameId)}\`.` });
     } catch (err) {
       await sendGameError(interaction, err);
     }

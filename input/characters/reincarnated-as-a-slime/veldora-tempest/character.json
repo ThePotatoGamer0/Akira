@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-veldora-tempest",
+  "name": "Veldora Tempest",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-veldora-tempest-base",
+      "name": "Veldora Tempest",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-binolt",
+  "name": "Binolt",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-binolt-base",
+      "name": "Binolt",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

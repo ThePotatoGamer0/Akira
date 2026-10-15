@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-koutarou-haine",
+  "name": "Koutarou Haine",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-koutarou-haine-base",
+      "name": "Koutarou Haine",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

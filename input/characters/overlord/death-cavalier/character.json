@@ -1,0 +1,13 @@
+{
+  "id": "overlord-death-cavalier",
+  "name": "Death Cavalier",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-death-cavalier-base",
+      "name": "Death Cavalier",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-wise-kikanin",
+  "name": "WISE Kikanin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-wise-kikanin-base",
+      "name": "WISE Kikanin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

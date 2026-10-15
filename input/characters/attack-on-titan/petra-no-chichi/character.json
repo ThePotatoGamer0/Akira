@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-petra-no-chichi",
+  "name": "Petra no Chichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-petra-no-chichi-base",
+      "name": "Petra no Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-rei-kurosaki",
+  "name": "Rei Kurosaki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-rei-kurosaki-base",
+      "name": "Rei Kurosaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-philomela-sergeant",
+  "name": "Philomela Sergeant",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-philomela-sergeant-base",
+      "name": "Philomela Sergeant",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

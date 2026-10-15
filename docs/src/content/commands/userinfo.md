@@ -5,7 +5,7 @@ command: userinfo
 shortcuts: ui, whois
 ---
 
-**/userinfo** replies with the name Akira uses, bits, how many cards they own, prestige level, milestones claimed, milestone progress, and the daily bonus.
+**/userinfo** replies with the name Akira uses, bits, how many cards they own, prestige level, milestones claimed this cycle, bits given to the pool this cycle, and any daily bonus already on the profile. "This cycle" is the current milestone bar. Prestige sets that cycle back to the start.
 
 ## Parameters
 
@@ -28,4 +28,5 @@ aui <@123>
 
 - [Collection](/commands/collection)
 - [Bits](/economy/bits)
+- [Personal milestones](/economy/personal-milestone)
 - [Command list](/commands/reference)

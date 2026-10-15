@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-ryouji-kaji",
+  "name": "Ryouji Kaji",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "evangelion-ryouji-kaji-base",
+      "name": "Ryouji Kaji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

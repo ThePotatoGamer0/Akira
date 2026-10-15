@@ -1,0 +1,13 @@
+{
+  "id": "way-of-the-househusband-yuriko",
+  "name": "Yuriko",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "way-of-the-househusband-yuriko-base",
+      "name": "Yuriko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-kiriya-nouzen",
+  "name": "Kiriya Nouzen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-kiriya-nouzen-base",
+      "name": "Kiriya Nouzen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

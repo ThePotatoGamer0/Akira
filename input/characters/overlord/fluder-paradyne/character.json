@@ -1,0 +1,13 @@
+{
+  "id": "overlord-fluder-paradyne",
+  "name": "Fluder Paradyne",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-fluder-paradyne-base",
+      "name": "Fluder Paradyne",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

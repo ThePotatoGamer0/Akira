@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-mina-carolina",
+  "name": "Mina Carolina",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-mina-carolina-base",
+      "name": "Mina Carolina",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-jakumen",
+  "name": "Jakumen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-jakumen-base",
+      "name": "Jakumen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

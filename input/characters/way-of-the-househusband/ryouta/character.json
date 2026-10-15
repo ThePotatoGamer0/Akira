@@ -1,0 +1,13 @@
+{
+  "id": "way-of-the-househusband-ryouta",
+  "name": "Ryouta",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "way-of-the-househusband-ryouta-base",
+      "name": "Ryouta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

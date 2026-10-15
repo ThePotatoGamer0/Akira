@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-suiryu",
+  "name": "Suiryu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-suiryu-base",
+      "name": "Suiryu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

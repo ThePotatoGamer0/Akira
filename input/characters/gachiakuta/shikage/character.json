@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-shikage",
+  "name": "Shikage",
+  "gender": null,
+  "cards": [
+    {
+      "id": "gachiakuta-shikage-base",
+      "name": "Shikage",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

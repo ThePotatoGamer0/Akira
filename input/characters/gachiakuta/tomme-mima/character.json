@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-tomme-mima",
+  "name": "Tomme Mima",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "gachiakuta-tomme-mima-base",
+      "name": "Tomme Mima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

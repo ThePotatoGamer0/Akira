@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-juzo-nogizaka",
+  "name": "Juzo Nogizaka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-juzo-nogizaka-base",
+      "name": "Juzo Nogizaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

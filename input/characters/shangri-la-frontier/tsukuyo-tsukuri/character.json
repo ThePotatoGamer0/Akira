@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-tsukuyo-tsukuri",
+  "name": "Tsukuyo Tsukuri",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-tsukuyo-tsukuri-base",
+      "name": "Tsukuyo Tsukuri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-ernst-zimmerman",
+  "name": "Ernst Zimmerman",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-ernst-zimmerman-base",
+      "name": "Ernst Zimmerman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

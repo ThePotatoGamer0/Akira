@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-kirisaking",
+  "name": "Kirisaking",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-kirisaking-base",
+      "name": "Kirisaking",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

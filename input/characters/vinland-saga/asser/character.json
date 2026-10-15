@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-asser",
+  "name": "Asser",
+  "gender": null,
+  "cards": [
+    {
+      "id": "vinland-saga-asser-base",
+      "name": "Asser",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

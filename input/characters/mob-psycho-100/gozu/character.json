@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-gozu",
+  "name": "Gozu",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-gozu-base",
+      "name": "Gozu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

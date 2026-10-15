@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-ki-hoon-son",
+  "name": "Ki-Hoon Son",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-ki-hoon-son-base",
+      "name": "Ki-Hoon Son",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-velyard",
+  "name": "Velyard",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-velyard-base",
+      "name": "Velyard",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

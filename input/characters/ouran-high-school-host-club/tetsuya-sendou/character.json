@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-tetsuya-sendou",
+  "name": "Tetsuya Sendou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-tetsuya-sendou-base",
+      "name": "Tetsuya Sendou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

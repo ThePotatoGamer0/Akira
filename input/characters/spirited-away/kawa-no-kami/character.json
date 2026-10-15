@@ -1,0 +1,13 @@
+{
+  "id": "spirited-away-kawa-no-kami",
+  "name": "Kawa no Kami",
+  "gender": null,
+  "cards": [
+    {
+      "id": "spirited-away-kawa-no-kami-base",
+      "name": "Kawa no Kami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

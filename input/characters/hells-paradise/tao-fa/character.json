@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-tao-fa",
+  "name": "Tao Fa",
+  "gender": "Female/Male (Prefers the Female gender)",
+  "cards": [
+    {
+      "id": "hells-paradise-tao-fa-base",
+      "name": "Tao Fa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

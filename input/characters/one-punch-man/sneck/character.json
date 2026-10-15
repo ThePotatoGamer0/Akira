@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-sneck",
+  "name": "Sneck",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-sneck-base",
+      "name": "Sneck",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

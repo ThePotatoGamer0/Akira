@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-archi",
+  "name": "Archi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-archi-base",
+      "name": "Archi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-stacey-pilgrim",
+  "name": "Stacey Pilgrim",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-stacey-pilgrim-base",
+      "name": "Stacey Pilgrim",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

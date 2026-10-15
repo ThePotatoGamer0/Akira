@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-lemon-yamabuki",
+  "name": "Lemon Yamabuki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-lemon-yamabuki-base",
+      "name": "Lemon Yamabuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

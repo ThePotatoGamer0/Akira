@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-kurena-kukumila",
+  "name": "Kurena Kukumila",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "eighty-six-kurena-kukumila-base",
+      "name": "Kurena Kukumila",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-ludris",
+  "name": "Ludris",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dandadan-ludris-base",
+      "name": "Ludris",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-kitz-weilman",
+  "name": "Kitz Weilman",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-kitz-weilman-base",
+      "name": "Kitz Weilman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

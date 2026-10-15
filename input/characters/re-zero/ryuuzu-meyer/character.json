@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-ryuuzu-meyer",
+  "name": "Ryuuzu Meyer",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-ryuuzu-meyer-base",
+      "name": "Ryuuzu Meyer",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

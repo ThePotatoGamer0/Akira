@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-branch",
+  "name": "Branch",
+  "gender": null,
+  "cards": [
+    {
+      "id": "shangri-la-frontier-branch-base",
+      "name": "Branch",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

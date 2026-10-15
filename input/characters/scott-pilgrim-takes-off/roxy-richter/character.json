@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-roxy-richter",
+  "name": "Roxy Richter",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-roxy-richter-base",
+      "name": "Roxy Richter",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-kyou",
+  "name": "Kyou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-kyou-base",
+      "name": "Kyou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -2,15 +2,16 @@ import fs from "node:fs";
 import path from "node:path";
 import { createCanvas } from "canvas";
 import sharp from "sharp";
-import { renderBurnApng, renderShinyApng } from "../renderer/card-animations.js";
+import { renderBurnApng, renderBurnGif, renderShinyApng, renderShinyGif } from "../renderer/card-animations.js";
 import { renderCardImage, type OverlayText } from "../renderer/composite-static.js";
-import { fitCharacterName, lineOffset, nameLimits } from "../renderer/name-fit.js";
+import { fitCharacterName, fitSingleLine, lineOffset, nameLimits } from "../renderer/name-fit.js";
 import { loadFrame, type TextStyle } from "../utils/frames.js";
-import { cardCacheFile, dyeCacheKey, ensureDir, printCacheKey, variantArtPath } from "../utils/paths.js";
+import { cardCacheFile, dyeCacheKey, ensureDir, printCacheKey, variantArtPath, type CardCacheFileName } from "../utils/paths.js";
 import type { Quality } from "./balance.js";
 import { GameError } from "./errors.js";
 
 export type CardImageKind = "normal" | "shiny" | "burn";
+export type CardAnimationFormat = "gif" | "apng";
 
 export type CardImageRequest = {
   variantId: string;
@@ -18,17 +19,18 @@ export type CardImageRequest = {
   characterSlug: string;
   imageFile: string;
   characterName: string;
+  seriesName: string;
   frameId: number;
   printNumber: number | null;
   dye: string | null;
   kind: CardImageKind;
 };
 
-const FILE_NAME: Record<CardImageKind, "normal.png" | "shiny.apng" | "burn.apng"> = {
-  normal: "normal.png",
-  shiny: "shiny.apng",
-  burn: "burn.apng",
-};
+function cacheFileName(kind: CardImageKind, format: CardAnimationFormat): CardCacheFileName {
+  if (kind === "normal") return "normal.png";
+  if (kind === "shiny") return format === "apng" ? "shiny.apng" : "shiny.gif";
+  return format === "apng" ? "burn.apng" : "burn.gif";
+}
 
 export function visualKind(quality: Quality, dye: string | null, burn = false): CardImageKind {
   if (burn) return "burn";
@@ -43,6 +45,10 @@ function withText(style: TextStyle | null, text: string): OverlayText | null {
 
 let measureContext: ReturnType<ReturnType<typeof createCanvas>["getContext"]> | null = null;
 
+function familyOf(style: TextStyle): string {
+  return style.fontFamily.replace(/-Bold|-Regular/gi, "") || "sans-serif";
+}
+
 function measureName(text: string, fontSize: number, family: string, bold: boolean): number {
   if (!measureContext) measureContext = createCanvas(1, 1).getContext("2d");
   measureContext.font = `${bold ? "700" : "400"} ${fontSize}px ${family}, sans-serif`;
@@ -50,7 +56,7 @@ function measureName(text: string, fontSize: number, family: string, bold: boole
 }
 
 function nameLines(style: TextStyle, name: string, width: number, height: number, print: TextStyle | null): OverlayText[] {
-  const family = style.fontFamily.replace(/-Bold|-Regular/gi, "") || "sans-serif";
+  const family = familyOf(style);
   const bold = /bold/i.test(style.fontFamily);
   const limits = nameLimits(style, print, width, height);
   const fitted = fitCharacterName({
@@ -68,10 +74,10 @@ function nameLines(style: TextStyle, name: string, width: number, height: number
   }));
 }
 
-export async function ensureCardImage(request: CardImageRequest): Promise<string> {
+export async function ensureCardImage(request: CardImageRequest, format: CardAnimationFormat = "gif"): Promise<string> {
   const printKey = printCacheKey(request.printNumber);
   const dyeKey = dyeCacheKey(request.dye);
-  const fileName = FILE_NAME[request.kind];
+  const fileName = cacheFileName(request.kind, format);
   const cachePath = cardCacheFile({
     variantId: request.variantId,
     frameId: request.frameId,
@@ -91,17 +97,30 @@ export async function ensureCardImage(request: CardImageRequest): Promise<string
   }
 
   const texts: OverlayText[] = [];
+  const meta = await sharp(frame.imagePath).metadata();
+  const width = meta.width ?? 0;
+  const height = meta.height ?? 0;
+  const belowName = frame.seriesName ?? frame.printNumber;
   if (frame.characterName && request.characterName.trim()) {
-    const meta = await sharp(frame.imagePath).metadata();
     texts.push(
       ...nameLines(
         frame.characterName,
         request.characterName,
-        meta.width ?? 0,
-        meta.height ?? 0,
-        frame.printNumber,
+        width,
+        height,
+        belowName,
       ),
     );
+  }
+  if (frame.seriesName && request.seriesName.trim()) {
+    const limits = nameLimits(frame.seriesName, frame.printNumber, width, height);
+    const fitted = fitSingleLine({
+      text: request.seriesName,
+      fontSize: frame.seriesName.fontSize,
+      maxWidth: limits.maxWidth,
+      measure: (text, size) => measureName(text, size, familyOf(frame.seriesName!), /bold/i.test(frame.seriesName!.fontFamily)),
+    });
+    texts.push({ ...frame.seriesName, text: fitted.text, fontSize: fitted.fontSize });
   }
   if (request.printNumber !== null) {
     const print = withText(frame.printNumber, `#${request.printNumber}`);
@@ -109,11 +128,16 @@ export async function ensureCardImage(request: CardImageRequest): Promise<string
   }
 
   const still = await renderCardImage(artPath, frame.imagePath, texts);
-  const output = request.kind === "shiny"
-    ? await renderShinyApng(still)
-    : request.kind === "burn"
-      ? await renderBurnApng(still)
-      : still;
+  const output =
+    request.kind === "shiny"
+      ? format === "apng"
+        ? await renderShinyApng(still)
+        : await renderShinyGif(still)
+      : request.kind === "burn"
+        ? format === "apng"
+          ? await renderBurnApng(still)
+          : await renderBurnGif(still)
+        : still;
 
   ensureDir(path.dirname(cachePath));
   const temporary = `${cachePath}.${process.pid}.tmp`;

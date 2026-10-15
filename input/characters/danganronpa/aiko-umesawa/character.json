@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-aiko-umesawa",
+  "name": "Aiko Umesawa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "danganronpa-aiko-umesawa-base",
+      "name": "Aiko Umesawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

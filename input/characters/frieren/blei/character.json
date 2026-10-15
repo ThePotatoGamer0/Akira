@@ -1,0 +1,13 @@
+{
+  "id": "frieren-blei",
+  "name": "Blei",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-blei-base",
+      "name": "Blei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

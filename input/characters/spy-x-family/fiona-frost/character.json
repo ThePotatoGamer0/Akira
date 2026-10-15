@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-fiona-frost",
+  "name": "Fiona Frost",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "spy-x-family-fiona-frost-base",
+      "name": "Fiona Frost",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-ryura",
+  "name": "Ryura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-ryura-base",
+      "name": "Ryura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

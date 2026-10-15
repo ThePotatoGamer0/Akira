@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-takeru-nakashima",
+  "name": "Takeru Nakashima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-takeru-nakashima-base",
+      "name": "Takeru Nakashima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

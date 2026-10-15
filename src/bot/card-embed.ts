@@ -16,6 +16,7 @@ export function buildCardMessage(input: {
   variantName: string;
   imagePath: string;
   fileName: string;
+  tagEmoji?: string;
 }) {
   const attachment = new AttachmentBuilder(input.imagePath, { name: input.fileName });
   const owner = input.discordId ? `Owned by <@${input.discordId}>\n\n` : "";
@@ -31,6 +32,7 @@ export function buildCardMessage(input: {
           frameId: input.frameId,
           seriesName: input.seriesName,
           characterName: input.characterName,
+          ...(input.tagEmoji ? { tagEmoji: input.tagEmoji } : {}),
         }),
     )
     .setImage(`attachment://${input.fileName}`);

@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-gazel-dwargo",
+  "name": "Gazel Dwargo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-gazel-dwargo-base",
+      "name": "Gazel Dwargo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

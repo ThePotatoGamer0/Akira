@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-granbell-rosso",
+  "name": "Granbell Rosso",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-granbell-rosso-base",
+      "name": "Granbell Rosso",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

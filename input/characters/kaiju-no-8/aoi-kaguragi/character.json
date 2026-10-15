@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-aoi-kaguragi",
+  "name": "Aoi Kaguragi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-aoi-kaguragi-base",
+      "name": "Aoi Kaguragi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

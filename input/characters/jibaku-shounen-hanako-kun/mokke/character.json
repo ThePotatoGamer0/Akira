@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-mokke",
+  "name": "Mokke",
+  "gender": null,
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-mokke-base",
+      "name": "Mokke",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

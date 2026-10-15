@@ -1,0 +1,13 @@
+{
+  "id": "frieren-ehre",
+  "name": "Ehre",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "frieren-ehre-base",
+      "name": "Ehre",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

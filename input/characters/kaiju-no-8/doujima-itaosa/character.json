@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-doujima-itaosa",
+  "name": "Doujima Itaosa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-doujima-itaosa-base",
+      "name": "Doujima Itaosa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-kusuke-saiki",
+  "name": "Kusuke Saiki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-kusuke-saiki-base",
+      "name": "Kusuke Saiki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

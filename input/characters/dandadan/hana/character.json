@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-hana",
+  "name": "Hana",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dandadan-hana-base",
+      "name": "Hana",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

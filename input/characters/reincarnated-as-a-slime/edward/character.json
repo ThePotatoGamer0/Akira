@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-edward",
+  "name": "Edward",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-edward-base",
+      "name": "Edward",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

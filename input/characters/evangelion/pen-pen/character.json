@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-pen-pen",
+  "name": "Pen Pen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "evangelion-pen-pen-base",
+      "name": "Pen Pen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

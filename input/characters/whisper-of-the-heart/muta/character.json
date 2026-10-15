@@ -1,0 +1,13 @@
+{
+  "id": "whisper-of-the-heart-muta",
+  "name": "Muta",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "whisper-of-the-heart-muta-base",
+      "name": "Muta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

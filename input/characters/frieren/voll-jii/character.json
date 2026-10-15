@@ -1,0 +1,13 @@
+{
+  "id": "frieren-voll-jii",
+  "name": "Voll Jii",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-voll-jii-base",
+      "name": "Voll Jii",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

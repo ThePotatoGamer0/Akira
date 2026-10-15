@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-kyle-katayanagi",
+  "name": "Kyle Katayanagi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-kyle-katayanagi-base",
+      "name": "Kyle Katayanagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

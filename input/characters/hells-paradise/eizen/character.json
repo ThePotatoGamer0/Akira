@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-eizen",
+  "name": "Eizen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-eizen-base",
+      "name": "Eizen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

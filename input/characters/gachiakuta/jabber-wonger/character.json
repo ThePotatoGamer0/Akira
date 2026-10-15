@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-jabber-wonger",
+  "name": "Jabber Wonger",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-jabber-wonger-base",
+      "name": "Jabber Wonger",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

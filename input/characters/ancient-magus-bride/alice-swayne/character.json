@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-alice-swayne",
+  "name": "Alice Swayne",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-alice-swayne-base",
+      "name": "Alice Swayne",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

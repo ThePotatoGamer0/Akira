@@ -1,0 +1,13 @@
+{
+  "id": "princess-mononoke-shishigami",
+  "name": "Shishigami",
+  "gender": null,
+  "cards": [
+    {
+      "id": "princess-mononoke-shishigami-base",
+      "name": "Shishigami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

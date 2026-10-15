@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-rye-batenkaitos",
+  "name": "Rye Batenkaitos",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-rye-batenkaitos-base",
+      "name": "Rye Batenkaitos",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

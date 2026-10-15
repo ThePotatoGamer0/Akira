@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-garek-thompson",
+  "name": "Garek Thompson",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-garek-thompson-base",
+      "name": "Garek Thompson",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-gabi-braun",
+  "name": "Gabi Braun",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-gabi-braun-base",
+      "name": "Gabi Braun",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

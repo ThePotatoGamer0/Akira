@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-sofia-healey",
+  "name": "Sofia Healey",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-sofia-healey-base",
+      "name": "Sofia Healey",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

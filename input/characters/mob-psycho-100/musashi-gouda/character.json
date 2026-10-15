@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-musashi-gouda",
+  "name": "Musashi Gouda",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-musashi-gouda-base",
+      "name": "Musashi Gouda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

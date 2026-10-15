@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-daisaku-bandai",
+  "name": "Daisaku Bandai",
+  "gender": null,
+  "cards": [
+    {
+      "id": "danganronpa-daisaku-bandai-base",
+      "name": "Daisaku Bandai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

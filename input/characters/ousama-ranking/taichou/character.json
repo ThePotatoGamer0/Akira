@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-taichou",
+  "name": "Taichou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ousama-ranking-taichou-base",
+      "name": "Taichou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

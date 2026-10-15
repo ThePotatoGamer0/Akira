@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-mephisto-pheles",
+  "name": "Mephisto Pheles",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-exorcist-mephisto-pheles-base",
+      "name": "Mephisto Pheles",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

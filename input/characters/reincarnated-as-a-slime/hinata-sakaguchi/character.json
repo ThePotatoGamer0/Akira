@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-hinata-sakaguchi",
+  "name": "Hinata Sakaguchi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-hinata-sakaguchi-base",
+      "name": "Hinata Sakaguchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

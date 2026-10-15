@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-marugori",
+  "name": "Marugori",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-marugori-base",
+      "name": "Marugori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

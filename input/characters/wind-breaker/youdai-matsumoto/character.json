@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-youdai-matsumoto",
+  "name": "Youdai Matsumoto",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-youdai-matsumoto-base",
+      "name": "Youdai Matsumoto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

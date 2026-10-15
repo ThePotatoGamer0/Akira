@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-liliana-masquerade",
+  "name": "Liliana Masquerade",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-liliana-masquerade-base",
+      "name": "Liliana Masquerade",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-soushun-murasame",
+  "name": "Soushun Murasame",
+  "gender": null,
+  "cards": [
+    {
+      "id": "danganronpa-soushun-murasame-base",
+      "name": "Soushun Murasame",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-helga",
+  "name": "Helga",
+  "gender": null,
+  "cards": [
+    {
+      "id": "vinland-saga-helga-base",
+      "name": "Helga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

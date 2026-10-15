@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-kumara",
+  "name": "Kumara",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-kumara-base",
+      "name": "Kumara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

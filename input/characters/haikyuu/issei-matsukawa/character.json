@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-issei-matsukawa",
+  "name": "Issei Matsukawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-issei-matsukawa-base",
+      "name": "Issei Matsukawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

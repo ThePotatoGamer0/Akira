@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-kanan",
+  "name": "Kanan",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-kanan-base",
+      "name": "Kanan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "overlord-dyne-woodwonder",
+  "name": "Dyne Woodwonder",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-dyne-woodwonder-base",
+      "name": "Dyne Woodwonder",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

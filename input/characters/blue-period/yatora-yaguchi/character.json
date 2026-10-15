@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-yatora-yaguchi",
+  "name": "Yatora Yaguchi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-period-yatora-yaguchi-base",
+      "name": "Yatora Yaguchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

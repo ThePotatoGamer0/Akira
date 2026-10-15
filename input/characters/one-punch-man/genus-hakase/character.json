@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-genus-hakase",
+  "name": "Genus Hakase",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-genus-hakase-base",
+      "name": "Genus Hakase",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "berserk-lord-gennon",
+  "name": "Lord Gennon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "berserk-lord-gennon-base",
+      "name": "Lord Gennon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

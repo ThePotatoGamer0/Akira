@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-fuyumi-ootori",
+  "name": "Fuyumi Ootori",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-fuyumi-ootori-base",
+      "name": "Fuyumi Ootori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

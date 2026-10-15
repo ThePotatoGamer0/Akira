@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-takurou-ishii",
+  "name": "Takurou Ishii",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-period-takurou-ishii-base",
+      "name": "Takurou Ishii",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

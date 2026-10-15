@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-beom-shik-park",
+  "name": "Beom-Shik Park",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-beom-shik-park-base",
+      "name": "Beom-Shik Park",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

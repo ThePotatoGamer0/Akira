@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-shinei-nouzen",
+  "name": "Shinei Nouzen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-shinei-nouzen-base",
+      "name": "Shinei Nouzen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

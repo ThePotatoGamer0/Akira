@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-nagito-komaeda",
+  "name": "Nagito Komaeda",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-nagito-komaeda-base",
+      "name": "Nagito Komaeda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

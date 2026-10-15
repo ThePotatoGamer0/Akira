@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-bo-ra-lee",
+  "name": "Bo-Ra Lee",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "solo-leveling-bo-ra-lee-base",
+      "name": "Bo-Ra Lee",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

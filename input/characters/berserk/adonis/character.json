@@ -1,0 +1,13 @@
+{
+  "id": "berserk-adonis",
+  "name": "Adonis",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "berserk-adonis-base",
+      "name": "Adonis",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

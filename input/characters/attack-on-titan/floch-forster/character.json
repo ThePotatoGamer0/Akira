@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-floch-forster",
+  "name": "Floch Forster",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-floch-forster-base",
+      "name": "Floch Forster",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

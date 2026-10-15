@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-ram",
+  "name": "Ram",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-ram-base",
+      "name": "Ram",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-yuuta-iridatsu",
+  "name": "Yuuta Iridatsu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-yuuta-iridatsu-base",
+      "name": "Yuuta Iridatsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

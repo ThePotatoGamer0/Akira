@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-shoot-mcmahon",
+  "name": "Shoot McMahon",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-shoot-mcmahon-base",
+      "name": "Shoot McMahon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

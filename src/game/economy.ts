@@ -1,8 +1,10 @@
 import { prisma } from "../db/client.js";
 import { burnPayout, DAILY_COOLDOWN_MS, dailyPayout, formatRemaining, type Quality } from "./balance.js";
+import { activeEffects } from "./live-buffs.js";
 import { ensureCardImage } from "./compose.js";
 import { displayFrameId, serverDefaultFrame } from "./frames.js";
 import { GameError } from "./errors.js";
+import { cardInOpenTransfer } from "./transfer.js";
 import { ensureUser } from "./users.js";
 
 export async function readTimers(discordId: string): Promise<{ dropMs: number; grabMs: number; dailyMs: number }> {
@@ -71,6 +73,9 @@ export async function burnOwnedCard(discordId: string, username: string, cardId:
   if (!card || card.ownerId !== user.id) {
     throw new GameError("not-owner", "Akira only burns cards that belong to you.");
   }
+  if (await cardInOpenTransfer(card.id)) {
+    throw new GameError("busy", "That card is in an open give or trade.");
+  }
 
   const imagePath = await ensureCardImage({
     variantId: card.variant.id,
@@ -78,13 +83,14 @@ export async function burnOwnedCard(discordId: string, username: string, cardId:
     characterSlug: card.variant.character.slug,
     imageFile: card.variant.image,
     characterName: card.variant.character.name,
+    seriesName: card.variant.character.series.name,
     frameId: displayFrameId(card.frameId, await serverDefaultFrame(guildId)),
     printNumber: card.printNumber,
     dye: card.dye,
     kind: "burn",
   });
 
-  const awarded = burnPayout(card.quality);
+  const awarded = Math.round(burnPayout(card.quality) * (await activeEffects(user.id, guildId)).burnMultiplier);
   const updated = await prisma.$transaction(async (tx) => {
     await tx.card.delete({ where: { id: card.id } });
     return tx.user.update({

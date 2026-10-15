@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-gloria-martinez",
+  "name": "Gloria Martinez",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-gloria-martinez-base",
+      "name": "Gloria Martinez",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

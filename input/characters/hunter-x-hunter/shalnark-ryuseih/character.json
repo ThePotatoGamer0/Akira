@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-shalnark-ryuseih",
+  "name": "Shalnark Ryuseih",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-shalnark-ryuseih-base",
+      "name": "Shalnark Ryuseih",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

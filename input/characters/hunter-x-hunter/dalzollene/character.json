@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-dalzollene",
+  "name": "Dalzollene",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-dalzollene-base",
+      "name": "Dalzollene",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

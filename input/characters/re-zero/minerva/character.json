@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-minerva",
+  "name": "Minerva",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-minerva-base",
+      "name": "Minerva",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

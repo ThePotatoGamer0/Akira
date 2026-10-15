@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-seong-chul-lee",
+  "name": "Seong-Chul Lee",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-seong-chul-lee-base",
+      "name": "Seong-Chul Lee",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

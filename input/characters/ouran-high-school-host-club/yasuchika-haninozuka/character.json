@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-yasuchika-haninozuka",
+  "name": "Yasuchika Haninozuka",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-yasuchika-haninozuka-base",
+      "name": "Yasuchika Haninozuka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

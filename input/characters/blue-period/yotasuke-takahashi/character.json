@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-yotasuke-takahashi",
+  "name": "Yotasuke Takahashi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-period-yotasuke-takahashi-base",
+      "name": "Yotasuke Takahashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-zakos",
+  "name": "Zakos",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-zakos-base",
+      "name": "Zakos",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

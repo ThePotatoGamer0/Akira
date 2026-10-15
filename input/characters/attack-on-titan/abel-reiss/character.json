@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-abel-reiss",
+  "name": "Abel Reiss",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-abel-reiss-base",
+      "name": "Abel Reiss",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

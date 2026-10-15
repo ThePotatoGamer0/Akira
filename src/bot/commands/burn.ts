@@ -15,7 +15,7 @@ export const burn: AkiraCommand = {
     try {
       await interaction.deferReply();
       const result = await burnOwnedCard(interaction.user.id, interaction.user.username, cardId, interaction.guildId);
-      const file = new AttachmentBuilder(result.imagePath, { name: "burn.apng" });
+      const file = new AttachmentBuilder(result.imagePath, { name: "burn.gif" });
       await interaction.editReply({
         content: `Akira burned **${result.characterName}** #${result.printNumber} and tucked ${result.awarded} bits away. You now have ${result.balance}.`,
         files: [file],

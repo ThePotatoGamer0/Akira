@@ -1,0 +1,13 @@
+{
+  "id": "overlord-baziwood-peshmel",
+  "name": "Baziwood Peshmel",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-baziwood-peshmel-base",
+      "name": "Baziwood Peshmel",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

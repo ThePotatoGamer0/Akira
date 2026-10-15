@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-litus",
+  "name": "Litus",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-litus-base",
+      "name": "Litus",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

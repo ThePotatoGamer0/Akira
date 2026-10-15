@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-sakura-suzuhara",
+  "name": "Sakura Suzuhara",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "evangelion-sakura-suzuhara-base",
+      "name": "Sakura Suzuhara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

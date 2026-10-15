@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-chisa-yukizome",
+  "name": "Chisa Yukizome",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-chisa-yukizome-base",
+      "name": "Chisa Yukizome",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

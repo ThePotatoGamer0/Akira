@@ -1,0 +1,13 @@
+{
+  "id": "frieren-flamme",
+  "name": "Flamme",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "frieren-flamme-base",
+      "name": "Flamme",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

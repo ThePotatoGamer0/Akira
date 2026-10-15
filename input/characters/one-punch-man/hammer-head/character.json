@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-hammer-head",
+  "name": "Hammer-Head",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-hammer-head-base",
+      "name": "Hammer-Head",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

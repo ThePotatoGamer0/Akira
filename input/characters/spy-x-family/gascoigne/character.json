@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-gascoigne",
+  "name": "Gascoigne",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-gascoigne-base",
+      "name": "Gascoigne",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

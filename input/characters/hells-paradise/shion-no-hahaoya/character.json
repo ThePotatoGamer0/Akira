@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-shion-no-hahaoya",
+  "name": "Shion no Hahaoya",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hells-paradise-shion-no-hahaoya-base",
+      "name": "Shion no Hahaoya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

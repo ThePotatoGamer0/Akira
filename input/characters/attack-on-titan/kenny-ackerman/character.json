@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-kenny-ackerman",
+  "name": "Kenny Ackerman",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-kenny-ackerman-base",
+      "name": "Kenny Ackerman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

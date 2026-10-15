@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-bebin",
+  "name": "Bebin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-bebin-base",
+      "name": "Bebin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

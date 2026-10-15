@@ -1,0 +1,13 @@
+{
+  "id": "berserk-bazuso",
+  "name": "Bazuso",
+  "gender": null,
+  "cards": [
+    {
+      "id": "berserk-bazuso-base",
+      "name": "Bazuso",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

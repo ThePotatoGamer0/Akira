@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-arameese",
+  "name": "Arameese",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-arameese-base",
+      "name": "Arameese",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-baka-ki-el-dogra",
+  "name": "Baka Ki El Dogra",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-baka-ki-el-dogra-base",
+      "name": "Baka Ki El Dogra",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

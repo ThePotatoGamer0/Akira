@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-theresia-van-astrea",
+  "name": "Theresia van Astrea",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-theresia-van-astrea-base",
+      "name": "Theresia van Astrea",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

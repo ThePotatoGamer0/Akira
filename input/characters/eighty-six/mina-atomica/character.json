@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-mina-atomica",
+  "name": "Mina Atomica",
+  "gender": null,
+  "cards": [
+    {
+      "id": "eighty-six-mina-atomica-base",
+      "name": "Mina Atomica",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

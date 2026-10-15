@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-ougon-ball",
+  "name": "Ougon Ball",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-ougon-ball-base",
+      "name": "Ougon Ball",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

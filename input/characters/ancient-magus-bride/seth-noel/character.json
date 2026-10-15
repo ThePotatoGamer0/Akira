@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-seth-noel",
+  "name": "Seth Noel",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-seth-noel-base",
+      "name": "Seth Noel",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

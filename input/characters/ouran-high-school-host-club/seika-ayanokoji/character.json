@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-seika-ayanokoji",
+  "name": "Seika Ayanokoji",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-seika-ayanokoji-base",
+      "name": "Seika Ayanokoji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

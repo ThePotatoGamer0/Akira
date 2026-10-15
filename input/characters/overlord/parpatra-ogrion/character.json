@@ -1,0 +1,13 @@
+{
+  "id": "overlord-parpatra-ogrion",
+  "name": "Parpatra Ogrion",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-parpatra-ogrion-base",
+      "name": "Parpatra Ogrion",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

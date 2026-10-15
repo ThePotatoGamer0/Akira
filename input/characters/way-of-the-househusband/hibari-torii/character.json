@@ -1,0 +1,13 @@
+{
+  "id": "way-of-the-househusband-hibari-torii",
+  "name": "Hibari Torii",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "way-of-the-househusband-hibari-torii-base",
+      "name": "Hibari Torii",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

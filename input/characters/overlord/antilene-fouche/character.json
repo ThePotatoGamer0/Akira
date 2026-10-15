@@ -1,0 +1,13 @@
+{
+  "id": "overlord-antilene-fouche",
+  "name": "Antilene Fouche",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-antilene-fouche-base",
+      "name": "Antilene Fouche",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

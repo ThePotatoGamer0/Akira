@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yutaka-obara",
+  "name": "Yutaka Obara",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-yutaka-obara-base",
+      "name": "Yutaka Obara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

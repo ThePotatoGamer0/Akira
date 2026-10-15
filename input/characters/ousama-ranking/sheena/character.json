@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-sheena",
+  "name": "Sheena",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ousama-ranking-sheena-base",
+      "name": "Sheena",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

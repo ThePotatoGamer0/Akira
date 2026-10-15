@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-jim-hayward",
+  "name": "Jim Hayward",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-jim-hayward-base",
+      "name": "Jim Hayward",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

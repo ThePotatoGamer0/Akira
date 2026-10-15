@@ -1,27 +1,14 @@
 ---
 title: Tags
-description: Tags and nicknames for cards. The command exists and is not finished.
-command: tags
-shortcuts: t, tl, taglist
+description: Emoji marks on the left of a card line.
 ---
 
-**/tags** is registered. Akira replies that tags and aliases are not wired up yet.
+A tag is a name and an emoji that belongs to you. On a collection line the emoji sits on the left. Cards with no tag use ◾.
 
-## Parameters
+- [Create a tag](/commands/tagcreate)
+- [Put it on cards](/commands/tag)
+- [See someone's tags](/commands/taglist)
+- [Delete a tag](/commands/tagdelete)
+- [Take a tag off a card](/commands/untag)
 
-None. `at the store` is not the command. `at` alone is.
-
-## Aliases
-
-`t`, `tl`, `taglist`.
-
-## Example usage
-
-```
-/tags
-at
-```
-
-## See also
-
-- [Command list](/commands/reference)
+Giving or trading a card clears its tag.

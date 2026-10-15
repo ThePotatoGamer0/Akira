@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-bundus-begalkeit",
+  "name": "Bundus Begalkeit",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-bundus-begalkeit-base",
+      "name": "Bundus Begalkeit",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

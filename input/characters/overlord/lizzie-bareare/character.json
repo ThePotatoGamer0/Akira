@@ -1,0 +1,13 @@
+{
+  "id": "overlord-lizzie-bareare",
+  "name": "Lizzie Bareare",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-lizzie-bareare-base",
+      "name": "Lizzie Bareare",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-haguki",
+  "name": "Haguki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-haguki-base",
+      "name": "Haguki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

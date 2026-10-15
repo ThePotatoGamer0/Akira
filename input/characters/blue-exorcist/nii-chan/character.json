@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-nii-chan",
+  "name": "Nii-chan",
+  "gender": null,
+  "cards": [
+    {
+      "id": "blue-exorcist-nii-chan-base",
+      "name": "Nii-chan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-vadim",
+  "name": "Vadim",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-vadim-base",
+      "name": "Vadim",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

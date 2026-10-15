@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-tsubame",
+  "name": "Tsubame",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dandadan-tsubame-base",
+      "name": "Tsubame",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

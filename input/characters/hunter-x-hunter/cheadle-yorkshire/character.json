@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-cheadle-yorkshire",
+  "name": "Cheadle Yorkshire",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-cheadle-yorkshire-base",
+      "name": "Cheadle Yorkshire",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

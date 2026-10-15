@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-hye-yeong-ra",
+  "name": "Hye-Yeong Ra",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-hye-yeong-ra-base",
+      "name": "Hye-Yeong Ra",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "spirited-away-bou",
+  "name": "Bou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "spirited-away-bou-base",
+      "name": "Bou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

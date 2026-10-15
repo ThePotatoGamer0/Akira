@@ -1,0 +1,13 @@
+{
+  "id": "overlord-lumiere",
+  "name": "Lumiere",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-lumiere-base",
+      "name": "Lumiere",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

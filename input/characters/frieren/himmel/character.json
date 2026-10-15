@@ -1,0 +1,13 @@
+{
+  "id": "frieren-himmel",
+  "name": "Himmel",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-himmel-base",
+      "name": "Himmel",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

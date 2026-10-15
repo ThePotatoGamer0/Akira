@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-kurobee",
+  "name": "Kurobee",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-kurobee-base",
+      "name": "Kurobee",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

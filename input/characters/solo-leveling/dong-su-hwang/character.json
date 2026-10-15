@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-dong-su-hwang",
+  "name": "Dong-Su Hwang",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-dong-su-hwang-base",
+      "name": "Dong-Su Hwang",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

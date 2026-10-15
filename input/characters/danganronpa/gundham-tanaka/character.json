@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-gundham-tanaka",
+  "name": "Gundham Tanaka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-gundham-tanaka-base",
+      "name": "Gundham Tanaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-miketsu",
+  "name": "Miketsu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-exorcist-miketsu-base",
+      "name": "Miketsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

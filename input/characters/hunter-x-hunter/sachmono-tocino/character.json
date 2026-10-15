@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-sachmono-tocino",
+  "name": "Sachmono Tocino",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-sachmono-tocino-base",
+      "name": "Sachmono Tocino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

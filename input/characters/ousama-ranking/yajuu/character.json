@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-yajuu",
+  "name": "Yajuu",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ousama-ranking-yajuu-base",
+      "name": "Yajuu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

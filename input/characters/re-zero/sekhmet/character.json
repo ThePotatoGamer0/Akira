@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-sekhmet",
+  "name": "Sekhmet",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-sekhmet-base",
+      "name": "Sekhmet",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

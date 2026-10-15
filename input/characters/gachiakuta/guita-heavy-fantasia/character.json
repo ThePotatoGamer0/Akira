@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-guita-heavy-fantasia",
+  "name": "Guita Heavy Fantasia",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "gachiakuta-guita-heavy-fantasia-base",
+      "name": "Guita Heavy Fantasia",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

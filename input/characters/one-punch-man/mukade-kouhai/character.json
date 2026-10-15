@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-mukade-kouhai",
+  "name": "Mukade Kouhai",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-mukade-kouhai-base",
+      "name": "Mukade Kouhai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

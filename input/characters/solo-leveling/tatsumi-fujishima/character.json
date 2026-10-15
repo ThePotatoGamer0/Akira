@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-tatsumi-fujishima",
+  "name": "Tatsumi Fujishima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-tatsumi-fujishima-base",
+      "name": "Tatsumi Fujishima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

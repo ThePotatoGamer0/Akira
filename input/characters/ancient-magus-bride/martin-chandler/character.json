@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-martin-chandler",
+  "name": "Martin Chandler",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-martin-chandler-base",
+      "name": "Martin Chandler",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

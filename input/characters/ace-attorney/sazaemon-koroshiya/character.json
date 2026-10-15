@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-sazaemon-koroshiya",
+  "name": "Sazaemon Koroshiya",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-sazaemon-koroshiya-base",
+      "name": "Sazaemon Koroshiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

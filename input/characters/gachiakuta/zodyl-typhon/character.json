@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-zodyl-typhon",
+  "name": "Zodyl Typhon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-zodyl-typhon-base",
+      "name": "Zodyl Typhon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

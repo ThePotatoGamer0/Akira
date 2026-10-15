@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-zebro",
+  "name": "Zebro",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-zebro-base",
+      "name": "Zebro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-eadric-no-musuko",
+  "name": "Eadric no Musuko",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-eadric-no-musuko-base",
+      "name": "Eadric no Musuko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

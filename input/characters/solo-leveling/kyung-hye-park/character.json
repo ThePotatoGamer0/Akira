@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-kyung-hye-park",
+  "name": "Kyung-Hye Park",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "solo-leveling-kyung-hye-park-base",
+      "name": "Kyung-Hye Park",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

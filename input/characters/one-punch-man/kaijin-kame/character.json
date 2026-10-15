@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-kaijin-kame",
+  "name": "Kaijin Kame",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-kaijin-kame-base",
+      "name": "Kaijin Kame",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

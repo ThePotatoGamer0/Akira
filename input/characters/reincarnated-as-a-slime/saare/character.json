@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-saare",
+  "name": "Saare",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-saare-base",
+      "name": "Saare",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

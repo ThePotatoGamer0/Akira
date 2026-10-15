@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-mentai",
+  "name": "Mentai",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-mentai-base",
+      "name": "Mentai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

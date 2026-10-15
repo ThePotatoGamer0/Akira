@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-shouyou-hinata",
+  "name": "Shouyou Hinata",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-shouyou-hinata-base",
+      "name": "Shouyou Hinata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

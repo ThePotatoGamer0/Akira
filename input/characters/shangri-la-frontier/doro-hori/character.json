@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-doro-hori",
+  "name": "Doro Hori",
+  "gender": null,
+  "cards": [
+    {
+      "id": "shangri-la-frontier-doro-hori-base",
+      "name": "Doro Hori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

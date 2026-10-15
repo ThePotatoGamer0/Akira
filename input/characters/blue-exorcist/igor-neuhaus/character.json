@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-igor-neuhaus",
+  "name": "Igor Neuhaus",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-exorcist-igor-neuhaus-base",
+      "name": "Igor Neuhaus",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

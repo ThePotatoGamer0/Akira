@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-gunther",
+  "name": "Gunther",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-gunther-base",
+      "name": "Gunther",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

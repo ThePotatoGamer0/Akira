@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-shugen",
+  "name": "Shugen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-shugen-base",
+      "name": "Shugen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

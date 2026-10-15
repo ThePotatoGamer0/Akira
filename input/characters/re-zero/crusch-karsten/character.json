@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-crusch-karsten",
+  "name": "Crusch Karsten",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-crusch-karsten-base",
+      "name": "Crusch Karsten",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

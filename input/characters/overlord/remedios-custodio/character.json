@@ -1,0 +1,13 @@
+{
+  "id": "overlord-remedios-custodio",
+  "name": "Remedios Custodio",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-remedios-custodio-base",
+      "name": "Remedios Custodio",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

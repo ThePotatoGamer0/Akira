@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-killua-zoldyck",
+  "name": "Killua Zoldyck",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-killua-zoldyck-base",
+      "name": "Killua Zoldyck",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

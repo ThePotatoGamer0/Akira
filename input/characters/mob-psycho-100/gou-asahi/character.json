@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-gou-asahi",
+  "name": "Gou Asahi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-gou-asahi-base",
+      "name": "Gou Asahi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

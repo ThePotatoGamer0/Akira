@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-ippei-izawa",
+  "name": "Ippei Izawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-ippei-izawa-base",
+      "name": "Ippei Izawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "frieren-toun",
+  "name": "Toun",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-toun-base",
+      "name": "Toun",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

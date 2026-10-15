@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-beatrice-byrne",
+  "name": "Beatrice Byrne",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-beatrice-byrne-base",
+      "name": "Beatrice Byrne",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

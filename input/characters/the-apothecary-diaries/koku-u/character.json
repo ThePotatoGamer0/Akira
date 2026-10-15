@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-koku-u",
+  "name": "Koku-u",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-koku-u-base",
+      "name": "Koku-u",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-mikasa-no-chichi",
+  "name": "Mikasa no Chichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-mikasa-no-chichi-base",
+      "name": "Mikasa no Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

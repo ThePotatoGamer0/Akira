@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-joka",
+  "name": "Joka",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-joka-base",
+      "name": "Joka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

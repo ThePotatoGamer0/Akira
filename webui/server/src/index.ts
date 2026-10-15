@@ -6,7 +6,7 @@ import session from "express-session";
 import { authRouter } from "./routes/auth.js";
 import { collectionRouter } from "./routes/collection.js";
 import { economyRouter } from "./routes/economy.js";
-import { leaderboardRouter } from "./routes/leaderboard.js";
+import { statsRouter } from "./routes/stats.js";
 import { adminRouter } from "./routes/admin.js";
 import { serveMissingCardAsset } from "./routes/card-assets.js";
 import { REPO_ROOT } from "./utils/repo-root.js";
@@ -80,7 +80,15 @@ app.use(
 );
 
 const cardsStatic = path.join(REPO_ROOT, "assets", "cards");
-app.use("/api/static/cards", express.static(cardsStatic, { fallthrough: true }));
+app.use(
+  "/api/static/cards",
+  express.static(cardsStatic, {
+    fallthrough: true,
+    setHeaders(res, filePath) {
+      if (filePath.endsWith(".apng")) res.setHeader("Content-Type", "image/png");
+    },
+  }),
+);
 app.get("/api/static/cards/:variantId/:frameId/:printKey/:dyeKey/:fileName", (req, res, next) => {
   void serveMissingCardAsset(req, res).catch(next);
 });
@@ -88,7 +96,7 @@ app.get("/api/static/cards/:variantId/:frameId/:printKey/:dyeKey/:fileName", (re
 app.use("/auth", authRouter);
 app.use("/collection", collectionRouter);
 app.use("/economy", economyRouter);
-app.use("/leaderboard", leaderboardRouter);
+app.use("/stats", statsRouter);
 app.use("/admin", adminRouter);
 
 app.get("/health", (_req, res) => res.json({ ok: true }));

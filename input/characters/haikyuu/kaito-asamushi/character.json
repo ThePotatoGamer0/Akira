@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-kaito-asamushi",
+  "name": "Kaito Asamushi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-kaito-asamushi-base",
+      "name": "Kaito Asamushi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

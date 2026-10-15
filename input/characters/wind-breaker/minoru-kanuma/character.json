@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-minoru-kanuma",
+  "name": "Minoru Kanuma",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-minoru-kanuma-base",
+      "name": "Minoru Kanuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

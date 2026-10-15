@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-muto",
+  "name": "Muto",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-muto-base",
+      "name": "Muto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

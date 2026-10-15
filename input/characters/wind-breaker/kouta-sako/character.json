@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-kouta-sako",
+  "name": "Kouta Sako",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-kouta-sako-base",
+      "name": "Kouta Sako",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

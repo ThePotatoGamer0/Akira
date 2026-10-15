@@ -1,0 +1,13 @@
+{
+  "id": "overlord-peshurian",
+  "name": "Peshurian",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-peshurian-base",
+      "name": "Peshurian",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

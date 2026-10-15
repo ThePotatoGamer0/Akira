@@ -1,0 +1,13 @@
+{
+  "id": "overlord-philip-dayton-l-eyre-montserrat",
+  "name": "Philip Dayton L'Eyre Montserrat",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-philip-dayton-l-eyre-montserrat-base",
+      "name": "Philip Dayton L'Eyre Montserrat",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-shaiapouf",
+  "name": "Shaiapouf",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-shaiapouf-base",
+      "name": "Shaiapouf",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

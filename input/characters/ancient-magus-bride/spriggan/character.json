@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-spriggan",
+  "name": "Spriggan",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-spriggan-base",
+      "name": "Spriggan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

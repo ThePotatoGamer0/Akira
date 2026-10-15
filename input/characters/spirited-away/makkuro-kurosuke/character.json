@@ -1,0 +1,13 @@
+{
+  "id": "spirited-away-makkuro-kurosuke",
+  "name": "Makkuro-Kurosuke",
+  "gender": null,
+  "cards": [
+    {
+      "id": "spirited-away-makkuro-kurosuke-base",
+      "name": "Makkuro-Kurosuke",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

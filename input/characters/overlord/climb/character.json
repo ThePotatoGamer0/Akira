@@ -1,0 +1,13 @@
+{
+  "id": "overlord-climb",
+  "name": "Climb",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-climb-base",
+      "name": "Climb",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

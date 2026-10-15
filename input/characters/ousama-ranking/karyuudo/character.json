@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-karyuudo",
+  "name": "Karyuudo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-karyuudo-base",
+      "name": "Karyuudo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-nambia",
+  "name": "Nambia",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-nambia-base",
+      "name": "Nambia",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

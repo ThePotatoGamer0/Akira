@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-megane-no-kyoukan",
+  "name": "Megane no Kyoukan",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-megane-no-kyoukan-base",
+      "name": "Megane no Kyoukan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

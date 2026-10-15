@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-gyoffrey",
+  "name": "Gyoffrey",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-gyoffrey-base",
+      "name": "Gyoffrey",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

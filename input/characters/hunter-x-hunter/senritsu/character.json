@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-senritsu",
+  "name": "Senritsu",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-senritsu-base",
+      "name": "Senritsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

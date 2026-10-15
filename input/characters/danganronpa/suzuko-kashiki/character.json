@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-suzuko-kashiki",
+  "name": "Suzuko Kashiki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "danganronpa-suzuko-kashiki-base",
+      "name": "Suzuko Kashiki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

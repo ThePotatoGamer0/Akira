@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-patterson",
+  "name": "Patterson",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dandadan-patterson-base",
+      "name": "Patterson",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

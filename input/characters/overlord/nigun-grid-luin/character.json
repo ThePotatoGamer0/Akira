@@ -1,0 +1,13 @@
+{
+  "id": "overlord-nigun-grid-luin",
+  "name": "Nigun Grid Luin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "overlord-nigun-grid-luin-base",
+      "name": "Nigun Grid Luin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

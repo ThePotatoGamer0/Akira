@@ -62,6 +62,20 @@ export function splitName(name: string, widthOf: (text: string) => number): [str
 
 export type FittedLine = { text: string; fontSize: number };
 
+export function fitSingleLine(input: {
+  text: string;
+  fontSize: number;
+  maxWidth: number;
+  minFont?: number;
+  measure: (text: string, fontSize: number) => number;
+}): FittedLine {
+  const text = input.text.trim();
+  const minFont = input.minFont ?? 11;
+  let size = input.fontSize;
+  while (size > minFont && input.measure(text, size) > input.maxWidth) size -= 1;
+  return { text, fontSize: size };
+}
+
 const MIN_FONT = 12;
 
 function gapFor(fontSize: number): number {
@@ -74,8 +88,8 @@ export function nameBlockHeight(lineCount: number, fontSize: number): number {
 }
 
 /**
- * One line when the name fits. Otherwise two lines, then a smaller size until both fit.
- * The split follows the words, so a two-word name lands as first line / second line.
+ * The biggest size that fits the band. One line when that is larger than two lines,
+ * so a short name fills the space a second line would have used.
  */
 export function fitCharacterName(input: {
   name: string;
@@ -86,30 +100,38 @@ export function fitCharacterName(input: {
 }): FittedLine[] {
   const name = input.name.trim();
   if (!name) return [];
-  const { fontSize, maxWidth, maxHeight, measure } = input;
+  const { maxWidth, maxHeight, measure } = input;
+  const ceiling = Math.max(MIN_FONT, Math.floor(Math.max(input.fontSize, maxHeight)));
 
-  if (measure(name, fontSize) <= maxWidth && fontSize <= maxHeight) {
-    return [{ text: name, fontSize }];
+  let oneSize: number | null = null;
+  for (let size = ceiling; size >= MIN_FONT; size -= 1) {
+    if (size <= maxHeight && measure(name, size) <= maxWidth) {
+      oneSize = size;
+      break;
+    }
   }
 
-  let size = fontSize;
-  while (size >= MIN_FONT) {
+  let twoSize: number | null = null;
+  let twoLines: [string, string] | null = null;
+  for (let size = ceiling; size >= MIN_FONT; size -= 1) {
+    if (nameBlockHeight(2, size) > maxHeight) continue;
     const split = splitName(name, (text) => measure(text, size));
-    if (
-      split &&
-      nameBlockHeight(2, size) <= maxHeight &&
-      measure(split[0], size) <= maxWidth &&
-      measure(split[1], size) <= maxWidth
-    ) {
-      return [
-        { text: split[0], fontSize: size },
-        { text: split[1], fontSize: size },
-      ];
+    if (!split) continue;
+    if (measure(split[0], size) <= maxWidth && measure(split[1], size) <= maxWidth) {
+      twoSize = size;
+      twoLines = split;
+      break;
     }
-    if (!split && measure(name, size) <= maxWidth && size <= maxHeight) {
-      return [{ text: name, fontSize: size }];
-    }
-    size -= 1;
+  }
+
+  if (oneSize !== null && (twoSize === null || oneSize >= twoSize)) {
+    return [{ text: name, fontSize: oneSize }];
+  }
+  if (twoSize !== null && twoLines) {
+    return [
+      { text: twoLines[0], fontSize: twoSize },
+      { text: twoLines[1], fontSize: twoSize },
+    ];
   }
 
   const split = splitName(name, (text) => measure(text, MIN_FONT));

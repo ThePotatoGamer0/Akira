@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-masaomi-onikoube",
+  "name": "Masaomi Onikoube",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-masaomi-onikoube-base",
+      "name": "Masaomi Onikoube",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

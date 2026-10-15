@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-surma",
+  "name": "Surma",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-surma-base",
+      "name": "Surma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "overlord-nimble-arc-dale-anoch",
+  "name": "Nimble Arc Dale Anoch",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-nimble-arc-dale-anoch-base",
+      "name": "Nimble Arc Dale Anoch",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

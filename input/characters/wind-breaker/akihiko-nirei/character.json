@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-akihiko-nirei",
+  "name": "Akihiko Nirei",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-akihiko-nirei-base",
+      "name": "Akihiko Nirei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

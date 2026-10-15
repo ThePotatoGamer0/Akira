@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-shunki-kawatabi",
+  "name": "Shunki Kawatabi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-shunki-kawatabi-base",
+      "name": "Shunki Kawatabi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

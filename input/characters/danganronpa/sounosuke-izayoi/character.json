@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-sounosuke-izayoi",
+  "name": "Sounosuke Izayoi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-sounosuke-izayoi-base",
+      "name": "Sounosuke Izayoi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

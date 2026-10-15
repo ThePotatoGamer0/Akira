@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-rust",
+  "name": "Rust",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-rust-base",
+      "name": "Rust",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

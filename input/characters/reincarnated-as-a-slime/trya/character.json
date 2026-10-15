@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-trya",
+  "name": "Trya",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-trya-base",
+      "name": "Trya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-lass",
+  "name": "Lass",
+  "gender": null,
+  "cards": [
+    {
+      "id": "shangri-la-frontier-lass-base",
+      "name": "Lass",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-hideki-yamamura",
+  "name": "Hideki  Yamamura",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-hideki-yamamura-base",
+      "name": "Hideki  Yamamura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

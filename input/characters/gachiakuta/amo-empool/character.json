@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-amo-empool",
+  "name": "Amo Empool",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "gachiakuta-amo-empool-base",
+      "name": "Amo Empool",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

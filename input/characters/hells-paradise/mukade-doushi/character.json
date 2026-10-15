@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-mukade-doushi",
+  "name": "Mukade Doushi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-mukade-doushi-base",
+      "name": "Mukade Doushi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

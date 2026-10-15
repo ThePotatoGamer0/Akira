@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-sou-inuoka",
+  "name": "Sou Inuoka",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-sou-inuoka-base",
+      "name": "Sou Inuoka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

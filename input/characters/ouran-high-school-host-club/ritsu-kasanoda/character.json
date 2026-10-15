@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-ritsu-kasanoda",
+  "name": "Ritsu Kasanoda",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-ritsu-kasanoda-base",
+      "name": "Ritsu Kasanoda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-isao-sonoda",
+  "name": "Isao Sonoda",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-isao-sonoda-base",
+      "name": "Isao Sonoda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

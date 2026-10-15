@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-yu-jeong-an",
+  "name": "Yu-Jeong An",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-yu-jeong-an-base",
+      "name": "Yu-Jeong An",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

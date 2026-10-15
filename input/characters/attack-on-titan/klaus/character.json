@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-klaus",
+  "name": "Klaus",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-klaus-base",
+      "name": "Klaus",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

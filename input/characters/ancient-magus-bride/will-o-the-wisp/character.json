@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-will-o-the-wisp",
+  "name": "Will o' The Wisp",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-will-o-the-wisp-base",
+      "name": "Will o' The Wisp",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

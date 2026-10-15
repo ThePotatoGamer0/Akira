@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-megane",
+  "name": "Megane",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-megane-base",
+      "name": "Megane",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

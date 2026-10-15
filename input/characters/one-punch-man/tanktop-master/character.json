@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-tanktop-master",
+  "name": "Tanktop Master",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-tanktop-master-base",
+      "name": "Tanktop Master",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

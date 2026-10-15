@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-torrey-innis",
+  "name": "Torrey Innis",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-torrey-innis-base",
+      "name": "Torrey Innis",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

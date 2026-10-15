@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-dokuro-doushi",
+  "name": "Dokuro Doushi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-dokuro-doushi-base",
+      "name": "Dokuro Doushi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

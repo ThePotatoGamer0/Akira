@@ -1,0 +1,13 @@
+{
+  "id": "berserk-judeau",
+  "name": "Judeau",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "berserk-judeau-base",
+      "name": "Judeau",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

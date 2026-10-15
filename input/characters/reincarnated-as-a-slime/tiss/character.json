@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-tiss",
+  "name": "Tiss",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-tiss-base",
+      "name": "Tiss",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

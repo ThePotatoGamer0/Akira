@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-kuretake",
+  "name": "Kuretake",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-kuretake-base",
+      "name": "Kuretake",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

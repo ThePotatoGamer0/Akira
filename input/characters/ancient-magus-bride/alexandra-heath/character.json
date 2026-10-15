@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-alexandra-heath",
+  "name": "Alexandra Heath",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-alexandra-heath-base",
+      "name": "Alexandra Heath",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

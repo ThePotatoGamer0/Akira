@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-kaworu-nagisa",
+  "name": "Kaworu Nagisa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "evangelion-kaworu-nagisa-base",
+      "name": "Kaworu Nagisa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

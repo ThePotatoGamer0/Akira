@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-gou-karuma",
+  "name": "Gou Karuma",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-gou-karuma-base",
+      "name": "Gou Karuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

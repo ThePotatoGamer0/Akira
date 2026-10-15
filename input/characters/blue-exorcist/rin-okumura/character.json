@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-rin-okumura",
+  "name": "Rin Okumura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-exorcist-rin-okumura-base",
+      "name": "Rin Okumura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

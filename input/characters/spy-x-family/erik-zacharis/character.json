@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-erik-zacharis",
+  "name": "Erik Zacharis",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-erik-zacharis-base",
+      "name": "Erik Zacharis",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

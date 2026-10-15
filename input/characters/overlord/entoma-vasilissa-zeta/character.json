@@ -1,0 +1,13 @@
+{
+  "id": "overlord-entoma-vasilissa-zeta",
+  "name": "Entoma Vasilissa Zeta",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-entoma-vasilissa-zeta-base",
+      "name": "Entoma Vasilissa Zeta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

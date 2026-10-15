@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-bandai",
+  "name": "Bandai",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-bandai-base",
+      "name": "Bandai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

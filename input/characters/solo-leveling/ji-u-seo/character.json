@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-ji-u-seo",
+  "name": "Ji-U Seo",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "solo-leveling-ji-u-seo-base",
+      "name": "Ji-U Seo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

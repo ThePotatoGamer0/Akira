@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-djel-sannes",
+  "name": "Djel Sannes",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-djel-sannes-base",
+      "name": "Djel Sannes",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

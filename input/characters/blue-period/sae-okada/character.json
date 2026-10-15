@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-sae-okada",
+  "name": "Sae Okada",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-period-sae-okada-base",
+      "name": "Sae Okada",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

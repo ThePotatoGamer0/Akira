@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-faxi",
+  "name": "Faxi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "vinland-saga-faxi-base",
+      "name": "Faxi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

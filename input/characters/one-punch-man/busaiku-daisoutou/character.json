@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-busaiku-daisoutou",
+  "name": "Busaiku Daisoutou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-busaiku-daisoutou-base",
+      "name": "Busaiku Daisoutou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

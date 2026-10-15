@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-benimaru",
+  "name": "Benimaru",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-benimaru-base",
+      "name": "Benimaru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

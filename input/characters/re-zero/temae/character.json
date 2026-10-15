@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-temae",
+  "name": "Temae",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-temae-base",
+      "name": "Temae",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

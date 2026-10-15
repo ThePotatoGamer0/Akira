@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-hetaro-pearlbaton",
+  "name": "Hetaro Pearlbaton",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-hetaro-pearlbaton-base",
+      "name": "Hetaro Pearlbaton",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

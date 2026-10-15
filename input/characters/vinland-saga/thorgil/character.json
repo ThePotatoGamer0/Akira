@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-thorgil",
+  "name": "Thorgil",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-thorgil-base",
+      "name": "Thorgil",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

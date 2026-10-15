@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-tome-kurata",
+  "name": "Tome Kurata",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "mob-psycho-100-tome-kurata-base",
+      "name": "Tome Kurata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

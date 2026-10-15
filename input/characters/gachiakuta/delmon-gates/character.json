@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-delmon-gates",
+  "name": "Delmon Gates",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-delmon-gates-base",
+      "name": "Delmon Gates",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

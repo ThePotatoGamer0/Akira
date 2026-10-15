@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-arinoille",
+  "name": "Arinoille",
+  "gender": null,
+  "cards": [
+    {
+      "id": "shangri-la-frontier-arinoille-base",
+      "name": "Arinoille",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

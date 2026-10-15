@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-marco-bott",
+  "name": "Marco Bott",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-marco-bott-base",
+      "name": "Marco Bott",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

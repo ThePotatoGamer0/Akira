@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-ground-dragon",
+  "name": "Ground Dragon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-ground-dragon-base",
+      "name": "Ground Dragon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

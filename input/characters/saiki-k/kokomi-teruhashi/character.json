@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-kokomi-teruhashi",
+  "name": "Kokomi Teruhashi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "saiki-k-kokomi-teruhashi-base",
+      "name": "Kokomi Teruhashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

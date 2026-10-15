@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-hayato-suou",
+  "name": "Hayato Suou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-hayato-suou-base",
+      "name": "Hayato Suou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

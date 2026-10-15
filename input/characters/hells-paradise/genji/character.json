@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-genji",
+  "name": "Genji",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-genji-base",
+      "name": "Genji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

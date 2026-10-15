@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-karen-kisaragi",
+  "name": "Karen Kisaragi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-karen-kisaragi-base",
+      "name": "Karen Kisaragi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

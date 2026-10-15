@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-benedict-goodfellow",
+  "name": "Benedict Goodfellow",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-benedict-goodfellow-base",
+      "name": "Benedict Goodfellow",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

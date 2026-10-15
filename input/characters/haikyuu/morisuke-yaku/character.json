@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-morisuke-yaku",
+  "name": "Morisuke Yaku",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-morisuke-yaku-base",
+      "name": "Morisuke Yaku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-amo-no-haha",
+  "name": "Amo no Haha",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "gachiakuta-amo-no-haha-base",
+      "name": "Amo no Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

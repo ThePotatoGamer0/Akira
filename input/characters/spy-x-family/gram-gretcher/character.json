@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-gram-gretcher",
+  "name": "Gram Gretcher",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-gram-gretcher-base",
+      "name": "Gram Gretcher",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

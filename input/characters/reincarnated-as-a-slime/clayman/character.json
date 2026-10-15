@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-clayman",
+  "name": "Clayman",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-clayman-base",
+      "name": "Clayman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

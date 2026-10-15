@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-nobunaga-hazama",
+  "name": "Nobunaga Hazama",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-nobunaga-hazama-base",
+      "name": "Nobunaga Hazama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

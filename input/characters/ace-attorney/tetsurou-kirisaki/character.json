@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-tetsurou-kirisaki",
+  "name": "Tetsurou Kirisaki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-tetsurou-kirisaki-base",
+      "name": "Tetsurou Kirisaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

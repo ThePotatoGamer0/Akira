@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-genthru",
+  "name": "Genthru",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-genthru-base",
+      "name": "Genthru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

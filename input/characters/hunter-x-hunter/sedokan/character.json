@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-sedokan",
+  "name": "Sedokan",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-sedokan-base",
+      "name": "Sedokan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

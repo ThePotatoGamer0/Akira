@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-fuyou",
+  "name": "Fuyou",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-fuyou-base",
+      "name": "Fuyou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "overlord-bellote",
+  "name": "Bellote",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-bellote-base",
+      "name": "Bellote",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

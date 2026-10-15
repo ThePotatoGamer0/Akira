@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-akira-kunimi",
+  "name": "Akira Kunimi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-akira-kunimi-base",
+      "name": "Akira Kunimi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

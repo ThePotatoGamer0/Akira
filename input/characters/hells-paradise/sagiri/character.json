@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-sagiri",
+  "name": "Sagiri",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hells-paradise-sagiri-base",
+      "name": "Sagiri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

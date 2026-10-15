@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-kei-tsukishima",
+  "name": "Kei Tsukishima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-kei-tsukishima-base",
+      "name": "Kei Tsukishima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

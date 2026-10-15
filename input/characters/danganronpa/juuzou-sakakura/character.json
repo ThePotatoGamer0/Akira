@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-juuzou-sakakura",
+  "name": "Juuzou Sakakura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-juuzou-sakakura-base",
+      "name": "Juuzou Sakakura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

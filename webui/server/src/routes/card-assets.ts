@@ -1,11 +1,13 @@
 import type { Request, Response } from "express";
-import { ensureCardImage, type CardImageKind } from "../../../../src/game/compose.js";
+import { ensureCardImage, type CardAnimationFormat, type CardImageKind } from "../../../../src/game/compose.js";
 import { GameError } from "../../../../src/game/errors.js";
 import { prisma } from "../db/client.js";
 
 const KINDS: Record<string, CardImageKind> = {
   "normal.png": "normal",
+  "shiny.gif": "shiny",
   "shiny.apng": "shiny",
+  "burn.gif": "burn",
   "burn.apng": "burn",
 };
 
@@ -59,18 +61,22 @@ export async function serveMissingCardAsset(req: Request, res: Response): Promis
   }
 
   try {
+    const format: CardAnimationFormat = fileName.endsWith(".apng") ? "apng" : "gif";
     const file = await ensureCardImage({
       variantId: variant.id,
       seriesSlug: variant.character.series.slug,
       characterSlug: variant.character.slug,
       imageFile: variant.image,
       characterName: variant.character.name,
+      seriesName: variant.character.series.name,
       frameId,
       printNumber,
       dye: dyeKey === "none" ? null : dyeKey,
       kind,
+    }, format);
+    res.sendFile(file, {
+      headers: { "Content-Type": fileName.endsWith(".gif") ? "image/gif" : "image/png" },
     });
-    res.sendFile(file, { headers: { "Content-Type": "image/png" } });
   } catch (err) {
     if (err instanceof GameError) {
       res.status(404).end();

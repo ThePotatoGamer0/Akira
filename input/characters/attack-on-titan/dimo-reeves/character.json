@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-dimo-reeves",
+  "name": "Dimo Reeves",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-dimo-reeves-base",
+      "name": "Dimo Reeves",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

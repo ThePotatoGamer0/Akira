@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-mameta-inukawa",
+  "name": "Mameta  Inukawa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-mameta-inukawa-base",
+      "name": "Mameta  Inukawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

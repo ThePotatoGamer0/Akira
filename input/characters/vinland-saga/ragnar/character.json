@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-ragnar",
+  "name": "Ragnar",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-ragnar-base",
+      "name": "Ragnar",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

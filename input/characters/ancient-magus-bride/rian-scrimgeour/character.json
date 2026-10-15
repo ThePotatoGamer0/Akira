@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-rian-scrimgeour",
+  "name": "Rian Scrimgeour",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-rian-scrimgeour-base",
+      "name": "Rian Scrimgeour",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-mikan-tsumiki",
+  "name": "Mikan Tsumiki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-mikan-tsumiki-base",
+      "name": "Mikan Tsumiki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

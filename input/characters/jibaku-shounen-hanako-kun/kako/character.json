@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-kako",
+  "name": "Kako",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-kako-base",
+      "name": "Kako",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

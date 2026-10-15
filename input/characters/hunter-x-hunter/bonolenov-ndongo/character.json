@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-bonolenov-ndongo",
+  "name": "Bonolenov Ndongo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-bonolenov-ndongo-base",
+      "name": "Bonolenov Ndongo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

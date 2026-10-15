@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-stella-no-hahaoya",
+  "name": "Stella no Hahaoya",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-stella-no-hahaoya-base",
+      "name": "Stella no Hahaoya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

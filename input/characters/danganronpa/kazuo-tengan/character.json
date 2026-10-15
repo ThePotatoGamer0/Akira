@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-kazuo-tengan",
+  "name": "Kazuo Tengan",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-kazuo-tengan-base",
+      "name": "Kazuo Tengan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

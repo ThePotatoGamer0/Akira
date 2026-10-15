@@ -35,7 +35,8 @@ ab fmbl40r
 ## Tips
 
 - Burns are permanent.
-- [Multiburn](/commands/multiburn) is not finished.
+- [Burn value](/commands/shop) doubles this payout while it is on you. A prestige percent adds a little more on the same burn.
+- [Multiburn](/commands/multiburn) burns every card on a tag after you confirm. It pays the table above, not the doubled rate.
 
 ## See also
 

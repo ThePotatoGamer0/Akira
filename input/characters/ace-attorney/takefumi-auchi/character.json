@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-takefumi-auchi",
+  "name": "Takefumi Auchi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-takefumi-auchi-base",
+      "name": "Takefumi Auchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

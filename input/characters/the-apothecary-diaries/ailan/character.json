@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-ailan",
+  "name": "Ailan",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-ailan-base",
+      "name": "Ailan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

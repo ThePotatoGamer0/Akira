@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-willy-tybur",
+  "name": "Willy Tybur",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-willy-tybur-base",
+      "name": "Willy Tybur",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

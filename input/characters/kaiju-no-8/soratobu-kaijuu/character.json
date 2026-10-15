@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-soratobu-kaijuu",
+  "name": "Soratobu Kaijuu",
+  "gender": null,
+  "cards": [
+    {
+      "id": "kaiju-no-8-soratobu-kaijuu-base",
+      "name": "Soratobu Kaijuu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

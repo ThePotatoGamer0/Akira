@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-keishin-ukai",
+  "name": "Keishin Ukai",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-keishin-ukai-base",
+      "name": "Keishin Ukai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

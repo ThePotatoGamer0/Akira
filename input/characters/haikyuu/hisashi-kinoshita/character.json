@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-hisashi-kinoshita",
+  "name": "Hisashi Kinoshita",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-hisashi-kinoshita-base",
+      "name": "Hisashi Kinoshita",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

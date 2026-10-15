@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-gillean-jordan",
+  "name": "Gillean Jordan",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-gillean-jordan-base",
+      "name": "Gillean Jordan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

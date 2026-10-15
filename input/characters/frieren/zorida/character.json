@@ -1,0 +1,13 @@
+{
+  "id": "frieren-zorida",
+  "name": "Zorida",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "frieren-zorida-base",
+      "name": "Zorida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

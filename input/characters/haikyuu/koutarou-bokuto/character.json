@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-koutarou-bokuto",
+  "name": "Koutarou Bokuto",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-koutarou-bokuto-base",
+      "name": "Koutarou Bokuto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-ran",
+  "name": "Ran",
+  "gender": "Male/Female (Prefers the Male gender)",
+  "cards": [
+    {
+      "id": "hells-paradise-ran-base",
+      "name": "Ran",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

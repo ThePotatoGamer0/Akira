@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-sasha-blouse",
+  "name": "Sasha Blouse",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-sasha-blouse-base",
+      "name": "Sasha Blouse",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

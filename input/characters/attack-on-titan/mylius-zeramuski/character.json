@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-mylius-zeramuski",
+  "name": "Mylius Zeramuski",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-mylius-zeramuski-base",
+      "name": "Mylius Zeramuski",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

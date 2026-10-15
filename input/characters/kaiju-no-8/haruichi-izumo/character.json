@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-haruichi-izumo",
+  "name": "Haruichi Izumo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-haruichi-izumo-base",
+      "name": "Haruichi Izumo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

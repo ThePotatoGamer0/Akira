@@ -1,0 +1,13 @@
+{
+  "id": "frieren-lernen",
+  "name": "Lernen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-lernen-base",
+      "name": "Lernen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

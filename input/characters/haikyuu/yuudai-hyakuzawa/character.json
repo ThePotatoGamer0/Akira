@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yuudai-hyakuzawa",
+  "name": "Yuudai Hyakuzawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-yuudai-hyakuzawa-base",
+      "name": "Yuudai Hyakuzawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

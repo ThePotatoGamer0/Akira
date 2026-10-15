@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-keith-kepler",
+  "name": "Keith Kepler",
+  "gender": null,
+  "cards": [
+    {
+      "id": "spy-x-family-keith-kepler-base",
+      "name": "Keith Kepler",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

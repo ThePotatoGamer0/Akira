@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-mordo",
+  "name": "Mordo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-mordo-base",
+      "name": "Mordo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

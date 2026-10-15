@@ -3,7 +3,7 @@ title: Your first card
 description: React on a drop, say hi to Akira, and welcome the card into your binder.
 ---
 
-Text commands start with `a`, so a drop is `adrop` or `ad`. Slash `/drop` does the same thing. Three cards appear as one picture. React with 1️⃣ 2️⃣ or 3️⃣ to claim one while the drop is still live. That reaction is the grab.
+Text commands start with `a`, so a drop is `adrop` or `ad`. Slash `/drop` does the same thing. Three cards appear as one picture. React with 1️⃣ 2️⃣ or 3️⃣ to claim one while the drop is still live. That reaction is the grab. Later, a shop or server buff can change a drop to one card or four.
 
 ## After the grab
 

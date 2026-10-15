@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-tenga-onigawara",
+  "name": "Tenga Onigawara",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-tenga-onigawara-base",
+      "name": "Tenga Onigawara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-petelgeuse-romanee-conti",
+  "name": "Petelgeuse Romanee-Conti",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-petelgeuse-romanee-conti-base",
+      "name": "Petelgeuse Romanee-Conti",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,14 +1,20 @@
 ---
 title: Trade
-description: Swap cards with another player. The command exists and is not finished.
+description: Swap a card with another player. Both of you have to accept.
 command: trade
 ---
 
-**/trade** is registered. Akira replies that trading is not wired up yet.
+**`/trade`** offers one of your cards for one of theirs. Nothing moves until both of you press the check mark. Either of you can press the cross to cancel. The offer expires after 5 minutes.
+
+The message is a **Card Trade** embed. The image is the two cards with a swap arrow between them. The question mark under each card shows that card's line.
 
 ## Parameters
 
-None.
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `user` | Yes | Who you are trading with. A mention in text commands. |
+| `card_id` | Yes | Your card. |
+| `their_card` | Yes | Their card. |
 
 ## Aliases
 
@@ -17,10 +23,11 @@ No short alias. `atrade` works.
 ## Example usage
 
 ```
-/trade
-atrade
+/trade user:@friend card_id:v8pj8pz their_card:v8znvrx
+atrade @friend v8pj8pz v8znvrx
 ```
 
 ## See also
 
+- [Give](/commands/give)
 - [Command list](/commands/reference)

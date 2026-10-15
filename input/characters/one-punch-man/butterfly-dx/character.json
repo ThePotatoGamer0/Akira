@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-butterfly-dx",
+  "name": "Butterfly DX",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-butterfly-dx-base",
+      "name": "Butterfly DX",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-noboru-akimiya",
+  "name": "Noboru Akimiya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-noboru-akimiya-base",
+      "name": "Noboru Akimiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

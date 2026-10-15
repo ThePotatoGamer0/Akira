@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-kusuo-saiki",
+  "name": "Kusuo Saiki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-kusuo-saiki-base",
+      "name": "Kusuo Saiki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

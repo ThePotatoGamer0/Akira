@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-zombieman",
+  "name": "Zombieman",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-zombieman-base",
+      "name": "Zombieman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "spirited-away-chihiro-ogino",
+  "name": "Chihiro Ogino",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "spirited-away-chihiro-ogino-base",
+      "name": "Chihiro Ogino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

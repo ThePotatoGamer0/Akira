@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-julie-powers",
+  "name": "Julie Powers",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-julie-powers-base",
+      "name": "Julie Powers",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

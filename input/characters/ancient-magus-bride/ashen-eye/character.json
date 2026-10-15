@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-ashen-eye",
+  "name": "Ashen Eye",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-ashen-eye-base",
+      "name": "Ashen Eye",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

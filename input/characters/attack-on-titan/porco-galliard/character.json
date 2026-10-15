@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-porco-galliard",
+  "name": "Porco Galliard",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-porco-galliard-base",
+      "name": "Porco Galliard",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

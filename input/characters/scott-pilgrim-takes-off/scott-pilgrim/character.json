@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-scott-pilgrim",
+  "name": "Scott Pilgrim",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-scott-pilgrim-base",
+      "name": "Scott Pilgrim",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

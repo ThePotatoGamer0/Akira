@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-haldor",
+  "name": "Haldor",
+  "gender": null,
+  "cards": [
+    {
+      "id": "vinland-saga-haldor-base",
+      "name": "Haldor",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

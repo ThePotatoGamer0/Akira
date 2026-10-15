@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-canute-svenson",
+  "name": "Canute Svenson",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-canute-svenson-base",
+      "name": "Canute Svenson",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

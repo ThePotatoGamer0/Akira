@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-fumiki-hatori",
+  "name": "Fumiki Hatori",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-fumiki-hatori-base",
+      "name": "Fumiki Hatori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

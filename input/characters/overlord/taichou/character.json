@@ -1,0 +1,13 @@
+{
+  "id": "overlord-taichou",
+  "name": "Taichou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-taichou-base",
+      "name": "Taichou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-kaijin-hebi",
+  "name": "Kaijin Hebi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-kaijin-hebi-base",
+      "name": "Kaijin Hebi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

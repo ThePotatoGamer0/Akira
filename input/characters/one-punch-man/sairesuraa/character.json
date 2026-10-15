@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-sairesuraa",
+  "name": "Sairesuraa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-sairesuraa-base",
+      "name": "Sairesuraa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

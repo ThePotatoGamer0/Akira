@@ -1,0 +1,13 @@
+{
+  "id": "frieren-kraft",
+  "name": "Kraft",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-kraft-base",
+      "name": "Kraft",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

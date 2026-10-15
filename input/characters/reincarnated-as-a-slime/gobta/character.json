@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-gobta",
+  "name": "Gobta",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-gobta-base",
+      "name": "Gobta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

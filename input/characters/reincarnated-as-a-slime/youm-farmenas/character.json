@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-youm-farmenas",
+  "name": "Youm Farmenas",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-youm-farmenas-base",
+      "name": "Youm Farmenas",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

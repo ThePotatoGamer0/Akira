@@ -4,7 +4,7 @@ description: See or change the frame drawn around cards.
 command: frame
 ---
 
-A frame is a folder in `input/frames`, numbered from 0. Frame 0 is the yellow border that ships with Akira. A card with no frame of its own is drawn with the server's default. A card that has been given a frame keeps that one.
+A frame is a folder in `input/frames`, numbered from 0. Frame 0 is the dark frame that ships as the default. Frame 1 is the yellow frame. A card with no frame of its own is drawn with the server's default. A card that has been given a frame keeps that one.
 
 ## Parameters
 

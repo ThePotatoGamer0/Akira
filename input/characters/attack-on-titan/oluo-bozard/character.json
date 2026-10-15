@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-oluo-bozard",
+  "name": "Oluo Bozard",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-oluo-bozard-base",
+      "name": "Oluo Bozard",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

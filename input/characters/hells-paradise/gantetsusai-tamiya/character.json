@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-gantetsusai-tamiya",
+  "name": "Gantetsusai Tamiya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-gantetsusai-tamiya-base",
+      "name": "Gantetsusai Tamiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

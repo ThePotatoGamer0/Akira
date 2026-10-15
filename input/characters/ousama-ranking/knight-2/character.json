@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-knight-2",
+  "name": "Knight 2",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-knight-2-base",
+      "name": "Knight 2",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-isao-inagaki",
+  "name": "Isao Inagaki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-isao-inagaki-base",
+      "name": "Isao Inagaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

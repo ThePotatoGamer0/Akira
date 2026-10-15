@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-wakako-okada",
+  "name": "Wakako Okada",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-wakako-okada-base",
+      "name": "Wakako Okada",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

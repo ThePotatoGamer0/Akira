@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-adolf-stroud",
+  "name": "Adolf Stroud",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-adolf-stroud-base",
+      "name": "Adolf Stroud",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

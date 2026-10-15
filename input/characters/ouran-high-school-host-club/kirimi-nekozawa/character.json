@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-kirimi-nekozawa",
+  "name": "Kirimi Nekozawa",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-kirimi-nekozawa-base",
+      "name": "Kirimi Nekozawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

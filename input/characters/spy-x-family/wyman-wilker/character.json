@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-wyman-wilker",
+  "name": "Wyman Wilker",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-wyman-wilker-base",
+      "name": "Wyman Wilker",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

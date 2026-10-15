@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-jikka",
+  "name": "Jikka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-jikka-base",
+      "name": "Jikka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

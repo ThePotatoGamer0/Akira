@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-hideki-tama",
+  "name": "Hideki Tama",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "evangelion-hideki-tama-base",
+      "name": "Hideki Tama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

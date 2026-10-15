@@ -1,0 +1,13 @@
+{
+  "id": "overlord-enri-emmot",
+  "name": "Enri Emmot",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-enri-emmot-base",
+      "name": "Enri Emmot",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

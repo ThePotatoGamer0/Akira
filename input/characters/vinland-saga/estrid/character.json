@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-estrid",
+  "name": "Estrid",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "vinland-saga-estrid-base",
+      "name": "Estrid",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

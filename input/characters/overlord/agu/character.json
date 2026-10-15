@@ -1,0 +1,13 @@
+{
+  "id": "overlord-agu",
+  "name": "Agu",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-agu-base",
+      "name": "Agu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

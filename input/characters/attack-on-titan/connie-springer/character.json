@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-connie-springer",
+  "name": "Connie Springer",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-connie-springer-base",
+      "name": "Connie Springer",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

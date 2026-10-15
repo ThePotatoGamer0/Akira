@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-jinshi",
+  "name": "Jinshi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-jinshi-base",
+      "name": "Jinshi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-igris",
+  "name": "Igris",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-igris-base",
+      "name": "Igris",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

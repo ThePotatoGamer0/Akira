@@ -1,0 +1,13 @@
+{
+  "id": "berserk-midland-no-ouhi",
+  "name": "Midland no Ouhi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "berserk-midland-no-ouhi-base",
+      "name": "Midland no Ouhi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

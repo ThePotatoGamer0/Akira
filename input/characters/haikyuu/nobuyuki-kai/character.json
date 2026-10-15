@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-nobuyuki-kai",
+  "name": "Nobuyuki Kai",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-nobuyuki-kai-base",
+      "name": "Nobuyuki Kai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

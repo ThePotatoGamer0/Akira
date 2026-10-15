@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-umehito-nekozawa",
+  "name": "Umehito Nekozawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-umehito-nekozawa-base",
+      "name": "Umehito Nekozawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

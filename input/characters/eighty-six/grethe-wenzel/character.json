@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-grethe-wenzel",
+  "name": "Grethe Wenzel",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "eighty-six-grethe-wenzel-base",
+      "name": "Grethe Wenzel",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

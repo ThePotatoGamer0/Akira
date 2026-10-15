@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-rin-sawaki",
+  "name": "Rin Sawaki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dandadan-rin-sawaki-base",
+      "name": "Rin Sawaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

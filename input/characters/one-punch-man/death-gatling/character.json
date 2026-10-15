@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-death-gatling",
+  "name": "Death Gatling",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-death-gatling-base",
+      "name": "Death Gatling",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

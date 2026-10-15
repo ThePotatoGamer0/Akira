@@ -1,0 +1,13 @@
+{
+  "id": "ponyo-yoshie",
+  "name": "Yoshie",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ponyo-yoshie-base",
+      "name": "Yoshie",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

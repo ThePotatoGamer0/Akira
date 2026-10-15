@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-walter-evans",
+  "name": "Walter Evans",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-walter-evans-base",
+      "name": "Walter Evans",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

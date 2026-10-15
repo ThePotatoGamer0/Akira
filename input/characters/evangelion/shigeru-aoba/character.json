@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-shigeru-aoba",
+  "name": "Shigeru Aoba",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "evangelion-shigeru-aoba-base",
+      "name": "Shigeru Aoba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

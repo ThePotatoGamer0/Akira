@@ -1,0 +1,13 @@
+{
+  "id": "overlord-demiurge",
+  "name": "Demiurge",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "overlord-demiurge-base",
+      "name": "Demiurge",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-nevin",
+  "name": "Nevin",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-nevin-base",
+      "name": "Nevin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "frieren-revolte",
+  "name": "Revolte",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-revolte-base",
+      "name": "Revolte",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-shinkaiou",
+  "name": "Shinkaiou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-shinkaiou-base",
+      "name": "Shinkaiou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

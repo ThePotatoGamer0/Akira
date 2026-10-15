@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-oluo-no-haha",
+  "name": "Oluo no Haha",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-oluo-no-haha-base",
+      "name": "Oluo no Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-kyoutarou-sugishita",
+  "name": "Kyoutarou Sugishita",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-kyoutarou-sugishita-base",
+      "name": "Kyoutarou Sugishita",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

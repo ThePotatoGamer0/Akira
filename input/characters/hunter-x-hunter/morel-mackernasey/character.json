@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-morel-mackernasey",
+  "name": "Morel Mackernasey",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-morel-mackernasey-base",
+      "name": "Morel Mackernasey",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

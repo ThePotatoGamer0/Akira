@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-chisato-mera",
+  "name": "Chisato Mera",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "saiki-k-chisato-mera-base",
+      "name": "Chisato Mera",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

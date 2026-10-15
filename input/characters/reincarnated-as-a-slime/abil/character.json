@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-abil",
+  "name": "Abil",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-abil-base",
+      "name": "Abil",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

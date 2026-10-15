@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-rifa",
+  "name": "Rifa",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-rifa-base",
+      "name": "Rifa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

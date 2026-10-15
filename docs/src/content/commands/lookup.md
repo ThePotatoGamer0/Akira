@@ -11,23 +11,24 @@ shortcuts: lu, search, find
 
 | Name | Required | What it is |
 | --- | --- | --- |
-| `name` | Yes | A character, series, or alias. Several words count as one name. |
+| `name` | Yes for `/lookup` | A character, series, or alias. Several words count as one name. |
 
 ## Aliases
 
-`lu`, `search`, and `find`. `alu tanjirou kamado` searches that whole name. `alu` alone is ignored.
+`lu`, `search`, and `find`. `alu tanjirou kamado` searches that whole name. `alu` with nothing after it opens the character behind the card you last grabbed, on that card's edition. `av` still opens that exact copy. Slash `/lookup` still needs a name.
 
 ## Example usage
 
 ```
 /lookup name:Denji
 alu denji
+alu
 asearch Chainsaw Man
 ```
 
 ## Tips
 
-- Up to 25 matches are listed. Exact names come first, then names that start with the search, then names that contain it.
+- Matches are listed 25 at a time, which is as many as the menu can hold. The buttons under the menu move between pages. Back returns to the page you were on. Exact names come first, then names that start with the search, then names that contain it.
 - Owning the card still means grabbing it from a [drop](/commands/drop).
 
 ## See also

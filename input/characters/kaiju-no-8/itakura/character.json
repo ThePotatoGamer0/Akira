@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-itakura",
+  "name": "Itakura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-itakura-base",
+      "name": "Itakura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

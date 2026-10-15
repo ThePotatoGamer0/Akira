@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-zhigang-liu",
+  "name": "Zhigang Liu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-zhigang-liu-base",
+      "name": "Zhigang Liu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

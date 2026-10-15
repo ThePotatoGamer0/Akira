@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-rico-brzenska",
+  "name": "Rico Brzenska",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-rico-brzenska-base",
+      "name": "Rico Brzenska",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

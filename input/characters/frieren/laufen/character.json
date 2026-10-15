@@ -1,0 +1,13 @@
+{
+  "id": "frieren-laufen",
+  "name": "Laufen",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "frieren-laufen-base",
+      "name": "Laufen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

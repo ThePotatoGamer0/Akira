@@ -1,0 +1,13 @@
+{
+  "id": "overlord-moknach",
+  "name": "Moknach",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-moknach-base",
+      "name": "Moknach",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

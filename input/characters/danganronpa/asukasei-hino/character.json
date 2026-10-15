@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-asukasei-hino",
+  "name": "Asukasei Hino",
+  "gender": null,
+  "cards": [
+    {
+      "id": "danganronpa-asukasei-hino-base",
+      "name": "Asukasei Hino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

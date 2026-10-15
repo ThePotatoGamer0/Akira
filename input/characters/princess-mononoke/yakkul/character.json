@@ -1,0 +1,13 @@
+{
+  "id": "princess-mononoke-yakkul",
+  "name": "Yakkul",
+  "gender": null,
+  "cards": [
+    {
+      "id": "princess-mononoke-yakkul-base",
+      "name": "Yakkul",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

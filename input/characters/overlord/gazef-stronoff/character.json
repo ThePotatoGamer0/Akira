@@ -1,0 +1,13 @@
+{
+  "id": "overlord-gazef-stronoff",
+  "name": "Gazef Stronoff",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "overlord-gazef-stronoff-base",
+      "name": "Gazef Stronoff",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

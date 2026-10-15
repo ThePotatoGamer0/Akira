@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-nagisa-shingetsu",
+  "name": "Nagisa Shingetsu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-nagisa-shingetsu-base",
+      "name": "Nagisa Shingetsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-drott",
+  "name": "Drott",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-drott-base",
+      "name": "Drott",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

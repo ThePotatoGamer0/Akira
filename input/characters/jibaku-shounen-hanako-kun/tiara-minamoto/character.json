@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-tiara-minamoto",
+  "name": "Tiara Minamoto",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-tiara-minamoto-base",
+      "name": "Tiara Minamoto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}
