@@ -6,6 +6,10 @@ import {
   Events,
   GatewayIntentBits,
   Partials,
+  PermissionFlagsBits,
+  type Guild,
+  type GuildBasedChannel,
+  type RepliableInteraction,
 } from "discord.js";
 import { commandMap } from "./commands/index.js";
 import { INIT_LOCK } from "../utils/paths.js";
@@ -26,6 +30,8 @@ import { getCard, lastGrabbedCard, shortenLegacyCardCodes } from "../game/cards.
 import { guildListensForKaruta, handleKarutaOverride, handleKarutaOverrideButton, KARUTA_PREFIXES, loadKarutaGuilds } from "./karuta-override.js";
 import { commandPrefix, createPrefixInteraction, invocationIsExpected, matchPrefixedCommand, resolveLegacyCommand, viewCardArgument } from "./prefix.js";
 import { syncApplicationIcons } from "./icon-sync.js";
+import { serverHasDropChannel } from "../game/drops.js";
+import { registerGuildCommands } from "../init/register-commands.js";
 
 const token = process.env["DISCORD_TOKEN"];
 if (!token) {
@@ -76,10 +82,59 @@ function watchInitLock(): void {
 registerReactionHandler(client);
 bindReminderClient(client);
 
+function setupHint(): string {
+  return `An admin needs to run \`${commandPrefix()}set\` in the channel where Akira should drop cards.`;
+}
+
+async function serverIsReady(guildId: string | null, commandName: string): Promise<boolean> {
+  if (!guildId || commandName === "set") return true;
+  return serverHasDropChannel(guildId);
+}
+
+async function refuseUnsetServer(interaction: RepliableInteraction): Promise<boolean> {
+  const commandName = interaction.isChatInputCommand() ? interaction.commandName : "";
+  if (await serverIsReady(interaction.guildId, commandName)) return false;
+  if (!interaction.replied && !interaction.deferred) {
+    await interaction.reply({ content: setupHint(), ephemeral: true }).catch(() => undefined);
+  }
+  return true;
+}
+
+function canAnnounce(channel: GuildBasedChannel, guild: Guild): boolean {
+  const me = guild.members.me;
+  if (!me || !channel.isTextBased()) return false;
+  return channel.permissionsFor(me)?.has([PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages]) ?? false;
+}
+
+async function welcomeServer(guild: Guild): Promise<void> {
+  if (Date.now() - guild.joinedTimestamp > 2 * 60 * 1000) return;
+  if (await serverHasDropChannel(guild.id)) return;
+  if (!guild.members.me) await guild.members.fetchMe();
+  await guild.channels.fetch().catch(() => undefined);
+  const system = guild.systemChannel;
+  const channel =
+    (system && canAnnounce(system, guild) ? system : null) ??
+    guild.channels.cache.find((candidate) => canAnnounce(candidate, guild));
+  if (!channel?.isTextBased()) return;
+  await channel.send(
+    `An admin can run \`${commandPrefix()}set\` in the channel where Akira should drop cards. She'll ignore other commands until then.`,
+  );
+}
+
+async function registerEveryGuild(client: Client<true>): Promise<void> {
+  const guilds = await client.guilds.fetch();
+  for (const [guildId] of guilds) {
+    await registerGuildCommands(guildId).catch((err) => {
+      console.error(`Slash registration failed for ${guildId}.`, err);
+    });
+  }
+}
+
 client.once(Events.ClientReady, (c) => {
   console.log(`Logged in as ${c.user.tag}`);
   startInternalApi(c);
   startPoolSchedule(c);
+  void registerEveryGuild(c).catch((err) => console.error(err));
   void syncApplicationIcons()
     .catch((err) => console.error("Lucide icon sync failed.", err))
     .then(() => shortenLegacyCardCodes())
@@ -94,12 +149,21 @@ client.once(Events.ClientReady, (c) => {
   watchInitLock();
 });
 
+client.on(Events.GuildCreate, (guild) => {
+  void registerGuildCommands(guild.id).catch((err) => {
+    console.error(`Slash registration failed for ${guild.id}.`, err);
+  });
+  void welcomeServer(guild).catch((err) => console.error(err));
+});
+
 client.on(Events.MessageCreate, async (message) => {
   if (message.author.bot || isInitLocked()) return;
   const prefixes = [commandPrefix()];
   if (guildListensForKaruta(message.guildId)) prefixes.push(...KARUTA_PREFIXES);
   const parsed = matchPrefixedCommand(message.content, prefixes);
   if (!parsed) return;
+  const commandName = parsed.name === "overridekaruta" ? parsed.name : resolveLegacyCommand(parsed.name).command;
+  if (!(await serverIsReady(message.guildId, commandName))) return;
   if (parsed.name === "overridekaruta") {
     if (parsed.rest !== "") return;
     try {
@@ -163,6 +227,7 @@ client.on(Events.MessageCreate, async (message) => {
 client.on(Events.InteractionCreate, async (interaction) => {
   if (interaction.isButton()) {
     if (isInitLocked()) return;
+    if (await refuseUnsetServer(interaction)) return;
     try {
       if (await handleKarutaOverrideButton(interaction)) return;
       if (await handleMultiburnButton(interaction)) return;
@@ -178,6 +243,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
   if (interaction.isStringSelectMenu()) {
     if (isInitLocked()) return;
+    if (await refuseUnsetServer(interaction)) return;
     try {
       await handleLookupSelect(interaction);
     } catch (err) {
@@ -190,6 +256,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
     await interaction.reply({ content: waitingMessage, ephemeral: true });
     return;
   }
+  if (await refuseUnsetServer(interaction)) return;
   const cmd = commandMap.get(interaction.commandName);
   if (!cmd) {
     await interaction.reply({

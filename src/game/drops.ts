@@ -106,6 +106,19 @@ export async function resolveDropChannelId(guildId: string): Promise<string | nu
   return null;
 }
 
+/** A server is quiet until this is true. The env drop channel counts for the configured server. */
+export async function serverHasDropChannel(guildId: string): Promise<boolean> {
+  return (await resolveDropChannelId(guildId)) !== null;
+}
+
+export async function setDropChannel(guildId: string, channelId: string): Promise<void> {
+  await prisma.guildConfig.upsert({
+    where: { guildId },
+    create: { guildId, dropChannelId: channelId },
+    update: { dropChannelId: channelId },
+  });
+}
+
 async function cooldownRemaining(userId: string, type: "DROP" | "GRAB" | "DAILY"): Promise<number> {
   const row = await prisma.cooldown.findUnique({
     where: { userId_type: { userId, type } },
@@ -134,7 +147,7 @@ export async function prepareDrop(input: {
   if (!channelId) {
     throw new GameError(
       "no-channel",
-      "Akira doesn't have a drop channel yet. Set DISCORD_DROP_CHANNEL_ID for this server.",
+      "Akira doesn't have a drop channel in this server yet.",
     );
   }
   if (channelId !== input.channelId) {

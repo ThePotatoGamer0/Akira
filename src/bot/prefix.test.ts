@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { collection } from "./commands/collection.js";
 import { drop } from "./commands/drop.js";
+import { set } from "./commands/set.js";
 import { frame } from "./commands/frame.js";
 import { inventory } from "./commands/inventory.js";
 import { multiburn } from "./commands/multiburn.js";
@@ -15,6 +16,7 @@ import { invocationIsExpected, matchPrefixedCommand, parsePrefixedCommand, resol
 
 test("legacy commands use the a prefix glued to the name", () => {
   assert.deepEqual(parsePrefixedCommand("adrop", "a"), { name: "drop", rest: "" });
+  assert.deepEqual(parsePrefixedCommand("aset", "a"), { name: "set", rest: "" });
   assert.deepEqual(parsePrefixedCommand("ALookup Denji", "a"), { name: "lookup", rest: "Denji" });
   assert.deepEqual(parsePrefixedCommand("a wishlist add Denji", "a"), { name: "wishlist", rest: "add Denji" });
   assert.equal(parsePrefixedCommand("hello", "a"), null);
@@ -49,6 +51,7 @@ test("karuta shortcuts map onto akira commands", () => {
 });
 
 test("a prefix command runs only when the arguments are exactly what it accepts", () => {
+  assert.equal(invocationIsExpected(set, ""), true);
   assert.equal(invocationIsExpected(drop, ""), true);
   assert.equal(invocationIsExpected(drop, "please"), false);
   assert.equal(invocationIsExpected(view, ""), false);

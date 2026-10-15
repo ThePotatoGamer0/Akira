@@ -11,6 +11,7 @@ import { inventory } from "./inventory.js";
 import { milestone } from "./milestone.js";
 import { pool } from "./pool.js";
 import { prestige } from "./prestige.js";
+import { set } from "./set.js";
 import { shop } from "./shop.js";
 import { multiburn } from "./multiburn.js";
 import { tag, tagcreate, tagdelete, taglist, untag } from "./tag.js";
@@ -51,6 +52,7 @@ export const commands: AkiraCommand[] = [
   dye,
   frame,
   inventory,
+  set,
 ];
 
 export const commandMap = new Map(commands.map((command) => [command.data.name, command]));
