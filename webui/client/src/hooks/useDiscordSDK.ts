@@ -31,6 +31,19 @@ export function isDiscordActivityContext(): boolean {
   return false;
 }
 
+function sdkFailureMessage(error: unknown): string {
+  if (error instanceof Error && error.message) return error.message;
+  if (typeof error === "string" && error) return error;
+  if (error && typeof error === "object" && "message" in error) {
+    const message = error.message;
+    const code = "code" in error ? error.code : undefined;
+    if (typeof message === "string" && message) {
+      return typeof code === "number" ? `${message} (${code})` : message;
+    }
+  }
+  return "Failed to start Discord SDK";
+}
+
 /**
  * Initialise the Discord Embedded App SDK (Activity context only).
  */
@@ -46,12 +59,18 @@ export function useDiscordSDK(clientId: string | undefined) {
     try {
       const sdk = new DiscordSDK(clientId);
       await sdk.ready();
-      const { code } = await sdk.commands.authorize({
+      const authorize = {
         client_id: clientId,
-        response_type: "code",
+        response_type: "code" as const,
         state: "",
-        scope: ["identify"],
-      });
+        scope: ["identify" as const],
+      };
+      let code: string;
+      try {
+        ({ code } = await sdk.commands.authorize({ ...authorize, prompt: "none" }));
+      } catch {
+        ({ code } = await sdk.commands.authorize(authorize));
+      }
       const res = await apiFetch("/auth/activity", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -74,7 +93,7 @@ export function useDiscordSDK(clientId: string | undefined) {
     } catch (e) {
       setState({
         status: "error",
-        message: e instanceof Error ? e.message : "Failed to start Discord SDK",
+        message: sdkFailureMessage(e),
       });
     }
   }, [clientId]);
