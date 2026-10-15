@@ -21,10 +21,7 @@ services:
       SESSION_SECRET: ${SESSION_SECRET}
       WEBUI_ORIGINS: ${WEBUI_ORIGINS}
       WEBUI_SERVER_PORT: "3333"
+      AKIRA_REPO_ROOT: /app
     volumes:
-      - akira-data:/data
-      - akira-cards:/app/assets/cards
-
-volumes:
-  akira-data:
-  akira-cards:
+      - /home/james/akira-data:/data
+      - /home/james/akira-data/cards:/app/assets/cards
