@@ -116,7 +116,7 @@ describe("shop duration and card count", () => {
 
 describe("milestones and prestige", () => {
   it("doubles the cost each step", () => {
-    assert.equal(MILESTONES[0]?.cost, 500);
+    assert.equal(MILESTONES[0]?.cost, 250);
     for (let i = 1; i < MILESTONES.length; i++) {
       assert.equal(MILESTONES[i]!.cost, MILESTONES[i - 1]!.cost * 2);
       assert.ok(MILESTONES[i]!.payout < MILESTONES[i]!.cost);

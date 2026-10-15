@@ -107,7 +107,7 @@ export function CyclePanel(props: {
         ) : null}
         {confirming ? (
           <p>
-            This resets the bar to the 500-bit milestone and stamps the permanents above.
+            This resets the bar to the 250-bit milestone and stamps the permanents above.
             <button type="button" onClick={() => void prestige()}>
               Confirm prestige
             </button>

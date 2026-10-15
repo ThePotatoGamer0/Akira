@@ -109,16 +109,16 @@ export function pickServerBuffs(tier: number, rng: () => number): BuffKind[] {
 }
 
 export const MILESTONES = [
-  { step: 1, cost: 500, payout: 200 },
-  { step: 2, cost: 1_000, payout: 350 },
-  { step: 3, cost: 2_000, payout: 600 },
-  { step: 4, cost: 4_000, payout: 1_000 },
-  { step: 5, cost: 8_000, payout: 2_000 },
-  { step: 6, cost: 16_000, payout: 3_500 },
-  { step: 7, cost: 32_000, payout: 6_000 },
-  { step: 8, cost: 64_000, payout: 10_000 },
-  { step: 9, cost: 128_000, payout: 18_000 },
-  { step: 10, cost: 256_000, payout: 30_000 },
+  { step: 1, cost: 250, payout: 200 },
+  { step: 2, cost: 500, payout: 350 },
+  { step: 3, cost: 1_000, payout: 600 },
+  { step: 4, cost: 2_000, payout: 1_000 },
+  { step: 5, cost: 4_000, payout: 2_000 },
+  { step: 6, cost: 8_000, payout: 3_500 },
+  { step: 7, cost: 16_000, payout: 6_000 },
+  { step: 8, cost: 32_000, payout: 10_000 },
+  { step: 9, cost: 64_000, payout: 18_000 },
+  { step: 10, cost: 128_000, payout: 30_000 },
 ] as const;
 
 export type PrestigeKind = "burn" | "grab" | "drop" | "mint" | "main";

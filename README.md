@@ -12,6 +12,7 @@ On the Pi, create `/home/james/akira-data/`. Set the variables below in the Port
 | --- | --- |
 | `DISCORD_TOKEN` | The bot token. |
 | `DISCORD_CLIENT_ID` | The application id. |
+| `DISCORD_CLIENT_SECRET` | The application secret. The activity uses it to match a Discord username to a player. |
 | `DISCORD_GUILD_ID` | Your server, so slash commands register there. Leave empty to register them globally. |
 | `DISCORD_DROP_CHANNEL_ID` | The channel drops go to, until you set one in Discord. |
 | `AKIRA_INTERNAL_SECRET` | A long random string. The API uses it to ask the bot to send sign-in codes. |

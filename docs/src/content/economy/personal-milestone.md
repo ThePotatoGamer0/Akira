@@ -13,18 +13,18 @@ Claiming pays the bits immediately. It does not grant the prestige reward on tha
 
 | Step | Bits you need to have given | Bits you get back | If you prestige after this |
 | --- | --- | --- | --- |
-| 1 | 500 | 200 | |
-| 2 | 1,000 | 350 | |
-| 3 | 2,000 | 600 | |
-| 4 | 4,000 | 1,000 | |
-| 5 | 8,000 | 2,000 | Prestige opens. No permanent buff. |
-| 6 | 16,000 | 3,500 | Burns pay 1% more. |
-| 7 | 32,000 | 6,000 | Grab cooldown is 1% shorter. |
-| 8 | 64,000 | 10,000 | Drop cooldown is 1% shorter. |
-| 9 | 128,000 | 18,000 | Mints are a little more likely. |
-| 10 | 256,000 | 30,000 | Main characters are 1% more likely. |
+| 1 | 250 | 200 | |
+| 2 | 500 | 350 | |
+| 3 | 1,000 | 600 | |
+| 4 | 2,000 | 1,000 | |
+| 5 | 4,000 | 2,000 | Prestige opens. No permanent buff. |
+| 6 | 8,000 | 3,500 | Burns pay 1% more. |
+| 7 | 16,000 | 6,000 | Grab cooldown is 1% shorter. |
+| 8 | 32,000 | 10,000 | Drop cooldown is 1% shorter. |
+| 9 | 64,000 | 18,000 | Mints are a little more likely. |
+| 10 | 128,000 | 30,000 | Main characters are 1% more likely. |
 
-The "bits you need" is the size of that step, not a running total of the whole cycle. After you claim step 1, the 500 is spent from the bar and step 2 asks for another 1,000.
+The "bits you need" is the size of that step, not a running total of the whole cycle. After you claim step 1, the 250 is spent from the bar and step 2 asks for another 500.
 
 [`/milestone`](/commands/milestone) lists all ten, which step you are on, how many bits are left until the next one, and which prestige buffs you would keep if you prestiged right now. `/milestone claim` takes the next payout when the bar has reached it.
 

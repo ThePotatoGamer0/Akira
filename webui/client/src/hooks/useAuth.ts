@@ -1,37 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { apiFetch } from "../lib/api.js";
 import type { Me } from "../types/index.js";
-import { useDiscordSDK } from "./useDiscordSDK.js";
+import { isDiscordActivityContext, useDiscordSDK } from "./useDiscordSDK.js";
 
-const apiBase = (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
-
-export function apiUrl(path: string): string {
-  if (/^https?:\/\//.test(path)) return path;
-  return `${apiBase}${path.startsWith("/") ? path : `/${path}`}`;
-}
-
-function discordActivityContext(): boolean {
-  const list = window.location.ancestorOrigins;
-  if (!list || list.length === 0) return false;
-  for (let i = 0; i < list.length; i++) {
-    const o = list.item(i);
-    if (o && o.includes("https://discord.com")) return true;
-  }
-  return false;
-}
-
-export async function apiFetch(
-  path: string,
-  init?: RequestInit,
-  discordUserId?: string,
-): Promise<Response> {
-  const headers = new Headers(init?.headers);
-  if (discordUserId) headers.set("X-Discord-User-Id", discordUserId);
-  return fetch(`${apiBase}${path}`, {
-    ...init,
-    headers,
-    credentials: discordUserId ? "omit" : "include",
-  });
-}
+export { apiFetch, apiUrl } from "../lib/api.js";
 
 export function useAuth() {
   const clientId = import.meta.env.VITE_DISCORD_CLIENT_ID;
@@ -41,53 +13,54 @@ export function useAuth() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const isDiscordActivity = useMemo(() => discordActivityContext(), []);
+  const isDiscordActivity = useMemo(() => isDiscordActivityContext(), []);
 
-  const discordUserId =
-    sdkState.status === "ready" ? sdkState.discordUserId : undefined;
+  const activityToken = sdkState.status === "ready" ? sdkState.accessToken : undefined;
+  const discordUserId = sdkState.status === "ready" ? sdkState.discordUserId : undefined;
 
-  const refreshMe = useCallback(async (overrideDiscordId?: string) => {
-    const id = overrideDiscordId ?? discordUserId;
-    const res = await apiFetch("/auth/me", {}, isDiscordActivity ? id : undefined);
+  const refreshMe = useCallback(async (overrideToken?: string) => {
+    const token = overrideToken ?? activityToken;
+    const res = await apiFetch("/auth/me", {}, isDiscordActivity ? token : undefined);
     if (!res.ok) {
       setMe(null);
+      if (isDiscordActivity) {
+        const body = (await res.json().catch(() => null)) as { error?: string } | null;
+        setError(body?.error ?? "Akira couldn't find a player with that Discord username.");
+      }
       return false;
     }
     const data = (await res.json()) as Me;
     setMe(data);
     setError(null);
     return true;
-  }, [isDiscordActivity, discordUserId]);
+  }, [isDiscordActivity, activityToken]);
 
   const fetchApi = useCallback(
     (path: string, init?: RequestInit) =>
-      apiFetch(path, init, isDiscordActivity ? discordUserId : undefined),
-    [isDiscordActivity, discordUserId],
+      apiFetch(path, init, isDiscordActivity ? activityToken : undefined),
+    [isDiscordActivity, activityToken],
   );
 
   useEffect(() => {
-    let cancelled = false;
+    if (!isDiscordActivity) return;
+    void connect();
+  }, [isDiscordActivity, connect]);
 
-    async function run() {
-      if (isDiscordActivity) {
-        await connect();
-        return;
-      }
-      if (!cancelled) {
-        await refreshMe();
-      }
+  useEffect(() => {
+    if (isDiscordActivity) return;
+    let cancelled = false;
+    void refreshMe().finally(() => {
       if (!cancelled) setLoading(false);
-    }
-    void run();
+    });
     return () => {
       cancelled = true;
     };
-  }, [isDiscordActivity, connect, refreshMe]);
+  }, [isDiscordActivity, refreshMe]);
 
   useEffect(() => {
     if (sdkState.status === "ready") {
       setLoading(true);
-      void refreshMe(sdkState.discordUserId).finally(() => setLoading(false));
+      void refreshMe(sdkState.accessToken).finally(() => setLoading(false));
     }
     if (sdkState.status === "error") {
       setError(sdkState.message);

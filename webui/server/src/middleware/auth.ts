@@ -1,60 +1,40 @@
 import type { NextFunction, Request, Response } from "express";
 import { prisma } from "../db/client.js";
+import { userForActivityToken } from "../utils/discord-activity.js";
 
 function normalizeUsername(s: string): string {
   return s.trim().toLowerCase();
 }
 
-export function isDiscordActivityLikeOrigin(origin: string | undefined): boolean {
-  if (!origin) return false;
-  try {
-    const u = new URL(origin);
-    return u.hostname.endsWith("discordsays.com") || u.hostname === "discord.com";
-  } catch {
-    return false;
-  }
+function bearerToken(req: Request): string {
+  const header = req.header("authorization") ?? "";
+  const match = /^Bearer\s+(\S+)$/i.exec(header);
+  return match?.[1] ?? "";
 }
 
-function requestOrigin(req: Request): string | undefined {
-  const o = req.header("origin");
-  if (o) return o;
-  const ref = req.header("referer");
-  if (!ref) return undefined;
-  try {
-    return new URL(ref).origin;
-  } catch {
-    return undefined;
-  }
+async function userFromRequest(req: Request) {
+  const token = bearerToken(req);
+  if (token) return userForActivityToken(token);
+  const sid = req.session.userId;
+  if (typeof sid !== "string") return null;
+  return prisma.user.findUnique({ where: { id: sid } });
 }
 
 export async function authMiddleware(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const activityId = req.header("x-discord-user-id")?.trim();
-    const origin = requestOrigin(req);
-    const trustHeader = process.env["TRUST_X_DISCORD_USER_ID"] === "1";
-
-    if (activityId && (trustHeader || isDiscordActivityLikeOrigin(origin))) {
-      let user = await prisma.user.findUnique({ where: { discordId: activityId } });
-      if (!user) {
-        user = await prisma.user.create({
-          data: { discordId: activityId },
-        });
-      }
+    const token = bearerToken(req);
+    const user = await userFromRequest(req);
+    if (user) {
       req.user = user;
       next();
       return;
     }
-
-    const sid = req.session.userId;
-    if (typeof sid === "string") {
-      const user = await prisma.user.findUnique({ where: { id: sid } });
-      if (user) {
-        req.user = user;
-        next();
-        return;
-      }
+    if (token) {
+      res.status(401).json({
+        error: "Akira couldn't find a player with that Discord username yet. Use the bot once, then open this again.",
+      });
+      return;
     }
-
     res.status(401).json({ error: "Not signed in" });
   } catch (e) {
     next(e);
@@ -68,23 +48,8 @@ export async function optionalAuthMiddleware(
   next: NextFunction,
 ): Promise<void> {
   try {
-    const activityId = req.header("x-discord-user-id")?.trim();
-    const origin = requestOrigin(req);
-    const trustHeader = process.env["TRUST_X_DISCORD_USER_ID"] === "1";
-    if (activityId && (trustHeader || isDiscordActivityLikeOrigin(origin))) {
-      let user = await prisma.user.findUnique({ where: { discordId: activityId } });
-      if (!user) {
-        user = await prisma.user.create({ data: { discordId: activityId } });
-      }
-      req.user = user;
-      next();
-      return;
-    }
-    const sid = req.session.userId;
-    if (typeof sid === "string") {
-      const user = await prisma.user.findUnique({ where: { id: sid } });
-      if (user) req.user = user;
-    }
+    const user = await userFromRequest(req);
+    if (user) req.user = user;
     next();
   } catch (e) {
     next(e);

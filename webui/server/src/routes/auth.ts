@@ -2,6 +2,11 @@ import { Router, type Response } from "express";
 import bcrypt from "bcryptjs";
 import { prisma } from "../db/client.js";
 import { authMiddleware, normalizeUsername } from "../middleware/auth.js";
+import {
+  exchangeActivityCode,
+  profileForActivityToken,
+  userForDiscordAccount,
+} from "../utils/discord-activity.js";
 import { createVerificationCode, consumeVerificationCode } from "../utils/verificationCodes.js";
 import { sendVerificationDm } from "../utils/notify-bot.js";
 import { akiraAddressName } from "../utils/akira-address-name.js";
@@ -179,6 +184,43 @@ authRouter.post("/login", async (req, res) => {
   }
   req.session.userId = user.id;
   res.json({ ok: true });
+});
+
+authRouter.post("/activity", async (req, res) => {
+  const code = typeof req.body?.code === "string" ? req.body.code.trim() : "";
+  if (!code) {
+    res.status(400).json({ error: "Discord did not send a sign-in code." });
+    return;
+  }
+  if (!process.env["DISCORD_CLIENT_ID"] || !process.env["DISCORD_CLIENT_SECRET"]) {
+    res.status(500).json({
+      error: "Akira needs the Discord application secret before the activity can sign you in.",
+    });
+    return;
+  }
+  try {
+    const accessToken = await exchangeActivityCode(code);
+    if (!accessToken) {
+      res.status(401).json({ error: "Discord didn't accept that sign-in. Open the activity again." });
+      return;
+    }
+    const profile = await profileForActivityToken(accessToken);
+    if (!profile) {
+      res.status(401).json({ error: "Discord didn't accept that sign-in. Open the activity again." });
+      return;
+    }
+    const user = await userForDiscordAccount(profile);
+    if (!user) {
+      res.status(404).json({
+        error: `Akira couldn't find a player named ${profile.username}. Use the bot once, then open this again.`,
+      });
+      return;
+    }
+    res.json({ accessToken });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: "Akira couldn't finish signing you in with Discord." });
+  }
 });
 
 authRouter.get("/me", authMiddleware, async (req, res) => {
