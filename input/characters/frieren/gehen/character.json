@@ -1,0 +1,13 @@
+{
+  "id": "frieren-gehen",
+  "name": "Gehen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-gehen-base",
+      "name": "Gehen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

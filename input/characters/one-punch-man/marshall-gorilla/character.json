@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-marshall-gorilla",
+  "name": "Marshall Gorilla",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-marshall-gorilla-base",
+      "name": "Marshall Gorilla",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

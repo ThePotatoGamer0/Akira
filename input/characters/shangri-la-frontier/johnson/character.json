@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-johnson",
+  "name": "Johnson",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-johnson-base",
+      "name": "Johnson",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

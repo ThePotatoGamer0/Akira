@@ -1,0 +1,13 @@
+{
+  "id": "spirited-away-kaonashi",
+  "name": "Kaonashi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "spirited-away-kaonashi-base",
+      "name": "Kaonashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

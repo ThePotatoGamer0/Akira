@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-aoshi-tokimitsu",
+  "name": "Aoshi Tokimitsu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-aoshi-tokimitsu-base",
+      "name": "Aoshi Tokimitsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

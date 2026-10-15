@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-enel",
+  "name": "Enel",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-enel-base",
+      "name": "Enel",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

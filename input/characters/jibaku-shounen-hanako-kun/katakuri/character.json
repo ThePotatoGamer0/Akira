@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-katakuri",
+  "name": "Katakuri",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-katakuri-base",
+      "name": "Katakuri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

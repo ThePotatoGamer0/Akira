@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-gerald-gorey",
+  "name": "Gerald Gorey",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-gerald-gorey-base",
+      "name": "Gerald Gorey",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

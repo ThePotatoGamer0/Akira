@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-tongara",
+  "name": "Tongara",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-tongara-base",
+      "name": "Tongara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

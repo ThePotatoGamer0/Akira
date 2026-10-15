@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-gen-narumi",
+  "name": "Gen Narumi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-gen-narumi-base",
+      "name": "Gen Narumi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

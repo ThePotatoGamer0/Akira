@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-myung-hwan-go",
+  "name": "Myung-Hwan Go",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-myung-hwan-go-base",
+      "name": "Myung-Hwan Go",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

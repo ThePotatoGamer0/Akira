@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-lihaku",
+  "name": "Lihaku",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-lihaku-base",
+      "name": "Lihaku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

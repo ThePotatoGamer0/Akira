@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-koroshiya-no-leader-kaku",
+  "name": "Koroshiya no Leader-kaku",
+  "gender": null,
+  "cards": [
+    {
+      "id": "spy-x-family-koroshiya-no-leader-kaku-base",
+      "name": "Koroshiya no Leader-kaku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

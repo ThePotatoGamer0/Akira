@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-reo-no-haha",
+  "name": "Reo no Haha",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-lock-reo-no-haha-base",
+      "name": "Reo no Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

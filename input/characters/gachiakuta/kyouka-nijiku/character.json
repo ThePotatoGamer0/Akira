@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-kyouka-nijiku",
+  "name": "Kyouka Nijiku",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "gachiakuta-kyouka-nijiku-base",
+      "name": "Kyouka Nijiku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

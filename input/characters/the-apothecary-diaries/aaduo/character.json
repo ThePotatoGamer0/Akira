@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-aaduo",
+  "name": "Aaduo",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-aaduo-base",
+      "name": "Aaduo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

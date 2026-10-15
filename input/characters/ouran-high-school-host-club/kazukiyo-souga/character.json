@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-kazukiyo-souga",
+  "name": "Kazukiyo Souga",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-kazukiyo-souga-base",
+      "name": "Kazukiyo Souga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

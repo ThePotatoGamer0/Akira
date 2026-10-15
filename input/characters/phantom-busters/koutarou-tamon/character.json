@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-koutarou-tamon",
+  "name": "Koutarou Tamon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "phantom-busters-koutarou-tamon-base",
+      "name": "Koutarou Tamon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

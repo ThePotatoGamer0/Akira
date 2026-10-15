@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-reiji-yamamoto",
+  "name": "Reiji Yamamoto",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-reiji-yamamoto-base",
+      "name": "Reiji Yamamoto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

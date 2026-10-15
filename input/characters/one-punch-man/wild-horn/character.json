@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-wild-horn",
+  "name": "Wild Horn",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-wild-horn-base",
+      "name": "Wild Horn",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

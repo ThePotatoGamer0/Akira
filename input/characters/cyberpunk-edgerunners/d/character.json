@@ -1,0 +1,13 @@
+{
+  "id": "cyberpunk-edgerunners-d",
+  "name": "D",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-d-base",
+      "name": "D",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

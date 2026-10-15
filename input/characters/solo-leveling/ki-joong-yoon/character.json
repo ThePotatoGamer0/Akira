@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-ki-joong-yoon",
+  "name": "Ki-Joong Yoon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-ki-joong-yoon-base",
+      "name": "Ki-Joong Yoon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

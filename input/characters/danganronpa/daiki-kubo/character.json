@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-daiki-kubo",
+  "name": "Daiki Kubo",
+  "gender": null,
+  "cards": [
+    {
+      "id": "danganronpa-daiki-kubo-base",
+      "name": "Daiki Kubo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

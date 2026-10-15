@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-tamura",
+  "name": "Tamura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-tamura-base",
+      "name": "Tamura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

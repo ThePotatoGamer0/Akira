@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-gakushuu-asano",
+  "name": "Gakushuu Asano",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "assassination-classroom-gakushuu-asano-base",
+      "name": "Gakushuu Asano",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

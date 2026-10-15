@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-rei-ayanami",
+  "name": "Rei Ayanami",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "evangelion-rei-ayanami-base",
+      "name": "Rei Ayanami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

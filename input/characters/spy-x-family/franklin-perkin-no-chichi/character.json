@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-franklin-perkin-no-chichi",
+  "name": "Franklin Perkin no Chichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-franklin-perkin-no-chichi-base",
+      "name": "Franklin Perkin no Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

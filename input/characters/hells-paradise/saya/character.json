@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-saya",
+  "name": "Saya",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hells-paradise-saya-base",
+      "name": "Saya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

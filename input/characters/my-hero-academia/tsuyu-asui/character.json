@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-tsuyu-asui",
+  "name": "Tsuyu Asui",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "my-hero-academia-tsuyu-asui-base",
+      "name": "Tsuyu Asui",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

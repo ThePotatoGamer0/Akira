@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-metori-saiko",
+  "name": "Metori Saiko",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-metori-saiko-base",
+      "name": "Metori Saiko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

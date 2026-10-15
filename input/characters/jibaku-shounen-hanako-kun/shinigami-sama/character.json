@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-shinigami-sama",
+  "name": "Shinigami-sama",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-shinigami-sama-base",
+      "name": "Shinigami-sama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

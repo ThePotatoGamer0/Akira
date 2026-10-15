@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-tatsuki-washio",
+  "name": "Tatsuki Washio",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-tatsuki-washio-base",
+      "name": "Tatsuki Washio",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

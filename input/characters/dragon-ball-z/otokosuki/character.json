@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-otokosuki",
+  "name": "Otokosuki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-otokosuki-base",
+      "name": "Otokosuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

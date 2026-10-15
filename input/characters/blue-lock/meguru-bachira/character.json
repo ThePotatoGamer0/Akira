@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-meguru-bachira",
+  "name": "Meguru Bachira",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-meguru-bachira-base",
+      "name": "Meguru Bachira",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

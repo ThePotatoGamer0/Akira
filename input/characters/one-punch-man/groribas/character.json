@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-groribas",
+  "name": "Groribas",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-groribas-base",
+      "name": "Groribas",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-daichi-sawamura",
+  "name": "Daichi Sawamura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-daichi-sawamura-base",
+      "name": "Daichi Sawamura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-rafiel-thompson",
+  "name": "Rafiel Thompson",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-rafiel-thompson-base",
+      "name": "Rafiel Thompson",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

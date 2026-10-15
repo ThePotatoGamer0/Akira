@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-psykos",
+  "name": "Psykos",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-punch-man-psykos-base",
+      "name": "Psykos",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

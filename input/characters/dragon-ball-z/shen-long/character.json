@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-shen-long",
+  "name": "Shen Long",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-shen-long-base",
+      "name": "Shen Long",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

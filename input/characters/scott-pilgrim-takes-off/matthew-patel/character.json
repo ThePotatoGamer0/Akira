@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-matthew-patel",
+  "name": "Matthew Patel",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-matthew-patel-base",
+      "name": "Matthew Patel",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

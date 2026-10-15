@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-george-glooman",
+  "name": "George Glooman",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-george-glooman-base",
+      "name": "George Glooman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

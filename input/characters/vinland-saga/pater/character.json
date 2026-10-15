@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-pater",
+  "name": "Pater",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-pater-base",
+      "name": "Pater",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

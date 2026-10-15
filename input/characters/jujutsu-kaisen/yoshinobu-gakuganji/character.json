@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-yoshinobu-gakuganji",
+  "name": "Yoshinobu Gakuganji",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-yoshinobu-gakuganji-base",
+      "name": "Yoshinobu Gakuganji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

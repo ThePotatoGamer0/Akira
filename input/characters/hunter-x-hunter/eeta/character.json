@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-eeta",
+  "name": "Eeta",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-eeta-base",
+      "name": "Eeta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

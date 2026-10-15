@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-luke-siss",
+  "name": "Luke Siss",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-luke-siss-base",
+      "name": "Luke Siss",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

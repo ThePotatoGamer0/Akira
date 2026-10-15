@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-gunther-no-haha",
+  "name": "Gunther no Haha",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-gunther-no-haha-base",
+      "name": "Gunther no Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

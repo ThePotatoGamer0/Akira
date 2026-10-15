@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-porunga",
+  "name": "Porunga",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-porunga-base",
+      "name": "Porunga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

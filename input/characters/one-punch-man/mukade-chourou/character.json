@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-mukade-chourou",
+  "name": "Mukade Chourou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-mukade-chourou-base",
+      "name": "Mukade Chourou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

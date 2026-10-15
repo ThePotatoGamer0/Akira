@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-chiwa",
+  "name": "Chiwa",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "gachiakuta-chiwa-base",
+      "name": "Chiwa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

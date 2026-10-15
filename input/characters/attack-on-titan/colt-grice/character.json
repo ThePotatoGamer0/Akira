@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-colt-grice",
+  "name": "Colt Grice",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-colt-grice-base",
+      "name": "Colt Grice",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

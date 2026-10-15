@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-volcanica",
+  "name": "Volcanica",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-volcanica-base",
+      "name": "Volcanica",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

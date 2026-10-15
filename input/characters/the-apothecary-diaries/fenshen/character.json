@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-fenshen",
+  "name": "Fenshen",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-fenshen-base",
+      "name": "Fenshen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

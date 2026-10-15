@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-myung-han-yu",
+  "name": "Myung-Han Yu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-myung-han-yu-base",
+      "name": "Myung-Han Yu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

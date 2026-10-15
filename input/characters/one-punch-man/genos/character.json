@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-genos",
+  "name": "Genos",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-genos-base",
+      "name": "Genos",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

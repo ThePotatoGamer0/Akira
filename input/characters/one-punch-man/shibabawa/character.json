@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-shibabawa",
+  "name": "Shibabawa",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-punch-man-shibabawa-base",
+      "name": "Shibabawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

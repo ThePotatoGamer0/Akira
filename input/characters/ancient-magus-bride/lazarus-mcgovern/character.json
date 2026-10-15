@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-lazarus-mcgovern",
+  "name": "Lazarus McGovern",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-lazarus-mcgovern-base",
+      "name": "Lazarus McGovern",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "overlord-kyouhukou",
+  "name": "Kyouhukou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-kyouhukou-base",
+      "name": "Kyouhukou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

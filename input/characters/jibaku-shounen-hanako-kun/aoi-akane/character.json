@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-aoi-akane",
+  "name": "Aoi Akane",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-aoi-akane-base",
+      "name": "Aoi Akane",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

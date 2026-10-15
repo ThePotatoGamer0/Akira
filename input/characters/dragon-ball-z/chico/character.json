@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-chico",
+  "name": "Chico",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dragon-ball-z-chico-base",
+      "name": "Chico",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

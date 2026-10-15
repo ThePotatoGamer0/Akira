@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-rien",
+  "name": "Rien",
+  "gender": "Female; Male/Female (Through her puppets)",
+  "cards": [
+    {
+      "id": "hells-paradise-rien-base",
+      "name": "Rien",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

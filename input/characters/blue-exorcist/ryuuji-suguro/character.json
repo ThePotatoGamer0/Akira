@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-ryuuji-suguro",
+  "name": "Ryuuji Suguro",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-exorcist-ryuuji-suguro-base",
+      "name": "Ryuuji Suguro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

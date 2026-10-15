@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-blue-fire",
+  "name": "Blue Fire",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-blue-fire-base",
+      "name": "Blue Fire",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "frieren-wirbel",
+  "name": "Wirbel",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-wirbel-base",
+      "name": "Wirbel",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

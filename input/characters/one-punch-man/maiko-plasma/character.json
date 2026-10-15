@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-maiko-plasma",
+  "name": "Maiko Plasma",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-punch-man-maiko-plasma-base",
+      "name": "Maiko Plasma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

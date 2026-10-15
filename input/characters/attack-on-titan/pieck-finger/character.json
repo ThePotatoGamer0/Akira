@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-pieck-finger",
+  "name": "Pieck Finger",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-pieck-finger-base",
+      "name": "Pieck Finger",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

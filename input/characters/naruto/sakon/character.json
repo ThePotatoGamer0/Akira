@@ -1,0 +1,14 @@
+{
+  "id": "naruto-sakon",
+  "name": "Sakon",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-sakon-base",
+      "name": "Sakon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

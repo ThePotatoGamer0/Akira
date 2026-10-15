@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-sylvia-goldberg",
+  "name": "Sylvia Goldberg",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-sylvia-goldberg-base",
+      "name": "Sylvia Goldberg",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

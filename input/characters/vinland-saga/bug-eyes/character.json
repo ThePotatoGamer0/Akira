@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-bug-eyes",
+  "name": "Bug-Eyes",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-bug-eyes-base",
+      "name": "Bug-Eyes",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

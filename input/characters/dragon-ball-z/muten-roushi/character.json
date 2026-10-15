@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-muten-roushi",
+  "name": "Muten Roushi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-muten-roushi-base",
+      "name": "Muten Roushi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

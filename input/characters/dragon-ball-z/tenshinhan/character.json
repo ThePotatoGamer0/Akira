@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-tenshinhan",
+  "name": "Tenshinhan",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-tenshinhan-base",
+      "name": "Tenshinhan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

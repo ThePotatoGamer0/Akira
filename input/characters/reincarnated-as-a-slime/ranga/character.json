@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-ranga",
+  "name": "Ranga",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-ranga-base",
+      "name": "Ranga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-kaidou",
+  "name": "Kaidou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-kaidou-base",
+      "name": "Kaidou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

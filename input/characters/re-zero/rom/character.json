@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-rom",
+  "name": "Rom",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-rom-base",
+      "name": "Rom",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "berserk-evarella",
+  "name": "Evarella",
+  "gender": null,
+  "cards": [
+    {
+      "id": "berserk-evarella-base",
+      "name": "Evarella",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

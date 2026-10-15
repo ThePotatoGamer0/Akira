@@ -1,0 +1,14 @@
+{
+  "id": "yarichin-bitch-club-yui-tamura",
+  "name": "Yui Tamura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "yarichin-bitch-club-yui-tamura-base",
+      "name": "Yui Tamura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-hebi",
+  "name": "Hebi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-hebi-base",
+      "name": "Hebi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

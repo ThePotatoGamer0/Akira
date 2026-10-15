@@ -1,0 +1,14 @@
+{
+  "id": "death-note-stephen-loud",
+  "name": "Stephen Loud",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-stephen-loud-base",
+      "name": "Stephen Loud",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

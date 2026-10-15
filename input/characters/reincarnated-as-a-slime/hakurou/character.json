@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-hakurou",
+  "name": "Hakurou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-hakurou-base",
+      "name": "Hakurou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,22 +1,31 @@
 ---
 title: Bits - the only currency
-description: Akira uses bits for shops, pool donations, and bragging rights.
+description: How you earn bits, and the two places they go.
 ---
 
-Akira uses **bits** everywhere in the economy: you earn them from [drops](/commands/drop), [daily](/commands/daily) claims, and [burning](/commands/burn) cards, then spend them in the [shop](/commands/shop), give some to the [server buff pool](/economy/server-pool), and watch them feed [personal milestones](/economy/personal-milestone).
+**Bits** are Akira's only currency. A [grab](/commands/grab) pays a few, [daily](/commands/daily) pays more, and [burning](/commands/burn) a card pays from its quality. You spend them on a personal [shop](/commands/shop) buff, or you give them to the [server pool](/economy/server-pool).
 
-## Bits income
+Nothing here deletes your cards. Prestige does not take your bits either.
 
-- [Drop](/commands/drop) rewards and [daily](/commands/daily) streaks keep everyone moving.
-- Burning surplus cards - [burn](/commands/burn) or [multiburn](/commands/multiburn) - turns them into bits; multiburn spotlights the stand-out card in the batch.
+## How you earn them
 
-## Bits spending
+- A grab pays **5** bits.
+- Daily pays **100** bits, plus any daily bonus already on your profile, once every 24 hours. New prestiges do not add to this.
+- Burning one card pays from its quality: common 10, uncommon 25, rare 50, epic 100, legendary 250. [Burn value](/commands/shop) doubles that while it is on you.
+- Claiming a [milestone](/economy/personal-milestone) pays a smaller pile of bits back. It is always less than you gave to reach it.
 
-- [Shop](/commands/shop) buffs are priced for tiny guilds: small costs, cosy upsides.
-- Voluntary [pool](/economy/server-pool) bits are a gift to the whole server - Akira celebrates generous players.
+## Where they go
+
+- The [shop](/commands/shop) buys a buff for you. The clock starts when you buy it. Buying it again adds the hours onto the time you have left. Shop purchases do not fill your milestone bar.
+- A gift to the [server pool](/commands/pool) leaves your wallet and enters the shared pot. The same gift fills your milestone bar. It is still a gift: the server spends the pot, and your milestone payout is smaller than what you put in.
+
+`/userinfo` (`aui`) shows your bits, how many milestones you have claimed this cycle, and how many bits you have given this cycle.
+
+The Economy page on the website shows the same shop, pool, milestones, and prestige as the bot.
 
 ## See also
 
-- [Server buff pool](/economy/server-pool) - tiers and daily rolls
-- [Personal milestones](/economy/personal-milestone) - private progress from contributions
-- [Prestige overview](/prestige/overview) - long-term bonuses that include extra daily bits
+- [Shop](/commands/shop)
+- [Server buff pool](/economy/server-pool)
+- [Personal milestones](/economy/personal-milestone)
+- [Prestige](/prestige/overview)

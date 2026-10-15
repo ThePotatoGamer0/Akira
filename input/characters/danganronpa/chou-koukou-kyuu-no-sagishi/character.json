@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-chou-koukou-kyuu-no-sagishi",
+  "name": "Chou Koukou Kyuu no Sagishi",
+  "gender": "Non-binary",
+  "cards": [
+    {
+      "id": "danganronpa-chou-koukou-kyuu-no-sagishi-base",
+      "name": "Chou Koukou Kyuu no Sagishi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

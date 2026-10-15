@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-jibakurei-kani",
+  "name": "Jibakurei Kani",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dandadan-jibakurei-kani-base",
+      "name": "Jibakurei Kani",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

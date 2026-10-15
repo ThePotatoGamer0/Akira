@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-olaf",
+  "name": "Olaf",
+  "gender": null,
+  "cards": [
+    {
+      "id": "vinland-saga-olaf-base",
+      "name": "Olaf",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

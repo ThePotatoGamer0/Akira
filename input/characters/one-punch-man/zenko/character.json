@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-zenko",
+  "name": "Zenko",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-punch-man-zenko-base",
+      "name": "Zenko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

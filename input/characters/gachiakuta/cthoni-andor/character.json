@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-cthoni-andor",
+  "name": "Cthoni Andor",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "gachiakuta-cthoni-andor-base",
+      "name": "Cthoni Andor",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

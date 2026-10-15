@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-yashichi",
+  "name": "Yashichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-yashichi-base",
+      "name": "Yashichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

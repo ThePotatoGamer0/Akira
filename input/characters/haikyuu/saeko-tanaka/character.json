@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-saeko-tanaka",
+  "name": "Saeko Tanaka",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "haikyuu-saeko-tanaka-base",
+      "name": "Saeko Tanaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

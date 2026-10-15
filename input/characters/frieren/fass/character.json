@@ -1,0 +1,13 @@
+{
+  "id": "frieren-fass",
+  "name": "Fass",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-fass-base",
+      "name": "Fass",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

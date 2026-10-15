@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-fushi",
+  "name": "Fushi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "chainsaw-man-fushi-base",
+      "name": "Fushi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

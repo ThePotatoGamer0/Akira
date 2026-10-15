@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-sumire-nagara",
+  "name": "Sumire Nagara",
+  "gender": null,
+  "cards": [
+    {
+      "id": "evangelion-sumire-nagara-base",
+      "name": "Sumire Nagara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-kouji-sekimukai",
+  "name": "Kouji Sekimukai",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-kouji-sekimukai-base",
+      "name": "Kouji Sekimukai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

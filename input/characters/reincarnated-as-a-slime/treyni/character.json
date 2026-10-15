@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-treyni",
+  "name": "Treyni",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-treyni-base",
+      "name": "Treyni",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

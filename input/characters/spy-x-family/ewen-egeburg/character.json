@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-ewen-egeburg",
+  "name": "Ewen Egeburg",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-ewen-egeburg-base",
+      "name": "Ewen Egeburg",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

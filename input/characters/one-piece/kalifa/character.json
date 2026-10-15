@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-kalifa",
+  "name": "Kalifa",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-kalifa-base",
+      "name": "Kalifa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

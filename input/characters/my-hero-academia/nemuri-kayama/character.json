@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-nemuri-kayama",
+  "name": "Nemuri Kayama",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "my-hero-academia-nemuri-kayama-base",
+      "name": "Nemuri Kayama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

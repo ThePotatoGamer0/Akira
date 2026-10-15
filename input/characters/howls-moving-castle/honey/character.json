@@ -1,0 +1,13 @@
+{
+  "id": "howls-moving-castle-honey",
+  "name": "Honey",
+  "gender": null,
+  "cards": [
+    {
+      "id": "howls-moving-castle-honey-base",
+      "name": "Honey",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

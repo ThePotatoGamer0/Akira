@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-mord",
+  "name": "Mord",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-mord-base",
+      "name": "Mord",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

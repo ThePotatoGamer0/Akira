@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-komaru-naegi",
+  "name": "Komaru Naegi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-komaru-naegi-base",
+      "name": "Komaru Naegi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

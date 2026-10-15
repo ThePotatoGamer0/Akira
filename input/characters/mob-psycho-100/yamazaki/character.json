@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-yamazaki",
+  "name": "Yamazaki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-yamazaki-base",
+      "name": "Yamazaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-zeniru",
+  "name": "Zeniru",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-zeniru-base",
+      "name": "Zeniru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

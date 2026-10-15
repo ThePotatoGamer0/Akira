@@ -1,0 +1,14 @@
+{
+  "id": "naruto-tenten",
+  "name": "Tenten",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-tenten-base",
+      "name": "Tenten",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

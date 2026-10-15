@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-youhei",
+  "name": "Youhei",
+  "gender": null,
+  "cards": [
+    {
+      "id": "blue-exorcist-youhei-base",
+      "name": "Youhei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

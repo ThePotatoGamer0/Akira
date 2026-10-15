@@ -1,0 +1,14 @@
+{
+  "id": "sono-bisque-doll-wa-koi-wo-suru-neon-nikaidou",
+  "name": "Neon Nikaidou",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sono-bisque-doll-wa-koi-wo-suru-neon-nikaidou-base",
+      "name": "Neon Nikaidou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

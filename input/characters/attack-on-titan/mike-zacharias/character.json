@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-mike-zacharias",
+  "name": "Mike Zacharias",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-mike-zacharias-base",
+      "name": "Mike Zacharias",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

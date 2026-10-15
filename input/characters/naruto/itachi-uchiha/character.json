@@ -1,0 +1,14 @@
+{
+  "id": "naruto-itachi-uchiha",
+  "name": "Itachi Uchiha",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-itachi-uchiha-base",
+      "name": "Itachi Uchiha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

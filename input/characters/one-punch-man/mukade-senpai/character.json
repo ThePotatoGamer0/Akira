@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-mukade-senpai",
+  "name": "Mukade Senpai",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-mukade-senpai-base",
+      "name": "Mukade Senpai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

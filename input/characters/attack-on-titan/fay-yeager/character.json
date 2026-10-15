@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-fay-yeager",
+  "name": "Fay Yeager",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-fay-yeager-base",
+      "name": "Fay Yeager",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

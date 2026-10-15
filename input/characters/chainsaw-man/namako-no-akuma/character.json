@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-namako-no-akuma",
+  "name": "Namako no Akuma",
+  "gender": null,
+  "cards": [
+    {
+      "id": "chainsaw-man-namako-no-akuma-base",
+      "name": "Namako no Akuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

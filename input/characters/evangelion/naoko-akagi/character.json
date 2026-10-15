@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-naoko-akagi",
+  "name": "Naoko Akagi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "evangelion-naoko-akagi-base",
+      "name": "Naoko Akagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

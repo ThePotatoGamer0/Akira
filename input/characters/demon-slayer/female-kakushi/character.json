@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-female-kakushi",
+  "name": "Female Kakushi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-female-kakushi-base",
+      "name": "Female Kakushi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

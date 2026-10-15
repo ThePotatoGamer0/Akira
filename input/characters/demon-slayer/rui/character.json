@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-rui",
+  "name": "Rui",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-rui-base",
+      "name": "Rui",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "death-note-kyosuke-higuchi",
+  "name": "Kyosuke Higuchi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-kyosuke-higuchi-base",
+      "name": "Kyosuke Higuchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

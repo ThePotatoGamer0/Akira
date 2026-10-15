@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-girolan-dabadie",
+  "name": "Girolan Dabadie",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-girolan-dabadie-base",
+      "name": "Girolan Dabadie",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

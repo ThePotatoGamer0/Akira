@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-yuutarou-kurose",
+  "name": "Yuutarou Kurose",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "chainsaw-man-yuutarou-kurose-base",
+      "name": "Yuutarou Kurose",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

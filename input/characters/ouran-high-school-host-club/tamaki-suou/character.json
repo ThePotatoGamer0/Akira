@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-tamaki-suou",
+  "name": "Tamaki Suou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-tamaki-suou-base",
+      "name": "Tamaki Suou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

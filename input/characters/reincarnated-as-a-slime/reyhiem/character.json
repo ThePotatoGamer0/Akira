@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-reyhiem",
+  "name": "Reyhiem",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-reyhiem-base",
+      "name": "Reyhiem",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-mogari-shishikuno",
+  "name": "Mogari Shishikuno",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "phantom-busters-mogari-shishikuno-base",
+      "name": "Mogari Shishikuno",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

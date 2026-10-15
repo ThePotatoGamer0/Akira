@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-hayete-no-wind",
+  "name": "Hayete no Wind",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-hayete-no-wind-base",
+      "name": "Hayete no Wind",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-souchou",
+  "name": "Souchou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-souchou-base",
+      "name": "Souchou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

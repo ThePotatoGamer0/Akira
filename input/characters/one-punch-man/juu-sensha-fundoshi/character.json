@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-juu-sensha-fundoshi",
+  "name": "Juu Sensha Fundoshi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-juu-sensha-fundoshi-base",
+      "name": "Juu Sensha Fundoshi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

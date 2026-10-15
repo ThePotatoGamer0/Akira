@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-yoshio-ootori",
+  "name": "Yoshio Ootori",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-yoshio-ootori-base",
+      "name": "Yoshio Ootori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-yun-tae-jeong",
+  "name": "Yun-Tae Jeong",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-yun-tae-jeong-base",
+      "name": "Yun-Tae Jeong",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

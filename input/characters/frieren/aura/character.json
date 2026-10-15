@@ -1,0 +1,13 @@
+{
+  "id": "frieren-aura",
+  "name": "Aura",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "frieren-aura-base",
+      "name": "Aura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

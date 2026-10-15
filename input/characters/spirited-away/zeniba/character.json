@@ -1,0 +1,13 @@
+{
+  "id": "spirited-away-zeniba",
+  "name": "Zeniba",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "spirited-away-zeniba-base",
+      "name": "Zeniba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

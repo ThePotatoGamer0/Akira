@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-takumi-karamatsu",
+  "name": "Takumi Karamatsu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-takumi-karamatsu-base",
+      "name": "Takumi Karamatsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

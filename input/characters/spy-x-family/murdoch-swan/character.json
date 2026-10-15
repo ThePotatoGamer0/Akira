@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-murdoch-swan",
+  "name": "Murdoch Swan",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-murdoch-swan-base",
+      "name": "Murdoch Swan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

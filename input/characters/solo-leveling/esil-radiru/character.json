@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-esil-radiru",
+  "name": "Esil Radiru",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "solo-leveling-esil-radiru-base",
+      "name": "Esil Radiru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

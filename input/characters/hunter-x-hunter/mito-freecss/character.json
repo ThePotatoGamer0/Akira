@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-mito-freecss",
+  "name": "Mito Freecss",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-mito-freecss-base",
+      "name": "Mito Freecss",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

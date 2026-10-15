@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-mosquito-musume",
+  "name": "Mosquito Musume",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-punch-man-mosquito-musume-base",
+      "name": "Mosquito Musume",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

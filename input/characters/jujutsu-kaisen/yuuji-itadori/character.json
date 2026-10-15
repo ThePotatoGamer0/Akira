@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-yuuji-itadori",
+  "name": "Yuuji Itadori",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-yuuji-itadori-base",
+      "name": "Yuuji Itadori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

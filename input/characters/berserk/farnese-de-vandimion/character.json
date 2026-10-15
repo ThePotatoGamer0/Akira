@@ -1,0 +1,13 @@
+{
+  "id": "berserk-farnese-de-vandimion",
+  "name": "Farnese de Vandimion",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "berserk-farnese-de-vandimion-base",
+      "name": "Farnese de Vandimion",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

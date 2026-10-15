@@ -1,0 +1,13 @@
+{
+  "id": "frieren-fern",
+  "name": "Fern",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "frieren-fern-base",
+      "name": "Fern",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

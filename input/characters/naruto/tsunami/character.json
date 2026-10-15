@@ -1,0 +1,14 @@
+{
+  "id": "naruto-tsunami",
+  "name": "Tsunami",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-tsunami-base",
+      "name": "Tsunami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

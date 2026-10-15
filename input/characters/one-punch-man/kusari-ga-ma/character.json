@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-kusari-ga-ma",
+  "name": "Kusari Ga Ma",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-kusari-ga-ma-base",
+      "name": "Kusari Ga Ma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-ymir",
+  "name": "Ymir",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-ymir-base",
+      "name": "Ymir",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

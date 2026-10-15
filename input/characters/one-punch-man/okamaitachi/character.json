@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-okamaitachi",
+  "name": "Okamaitachi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-punch-man-okamaitachi-base",
+      "name": "Okamaitachi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

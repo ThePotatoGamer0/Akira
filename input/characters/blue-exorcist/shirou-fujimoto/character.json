@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-shirou-fujimoto",
+  "name": "Shirou Fujimoto",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-exorcist-shirou-fujimoto-base",
+      "name": "Shirou Fujimoto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

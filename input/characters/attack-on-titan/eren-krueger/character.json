@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-eren-krueger",
+  "name": "Eren Krueger",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-eren-krueger-base",
+      "name": "Eren Krueger",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

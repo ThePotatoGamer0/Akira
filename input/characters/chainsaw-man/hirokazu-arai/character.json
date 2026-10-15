@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-hirokazu-arai",
+  "name": "Hirokazu Arai ",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "chainsaw-man-hirokazu-arai-base",
+      "name": "Hirokazu Arai ",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

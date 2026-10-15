@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-kimiko-ayasato",
+  "name": "Kimiko Ayasato",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-kimiko-ayasato-base",
+      "name": "Kimiko Ayasato",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

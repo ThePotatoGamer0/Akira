@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-mari-ishida",
+  "name": "Mari Ishida",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "solo-leveling-mari-ishida-base",
+      "name": "Mari Ishida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

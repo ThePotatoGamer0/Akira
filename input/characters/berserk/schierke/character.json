@@ -1,0 +1,13 @@
+{
+  "id": "berserk-schierke",
+  "name": "Schierke",
+  "gender": null,
+  "cards": [
+    {
+      "id": "berserk-schierke-base",
+      "name": "Schierke",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

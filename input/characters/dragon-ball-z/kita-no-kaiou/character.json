@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-kita-no-kaiou",
+  "name": "Kita no Kaiou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-kita-no-kaiou-base",
+      "name": "Kita no Kaiou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

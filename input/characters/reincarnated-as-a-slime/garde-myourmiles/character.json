@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-garde-myourmiles",
+  "name": "Garde-Myourmiles",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-garde-myourmiles-base",
+      "name": "Garde-Myourmiles",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

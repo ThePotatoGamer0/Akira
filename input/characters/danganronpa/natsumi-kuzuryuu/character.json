@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-natsumi-kuzuryuu",
+  "name": "Natsumi Kuzuryuu",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-natsumi-kuzuryuu-base",
+      "name": "Natsumi Kuzuryuu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

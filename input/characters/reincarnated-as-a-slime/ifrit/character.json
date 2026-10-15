@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-ifrit",
+  "name": "Ifrit",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-ifrit-base",
+      "name": "Ifrit",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

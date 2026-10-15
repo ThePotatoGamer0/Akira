@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-kami",
+  "name": "Kami",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-kami-base",
+      "name": "Kami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

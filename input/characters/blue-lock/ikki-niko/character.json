@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-ikki-niko",
+  "name": "Ikki Niko",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-ikki-niko-base",
+      "name": "Ikki Niko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

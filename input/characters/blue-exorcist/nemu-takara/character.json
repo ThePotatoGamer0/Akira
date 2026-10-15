@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-nemu-takara",
+  "name": "Nemu Takara",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-exorcist-nemu-takara-base",
+      "name": "Nemu Takara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

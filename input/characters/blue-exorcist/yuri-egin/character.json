@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-yuri-egin",
+  "name": "Yuri Egin",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-exorcist-yuri-egin-base",
+      "name": "Yuri Egin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

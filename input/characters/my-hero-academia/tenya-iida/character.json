@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-tenya-iida",
+  "name": "Tenya Iida",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-tenya-iida-base",
+      "name": "Tenya Iida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

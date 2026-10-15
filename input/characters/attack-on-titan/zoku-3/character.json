@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-zoku-3",
+  "name": "Zoku 3",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-zoku-3-base",
+      "name": "Zoku 3",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

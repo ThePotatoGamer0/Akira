@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-hamukichi",
+  "name": "Hamukichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-hamukichi-base",
+      "name": "Hamukichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

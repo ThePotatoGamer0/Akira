@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-irina-jelavic",
+  "name": "Irina Jelavic",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "assassination-classroom-irina-jelavic-base",
+      "name": "Irina Jelavic",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

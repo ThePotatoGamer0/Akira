@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-takeshi-hoshino",
+  "name": "Takeshi Hoshino",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-takeshi-hoshino-base",
+      "name": "Takeshi Hoshino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

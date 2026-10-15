@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-hongniang",
+  "name": "Hongniang",
+  "gender": null,
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-hongniang-base",
+      "name": "Hongniang",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

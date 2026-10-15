@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-zanka-nijiku",
+  "name": "Zanka Nijiku",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-zanka-nijiku-base",
+      "name": "Zanka Nijiku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

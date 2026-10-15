@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-atsushi-kumamoto",
+  "name": "Atsushi Kumamoto",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-atsushi-kumamoto-base",
+      "name": "Atsushi Kumamoto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

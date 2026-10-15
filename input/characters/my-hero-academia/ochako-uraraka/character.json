@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-ochako-uraraka",
+  "name": "Ochako Uraraka",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "my-hero-academia-ochako-uraraka-base",
+      "name": "Ochako Uraraka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

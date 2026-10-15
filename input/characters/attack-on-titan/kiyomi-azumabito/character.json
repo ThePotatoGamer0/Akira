@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-kiyomi-azumabito",
+  "name": "Kiyomi Azumabito",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-kiyomi-azumabito-base",
+      "name": "Kiyomi Azumabito",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

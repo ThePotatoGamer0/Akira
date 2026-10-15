@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-umeyo-shouchiku",
+  "name": "Umeyo Shouchiku",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-umeyo-shouchiku-base",
+      "name": "Umeyo Shouchiku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

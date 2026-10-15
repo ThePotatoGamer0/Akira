@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-burter",
+  "name": "Burter",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-burter-base",
+      "name": "Burter",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

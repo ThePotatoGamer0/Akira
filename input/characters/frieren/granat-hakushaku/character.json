@@ -1,0 +1,13 @@
+{
+  "id": "frieren-granat-hakushaku",
+  "name": "Granat Hakushaku",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-granat-hakushaku-base",
+      "name": "Granat Hakushaku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

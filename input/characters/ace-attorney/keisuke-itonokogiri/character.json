@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-keisuke-itonokogiri",
+  "name": "Keisuke Itonokogiri",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-keisuke-itonokogiri-base",
+      "name": "Keisuke Itonokogiri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

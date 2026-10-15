@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-aldebaran",
+  "name": "Aldebaran",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-aldebaran-base",
+      "name": "Aldebaran",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

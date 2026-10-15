@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-karin",
+  "name": "Karin",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-karin-base",
+      "name": "Karin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "naruto-inoichi-yamanaka",
+  "name": "Inoichi Yamanaka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-inoichi-yamanaka-base",
+      "name": "Inoichi Yamanaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

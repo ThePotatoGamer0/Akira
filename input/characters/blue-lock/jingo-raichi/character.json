@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-jingo-raichi",
+  "name": "Jingo Raichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-jingo-raichi-base",
+      "name": "Jingo Raichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

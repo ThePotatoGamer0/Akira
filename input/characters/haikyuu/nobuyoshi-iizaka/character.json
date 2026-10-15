@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-nobuyoshi-iizaka",
+  "name": "Nobuyoshi Iizaka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-nobuyoshi-iizaka-base",
+      "name": "Nobuyoshi Iizaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

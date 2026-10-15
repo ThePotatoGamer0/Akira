@@ -157,98 +157,175 @@ declare module 'astro:content' {
   slug: "burn";
   body: string;
   collection: "commands";
-  data: any
+  data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
 "collection.md": {
 	id: "collection.md";
   slug: "collection";
   body: string;
   collection: "commands";
-  data: any
+  data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
 "cooldowns.md": {
 	id: "cooldowns.md";
   slug: "cooldowns";
   body: string;
   collection: "commands";
-  data: any
+  data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
 "daily.md": {
 	id: "daily.md";
   slug: "daily";
   body: string;
   collection: "commands";
-  data: any
+  data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
 "drop.md": {
 	id: "drop.md";
   slug: "drop";
   body: string;
   collection: "commands";
-  data: any
+  data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
 "dye.md": {
 	id: "dye.md";
   slug: "dye";
   body: string;
   collection: "commands";
-  data: any
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"frame.md": {
+	id: "frame.md";
+  slug: "frame";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
 "give.md": {
 	id: "give.md";
   slug: "give";
   body: string;
   collection: "commands";
-  data: any
+  data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
 "grab.md": {
 	id: "grab.md";
   slug: "grab";
   body: string;
   collection: "commands";
-  data: any
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"help.md": {
+	id: "help.md";
+  slug: "help";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"import.md": {
+	id: "import.md";
+  slug: "import";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"inventory.md": {
+	id: "inventory.md";
+  slug: "inventory";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
 "lookup.md": {
 	id: "lookup.md";
   slug: "lookup";
   body: string;
   collection: "commands";
-  data: any
+  data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
 "multiburn.md": {
 	id: "multiburn.md";
   slug: "multiburn";
   body: string;
   collection: "commands";
-  data: any
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"override-karuta.md": {
+	id: "override-karuta.md";
+  slug: "override-karuta";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"ping.md": {
+	id: "ping.md";
+  slug: "ping";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"pool.md": {
+	id: "pool.md";
+  slug: "pool";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"reference.md": {
+	id: "reference.md";
+  slug: "reference";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"reminders.md": {
+	id: "reminders.md";
+  slug: "reminders";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
 "shop.md": {
 	id: "shop.md";
   slug: "shop";
   body: string;
   collection: "commands";
-  data: any
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"tags.md": {
+	id: "tags.md";
+  slug: "tags";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
 "trade.md": {
 	id: "trade.md";
   slug: "trade";
   body: string;
   collection: "commands";
-  data: any
+  data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
 "userinfo.md": {
 	id: "userinfo.md";
   slug: "userinfo";
   body: string;
   collection: "commands";
-  data: any
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"view.md": {
+	id: "view.md";
+  slug: "view";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
 "wishlist.md": {
 	id: "wishlist.md";
   slug: "wishlist";
   body: string;
   collection: "commands";
-  data: any
+  data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
 };
 "contributing": {
@@ -257,28 +334,28 @@ declare module 'astro:content' {
   slug: "adding-characters";
   body: string;
   collection: "contributing";
-  data: any
+  data: InferEntrySchema<"contributing">
 } & { render(): Render[".md"] };
 "code.md": {
 	id: "code.md";
   slug: "code";
   body: string;
   collection: "contributing";
-  data: any
+  data: InferEntrySchema<"contributing">
 } & { render(): Render[".md"] };
 "documentation.md": {
 	id: "documentation.md";
   slug: "documentation";
   body: string;
   collection: "contributing";
-  data: any
+  data: InferEntrySchema<"contributing">
 } & { render(): Render[".md"] };
 "local-setup.mdx": {
 	id: "local-setup.mdx";
   slug: "local-setup";
   body: string;
   collection: "contributing";
-  data: any
+  data: InferEntrySchema<"contributing">
 } & { render(): Render[".mdx"] };
 };
 "economy": {
@@ -287,21 +364,21 @@ declare module 'astro:content' {
   slug: "bits";
   body: string;
   collection: "economy";
-  data: any
+  data: InferEntrySchema<"economy">
 } & { render(): Render[".md"] };
 "personal-milestone.md": {
 	id: "personal-milestone.md";
   slug: "personal-milestone";
   body: string;
   collection: "economy";
-  data: any
+  data: InferEntrySchema<"economy">
 } & { render(): Render[".md"] };
 "server-pool.md": {
 	id: "server-pool.md";
   slug: "server-pool";
   body: string;
   collection: "economy";
-  data: any
+  data: InferEntrySchema<"economy">
 } & { render(): Render[".md"] };
 };
 "getting-started": {
@@ -310,21 +387,21 @@ declare module 'astro:content' {
   slug: "importing-from-karuta";
   body: string;
   collection: "getting-started";
-  data: any
+  data: InferEntrySchema<"getting-started">
 } & { render(): Render[".md"] };
 "what-is-akira.md": {
 	id: "what-is-akira.md";
   slug: "what-is-akira";
   body: string;
   collection: "getting-started";
-  data: any
+  data: InferEntrySchema<"getting-started">
 } & { render(): Render[".md"] };
 "your-first-card.md": {
 	id: "your-first-card.md";
   slug: "your-first-card";
   body: string;
   collection: "getting-started";
-  data: any
+  data: InferEntrySchema<"getting-started">
 } & { render(): Render[".md"] };
 };
 "prestige": {
@@ -333,7 +410,7 @@ declare module 'astro:content' {
   slug: "overview";
   body: string;
   collection: "prestige";
-  data: any
+  data: InferEntrySchema<"prestige">
 } & { render(): Render[".md"] };
 };
 "webui": {
@@ -342,21 +419,21 @@ declare module 'astro:content' {
   slug: "authentication";
   body: string;
   collection: "webui";
-  data: any
+  data: InferEntrySchema<"webui">
 } & { render(): Render[".md"] };
 "collection.md": {
 	id: "collection.md";
   slug: "collection";
   body: string;
   collection: "webui";
-  data: any
+  data: InferEntrySchema<"webui">
 } & { render(): Render[".md"] };
 "economy-and-leaderboard.md": {
 	id: "economy-and-leaderboard.md";
   slug: "economy-and-leaderboard";
   body: string;
   collection: "webui";
-  data: any
+  data: InferEntrySchema<"webui">
 } & { render(): Render[".md"] };
 };
 
@@ -368,5 +445,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = never;
+	export type ContentConfig = typeof import("../../src/content/config.js");
 }

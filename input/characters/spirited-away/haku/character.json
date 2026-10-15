@@ -1,0 +1,13 @@
+{
+  "id": "spirited-away-haku",
+  "name": "Haku",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spirited-away-haku-base",
+      "name": "Haku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

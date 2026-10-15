@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-ben-beckman",
+  "name": "Ben Beckman",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-ben-beckman-base",
+      "name": "Ben Beckman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

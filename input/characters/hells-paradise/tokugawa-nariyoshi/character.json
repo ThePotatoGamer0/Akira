@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-tokugawa-nariyoshi",
+  "name": "Tokugawa Nariyoshi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-tokugawa-nariyoshi-base",
+      "name": "Tokugawa Nariyoshi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

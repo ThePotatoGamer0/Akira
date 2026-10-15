@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-roy-alphard",
+  "name": "Roy Alphard",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-roy-alphard-base",
+      "name": "Roy Alphard",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

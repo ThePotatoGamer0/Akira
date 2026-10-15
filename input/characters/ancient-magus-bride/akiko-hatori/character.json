@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-akiko-hatori",
+  "name": "Akiko Hatori",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-akiko-hatori-base",
+      "name": "Akiko Hatori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

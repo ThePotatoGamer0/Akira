@@ -1,0 +1,13 @@
+{
+  "id": "howls-moving-castle-lettie-hatter",
+  "name": "Lettie Hatter",
+  "gender": null,
+  "cards": [
+    {
+      "id": "howls-moving-castle-lettie-hatter-base",
+      "name": "Lettie Hatter",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

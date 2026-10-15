@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-hee-jin-park",
+  "name": "Hee-Jin Park",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "solo-leveling-hee-jin-park-base",
+      "name": "Hee-Jin Park",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

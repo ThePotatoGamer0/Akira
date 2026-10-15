@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-kamikaze",
+  "name": "Kamikaze",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-kamikaze-base",
+      "name": "Kamikaze",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

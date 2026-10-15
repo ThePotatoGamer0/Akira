@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-cell-jr",
+  "name": "Cell Jr.",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-cell-jr-base",
+      "name": "Cell Jr.",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

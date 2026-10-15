@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-floki",
+  "name": "Floki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "vinland-saga-floki-base",
+      "name": "Floki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

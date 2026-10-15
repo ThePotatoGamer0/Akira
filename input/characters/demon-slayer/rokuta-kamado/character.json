@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-rokuta-kamado",
+  "name": "Rokuta Kamado",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-rokuta-kamado-base",
+      "name": "Rokuta Kamado",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

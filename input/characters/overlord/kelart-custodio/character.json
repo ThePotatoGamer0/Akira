@@ -1,0 +1,13 @@
+{
+  "id": "overlord-kelart-custodio",
+  "name": "Kelart Custodio",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-kelart-custodio-base",
+      "name": "Kelart Custodio",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

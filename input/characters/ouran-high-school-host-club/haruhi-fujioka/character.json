@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-haruhi-fujioka",
+  "name": "Haruhi Fujioka",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-haruhi-fujioka-base",
+      "name": "Haruhi Fujioka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

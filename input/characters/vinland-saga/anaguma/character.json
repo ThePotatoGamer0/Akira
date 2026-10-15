@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-anaguma",
+  "name": "Anaguma",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-anaguma-base",
+      "name": "Anaguma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

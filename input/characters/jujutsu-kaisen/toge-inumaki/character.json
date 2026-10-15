@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-toge-inumaki",
+  "name": "Toge Inumaki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-toge-inumaki-base",
+      "name": "Toge Inumaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

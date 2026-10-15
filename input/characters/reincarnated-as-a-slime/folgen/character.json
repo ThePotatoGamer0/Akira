@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-folgen",
+  "name": "Folgen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-folgen-base",
+      "name": "Folgen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

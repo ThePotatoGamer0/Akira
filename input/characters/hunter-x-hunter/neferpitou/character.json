@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-neferpitou",
+  "name": "Neferpitou",
+  "gender": "Non-binary",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-neferpitou-base",
+      "name": "Neferpitou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

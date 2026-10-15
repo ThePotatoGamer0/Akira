@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-mr-9",
+  "name": "Mr. 9",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-mr-9-base",
+      "name": "Mr. 9",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

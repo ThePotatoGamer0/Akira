@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-sonia-nevermind",
+  "name": "Sonia Nevermind",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-sonia-nevermind-base",
+      "name": "Sonia Nevermind",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

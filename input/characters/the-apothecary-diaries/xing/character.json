@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-xing",
+  "name": "Xing",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-xing-base",
+      "name": "Xing",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-hange-zoe",
+  "name": "Hange Zoe",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-hange-zoe-base",
+      "name": "Hange Zoe",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

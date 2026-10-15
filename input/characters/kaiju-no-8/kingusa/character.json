@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-kingusa",
+  "name": "Kingusa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-kingusa-base",
+      "name": "Kingusa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,29 +1,40 @@
 ---
 title: Drop
-description: Akira will place three cards in the drop channel for your friends to react to.
+description: Place cards in the drop channel for people to grab. A normal drop is three.
 command: drop
 shortcuts: d
 ---
 
-Akira will help with **/drop** - Channel must be configured by your admin. Three cards appear; react with 1️⃣ 2️⃣ or 3️⃣, then claim with [grab](/commands/grab) when your cooldown allows.
+**/drop** puts cards in the server's drop channel. A normal drop is three cards, shown as one picture side by side. Anyone can react to claim one. A buff can make it one card or four. It never becomes five.
 
 ## Parameters
 
-Parameters are still settling in for slash commands; check in-game `/help` for the live option list. Akira keeps descriptions short so slash autocomplete stays readable.
+None.
+
+## Aliases
+
+`d`. `adrop` and `ad` both drop.
 
 ## Example usage
 
 ```
 /drop
+ad
 ```
 
 ## Tips
 
-- Drops only work in the channel your server admin configured; if nothing happens, ask them to check Akira’s drop settings.
-- Three cards appear at once - pick your reaction (1️⃣ 2️⃣ 3️⃣) before someone else grabs the one you wanted.
+- The channel is `DISCORD_DROP_CHANNEL_ID`, or the channel stored for that server.
+- The drop stays open for 2 minutes. Your next drop waits 20 minutes, or less while a drop-cooldown buff is on you. `/cooldowns` shows the wait you actually have.
+- [Quality over quantity](/commands/shop) makes the drop one card. [Four cards](/commands/shop) makes it four, and adds a fourth grab reaction. If both are on, the drop is one card.
+- For the first 20 seconds, if someone else takes a card, you can grab that same card and take it back. Akira says you fought them off. They keep the grab cooldown from the attempt. You get the card, 5 bits, and your own grab cooldown.
+- Each card is a separate draw. The same character can appear more than once. Base art is equally likely. Alternate arts are rarer. Quality is rolled on its own and does not change which picture was drawn. Only a legendary is shiny.
+- When the drop expires, the message gains a line that the cards can no longer be grabbed.
 
 ## See also
 
-- [Grab](/commands/grab) - claim a card from a live drop
-- [Cooldowns](/commands/cooldowns) - when you can drop or grab again
-- [Wishlist](/commands/wishlist) - get pinged when a character you want appears in a drop
+- [Shop](/commands/shop)
+- [Grab](/commands/grab)
+- [Cooldowns](/commands/cooldowns)
+- [Wishlist](/commands/wishlist)
+- [Command list](/commands/reference)

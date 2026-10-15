@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-satan",
+  "name": "Satan",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-exorcist-satan-base",
+      "name": "Satan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

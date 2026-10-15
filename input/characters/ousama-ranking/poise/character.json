@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-poise",
+  "name": "Poise",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ousama-ranking-poise-base",
+      "name": "Poise",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

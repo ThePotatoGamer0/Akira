@@ -1,0 +1,14 @@
+{
+  "id": "death-note-yuri",
+  "name": "Yuri",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "death-note-yuri-base",
+      "name": "Yuri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-r-kaji",
+  "name": "R. Kaji",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "evangelion-r-kaji-base",
+      "name": "R. Kaji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

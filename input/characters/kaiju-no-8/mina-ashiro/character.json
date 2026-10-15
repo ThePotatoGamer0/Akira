@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-mina-ashiro",
+  "name": "Mina Ashiro",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "kaiju-no-8-mina-ashiro-base",
+      "name": "Mina Ashiro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

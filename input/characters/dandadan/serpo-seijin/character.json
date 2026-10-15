@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-serpo-seijin",
+  "name": "Serpo Seijin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dandadan-serpo-seijin-base",
+      "name": "Serpo Seijin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

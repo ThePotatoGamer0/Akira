@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-naho-takada",
+  "name": "Naho Takada",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "demon-slayer-naho-takada-base",
+      "name": "Naho Takada",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

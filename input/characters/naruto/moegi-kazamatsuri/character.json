@@ -1,0 +1,14 @@
+{
+  "id": "naruto-moegi-kazamatsuri",
+  "name": "Moegi Kazamatsuri",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-moegi-kazamatsuri-base",
+      "name": "Moegi Kazamatsuri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

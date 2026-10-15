@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-gatlin",
+  "name": "Gatlin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-gatlin-base",
+      "name": "Gatlin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

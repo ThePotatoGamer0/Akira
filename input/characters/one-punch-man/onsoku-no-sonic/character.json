@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-onsoku-no-sonic",
+  "name": "Onsoku no Sonic",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-onsoku-no-sonic-base",
+      "name": "Onsoku no Sonic",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

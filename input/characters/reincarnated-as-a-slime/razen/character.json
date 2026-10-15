@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-razen",
+  "name": "Razen",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-razen-base",
+      "name": "Razen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

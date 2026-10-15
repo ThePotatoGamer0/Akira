@@ -1,0 +1,14 @@
+{
+  "id": "naruto-orochimaru",
+  "name": "Orochimaru",
+  "gender": "Non-binary",
+  "cards": [
+    {
+      "id": "naruto-orochimaru-base",
+      "name": "Orochimaru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

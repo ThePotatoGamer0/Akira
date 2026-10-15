@@ -1,0 +1,14 @@
+{
+  "id": "death-note-tierry-morello",
+  "name": "Tierry Morello",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-tierry-morello-base",
+      "name": "Tierry Morello",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

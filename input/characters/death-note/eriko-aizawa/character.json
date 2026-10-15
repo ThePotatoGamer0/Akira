@@ -1,0 +1,14 @@
+{
+  "id": "death-note-eriko-aizawa",
+  "name": "Eriko Aizawa",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "death-note-eriko-aizawa-base",
+      "name": "Eriko Aizawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

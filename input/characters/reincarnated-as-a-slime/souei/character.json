@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-souei",
+  "name": "Souei",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-souei-base",
+      "name": "Souei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

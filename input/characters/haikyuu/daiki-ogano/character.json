@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-daiki-ogano",
+  "name": "Daiki Ogano",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-daiki-ogano-base",
+      "name": "Daiki Ogano",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

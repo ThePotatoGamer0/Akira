@@ -8,7 +8,7 @@ import { WebUiShell } from "./components/WebUiShell.js";
 import { Home } from "./pages/Home.js";
 import { CollectionPage } from "./pages/Collection.js";
 import { EconomyPage } from "./pages/Economy.js";
-import { LeaderboardPage } from "./pages/Leaderboard.js";
+import { StatsPage } from "./pages/Stats.js";
 import { AdminPage } from "./pages/Admin.js";
 import { PersonalisePage } from "./pages/Personalise.js";
 import "./styles.css";
@@ -38,8 +38,7 @@ export function App() {
   }
 
   if (!auth.isDiscordActivity && !auth.me) {
-    const fetchBrowser = (path: string, init?: RequestInit) =>
-      fetch(path, { ...init, credentials: "include" });
+    const fetchBrowser = auth.fetchApi;
 
     if (authView === "verify") {
       return (
@@ -116,8 +115,8 @@ export function App() {
         <NavLink to="/economy" className={({ isActive }) => (isActive ? "active" : "")}>
           Economy
         </NavLink>
-        <NavLink to="/leaderboard" className={({ isActive }) => (isActive ? "active" : "")}>
-          Leaderboard
+        <NavLink to="/stats" className={({ isActive }) => (isActive ? "active" : "")}>
+          Stats
         </NavLink>
         <NavLink to="/personalise" className={({ isActive }) => (isActive ? "active" : "")}>
           Personalise
@@ -142,7 +141,8 @@ export function App() {
               />
             }
           />
-          <Route path="/leaderboard" element={<LeaderboardPage fetchApi={auth.fetchApi} />} />
+          <Route path="/stats" element={<StatsPage me={me} fetchApi={auth.fetchApi} />} />
+          <Route path="/leaderboard" element={<Navigate to="/stats" replace />} />
           <Route
             path="/personalise"
             element={

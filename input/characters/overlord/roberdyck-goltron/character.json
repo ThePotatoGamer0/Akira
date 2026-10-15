@@ -1,0 +1,13 @@
+{
+  "id": "overlord-roberdyck-goltron",
+  "name": "Roberdyck Goltron",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-roberdyck-goltron-base",
+      "name": "Roberdyck Goltron",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

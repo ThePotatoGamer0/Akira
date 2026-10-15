@@ -1,0 +1,14 @@
+{
+  "id": "sk8-the-infinity-shoukichi-oka",
+  "name": "Shoukichi Oka",
+  "gender": null,
+  "cards": [
+    {
+      "id": "sk8-the-infinity-shoukichi-oka-base",
+      "name": "Shoukichi Oka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

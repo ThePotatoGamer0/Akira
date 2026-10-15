@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-shirai",
+  "name": "Shirai",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-period-shirai-base",
+      "name": "Shirai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

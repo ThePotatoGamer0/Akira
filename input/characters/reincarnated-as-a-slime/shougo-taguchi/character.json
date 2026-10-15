@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-shougo-taguchi",
+  "name": "Shougo Taguchi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-shougo-taguchi-base",
+      "name": "Shougo Taguchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

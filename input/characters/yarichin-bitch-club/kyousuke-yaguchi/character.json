@@ -1,0 +1,14 @@
+{
+  "id": "yarichin-bitch-club-kyousuke-yaguchi",
+  "name": "Kyousuke Yaguchi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "yarichin-bitch-club-kyousuke-yaguchi-base",
+      "name": "Kyousuke Yaguchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

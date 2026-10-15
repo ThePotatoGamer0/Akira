@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-young-neil",
+  "name": "Young Neil",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-young-neil-base",
+      "name": "Young Neil",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -9,7 +9,11 @@
     "dev": "tsx watch src/bot/index.ts",
     "start": "node dist/bot/index.js",
     "build": "prisma generate && tsc",
-    "generate": "tsx src/init/generator/index.ts"
+    "generate": "tsx src/init/generator/index.ts",
+    "test": "node --import tsx --test src/game/*.test.ts src/renderer/*.test.ts src/bot/*.test.ts",
+    "icons": "tsx src/bot/icon-sync.ts",
+    "portraits": "tsx scripts/fetch-portraits.ts",
+    "portraits:install": "tsx scripts/install-portraits.ts"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +26,7 @@
     "canvas": "^3.2.2",
     "discord.js": "^14.25.1",
     "dotenv": "^17.3.1",
+    "lucide-static": "^1.57.0",
     "prisma": "^7.6.0",
     "sharp": "^0.34.5",
     "upng-js": "^2.1.0"
@@ -29,7 +34,6 @@
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^25.5.0",
-    "@types/upng-js": "^2.1.5",
     "node-gyp": "^13.0.0",
     "tsx": "^4.21.0",
     "typescript": "^6.0.2"

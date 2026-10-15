@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-hinano-kurahashi",
+  "name": "Hinano Kurahashi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "assassination-classroom-hinano-kurahashi-base",
+      "name": "Hinano Kurahashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

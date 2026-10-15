@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-isamu",
+  "name": "Isamu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-isamu-base",
+      "name": "Isamu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

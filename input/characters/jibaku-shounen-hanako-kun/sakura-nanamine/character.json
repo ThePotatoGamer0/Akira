@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-sakura-nanamine",
+  "name": "Sakura Nanamine ",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-sakura-nanamine-base",
+      "name": "Sakura Nanamine ",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

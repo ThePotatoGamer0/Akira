@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-inko-midoriya",
+  "name": "Inko Midoriya",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "my-hero-academia-inko-midoriya-base",
+      "name": "Inko Midoriya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

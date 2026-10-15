@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-geryuganshoop",
+  "name": "Geryuganshoop",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-geryuganshoop-base",
+      "name": "Geryuganshoop",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

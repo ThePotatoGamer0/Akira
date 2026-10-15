@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-kuma-bartholomew",
+  "name": "Kuma Bartholomew",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-kuma-bartholomew-base",
+      "name": "Kuma Bartholomew",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

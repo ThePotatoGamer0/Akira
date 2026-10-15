@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-takehito-sasaya",
+  "name": "Takehito Sasaya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-takehito-sasaya-base",
+      "name": "Takehito Sasaya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

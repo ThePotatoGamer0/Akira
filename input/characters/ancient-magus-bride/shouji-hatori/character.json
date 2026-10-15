@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-shouji-hatori",
+  "name": "Shouji Hatori",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-shouji-hatori-base",
+      "name": "Shouji Hatori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

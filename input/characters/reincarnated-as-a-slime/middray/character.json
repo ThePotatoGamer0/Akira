@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-middray",
+  "name": "Middray",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-middray-base",
+      "name": "Middray",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

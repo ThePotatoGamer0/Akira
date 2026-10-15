@@ -1,0 +1,14 @@
+{
+  "id": "servamp-otogiri",
+  "name": "Otogiri",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "servamp-otogiri-base",
+      "name": "Otogiri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

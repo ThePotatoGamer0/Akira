@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-miaya-gekkogahara",
+  "name": "Miaya Gekkogahara",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-miaya-gekkogahara-base",
+      "name": "Miaya Gekkogahara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

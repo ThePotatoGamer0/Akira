@@ -1,0 +1,13 @@
+{
+  "id": "overlord-londres-di-clamp",
+  "name": "Londres Di Clamp",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-londres-di-clamp-base",
+      "name": "Londres Di Clamp",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

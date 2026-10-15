@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-araba",
+  "name": "Araba",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-araba-base",
+      "name": "Araba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

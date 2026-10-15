@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-dai-kaiou",
+  "name": "Dai Kaiou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-dai-kaiou-base",
+      "name": "Dai Kaiou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

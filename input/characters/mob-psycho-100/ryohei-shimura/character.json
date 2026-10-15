@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-ryohei-shimura",
+  "name": "Ryohei Shimura",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-ryohei-shimura-base",
+      "name": "Ryohei Shimura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

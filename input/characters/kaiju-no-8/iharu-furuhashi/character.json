@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-iharu-furuhashi",
+  "name": "Iharu Furuhashi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-iharu-furuhashi-base",
+      "name": "Iharu Furuhashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

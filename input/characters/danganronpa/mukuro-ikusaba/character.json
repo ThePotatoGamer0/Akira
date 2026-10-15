@@ -1,0 +1,14 @@
+{
+  "id": "danganronpa-mukuro-ikusaba",
+  "name": "Mukuro Ikusaba",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-mukuro-ikusaba-base",
+      "name": "Mukuro Ikusaba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-kibito",
+  "name": "Kibito",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-kibito-base",
+      "name": "Kibito",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

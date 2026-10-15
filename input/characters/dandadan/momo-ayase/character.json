@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-momo-ayase",
+  "name": "Momo Ayase",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dandadan-momo-ayase-base",
+      "name": "Momo Ayase",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

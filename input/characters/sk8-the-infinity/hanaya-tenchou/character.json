@@ -1,0 +1,14 @@
+{
+  "id": "sk8-the-infinity-hanaya-tenchou",
+  "name": "Hanaya Tenchou",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-hanaya-tenchou-base",
+      "name": "Hanaya Tenchou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

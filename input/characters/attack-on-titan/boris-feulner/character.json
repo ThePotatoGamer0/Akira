@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-boris-feulner",
+  "name": "Boris Feulner",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-boris-feulner-base",
+      "name": "Boris Feulner",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

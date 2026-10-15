@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-keith-shadis",
+  "name": "Keith Shadis",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-keith-shadis-base",
+      "name": "Keith Shadis",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

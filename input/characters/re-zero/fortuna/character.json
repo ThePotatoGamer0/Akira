@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-fortuna",
+  "name": "Fortuna",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-fortuna-base",
+      "name": "Fortuna",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-sorii",
+  "name": "Sorii",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-sorii-base",
+      "name": "Sorii",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

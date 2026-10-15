@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-liliana-no-haha",
+  "name": "Liliana no Haha",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-liliana-no-haha-base",
+      "name": "Liliana no Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

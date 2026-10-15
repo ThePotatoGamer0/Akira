@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-natsuhiko-hyuuga",
+  "name": "Natsuhiko Hyuuga",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-natsuhiko-hyuuga-base",
+      "name": "Natsuhiko Hyuuga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

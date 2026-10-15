@@ -1,0 +1,14 @@
+{
+  "id": "servamp-guildenstern",
+  "name": "Guildenstern",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-guildenstern-base",
+      "name": "Guildenstern",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

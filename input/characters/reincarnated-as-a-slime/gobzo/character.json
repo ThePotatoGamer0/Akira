@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-gobzo",
+  "name": "Gobzo",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-gobzo-base",
+      "name": "Gobzo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

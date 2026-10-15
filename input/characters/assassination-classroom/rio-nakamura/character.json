@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-rio-nakamura",
+  "name": "Rio Nakamura",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "assassination-classroom-rio-nakamura-base",
+      "name": "Rio Nakamura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-chopper-tony-tony",
+  "name": "Chopper Tony Tony",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-chopper-tony-tony-base",
+      "name": "Chopper Tony Tony",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

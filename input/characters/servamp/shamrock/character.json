@@ -1,0 +1,14 @@
+{
+  "id": "servamp-shamrock",
+  "name": "Shamrock",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-shamrock-base",
+      "name": "Shamrock",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "servamp-eisuke-doudou",
+  "name": "Eisuke Doudou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-eisuke-doudou-base",
+      "name": "Eisuke Doudou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

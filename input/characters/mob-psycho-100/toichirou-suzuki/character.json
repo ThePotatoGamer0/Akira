@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-toichirou-suzuki",
+  "name": "Toichirou Suzuki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-toichirou-suzuki-base",
+      "name": "Toichirou Suzuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

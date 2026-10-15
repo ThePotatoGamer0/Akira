@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-mitsumata",
+  "name": "Mitsumata",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ousama-ranking-mitsumata-base",
+      "name": "Mitsumata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

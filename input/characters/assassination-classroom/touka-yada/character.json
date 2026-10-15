@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-touka-yada",
+  "name": "Touka Yada",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "assassination-classroom-touka-yada-base",
+      "name": "Touka Yada",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

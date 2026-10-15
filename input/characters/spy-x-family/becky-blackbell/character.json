@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-becky-blackbell",
+  "name": "Becky Blackbell",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "spy-x-family-becky-blackbell-base",
+      "name": "Becky Blackbell",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

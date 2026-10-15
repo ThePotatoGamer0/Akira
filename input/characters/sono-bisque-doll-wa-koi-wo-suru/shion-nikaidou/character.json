@@ -1,0 +1,14 @@
+{
+  "id": "sono-bisque-doll-wa-koi-wo-suru-shion-nikaidou",
+  "name": "Shion Nikaidou",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sono-bisque-doll-wa-koi-wo-suru-shion-nikaidou-base",
+      "name": "Shion Nikaidou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

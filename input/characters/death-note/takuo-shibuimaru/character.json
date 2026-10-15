@@ -1,0 +1,14 @@
+{
+  "id": "death-note-takuo-shibuimaru",
+  "name": "Takuo Shibuimaru",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-takuo-shibuimaru-base",
+      "name": "Takuo Shibuimaru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

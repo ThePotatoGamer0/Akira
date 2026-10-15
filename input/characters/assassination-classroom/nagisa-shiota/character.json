@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-nagisa-shiota",
+  "name": "Nagisa Shiota",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "assassination-classroom-nagisa-shiota-base",
+      "name": "Nagisa Shiota",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

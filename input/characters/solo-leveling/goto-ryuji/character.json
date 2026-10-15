@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-goto-ryuji",
+  "name": "Goto Ryuji",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-goto-ryuji-base",
+      "name": "Goto Ryuji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

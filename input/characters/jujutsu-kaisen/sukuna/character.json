@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-sukuna",
+  "name": "Sukuna",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-sukuna-base",
+      "name": "Sukuna",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "way-of-the-househusband-otaku",
+  "name": "Otaku",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "way-of-the-househusband-otaku-base",
+      "name": "Otaku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

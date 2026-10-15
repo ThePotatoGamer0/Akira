@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-yoshimura",
+  "name": "Yoshimura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-yoshimura-base",
+      "name": "Yoshimura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-bai-niangniang",
+  "name": "Bai Niangniang",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-bai-niangniang-base",
+      "name": "Bai Niangniang",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

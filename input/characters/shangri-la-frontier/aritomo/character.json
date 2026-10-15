@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-aritomo",
+  "name": "Aritomo",
+  "gender": null,
+  "cards": [
+    {
+      "id": "shangri-la-frontier-aritomo-base",
+      "name": "Aritomo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

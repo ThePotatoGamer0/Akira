@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-maki-zenin",
+  "name": "Maki Zenin",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-maki-zenin-base",
+      "name": "Maki Zenin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

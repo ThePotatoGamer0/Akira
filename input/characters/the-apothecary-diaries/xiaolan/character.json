@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-xiaolan",
+  "name": "Xiaolan",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-xiaolan-base",
+      "name": "Xiaolan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

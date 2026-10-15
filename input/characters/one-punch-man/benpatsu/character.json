@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-benpatsu",
+  "name": "Benpatsu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-benpatsu-base",
+      "name": "Benpatsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

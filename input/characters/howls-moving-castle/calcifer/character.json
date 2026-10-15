@@ -1,0 +1,13 @@
+{
+  "id": "howls-moving-castle-calcifer",
+  "name": "Calcifer",
+  "gender": null,
+  "cards": [
+    {
+      "id": "howls-moving-castle-calcifer-base",
+      "name": "Calcifer",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

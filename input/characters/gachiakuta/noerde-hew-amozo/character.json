@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-noerde-hew-amozo",
+  "name": "Noerde Hew Amozo",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "gachiakuta-noerde-hew-amozo-base",
+      "name": "Noerde Hew Amozo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

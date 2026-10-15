@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-ryouta-someya",
+  "name": "Ryouta Someya",
+  "gender": null,
+  "cards": [
+    {
+      "id": "danganronpa-ryouta-someya-base",
+      "name": "Ryouta Someya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

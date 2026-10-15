@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-yabu",
+  "name": "Yabu",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-yabu-base",
+      "name": "Yabu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

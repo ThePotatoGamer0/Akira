@@ -1,0 +1,14 @@
+{
+  "id": "naruto-iruka-umino",
+  "name": "Iruka Umino",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-iruka-umino-base",
+      "name": "Iruka Umino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

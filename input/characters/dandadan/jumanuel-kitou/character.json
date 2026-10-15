@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-jumanuel-kitou",
+  "name": "Jumanuel Kitou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dandadan-jumanuel-kitou-base",
+      "name": "Jumanuel Kitou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

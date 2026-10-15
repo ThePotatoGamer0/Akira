@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-haruto-kijibayashi",
+  "name": "Haruto  Kijibayashi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-haruto-kijibayashi-base",
+      "name": "Haruto  Kijibayashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

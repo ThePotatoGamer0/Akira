@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-tamahiko-teshiro",
+  "name": "Tamahiko Teshiro",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-tamahiko-teshiro-base",
+      "name": "Tamahiko Teshiro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

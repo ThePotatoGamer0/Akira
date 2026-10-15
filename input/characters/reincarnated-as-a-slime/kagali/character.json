@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-kagali",
+  "name": "Kagali",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-kagali-base",
+      "name": "Kagali",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

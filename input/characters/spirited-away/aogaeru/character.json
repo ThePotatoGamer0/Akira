@@ -1,0 +1,13 @@
+{
+  "id": "spirited-away-aogaeru",
+  "name": "Aogaeru",
+  "gender": null,
+  "cards": [
+    {
+      "id": "spirited-away-aogaeru-base",
+      "name": "Aogaeru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-kibutsuji-no-musume",
+  "name": "Kibutsuji no Musume",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "demon-slayer-kibutsuji-no-musume-base",
+      "name": "Kibutsuji no Musume",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-mukai",
+  "name": "Mukai",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-mukai-base",
+      "name": "Mukai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

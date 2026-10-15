@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-natsu-hinata",
+  "name": "Natsu Hinata",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "haikyuu-natsu-hinata-base",
+      "name": "Natsu Hinata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

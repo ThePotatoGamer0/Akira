@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-thors-snorresson",
+  "name": "Thors Snorresson",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-thors-snorresson-base",
+      "name": "Thors Snorresson",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-peko-pekoyama",
+  "name": "Peko Pekoyama",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-peko-pekoyama-base",
+      "name": "Peko Pekoyama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

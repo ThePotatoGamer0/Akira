@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yoshiharu-haga",
+  "name": "Yoshiharu Haga",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-yoshiharu-haga-base",
+      "name": "Yoshiharu Haga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "overlord-lilynette-piani",
+  "name": "Lilynette Piani",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-lilynette-piani-base",
+      "name": "Lilynette Piani",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

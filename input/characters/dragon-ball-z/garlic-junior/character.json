@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-garlic-junior",
+  "name": "Garlic Junior",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-garlic-junior-base",
+      "name": "Garlic Junior",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

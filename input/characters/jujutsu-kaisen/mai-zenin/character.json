@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-mai-zenin",
+  "name": "Mai Zenin",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-mai-zenin-base",
+      "name": "Mai Zenin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-chizuru-maihara",
+  "name": "Chizuru Maihara",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-chizuru-maihara-base",
+      "name": "Chizuru Maihara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

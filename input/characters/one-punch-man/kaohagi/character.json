@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-kaohagi",
+  "name": "Kaohagi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-kaohagi-base",
+      "name": "Kaohagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

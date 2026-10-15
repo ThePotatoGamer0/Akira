@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-kinemi-miki",
+  "name": "Kinemi Miki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-period-kinemi-miki-base",
+      "name": "Kinemi Miki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

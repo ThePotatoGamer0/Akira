@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-wise-kyokuchou",
+  "name": "WISE Kyokuchou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "spy-x-family-wise-kyokuchou-base",
+      "name": "WISE Kyokuchou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "princess-mononoke-moro-no-kimi",
+  "name": "Moro no Kimi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "princess-mononoke-moro-no-kimi-base",
+      "name": "Moro no Kimi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

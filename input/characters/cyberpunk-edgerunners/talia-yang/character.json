@@ -1,0 +1,13 @@
+{
+  "id": "cyberpunk-edgerunners-talia-yang",
+  "name": "Talia Yang",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-talia-yang-base",
+      "name": "Talia Yang",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

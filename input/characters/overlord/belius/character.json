@@ -1,0 +1,13 @@
+{
+  "id": "overlord-belius",
+  "name": "Belius",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-belius-base",
+      "name": "Belius",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

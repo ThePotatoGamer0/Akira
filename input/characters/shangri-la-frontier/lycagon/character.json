@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-lycagon",
+  "name": "Lycagon",
+  "gender": null,
+  "cards": [
+    {
+      "id": "shangri-la-frontier-lycagon-base",
+      "name": "Lycagon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-minami-no-kaiou",
+  "name": "Minami no Kaiou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-minami-no-kaiou-base",
+      "name": "Minami no Kaiou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

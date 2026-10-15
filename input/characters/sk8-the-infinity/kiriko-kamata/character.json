@@ -1,0 +1,14 @@
+{
+  "id": "sk8-the-infinity-kiriko-kamata",
+  "name": "Kiriko Kamata",
+  "gender": null,
+  "cards": [
+    {
+      "id": "sk8-the-infinity-kiriko-kamata-base",
+      "name": "Kiriko Kamata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

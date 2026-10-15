@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-boros-sama",
+  "name": "Boros-sama",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-boros-sama-base",
+      "name": "Boros-sama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

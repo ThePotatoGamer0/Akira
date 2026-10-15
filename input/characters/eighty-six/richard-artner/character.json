@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-richard-artner",
+  "name": "Richard Artner",
+  "gender": null,
+  "cards": [
+    {
+      "id": "eighty-six-richard-artner-base",
+      "name": "Richard Artner",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

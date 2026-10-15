@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-jango",
+  "name": "Jango",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-jango-base",
+      "name": "Jango",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-asuka-langley-souryuu",
+  "name": "Asuka Langley Souryuu",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "evangelion-asuka-langley-souryuu-base",
+      "name": "Asuka Langley Souryuu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-tusk",
+  "name": "Tusk",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-tusk-base",
+      "name": "Tusk",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

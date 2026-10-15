@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-zoe-ivy",
+  "name": "Zoe Ivy",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-zoe-ivy-base",
+      "name": "Zoe Ivy",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

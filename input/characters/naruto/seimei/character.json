@@ -1,0 +1,14 @@
+{
+  "id": "naruto-seimei",
+  "name": "Seimei",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-seimei-base",
+      "name": "Seimei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

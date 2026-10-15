@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-marlo-freudenberg",
+  "name": "Marlo Freudenberg",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-marlo-freudenberg-base",
+      "name": "Marlo Freudenberg",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

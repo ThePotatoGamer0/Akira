@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-katsumichi-higashiyama",
+  "name": "Katsumichi Higashiyama",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-katsumichi-higashiyama-base",
+      "name": "Katsumichi Higashiyama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

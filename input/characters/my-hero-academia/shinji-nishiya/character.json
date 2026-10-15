@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-shinji-nishiya",
+  "name": "Shinji Nishiya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-shinji-nishiya-base",
+      "name": "Shinji Nishiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-willem-ehrenfried",
+  "name": "Willem Ehrenfried",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-willem-ehrenfried-base",
+      "name": "Willem Ehrenfried",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

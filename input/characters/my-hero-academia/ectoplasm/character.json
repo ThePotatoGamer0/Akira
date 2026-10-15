@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-ectoplasm",
+  "name": "Ectoplasm",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-ectoplasm-base",
+      "name": "Ectoplasm",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

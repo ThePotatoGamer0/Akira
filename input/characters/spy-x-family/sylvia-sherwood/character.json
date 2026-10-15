@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-sylvia-sherwood",
+  "name": "Sylvia Sherwood",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "spy-x-family-sylvia-sherwood-base",
+      "name": "Sylvia Sherwood",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

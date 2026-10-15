@@ -1,0 +1,13 @@
+{
+  "id": "overlord-erya-uzruth",
+  "name": "Erya Uzruth",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-erya-uzruth-base",
+      "name": "Erya Uzruth",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

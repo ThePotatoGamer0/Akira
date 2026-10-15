@@ -1,0 +1,14 @@
+{
+  "id": "danganronpa-aoi-asahina",
+  "name": "Aoi Asahina",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-aoi-asahina-base",
+      "name": "Aoi Asahina",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

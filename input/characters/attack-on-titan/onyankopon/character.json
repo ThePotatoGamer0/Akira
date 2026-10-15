@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-onyankopon",
+  "name": "Onyankopon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-onyankopon-base",
+      "name": "Onyankopon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

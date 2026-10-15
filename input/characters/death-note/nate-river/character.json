@@ -1,0 +1,14 @@
+{
+  "id": "death-note-nate-river",
+  "name": "Nate River",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-nate-river-base",
+      "name": "Nate River",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

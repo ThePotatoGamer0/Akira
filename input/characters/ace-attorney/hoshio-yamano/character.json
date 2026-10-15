@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-hoshio-yamano",
+  "name": "Hoshio Yamano",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-hoshio-yamano-base",
+      "name": "Hoshio Yamano",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

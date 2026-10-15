@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-yun-seok-bae",
+  "name": "Yun-Seok Bae",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-yun-seok-bae-base",
+      "name": "Yun-Seok Bae",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

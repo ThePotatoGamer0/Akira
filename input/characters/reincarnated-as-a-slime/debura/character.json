@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-debura",
+  "name": "Debura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-debura-base",
+      "name": "Debura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

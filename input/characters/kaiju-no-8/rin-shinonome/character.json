@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-rin-shinonome",
+  "name": "Rin Shinonome",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "kaiju-no-8-rin-shinonome-base",
+      "name": "Rin Shinonome",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

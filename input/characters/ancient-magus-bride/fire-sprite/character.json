@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-fire-sprite",
+  "name": "Fire Sprite",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-fire-sprite-base",
+      "name": "Fire Sprite",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

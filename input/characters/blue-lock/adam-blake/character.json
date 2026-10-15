@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-adam-blake",
+  "name": "Adam Blake",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-adam-blake-base",
+      "name": "Adam Blake",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-kotomi-ikuta",
+  "name": "Kotomi Ikuta",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-kotomi-ikuta-base",
+      "name": "Kotomi Ikuta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

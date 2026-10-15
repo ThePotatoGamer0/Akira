@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-pablo-cabassos",
+  "name": "Pablo Cabassos",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-pablo-cabassos-base",
+      "name": "Pablo Cabassos",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

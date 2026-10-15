@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-cyberpsycho",
+  "name": "Cyberpsycho",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-cyberpsycho-base",
+      "name": "Cyberpsycho",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

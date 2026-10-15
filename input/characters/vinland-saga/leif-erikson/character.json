@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-leif-erikson",
+  "name": "Leif Erikson",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-leif-erikson-base",
+      "name": "Leif Erikson",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

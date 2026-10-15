@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-ryouji-fujioka",
+  "name": "Ryouji Fujioka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-ryouji-fujioka-base",
+      "name": "Ryouji Fujioka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

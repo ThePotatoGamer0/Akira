@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-unko-no-kami",
+  "name": "Unko no Kami",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-unko-no-kami-base",
+      "name": "Unko no Kami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

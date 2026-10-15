@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-teruteru-hanamura",
+  "name": "Teruteru Hanamura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-teruteru-hanamura-base",
+      "name": "Teruteru Hanamura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

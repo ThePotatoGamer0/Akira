@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-seok-min",
+  "name": "Seok-Min",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-seok-min-base",
+      "name": "Seok-Min",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

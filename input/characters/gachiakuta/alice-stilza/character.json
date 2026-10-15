@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-alice-stilza",
+  "name": "Alice Stilza",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "gachiakuta-alice-stilza-base",
+      "name": "Alice Stilza",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

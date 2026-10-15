@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-bill-watkins",
+  "name": "Bill Watkins",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-bill-watkins-base",
+      "name": "Bill Watkins",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

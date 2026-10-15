@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-rigur",
+  "name": "Rigur",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-rigur-base",
+      "name": "Rigur",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

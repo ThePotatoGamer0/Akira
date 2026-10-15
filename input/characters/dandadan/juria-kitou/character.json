@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-juria-kitou",
+  "name": "Juria Kitou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dandadan-juria-kitou-base",
+      "name": "Juria Kitou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

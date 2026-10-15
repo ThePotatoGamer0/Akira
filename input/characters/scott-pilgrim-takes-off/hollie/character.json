@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-hollie",
+  "name": "Hollie",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-hollie-base",
+      "name": "Hollie",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

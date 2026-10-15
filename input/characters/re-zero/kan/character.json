@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-kan",
+  "name": "Kan",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-kan-base",
+      "name": "Kan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

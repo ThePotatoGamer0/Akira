@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yuuji-terushima",
+  "name": "Yuuji Terushima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-yuuji-terushima-base",
+      "name": "Yuuji Terushima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

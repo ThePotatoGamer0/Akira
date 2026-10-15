@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-kudou-kishi",
+  "name": "Kudou Kishi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-kudou-kishi-base",
+      "name": "Kudou Kishi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

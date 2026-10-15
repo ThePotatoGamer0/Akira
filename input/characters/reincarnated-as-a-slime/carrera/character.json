@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-carrera",
+  "name": "Carrera",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-carrera-base",
+      "name": "Carrera",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

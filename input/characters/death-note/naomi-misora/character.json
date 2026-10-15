@@ -1,0 +1,14 @@
+{
+  "id": "death-note-naomi-misora",
+  "name": "Naomi Misora",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "death-note-naomi-misora-base",
+      "name": "Naomi Misora",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

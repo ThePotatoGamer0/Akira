@@ -1,0 +1,14 @@
+{
+  "id": "sk8-the-infinity-miya-chinen",
+  "name": "Miya Chinen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-miya-chinen-base",
+      "name": "Miya Chinen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-mjurran",
+  "name": "Mjurran",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-mjurran-base",
+      "name": "Mjurran",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

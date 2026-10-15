@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-ian-dietrich",
+  "name": "Ian Dietrich",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-ian-dietrich-base",
+      "name": "Ian Dietrich",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

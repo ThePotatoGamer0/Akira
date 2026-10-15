@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-michael-connor",
+  "name": "Michael Connor",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-michael-connor-base",
+      "name": "Michael Connor",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

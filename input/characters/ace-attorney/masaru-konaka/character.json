@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-masaru-konaka",
+  "name": "Masaru Konaka",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-masaru-konaka-base",
+      "name": "Masaru Konaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

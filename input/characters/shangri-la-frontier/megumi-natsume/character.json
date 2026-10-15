@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-megumi-natsume",
+  "name": "Megumi Natsume",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-megumi-natsume-base",
+      "name": "Megumi Natsume",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

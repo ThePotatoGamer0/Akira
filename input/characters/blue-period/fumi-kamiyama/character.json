@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-fumi-kamiyama",
+  "name": "Fumi Kamiyama",
+  "gender": null,
+  "cards": [
+    {
+      "id": "blue-period-fumi-kamiyama-base",
+      "name": "Fumi Kamiyama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

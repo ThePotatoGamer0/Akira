@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-erald-grimwald",
+  "name": "Erald Grimwald",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-erald-grimwald-base",
+      "name": "Erald Grimwald",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

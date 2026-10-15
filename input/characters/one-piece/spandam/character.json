@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-spandam",
+  "name": "Spandam",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-piece-spandam-base",
+      "name": "Spandam",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

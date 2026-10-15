@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-stinger",
+  "name": "Stinger",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-stinger-base",
+      "name": "Stinger",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

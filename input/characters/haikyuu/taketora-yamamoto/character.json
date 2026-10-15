@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-taketora-yamamoto",
+  "name": "Taketora Yamamoto",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-taketora-yamamoto-base",
+      "name": "Taketora Yamamoto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

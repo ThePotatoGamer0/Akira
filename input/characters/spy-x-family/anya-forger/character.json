@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-anya-forger",
+  "name": "Anya Forger",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "spy-x-family-anya-forger-base",
+      "name": "Anya Forger",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-nack-tierce",
+  "name": "Nack Tierce",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-nack-tierce-base",
+      "name": "Nack Tierce",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "overlord-zaryusu-shasha",
+  "name": "Zaryusu Shasha",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "overlord-zaryusu-shasha-base",
+      "name": "Zaryusu Shasha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

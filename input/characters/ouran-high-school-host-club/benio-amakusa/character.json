@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-benio-amakusa",
+  "name": "Benio Amakusa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-benio-amakusa-base",
+      "name": "Benio Amakusa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

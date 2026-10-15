@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-roy-truman",
+  "name": "Roy Truman",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-roy-truman-base",
+      "name": "Roy Truman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

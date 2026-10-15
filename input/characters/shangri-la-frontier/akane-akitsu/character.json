@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-akane-akitsu",
+  "name": "Akane Akitsu",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-akane-akitsu-base",
+      "name": "Akane Akitsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

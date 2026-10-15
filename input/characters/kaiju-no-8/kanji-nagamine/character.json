@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-kanji-nagamine",
+  "name": "Kanji Nagamine",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-kanji-nagamine-base",
+      "name": "Kanji Nagamine",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

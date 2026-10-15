@@ -1,0 +1,13 @@
+{
+  "id": "frieren-akuma-no-ko",
+  "name": "Akuma no Ko",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "frieren-akuma-no-ko-base",
+      "name": "Akuma no Ko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

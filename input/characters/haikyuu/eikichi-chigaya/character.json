@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-eikichi-chigaya",
+  "name": "Eikichi Chigaya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-eikichi-chigaya-base",
+      "name": "Eikichi Chigaya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

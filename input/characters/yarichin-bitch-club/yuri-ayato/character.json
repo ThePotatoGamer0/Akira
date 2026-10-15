@@ -1,0 +1,14 @@
+{
+  "id": "yarichin-bitch-club-yuri-ayato",
+  "name": "Yuri Ayato",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "yarichin-bitch-club-yuri-ayato-base",
+      "name": "Yuri Ayato",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

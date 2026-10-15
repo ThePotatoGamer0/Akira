@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-george-no-chichi",
+  "name": "George no chichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-george-no-chichi-base",
+      "name": "George no chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

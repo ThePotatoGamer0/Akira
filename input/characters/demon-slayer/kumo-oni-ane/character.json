@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-kumo-oni-ane",
+  "name": "Kumo Oni Ane",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "demon-slayer-kumo-oni-ane-base",
+      "name": "Kumo Oni Ane",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

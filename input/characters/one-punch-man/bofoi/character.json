@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-bofoi",
+  "name": "Bofoi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-bofoi-base",
+      "name": "Bofoi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

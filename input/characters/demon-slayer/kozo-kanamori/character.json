@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-kozo-kanamori",
+  "name": "Kozo Kanamori",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-kozo-kanamori-base",
+      "name": "Kozo Kanamori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

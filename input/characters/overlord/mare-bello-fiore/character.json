@@ -1,0 +1,13 @@
+{
+  "id": "overlord-mare-bello-fiore",
+  "name": "Mare Bello Fiore",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "overlord-mare-bello-fiore-base",
+      "name": "Mare Bello Fiore",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

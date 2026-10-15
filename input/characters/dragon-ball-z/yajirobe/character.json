@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-yajirobe",
+  "name": "Yajirobe",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-yajirobe-base",
+      "name": "Yajirobe",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

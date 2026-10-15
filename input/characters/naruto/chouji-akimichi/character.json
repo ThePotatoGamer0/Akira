@@ -1,0 +1,14 @@
+{
+  "id": "naruto-chouji-akimichi",
+  "name": "Chouji Akimichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-chouji-akimichi-base",
+      "name": "Chouji Akimichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

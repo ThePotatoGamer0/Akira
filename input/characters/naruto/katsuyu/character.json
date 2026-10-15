@@ -1,0 +1,14 @@
+{
+  "id": "naruto-katsuyu",
+  "name": "Katsuyu",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-katsuyu-base",
+      "name": "Katsuyu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

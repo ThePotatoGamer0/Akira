@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-daida",
+  "name": "Daida",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-daida-base",
+      "name": "Daida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

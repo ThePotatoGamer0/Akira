@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-vaclav-milize",
+  "name": "Václav Milizé",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-vaclav-milize-base",
+      "name": "Václav Milizé",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

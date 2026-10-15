@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-yuki-kuwana",
+  "name": "Yuki Kuwana",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-period-yuki-kuwana-base",
+      "name": "Yuki Kuwana",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

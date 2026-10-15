@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-david-barley",
+  "name": "David Barley",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-david-barley-base",
+      "name": "David Barley",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-ren-kaji",
+  "name": "Ren Kaji",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-ren-kaji-base",
+      "name": "Ren Kaji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

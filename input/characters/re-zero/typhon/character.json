@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-typhon",
+  "name": "Typhon",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-typhon-base",
+      "name": "Typhon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

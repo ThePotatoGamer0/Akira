@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-eugene-rantz",
+  "name": "Eugene Rantz",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-eugene-rantz-base",
+      "name": "Eugene Rantz",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

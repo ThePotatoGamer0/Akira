@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-ben-kizumi",
+  "name": "Ben Kizumi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-ben-kizumi-base",
+      "name": "Ben Kizumi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

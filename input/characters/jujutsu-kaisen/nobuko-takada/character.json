@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-nobuko-takada",
+  "name": "Nobuko Takada",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-nobuko-takada-base",
+      "name": "Nobuko Takada",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

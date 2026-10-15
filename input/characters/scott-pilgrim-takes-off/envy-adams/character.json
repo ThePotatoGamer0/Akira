@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-envy-adams",
+  "name": "Envy Adams",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-envy-adams-base",
+      "name": "Envy Adams",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-chihiro",
+  "name": "Chihiro",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-chihiro-base",
+      "name": "Chihiro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

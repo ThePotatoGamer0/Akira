@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-tomoya-seo",
+  "name": "Tomoya Seo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "assassination-classroom-tomoya-seo-base",
+      "name": "Tomoya Seo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-yumiko",
+  "name": "Yumiko",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-yumiko-base",
+      "name": "Yumiko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

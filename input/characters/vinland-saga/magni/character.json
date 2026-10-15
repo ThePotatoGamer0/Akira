@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-magni",
+  "name": "Magni",
+  "gender": null,
+  "cards": [
+    {
+      "id": "vinland-saga-magni-base",
+      "name": "Magni",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-shiemi-moriyama",
+  "name": "Shiemi Moriyama",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-exorcist-shiemi-moriyama-base",
+      "name": "Shiemi Moriyama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

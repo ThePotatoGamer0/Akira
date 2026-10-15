@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-garden-tenchou",
+  "name": "Garden Tenchou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-garden-tenchou-base",
+      "name": "Garden Tenchou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

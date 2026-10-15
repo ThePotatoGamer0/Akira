@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-annie-leonhart",
+  "name": "Annie Leonhart",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-annie-leonhart-base",
+      "name": "Annie Leonhart",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

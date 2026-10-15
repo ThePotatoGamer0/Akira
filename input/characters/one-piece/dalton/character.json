@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-dalton",
+  "name": "Dalton",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-dalton-base",
+      "name": "Dalton",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

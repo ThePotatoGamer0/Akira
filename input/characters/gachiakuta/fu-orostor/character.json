@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-fu-orostor",
+  "name": "Fu Orostor",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-fu-orostor-base",
+      "name": "Fu Orostor",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

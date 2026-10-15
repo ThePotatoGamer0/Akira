@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-ryouta-sekiguchi",
+  "name": "Ryouta Sekiguchi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-ryouta-sekiguchi-base",
+      "name": "Ryouta Sekiguchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

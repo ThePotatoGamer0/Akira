@@ -1,0 +1,14 @@
+{
+  "id": "sk8-the-infinity-kojirou-nanjou",
+  "name": "Kojirou Nanjou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-kojirou-nanjou-base",
+      "name": "Kojirou Nanjou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

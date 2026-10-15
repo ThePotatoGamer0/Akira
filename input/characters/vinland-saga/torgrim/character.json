@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-torgrim",
+  "name": "Torgrim",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-torgrim-base",
+      "name": "Torgrim",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-lingli",
+  "name": "Lingli",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-lingli-base",
+      "name": "Lingli",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

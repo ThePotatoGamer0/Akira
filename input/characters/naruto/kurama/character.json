@@ -1,0 +1,14 @@
+{
+  "id": "naruto-kurama",
+  "name": "Kurama",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-kurama-base",
+      "name": "Kurama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

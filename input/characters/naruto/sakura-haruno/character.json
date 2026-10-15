@@ -1,0 +1,14 @@
+{
+  "id": "naruto-sakura-haruno",
+  "name": "Sakura Haruno",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-sakura-haruno-base",
+      "name": "Sakura Haruno",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

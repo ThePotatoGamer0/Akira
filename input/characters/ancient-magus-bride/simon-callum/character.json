@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-simon-callum",
+  "name": "Simon Callum",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-simon-callum-base",
+      "name": "Simon Callum",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

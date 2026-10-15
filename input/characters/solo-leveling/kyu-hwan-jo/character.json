@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-kyu-hwan-jo",
+  "name": "Kyu-Hwan Jo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-kyu-hwan-jo-base",
+      "name": "Kyu-Hwan Jo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

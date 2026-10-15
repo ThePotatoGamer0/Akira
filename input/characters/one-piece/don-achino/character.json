@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-don-achino",
+  "name": "Don Achino",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-don-achino-base",
+      "name": "Don Achino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

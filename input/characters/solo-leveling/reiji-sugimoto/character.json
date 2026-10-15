@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-reiji-sugimoto",
+  "name": "Reiji Sugimoto",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-reiji-sugimoto-base",
+      "name": "Reiji Sugimoto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

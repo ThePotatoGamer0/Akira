@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-ki-cheol-hyeon",
+  "name": "Ki-Cheol Hyeon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-ki-cheol-hyeon-base",
+      "name": "Ki-Cheol Hyeon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

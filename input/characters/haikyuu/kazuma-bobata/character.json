@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-kazuma-bobata",
+  "name": "Kazuma Bobata",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-kazuma-bobata-base",
+      "name": "Kazuma Bobata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

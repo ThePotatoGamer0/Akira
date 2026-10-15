@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-muraki",
+  "name": "Muraki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-muraki-base",
+      "name": "Muraki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

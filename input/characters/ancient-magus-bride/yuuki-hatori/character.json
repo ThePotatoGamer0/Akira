@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-yuuki-hatori",
+  "name": "Yuuki Hatori",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-yuuki-hatori-base",
+      "name": "Yuuki Hatori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

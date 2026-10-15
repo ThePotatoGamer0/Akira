@@ -1,0 +1,13 @@
+{
+  "id": "spirited-away-oshira-sama",
+  "name": "Oshira-sama",
+  "gender": null,
+  "cards": [
+    {
+      "id": "spirited-away-oshira-sama-base",
+      "name": "Oshira-sama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

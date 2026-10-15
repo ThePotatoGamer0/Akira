@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-wazaemon",
+  "name": "Wazaemon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-wazaemon-base",
+      "name": "Wazaemon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-angelica-barley",
+  "name": "Angelica Barley",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-angelica-barley-base",
+      "name": "Angelica Barley",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-bakuzan",
+  "name": "Bakuzan",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-bakuzan-base",
+      "name": "Bakuzan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

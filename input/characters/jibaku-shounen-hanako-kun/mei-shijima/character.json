@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-mei-shijima",
+  "name": "Mei Shijima",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-mei-shijima-base",
+      "name": "Mei Shijima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

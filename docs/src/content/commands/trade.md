@@ -1,29 +1,33 @@
 ---
 title: Trade
-description: Akira will help you negotiate a fair swap with another player.
+description: Swap a card with another player. Both of you have to accept.
 command: trade
-shortcuts: None
 ---
 
-Akira will help with **/trade** - Usually pairs with a confirmation step so nobody trades away a favourite by accident. One-way transfers use [give](/commands/give) instead.
+**`/trade`** offers one of your cards for one of theirs. Nothing moves until both of you press the check mark. Either of you can press the cross to cancel. The offer expires after 5 minutes.
+
+The message is a **Card Trade** embed. The image is the two cards with a swap arrow between them. The question mark under each card shows that card's line.
 
 ## Parameters
 
-Parameters are still settling in for slash commands; check in-game `/help` for the live option list. Akira keeps descriptions short so slash autocomplete stays readable.
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `user` | Yes | Who you are trading with. A mention in text commands. |
+| `card_id` | Yes | Your card. |
+| `their_card` | Yes | Their card. |
+
+## Aliases
+
+No short alias. `atrade` works.
 
 ## Example usage
 
 ```
-/trade
+/trade user:@friend card_id:v8pj8pz their_card:v8znvrx
+atrade @friend v8pj8pz v8znvrx
 ```
-
-## Tips
-
-- Trades are two-sided - both players usually confirm before anything moves so slips are rarer than with instant **/give**.
-- Agree out of band (or in thread) on which cards and order of confirmation so nobody cancels mid-flow by surprise.
 
 ## See also
 
-- [Give](/commands/give) - gift a single card with no return
-- [Collection](/commands/collection) - verify what you own before offering a trade
-- [Userinfo](/commands/userinfo) - quick read on someone’s bits or flex stats
+- [Give](/commands/give)
+- [Command list](/commands/reference)

@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-fuudo-no-otoko",
+  "name": "Fuudo no Otoko",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-fuudo-no-otoko-base",
+      "name": "Fuudo no Otoko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

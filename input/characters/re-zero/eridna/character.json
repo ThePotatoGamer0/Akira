@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-eridna",
+  "name": "Eridna",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-eridna-base",
+      "name": "Eridna",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

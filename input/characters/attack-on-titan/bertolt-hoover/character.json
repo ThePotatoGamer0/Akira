@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-bertolt-hoover",
+  "name": "Bertolt Hoover",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-bertolt-hoover-base",
+      "name": "Bertolt Hoover",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

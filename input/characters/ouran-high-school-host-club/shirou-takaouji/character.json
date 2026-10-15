@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-shirou-takaouji",
+  "name": "Shirou Takaouji",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-shirou-takaouji-base",
+      "name": "Shirou Takaouji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "way-of-the-househusband-miku-no-haha",
+  "name": "Miku no Haha",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "way-of-the-househusband-miku-no-haha-base",
+      "name": "Miku no Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

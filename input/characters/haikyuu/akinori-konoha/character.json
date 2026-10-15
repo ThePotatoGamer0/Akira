@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-akinori-konoha",
+  "name": "Akinori Konoha",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-akinori-konoha-base",
+      "name": "Akinori Konoha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

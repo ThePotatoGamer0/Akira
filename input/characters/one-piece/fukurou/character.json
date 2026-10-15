@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-fukurou",
+  "name": "Fukurou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-fukurou-base",
+      "name": "Fukurou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

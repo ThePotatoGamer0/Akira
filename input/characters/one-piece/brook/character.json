@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-brook",
+  "name": "Brook",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-brook-base",
+      "name": "Brook",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

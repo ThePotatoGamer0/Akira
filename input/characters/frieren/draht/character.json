@@ -1,0 +1,13 @@
+{
+  "id": "frieren-draht",
+  "name": "Draht",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-draht-base",
+      "name": "Draht",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-bonn",
+  "name": "Bonn",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-bonn-base",
+      "name": "Bonn",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

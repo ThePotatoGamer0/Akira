@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-noria",
+  "name": "Noria",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-punch-man-noria-base",
+      "name": "Noria",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

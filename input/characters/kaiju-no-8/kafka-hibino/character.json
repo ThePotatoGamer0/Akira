@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-kafka-hibino",
+  "name": "Kafka Hibino",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-kafka-hibino-base",
+      "name": "Kafka Hibino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

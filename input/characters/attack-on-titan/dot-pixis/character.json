@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-dot-pixis",
+  "name": "Dot Pixis",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-dot-pixis-base",
+      "name": "Dot Pixis",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-gaimon",
+  "name": "Gaimon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-gaimon-base",
+      "name": "Gaimon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

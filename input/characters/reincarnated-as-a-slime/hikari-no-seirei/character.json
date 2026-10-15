@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-hikari-no-seirei",
+  "name": "Hikari no Seirei",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-hikari-no-seirei-base",
+      "name": "Hikari no Seirei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

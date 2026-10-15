@@ -1,0 +1,13 @@
+{
+  "id": "overlord-loune-vermillion",
+  "name": "Loune Vermillion",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-loune-vermillion-base",
+      "name": "Loune Vermillion",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

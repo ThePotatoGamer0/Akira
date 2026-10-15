@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-mitsumete-no-kyojin",
+  "name": "Mitsumete no Kyojin",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-mitsumete-no-kyojin-base",
+      "name": "Mitsumete no Kyojin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

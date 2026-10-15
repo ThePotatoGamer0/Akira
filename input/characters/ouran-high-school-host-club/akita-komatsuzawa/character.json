@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-akita-komatsuzawa",
+  "name": "Akita Komatsuzawa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-akita-komatsuzawa-base",
+      "name": "Akita Komatsuzawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

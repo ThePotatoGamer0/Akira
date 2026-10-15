@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-gun-gun",
+  "name": "Gun Gun",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-gun-gun-base",
+      "name": "Gun Gun",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "sk8-the-infinity-koyomi-kyan",
+  "name": "Koyomi Kyan",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-koyomi-kyan-base",
+      "name": "Koyomi Kyan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

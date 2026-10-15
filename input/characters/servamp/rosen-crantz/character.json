@@ -1,0 +1,14 @@
+{
+  "id": "servamp-rosen-crantz",
+  "name": "Rosen Crantz",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-rosen-crantz-base",
+      "name": "Rosen Crantz",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

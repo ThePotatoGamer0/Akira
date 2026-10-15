@@ -1,0 +1,14 @@
+{
+  "id": "naruto-shigure",
+  "name": "Shigure",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-shigure-base",
+      "name": "Shigure",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

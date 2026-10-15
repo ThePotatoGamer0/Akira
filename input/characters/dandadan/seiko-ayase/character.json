@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-seiko-ayase",
+  "name": "Seiko Ayase",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dandadan-seiko-ayase-base",
+      "name": "Seiko Ayase",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

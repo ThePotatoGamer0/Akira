@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-jinzouningen-17-gou",
+  "name": "Jinzouningen 17-gou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-jinzouningen-17-gou-base",
+      "name": "Jinzouningen 17-gou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-gardar",
+  "name": "Gardar",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-gardar-base",
+      "name": "Gardar",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

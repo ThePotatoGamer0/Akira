@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-chloe-aubert",
+  "name": "Chloe Aubert",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-chloe-aubert-base",
+      "name": "Chloe Aubert",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

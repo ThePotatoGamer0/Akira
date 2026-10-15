@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-mimi",
+  "name": "Mimi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-mimi-base",
+      "name": "Mimi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

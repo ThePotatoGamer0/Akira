@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-razor",
+  "name": "Razor",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-razor-base",
+      "name": "Razor",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

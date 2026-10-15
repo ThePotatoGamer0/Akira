@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-hinako-tsuwabuki",
+  "name": "Hinako Tsuwabuki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-hinako-tsuwabuki-base",
+      "name": "Hinako Tsuwabuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

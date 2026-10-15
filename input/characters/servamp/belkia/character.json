@@ -1,0 +1,14 @@
+{
+  "id": "servamp-belkia",
+  "name": "Belkia",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-belkia-base",
+      "name": "Belkia",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

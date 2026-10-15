@@ -1,0 +1,14 @@
+{
+  "id": "naruto-yugao-uzuki",
+  "name": "Yugao Uzuki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-yugao-uzuki-base",
+      "name": "Yugao Uzuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

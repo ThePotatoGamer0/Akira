@@ -1,0 +1,14 @@
+{
+  "id": "naruto-enma",
+  "name": "Enma",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-enma-base",
+      "name": "Enma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-touma",
+  "name": "Touma",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-touma-base",
+      "name": "Touma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

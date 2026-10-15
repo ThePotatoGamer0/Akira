@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-dragon",
+  "name": "Dragon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-dragon-base",
+      "name": "Dragon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

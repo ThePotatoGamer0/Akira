@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-kentarou-kyoutani",
+  "name": "Kentarou Kyoutani ",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-kentarou-kyoutani-base",
+      "name": "Kentarou Kyoutani ",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

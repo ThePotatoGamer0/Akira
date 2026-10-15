@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-hakon",
+  "name": "Hakon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-hakon-base",
+      "name": "Hakon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

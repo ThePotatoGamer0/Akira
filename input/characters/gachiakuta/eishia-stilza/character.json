@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-eishia-stilza",
+  "name": "Eishia Stilza",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "gachiakuta-eishia-stilza-base",
+      "name": "Eishia Stilza",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

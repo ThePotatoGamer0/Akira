@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-knives-chau",
+  "name": "Knives Chau",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-knives-chau-base",
+      "name": "Knives Chau",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

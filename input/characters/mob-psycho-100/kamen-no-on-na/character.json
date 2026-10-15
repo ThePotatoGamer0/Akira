@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-kamen-no-on-na",
+  "name": "Kamen no on'na",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-kamen-no-on-na-base",
+      "name": "Kamen no on'na",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

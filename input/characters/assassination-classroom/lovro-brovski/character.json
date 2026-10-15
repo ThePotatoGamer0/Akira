@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-lovro-brovski",
+  "name": "Lovro Brovski",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "assassination-classroom-lovro-brovski-base",
+      "name": "Lovro Brovski",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

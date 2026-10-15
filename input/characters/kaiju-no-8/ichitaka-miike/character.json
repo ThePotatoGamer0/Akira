@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-ichitaka-miike",
+  "name": "Ichitaka Miike",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-ichitaka-miike-base",
+      "name": "Ichitaka Miike",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

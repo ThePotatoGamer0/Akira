@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-ritsuko-akagi",
+  "name": "Ritsuko Akagi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "evangelion-ritsuko-akagi-base",
+      "name": "Ritsuko Akagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-tsuchinoko",
+  "name": "Tsuchinoko",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dandadan-tsuchinoko-base",
+      "name": "Tsuchinoko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

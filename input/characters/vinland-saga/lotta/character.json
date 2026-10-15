@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-lotta",
+  "name": "Lotta",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "vinland-saga-lotta-base",
+      "name": "Lotta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

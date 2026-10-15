@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-fred-thompson",
+  "name": "Fred Thompson",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-fred-thompson-base",
+      "name": "Fred Thompson",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

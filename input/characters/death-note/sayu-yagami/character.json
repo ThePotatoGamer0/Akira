@@ -1,0 +1,14 @@
+{
+  "id": "death-note-sayu-yagami",
+  "name": "Sayu Yagami",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "death-note-sayu-yagami-base",
+      "name": "Sayu Yagami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

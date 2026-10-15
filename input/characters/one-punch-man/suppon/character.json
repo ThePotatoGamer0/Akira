@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-suppon",
+  "name": "Suppon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-suppon-base",
+      "name": "Suppon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

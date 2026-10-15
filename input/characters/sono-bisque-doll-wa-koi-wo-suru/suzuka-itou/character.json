@@ -1,0 +1,14 @@
+{
+  "id": "sono-bisque-doll-wa-koi-wo-suru-suzuka-itou",
+  "name": "Suzuka Itou",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sono-bisque-doll-wa-koi-wo-suru-suzuka-itou-base",
+      "name": "Suzuka Itou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-masaki-anzai",
+  "name": "Masaki Anzai",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-masaki-anzai-base",
+      "name": "Masaki Anzai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

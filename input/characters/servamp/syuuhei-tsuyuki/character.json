@@ -1,0 +1,14 @@
+{
+  "id": "servamp-syuuhei-tsuyuki",
+  "name": "Syuuhei Tsuyuki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-syuuhei-tsuyuki-base",
+      "name": "Syuuhei Tsuyuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

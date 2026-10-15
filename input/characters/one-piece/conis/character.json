@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-conis",
+  "name": "Conis",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-conis-base",
+      "name": "Conis",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

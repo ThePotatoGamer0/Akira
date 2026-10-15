@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-kaoru-kanzaki",
+  "name": "Kaoru Kanzaki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "phantom-busters-kaoru-kanzaki-base",
+      "name": "Kaoru Kanzaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

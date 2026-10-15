@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-eugene-korekishi",
+  "name": "Eugene Korekishi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "phantom-busters-eugene-korekishi-base",
+      "name": "Eugene Korekishi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

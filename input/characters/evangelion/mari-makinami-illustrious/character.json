@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-mari-makinami-illustrious",
+  "name": "Mari Makinami Illustrious",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "evangelion-mari-makinami-illustrious-base",
+      "name": "Mari Makinami Illustrious",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "overlord-elias-brandt-dale-raeven",
+  "name": "Elias Brandt Dale  Raeven",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-elias-brandt-dale-raeven-base",
+      "name": "Elias Brandt Dale  Raeven",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

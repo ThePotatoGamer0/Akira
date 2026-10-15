@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-trunks",
+  "name": "Trunks",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-trunks-base",
+      "name": "Trunks",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

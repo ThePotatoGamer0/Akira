@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-iaian",
+  "name": "Iaian",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-iaian-base",
+      "name": "Iaian",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

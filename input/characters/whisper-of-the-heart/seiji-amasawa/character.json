@@ -1,0 +1,13 @@
+{
+  "id": "whisper-of-the-heart-seiji-amasawa",
+  "name": "Seiji Amasawa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "whisper-of-the-heart-seiji-amasawa-base",
+      "name": "Seiji Amasawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

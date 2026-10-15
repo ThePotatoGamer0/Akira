@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-kaito-shiratori",
+  "name": "Kaito Shiratori",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-kaito-shiratori-base",
+      "name": "Kaito Shiratori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

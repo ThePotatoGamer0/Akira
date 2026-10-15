@@ -1,0 +1,14 @@
+{
+  "id": "naruto-todoroki",
+  "name": "Todoroki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-todoroki-base",
+      "name": "Todoroki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

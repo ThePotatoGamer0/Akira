@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-jun-tae-gu",
+  "name": "Jun-Tae Gu",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-jun-tae-gu-base",
+      "name": "Jun-Tae Gu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

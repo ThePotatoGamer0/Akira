@@ -1,0 +1,14 @@
+{
+  "id": "sk8-the-infinity-kazu",
+  "name": "Kazu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-kazu-base",
+      "name": "Kazu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-ryouta-mitarai",
+  "name": "Ryouta Mitarai",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-ryouta-mitarai-base",
+      "name": "Ryouta Mitarai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

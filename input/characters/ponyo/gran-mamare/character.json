@@ -1,0 +1,13 @@
+{
+  "id": "ponyo-gran-mamare",
+  "name": "Gran Mamare",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ponyo-gran-mamare-base",
+      "name": "Gran Mamare",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "naruto-fugaku-uchiha",
+  "name": "Fugaku Uchiha",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-fugaku-uchiha-base",
+      "name": "Fugaku Uchiha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

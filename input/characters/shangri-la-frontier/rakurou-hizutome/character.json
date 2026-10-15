@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-rakurou-hizutome",
+  "name": "Rakurou Hizutome",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-rakurou-hizutome-base",
+      "name": "Rakurou Hizutome",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

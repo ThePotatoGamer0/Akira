@@ -1,29 +1,32 @@
 ---
 title: Userinfo
-description: Akira will summarise a player bits, prestige, milestones, and flex stats.
+description: Bits, card count, prestige, and milestone numbers for one player.
 command: userinfo
-shortcuts: whois
+shortcuts: ui, whois
 ---
 
-Akira will help with **/userinfo** - Mentions optional; defaults to you when nobody is passed. Useful context before a [trade](/commands/trade).
+**/userinfo** replies with the name Akira uses, bits, how many cards they own, prestige level, milestones claimed this cycle, bits given to the pool this cycle, and any daily bonus already on the profile. "This cycle" is the current milestone bar. Prestige sets that cycle back to the start.
 
 ## Parameters
 
-Parameters are still settling in for slash commands; check in-game `/help` for the live option list. Akira keeps descriptions short so slash autocomplete stays readable.
+| Name | Required | What it is |
+| --- | --- | --- |
+| `user` | No | A mention. Defaults to you. |
+
+## Aliases
+
+`ui` and `whois`. `aui` and `awhois` work.
 
 ## Example usage
 
 ```
 /userinfo
+aui <@123>
 ```
-
-## Tips
-
-- Omit a user argument to see your own bits, prestige, and milestones - add a mention or id to scout someone else.
-- Good quick check before a [trade](/commands/trade) so both people agree the bits or prestige story fits what they expect on the table.
 
 ## See also
 
-- [Trade](/commands/trade)
-- [Prestige overview](/prestige/overview) - what those milestone / prestige lines mean in docs
+- [Collection](/commands/collection)
 - [Bits](/economy/bits)
+- [Personal milestones](/economy/personal-milestone)
+- [Command list](/commands/reference)

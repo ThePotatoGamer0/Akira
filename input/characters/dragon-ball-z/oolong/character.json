@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-oolong",
+  "name": "Oolong",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-oolong-base",
+      "name": "Oolong",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

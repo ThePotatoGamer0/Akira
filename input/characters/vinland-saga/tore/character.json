@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-tore",
+  "name": "Tore",
+  "gender": null,
+  "cards": [
+    {
+      "id": "vinland-saga-tore-base",
+      "name": "Tore",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

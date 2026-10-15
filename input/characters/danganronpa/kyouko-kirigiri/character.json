@@ -1,0 +1,14 @@
+{
+  "id": "danganronpa-kyouko-kirigiri",
+  "name": "Kyouko Kirigiri",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-kyouko-kirigiri-base",
+      "name": "Kyouko Kirigiri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

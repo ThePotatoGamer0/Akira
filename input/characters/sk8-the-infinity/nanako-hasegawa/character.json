@@ -1,0 +1,14 @@
+{
+  "id": "sk8-the-infinity-nanako-hasegawa",
+  "name": "Nanako Hasegawa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "sk8-the-infinity-nanako-hasegawa-base",
+      "name": "Nanako Hasegawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

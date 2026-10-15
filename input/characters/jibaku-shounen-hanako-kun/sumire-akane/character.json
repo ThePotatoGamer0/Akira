@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-sumire-akane",
+  "name": "Sumire Akane ",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-sumire-akane-base",
+      "name": "Sumire Akane ",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

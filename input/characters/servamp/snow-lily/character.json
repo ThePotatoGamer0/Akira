@@ -1,0 +1,14 @@
+{
+  "id": "servamp-snow-lily",
+  "name": "Snow Lily",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-snow-lily-base",
+      "name": "Snow Lily",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

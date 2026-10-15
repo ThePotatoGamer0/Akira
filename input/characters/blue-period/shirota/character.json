@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-shirota",
+  "name": "Shirota",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-period-shirota-base",
+      "name": "Shirota",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

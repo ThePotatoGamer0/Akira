@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-kuzan",
+  "name": "Kuzan",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-kuzan-base",
+      "name": "Kuzan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

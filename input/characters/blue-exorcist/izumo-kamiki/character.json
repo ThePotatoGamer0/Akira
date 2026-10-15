@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-izumo-kamiki",
+  "name": "Izumo Kamiki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-exorcist-izumo-kamiki-base",
+      "name": "Izumo Kamiki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

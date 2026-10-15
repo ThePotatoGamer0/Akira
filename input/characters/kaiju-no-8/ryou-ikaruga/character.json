@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-ryou-ikaruga",
+  "name": "Ryou Ikaruga",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-ryou-ikaruga-base",
+      "name": "Ryou Ikaruga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

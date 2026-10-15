@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-louise",
+  "name": "Louise",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-louise-base",
+      "name": "Louise",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

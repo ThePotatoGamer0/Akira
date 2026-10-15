@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-lucci-rob",
+  "name": "Lucci Rob",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-lucci-rob-base",
+      "name": "Lucci Rob",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

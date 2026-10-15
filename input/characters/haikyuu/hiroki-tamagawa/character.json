@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-hiroki-tamagawa",
+  "name": "Hiroki Tamagawa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-hiroki-tamagawa-base",
+      "name": "Hiroki Tamagawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

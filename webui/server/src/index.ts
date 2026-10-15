@@ -1,14 +1,14 @@
 import "dotenv/config";
 import path from "node:path";
-import fs from "node:fs";
 import cors from "cors";
 import express from "express";
 import session from "express-session";
 import { authRouter } from "./routes/auth.js";
 import { collectionRouter } from "./routes/collection.js";
 import { economyRouter } from "./routes/economy.js";
-import { leaderboardRouter } from "./routes/leaderboard.js";
+import { statsRouter } from "./routes/stats.js";
 import { adminRouter } from "./routes/admin.js";
+import { serveMissingCardAsset } from "./routes/card-assets.js";
 import { REPO_ROOT } from "./utils/repo-root.js";
 
 const app = express();
@@ -24,6 +24,15 @@ const extra = (process.env["WEBUI_ORIGINS"] ?? "")
   .split(",")
   .map((s) => s.trim())
   .filter(Boolean);
+
+const crossSite = extra.some((origin) => {
+  try {
+    const url = new URL(origin);
+    return url.protocol === "https:" && url.hostname !== "localhost";
+  } catch {
+    return false;
+  }
+});
 
 app.set("trust proxy", 1);
 
@@ -72,30 +81,32 @@ app.use(
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      sameSite: process.env["NODE_ENV"] === "production" ? "lax" : "lax",
-      secure: process.env["COOKIE_SECURE"] === "1",
+      sameSite: crossSite ? "none" : "lax",
+      secure: crossSite || process.env["COOKIE_SECURE"] === "1",
+      partitioned: crossSite,
       maxAge: 30 * 24 * 60 * 60 * 1000,
     },
   }),
 );
 
 const cardsStatic = path.join(REPO_ROOT, "assets", "cards");
-
-// --- DEBUGGING BLOCK ---
-console.log(`\n[Akira Boot] Expected static cards directory: ${cardsStatic}`);
-if (!fs.existsSync(cardsStatic)) {
-  console.warn(`[Akira Warning] The static directory DOES NOT EXIST! REPO_ROOT might be misconfigured.\n`);
-} else {
-  console.log(`[Akira Boot] Static directory found. Serving images...\n`);
-}
-// -----------------------
-
-app.use("/api/static/cards", express.static(cardsStatic));
+app.use(
+  "/api/static/cards",
+  express.static(cardsStatic, {
+    fallthrough: true,
+    setHeaders(res, filePath) {
+      if (filePath.endsWith(".apng")) res.setHeader("Content-Type", "image/png");
+    },
+  }),
+);
+app.get("/api/static/cards/:variantId/:frameId/:printKey/:dyeKey/:fileName", (req, res, next) => {
+  void serveMissingCardAsset(req, res).catch(next);
+});
 
 app.use("/auth", authRouter);
 app.use("/collection", collectionRouter);
 app.use("/economy", economyRouter);
-app.use("/leaderboard", leaderboardRouter);
+app.use("/stats", statsRouter);
 app.use("/admin", adminRouter);
 
 app.get("/health", (_req, res) => res.json({ ok: true }));

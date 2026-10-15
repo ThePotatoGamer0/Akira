@@ -1,0 +1,14 @@
+{
+  "id": "servamp-world-end",
+  "name": "World End",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-world-end-base",
+      "name": "World End",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

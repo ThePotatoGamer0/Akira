@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-naota-tachimi",
+  "name": "Naota Tachimi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-naota-tachimi-base",
+      "name": "Naota Tachimi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

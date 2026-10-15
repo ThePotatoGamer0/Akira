@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-kotoha-tachibana",
+  "name": "Kotoha Tachibana",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "wind-breaker-kotoha-tachibana-base",
+      "name": "Kotoha Tachibana",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

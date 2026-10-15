@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-sukerou",
+  "name": "Sukerou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-sukerou-base",
+      "name": "Sukerou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

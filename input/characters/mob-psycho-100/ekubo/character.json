@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-ekubo",
+  "name": "Ekubo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-ekubo-base",
+      "name": "Ekubo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

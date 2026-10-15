@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-thora",
+  "name": "Thora",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "vinland-saga-thora-base",
+      "name": "Thora",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

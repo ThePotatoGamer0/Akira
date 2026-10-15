@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-joutenin",
+  "name": "Joutenin",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-joutenin-base",
+      "name": "Joutenin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-violet-st-george",
+  "name": "Violet St. George",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-violet-st-george-base",
+      "name": "Violet St. George",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

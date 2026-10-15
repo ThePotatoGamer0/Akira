@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-utahime-iori",
+  "name": "Utahime Iori",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-utahime-iori-base",
+      "name": "Utahime Iori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

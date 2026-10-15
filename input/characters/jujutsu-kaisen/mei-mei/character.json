@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-mei-mei",
+  "name": "Mei Mei",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-mei-mei-base",
+      "name": "Mei Mei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

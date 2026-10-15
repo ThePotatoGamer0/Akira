@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-teach-marshall",
+  "name": "Teach Marshall",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-teach-marshall-base",
+      "name": "Teach Marshall",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

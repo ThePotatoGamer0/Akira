@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-tae-gyu-lim",
+  "name": "Tae-Gyu Lim",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-tae-gyu-lim-base",
+      "name": "Tae-Gyu Lim",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

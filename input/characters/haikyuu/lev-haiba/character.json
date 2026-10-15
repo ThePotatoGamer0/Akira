@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-lev-haiba",
+  "name": "Lev Haiba",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-lev-haiba-base",
+      "name": "Lev Haiba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

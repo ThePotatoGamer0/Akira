@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-kinta-sakata",
+  "name": "Kinta Sakata",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dandadan-kinta-sakata-base",
+      "name": "Kinta Sakata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

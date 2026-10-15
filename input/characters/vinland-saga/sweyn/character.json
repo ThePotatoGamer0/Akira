@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-sweyn",
+  "name": "Sweyn",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-sweyn-base",
+      "name": "Sweyn",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

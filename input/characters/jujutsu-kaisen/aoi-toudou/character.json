@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-aoi-toudou",
+  "name": "Aoi Toudou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-aoi-toudou-base",
+      "name": "Aoi Toudou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

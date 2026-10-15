@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-akagi",
+  "name": "Akagi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-akagi-base",
+      "name": "Akagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

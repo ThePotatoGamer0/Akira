@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-shouta-itou",
+  "name": "Shouta Itou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-shouta-itou-base",
+      "name": "Shouta Itou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

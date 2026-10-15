@@ -1,0 +1,13 @@
+{
+  "id": "frieren-richter",
+  "name": "Richter",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-richter-base",
+      "name": "Richter",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

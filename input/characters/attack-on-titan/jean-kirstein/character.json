@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-jean-kirstein",
+  "name": "Jean Kirstein",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-jean-kirstein-base",
+      "name": "Jean Kirstein",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

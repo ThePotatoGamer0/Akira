@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-waganma",
+  "name": "Waganma",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-waganma-base",
+      "name": "Waganma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

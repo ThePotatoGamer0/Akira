@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-eun-seok",
+  "name": "Eun-Seok",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-eun-seok-base",
+      "name": "Eun-Seok",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

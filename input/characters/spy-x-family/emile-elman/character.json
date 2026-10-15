@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-emile-elman",
+  "name": "Emile Elman",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-emile-elman-base",
+      "name": "Emile Elman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

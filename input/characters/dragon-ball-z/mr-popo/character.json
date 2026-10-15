@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-mr-popo",
+  "name": "Mr. Popo",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-mr-popo-base",
+      "name": "Mr. Popo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

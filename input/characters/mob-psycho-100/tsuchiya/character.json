@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-tsuchiya",
+  "name": "Tsuchiya",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-tsuchiya-base",
+      "name": "Tsuchiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

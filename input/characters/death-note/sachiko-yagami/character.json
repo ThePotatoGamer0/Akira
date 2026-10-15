@@ -1,0 +1,14 @@
+{
+  "id": "death-note-sachiko-yagami",
+  "name": "Sachiko Yagami",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "death-note-sachiko-yagami-base",
+      "name": "Sachiko Yagami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

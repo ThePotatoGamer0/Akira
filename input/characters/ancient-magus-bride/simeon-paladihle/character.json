@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-simeon-paladihle",
+  "name": "Simeon Paladihle",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-simeon-paladihle-base",
+      "name": "Simeon Paladihle",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

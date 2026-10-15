@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-naki-kitou",
+  "name": "Naki Kitou",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dandadan-naki-kitou-base",
+      "name": "Naki Kitou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-laura-walker",
+  "name": "Laura Walker",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "solo-leveling-laura-walker-base",
+      "name": "Laura Walker",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "whisper-of-the-heart-nishi-shiro",
+  "name": "Nishi Shiro",
+  "gender": null,
+  "cards": [
+    {
+      "id": "whisper-of-the-heart-nishi-shiro-base",
+      "name": "Nishi Shiro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

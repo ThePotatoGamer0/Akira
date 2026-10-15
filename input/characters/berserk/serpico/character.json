@@ -1,0 +1,13 @@
+{
+  "id": "berserk-serpico",
+  "name": "Serpico",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "berserk-serpico-base",
+      "name": "Serpico",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

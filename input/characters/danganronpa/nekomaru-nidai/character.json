@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-nekomaru-nidai",
+  "name": "Nekomaru Nidai",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-nekomaru-nidai-base",
+      "name": "Nekomaru Nidai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

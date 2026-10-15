@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-elias-ainsworth",
+  "name": "Elias Ainsworth",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-elias-ainsworth-base",
+      "name": "Elias Ainsworth",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

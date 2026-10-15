@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-veyron",
+  "name": "Veyron",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-veyron-base",
+      "name": "Veyron",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

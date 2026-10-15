@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-phobio",
+  "name": "Phobio",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-phobio-base",
+      "name": "Phobio",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

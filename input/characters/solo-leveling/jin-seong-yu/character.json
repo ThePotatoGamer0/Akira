@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-jin-seong-yu",
+  "name": "Jin-Seong Yu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-jin-seong-yu-base",
+      "name": "Jin-Seong Yu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

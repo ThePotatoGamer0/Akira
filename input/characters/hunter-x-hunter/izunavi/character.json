@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-izunavi",
+  "name": "Izunavi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-izunavi-base",
+      "name": "Izunavi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-alice-rondo",
+  "name": "Alice Rondo",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-alice-rondo-base",
+      "name": "Alice Rondo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

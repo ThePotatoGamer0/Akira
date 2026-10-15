@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-babidi",
+  "name": "Babidi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-babidi-base",
+      "name": "Babidi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "danganronpa-sayaka-maizono",
+  "name": "Sayaka Maizono",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-sayaka-maizono-base",
+      "name": "Sayaka Maizono",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

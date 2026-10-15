@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-eld-gin",
+  "name": "Eld Gin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-eld-gin-base",
+      "name": "Eld Gin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

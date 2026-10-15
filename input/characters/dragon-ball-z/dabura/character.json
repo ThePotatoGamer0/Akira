@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-dabura",
+  "name": "Dabura",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-dabura-base",
+      "name": "Dabura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

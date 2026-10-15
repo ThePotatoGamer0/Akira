@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-hina-kamishiro",
+  "name": "Hina Kamishiro",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-hina-kamishiro-base",
+      "name": "Hina Kamishiro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

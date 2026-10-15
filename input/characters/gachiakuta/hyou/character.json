@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-hyou",
+  "name": "Hyou",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "gachiakuta-hyou-base",
+      "name": "Hyou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "death-note-guuk",
+  "name": "Guuk",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-guuk-base",
+      "name": "Guuk",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

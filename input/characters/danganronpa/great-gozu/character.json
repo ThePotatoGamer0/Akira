@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-great-gozu",
+  "name": "Great Gozu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-great-gozu-base",
+      "name": "Great Gozu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

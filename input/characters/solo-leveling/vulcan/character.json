@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-vulcan",
+  "name": "Vulcan",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-vulcan-base",
+      "name": "Vulcan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

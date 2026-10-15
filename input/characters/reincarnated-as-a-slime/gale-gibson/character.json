@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-gale-gibson",
+  "name": "Gale Gibson",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-gale-gibson-base",
+      "name": "Gale Gibson",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

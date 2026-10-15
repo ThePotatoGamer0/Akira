@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-masako-saeki",
+  "name": "Masako Saeki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-period-masako-saeki-base",
+      "name": "Masako Saeki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

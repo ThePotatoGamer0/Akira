@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-narinki",
+  "name": "Narinki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-narinki-base",
+      "name": "Narinki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

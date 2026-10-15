@@ -1,0 +1,14 @@
+{
+  "id": "yarichin-bitch-club-takashi-toono",
+  "name": "Takashi Toono",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "yarichin-bitch-club-takashi-toono-base",
+      "name": "Takashi Toono",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "frieren-dach-hakushaku",
+  "name": "Dach Hakushaku",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-dach-hakushaku-base",
+      "name": "Dach Hakushaku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

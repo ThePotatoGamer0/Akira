@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-saburou",
+  "name": "Saburou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-saburou-base",
+      "name": "Saburou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

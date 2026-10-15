@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-rokurouta",
+  "name": "Rokurouta",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-rokurouta-base",
+      "name": "Rokurouta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

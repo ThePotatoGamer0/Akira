@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-newgate-edward",
+  "name": "Newgate Edward",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-newgate-edward-base",
+      "name": "Newgate Edward",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

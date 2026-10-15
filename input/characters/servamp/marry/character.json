@@ -1,0 +1,14 @@
+{
+  "id": "servamp-marry",
+  "name": "Marry",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "servamp-marry-base",
+      "name": "Marry",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

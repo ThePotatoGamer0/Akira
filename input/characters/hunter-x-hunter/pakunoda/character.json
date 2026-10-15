@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-pakunoda",
+  "name": "Pakunoda",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-pakunoda-base",
+      "name": "Pakunoda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

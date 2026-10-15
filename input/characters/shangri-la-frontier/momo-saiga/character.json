@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-momo-saiga",
+  "name": "Momo Saiga",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-momo-saiga-base",
+      "name": "Momo Saiga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

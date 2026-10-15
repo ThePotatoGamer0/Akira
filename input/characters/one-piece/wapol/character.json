@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-wapol",
+  "name": "Wapol",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-wapol-base",
+      "name": "Wapol",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

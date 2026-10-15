@@ -1,0 +1,13 @@
+{
+  "id": "frieren-orden",
+  "name": "Orden",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-orden-base",
+      "name": "Orden",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-konomi-okonogi",
+  "name": "Konomi Okonogi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "kaiju-no-8-konomi-okonogi-base",
+      "name": "Konomi Okonogi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-eri-miyanoshita",
+  "name": "Eri Miyanoshita",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "haikyuu-eri-miyanoshita-base",
+      "name": "Eri Miyanoshita",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

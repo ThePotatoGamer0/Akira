@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-umino",
+  "name": "Umino",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-period-umino-base",
+      "name": "Umino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

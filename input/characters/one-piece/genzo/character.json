@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-genzo",
+  "name": "Genzo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-genzo-base",
+      "name": "Genzo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

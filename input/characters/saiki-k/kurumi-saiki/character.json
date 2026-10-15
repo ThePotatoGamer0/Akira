@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-kurumi-saiki",
+  "name": "Kurumi Saiki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "saiki-k-kurumi-saiki-base",
+      "name": "Kurumi Saiki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

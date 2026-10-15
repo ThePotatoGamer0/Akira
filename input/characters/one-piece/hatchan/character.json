@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-hatchan",
+  "name": "Hatchan",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-hatchan-base",
+      "name": "Hatchan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

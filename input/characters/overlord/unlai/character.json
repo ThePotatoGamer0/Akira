@@ -1,0 +1,13 @@
+{
+  "id": "overlord-unlai",
+  "name": "Unlai",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-unlai-base",
+      "name": "Unlai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

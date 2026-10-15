@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-gratianus",
+  "name": "Gratianus",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-gratianus-base",
+      "name": "Gratianus",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-kitsune",
+  "name": "Kitsune",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-kitsune-base",
+      "name": "Kitsune",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

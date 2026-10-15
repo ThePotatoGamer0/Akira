@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-hajime-hinata",
+  "name": "Hajime Hinata",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-hajime-hinata-base",
+      "name": "Hajime Hinata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

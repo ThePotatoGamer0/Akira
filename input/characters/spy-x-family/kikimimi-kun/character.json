@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-kikimimi-kun",
+  "name": "Kikimimi-kun",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-kikimimi-kun-base",
+      "name": "Kikimimi-kun",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

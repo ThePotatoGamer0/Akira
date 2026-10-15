@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-kurgan",
+  "name": "Kurgan",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-kurgan-base",
+      "name": "Kurgan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

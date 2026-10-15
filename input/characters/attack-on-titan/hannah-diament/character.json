@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-hannah-diament",
+  "name": "Hannah Diament",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-hannah-diament-base",
+      "name": "Hannah Diament",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

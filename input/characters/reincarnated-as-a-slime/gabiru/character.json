@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-gabiru",
+  "name": "Gabiru",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-gabiru-base",
+      "name": "Gabiru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

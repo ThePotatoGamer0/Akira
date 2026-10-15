@@ -1,0 +1,14 @@
+{
+  "id": "death-note-arayoshi-hatori",
+  "name": "Arayoshi Hatori",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-arayoshi-hatori-base",
+      "name": "Arayoshi Hatori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

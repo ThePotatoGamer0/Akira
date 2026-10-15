@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-hana-misaki",
+  "name": "Hana  Misaki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "haikyuu-hana-misaki-base",
+      "name": "Hana  Misaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

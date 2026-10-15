@@ -1,0 +1,14 @@
+{
+  "id": "servamp-ophelia",
+  "name": "Ophelia",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "servamp-ophelia-base",
+      "name": "Ophelia",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

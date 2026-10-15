@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-monique",
+  "name": "Monique",
+  "gender": null,
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-monique-base",
+      "name": "Monique",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

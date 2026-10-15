@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-daphne",
+  "name": "Daphne",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-daphne-base",
+      "name": "Daphne",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

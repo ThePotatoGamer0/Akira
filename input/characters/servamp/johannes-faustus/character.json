@@ -1,0 +1,14 @@
+{
+  "id": "servamp-johannes-faustus",
+  "name": "Johannes Faustus",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-johannes-faustus-base",
+      "name": "Johannes Faustus",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

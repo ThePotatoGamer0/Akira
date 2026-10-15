@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-saitama",
+  "name": "Saitama",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-saitama-base",
+      "name": "Saitama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

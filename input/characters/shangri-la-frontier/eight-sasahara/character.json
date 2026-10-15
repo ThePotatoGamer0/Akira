@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-eight-sasahara",
+  "name": "Eight Sasahara",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-eight-sasahara-base",
+      "name": "Eight Sasahara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

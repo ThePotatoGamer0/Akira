@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-gina",
+  "name": "Gina",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "solo-leveling-gina-base",
+      "name": "Gina",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

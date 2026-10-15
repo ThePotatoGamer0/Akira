@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-renard-jester",
+  "name": "Renard Jester",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-renard-jester-base",
+      "name": "Renard Jester",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

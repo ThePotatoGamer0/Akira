@@ -1,0 +1,14 @@
+{
+  "id": "naruto-ino-yamanaka",
+  "name": "Ino Yamanaka",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-ino-yamanaka-base",
+      "name": "Ino Yamanaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

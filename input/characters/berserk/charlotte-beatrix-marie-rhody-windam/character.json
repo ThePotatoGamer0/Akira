@@ -1,0 +1,13 @@
+{
+  "id": "berserk-charlotte-beatrix-marie-rhody-windam",
+  "name": "Charlotte Beatrix Marie Rhody Windam",
+  "gender": null,
+  "cards": [
+    {
+      "id": "berserk-charlotte-beatrix-marie-rhody-windam-base",
+      "name": "Charlotte Beatrix Marie Rhody Windam",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

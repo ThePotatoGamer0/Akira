@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-seth-s-assistant",
+  "name": "Seth's Assistant",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-seth-s-assistant-base",
+      "name": "Seth's Assistant",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

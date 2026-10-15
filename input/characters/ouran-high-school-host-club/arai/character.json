@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-arai",
+  "name": "Arai",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-arai-base",
+      "name": "Arai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

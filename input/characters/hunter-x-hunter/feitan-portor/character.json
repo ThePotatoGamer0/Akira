@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-feitan-portor",
+  "name": "Feitan Portor",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-feitan-portor-base",
+      "name": "Feitan Portor",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "naruto-shibi-aburame",
+  "name": "Shibi Aburame",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-shibi-aburame-base",
+      "name": "Shibi Aburame",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

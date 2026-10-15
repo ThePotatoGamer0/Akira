@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-orochi",
+  "name": "Orochi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-orochi-base",
+      "name": "Orochi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

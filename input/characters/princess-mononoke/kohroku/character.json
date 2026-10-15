@@ -1,0 +1,13 @@
+{
+  "id": "princess-mononoke-kohroku",
+  "name": "Kohroku",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "princess-mononoke-kohroku-base",
+      "name": "Kohroku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

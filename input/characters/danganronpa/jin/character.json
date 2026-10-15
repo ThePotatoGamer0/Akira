@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-jin",
+  "name": "Jin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-jin-base",
+      "name": "Jin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

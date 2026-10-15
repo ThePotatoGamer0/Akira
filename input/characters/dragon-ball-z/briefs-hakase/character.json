@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-briefs-hakase",
+  "name": "Briefs Hakase",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-briefs-hakase-base",
+      "name": "Briefs Hakase",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

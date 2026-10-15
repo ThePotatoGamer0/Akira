@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-dorio",
+  "name": "Dorio",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-dorio-base",
+      "name": "Dorio",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

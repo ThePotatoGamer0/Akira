@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-canary",
+  "name": "Canary",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-canary-base",
+      "name": "Canary",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

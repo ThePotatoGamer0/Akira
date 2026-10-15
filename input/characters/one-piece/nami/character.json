@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-nami",
+  "name": "Nami",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-nami-base",
+      "name": "Nami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-satun",
+  "name": "Satun",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-satun-base",
+      "name": "Satun",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

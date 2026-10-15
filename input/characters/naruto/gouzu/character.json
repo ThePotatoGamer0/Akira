@@ -1,0 +1,14 @@
+{
+  "id": "naruto-gouzu",
+  "name": "Gouzu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-gouzu-base",
+      "name": "Gouzu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-carne",
+  "name": "Carne",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-piece-carne-base",
+      "name": "Carne",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

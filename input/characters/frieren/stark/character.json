@@ -1,0 +1,13 @@
+{
+  "id": "frieren-stark",
+  "name": "Stark",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-stark-base",
+      "name": "Stark",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

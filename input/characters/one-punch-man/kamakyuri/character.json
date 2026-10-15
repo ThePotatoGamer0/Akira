@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-kamakyuri",
+  "name": "Kamakyuri",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-kamakyuri-base",
+      "name": "Kamakyuri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

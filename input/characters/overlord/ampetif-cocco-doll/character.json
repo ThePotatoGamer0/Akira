@@ -1,0 +1,13 @@
+{
+  "id": "overlord-ampetif-cocco-doll",
+  "name": "Ampetif Cocco Doll",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-ampetif-cocco-doll-base",
+      "name": "Ampetif Cocco Doll",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

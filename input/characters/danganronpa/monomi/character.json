@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-monomi",
+  "name": "Monomi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-monomi-base",
+      "name": "Monomi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

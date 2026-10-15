@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-arnheid",
+  "name": "Arnheid",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "vinland-saga-arnheid-base",
+      "name": "Arnheid",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

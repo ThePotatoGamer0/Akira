@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-yukiko-kanzaki",
+  "name": "Yukiko Kanzaki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "assassination-classroom-yukiko-kanzaki-base",
+      "name": "Yukiko Kanzaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

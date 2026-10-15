@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-mukago",
+  "name": "Mukago",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-mukago-base",
+      "name": "Mukago",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

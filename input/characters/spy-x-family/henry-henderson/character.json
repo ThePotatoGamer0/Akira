@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-henry-henderson",
+  "name": "Henry Henderson",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-henry-henderson-base",
+      "name": "Henry Henderson",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

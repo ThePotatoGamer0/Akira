@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-mohican",
+  "name": "Mohican",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-mohican-base",
+      "name": "Mohican",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

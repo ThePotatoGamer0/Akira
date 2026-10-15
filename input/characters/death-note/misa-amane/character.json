@@ -1,0 +1,14 @@
+{
+  "id": "death-note-misa-amane",
+  "name": "Misa Amane",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "death-note-misa-amane-base",
+      "name": "Misa Amane",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

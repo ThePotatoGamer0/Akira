@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-bouryoku-no-majin",
+  "name": "Bouryoku no Majin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "chainsaw-man-bouryoku-no-majin-base",
+      "name": "Bouryoku no Majin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

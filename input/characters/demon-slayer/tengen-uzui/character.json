@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-tengen-uzui",
+  "name": "Tengen Uzui",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-tengen-uzui-base",
+      "name": "Tengen Uzui",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

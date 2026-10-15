@@ -1,0 +1,13 @@
+{
+  "id": "princess-mononoke-kaya",
+  "name": "Kaya",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "princess-mononoke-kaya-base",
+      "name": "Kaya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

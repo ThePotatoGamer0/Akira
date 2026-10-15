@@ -1,0 +1,14 @@
+{
+  "id": "naruto-jiroubou",
+  "name": "Jiroubou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-jiroubou-base",
+      "name": "Jiroubou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

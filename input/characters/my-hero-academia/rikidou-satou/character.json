@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-rikidou-satou",
+  "name": "Rikidou Satou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-rikidou-satou-base",
+      "name": "Rikidou Satou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "death-note-hitoshi-demegawa",
+  "name": "Hitoshi Demegawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-hitoshi-demegawa-base",
+      "name": "Hitoshi Demegawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

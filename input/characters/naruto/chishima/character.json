@@ -1,0 +1,14 @@
+{
+  "id": "naruto-chishima",
+  "name": "Chishima",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-chishima-base",
+      "name": "Chishima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-dord",
+  "name": "Dord",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-dord-base",
+      "name": "Dord",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

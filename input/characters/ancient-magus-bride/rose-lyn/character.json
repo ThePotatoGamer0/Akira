@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-rose-lyn",
+  "name": "Rose Lyn",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-rose-lyn-base",
+      "name": "Rose Lyn",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

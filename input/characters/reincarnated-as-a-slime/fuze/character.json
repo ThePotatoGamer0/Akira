@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-fuze",
+  "name": "Fuze",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-fuze-base",
+      "name": "Fuze",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

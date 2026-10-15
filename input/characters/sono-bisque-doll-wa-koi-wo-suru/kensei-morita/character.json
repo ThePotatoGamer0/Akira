@@ -1,0 +1,14 @@
+{
+  "id": "sono-bisque-doll-wa-koi-wo-suru-kensei-morita",
+  "name": "Kensei Morita",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sono-bisque-doll-wa-koi-wo-suru-kensei-morita-base",
+      "name": "Kensei Morita",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-yuuga-aoyama",
+  "name": "Yuuga Aoyama",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-yuuga-aoyama-base",
+      "name": "Yuuga Aoyama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

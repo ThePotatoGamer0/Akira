@@ -1,0 +1,13 @@
+{
+  "id": "overlord-clementine",
+  "name": "Clementine",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-clementine-base",
+      "name": "Clementine",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

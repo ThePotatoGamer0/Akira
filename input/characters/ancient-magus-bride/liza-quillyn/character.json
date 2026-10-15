@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-liza-quillyn",
+  "name": "Liza Quillyn",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-liza-quillyn-base",
+      "name": "Liza Quillyn",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

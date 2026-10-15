@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-ceecrue",
+  "name": "Ceecrue",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-ceecrue-base",
+      "name": "Ceecrue",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

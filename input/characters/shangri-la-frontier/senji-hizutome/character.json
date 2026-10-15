@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-senji-hizutome",
+  "name": "Senji Hizutome",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-senji-hizutome-base",
+      "name": "Senji Hizutome",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

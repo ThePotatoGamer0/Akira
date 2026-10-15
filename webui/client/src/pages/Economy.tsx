@@ -1,4 +1,5 @@
 import { BitsDisplay } from "../components/economy/BitsDisplay.js";
+import { CyclePanel } from "../components/economy/MilestonePanel.js";
 import { ShopPanel } from "../components/economy/ShopPanel.js";
 import { ServerPool } from "../components/economy/ServerPool.js";
 import type { Me } from "../types/index.js";
@@ -16,6 +17,7 @@ export function EconomyPage(props: {
       <BitsDisplay bits={props.me.bits} />
       <ShopPanel fetchApi={props.fetchApi} onBought={props.onRefreshMe} />
       <ServerPool bits={props.me.bits} fetchApi={props.fetchApi} onChange={props.onRefreshMe} />
+      <CyclePanel bits={props.me.bits} fetchApi={props.fetchApi} onChange={props.onRefreshMe} />
     </div>
   );
 }

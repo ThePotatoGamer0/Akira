@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-damrada",
+  "name": "Damrada",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-damrada-base",
+      "name": "Damrada",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

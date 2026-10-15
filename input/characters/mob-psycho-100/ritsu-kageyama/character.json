@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-ritsu-kageyama",
+  "name": "Ritsu Kageyama",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-ritsu-kageyama-base",
+      "name": "Ritsu Kageyama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

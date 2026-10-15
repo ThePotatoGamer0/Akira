@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-houko",
+  "name": "Houko",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-houko-base",
+      "name": "Houko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

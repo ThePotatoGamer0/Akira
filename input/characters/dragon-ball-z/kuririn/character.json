@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-kuririn",
+  "name": "Kuririn",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-kuririn-base",
+      "name": "Kuririn",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

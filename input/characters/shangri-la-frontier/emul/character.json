@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-emul",
+  "name": "Emul",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-emul-base",
+      "name": "Emul",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

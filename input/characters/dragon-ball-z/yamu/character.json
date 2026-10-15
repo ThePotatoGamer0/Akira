@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-yamu",
+  "name": "Yamu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-yamu-base",
+      "name": "Yamu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

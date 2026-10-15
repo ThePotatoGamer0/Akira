@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-nojiko",
+  "name": "Nojiko",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-nojiko-base",
+      "name": "Nojiko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

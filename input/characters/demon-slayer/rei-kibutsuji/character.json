@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-rei-kibutsuji",
+  "name": "Rei Kibutsuji",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-rei-kibutsuji-base",
+      "name": "Rei Kibutsuji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

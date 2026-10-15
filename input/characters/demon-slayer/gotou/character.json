@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-gotou",
+  "name": "Gotou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-gotou-base",
+      "name": "Gotou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-vamola",
+  "name": "Vamola",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dandadan-vamola-base",
+      "name": "Vamola",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

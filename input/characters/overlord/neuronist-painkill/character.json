@@ -1,0 +1,13 @@
+{
+  "id": "overlord-neuronist-painkill",
+  "name": "Neuronist Painkill",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-neuronist-painkill-base",
+      "name": "Neuronist Painkill",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

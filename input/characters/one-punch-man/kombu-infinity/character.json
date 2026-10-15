@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-kombu-infinity",
+  "name": "Kombu Infinity",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-kombu-infinity-base",
+      "name": "Kombu Infinity",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

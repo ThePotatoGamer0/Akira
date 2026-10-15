@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-hitoshi",
+  "name": "Hitoshi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-hitoshi-base",
+      "name": "Hitoshi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

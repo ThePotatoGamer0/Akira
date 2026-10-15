@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-giyuu-tomioka",
+  "name": "Giyuu Tomioka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-giyuu-tomioka-base",
+      "name": "Giyuu Tomioka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

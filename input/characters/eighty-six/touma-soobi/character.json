@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-touma-soobi",
+  "name": "Touma Soobi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "eighty-six-touma-soobi-base",
+      "name": "Touma Soobi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

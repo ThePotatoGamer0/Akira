@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-itona-horibe",
+  "name": "Itona Horibe",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "assassination-classroom-itona-horibe-base",
+      "name": "Itona Horibe",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

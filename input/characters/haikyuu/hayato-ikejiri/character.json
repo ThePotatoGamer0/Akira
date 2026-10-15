@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-hayato-ikejiri",
+  "name": "Hayato Ikejiri",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-hayato-ikejiri-base",
+      "name": "Hayato Ikejiri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

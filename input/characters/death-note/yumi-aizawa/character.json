@@ -1,0 +1,14 @@
+{
+  "id": "death-note-yumi-aizawa",
+  "name": "Yumi Aizawa",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "death-note-yumi-aizawa-base",
+      "name": "Yumi Aizawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-shitanobiiru",
+  "name": "Shitanobiiru",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-shitanobiiru-base",
+      "name": "Shitanobiiru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-kiyomaru",
+  "name": "Kiyomaru",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-kiyomaru-base",
+      "name": "Kiyomaru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-mikasa-ackerman",
+  "name": "Mikasa Ackerman",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-mikasa-ackerman-base",
+      "name": "Mikasa Ackerman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

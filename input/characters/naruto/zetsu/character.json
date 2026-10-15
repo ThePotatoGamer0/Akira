@@ -1,0 +1,14 @@
+{
+  "id": "naruto-zetsu",
+  "name": "Zetsu",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-zetsu-base",
+      "name": "Zetsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

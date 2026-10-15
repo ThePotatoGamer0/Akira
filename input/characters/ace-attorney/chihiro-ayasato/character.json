@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-chihiro-ayasato",
+  "name": "Chihiro Ayasato",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ace-attorney-chihiro-ayasato-base",
+      "name": "Chihiro Ayasato",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

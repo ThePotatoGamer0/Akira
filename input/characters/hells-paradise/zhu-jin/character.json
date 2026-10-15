@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-zhu-jin",
+  "name": "Zhu Jin",
+  "gender": "Male/Female (Switches constantly)",
+  "cards": [
+    {
+      "id": "hells-paradise-zhu-jin-base",
+      "name": "Zhu Jin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

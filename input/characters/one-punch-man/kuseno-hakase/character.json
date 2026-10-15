@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-kuseno-hakase",
+  "name": "Kuseno Hakase",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-kuseno-hakase-base",
+      "name": "Kuseno Hakase",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

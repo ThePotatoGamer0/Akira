@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-reiner-braun",
+  "name": "Reiner Braun",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-reiner-braun-base",
+      "name": "Reiner Braun",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

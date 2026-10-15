@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-tabito-karasu",
+  "name": "Tabito Karasu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-tabito-karasu-base",
+      "name": "Tabito Karasu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

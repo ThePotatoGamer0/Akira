@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-cabaji",
+  "name": "Cabaji",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-cabaji-base",
+      "name": "Cabaji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

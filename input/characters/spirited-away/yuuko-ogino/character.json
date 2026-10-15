@@ -1,0 +1,13 @@
+{
+  "id": "spirited-away-yuuko-ogino",
+  "name": "Yuuko Ogino",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "spirited-away-yuuko-ogino-base",
+      "name": "Yuuko Ogino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

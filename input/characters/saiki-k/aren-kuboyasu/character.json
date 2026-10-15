@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-aren-kuboyasu",
+  "name": "Aren Kuboyasu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-aren-kuboyasu-base",
+      "name": "Aren Kuboyasu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

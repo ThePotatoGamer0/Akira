@@ -1,0 +1,14 @@
+{
+  "id": "sk8-the-infinity-takano",
+  "name": "Takano",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-takano-base",
+      "name": "Takano",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

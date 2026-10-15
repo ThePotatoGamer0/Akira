@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-akira-kurusu",
+  "name": "Akira Kurusu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-akira-kurusu-base",
+      "name": "Akira Kurusu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

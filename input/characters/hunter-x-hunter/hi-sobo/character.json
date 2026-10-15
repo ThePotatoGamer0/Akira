@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-hi-sobo",
+  "name": "Hi-sobo",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-hi-sobo-base",
+      "name": "Hi-sobo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

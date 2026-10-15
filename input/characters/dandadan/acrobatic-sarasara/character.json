@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-acrobatic-sarasara",
+  "name": "Acrobatic Sarasara",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dandadan-acrobatic-sarasara-base",
+      "name": "Acrobatic Sarasara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

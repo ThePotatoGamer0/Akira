@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-cartaphilus",
+  "name": "Cartaphilus",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-cartaphilus-base",
+      "name": "Cartaphilus",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

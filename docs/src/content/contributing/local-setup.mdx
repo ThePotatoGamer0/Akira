@@ -36,14 +36,14 @@ In the root of the `Akira` folder, run:
 npm install
 </TerminalBlock>
 
-## 4. Prepare the database
+## 4. Prepare the database and Discord commands
 
-Akira uses Prisma to talk to the database. For local development, it creates a simple SQLite file so you don't have to configure a full database server.
+Copy `.env` into the repository root and set `DISCORD_TOKEN`, `DISCORD_CLIENT_ID`, `DISCORD_GUILD_ID`, and `DISCORD_DROP_CHANNEL_ID`. `DATABASE_URL` can stay `file:./prisma/akira.db`.
 
-Generate the database schema and the local database file by running:
+Akira uses Prisma with a local SQLite file. `npm run init` applies migrations, checks the card art, seeds the catalog, and registers slash commands:
 
 <TerminalBlock language="bash">
-npx prisma db push
+npm run init
 </TerminalBlock>
 
 ## 5. Start the development servers

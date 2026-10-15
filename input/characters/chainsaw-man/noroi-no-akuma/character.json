@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-noroi-no-akuma",
+  "name": "Noroi no Akuma",
+  "gender": null,
+  "cards": [
+    {
+      "id": "chainsaw-man-noroi-no-akuma-base",
+      "name": "Noroi no Akuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

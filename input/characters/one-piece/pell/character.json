@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-pell",
+  "name": "Pell",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-pell-base",
+      "name": "Pell",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

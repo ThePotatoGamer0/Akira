@@ -1,0 +1,13 @@
+{
+  "id": "overlord-solution-epsilon",
+  "name": "Solution Epsilon",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-solution-epsilon-base",
+      "name": "Solution Epsilon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-nagi-yoshino",
+  "name": "Nagi Yoshino",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-nagi-yoshino-base",
+      "name": "Nagi Yoshino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-kevin-forbes",
+  "name": "Kevin Forbes",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-kevin-forbes-base",
+      "name": "Kevin Forbes",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

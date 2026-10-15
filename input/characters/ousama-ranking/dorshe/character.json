@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-dorshe",
+  "name": "Dorshe",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-dorshe-base",
+      "name": "Dorshe",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

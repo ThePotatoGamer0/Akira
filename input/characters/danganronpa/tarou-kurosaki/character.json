@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-tarou-kurosaki",
+  "name": "Tarou Kurosaki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "danganronpa-tarou-kurosaki-base",
+      "name": "Tarou Kurosaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

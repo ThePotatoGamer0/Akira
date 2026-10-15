@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-fuyuhiko-kuzuryuu",
+  "name": "Fuyuhiko Kuzuryuu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-fuyuhiko-kuzuryuu-base",
+      "name": "Fuyuhiko Kuzuryuu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

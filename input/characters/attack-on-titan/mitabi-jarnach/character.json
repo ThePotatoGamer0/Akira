@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-mitabi-jarnach",
+  "name": "Mitabi Jarnach",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-mitabi-jarnach-base",
+      "name": "Mitabi Jarnach",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

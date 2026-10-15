@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-takanobu-aone",
+  "name": "Takanobu Aone",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-takanobu-aone-base",
+      "name": "Takanobu Aone",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-sang-min-ahn",
+  "name": "Sang-Min Ahn",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-sang-min-ahn-base",
+      "name": "Sang-Min Ahn",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

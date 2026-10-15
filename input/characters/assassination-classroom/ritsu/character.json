@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-ritsu",
+  "name": "Ritsu",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "assassination-classroom-ritsu-base",
+      "name": "Ritsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

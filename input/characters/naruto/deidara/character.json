@@ -1,0 +1,14 @@
+{
+  "id": "naruto-deidara",
+  "name": "Deidara",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-deidara-base",
+      "name": "Deidara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

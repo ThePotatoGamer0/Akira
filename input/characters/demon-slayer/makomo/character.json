@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-makomo",
+  "name": "Makomo",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "demon-slayer-makomo-base",
+      "name": "Makomo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

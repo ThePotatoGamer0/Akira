@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-guy-crimson",
+  "name": "Guy Crimson",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-guy-crimson-base",
+      "name": "Guy Crimson",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

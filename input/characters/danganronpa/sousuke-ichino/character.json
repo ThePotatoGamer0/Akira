@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-sousuke-ichino",
+  "name": "Sousuke Ichino",
+  "gender": null,
+  "cards": [
+    {
+      "id": "danganronpa-sousuke-ichino-base",
+      "name": "Sousuke Ichino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

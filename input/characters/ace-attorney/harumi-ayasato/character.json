@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-harumi-ayasato",
+  "name": "Harumi Ayasato",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ace-attorney-harumi-ayasato-base",
+      "name": "Harumi Ayasato",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "way-of-the-househusband-koharu",
+  "name": "Koharu",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "way-of-the-househusband-koharu-base",
+      "name": "Koharu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

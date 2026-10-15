@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-hidenori-uchizawa",
+  "name": "Hidenori Uchizawa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-hidenori-uchizawa-base",
+      "name": "Hidenori Uchizawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

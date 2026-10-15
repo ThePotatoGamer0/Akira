@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-sandeo",
+  "name": "Sandeo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-sandeo-base",
+      "name": "Sandeo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

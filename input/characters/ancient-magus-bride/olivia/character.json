@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-olivia",
+  "name": "Olivia",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-olivia-base",
+      "name": "Olivia",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-mezou-shouji",
+  "name": "Mezou Shouji",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-mezou-shouji-base",
+      "name": "Mezou Shouji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "servamp-tsubaki",
+  "name": "Tsubaki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-tsubaki-base",
+      "name": "Tsubaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

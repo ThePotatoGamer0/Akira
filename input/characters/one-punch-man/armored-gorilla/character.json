@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-armored-gorilla",
+  "name": "Armored Gorilla",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-armored-gorilla-base",
+      "name": "Armored Gorilla",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

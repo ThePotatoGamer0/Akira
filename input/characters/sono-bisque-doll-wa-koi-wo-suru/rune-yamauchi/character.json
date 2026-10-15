@@ -1,0 +1,14 @@
+{
+  "id": "sono-bisque-doll-wa-koi-wo-suru-rune-yamauchi",
+  "name": "Rune Yamauchi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sono-bisque-doll-wa-koi-wo-suru-rune-yamauchi-base",
+      "name": "Rune Yamauchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

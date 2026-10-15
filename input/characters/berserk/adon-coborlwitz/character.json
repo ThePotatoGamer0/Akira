@@ -1,0 +1,13 @@
+{
+  "id": "berserk-adon-coborlwitz",
+  "name": "Adon Coborlwitz",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "berserk-adon-coborlwitz-base",
+      "name": "Adon Coborlwitz",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

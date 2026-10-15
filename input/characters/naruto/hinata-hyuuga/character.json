@@ -1,0 +1,14 @@
+{
+  "id": "naruto-hinata-hyuuga",
+  "name": "Hinata Hyuuga",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-hinata-hyuuga-base",
+      "name": "Hinata Hyuuga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-annie-no-chichi",
+  "name": "Annie no Chichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-annie-no-chichi-base",
+      "name": "Annie no Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

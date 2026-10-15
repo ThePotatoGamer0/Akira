@@ -1,0 +1,13 @@
+{
+  "id": "way-of-the-househusband-miku-no-chichi",
+  "name": "Miku no Chichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "way-of-the-househusband-miku-no-chichi-base",
+      "name": "Miku no Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

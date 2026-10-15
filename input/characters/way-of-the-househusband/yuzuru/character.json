@@ -1,0 +1,13 @@
+{
+  "id": "way-of-the-househusband-yuzuru",
+  "name": "Yuzuru",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "way-of-the-househusband-yuzuru-base",
+      "name": "Yuzuru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

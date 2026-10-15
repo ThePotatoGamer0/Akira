@@ -1,0 +1,13 @@
+{
+  "id": "frieren-gabel",
+  "name": "Gabel",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-gabel-base",
+      "name": "Gabel",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

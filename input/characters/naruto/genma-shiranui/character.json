@@ -1,0 +1,14 @@
+{
+  "id": "naruto-genma-shiranui",
+  "name": "Genma Shiranui",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-genma-shiranui-base",
+      "name": "Genma Shiranui",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

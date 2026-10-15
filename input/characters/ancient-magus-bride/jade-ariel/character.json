@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-jade-ariel",
+  "name": "Jade Ariel",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-jade-ariel-base",
+      "name": "Jade Ariel",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

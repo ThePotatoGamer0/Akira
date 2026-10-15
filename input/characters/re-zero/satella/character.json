@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-satella",
+  "name": "Satella",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-satella-base",
+      "name": "Satella",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

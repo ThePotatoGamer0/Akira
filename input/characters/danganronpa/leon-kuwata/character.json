@@ -1,0 +1,14 @@
+{
+  "id": "danganronpa-leon-kuwata",
+  "name": "Leon Kuwata",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-leon-kuwata-base",
+      "name": "Leon Kuwata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

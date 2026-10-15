@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-oberon",
+  "name": "Oberon",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-oberon-base",
+      "name": "Oberon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

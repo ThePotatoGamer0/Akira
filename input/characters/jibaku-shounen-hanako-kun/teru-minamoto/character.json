@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-teru-minamoto",
+  "name": "Teru Minamoto",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-teru-minamoto-base",
+      "name": "Teru Minamoto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

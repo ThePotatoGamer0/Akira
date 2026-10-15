@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-arnaud-bauman",
+  "name": "Arnaud Bauman",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-arnaud-bauman-base",
+      "name": "Arnaud Bauman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

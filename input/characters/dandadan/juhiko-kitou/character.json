@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-juhiko-kitou",
+  "name": "Juhiko Kitou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dandadan-juhiko-kitou-base",
+      "name": "Juhiko Kitou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

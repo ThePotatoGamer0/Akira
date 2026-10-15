@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-darius-zackly",
+  "name": "Darius Zackly",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-darius-zackly-base",
+      "name": "Darius Zackly",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

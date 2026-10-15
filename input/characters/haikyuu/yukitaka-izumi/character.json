@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yukitaka-izumi",
+  "name": "Yukitaka Izumi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-yukitaka-izumi-base",
+      "name": "Yukitaka Izumi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

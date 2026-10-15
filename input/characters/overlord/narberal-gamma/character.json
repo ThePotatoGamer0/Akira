@@ -1,0 +1,13 @@
+{
+  "id": "overlord-narberal-gamma",
+  "name": "Narberal Gamma",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-narberal-gamma-base",
+      "name": "Narberal Gamma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-franky-franklin",
+  "name": "Franky Franklin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-franky-franklin-base",
+      "name": "Franky Franklin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

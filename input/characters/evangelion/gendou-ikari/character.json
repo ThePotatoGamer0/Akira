@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-gendou-ikari",
+  "name": "Gendou Ikari",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "evangelion-gendou-ikari-base",
+      "name": "Gendou Ikari",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

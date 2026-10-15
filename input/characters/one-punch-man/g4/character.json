@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-g4",
+  "name": "G4",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-g4-base",
+      "name": "G4",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

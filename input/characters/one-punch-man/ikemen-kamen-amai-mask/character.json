@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-ikemen-kamen-amai-mask",
+  "name": "Ikemen Kamen Amai Mask",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-ikemen-kamen-amai-mask-base",
+      "name": "Ikemen Kamen Amai Mask",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

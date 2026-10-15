@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-rickert-hoffman",
+  "name": "Rickert Hoffman",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-rickert-hoffman-base",
+      "name": "Rickert Hoffman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

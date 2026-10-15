@@ -1,0 +1,13 @@
+{
+  "id": "overlord-shizu-delta",
+  "name": "Shizu Delta",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-shizu-delta-base",
+      "name": "Shizu Delta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

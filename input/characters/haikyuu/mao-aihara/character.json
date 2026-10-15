@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-mao-aihara",
+  "name": "Mao Aihara",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "haikyuu-mao-aihara-base",
+      "name": "Mao Aihara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

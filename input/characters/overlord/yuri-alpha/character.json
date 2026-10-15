@@ -1,0 +1,13 @@
+{
+  "id": "overlord-yuri-alpha",
+  "name": "Yuri Alpha",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-yuri-alpha-base",
+      "name": "Yuri Alpha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

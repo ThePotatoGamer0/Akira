@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-momiji",
+  "name": "Momiji",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-momiji-base",
+      "name": "Momiji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-gui-fa",
+  "name": "Gui Fa",
+  "gender": "Male/Female",
+  "cards": [
+    {
+      "id": "hells-paradise-gui-fa-base",
+      "name": "Gui Fa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

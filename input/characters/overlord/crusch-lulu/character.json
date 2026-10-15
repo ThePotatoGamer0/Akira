@@ -1,0 +1,13 @@
+{
+  "id": "overlord-crusch-lulu",
+  "name": "Crusch Lulu",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-crusch-lulu-base",
+      "name": "Crusch Lulu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

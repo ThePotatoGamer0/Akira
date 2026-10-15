@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-obaa-san",
+  "name": "Obaa-san",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ousama-ranking-obaa-san-base",
+      "name": "Obaa-san",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

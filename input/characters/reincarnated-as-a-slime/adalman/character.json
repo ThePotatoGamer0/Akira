@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-adalman",
+  "name": "Adalman",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-adalman-base",
+      "name": "Adalman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

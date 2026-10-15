@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-kiriya-ubuyashiki",
+  "name": "Kiriya Ubuyashiki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-kiriya-ubuyashiki-base",
+      "name": "Kiriya Ubuyashiki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

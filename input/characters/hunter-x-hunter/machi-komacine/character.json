@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-machi-komacine",
+  "name": "Machi Komacine",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-machi-komacine-base",
+      "name": "Machi Komacine",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

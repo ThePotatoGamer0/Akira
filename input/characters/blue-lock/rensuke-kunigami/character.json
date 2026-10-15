@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-rensuke-kunigami",
+  "name": "Rensuke Kunigami",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-rensuke-kunigami-base",
+      "name": "Rensuke Kunigami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

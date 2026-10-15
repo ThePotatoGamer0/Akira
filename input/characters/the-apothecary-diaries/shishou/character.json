@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-shishou",
+  "name": "Shishou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-shishou-base",
+      "name": "Shishou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

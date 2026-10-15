@@ -1,0 +1,13 @@
+{
+  "id": "frieren-senshi-gorilla",
+  "name": "Senshi Gorilla",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-senshi-gorilla-base",
+      "name": "Senshi Gorilla",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

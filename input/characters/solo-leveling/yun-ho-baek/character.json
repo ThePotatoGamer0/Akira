@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-yun-ho-baek",
+  "name": "Yun-Ho Baek",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-yun-ho-baek-base",
+      "name": "Yun-Ho Baek",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

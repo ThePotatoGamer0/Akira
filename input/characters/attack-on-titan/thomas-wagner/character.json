@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-thomas-wagner",
+  "name": "Thomas Wagner",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-thomas-wagner-base",
+      "name": "Thomas Wagner",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

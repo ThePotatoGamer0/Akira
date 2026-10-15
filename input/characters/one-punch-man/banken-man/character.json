@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-banken-man",
+  "name": "Banken Man",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-banken-man-base",
+      "name": "Banken Man",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

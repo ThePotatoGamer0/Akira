@@ -1,0 +1,13 @@
+{
+  "id": "ponyo-noriko",
+  "name": "Noriko",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ponyo-noriko-base",
+      "name": "Noriko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

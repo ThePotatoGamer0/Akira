@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-sadayuki-mizoguchi",
+  "name": "Sadayuki Mizoguchi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-sadayuki-mizoguchi-base",
+      "name": "Sadayuki Mizoguchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

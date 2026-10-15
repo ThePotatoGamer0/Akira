@@ -1,0 +1,13 @@
+{
+  "id": "berserk-slan",
+  "name": "Slan",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "berserk-slan-base",
+      "name": "Slan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

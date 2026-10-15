@@ -1,0 +1,14 @@
+{
+  "id": "death-note-larry-conners",
+  "name": "Larry Conners",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-larry-conners-base",
+      "name": "Larry Conners",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

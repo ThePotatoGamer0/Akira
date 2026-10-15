@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-nurugai",
+  "name": "Nurugai",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hells-paradise-nurugai-base",
+      "name": "Nurugai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

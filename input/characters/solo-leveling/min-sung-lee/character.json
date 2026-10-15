@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-min-sung-lee",
+  "name": "Min-Sung Lee",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-min-sung-lee-base",
+      "name": "Min-Sung Lee",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

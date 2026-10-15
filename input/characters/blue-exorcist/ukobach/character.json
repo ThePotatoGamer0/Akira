@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-ukobach",
+  "name": "Ukobach",
+  "gender": null,
+  "cards": [
+    {
+      "id": "blue-exorcist-ukobach-base",
+      "name": "Ukobach",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

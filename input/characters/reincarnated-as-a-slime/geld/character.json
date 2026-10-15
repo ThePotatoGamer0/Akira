@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-geld",
+  "name": "Geld",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-geld-base",
+      "name": "Geld",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

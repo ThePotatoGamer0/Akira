@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-sanemi-shinazugawa",
+  "name": "Sanemi Shinazugawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-sanemi-shinazugawa-base",
+      "name": "Sanemi Shinazugawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

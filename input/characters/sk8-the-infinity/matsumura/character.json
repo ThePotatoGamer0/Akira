@@ -1,0 +1,14 @@
+{
+  "id": "sk8-the-infinity-matsumura",
+  "name": "Matsumura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-matsumura-base",
+      "name": "Matsumura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

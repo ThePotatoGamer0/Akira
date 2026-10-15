@@ -1,0 +1,14 @@
+{
+  "id": "naruto-kakashi-hatake",
+  "name": "Kakashi Hatake",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-kakashi-hatake-base",
+      "name": "Kakashi Hatake",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

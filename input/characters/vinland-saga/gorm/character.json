@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-gorm",
+  "name": "Gorm",
+  "gender": null,
+  "cards": [
+    {
+      "id": "vinland-saga-gorm-base",
+      "name": "Gorm",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "whisper-of-the-heart-kousaka",
+  "name": "Kousaka",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "whisper-of-the-heart-kousaka-base",
+      "name": "Kousaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

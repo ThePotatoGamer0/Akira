@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-kyouko-zeppelin-souryuu",
+  "name": "Kyouko Zeppelin Souryuu",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "evangelion-kyouko-zeppelin-souryuu-base",
+      "name": "Kyouko Zeppelin Souryuu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

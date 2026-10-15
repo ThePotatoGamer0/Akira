@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-muuko",
+  "name": "Muuko",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dandadan-muuko-base",
+      "name": "Muuko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

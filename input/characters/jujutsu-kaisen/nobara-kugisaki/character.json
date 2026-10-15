@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-nobara-kugisaki",
+  "name": "Nobara Kugisaki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-nobara-kugisaki-base",
+      "name": "Nobara Kugisaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

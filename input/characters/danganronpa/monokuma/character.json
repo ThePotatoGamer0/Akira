@@ -1,0 +1,14 @@
+{
+  "id": "danganronpa-monokuma",
+  "name": "Monokuma",
+  "gender": "None (DR1), Male (DR2 & DRV3)",
+  "cards": [
+    {
+      "id": "danganronpa-monokuma-base",
+      "name": "Monokuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

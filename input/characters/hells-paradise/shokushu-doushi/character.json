@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-shokushu-doushi",
+  "name": "Shokushu Doushi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hells-paradise-shokushu-doushi-base",
+      "name": "Shokushu Doushi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-mob-no-haha",
+  "name": "Mob no Haha",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "mob-psycho-100-mob-no-haha-base",
+      "name": "Mob no Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

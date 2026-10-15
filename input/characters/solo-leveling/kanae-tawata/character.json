@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-kanae-tawata",
+  "name": "Kanae Tawata",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "solo-leveling-kanae-tawata-base",
+      "name": "Kanae Tawata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

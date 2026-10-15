@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-kingbo",
+  "name": "Kingbo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-kingbo-base",
+      "name": "Kingbo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

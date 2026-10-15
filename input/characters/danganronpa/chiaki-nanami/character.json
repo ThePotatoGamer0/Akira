@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-chiaki-nanami",
+  "name": "Chiaki Nanami",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-chiaki-nanami-base",
+      "name": "Chiaki Nanami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

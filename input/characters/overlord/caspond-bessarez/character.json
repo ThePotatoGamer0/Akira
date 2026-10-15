@@ -1,0 +1,13 @@
+{
+  "id": "overlord-caspond-bessarez",
+  "name": "Caspond Bessarez",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "overlord-caspond-bessarez-base",
+      "name": "Caspond Bessarez",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

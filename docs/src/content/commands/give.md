@@ -1,28 +1,33 @@
 ---
 title: Give
-description: Akira will move a single card from you to a friend with a clear audit trail.
+description: Offer a card to another player. Both of you have to accept.
 command: give
-shortcuts: None
+shortcuts: g
 ---
 
-Akira will help with **/give** - Good for gifts; gifts are one-way unless you use [trade](/commands/trade).
+**`/give`** offers one of your cards to someone else. Nothing moves until both of you press the check mark. Either of you can press the cross to cancel. The offer expires after 5 minutes.
+
+The message is a **Card Transfer** embed: you, an arrow, them, the card line, and the card image.
 
 ## Parameters
 
-Parameters are still settling in for slash commands; check in-game `/help` for the live option list. Akira keeps descriptions short so slash autocomplete stays readable.
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `user` | Yes | Who receives the card. A mention in text commands. |
+| `card_id` | Yes | The card you are giving. |
+
+## Aliases
+
+`g`. `ag` works.
 
 ## Example usage
 
 ```
-/give
+/give user:@friend card_id:v8znvrx
+agive @friend v8znvrx
 ```
-
-## Tips
-
-- **/give** is one-way - the recipient does not send a card back unless you use **/trade** or a second give.
-- Akira keeps an audit trail for the transfer so “who had it last” stays clear if you ever need to re-check.
 
 ## See also
 
-- [Trade](/commands/trade) - swap with confirmation instead of a one-way gift
-- [Collection](/commands/collection) - confirm the card left your binder
+- [Trade](/commands/trade)
+- [Command list](/commands/reference)

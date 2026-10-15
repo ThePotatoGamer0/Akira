@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-jougo",
+  "name": "Jougo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-jougo-base",
+      "name": "Jougo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

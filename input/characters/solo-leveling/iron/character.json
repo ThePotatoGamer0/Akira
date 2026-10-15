@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-iron",
+  "name": "Iron",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-iron-base",
+      "name": "Iron",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

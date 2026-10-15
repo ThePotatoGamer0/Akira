@@ -1,0 +1,14 @@
+{
+  "id": "naruto-gaara",
+  "name": "Gaara",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-gaara-base",
+      "name": "Gaara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

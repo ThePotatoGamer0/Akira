@@ -1,0 +1,14 @@
+{
+  "id": "naruto-isaribi",
+  "name": "Isaribi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-isaribi-base",
+      "name": "Isaribi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

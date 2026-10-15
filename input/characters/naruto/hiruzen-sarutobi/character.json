@@ -1,0 +1,14 @@
+{
+  "id": "naruto-hiruzen-sarutobi",
+  "name": "Hiruzen Sarutobi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-hiruzen-sarutobi-base",
+      "name": "Hiruzen Sarutobi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

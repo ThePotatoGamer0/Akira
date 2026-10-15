@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-asura-kabuto",
+  "name": "Asura Kabuto",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-asura-kabuto-base",
+      "name": "Asura Kabuto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

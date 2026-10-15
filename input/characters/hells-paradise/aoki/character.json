@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-aoki",
+  "name": "Aoki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-aoki-base",
+      "name": "Aoki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "death-note-touta-matsuda",
+  "name": "Touta Matsuda",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-touta-matsuda-base",
+      "name": "Touta Matsuda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

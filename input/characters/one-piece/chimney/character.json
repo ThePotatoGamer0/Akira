@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-chimney",
+  "name": "Chimney",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-chimney-base",
+      "name": "Chimney",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

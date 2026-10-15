@@ -1,0 +1,13 @@
+{
+  "id": "overlord-staffan-heivish",
+  "name": "Staffan Heivish",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-staffan-heivish-base",
+      "name": "Staffan Heivish",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

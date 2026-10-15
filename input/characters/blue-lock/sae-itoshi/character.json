@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-sae-itoshi",
+  "name": "Sae Itoshi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-sae-itoshi-base",
+      "name": "Sae Itoshi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

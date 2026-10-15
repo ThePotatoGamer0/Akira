@@ -1,0 +1,14 @@
+{
+  "id": "servamp-tooru-shirota",
+  "name": "Tooru Shirota",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-tooru-shirota-base",
+      "name": "Tooru Shirota",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

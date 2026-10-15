@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-penny-chinkosu",
+  "name": "Penny Chinkosu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dandadan-penny-chinkosu-base",
+      "name": "Penny Chinkosu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

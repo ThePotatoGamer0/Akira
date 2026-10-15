@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-tama",
+  "name": "Tama",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-tama-base",
+      "name": "Tama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "servamp-the-mother",
+  "name": "The Mother",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "servamp-the-mother-base",
+      "name": "The Mother",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

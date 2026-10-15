@@ -1,0 +1,13 @@
+{
+  "id": "overlord-sebas-tian",
+  "name": "Sebas Tian",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "overlord-sebas-tian-base",
+      "name": "Sebas Tian",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

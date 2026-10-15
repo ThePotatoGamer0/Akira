@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-lunch-rush",
+  "name": "Lunch Rush",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-lunch-rush-base",
+      "name": "Lunch Rush",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

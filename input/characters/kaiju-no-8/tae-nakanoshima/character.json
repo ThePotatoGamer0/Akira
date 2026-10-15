@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-tae-nakanoshima",
+  "name": "Tae Nakanoshima",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "kaiju-no-8-tae-nakanoshima-base",
+      "name": "Tae Nakanoshima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

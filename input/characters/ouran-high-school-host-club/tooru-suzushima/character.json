@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-tooru-suzushima",
+  "name": "Tooru Suzushima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-tooru-suzushima-base",
+      "name": "Tooru Suzushima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

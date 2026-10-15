@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-mikhail-renfred",
+  "name": "Mikhail Renfred",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-mikhail-renfred-base",
+      "name": "Mikhail Renfred",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

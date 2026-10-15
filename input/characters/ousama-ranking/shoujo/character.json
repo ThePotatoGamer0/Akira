@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-shoujo",
+  "name": "Shoujo",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ousama-ranking-shoujo-base",
+      "name": "Shoujo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

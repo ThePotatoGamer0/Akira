@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-ruomen",
+  "name": "Ruomen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-ruomen-base",
+      "name": "Ruomen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-lucas-lee",
+  "name": "Lucas Lee",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-lucas-lee-base",
+      "name": "Lucas Lee",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

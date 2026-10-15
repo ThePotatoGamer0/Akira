@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-yamza",
+  "name": "Yamza",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-yamza-base",
+      "name": "Yamza",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-mirai-no-akuma",
+  "name": "Mirai no Akuma",
+  "gender": null,
+  "cards": [
+    {
+      "id": "chainsaw-man-mirai-no-akuma-base",
+      "name": "Mirai no Akuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

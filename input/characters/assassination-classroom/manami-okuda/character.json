@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-manami-okuda",
+  "name": "Manami Okuda",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "assassination-classroom-manami-okuda-base",
+      "name": "Manami Okuda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

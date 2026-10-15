@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-matsuo-tomida",
+  "name": "Matsuo Tomida",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-matsuo-tomida-base",
+      "name": "Matsuo Tomida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

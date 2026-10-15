@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-juu-ou",
+  "name": "Juu Ou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-juu-ou-base",
+      "name": "Juu Ou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

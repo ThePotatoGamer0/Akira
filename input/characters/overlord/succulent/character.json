@@ -1,0 +1,13 @@
+{
+  "id": "overlord-succulent",
+  "name": "Succulent",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-succulent-base",
+      "name": "Succulent",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

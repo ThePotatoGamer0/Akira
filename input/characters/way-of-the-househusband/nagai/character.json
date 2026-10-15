@@ -1,0 +1,13 @@
+{
+  "id": "way-of-the-househusband-nagai",
+  "name": "Nagai",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "way-of-the-househusband-nagai-base",
+      "name": "Nagai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

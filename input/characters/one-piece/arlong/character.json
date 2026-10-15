@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-arlong",
+  "name": "Arlong",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-arlong-base",
+      "name": "Arlong",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

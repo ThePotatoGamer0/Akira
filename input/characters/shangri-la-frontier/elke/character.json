@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-elke",
+  "name": "Elke",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-elke-base",
+      "name": "Elke",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

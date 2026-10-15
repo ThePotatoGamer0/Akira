@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-chitei-ou",
+  "name": "Chitei Ou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-chitei-ou-base",
+      "name": "Chitei Ou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

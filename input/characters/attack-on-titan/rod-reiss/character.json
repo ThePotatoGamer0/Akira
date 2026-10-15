@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-rod-reiss",
+  "name": "Rod Reiss",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-rod-reiss-base",
+      "name": "Rod Reiss",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

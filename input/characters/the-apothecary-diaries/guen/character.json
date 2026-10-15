@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-guen",
+  "name": "Guen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-guen-base",
+      "name": "Guen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-samuel-linke-jackson",
+  "name": "Samuel Linke-Jackson ",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-samuel-linke-jackson-base",
+      "name": "Samuel Linke-Jackson ",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

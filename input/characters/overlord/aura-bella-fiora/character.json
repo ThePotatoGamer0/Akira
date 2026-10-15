@@ -1,0 +1,13 @@
+{
+  "id": "overlord-aura-bella-fiora",
+  "name": "Aura Bella Fiora",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-aura-bella-fiora-base",
+      "name": "Aura Bella Fiora",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

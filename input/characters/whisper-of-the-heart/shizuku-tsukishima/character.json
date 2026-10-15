@@ -1,0 +1,13 @@
+{
+  "id": "whisper-of-the-heart-shizuku-tsukishima",
+  "name": "Shizuku Tsukishima",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "whisper-of-the-heart-shizuku-tsukishima-base",
+      "name": "Shizuku Tsukishima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

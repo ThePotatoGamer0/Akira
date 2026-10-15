@@ -1,0 +1,13 @@
+{
+  "id": "overlord-foire",
+  "name": "Foire",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-foire-base",
+      "name": "Foire",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

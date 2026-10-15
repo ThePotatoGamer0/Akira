@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-ogweno",
+  "name": "Ogweno",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-ogweno-base",
+      "name": "Ogweno",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

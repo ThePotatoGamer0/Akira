@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-hige-shokuin",
+  "name": "Hige Shokuin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-hige-shokuin-base",
+      "name": "Hige Shokuin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

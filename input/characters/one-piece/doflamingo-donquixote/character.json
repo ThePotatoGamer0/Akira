@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-doflamingo-donquixote",
+  "name": "Doflamingo Donquixote",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-doflamingo-donquixote-base",
+      "name": "Doflamingo Donquixote",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

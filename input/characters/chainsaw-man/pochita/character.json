@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-pochita",
+  "name": "Pochita",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "chainsaw-man-pochita-base",
+      "name": "Pochita",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

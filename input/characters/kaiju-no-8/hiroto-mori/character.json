@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-hiroto-mori",
+  "name": "Hiroto Mori",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-hiroto-mori-base",
+      "name": "Hiroto Mori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

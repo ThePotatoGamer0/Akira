@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-becky-no-chichi",
+  "name": "Becky no Chichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-becky-no-chichi-base",
+      "name": "Becky no Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

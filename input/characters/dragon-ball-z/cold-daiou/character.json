@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-cold-daiou",
+  "name": "Cold Daiou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-cold-daiou-base",
+      "name": "Cold Daiou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

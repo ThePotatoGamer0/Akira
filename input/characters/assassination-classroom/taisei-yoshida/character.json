@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-taisei-yoshida",
+  "name": "Taisei Yoshida",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "assassination-classroom-taisei-yoshida-base",
+      "name": "Taisei Yoshida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

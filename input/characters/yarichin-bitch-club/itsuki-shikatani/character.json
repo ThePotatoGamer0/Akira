@@ -1,0 +1,14 @@
+{
+  "id": "yarichin-bitch-club-itsuki-shikatani",
+  "name": "Itsuki Shikatani",
+  "gender": null,
+  "cards": [
+    {
+      "id": "yarichin-bitch-club-itsuki-shikatani-base",
+      "name": "Itsuki Shikatani",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

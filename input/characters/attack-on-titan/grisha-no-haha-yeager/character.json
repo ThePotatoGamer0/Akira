@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-grisha-no-haha-yeager",
+  "name": "Grisha no Haha Yeager",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-grisha-no-haha-yeager-base",
+      "name": "Grisha no Haha Yeager",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

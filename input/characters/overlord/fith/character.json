@@ -1,0 +1,13 @@
+{
+  "id": "overlord-fith",
+  "name": "Fith",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-fith-base",
+      "name": "Fith",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

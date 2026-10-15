@@ -1,0 +1,14 @@
+{
+  "id": "danganronpa-kiyotaka-ishimaru",
+  "name": "Kiyotaka Ishimaru",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-kiyotaka-ishimaru-base",
+      "name": "Kiyotaka Ishimaru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

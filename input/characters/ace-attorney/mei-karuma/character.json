@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-mei-karuma",
+  "name": "Mei Karuma",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ace-attorney-mei-karuma-base",
+      "name": "Mei Karuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

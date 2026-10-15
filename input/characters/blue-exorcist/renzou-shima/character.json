@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-renzou-shima",
+  "name": "Renzou Shima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-exorcist-renzou-shima-base",
+      "name": "Renzou Shima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-jasmine-st-george",
+  "name": "Jasmine St. George",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-jasmine-st-george-base",
+      "name": "Jasmine St. George",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

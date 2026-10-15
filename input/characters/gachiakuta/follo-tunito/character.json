@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-follo-tunito",
+  "name": "Follo Tunito",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-follo-tunito-base",
+      "name": "Follo Tunito",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

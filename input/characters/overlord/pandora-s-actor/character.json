@@ -1,0 +1,13 @@
+{
+  "id": "overlord-pandora-s-actor",
+  "name": "Pandora's Actor",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "overlord-pandora-s-actor-base",
+      "name": "Pandora's Actor",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

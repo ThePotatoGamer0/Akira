@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-sin-sang",
+  "name": "Sin Sang",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-sin-sang-base",
+      "name": "Sin Sang",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

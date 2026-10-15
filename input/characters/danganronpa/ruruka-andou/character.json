@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-ruruka-andou",
+  "name": "Ruruka Andou",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-ruruka-andou-base",
+      "name": "Ruruka Andou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

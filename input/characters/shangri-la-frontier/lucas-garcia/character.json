@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-lucas-garcia",
+  "name": "Lucas Garcia",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-lucas-garcia-base",
+      "name": "Lucas Garcia",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

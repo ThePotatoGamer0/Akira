@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-patrasche",
+  "name": "Patrasche",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-patrasche-base",
+      "name": "Patrasche",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

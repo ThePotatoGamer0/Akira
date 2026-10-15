@@ -1,0 +1,13 @@
+{
+  "id": "spirited-away-yubaba",
+  "name": "Yubaba",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "spirited-away-yubaba-base",
+      "name": "Yubaba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

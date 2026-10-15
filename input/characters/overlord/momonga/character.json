@@ -1,0 +1,13 @@
+{
+  "id": "overlord-momonga",
+  "name": "Momonga",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "overlord-momonga-base",
+      "name": "Momonga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

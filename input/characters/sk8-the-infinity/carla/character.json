@@ -1,0 +1,14 @@
+{
+  "id": "sk8-the-infinity-carla",
+  "name": "Carla",
+  "gender": null,
+  "cards": [
+    {
+      "id": "sk8-the-infinity-carla-base",
+      "name": "Carla",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

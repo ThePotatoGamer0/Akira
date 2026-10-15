@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-kenji-futakuchi",
+  "name": "Kenji Futakuchi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-kenji-futakuchi-base",
+      "name": "Kenji Futakuchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-riyou-reaper",
+  "name": "Riyou Reaper",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "gachiakuta-riyou-reaper-base",
+      "name": "Riyou Reaper",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

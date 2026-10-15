@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-roswaal-mathers",
+  "name": "Roswaal Mathers",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-roswaal-mathers-base",
+      "name": "Roswaal Mathers",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-kusarigama-no-barnaby",
+  "name": "Kusarigama no Barnaby",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-kusarigama-no-barnaby-base",
+      "name": "Kusarigama no Barnaby",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

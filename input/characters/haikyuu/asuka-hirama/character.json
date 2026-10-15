@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-asuka-hirama",
+  "name": "Asuka Hirama",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "haikyuu-asuka-hirama-base",
+      "name": "Asuka Hirama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

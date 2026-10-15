@@ -1,0 +1,13 @@
+{
+  "id": "howls-moving-castle-kokuou",
+  "name": "Kokuou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "howls-moving-castle-kokuou-base",
+      "name": "Kokuou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-akari-nitta",
+  "name": "Akari Nitta",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-akari-nitta-base",
+      "name": "Akari Nitta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

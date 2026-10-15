@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-jae-hwan-ju",
+  "name": "Jae-Hwan Ju",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-jae-hwan-ju-base",
+      "name": "Jae-Hwan Ju",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

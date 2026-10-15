@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-illumi-zoldyck",
+  "name": "Illumi Zoldyck",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-illumi-zoldyck-base",
+      "name": "Illumi Zoldyck",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

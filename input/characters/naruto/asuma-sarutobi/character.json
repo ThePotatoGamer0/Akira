@@ -1,0 +1,14 @@
+{
+  "id": "naruto-asuma-sarutobi",
+  "name": "Asuma Sarutobi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-asuma-sarutobi-base",
+      "name": "Asuma Sarutobi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

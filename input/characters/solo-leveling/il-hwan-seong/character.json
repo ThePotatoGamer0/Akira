@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-il-hwan-seong",
+  "name": "Il-Hwan Seong",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-il-hwan-seong-base",
+      "name": "Il-Hwan Seong",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

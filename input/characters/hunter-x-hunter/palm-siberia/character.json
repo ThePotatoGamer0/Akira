@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-palm-siberia",
+  "name": "Palm Siberia",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-palm-siberia-base",
+      "name": "Palm Siberia",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

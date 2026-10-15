@@ -1,0 +1,14 @@
+{
+  "id": "naruto-tazuna",
+  "name": "Tazuna",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-tazuna-base",
+      "name": "Tazuna",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-roujo",
+  "name": "Roujo",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "spy-x-family-roujo-base",
+      "name": "Roujo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-mogura",
+  "name": "Mogura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-mogura-base",
+      "name": "Mogura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

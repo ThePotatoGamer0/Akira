@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-pariston-hill",
+  "name": "Pariston Hill",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-pariston-hill-base",
+      "name": "Pariston Hill",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

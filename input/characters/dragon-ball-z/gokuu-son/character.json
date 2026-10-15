@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-gokuu-son",
+  "name": "Gokuu Son",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-gokuu-son-base",
+      "name": "Gokuu Son",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "overlord-vesture-kloff-di-laufen",
+  "name": "Vesture Kloff Di Laufen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "overlord-vesture-kloff-di-laufen-base",
+      "name": "Vesture Kloff Di Laufen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

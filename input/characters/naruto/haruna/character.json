@@ -1,0 +1,14 @@
+{
+  "id": "naruto-haruna",
+  "name": "Haruna",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-haruna-base",
+      "name": "Haruna",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

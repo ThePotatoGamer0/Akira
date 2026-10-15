@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-theoto-rikka",
+  "name": "Theoto Rikka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-theoto-rikka-base",
+      "name": "Theoto Rikka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

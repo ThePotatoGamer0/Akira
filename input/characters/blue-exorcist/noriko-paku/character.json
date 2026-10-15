@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-noriko-paku",
+  "name": "Noriko Paku",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-exorcist-noriko-paku-base",
+      "name": "Noriko Paku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

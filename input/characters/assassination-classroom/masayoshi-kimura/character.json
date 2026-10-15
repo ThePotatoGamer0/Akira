@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-masayoshi-kimura",
+  "name": "Masayoshi Kimura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "assassination-classroom-masayoshi-kimura-base",
+      "name": "Masayoshi Kimura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

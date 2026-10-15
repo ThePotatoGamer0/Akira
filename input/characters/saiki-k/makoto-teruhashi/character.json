@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-makoto-teruhashi",
+  "name": "Makoto Teruhashi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-makoto-teruhashi-base",
+      "name": "Makoto Teruhashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

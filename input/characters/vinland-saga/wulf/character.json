@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-wulf",
+  "name": "Wulf",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-wulf-base",
+      "name": "Wulf",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

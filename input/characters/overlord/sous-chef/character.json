@@ -1,0 +1,13 @@
+{
+  "id": "overlord-sous-chef",
+  "name": "Sous-chef",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-sous-chef-base",
+      "name": "Sous-chef",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

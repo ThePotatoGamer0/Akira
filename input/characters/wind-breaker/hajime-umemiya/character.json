@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-hajime-umemiya",
+  "name": "Hajime Umemiya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-hajime-umemiya-base",
+      "name": "Hajime Umemiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

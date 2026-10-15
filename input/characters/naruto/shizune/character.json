@@ -1,0 +1,14 @@
+{
+  "id": "naruto-shizune",
+  "name": "Shizune",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-shizune-base",
+      "name": "Shizune",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

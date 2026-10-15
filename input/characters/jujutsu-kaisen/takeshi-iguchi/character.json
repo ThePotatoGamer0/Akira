@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-takeshi-iguchi",
+  "name": "Takeshi Iguchi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-takeshi-iguchi-base",
+      "name": "Takeshi Iguchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

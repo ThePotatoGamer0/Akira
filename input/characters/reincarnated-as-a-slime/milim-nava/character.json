@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-milim-nava",
+  "name": "Milim Nava",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-milim-nava-base",
+      "name": "Milim Nava",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

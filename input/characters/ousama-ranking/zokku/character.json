@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-zokku",
+  "name": "Zokku",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-zokku-base",
+      "name": "Zokku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

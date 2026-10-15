@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-tokie",
+  "name": "Tokie",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-tokie-base",
+      "name": "Tokie",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

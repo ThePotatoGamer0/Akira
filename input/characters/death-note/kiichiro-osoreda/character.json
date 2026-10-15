@@ -1,0 +1,14 @@
+{
+  "id": "death-note-kiichiro-osoreda",
+  "name": "Kiichiro Osoreda",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-kiichiro-osoreda-base",
+      "name": "Kiichiro Osoreda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

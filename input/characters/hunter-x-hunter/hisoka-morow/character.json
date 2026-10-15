@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-hisoka-morow",
+  "name": "Hisoka Morow",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-hisoka-morow-base",
+      "name": "Hisoka Morow",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

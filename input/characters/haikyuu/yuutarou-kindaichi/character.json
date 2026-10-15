@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yuutarou-kindaichi",
+  "name": "Yuutarou Kindaichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-yuutarou-kindaichi-base",
+      "name": "Yuutarou Kindaichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

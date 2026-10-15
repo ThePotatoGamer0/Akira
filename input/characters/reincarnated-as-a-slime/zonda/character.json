@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-zonda",
+  "name": "Zonda",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-zonda-base",
+      "name": "Zonda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

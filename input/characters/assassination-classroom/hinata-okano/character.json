@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-hinata-okano",
+  "name": "Hinata Okano",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "assassination-classroom-hinata-okano-base",
+      "name": "Hinata Okano",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

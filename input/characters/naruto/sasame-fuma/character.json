@@ -1,0 +1,14 @@
+{
+  "id": "naruto-sasame-fuma",
+  "name": "Sasame Fuma",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-sasame-fuma-base",
+      "name": "Sasame Fuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

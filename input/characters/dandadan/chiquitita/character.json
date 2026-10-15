@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-chiquitita",
+  "name": "Chiquitita",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dandadan-chiquitita-base",
+      "name": "Chiquitita",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

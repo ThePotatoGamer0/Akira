@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-eclair-tonnerre",
+  "name": "Éclair Tonnerre",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-eclair-tonnerre-base",
+      "name": "Éclair Tonnerre",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

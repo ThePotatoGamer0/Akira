@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-jin-a-seong",
+  "name": "Jin-A Seong",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "solo-leveling-jin-a-seong-base",
+      "name": "Jin-A Seong",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

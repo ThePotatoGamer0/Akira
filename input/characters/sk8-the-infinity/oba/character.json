@@ -1,0 +1,14 @@
+{
+  "id": "sk8-the-infinity-oba",
+  "name": "Oba",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-oba-base",
+      "name": "Oba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

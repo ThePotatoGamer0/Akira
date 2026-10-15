@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-tareo",
+  "name": "Tareo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-tareo-base",
+      "name": "Tareo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

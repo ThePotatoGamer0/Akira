@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-bora",
+  "name": "Bora",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-bora-base",
+      "name": "Bora",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

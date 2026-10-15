@@ -1,0 +1,14 @@
+{
+  "id": "danganronpa-hifumi-yamada",
+  "name": "Hifumi Yamada",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-hifumi-yamada-base",
+      "name": "Hifumi Yamada",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

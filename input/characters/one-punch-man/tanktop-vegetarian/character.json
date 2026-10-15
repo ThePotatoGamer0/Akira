@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-tanktop-vegetarian",
+  "name": "Tanktop Vegetarian",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-tanktop-vegetarian-base",
+      "name": "Tanktop Vegetarian",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

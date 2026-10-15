@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-suphia",
+  "name": "Suphia",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-suphia-base",
+      "name": "Suphia",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

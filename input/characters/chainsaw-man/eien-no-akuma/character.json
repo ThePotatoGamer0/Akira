@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-eien-no-akuma",
+  "name": "Eien no Akuma",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "chainsaw-man-eien-no-akuma-base",
+      "name": "Eien no Akuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

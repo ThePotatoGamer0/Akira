@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-akane-aoi",
+  "name": "Akane Aoi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-akane-aoi-base",
+      "name": "Akane Aoi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

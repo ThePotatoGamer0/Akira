@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-ramzi-sofu",
+  "name": "Ramzi Sofu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-ramzi-sofu-base",
+      "name": "Ramzi Sofu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

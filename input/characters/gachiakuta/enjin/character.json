@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-enjin",
+  "name": "Enjin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-enjin-base",
+      "name": "Enjin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

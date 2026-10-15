@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-taiga-sakurai",
+  "name": "Taiga Sakurai",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-taiga-sakurai-base",
+      "name": "Taiga Sakurai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

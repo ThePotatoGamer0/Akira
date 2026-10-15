@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-michelle-neuhaus",
+  "name": "Michelle Neuhaus",
+  "gender": null,
+  "cards": [
+    {
+      "id": "blue-exorcist-michelle-neuhaus-base",
+      "name": "Michelle Neuhaus",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

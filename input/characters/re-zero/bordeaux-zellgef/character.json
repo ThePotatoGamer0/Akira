@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-bordeaux-zellgef",
+  "name": "Bordeaux Zellgef",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-bordeaux-zellgef-base",
+      "name": "Bordeaux Zellgef",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

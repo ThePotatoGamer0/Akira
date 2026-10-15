@@ -1,0 +1,14 @@
+{
+  "id": "naruto-hayate-gekkou",
+  "name": "Hayate Gekkou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-hayate-gekkou-base",
+      "name": "Hayate Gekkou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

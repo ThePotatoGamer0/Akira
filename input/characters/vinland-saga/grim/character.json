@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-grim",
+  "name": "Grim",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-grim-base",
+      "name": "Grim",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

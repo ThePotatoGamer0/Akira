@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-sodachisugita-pochi",
+  "name": "Sodachisugita Pochi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-sodachisugita-pochi-base",
+      "name": "Sodachisugita Pochi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

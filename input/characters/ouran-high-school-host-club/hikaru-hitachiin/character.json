@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-hikaru-hitachiin",
+  "name": "Hikaru Hitachiin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-hikaru-hitachiin-base",
+      "name": "Hikaru Hitachiin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

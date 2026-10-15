@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-chou-doushi",
+  "name": "Chou Doushi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-chou-doushi-base",
+      "name": "Chou Doushi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

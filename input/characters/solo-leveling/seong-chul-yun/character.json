@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-seong-chul-yun",
+  "name": "Seong-Chul Yun",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-seong-chul-yun-base",
+      "name": "Seong-Chul Yun",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

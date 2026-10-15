@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-sakai-tsukuyogi",
+  "name": "Sakai Tsukuyogi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-sakai-tsukuyogi-base",
+      "name": "Sakai Tsukuyogi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

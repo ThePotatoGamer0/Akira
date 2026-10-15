@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-frieda-reiss",
+  "name": "Frieda Reiss",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-frieda-reiss-base",
+      "name": "Frieda Reiss",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-petra-ral",
+  "name": "Petra Ral",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-petra-ral-base",
+      "name": "Petra Ral",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

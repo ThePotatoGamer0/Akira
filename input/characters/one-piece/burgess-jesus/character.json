@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-burgess-jesus",
+  "name": "Burgess Jesus",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-burgess-jesus-base",
+      "name": "Burgess Jesus",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

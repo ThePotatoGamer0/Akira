@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-dennis-aiblinger",
+  "name": "Dennis Aiblinger",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-dennis-aiblinger-base",
+      "name": "Dennis Aiblinger",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

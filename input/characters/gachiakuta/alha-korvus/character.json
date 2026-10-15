@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-alha-korvus",
+  "name": "Alha Korvus",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-alha-korvus-base",
+      "name": "Alha Korvus",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

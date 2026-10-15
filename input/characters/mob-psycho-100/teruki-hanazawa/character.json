@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-teruki-hanazawa",
+  "name": "Teruki Hanazawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-teruki-hanazawa-base",
+      "name": "Teruki Hanazawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

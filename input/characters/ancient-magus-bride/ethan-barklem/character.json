@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-ethan-barklem",
+  "name": "Ethan Barklem",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-ethan-barklem-base",
+      "name": "Ethan Barklem",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

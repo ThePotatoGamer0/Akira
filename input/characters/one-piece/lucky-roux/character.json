@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-lucky-roux",
+  "name": "Lucky Roux",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-lucky-roux-base",
+      "name": "Lucky Roux",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

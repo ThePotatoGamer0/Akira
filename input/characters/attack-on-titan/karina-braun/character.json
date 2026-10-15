@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-karina-braun",
+  "name": "Karina Braun",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-karina-braun-base",
+      "name": "Karina Braun",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

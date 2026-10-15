@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-echidna",
+  "name": "Echidna",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-echidna-base",
+      "name": "Echidna",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

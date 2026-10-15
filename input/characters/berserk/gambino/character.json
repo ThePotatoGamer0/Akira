@@ -1,0 +1,13 @@
+{
+  "id": "berserk-gambino",
+  "name": "Gambino",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "berserk-gambino-base",
+      "name": "Gambino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

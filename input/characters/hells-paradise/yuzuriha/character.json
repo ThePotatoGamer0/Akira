@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-yuzuriha",
+  "name": "Yuzuriha",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hells-paradise-yuzuriha-base",
+      "name": "Yuzuriha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

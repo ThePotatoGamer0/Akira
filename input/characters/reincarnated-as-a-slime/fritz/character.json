@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-fritz",
+  "name": "Fritz",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-fritz-base",
+      "name": "Fritz",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

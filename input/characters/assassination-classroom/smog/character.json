@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-smog",
+  "name": "Smog",
+  "gender": null,
+  "cards": [
+    {
+      "id": "assassination-classroom-smog-base",
+      "name": "Smog",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

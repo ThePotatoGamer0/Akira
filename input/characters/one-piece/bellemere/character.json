@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-bellemere",
+  "name": "Bellemere",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-bellemere-base",
+      "name": "Bellemere",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

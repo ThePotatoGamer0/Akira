@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-kumo-oni-haha",
+  "name": "Kumo Oni Haha",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-kumo-oni-haha-base",
+      "name": "Kumo Oni Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

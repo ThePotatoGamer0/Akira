@@ -1,0 +1,14 @@
+{
+  "id": "naruto-zabuza-momochi",
+  "name": "Zabuza Momochi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-zabuza-momochi-base",
+      "name": "Zabuza Momochi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

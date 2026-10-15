@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-wiper",
+  "name": "Wiper",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-wiper-base",
+      "name": "Wiper",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-izuku-midoriya",
+  "name": "Izuku Midoriya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-izuku-midoriya-base",
+      "name": "Izuku Midoriya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-artur-blouse",
+  "name": "Artur Blouse",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-artur-blouse-base",
+      "name": "Artur Blouse",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

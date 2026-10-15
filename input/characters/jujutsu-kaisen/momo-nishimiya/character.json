@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-momo-nishimiya",
+  "name": "Momo Nishimiya",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-momo-nishimiya-base",
+      "name": "Momo Nishimiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

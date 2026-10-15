@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-gunther-sofu",
+  "name": "Gunther Sofu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-gunther-sofu-base",
+      "name": "Gunther Sofu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

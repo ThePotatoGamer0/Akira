@@ -1,0 +1,14 @@
+{
+  "id": "naruto-konohamaru-sarutobi",
+  "name": "Konohamaru Sarutobi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-konohamaru-sarutobi-base",
+      "name": "Konohamaru Sarutobi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

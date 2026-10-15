@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-kouta-nakanishi",
+  "name": "Kouta Nakanishi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-kouta-nakanishi-base",
+      "name": "Kouta Nakanishi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

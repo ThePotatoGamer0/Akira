@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-tamsy-caines",
+  "name": "Tamsy Caines",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-tamsy-caines-base",
+      "name": "Tamsy Caines",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

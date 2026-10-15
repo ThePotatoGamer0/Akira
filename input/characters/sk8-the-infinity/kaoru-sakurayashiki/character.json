@@ -1,0 +1,14 @@
+{
+  "id": "sk8-the-infinity-kaoru-sakurayashiki",
+  "name": "Kaoru Sakurayashiki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-kaoru-sakurayashiki-base",
+      "name": "Kaoru Sakurayashiki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

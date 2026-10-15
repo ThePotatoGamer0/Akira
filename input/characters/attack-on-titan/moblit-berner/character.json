@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-moblit-berner",
+  "name": "Moblit Berner",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-moblit-berner-base",
+      "name": "Moblit Berner",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

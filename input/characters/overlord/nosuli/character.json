@@ -1,0 +1,13 @@
+{
+  "id": "overlord-nosuli",
+  "name": "Nosuli",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-nosuli-base",
+      "name": "Nosuli",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

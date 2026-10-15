@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-louis-valentin",
+  "name": "Louis Valentin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-louis-valentin-base",
+      "name": "Louis Valentin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-kenji-mitsuura",
+  "name": "Kenji  Mitsuura",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-kenji-mitsuura-base",
+      "name": "Kenji  Mitsuura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

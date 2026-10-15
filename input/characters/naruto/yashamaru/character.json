@@ -1,0 +1,14 @@
+{
+  "id": "naruto-yashamaru",
+  "name": "Yashamaru",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-yashamaru-base",
+      "name": "Yashamaru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

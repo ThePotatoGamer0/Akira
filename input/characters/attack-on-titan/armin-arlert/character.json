@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-armin-arlert",
+  "name": "Armin Arlert",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-armin-arlert-base",
+      "name": "Armin Arlert",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

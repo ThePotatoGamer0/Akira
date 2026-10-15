@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-teruko",
+  "name": "Teruko",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-teruko-base",
+      "name": "Teruko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

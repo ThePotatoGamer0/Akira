@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-cavi-campbell",
+  "name": "Cavi Campbell",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-cavi-campbell-base",
+      "name": "Cavi Campbell",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

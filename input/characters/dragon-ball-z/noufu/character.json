@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-noufu",
+  "name": "Noufu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-noufu-base",
+      "name": "Noufu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

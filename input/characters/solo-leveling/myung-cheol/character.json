@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-myung-cheol",
+  "name": "Myung-Cheol",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-myung-cheol-base",
+      "name": "Myung-Cheol",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

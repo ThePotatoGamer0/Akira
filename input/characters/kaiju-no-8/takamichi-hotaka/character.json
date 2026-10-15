@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-takamichi-hotaka",
+  "name": "Takamichi Hotaka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-takamichi-hotaka-base",
+      "name": "Takamichi Hotaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

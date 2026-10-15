@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-natsuhiko-koyama",
+  "name": "Natsuhiko Koyama",
+  "gender": null,
+  "cards": [
+    {
+      "id": "assassination-classroom-natsuhiko-koyama-base",
+      "name": "Natsuhiko Koyama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

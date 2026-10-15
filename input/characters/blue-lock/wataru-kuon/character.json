@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-wataru-kuon",
+  "name": "Wataru Kuon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-wataru-kuon-base",
+      "name": "Wataru Kuon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

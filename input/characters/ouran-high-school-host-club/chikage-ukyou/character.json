@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-chikage-ukyou",
+  "name": "Chikage Ukyou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-chikage-ukyou-base",
+      "name": "Chikage Ukyou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

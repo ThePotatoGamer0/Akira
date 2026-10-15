@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-takuya-uzai",
+  "name": "Takuya Uzai",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-takuya-uzai-base",
+      "name": "Takuya Uzai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-leonardo-luna",
+  "name": "Leonardo Luna",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-leonardo-luna-base",
+      "name": "Leonardo Luna",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

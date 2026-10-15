@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-kakushin",
+  "name": "Kakushin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-kakushin-base",
+      "name": "Kakushin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

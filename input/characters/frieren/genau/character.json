@@ -1,0 +1,13 @@
+{
+  "id": "frieren-genau",
+  "name": "Genau",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-genau-base",
+      "name": "Genau",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

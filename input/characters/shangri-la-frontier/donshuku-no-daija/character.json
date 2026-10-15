@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-donshuku-no-daija",
+  "name": "Donshuku no Daija",
+  "gender": null,
+  "cards": [
+    {
+      "id": "shangri-la-frontier-donshuku-no-daija-base",
+      "name": "Donshuku no Daija",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

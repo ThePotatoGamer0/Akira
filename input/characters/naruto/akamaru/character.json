@@ -1,0 +1,14 @@
+{
+  "id": "naruto-akamaru",
+  "name": "Akamaru",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-akamaru-base",
+      "name": "Akamaru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

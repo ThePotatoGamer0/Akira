@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-kurapika",
+  "name": "Kurapika",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-kurapika-base",
+      "name": "Kurapika",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

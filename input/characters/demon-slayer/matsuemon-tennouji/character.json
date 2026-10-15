@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-matsuemon-tennouji",
+  "name": "Matsuemon Tennouji",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-matsuemon-tennouji-base",
+      "name": "Matsuemon Tennouji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

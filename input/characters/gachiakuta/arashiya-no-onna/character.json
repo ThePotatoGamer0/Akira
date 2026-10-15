@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-arashiya-no-onna",
+  "name": "Arashiya no Onna",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "gachiakuta-arashiya-no-onna-base",
+      "name": "Arashiya no Onna",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

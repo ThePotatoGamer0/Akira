@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-arataka-reigen",
+  "name": "Arataka Reigen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-arataka-reigen-base",
+      "name": "Arataka Reigen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

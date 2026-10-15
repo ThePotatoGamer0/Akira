@@ -1,0 +1,13 @@
+{
+  "id": "spirited-away-akio-ogino",
+  "name": "Akio Ogino",
+  "gender": null,
+  "cards": [
+    {
+      "id": "spirited-away-akio-ogino-base",
+      "name": "Akio Ogino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

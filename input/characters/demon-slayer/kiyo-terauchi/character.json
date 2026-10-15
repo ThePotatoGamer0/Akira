@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-kiyo-terauchi",
+  "name": "Kiyo Terauchi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-kiyo-terauchi-base",
+      "name": "Kiyo Terauchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

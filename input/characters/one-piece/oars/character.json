@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-oars",
+  "name": "Oars",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-piece-oars-base",
+      "name": "Oars",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

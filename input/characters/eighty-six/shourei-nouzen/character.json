@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-shourei-nouzen",
+  "name": "Shourei Nouzen",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-shourei-nouzen-base",
+      "name": "Shourei Nouzen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

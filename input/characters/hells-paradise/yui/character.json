@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-yui",
+  "name": "Yui",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hells-paradise-yui-base",
+      "name": "Yui",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

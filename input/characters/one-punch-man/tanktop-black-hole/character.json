@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-tanktop-black-hole",
+  "name": "Tanktop Black Hole",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-tanktop-black-hole-base",
+      "name": "Tanktop Black Hole",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

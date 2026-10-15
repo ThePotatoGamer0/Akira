@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-tank",
+  "name": "Tank",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-tank-base",
+      "name": "Tank",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

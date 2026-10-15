@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-nyaako",
+  "name": "Nyaako",
+  "gender": null,
+  "cards": [
+    {
+      "id": "chainsaw-man-nyaako-base",
+      "name": "Nyaako",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

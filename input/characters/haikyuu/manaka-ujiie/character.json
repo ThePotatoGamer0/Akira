@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-manaka-ujiie",
+  "name": "Manaka Ujiie",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "haikyuu-manaka-ujiie-base",
+      "name": "Manaka Ujiie",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

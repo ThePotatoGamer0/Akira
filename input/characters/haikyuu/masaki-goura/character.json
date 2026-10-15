@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-masaki-goura",
+  "name": "Masaki Goura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-masaki-goura-base",
+      "name": "Masaki Goura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

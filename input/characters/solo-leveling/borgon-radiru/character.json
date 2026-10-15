@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-borgon-radiru",
+  "name": "Borgon Radiru",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-borgon-radiru-base",
+      "name": "Borgon Radiru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

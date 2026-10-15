@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-isabella-morgan",
+  "name": "Isabella Morgan",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-isabella-morgan-base",
+      "name": "Isabella Morgan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

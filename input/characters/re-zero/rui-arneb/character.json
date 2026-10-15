@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-rui-arneb",
+  "name": "Rui Arneb",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-rui-arneb-base",
+      "name": "Rui Arneb",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

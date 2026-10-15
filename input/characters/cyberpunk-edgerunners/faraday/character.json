@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-faraday",
+  "name": "Faraday",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-faraday-base",
+      "name": "Faraday",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

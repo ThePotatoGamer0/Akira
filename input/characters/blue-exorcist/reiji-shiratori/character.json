@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-reiji-shiratori",
+  "name": "Reiji Shiratori",
+  "gender": null,
+  "cards": [
+    {
+      "id": "blue-exorcist-reiji-shiratori-base",
+      "name": "Reiji Shiratori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

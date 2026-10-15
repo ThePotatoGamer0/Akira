@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-ricardo-welkin",
+  "name": "Ricardo Welkin",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-ricardo-welkin-base",
+      "name": "Ricardo Welkin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

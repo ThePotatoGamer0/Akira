@@ -1,0 +1,14 @@
+{
+  "id": "servamp-junichirou-kurumamori",
+  "name": "Junichirou Kurumamori",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-junichirou-kurumamori-base",
+      "name": "Junichirou Kurumamori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

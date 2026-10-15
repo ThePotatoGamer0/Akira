@@ -1,0 +1,14 @@
+{
+  "id": "death-note-shuuichi-aizawa",
+  "name": "Shuuichi Aizawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-shuuichi-aizawa-base",
+      "name": "Shuuichi Aizawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

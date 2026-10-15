@@ -1,0 +1,13 @@
+{
+  "id": "overlord-evileye",
+  "name": "Evileye",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-evileye-base",
+      "name": "Evileye",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

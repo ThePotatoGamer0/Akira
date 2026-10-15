@@ -1,0 +1,14 @@
+{
+  "id": "naruto-oki",
+  "name": "Oki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-oki-base",
+      "name": "Oki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-kalluto-zoldyck",
+  "name": "Kalluto Zoldyck",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-kalluto-zoldyck-base",
+      "name": "Kalluto Zoldyck",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

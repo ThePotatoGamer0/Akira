@@ -1,0 +1,13 @@
+{
+  "id": "princess-mononoke-okkotonushi",
+  "name": "Okkotonushi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "princess-mononoke-okkotonushi-base",
+      "name": "Okkotonushi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

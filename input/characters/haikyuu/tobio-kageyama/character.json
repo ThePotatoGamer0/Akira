@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-tobio-kageyama",
+  "name": "Tobio Kageyama",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-tobio-kageyama-base",
+      "name": "Tobio Kageyama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

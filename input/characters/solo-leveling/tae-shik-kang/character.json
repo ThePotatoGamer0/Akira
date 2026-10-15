@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-tae-shik-kang",
+  "name": "Tae-Shik Kang",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-tae-shik-kang-base",
+      "name": "Tae-Shik Kang",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-kaisel",
+  "name": "Kaisel",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-kaisel-base",
+      "name": "Kaisel",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

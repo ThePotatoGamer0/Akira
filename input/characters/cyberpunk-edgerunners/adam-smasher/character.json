@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-adam-smasher",
+  "name": "Adam Smasher",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-adam-smasher-base",
+      "name": "Adam Smasher",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

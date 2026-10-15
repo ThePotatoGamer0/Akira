@@ -1,0 +1,13 @@
+{
+  "id": "overlord-arche-eeb-rile-furt",
+  "name": "Arche Eeb Rile Furt",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-arche-eeb-rile-furt-base",
+      "name": "Arche Eeb Rile Furt",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

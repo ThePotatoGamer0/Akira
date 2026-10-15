@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-carmilla",
+  "name": "Carmilla",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-carmilla-base",
+      "name": "Carmilla",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

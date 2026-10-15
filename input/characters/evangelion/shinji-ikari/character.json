@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-shinji-ikari",
+  "name": "Shinji Ikari",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "evangelion-shinji-ikari-base",
+      "name": "Shinji Ikari",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

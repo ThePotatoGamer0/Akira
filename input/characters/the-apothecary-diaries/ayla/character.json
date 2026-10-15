@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-ayla",
+  "name": "Ayla",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-ayla-base",
+      "name": "Ayla",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

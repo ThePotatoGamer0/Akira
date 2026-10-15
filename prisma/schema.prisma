@@ -26,6 +26,7 @@ model Series {
   name       String
   slug       String      @unique
   characters Character[]
+  trackedBy  TrackedSeries[]
 }
 
 model Character {
@@ -35,6 +36,8 @@ model Character {
   seriesId    String
   description String?
   gender      String?
+  /** AniList MAIN or SUPPORTING. Unset characters are not treated as main. */
+  role        String?
   aliases     String?       // Stored as stringified JSON array
   series      Series        @relation(fields: [seriesId], references: [id], onDelete: Cascade)
   variants    CardVariant[]
@@ -44,28 +47,33 @@ model Character {
 }
 
 model CardVariant {
-  id          String      @id
-  characterId String
-  character   Character   @relation(fields: [characterId], references: [id], onDelete: Cascade)
-  name        String
-  rarity      String
-  image       String
-  cards       Card[]
+  id           String        @id
+  characterId  String
+  character    Character     @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  name         String
+  rarity       String
+  image        String
+  cards        Card[]
+  dropSlots    DropSlot[]
+  printCounter PrintCounter?
 }
 
 model Card {
-  id          String      @id @default(cuid())
+  id          String      @id
   variantId   String
   variant     CardVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
-  frameId     Int
+  /** Null uses the server's default frame. A number is a frame chosen for this card. */
+  frameId     Int?
   printNumber Int
   quality     CardQuality
   ownerId     String?
   owner       User?       @relation(fields: [ownerId], references: [id], onDelete: SetNull)
+  /** Name of a tag this owner created. Null cards show ◾. */
   tag         String?
   alias       String?
   dye         String?
   obtainedAt  DateTime    @default(now())
+  dropSlot    DropSlot?
 
   @@index([ownerId])
   @@index([variantId, frameId])
@@ -85,11 +93,46 @@ model User {
   milestoneCount      Int                    @default(0)
   milestoneProgress   Int                    @default(0)
   passiveBitsBonus    Int                    @default(0)
+  /** Card code from the player's latest successful grab. Bare `av` opens this. */
+  lastGrabbedCardId   String?
   cards               Card[]
   wishlists           Wishlist[]
   poolContributions   UserPoolContribution[]
   inventory           Inventory[]
   cooldowns           Cooldown[]
+  reminders           Reminder[]
+  claimedSlots        DropSlot[]
+  drops               Drop[]
+  transfersSent       TransferOffer[] @relation("TransferFrom")
+  transfersReceived   TransferOffer[] @relation("TransferTo")
+  tags                Tag[]
+  trackedSeries       TrackedSeries[]
+  buffs               Buff[]
+  prestigeBuffs       PrestigeBuff[]
+}
+
+model Tag {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name   String
+  emoji  String
+
+  @@unique([userId, name])
+  @@index([userId])
+}
+
+/** Up to four series a player pinned on the stats completion card. */
+model TrackedSeries {
+  userId   String
+  seriesId String
+  /** Lower numbers show first. */
+  position Int
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  series   Series @relation(fields: [seriesId], references: [id], onDelete: Cascade)
+
+  @@id([userId, seriesId])
+  @@unique([userId, position])
 }
 
 model Wishlist {
@@ -100,6 +143,34 @@ model Wishlist {
   character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
 
   @@unique([userId, characterId])
+}
+
+model Buff {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  kind      String
+  expiresAt DateTime
+  seriesId  String?
+
+  @@unique([userId, kind])
+  @@index([userId])
+}
+
+model PrestigeBuff {
+  userId String
+  kind   String
+  stacks Int    @default(0)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, kind])
+}
+
+/** One row. The shop's featured series for a UTC day, so a restart does not reshuffle it. */
+model FeaturedSeries {
+  id       String @id
+  day      String
+  seriesId String
 }
 
 model ServerPool {
@@ -142,4 +213,80 @@ model Cooldown {
   expiresAt DateTime
 
   @@unique([userId, type])
+}
+
+model Reminder {
+  id     String       @id @default(cuid())
+  userId String
+  user   User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type   CooldownType
+
+  @@unique([userId, type])
+}
+
+model TransferOffer {
+  id            String   @id
+  kind          String
+  fromUserId    String
+  fromUser      User     @relation("TransferFrom", fields: [fromUserId], references: [id], onDelete: Cascade)
+  toUserId      String
+  toUser        User     @relation("TransferTo", fields: [toUserId], references: [id], onDelete: Cascade)
+  fromCardId    String
+  toCardId      String?
+  fromConfirmed Boolean  @default(false)
+  toConfirmed   Boolean  @default(false)
+  status        String   @default("pending")
+  createdAt     DateTime @default(now())
+
+  @@index([status, fromCardId])
+  @@index([status, toCardId])
+}
+
+model GuildConfig {
+  guildId       String  @id
+  dropChannelId String?
+  /** Also accept Karuta's k and k! prefixes. Incompatible with Karuta on those prefixes. */
+  karutaPrefix  Boolean @default(false)
+  /** Frame drawn on cards that do not have one of their own. */
+  defaultFrameId Int @default(0)
+}
+
+model PrintCounter {
+  variantId String      @id
+  variant   CardVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+  nextPrint Int         @default(1)
+}
+
+model Drop {
+  id        String     @id @default(cuid())
+  guildId   String
+  channelId String
+  messageId String     @unique
+  createdAt    DateTime   @default(now())
+  expiresAt    DateTime
+  expiryPosted Boolean    @default(false)
+  /** Player who dropped. They can take a card back during the protection window. */
+  dropperId    String?
+  dropper      User?      @relation(fields: [dropperId], references: [id], onDelete: SetNull)
+  slots        DropSlot[]
+
+  @@index([guildId])
+}
+
+model DropSlot {
+  id          String       @id @default(cuid())
+  dropId      String
+  drop        Drop         @relation(fields: [dropId], references: [id], onDelete: Cascade)
+  position    Int
+  variantId   String
+  variant     CardVariant  @relation(fields: [variantId], references: [id], onDelete: Cascade)
+  quality     CardQuality
+  /** Null uses the server's default frame when the drop is shown. */
+  frameId     Int?
+  claimedById String?
+  claimedBy   User?        @relation(fields: [claimedById], references: [id], onDelete: SetNull)
+  cardId      String?      @unique
+  card        Card?        @relation(fields: [cardId], references: [id], onDelete: SetNull)
+
+  @@unique([dropId, position])
 }

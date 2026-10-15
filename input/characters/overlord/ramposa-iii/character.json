@@ -1,0 +1,13 @@
+{
+  "id": "overlord-ramposa-iii",
+  "name": "Ramposa III",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-ramposa-iii-base",
+      "name": "Ramposa III",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

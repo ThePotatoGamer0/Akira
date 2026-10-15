@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-enmu",
+  "name": "Enmu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-enmu-base",
+      "name": "Enmu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

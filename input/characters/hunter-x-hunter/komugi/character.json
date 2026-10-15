@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-komugi",
+  "name": "Komugi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-komugi-base",
+      "name": "Komugi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

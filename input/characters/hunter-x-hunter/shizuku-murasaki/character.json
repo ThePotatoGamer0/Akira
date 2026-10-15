@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-shizuku-murasaki",
+  "name": "Shizuku Murasaki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-shizuku-murasaki-base",
+      "name": "Shizuku Murasaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

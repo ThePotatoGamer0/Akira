@@ -1,0 +1,13 @@
+{
+  "id": "way-of-the-househusband-kumichou",
+  "name": "Kumichou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "way-of-the-househusband-kumichou-base",
+      "name": "Kumichou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

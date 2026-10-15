@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-himeno",
+  "name": "Himeno",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "chainsaw-man-himeno-base",
+      "name": "Himeno",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

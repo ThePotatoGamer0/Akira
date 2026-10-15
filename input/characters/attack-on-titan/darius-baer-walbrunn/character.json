@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-darius-baer-walbrunn",
+  "name": "Darius  Baer Walbrunn",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-darius-baer-walbrunn-base",
+      "name": "Darius  Baer Walbrunn",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

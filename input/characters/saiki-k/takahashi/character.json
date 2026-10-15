@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-takahashi",
+  "name": "Takahashi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-takahashi-base",
+      "name": "Takahashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

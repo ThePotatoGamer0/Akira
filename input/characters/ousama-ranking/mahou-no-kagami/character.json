@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-mahou-no-kagami",
+  "name": "Mahou no Kagami",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ousama-ranking-mahou-no-kagami-base",
+      "name": "Mahou no Kagami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-hikaru-komaki",
+  "name": "Hikaru Komaki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-hikaru-komaki-base",
+      "name": "Hikaru Komaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

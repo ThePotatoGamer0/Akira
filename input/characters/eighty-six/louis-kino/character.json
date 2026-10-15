@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-louis-kino",
+  "name": "Louis Kino",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-louis-kino-base",
+      "name": "Louis Kino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-kenzo-tanaka",
+  "name": "Kenzo Tanaka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-kenzo-tanaka-base",
+      "name": "Kenzo Tanaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

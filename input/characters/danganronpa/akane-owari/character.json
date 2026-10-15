@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-akane-owari",
+  "name": "Akane Owari",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-akane-owari-base",
+      "name": "Akane Owari",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

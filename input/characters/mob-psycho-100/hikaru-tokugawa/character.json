@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-hikaru-tokugawa",
+  "name": "Hikaru Tokugawa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-hikaru-tokugawa-base",
+      "name": "Hikaru Tokugawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

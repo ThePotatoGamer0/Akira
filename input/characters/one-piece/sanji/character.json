@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-sanji",
+  "name": "Sanji",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-sanji-base",
+      "name": "Sanji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

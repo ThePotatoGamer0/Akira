@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-monaka",
+  "name": "Monaka",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-monaka-base",
+      "name": "Monaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

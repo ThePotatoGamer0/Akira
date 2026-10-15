@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-jinbe",
+  "name": "Jinbe",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-jinbe-base",
+      "name": "Jinbe",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

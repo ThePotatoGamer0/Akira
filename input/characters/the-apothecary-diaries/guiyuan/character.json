@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-guiyuan",
+  "name": "Guiyuan",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-guiyuan-base",
+      "name": "Guiyuan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

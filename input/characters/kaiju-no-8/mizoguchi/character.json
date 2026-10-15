@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-mizoguchi",
+  "name": "Mizoguchi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "kaiju-no-8-mizoguchi-base",
+      "name": "Mizoguchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yoshiaki-nurukawa",
+  "name": "Yoshiaki Nurukawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-yoshiaki-nurukawa-base",
+      "name": "Yoshiaki Nurukawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

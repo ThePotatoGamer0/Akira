@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-kaoru-hitachiin",
+  "name": "Kaoru Hitachiin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-kaoru-hitachiin-base",
+      "name": "Kaoru Hitachiin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

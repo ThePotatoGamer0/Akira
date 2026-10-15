@@ -1,0 +1,14 @@
+{
+  "id": "naruto-raiga-kurosuki",
+  "name": "Raiga Kurosuki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-raiga-kurosuki-base",
+      "name": "Raiga Kurosuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

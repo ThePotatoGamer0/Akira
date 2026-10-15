@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-mia",
+  "name": "Mia",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-mia-base",
+      "name": "Mia",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

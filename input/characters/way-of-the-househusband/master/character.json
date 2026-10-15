@@ -1,0 +1,13 @@
+{
+  "id": "way-of-the-househusband-master",
+  "name": "Master",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "way-of-the-househusband-master-base",
+      "name": "Master",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

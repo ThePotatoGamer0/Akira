@@ -1,0 +1,14 @@
+{
+  "id": "servamp-mahiru-shirota",
+  "name": "Mahiru Shirota",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-mahiru-shirota-base",
+      "name": "Mahiru Shirota",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

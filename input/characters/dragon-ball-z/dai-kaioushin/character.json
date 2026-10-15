@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-dai-kaioushin",
+  "name": "Dai Kaioushin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-dai-kaioushin-base",
+      "name": "Dai Kaioushin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

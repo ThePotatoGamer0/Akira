@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-jinrai",
+  "name": "Jinrai",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-jinrai-base",
+      "name": "Jinrai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

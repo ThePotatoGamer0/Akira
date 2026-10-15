@@ -1,0 +1,13 @@
+{
+  "id": "berserk-flora",
+  "name": "Flora",
+  "gender": null,
+  "cards": [
+    {
+      "id": "berserk-flora-base",
+      "name": "Flora",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

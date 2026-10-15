@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-daruma-ujiko",
+  "name": "Daruma Ujiko",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-daruma-ujiko-base",
+      "name": "Daruma Ujiko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

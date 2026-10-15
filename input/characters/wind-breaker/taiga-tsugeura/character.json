@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-taiga-tsugeura",
+  "name": "Taiga Tsugeura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-taiga-tsugeura-base",
+      "name": "Taiga Tsugeura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

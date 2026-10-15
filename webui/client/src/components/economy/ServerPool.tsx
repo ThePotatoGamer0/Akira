@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 
 type PoolState = {
   totalBits: number;
-  tierReached: number;
-  nextTierThreshold: number | null;
-  rollChanceNextReset: number;
-  activeBuff: string | null;
-  buffTier: number;
+  tier: number;
+  choices: string[];
+  live: string[];
   buffExpiry: string | null;
 };
 
@@ -40,7 +38,7 @@ export function ServerPool(props: {
       setMsg(j.error ?? "Could not contribute");
       return;
     }
-    setMsg(`Pool is now ${j.poolTotal?.toLocaleString() ?? "?"} bits. Thanks for chipping in!`);
+    setMsg(`The pot is now ${j.poolTotal?.toLocaleString() ?? "?"} bits, and your milestone bar moved with it.`);
     await load();
     props.onChange?.();
   }
@@ -51,25 +49,14 @@ export function ServerPool(props: {
     <div className="panel">
       <h3>Server pool</h3>
       <p>
-        Today&apos;s pool sits at <strong>{pool.totalBits.toLocaleString()}</strong> bits (tier{" "}
-        {pool.tierReached} reached).
-        {pool.nextTierThreshold
-          ? ` Next threshold: ${pool.nextTierThreshold.toLocaleString()} bits.`
-          : null}
+        The pot has <strong>{pool.totalBits.toLocaleString()}</strong> bits. Tier {pool.tier}.
       </p>
+      <p>Can be chosen tonight: {pool.choices.length > 0 ? pool.choices.join(", ") : "nothing until 500 bits"}.</p>
       <p>
-        Chance the daily buff actually fires after reset:{" "}
-        <strong>{(pool.rollChanceNextReset * 100).toFixed(0)}%</strong> (at current tier).
+        Live: {pool.live.length > 0 ? `${pool.live.join(", ")} until ${pool.buffExpiry?.replace("T", " ").slice(0, 16)} UTC` : "none"}.
       </p>
-      {pool.activeBuff ? (
-        <p>
-          Active buff: <em>{pool.activeBuff}</em> (tier {pool.buffTier})
-        </p>
-      ) : (
-        <p>No buff live right now.</p>
-      )}
       <label>
-        Contribute bits
+        Give bits
         <input
           type="number"
           min={1}

@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-kiyoko-shimizu",
+  "name": "Kiyoko Shimizu",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "haikyuu-kiyoko-shimizu-base",
+      "name": "Kiyoko Shimizu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

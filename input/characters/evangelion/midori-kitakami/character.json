@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-midori-kitakami",
+  "name": "Midori Kitakami",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "evangelion-midori-kitakami-base",
+      "name": "Midori Kitakami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

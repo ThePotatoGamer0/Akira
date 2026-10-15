@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-turbo-babaa",
+  "name": "Turbo Babaa",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dandadan-turbo-babaa-base",
+      "name": "Turbo Babaa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-kojiin-no-shujin",
+  "name": "Kojiin no Shujin",
+  "gender": null,
+  "cards": [
+    {
+      "id": "spy-x-family-kojiin-no-shujin-base",
+      "name": "Kojiin no Shujin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-ukogi",
+  "name": "Ukogi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-ukogi-base",
+      "name": "Ukogi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

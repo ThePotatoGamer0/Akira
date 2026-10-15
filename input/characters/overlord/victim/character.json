@@ -1,0 +1,13 @@
+{
+  "id": "overlord-victim",
+  "name": "Victim",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-victim-base",
+      "name": "Victim",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

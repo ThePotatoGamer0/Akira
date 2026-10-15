@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yukinari-mori",
+  "name": "Yukinari Mori",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-yukinari-mori-base",
+      "name": "Yukinari Mori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "death-note-halle-bullook",
+  "name": "Halle Bullook",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "death-note-halle-bullook-base",
+      "name": "Halle Bullook",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

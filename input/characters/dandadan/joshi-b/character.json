@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-joshi-b",
+  "name": "Joshi B",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "dandadan-joshi-b-base",
+      "name": "Joshi B",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

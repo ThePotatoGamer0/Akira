@@ -4,5 +4,7 @@ dist/
 *.db
 *.db-journal
 init.lock
+data/icon-sync.json
 
 /src/generated/prisma
+/input/portraits

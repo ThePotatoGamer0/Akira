@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-hajime-iwaizumi",
+  "name": "Hajime Iwaizumi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-hajime-iwaizumi-base",
+      "name": "Hajime Iwaizumi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

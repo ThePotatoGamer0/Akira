@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-higher-dragon",
+  "name": "Higher Dragon",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-higher-dragon-base",
+      "name": "Higher Dragon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

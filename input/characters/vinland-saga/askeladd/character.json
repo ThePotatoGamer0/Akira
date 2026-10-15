@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-askeladd",
+  "name": "Askeladd",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "vinland-saga-askeladd-base",
+      "name": "Askeladd",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

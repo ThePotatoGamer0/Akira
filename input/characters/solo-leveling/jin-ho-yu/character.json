@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-jin-ho-yu",
+  "name": "Jin-Ho Yu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-jin-ho-yu-base",
+      "name": "Jin-Ho Yu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-higari-maijima",
+  "name": "Higari Maijima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-higari-maijima-base",
+      "name": "Higari Maijima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

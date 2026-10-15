@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-yuki-tsukumo",
+  "name": "Yuki Tsukumo",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-yuki-tsukumo-base",
+      "name": "Yuki Tsukumo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

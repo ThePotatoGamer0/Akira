@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-kenma-kozume",
+  "name": "Kenma Kozume",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-kenma-kozume-base",
+      "name": "Kenma Kozume",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-shiden-iida",
+  "name": "Shiden Iida",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "eighty-six-shiden-iida-base",
+      "name": "Shiden Iida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

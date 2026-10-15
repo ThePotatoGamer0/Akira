@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-kaijin-hime-do-s",
+  "name": "Kaijin Hime Do-S",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-punch-man-kaijin-hime-do-s-base",
+      "name": "Kaijin Hime Do-S",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

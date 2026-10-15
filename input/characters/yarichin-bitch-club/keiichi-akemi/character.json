@@ -1,0 +1,14 @@
+{
+  "id": "yarichin-bitch-club-keiichi-akemi",
+  "name": "Keiichi Akemi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "yarichin-bitch-club-keiichi-akemi-base",
+      "name": "Keiichi Akemi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

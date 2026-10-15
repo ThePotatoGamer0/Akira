@@ -1,0 +1,14 @@
+{
+  "id": "danganronpa-chihiro-fujisaki",
+  "name": "Chihiro Fujisaki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "danganronpa-chihiro-fujisaki-base",
+      "name": "Chihiro Fujisaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

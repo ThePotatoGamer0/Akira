@@ -1,0 +1,13 @@
+{
+  "id": "overlord-lupusregina-beta",
+  "name": "Lupusregina Beta",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-lupusregina-beta-base",
+      "name": "Lupusregina Beta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

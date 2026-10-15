@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-chousuke-takada",
+  "name": "Chousuke Takada",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "assassination-classroom-chousuke-takada-base",
+      "name": "Chousuke Takada",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

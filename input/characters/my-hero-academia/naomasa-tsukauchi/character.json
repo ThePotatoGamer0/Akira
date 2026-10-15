@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-naomasa-tsukauchi",
+  "name": "Naomasa Tsukauchi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-naomasa-tsukauchi-base",
+      "name": "Naomasa Tsukauchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

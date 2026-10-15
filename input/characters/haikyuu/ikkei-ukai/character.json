@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-ikkei-ukai",
+  "name": "Ikkei Ukai",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-ikkei-ukai-base",
+      "name": "Ikkei Ukai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

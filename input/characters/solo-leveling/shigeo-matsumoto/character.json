@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-shigeo-matsumoto",
+  "name": "Shigeo Matsumoto",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-shigeo-matsumoto-base",
+      "name": "Shigeo Matsumoto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

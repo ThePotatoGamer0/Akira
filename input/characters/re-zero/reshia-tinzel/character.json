@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-reshia-tinzel",
+  "name": "Reshia Tinzel",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "re-zero-reshia-tinzel-base",
+      "name": "Reshia Tinzel",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

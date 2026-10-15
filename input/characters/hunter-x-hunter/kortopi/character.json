@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-kortopi",
+  "name": "Kortopi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-kortopi-base",
+      "name": "Kortopi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

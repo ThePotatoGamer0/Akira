@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-banehige",
+  "name": "Banehige",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-banehige-base",
+      "name": "Banehige",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

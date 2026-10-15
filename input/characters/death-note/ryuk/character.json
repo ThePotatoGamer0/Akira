@@ -1,0 +1,14 @@
+{
+  "id": "death-note-ryuk",
+  "name": "Ryuk",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-ryuk-base",
+      "name": "Ryuk",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-koro-sensei",
+  "name": "Koro-sensei",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "assassination-classroom-koro-sensei-base",
+      "name": "Koro-sensei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

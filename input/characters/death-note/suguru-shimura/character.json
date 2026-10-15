@@ -1,0 +1,14 @@
+{
+  "id": "death-note-suguru-shimura",
+  "name": "Suguru Shimura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-suguru-shimura-base",
+      "name": "Suguru Shimura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

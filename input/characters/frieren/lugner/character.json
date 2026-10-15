@@ -1,0 +1,13 @@
+{
+  "id": "frieren-lugner",
+  "name": "Lügner",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-lugner-base",
+      "name": "Lügner",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

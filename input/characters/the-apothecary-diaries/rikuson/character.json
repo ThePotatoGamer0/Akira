@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-rikuson",
+  "name": "Rikuson",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-rikuson-base",
+      "name": "Rikuson",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

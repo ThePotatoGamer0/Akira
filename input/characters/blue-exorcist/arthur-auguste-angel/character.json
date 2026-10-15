@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-arthur-auguste-angel",
+  "name": "Arthur Auguste Angel",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-exorcist-arthur-auguste-angel-base",
+      "name": "Arthur Auguste Angel",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

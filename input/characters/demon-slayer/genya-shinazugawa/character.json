@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-genya-shinazugawa",
+  "name": "Genya Shinazugawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-genya-shinazugawa-base",
+      "name": "Genya Shinazugawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

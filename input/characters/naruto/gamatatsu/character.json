@@ -1,0 +1,14 @@
+{
+  "id": "naruto-gamatatsu",
+  "name": "Gamatatsu",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-gamatatsu-base",
+      "name": "Gamatatsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

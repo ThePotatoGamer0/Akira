@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-86-ban",
+  "name": "86-ban",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-86-ban-base",
+      "name": "86-ban",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-moushuu-no-juma",
+  "name": "Moushuu no Juma",
+  "gender": null,
+  "cards": [
+    {
+      "id": "shangri-la-frontier-moushuu-no-juma-base",
+      "name": "Moushuu no Juma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

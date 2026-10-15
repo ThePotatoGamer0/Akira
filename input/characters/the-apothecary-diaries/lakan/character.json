@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-lakan",
+  "name": "Lakan",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-lakan-base",
+      "name": "Lakan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-tejina-man",
+  "name": "Tejina Man",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-tejina-man-base",
+      "name": "Tejina Man",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

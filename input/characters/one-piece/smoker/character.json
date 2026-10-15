@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-smoker",
+  "name": "Smoker",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-smoker-base",
+      "name": "Smoker",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

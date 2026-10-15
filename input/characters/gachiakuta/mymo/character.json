@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-mymo",
+  "name": "Mymo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-mymo-base",
+      "name": "Mymo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

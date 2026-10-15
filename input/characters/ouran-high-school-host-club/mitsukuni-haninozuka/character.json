@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-mitsukuni-haninozuka",
+  "name": "Mitsukuni Haninozuka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-mitsukuni-haninozuka-base",
+      "name": "Mitsukuni Haninozuka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

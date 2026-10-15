@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-obanai-iguro",
+  "name": "Obanai Iguro",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "demon-slayer-obanai-iguro-base",
+      "name": "Obanai Iguro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

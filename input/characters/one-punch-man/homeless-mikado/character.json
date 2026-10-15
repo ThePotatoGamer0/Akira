@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-homeless-mikado",
+  "name": "Homeless Mikado",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-homeless-mikado-base",
+      "name": "Homeless Mikado",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-akira-takaoka",
+  "name": "Akira Takaoka",
+  "gender": null,
+  "cards": [
+    {
+      "id": "assassination-classroom-akira-takaoka-base",
+      "name": "Akira Takaoka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

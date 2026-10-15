@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-kim-pine",
+  "name": "Kim Pine",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-kim-pine-base",
+      "name": "Kim Pine",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

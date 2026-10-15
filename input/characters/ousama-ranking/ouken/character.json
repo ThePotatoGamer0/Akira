@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-ouken",
+  "name": "Ouken",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-ouken-base",
+      "name": "Ouken",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-gyoro-gyoro",
+  "name": "Gyoro Gyoro",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-gyoro-gyoro-base",
+      "name": "Gyoro Gyoro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-ryuusei-shidou",
+  "name": "Ryuusei Shidou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-ryuusei-shidou-base",
+      "name": "Ryuusei Shidou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

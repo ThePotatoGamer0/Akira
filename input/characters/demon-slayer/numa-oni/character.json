@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-numa-oni",
+  "name": "Numa Oni",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-numa-oni-base",
+      "name": "Numa Oni",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

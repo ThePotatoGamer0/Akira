@@ -1,0 +1,13 @@
+{
+  "id": "princess-mononoke-ashitaka",
+  "name": "Ashitaka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "princess-mononoke-ashitaka-base",
+      "name": "Ashitaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

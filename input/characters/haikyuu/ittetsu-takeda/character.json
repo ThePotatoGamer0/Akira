@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-ittetsu-takeda",
+  "name": "Ittetsu Takeda",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-ittetsu-takeda-base",
+      "name": "Ittetsu Takeda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

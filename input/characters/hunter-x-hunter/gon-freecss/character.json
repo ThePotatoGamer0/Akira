@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-gon-freecss",
+  "name": "Gon Freecss",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-gon-freecss-base",
+      "name": "Gon Freecss",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

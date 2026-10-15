@@ -1,0 +1,13 @@
+{
+  "id": "overlord-malmvist",
+  "name": "Malmvist",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-malmvist-base",
+      "name": "Malmvist",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

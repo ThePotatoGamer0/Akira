@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-gastro",
+  "name": "Gastro",
+  "gender": null,
+  "cards": [
+    {
+      "id": "assassination-classroom-gastro-base",
+      "name": "Gastro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-mikita",
+  "name": "Mikita",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-mikita-base",
+      "name": "Mikita",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

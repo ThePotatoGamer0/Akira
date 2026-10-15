@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-shiro-tokita",
+  "name": "Shiro Tokita",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "evangelion-shiro-tokita-base",
+      "name": "Shiro Tokita",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

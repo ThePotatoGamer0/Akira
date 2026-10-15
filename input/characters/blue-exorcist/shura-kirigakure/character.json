@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-shura-kirigakure",
+  "name": "Shura Kirigakure",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-exorcist-shura-kirigakure-base",
+      "name": "Shura Kirigakure",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

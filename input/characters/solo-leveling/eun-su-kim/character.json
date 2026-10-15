@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-eun-su-kim",
+  "name": "Eun-Su Kim",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-eun-su-kim-base",
+      "name": "Eun-Su Kim",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

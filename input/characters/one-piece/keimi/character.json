@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-keimi",
+  "name": "Keimi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-piece-keimi-base",
+      "name": "Keimi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

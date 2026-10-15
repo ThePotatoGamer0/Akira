@@ -1,0 +1,13 @@
+{
+  "id": "princess-mononoke-bou-jiko",
+  "name": "Bou Jiko",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "princess-mononoke-bou-jiko-base",
+      "name": "Bou Jiko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

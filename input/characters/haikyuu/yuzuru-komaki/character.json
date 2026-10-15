@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yuzuru-komaki",
+  "name": "Yuzuru Komaki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-yuzuru-komaki-base",
+      "name": "Yuzuru Komaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

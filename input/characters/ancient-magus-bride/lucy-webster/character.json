@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-lucy-webster",
+  "name": "Lucy Webster",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-lucy-webster-base",
+      "name": "Lucy Webster",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

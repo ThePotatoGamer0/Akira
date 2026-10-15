@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-porche",
+  "name": "Porche",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-piece-porche-base",
+      "name": "Porche",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

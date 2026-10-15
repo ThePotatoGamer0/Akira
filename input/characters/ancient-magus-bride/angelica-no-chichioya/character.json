@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-angelica-no-chichioya",
+  "name": "Angelica no Chichioya",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ancient-magus-bride-angelica-no-chichioya-base",
+      "name": "Angelica no Chichioya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

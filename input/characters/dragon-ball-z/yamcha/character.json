@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-yamcha",
+  "name": "Yamcha",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dragon-ball-z-yamcha-base",
+      "name": "Yamcha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

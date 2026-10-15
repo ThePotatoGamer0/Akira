@@ -1,0 +1,13 @@
+{
+  "id": "evangelion-keel-lorentz",
+  "name": "Keel Lorentz",
+  "gender": null,
+  "cards": [
+    {
+      "id": "evangelion-keel-lorentz-base",
+      "name": "Keel Lorentz",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

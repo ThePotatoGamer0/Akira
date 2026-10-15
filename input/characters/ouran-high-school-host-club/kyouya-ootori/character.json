@@ -1,0 +1,14 @@
+{
+  "id": "ouran-high-school-host-club-kyouya-ootori",
+  "name": "Kyouya Ootori",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ouran-high-school-host-club-kyouya-ootori-base",
+      "name": "Kyouya Ootori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

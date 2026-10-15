@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-hizashi-yamada",
+  "name": "Hizashi Yamada",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-hizashi-yamada-base",
+      "name": "Hizashi Yamada",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

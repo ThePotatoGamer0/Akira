@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-rou-dai-kaioshin",
+  "name": "Rou Dai Kaioshin",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-rou-dai-kaioshin-base",
+      "name": "Rou Dai Kaioshin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

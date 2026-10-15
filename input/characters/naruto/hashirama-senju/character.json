@@ -1,0 +1,14 @@
+{
+  "id": "naruto-hashirama-senju",
+  "name": "Hashirama Senju",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-hashirama-senju-base",
+      "name": "Hashirama Senju",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-menthuthuyoupi",
+  "name": "Menthuthuyoupi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-menthuthuyoupi-base",
+      "name": "Menthuthuyoupi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

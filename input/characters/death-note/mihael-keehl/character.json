@@ -1,0 +1,14 @@
+{
+  "id": "death-note-mihael-keehl",
+  "name": "Mihael Keehl",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-mihael-keehl-base",
+      "name": "Mihael Keehl",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

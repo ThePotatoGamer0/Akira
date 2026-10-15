@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-kyougai",
+  "name": "Kyougai",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-kyougai-base",
+      "name": "Kyougai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

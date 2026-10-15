@@ -1,0 +1,14 @@
+{
+  "id": "death-note-reiji-namikawa",
+  "name": "Reiji Namikawa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-reiji-namikawa-base",
+      "name": "Reiji Namikawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

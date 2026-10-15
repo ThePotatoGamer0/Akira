@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-milluki-zoldyck",
+  "name": "Milluki Zoldyck",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-milluki-zoldyck-base",
+      "name": "Milluki Zoldyck",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

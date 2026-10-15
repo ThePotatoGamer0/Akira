@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-ace-portgas",
+  "name": "Ace Portgas",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-ace-portgas-base",
+      "name": "Ace Portgas",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

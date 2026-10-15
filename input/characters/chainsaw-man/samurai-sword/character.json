@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-samurai-sword",
+  "name": "Samurai Sword",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "chainsaw-man-samurai-sword-base",
+      "name": "Samurai Sword",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-akiteru-tsukishima",
+  "name": "Akiteru Tsukishima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-akiteru-tsukishima-base",
+      "name": "Akiteru Tsukishima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "naruto-tsunade-senju",
+  "name": "Tsunade Senju",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-tsunade-senju-base",
+      "name": "Tsunade Senju",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

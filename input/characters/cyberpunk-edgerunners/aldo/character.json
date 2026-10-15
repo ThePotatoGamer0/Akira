@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-aldo",
+  "name": "Aldo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-aldo-base",
+      "name": "Aldo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

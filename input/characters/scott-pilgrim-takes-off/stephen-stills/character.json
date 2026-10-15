@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-stephen-stills",
+  "name": "Stephen Stills",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-stephen-stills-base",
+      "name": "Stephen Stills",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

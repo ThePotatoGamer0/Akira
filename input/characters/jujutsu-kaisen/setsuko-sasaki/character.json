@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-setsuko-sasaki",
+  "name": "Setsuko Sasaki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-setsuko-sasaki-base",
+      "name": "Setsuko Sasaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

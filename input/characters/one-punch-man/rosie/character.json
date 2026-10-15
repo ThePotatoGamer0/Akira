@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-rosie",
+  "name": "Rosie",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-rosie-base",
+      "name": "Rosie",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

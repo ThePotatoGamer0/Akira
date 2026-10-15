@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-paulie",
+  "name": "Paulie",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-paulie-base",
+      "name": "Paulie",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

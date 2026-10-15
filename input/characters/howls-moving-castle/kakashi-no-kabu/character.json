@@ -1,0 +1,13 @@
+{
+  "id": "howls-moving-castle-kakashi-no-kabu",
+  "name": "Kakashi no Kabu",
+  "gender": null,
+  "cards": [
+    {
+      "id": "howls-moving-castle-kakashi-no-kabu-base",
+      "name": "Kakashi no Kabu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

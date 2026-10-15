@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-reiji-mitsurugi",
+  "name": "Reiji Mitsurugi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ace-attorney-reiji-mitsurugi-base",
+      "name": "Reiji Mitsurugi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

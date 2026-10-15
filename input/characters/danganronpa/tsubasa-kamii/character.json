@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-tsubasa-kamii",
+  "name": "Tsubasa Kamii",
+  "gender": null,
+  "cards": [
+    {
+      "id": "danganronpa-tsubasa-kamii-base",
+      "name": "Tsubasa Kamii",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

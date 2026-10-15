@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-prinz",
+  "name": "Prinz",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "chainsaw-man-prinz-base",
+      "name": "Prinz",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

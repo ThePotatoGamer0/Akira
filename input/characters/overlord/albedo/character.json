@@ -1,0 +1,13 @@
+{
+  "id": "overlord-albedo",
+  "name": "Albedo",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-albedo-base",
+      "name": "Albedo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "naruto-hiashi-hyuuga",
+  "name": "Hiashi Hyuuga",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-hiashi-hyuuga-base",
+      "name": "Hiashi Hyuuga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "berserk-the-skull-knight",
+  "name": "The Skull Knight",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "berserk-the-skull-knight-base",
+      "name": "The Skull Knight",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "frieren-yun",
+  "name": "Yun",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "frieren-yun-base",
+      "name": "Yun",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "berserk-corkus",
+  "name": "Corkus",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "berserk-corkus-base",
+      "name": "Corkus",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

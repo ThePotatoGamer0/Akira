@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-arata-tsuchiyu",
+  "name": "Arata Tsuchiyu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-arata-tsuchiyu-base",
+      "name": "Arata Tsuchiyu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

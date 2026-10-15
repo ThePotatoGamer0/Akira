@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-vladilena-milize",
+  "name": "Vladilena Milizé",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "eighty-six-vladilena-milize-base",
+      "name": "Vladilena Milizé",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

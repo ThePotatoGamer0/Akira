@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-gyokuyou",
+  "name": "Gyokuyou",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-gyokuyou-base",
+      "name": "Gyokuyou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

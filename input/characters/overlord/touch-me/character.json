@@ -1,0 +1,13 @@
+{
+  "id": "overlord-touch-me",
+  "name": "Touch Me",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-touch-me-base",
+      "name": "Touch Me",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

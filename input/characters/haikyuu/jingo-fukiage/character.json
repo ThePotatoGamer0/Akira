@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-jingo-fukiage",
+  "name": "Jingo Fukiage",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-jingo-fukiage-base",
+      "name": "Jingo Fukiage",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

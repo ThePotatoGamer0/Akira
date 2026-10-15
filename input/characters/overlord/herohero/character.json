@@ -1,0 +1,13 @@
+{
+  "id": "overlord-herohero",
+  "name": "Herohero",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "overlord-herohero-base",
+      "name": "Herohero",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

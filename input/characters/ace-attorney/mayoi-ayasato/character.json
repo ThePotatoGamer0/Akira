@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-mayoi-ayasato",
+  "name": "Mayoi Ayasato",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ace-attorney-mayoi-ayasato-base",
+      "name": "Mayoi Ayasato",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

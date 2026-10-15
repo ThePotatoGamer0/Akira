@@ -1,0 +1,14 @@
+{
+  "id": "naruto-ebisu",
+  "name": "Ebisu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-ebisu-base",
+      "name": "Ebisu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

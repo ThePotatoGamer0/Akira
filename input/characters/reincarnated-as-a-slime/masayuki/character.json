@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-masayuki",
+  "name": "Masayuki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-masayuki-base",
+      "name": "Masayuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

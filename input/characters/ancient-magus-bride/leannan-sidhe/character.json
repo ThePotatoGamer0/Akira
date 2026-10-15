@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-leannan-sidhe",
+  "name": "Leannán Sídhe",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-leannan-sidhe-base",
+      "name": "Leannán Sídhe",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

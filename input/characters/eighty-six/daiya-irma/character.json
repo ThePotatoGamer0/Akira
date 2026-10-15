@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-daiya-irma",
+  "name": "Daiya Irma",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "eighty-six-daiya-irma-base",
+      "name": "Daiya Irma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

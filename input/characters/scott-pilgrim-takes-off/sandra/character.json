@@ -1,0 +1,14 @@
+{
+  "id": "scott-pilgrim-takes-off-sandra",
+  "name": "Sandra",
+  "gender": null,
+  "cards": [
+    {
+      "id": "scott-pilgrim-takes-off-sandra-base",
+      "name": "Sandra",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

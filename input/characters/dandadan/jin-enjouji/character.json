@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-jin-enjouji",
+  "name": "Jin Enjouji",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "dandadan-jin-enjouji-base",
+      "name": "Jin Enjouji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

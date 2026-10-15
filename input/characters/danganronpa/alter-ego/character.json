@@ -1,0 +1,14 @@
+{
+  "id": "danganronpa-alter-ego",
+  "name": "Alter Ego",
+  "gender": null,
+  "cards": [
+    {
+      "id": "danganronpa-alter-ego-base",
+      "name": "Alter Ego",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

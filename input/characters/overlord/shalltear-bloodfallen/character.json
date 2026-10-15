@@ -1,0 +1,13 @@
+{
+  "id": "overlord-shalltear-bloodfallen",
+  "name": "Shalltear Bloodfallen",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-shalltear-bloodfallen-base",
+      "name": "Shalltear Bloodfallen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

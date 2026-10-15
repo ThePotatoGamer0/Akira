@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-fuji",
+  "name": "Fuji",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-fuji-base",
+      "name": "Fuji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

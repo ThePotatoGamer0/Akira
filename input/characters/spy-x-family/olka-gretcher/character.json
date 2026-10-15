@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-olka-gretcher",
+  "name": "Olka Gretcher",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "spy-x-family-olka-gretcher-base",
+      "name": "Olka Gretcher",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

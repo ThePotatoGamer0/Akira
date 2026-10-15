@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-puck",
+  "name": "Puck",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-puck-base",
+      "name": "Puck",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

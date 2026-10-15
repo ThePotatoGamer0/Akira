@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-hinaki-ubuyashiki",
+  "name": "Hinaki Ubuyashiki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-hinaki-ubuyashiki-base",
+      "name": "Hinaki Ubuyashiki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

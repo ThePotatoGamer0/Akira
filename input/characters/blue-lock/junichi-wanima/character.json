@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-junichi-wanima",
+  "name": "Junichi Wanima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-junichi-wanima-base",
+      "name": "Junichi Wanima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

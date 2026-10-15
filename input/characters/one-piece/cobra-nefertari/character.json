@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-cobra-nefertari",
+  "name": "Cobra Nefertari",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-cobra-nefertari-base",
+      "name": "Cobra Nefertari",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

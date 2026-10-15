@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-nene-yashiro",
+  "name": "Nene Yashiro",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-nene-yashiro-base",
+      "name": "Nene Yashiro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

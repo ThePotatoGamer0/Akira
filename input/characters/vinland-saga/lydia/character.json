@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-lydia",
+  "name": "Lydia",
+  "gender": null,
+  "cards": [
+    {
+      "id": "vinland-saga-lydia-base",
+      "name": "Lydia",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

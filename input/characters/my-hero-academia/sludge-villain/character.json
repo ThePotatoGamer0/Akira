@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-sludge-villain",
+  "name": "Sludge Villain",
+  "gender": null,
+  "cards": [
+    {
+      "id": "my-hero-academia-sludge-villain-base",
+      "name": "Sludge Villain",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

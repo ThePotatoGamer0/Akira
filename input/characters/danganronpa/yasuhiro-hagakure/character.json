@@ -1,0 +1,14 @@
+{
+  "id": "danganronpa-yasuhiro-hagakure",
+  "name": "Yasuhiro Hagakure",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-yasuhiro-hagakure-base",
+      "name": "Yasuhiro Hagakure",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

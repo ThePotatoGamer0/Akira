@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-kaijin",
+  "name": "Kaijin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-kaijin-base",
+      "name": "Kaijin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

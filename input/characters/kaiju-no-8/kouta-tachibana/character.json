@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-kouta-tachibana",
+  "name": "Kouta Tachibana",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "kaiju-no-8-kouta-tachibana-base",
+      "name": "Kouta Tachibana",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

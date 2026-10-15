@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-showerhead",
+  "name": "Showerhead",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-showerhead-base",
+      "name": "Showerhead",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

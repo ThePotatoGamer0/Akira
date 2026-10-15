@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-yuu-takeyama",
+  "name": "Yuu Takeyama",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "my-hero-academia-yuu-takeyama-base",
+      "name": "Yuu Takeyama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

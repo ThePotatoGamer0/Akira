@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-matsuge",
+  "name": "Matsuge",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-matsuge-base",
+      "name": "Matsuge",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

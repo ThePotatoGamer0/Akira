@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-mei",
+  "name": "Mei",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hells-paradise-mei-base",
+      "name": "Mei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

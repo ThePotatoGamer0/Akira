@@ -1,0 +1,13 @@
+{
+  "id": "overlord-zenberu-gugu",
+  "name": "Zenberu Gugu",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-zenberu-gugu-base",
+      "name": "Zenberu Gugu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

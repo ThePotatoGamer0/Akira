@@ -1,0 +1,13 @@
+{
+  "id": "ancient-magus-bride-uil-hatchling",
+  "name": "Uil Hatchling",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ancient-magus-bride-uil-hatchling-base",
+      "name": "Uil Hatchling",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

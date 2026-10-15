@@ -1,0 +1,14 @@
+{
+  "id": "death-note-raye-penber",
+  "name": "Raye Penber",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-raye-penber-base",
+      "name": "Raye Penber",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

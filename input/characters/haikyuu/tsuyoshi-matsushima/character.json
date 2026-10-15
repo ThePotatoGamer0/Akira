@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-tsuyoshi-matsushima",
+  "name": "Tsuyoshi Matsushima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-tsuyoshi-matsushima-base",
+      "name": "Tsuyoshi Matsushima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

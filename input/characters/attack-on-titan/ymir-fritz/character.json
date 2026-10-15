@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-ymir-fritz",
+  "name": "Ymir Fritz",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-ymir-fritz-base",
+      "name": "Ymir Fritz",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

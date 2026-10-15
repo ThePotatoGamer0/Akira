@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-traute-caven",
+  "name": "Traute Caven",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "attack-on-titan-traute-caven-base",
+      "name": "Traute Caven",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

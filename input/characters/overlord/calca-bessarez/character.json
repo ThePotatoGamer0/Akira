@@ -1,0 +1,13 @@
+{
+  "id": "overlord-calca-bessarez",
+  "name": "Calca Bessarez",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "overlord-calca-bessarez-base",
+      "name": "Calca Bessarez",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

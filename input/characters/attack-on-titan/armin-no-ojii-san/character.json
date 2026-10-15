@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-armin-no-ojii-san",
+  "name": "Armin no Ojii-san",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-armin-no-ojii-san-base",
+      "name": "Armin no Ojii-san",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

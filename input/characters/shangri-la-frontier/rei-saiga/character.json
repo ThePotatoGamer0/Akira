@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-rei-saiga",
+  "name": "Rei Saiga",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-rei-saiga-base",
+      "name": "Rei Saiga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

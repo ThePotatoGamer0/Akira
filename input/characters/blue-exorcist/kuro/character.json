@@ -1,0 +1,14 @@
+{
+  "id": "blue-exorcist-kuro",
+  "name": "Kuro",
+  "gender": null,
+  "cards": [
+    {
+      "id": "blue-exorcist-kuro-base",
+      "name": "Kuro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

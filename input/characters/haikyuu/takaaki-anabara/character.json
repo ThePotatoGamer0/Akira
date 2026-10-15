@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-takaaki-anabara",
+  "name": "Takaaki Anabara",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-takaaki-anabara-base",
+      "name": "Takaaki Anabara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

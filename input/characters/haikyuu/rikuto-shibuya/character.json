@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-rikuto-shibuya",
+  "name": "Rikuto Shibuya",
+  "gender": null,
+  "cards": [
+    {
+      "id": "haikyuu-rikuto-shibuya-base",
+      "name": "Rikuto Shibuya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-vesta",
+  "name": "Vesta",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-vesta-base",
+      "name": "Vesta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

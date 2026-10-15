@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-jin-cheol-u",
+  "name": "Jin-Cheol U",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-jin-cheol-u-base",
+      "name": "Jin-Cheol U",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "frieren-milliarde",
+  "name": "Milliarde",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "frieren-milliarde-base",
+      "name": "Milliarde",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-lauda",
+  "name": "Lauda",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-lauda-base",
+      "name": "Lauda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

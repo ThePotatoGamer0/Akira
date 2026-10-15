@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-kyouya-tachibana",
+  "name": "Kyouya Tachibana",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-kyouya-tachibana-base",
+      "name": "Kyouya Tachibana",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "saiki-k-kuniharu-saiki",
+  "name": "Kuniharu Saiki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "saiki-k-kuniharu-saiki-base",
+      "name": "Kuniharu Saiki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

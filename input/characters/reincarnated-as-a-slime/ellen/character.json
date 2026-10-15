@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-ellen",
+  "name": "Ellen",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-ellen-base",
+      "name": "Ellen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

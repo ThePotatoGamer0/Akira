@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-edmaris-falmuth",
+  "name": "Edmaris Falmuth",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-edmaris-falmuth-base",
+      "name": "Edmaris Falmuth",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

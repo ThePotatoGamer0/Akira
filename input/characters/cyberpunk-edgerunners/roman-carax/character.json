@@ -1,0 +1,13 @@
+{
+  "id": "cyberpunk-edgerunners-roman-carax",
+  "name": "Roman Carax",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-roman-carax-base",
+      "name": "Roman Carax",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

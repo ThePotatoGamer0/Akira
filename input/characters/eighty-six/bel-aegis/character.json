@@ -1,0 +1,13 @@
+{
+  "id": "eighty-six-bel-aegis",
+  "name": "Bel Aegis",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "eighty-six-bel-aegis-base",
+      "name": "Bel Aegis",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

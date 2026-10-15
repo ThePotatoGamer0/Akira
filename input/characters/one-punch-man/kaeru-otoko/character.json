@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-kaeru-otoko",
+  "name": "Kaeru Otoko",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-kaeru-otoko-base",
+      "name": "Kaeru Otoko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

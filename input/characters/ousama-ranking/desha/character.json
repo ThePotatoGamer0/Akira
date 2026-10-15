@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-desha",
+  "name": "Desha",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "ousama-ranking-desha-base",
+      "name": "Desha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

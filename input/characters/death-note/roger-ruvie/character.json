@@ -1,0 +1,14 @@
+{
+  "id": "death-note-roger-ruvie",
+  "name": "Roger Ruvie",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-roger-ruvie-base",
+      "name": "Roger Ruvie",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-choubei-aza",
+  "name": "Choubei Aza",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-choubei-aza-base",
+      "name": "Choubei Aza",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

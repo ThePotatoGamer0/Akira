@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-ryuunosuke-chiba",
+  "name": "Ryuunosuke Chiba",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "assassination-classroom-ryuunosuke-chiba-base",
+      "name": "Ryuunosuke Chiba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

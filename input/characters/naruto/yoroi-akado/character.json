@@ -1,0 +1,14 @@
+{
+  "id": "naruto-yoroi-akado",
+  "name": "Yoroi Akado",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-yoroi-akado-base",
+      "name": "Yoroi Akado",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

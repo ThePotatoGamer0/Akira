@@ -1,0 +1,13 @@
+{
+  "id": "way-of-the-househusband-wakagashira",
+  "name": "Wakagashira",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "way-of-the-househusband-wakagashira-base",
+      "name": "Wakagashira",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

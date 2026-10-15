@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-quark",
+  "name": "Quark",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-quark-base",
+      "name": "Quark",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

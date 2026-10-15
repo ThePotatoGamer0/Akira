@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-isuzu",
+  "name": "Isuzu",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "hells-paradise-isuzu-base",
+      "name": "Isuzu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

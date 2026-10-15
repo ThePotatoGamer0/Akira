@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-ramzi",
+  "name": "Ramzi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-ramzi-base",
+      "name": "Ramzi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

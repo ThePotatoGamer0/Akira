@@ -1,0 +1,14 @@
+{
+  "id": "servamp-hugh-the-dark-algernon-iii",
+  "name": "Hugh the Dark Algernon III",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-hugh-the-dark-algernon-iii-base",
+      "name": "Hugh the Dark Algernon III",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

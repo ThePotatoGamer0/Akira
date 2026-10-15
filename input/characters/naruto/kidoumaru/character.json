@@ -1,0 +1,14 @@
+{
+  "id": "naruto-kidoumaru",
+  "name": "Kidoumaru",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-kidoumaru-base",
+      "name": "Kidoumaru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-light-nostrade",
+  "name": "Light Nostrade",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-light-nostrade-base",
+      "name": "Light Nostrade",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

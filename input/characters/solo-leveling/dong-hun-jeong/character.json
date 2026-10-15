@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-dong-hun-jeong",
+  "name": "Dong-Hun Jeong",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-dong-hun-jeong-base",
+      "name": "Dong-Hun Jeong",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

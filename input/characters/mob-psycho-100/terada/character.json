@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-terada",
+  "name": "Terada",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-terada-base",
+      "name": "Terada",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

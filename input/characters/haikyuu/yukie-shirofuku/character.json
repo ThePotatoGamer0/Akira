@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-yukie-shirofuku",
+  "name": "Yukie Shirofuku",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "haikyuu-yukie-shirofuku-base",
+      "name": "Yukie Shirofuku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

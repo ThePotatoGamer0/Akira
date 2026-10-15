@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-miklotov-mcmahon",
+  "name": "Miklotov McMahon",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "re-zero-miklotov-mcmahon-base",
+      "name": "Miklotov McMahon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

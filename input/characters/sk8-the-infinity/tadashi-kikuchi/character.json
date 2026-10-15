@@ -1,0 +1,14 @@
+{
+  "id": "sk8-the-infinity-tadashi-kikuchi",
+  "name": "Tadashi  Kikuchi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "sk8-the-infinity-tadashi-kikuchi-base",
+      "name": "Tadashi  Kikuchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

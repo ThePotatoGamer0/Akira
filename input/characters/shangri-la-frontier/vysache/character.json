@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-vysache",
+  "name": "Vysache",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-vysache-base",
+      "name": "Vysache",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

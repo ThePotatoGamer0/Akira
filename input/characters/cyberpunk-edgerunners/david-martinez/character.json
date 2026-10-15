@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-david-martinez",
+  "name": "David Martinez",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-david-martinez-base",
+      "name": "David Martinez",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

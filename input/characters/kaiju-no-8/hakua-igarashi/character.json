@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-hakua-igarashi",
+  "name": "Hakua Igarashi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "kaiju-no-8-hakua-igarashi-base",
+      "name": "Hakua Igarashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

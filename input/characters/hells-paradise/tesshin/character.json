@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-tesshin",
+  "name": "Tesshin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-tesshin-base",
+      "name": "Tesshin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

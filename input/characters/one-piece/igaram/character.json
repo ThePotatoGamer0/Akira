@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-igaram",
+  "name": "Igaram",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-igaram-base",
+      "name": "Igaram",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

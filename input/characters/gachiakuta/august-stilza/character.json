@@ -1,0 +1,13 @@
+{
+  "id": "gachiakuta-august-stilza",
+  "name": "August Stilza",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "gachiakuta-august-stilza-base",
+      "name": "August Stilza",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

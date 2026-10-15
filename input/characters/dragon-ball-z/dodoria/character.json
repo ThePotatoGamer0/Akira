@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-dodoria",
+  "name": "Dodoria",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-dodoria-base",
+      "name": "Dodoria",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

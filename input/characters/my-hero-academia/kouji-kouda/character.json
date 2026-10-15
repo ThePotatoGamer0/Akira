@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kouji-kouda",
+  "name": "Kouji Kouda",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-kouji-kouda-base",
+      "name": "Kouji Kouda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

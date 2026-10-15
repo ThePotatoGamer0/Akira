@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-ketty-muttart",
+  "name": "Ketty Muttart",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-ketty-muttart-base",
+      "name": "Ketty Muttart",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

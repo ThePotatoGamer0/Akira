@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-akari-shimizu",
+  "name": "Akari Shimizu",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "solo-leveling-akari-shimizu-base",
+      "name": "Akari Shimizu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

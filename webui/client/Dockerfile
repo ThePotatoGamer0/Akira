@@ -1,4 +1,5 @@
 # syntax=docker/dockerfile:1
+# The WebUI client is deployed on Vercel (root directory webui/client), not on the Pi.
 # Build from repository root: docker build -f webui/client/Dockerfile .
 FROM --platform=linux/arm64 node:22-bookworm-slim AS build
 WORKDIR /app

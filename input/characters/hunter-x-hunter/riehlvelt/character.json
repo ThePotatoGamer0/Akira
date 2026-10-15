@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-riehlvelt",
+  "name": "Riehlvelt",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-riehlvelt-base",
+      "name": "Riehlvelt",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

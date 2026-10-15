@@ -1,0 +1,14 @@
+{
+  "id": "assassination-classroom-shiro",
+  "name": "Shiro",
+  "gender": null,
+  "cards": [
+    {
+      "id": "assassination-classroom-shiro-base",
+      "name": "Shiro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

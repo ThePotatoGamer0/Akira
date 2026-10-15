@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-tsuyoshi-edano",
+  "name": "Tsuyoshi Edano",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-tsuyoshi-edano-base",
+      "name": "Tsuyoshi Edano",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-sillad",
+  "name": "Sillad",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-sillad-base",
+      "name": "Sillad",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

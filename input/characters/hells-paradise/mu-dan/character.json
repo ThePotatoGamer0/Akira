@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-mu-dan",
+  "name": "Mu Dan",
+  "gender": "Male/Female (Prefers the Male gender)",
+  "cards": [
+    {
+      "id": "hells-paradise-mu-dan-base",
+      "name": "Mu Dan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

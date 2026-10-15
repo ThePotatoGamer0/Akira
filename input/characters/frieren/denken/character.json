@@ -1,0 +1,13 @@
+{
+  "id": "frieren-denken",
+  "name": "Denken",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-denken-base",
+      "name": "Denken",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

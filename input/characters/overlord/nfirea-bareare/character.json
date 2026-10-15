@@ -1,0 +1,13 @@
+{
+  "id": "overlord-nfirea-bareare",
+  "name": "Nfirea Bareare",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "overlord-nfirea-bareare-base",
+      "name": "Nfirea Bareare",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

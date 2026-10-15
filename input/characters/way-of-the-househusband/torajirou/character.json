@@ -1,0 +1,13 @@
+{
+  "id": "way-of-the-househusband-torajirou",
+  "name": "Torajirou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "way-of-the-househusband-torajirou-base",
+      "name": "Torajirou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

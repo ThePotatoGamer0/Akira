@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-yarite-baba",
+  "name": "Yarite Baba",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-yarite-baba-base",
+      "name": "Yarite Baba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

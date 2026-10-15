@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-nishi-no-kaiou",
+  "name": "Nishi no Kaiou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-nishi-no-kaiou-base",
+      "name": "Nishi no Kaiou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "kaiju-no-8-kikoru-shinomiya",
+  "name": "Kikoru Shinomiya",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "kaiju-no-8-kikoru-shinomiya-base",
+      "name": "Kikoru Shinomiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

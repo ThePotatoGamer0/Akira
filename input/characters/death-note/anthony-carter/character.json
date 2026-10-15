@@ -1,0 +1,14 @@
+{
+  "id": "death-note-anthony-carter",
+  "name": "Anthony Carter",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-anthony-carter-base",
+      "name": "Anthony Carter",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

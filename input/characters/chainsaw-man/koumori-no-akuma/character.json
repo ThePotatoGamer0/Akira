@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-koumori-no-akuma",
+  "name": "Koumori no Akuma",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "chainsaw-man-koumori-no-akuma-base",
+      "name": "Koumori no Akuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

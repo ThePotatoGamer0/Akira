@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-donovan-desmond",
+  "name": "Donovan Desmond",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-donovan-desmond-base",
+      "name": "Donovan Desmond",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

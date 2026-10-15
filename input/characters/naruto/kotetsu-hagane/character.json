@@ -1,0 +1,14 @@
+{
+  "id": "naruto-kotetsu-hagane",
+  "name": "Kotetsu Hagane",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-kotetsu-hagane-base",
+      "name": "Kotetsu Hagane",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

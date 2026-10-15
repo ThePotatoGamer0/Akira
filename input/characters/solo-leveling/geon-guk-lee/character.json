@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-geon-guk-lee",
+  "name": "Geon-Guk Lee",
+  "gender": null,
+  "cards": [
+    {
+      "id": "solo-leveling-geon-guk-lee-base",
+      "name": "Geon-Guk Lee",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

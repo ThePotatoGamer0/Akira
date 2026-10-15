@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-rumi-hizutome",
+  "name": "Rumi Hizutome",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-rumi-hizutome-base",
+      "name": "Rumi Hizutome",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

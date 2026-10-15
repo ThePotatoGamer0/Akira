@@ -1,0 +1,13 @@
+{
+  "id": "frieren-norm",
+  "name": "Norm",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "frieren-norm-base",
+      "name": "Norm",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

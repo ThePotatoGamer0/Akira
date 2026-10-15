@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-elmesia-el-ru-sarion",
+  "name": "Elmesia El-Ru Sarion",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-elmesia-el-ru-sarion-base",
+      "name": "Elmesia El-Ru Sarion",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

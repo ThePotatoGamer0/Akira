@@ -1,29 +1,34 @@
 ---
 title: Multiburn
-description: Akira will burn many cards at once and spotlight the best one using quality → print → wishlist heuristics.
+description: Burn every card on one of your tags.
 command: multiburn
 shortcuts: mb
 ---
 
-Akira will help with **/multiburn** - Pass filters for series, frame, or tag - careful, there is no undo. Single-card flow: [burn](/commands/burn).
+**/multiburn** burns every card you own that has one tag. Akira asks first. The confirmation says how many cards will burn and names the rarest one. Press **Yes** to burn them. Press **No** to leave them.
+
+Cards in an open give or trade are left alone. The bits are the plain [burn](/commands/burn) table: 10, 25, 50, 100, or 250 from the quality. Burn value and a burn prestige percent apply to a single `/burn`, not to this pile.
 
 ## Parameters
 
-Parameters are still settling in for slash commands; check in-game `/help` for the live option list. Akira keeps descriptions short so slash autocomplete stays readable.
+| Name | Required | What it is |
+| --- | --- | --- |
+| `tag_name` | Yes | A tag you created. One word. |
+
+## Aliases
+
+`mb`. `amb fav` asks to burn the cards tagged fav. `amb` alone is ignored.
 
 ## Example usage
 
 ```
-/multiburn
+/multiburn tag_name:fav
+amb fav
+amultiburn fav
 ```
-
-## Tips
-
-- Narrow filters (series, frame, tag) before you run it - **/multiburn** has no undo and can clear a lot of cards at once.
-- Akira spotlights the “best” card in the batch using quality, then print, then wishlist hints so you see what left the binder last.
 
 ## See also
 
-- [Burn](/commands/burn) - one card, full confirmation
-- [Wishlist](/commands/wishlist) - how Akira ranks “wish hits” in the spotlight logic
-- [Bits](/economy/bits) - where burned value lands in the economy
+- [Burn](/commands/burn)
+- [Tag](/commands/tag)
+- [Command list](/commands/reference)

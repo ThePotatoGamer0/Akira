@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-mahiru-naruhaya",
+  "name": "Mahiru Naruhaya",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "blue-lock-mahiru-naruhaya-base",
+      "name": "Mahiru Naruhaya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

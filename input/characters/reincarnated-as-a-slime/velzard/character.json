@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-velzard",
+  "name": "Velzard",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-velzard-base",
+      "name": "Velzard",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

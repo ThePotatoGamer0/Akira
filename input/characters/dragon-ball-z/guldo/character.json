@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-guldo",
+  "name": "Guldo",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-guldo-base",
+      "name": "Guldo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

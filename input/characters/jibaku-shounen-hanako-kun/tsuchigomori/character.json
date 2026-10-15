@@ -1,0 +1,13 @@
+{
+  "id": "jibaku-shounen-hanako-kun-tsuchigomori",
+  "name": "Tsuchigomori",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jibaku-shounen-hanako-kun-tsuchigomori-base",
+      "name": "Tsuchigomori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

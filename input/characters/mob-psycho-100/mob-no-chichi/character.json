@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-mob-no-chichi",
+  "name": "Mob no Chichi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-mob-no-chichi-base",
+      "name": "Mob no Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

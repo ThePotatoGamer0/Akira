@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-takeuchi",
+  "name": "Takeuchi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-takeuchi-base",
+      "name": "Takeuchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

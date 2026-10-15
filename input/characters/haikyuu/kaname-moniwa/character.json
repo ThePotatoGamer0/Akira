@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-kaname-moniwa",
+  "name": "Kaname Moniwa",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-kaname-moniwa-base",
+      "name": "Kaname Moniwa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

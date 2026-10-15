@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-haruna",
+  "name": "Haruna",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-haruna-base",
+      "name": "Haruna",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

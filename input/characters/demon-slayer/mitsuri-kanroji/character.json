@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-mitsuri-kanroji",
+  "name": "Mitsuri Kanroji",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "demon-slayer-mitsuri-kanroji-base",
+      "name": "Mitsuri Kanroji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

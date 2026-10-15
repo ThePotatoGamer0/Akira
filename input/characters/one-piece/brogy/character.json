@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-brogy",
+  "name": "Brogy",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-brogy-base",
+      "name": "Brogy",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

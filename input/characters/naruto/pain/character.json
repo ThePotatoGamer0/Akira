@@ -1,0 +1,14 @@
+{
+  "id": "naruto-pain",
+  "name": "Pain",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-pain-base",
+      "name": "Pain",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

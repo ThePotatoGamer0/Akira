@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-tooru-hagakure",
+  "name": "Tooru Hagakure",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "my-hero-academia-tooru-hagakure-base",
+      "name": "Tooru Hagakure",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

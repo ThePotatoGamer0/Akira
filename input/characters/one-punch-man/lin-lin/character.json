@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-lin-lin",
+  "name": "Lin Lin",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-punch-man-lin-lin-base",
+      "name": "Lin Lin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

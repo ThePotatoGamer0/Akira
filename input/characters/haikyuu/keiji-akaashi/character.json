@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-keiji-akaashi",
+  "name": "Keiji Akaashi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-keiji-akaashi-base",
+      "name": "Keiji Akaashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

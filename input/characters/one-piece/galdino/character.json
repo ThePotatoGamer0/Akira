@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-galdino",
+  "name": "Galdino",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-galdino-base",
+      "name": "Galdino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

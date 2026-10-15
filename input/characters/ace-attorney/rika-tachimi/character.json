@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-rika-tachimi",
+  "name": "Rika Tachimi",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-rika-tachimi-base",
+      "name": "Rika Tachimi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

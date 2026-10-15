@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-tenza",
+  "name": "Tenza",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-tenza-base",
+      "name": "Tenza",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

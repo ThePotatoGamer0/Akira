@@ -1,0 +1,14 @@
+{
+  "id": "naruto-kankuro",
+  "name": "Kankuro",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-kankuro-base",
+      "name": "Kankuro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

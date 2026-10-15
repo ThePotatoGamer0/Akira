@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-madoka",
+  "name": "Madoka",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "chainsaw-man-madoka-base",
+      "name": "Madoka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

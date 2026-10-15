@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-tetsurou-kuroo",
+  "name": "Tetsurou Kuroo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-tetsurou-kuroo-base",
+      "name": "Tetsurou Kuroo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

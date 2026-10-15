@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-roy-valentin",
+  "name": "Roy Valentin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-roy-valentin-base",
+      "name": "Roy Valentin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

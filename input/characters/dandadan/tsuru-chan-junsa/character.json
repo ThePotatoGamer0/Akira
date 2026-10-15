@@ -1,0 +1,13 @@
+{
+  "id": "dandadan-tsuru-chan-junsa",
+  "name": "Tsuru-chan Junsa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dandadan-tsuru-chan-junsa-base",
+      "name": "Tsuru-chan Junsa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

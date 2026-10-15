@@ -1,0 +1,13 @@
+{
+  "id": "overlord-pulcinella",
+  "name": "Pulcinella",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-pulcinella-base",
+      "name": "Pulcinella",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "the-apothecary-diaries-rouran",
+  "name": "Rouran",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-apothecary-diaries-rouran-base",
+      "name": "Rouran",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

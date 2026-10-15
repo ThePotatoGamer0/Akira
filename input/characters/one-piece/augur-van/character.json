@@ -1,0 +1,14 @@
+{
+  "id": "one-piece-augur-van",
+  "name": "Augur Van",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-piece-augur-van-base",
+      "name": "Augur Van",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

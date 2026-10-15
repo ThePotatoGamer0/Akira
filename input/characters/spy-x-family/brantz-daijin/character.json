@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-brantz-daijin",
+  "name": "Brantz Daijin",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "spy-x-family-brantz-daijin-base",
+      "name": "Brantz Daijin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

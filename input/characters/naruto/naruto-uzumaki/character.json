@@ -1,0 +1,14 @@
+{
+  "id": "naruto-naruto-uzumaki",
+  "name": "Naruto Uzumaki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-naruto-uzumaki-base",
+      "name": "Naruto Uzumaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

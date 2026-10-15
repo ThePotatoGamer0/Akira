@@ -1,0 +1,13 @@
+{
+  "id": "ousama-ranking-ann",
+  "name": "Ann",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "ousama-ranking-ann-base",
+      "name": "Ann",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

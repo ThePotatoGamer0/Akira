@@ -12,6 +12,20 @@ import { INIT_LOCK } from "../utils/paths.js";
 import { isInitLocked } from "../utils/init-lock.js";
 import { waitingMessage } from "./voice.js";
 import { startInternalApi } from "./internal-http.js";
+import { handleCollectionButton } from "./commands/collection.js";
+import { handlePrestigeButton } from "./commands/prestige.js";
+import { handleShopButton } from "./commands/shop.js";
+import { startPoolSchedule } from "./pool-midnight.js";
+import { handleMultiburnButton } from "./commands/multiburn.js";
+import { handleTransferButton } from "./commands/transfer.js";
+import { handleLookupButton, handleLookupSelect, replyCharacterEdition } from "./commands/lookup.js";
+import { resumeDropExpiries } from "./drop-expiry.js";
+import { bindReminderClient, resumeReminders } from "./reminder-schedule.js";
+import { registerReactionHandler } from "./events/reactions.js";
+import { getCard, lastGrabbedCard, shortenLegacyCardCodes } from "../game/cards.js";
+import { guildListensForKaruta, handleKarutaOverride, handleKarutaOverrideButton, KARUTA_PREFIXES, loadKarutaGuilds } from "./karuta-override.js";
+import { commandPrefix, createPrefixInteraction, invocationIsExpected, matchPrefixedCommand, resolveLegacyCommand, viewCardArgument } from "./prefix.js";
+import { syncApplicationIcons } from "./icon-sync.js";
 
 const token = process.env["DISCORD_TOKEN"];
 if (!token) {
@@ -59,9 +73,19 @@ function watchInitLock(): void {
   });
 }
 
+registerReactionHandler(client);
+bindReminderClient(client);
+
 client.once(Events.ClientReady, (c) => {
   console.log(`Logged in as ${c.user.tag}`);
   startInternalApi(c);
+  startPoolSchedule(c);
+  void syncApplicationIcons()
+    .catch((err) => console.error("Lucide icon sync failed.", err))
+    .then(() => shortenLegacyCardCodes())
+    .then(() => resumeDropExpiries(c))
+    .then(() => resumeReminders())
+    .catch((err) => console.error(err));
   if (isInitLocked()) {
     setWaitingPresence();
   } else {
@@ -70,7 +94,97 @@ client.once(Events.ClientReady, (c) => {
   watchInitLock();
 });
 
+client.on(Events.MessageCreate, async (message) => {
+  if (message.author.bot || isInitLocked()) return;
+  const prefixes = [commandPrefix()];
+  if (guildListensForKaruta(message.guildId)) prefixes.push(...KARUTA_PREFIXES);
+  const parsed = matchPrefixedCommand(message.content, prefixes);
+  if (!parsed) return;
+  if (parsed.name === "overridekaruta") {
+    if (parsed.rest !== "") return;
+    try {
+      await handleKarutaOverride(message);
+    } catch (err) {
+      console.error(err);
+    }
+    return;
+  }
+  const route = resolveLegacyCommand(parsed.name);
+  const cmd = commandMap.get(route.command);
+  if (!cmd) return;
+  let rest = parsed.rest;
+  if (route.command === "view" && rest === "") {
+    const last = viewCardArgument(rest, await lastGrabbedCard(message.author.id));
+    if (!last) return;
+    rest = last;
+  }
+  if (route.command === "lookup" && rest === "") {
+    const last = await lastGrabbedCard(message.author.id);
+    if (!last) return;
+    const card = await getCard(last);
+    const interaction = createPrefixInteraction(message, cmd, rest);
+    try {
+      if (!card) {
+        await interaction.reply({ content: `Akira couldn't find a card with the id \`${last}\`.` });
+        return;
+      }
+      await replyCharacterEdition(
+        interaction,
+        card.variant.character.id,
+        card.variant.id,
+        card.variant.character.name,
+      );
+    } catch (err) {
+      console.error(err);
+      const text = err instanceof Error && err.message.startsWith("Akira")
+        ? err.message
+        : "Akira tripped over something. Mind trying again in a moment?";
+      await interaction.reply({ content: text }).catch(() => undefined);
+    }
+    return;
+  }
+  if (!invocationIsExpected(cmd, rest, route.subcommand)) return;
+  const interaction = createPrefixInteraction(message, cmd, rest, route.subcommand);
+  try {
+    await cmd.execute(interaction, client);
+  } catch (err) {
+    console.error(err);
+    const text = err instanceof Error && err.message.startsWith("Akira")
+      ? err.message
+      : "Akira tripped over something. Mind trying again in a moment?";
+    if (interaction.replied || interaction.deferred) {
+      await interaction.followUp({ content: text }).catch(() => undefined);
+    } else {
+      await interaction.reply({ content: text }).catch(() => undefined);
+    }
+  }
+});
+
 client.on(Events.InteractionCreate, async (interaction) => {
+  if (interaction.isButton()) {
+    if (isInitLocked()) return;
+    try {
+      if (await handleKarutaOverrideButton(interaction)) return;
+      if (await handleMultiburnButton(interaction)) return;
+      if (await handleTransferButton(interaction)) return;
+      if (await handleShopButton(interaction)) return;
+      if (await handlePrestigeButton(interaction)) return;
+      if (await handleCollectionButton(interaction)) return;
+      await handleLookupButton(interaction);
+    } catch (err) {
+      console.error(err);
+    }
+    return;
+  }
+  if (interaction.isStringSelectMenu()) {
+    if (isInitLocked()) return;
+    try {
+      await handleLookupSelect(interaction);
+    } catch (err) {
+      console.error(err);
+    }
+    return;
+  }
   if (!interaction.isChatInputCommand()) return;
   if (isInitLocked()) {
     await interaction.reply({ content: waitingMessage, ephemeral: true });
@@ -97,4 +211,5 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
 });
 
+await loadKarutaGuilds();
 await client.login(token);

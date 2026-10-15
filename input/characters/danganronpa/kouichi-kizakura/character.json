@@ -1,0 +1,13 @@
+{
+  "id": "danganronpa-kouichi-kizakura",
+  "name": "Kouichi Kizakura",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "danganronpa-kouichi-kizakura-base",
+      "name": "Kouichi Kizakura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "spy-x-family-monica-mcbride",
+  "name": "Monica McBride",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "spy-x-family-monica-mcbride-base",
+      "name": "Monica McBride",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

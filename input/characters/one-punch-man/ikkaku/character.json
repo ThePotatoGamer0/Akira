@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-ikkaku",
+  "name": "Ikkaku",
+  "gender": null,
+  "cards": [
+    {
+      "id": "one-punch-man-ikkaku-base",
+      "name": "Ikkaku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

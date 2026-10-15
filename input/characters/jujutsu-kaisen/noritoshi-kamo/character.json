@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-noritoshi-kamo",
+  "name": "Noritoshi  Kamo",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-noritoshi-kamo-base",
+      "name": "Noritoshi  Kamo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

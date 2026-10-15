@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-taishi-minamida",
+  "name": "Taishi Minamida",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-taishi-minamida-base",
+      "name": "Taishi Minamida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

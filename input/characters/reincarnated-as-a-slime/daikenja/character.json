@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-daikenja",
+  "name": "Daikenja",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-daikenja-base",
+      "name": "Daikenja",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

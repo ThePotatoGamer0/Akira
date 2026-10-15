@@ -1,0 +1,13 @@
+{
+  "id": "whisper-of-the-heart-humbert-von-gikkingen-danshaku",
+  "name": "Humbert von Gikkingen Danshaku",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "whisper-of-the-heart-humbert-von-gikkingen-danshaku-base",
+      "name": "Humbert von Gikkingen Danshaku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

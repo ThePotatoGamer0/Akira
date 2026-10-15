@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-genji",
+  "name": "Genji",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-genji-base",
+      "name": "Genji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

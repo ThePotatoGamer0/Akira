@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-grigori",
+  "name": "Grigori",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-grigori-base",
+      "name": "Grigori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

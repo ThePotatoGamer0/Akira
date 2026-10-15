@@ -1,0 +1,13 @@
+{
+  "id": "overlord-hilma-cygnaeus",
+  "name": "Hilma Cygnaeus",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-hilma-cygnaeus-base",
+      "name": "Hilma Cygnaeus",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

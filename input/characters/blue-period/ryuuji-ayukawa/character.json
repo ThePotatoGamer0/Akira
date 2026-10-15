@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-ryuuji-ayukawa",
+  "name": "Ryuuji Ayukawa",
+  "gender": null,
+  "cards": [
+    {
+      "id": "blue-period-ryuuji-ayukawa-base",
+      "name": "Ryuuji Ayukawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}

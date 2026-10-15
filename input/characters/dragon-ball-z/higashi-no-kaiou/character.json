@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-higashi-no-kaiou",
+  "name": "Higashi no Kaiou",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-higashi-no-kaiou-base",
+      "name": "Higashi no Kaiou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

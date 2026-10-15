@@ -1,0 +1,14 @@
+{
+  "id": "death-note-teru-mikami",
+  "name": "Teru Mikami",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-teru-mikami-base",
+      "name": "Teru Mikami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-jabbathe",
+  "name": "Jabbathe",
+  "gender": null,
+  "cards": [
+    {
+      "id": "vinland-saga-jabbathe-base",
+      "name": "Jabbathe",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

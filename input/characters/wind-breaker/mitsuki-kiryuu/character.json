@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-mitsuki-kiryuu",
+  "name": "Mitsuki Kiryuu",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-mitsuki-kiryuu-base",
+      "name": "Mitsuki Kiryuu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

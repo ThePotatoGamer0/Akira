@@ -1,0 +1,14 @@
+{
+  "id": "blue-lock-ryousuke-kira",
+  "name": "Ryousuke Kira",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-lock-ryousuke-kira-base",
+      "name": "Ryousuke Kira",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

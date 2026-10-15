@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-daichi-shiratori",
+  "name": "Daichi Shiratori",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "mob-psycho-100-daichi-shiratori-base",
+      "name": "Daichi Shiratori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

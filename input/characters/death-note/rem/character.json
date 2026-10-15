@@ -1,0 +1,14 @@
+{
+  "id": "death-note-rem",
+  "name": "Rem",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "death-note-rem-base",
+      "name": "Rem",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

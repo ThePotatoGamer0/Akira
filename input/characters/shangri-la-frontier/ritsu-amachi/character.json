@@ -1,0 +1,13 @@
+{
+  "id": "shangri-la-frontier-ritsu-amachi",
+  "name": "Ritsu Amachi",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "shangri-la-frontier-ritsu-amachi-base",
+      "name": "Ritsu Amachi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

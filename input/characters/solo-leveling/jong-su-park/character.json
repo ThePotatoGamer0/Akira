@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-jong-su-park",
+  "name": "Jong-Su Park",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-jong-su-park-base",
+      "name": "Jong-Su Park",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "naruto-genno",
+  "name": "Genno",
+  "gender": null,
+  "cards": [
+    {
+      "id": "naruto-genno-base",
+      "name": "Genno",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

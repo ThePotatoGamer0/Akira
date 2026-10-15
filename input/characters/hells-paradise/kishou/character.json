@@ -1,0 +1,13 @@
+{
+  "id": "hells-paradise-kishou",
+  "name": "Kishou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hells-paradise-kishou-base",
+      "name": "Kishou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-lara-tybur",
+  "name": "Lara Tybur",
+  "gender": null,
+  "cards": [
+    {
+      "id": "attack-on-titan-lara-tybur-base",
+      "name": "Lara Tybur",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

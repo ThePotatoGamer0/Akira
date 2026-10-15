@@ -1,0 +1,14 @@
+{
+  "id": "naruto-tayuya",
+  "name": "Tayuya",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "naruto-tayuya-base",
+      "name": "Tayuya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

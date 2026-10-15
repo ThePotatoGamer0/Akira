@@ -1,0 +1,13 @@
+{
+  "id": "reincarnated-as-a-slime-kirara-mizutani",
+  "name": "Kirara Mizutani",
+  "gender": null,
+  "cards": [
+    {
+      "id": "reincarnated-as-a-slime-kirara-mizutani-base",
+      "name": "Kirara Mizutani",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

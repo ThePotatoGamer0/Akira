@@ -1,0 +1,14 @@
+{
+  "id": "mob-psycho-100-matsuo",
+  "name": "Matsuo",
+  "gender": null,
+  "cards": [
+    {
+      "id": "mob-psycho-100-matsuo-base",
+      "name": "Matsuo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

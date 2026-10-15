@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-mizuki",
+  "name": "Mizuki",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "one-punch-man-mizuki-base",
+      "name": "Mizuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

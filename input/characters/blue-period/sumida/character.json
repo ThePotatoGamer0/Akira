@@ -1,0 +1,14 @@
+{
+  "id": "blue-period-sumida",
+  "name": "Sumida",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "blue-period-sumida-base",
+      "name": "Sumida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

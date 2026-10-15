@@ -1,0 +1,13 @@
+{
+  "id": "solo-leveling-byeong-gu-min",
+  "name": "Byeong-Gu Min",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "solo-leveling-byeong-gu-min-base",
+      "name": "Byeong-Gu Min",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

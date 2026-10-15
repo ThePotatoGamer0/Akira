@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-neon-nostrade",
+  "name": "Neon Nostrade",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-neon-nostrade-base",
+      "name": "Neon Nostrade",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

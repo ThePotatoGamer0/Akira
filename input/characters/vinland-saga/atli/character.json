@@ -1,0 +1,13 @@
+{
+  "id": "vinland-saga-atli",
+  "name": "Atli",
+  "gender": null,
+  "cards": [
+    {
+      "id": "vinland-saga-atli-base",
+      "name": "Atli",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

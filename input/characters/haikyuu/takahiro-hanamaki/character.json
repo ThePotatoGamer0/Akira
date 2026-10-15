@@ -1,0 +1,14 @@
+{
+  "id": "haikyuu-takahiro-hanamaki",
+  "name": "Takahiro Hanamaki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "haikyuu-takahiro-hanamaki-base",
+      "name": "Takahiro Hanamaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

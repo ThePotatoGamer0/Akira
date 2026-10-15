@@ -1,0 +1,13 @@
+{
+  "id": "re-zero-pandora",
+  "name": "Pandora",
+  "gender": null,
+  "cards": [
+    {
+      "id": "re-zero-pandora-base",
+      "name": "Pandora",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

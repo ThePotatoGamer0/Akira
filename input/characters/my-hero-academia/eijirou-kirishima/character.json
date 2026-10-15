@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-eijirou-kirishima",
+  "name": "Eijirou Kirishima",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "my-hero-academia-eijirou-kirishima-base",
+      "name": "Eijirou Kirishima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

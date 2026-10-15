@@ -1,0 +1,13 @@
+{
+  "id": "frieren-sense",
+  "name": "Sense",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "frieren-sense-base",
+      "name": "Sense",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

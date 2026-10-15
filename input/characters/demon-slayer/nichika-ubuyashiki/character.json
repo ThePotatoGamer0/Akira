@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-nichika-ubuyashiki",
+  "name": "Nichika Ubuyashiki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "demon-slayer-nichika-ubuyashiki-base",
+      "name": "Nichika Ubuyashiki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

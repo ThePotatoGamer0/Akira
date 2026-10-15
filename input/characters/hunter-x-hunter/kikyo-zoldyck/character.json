@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-kikyo-zoldyck",
+  "name": "Kikyo Zoldyck",
+  "gender": null,
+  "cards": [
+    {
+      "id": "hunter-x-hunter-kikyo-zoldyck-base",
+      "name": "Kikyo Zoldyck",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

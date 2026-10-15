@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-all-back-man",
+  "name": "All Back-Man",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-all-back-man-base",
+      "name": "All Back-Man",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

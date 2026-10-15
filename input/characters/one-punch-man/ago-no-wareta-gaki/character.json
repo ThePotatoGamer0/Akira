@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-ago-no-wareta-gaki",
+  "name": "Ago no Wareta Gaki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-ago-no-wareta-gaki-base",
+      "name": "Ago no Wareta Gaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

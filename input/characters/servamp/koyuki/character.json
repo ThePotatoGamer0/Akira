@@ -1,0 +1,14 @@
+{
+  "id": "servamp-koyuki",
+  "name": "Koyuki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "servamp-koyuki-base",
+      "name": "Koyuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

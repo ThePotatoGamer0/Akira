@@ -1,0 +1,13 @@
+{
+  "id": "hunter-x-hunter-franklin-bordeaux",
+  "name": "Franklin Bordeaux",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "hunter-x-hunter-franklin-bordeaux-base",
+      "name": "Franklin Bordeaux",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

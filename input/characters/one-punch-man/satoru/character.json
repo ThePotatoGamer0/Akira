@@ -1,0 +1,13 @@
+{
+  "id": "one-punch-man-satoru",
+  "name": "Satoru",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "one-punch-man-satoru-base",
+      "name": "Satoru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

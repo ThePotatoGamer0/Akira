@@ -1,0 +1,13 @@
+{
+  "id": "attack-on-titan-gunther-schultz",
+  "name": "Gunther Schultz",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "attack-on-titan-gunther-schultz-base",
+      "name": "Gunther Schultz",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

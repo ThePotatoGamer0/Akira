@@ -1,0 +1,13 @@
+{
+  "id": "whisper-of-the-heart-yuko-harada",
+  "name": "Yuko Harada",
+  "gender": null,
+  "cards": [
+    {
+      "id": "whisper-of-the-heart-yuko-harada-base",
+      "name": "Yuko Harada",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

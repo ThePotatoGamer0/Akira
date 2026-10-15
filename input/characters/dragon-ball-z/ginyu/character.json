@@ -1,0 +1,14 @@
+{
+  "id": "dragon-ball-z-ginyu",
+  "name": "Ginyu",
+  "gender": null,
+  "cards": [
+    {
+      "id": "dragon-ball-z-ginyu-base",
+      "name": "Ginyu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

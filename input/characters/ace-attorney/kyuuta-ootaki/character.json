@@ -1,0 +1,14 @@
+{
+  "id": "ace-attorney-kyuuta-ootaki",
+  "name": "Kyuuta Ootaki",
+  "gender": null,
+  "cards": [
+    {
+      "id": "ace-attorney-kyuuta-ootaki-base",
+      "name": "Kyuuta Ootaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

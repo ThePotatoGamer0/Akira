@@ -1,0 +1,14 @@
+{
+  "id": "naruto-kisame-hoshigaki",
+  "name": "Kisame Hoshigaki",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "naruto-kisame-hoshigaki-base",
+      "name": "Kisame Hoshigaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "overlord-shasuryu-shasha",
+  "name": "Shasuryu Shasha",
+  "gender": null,
+  "cards": [
+    {
+      "id": "overlord-shasuryu-shasha-base",
+      "name": "Shasuryu Shasha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

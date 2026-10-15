@@ -1,0 +1,14 @@
+{
+  "id": "death-note-souichirou-yagami",
+  "name": "Souichirou Yagami",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "death-note-souichirou-yagami-base",
+      "name": "Souichirou Yagami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}
