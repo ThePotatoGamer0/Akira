@@ -1,6 +1,22 @@
-import { useCallback, useState } from "react";
-import { DiscordSDK, patchUrlMappings } from "@discord/embedded-app-sdk";
+import { useCallback, useEffect, useState } from "react";
+import { Common, DiscordSDK, Events, patchUrlMappings } from "@discord/embedded-app-sdk";
 import { apiFetch } from "../lib/api.js";
+
+/** Discord's small activity frames. Focused is the full activity. */
+export type ActivityLayout = "focused" | "pip" | "grid";
+
+function activityLayout(mode: number): ActivityLayout {
+  if (mode === Common.LayoutModeTypeObject.PIP) return "pip";
+  if (mode === Common.LayoutModeTypeObject.GRID) return "grid";
+  return "focused";
+}
+
+function devLayoutOverride(): ActivityLayout | null {
+  if (!import.meta.env.DEV) return null;
+  const value = new URLSearchParams(window.location.search).get("layout");
+  if (value === "pip" || value === "grid") return value;
+  return null;
+}
 
 /** Must match the Activities → URL Mappings prefix whose target is the API host. */
 const API_PROXY_PREFIX = "/api";
@@ -79,6 +95,19 @@ function sdkFailureMessage(error: unknown): string {
  */
 export function useDiscordSDK(clientId: string | undefined) {
   const [state, setState] = useState<State>({ status: "idle" });
+  const [layout, setLayout] = useState<ActivityLayout>(() => devLayoutOverride() ?? "focused");
+  const sdk = state.status === "ready" ? state.sdk : null;
+
+  useEffect(() => {
+    if (!sdk) return;
+    const onLayout = (data: { layout_mode: number }) => {
+      setLayout(activityLayout(data.layout_mode));
+    };
+    void sdk.subscribe(Events.ACTIVITY_LAYOUT_MODE_UPDATE, onLayout);
+    return () => {
+      void sdk.unsubscribe(Events.ACTIVITY_LAYOUT_MODE_UPDATE, onLayout);
+    };
+  }, [sdk]);
 
   const connect = useCallback(async () => {
     if (!clientId) {
@@ -125,5 +154,5 @@ export function useDiscordSDK(clientId: string | undefined) {
     }
   }, [clientId]);
 
-  return { state, connect };
+  return { state, connect, layout };
 }
