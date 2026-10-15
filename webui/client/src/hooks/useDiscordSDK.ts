@@ -1,6 +1,30 @@
 import { useCallback, useState } from "react";
-import { DiscordSDK } from "@discord/embedded-app-sdk";
+import { DiscordSDK, patchUrlMappings } from "@discord/embedded-app-sdk";
 import { apiFetch } from "../lib/api.js";
+
+/** Must match the Activities → URL Mappings prefix whose target is the API host. */
+const API_PROXY_PREFIX = "/api";
+let apiProxyPatched = false;
+
+/**
+ * Inside Discord the page is served from discordsays.com, and that proxy
+ * refuses any request to another host. Rewrite the API address onto /api,
+ * which the portal mapping forwards to the real API.
+ */
+function patchActivityApi(): void {
+  if (apiProxyPatched) return;
+  if (!window.location.hostname.endsWith("discordsays.com")) return;
+  const apiBase = (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
+  if (!apiBase) return;
+  let target: string;
+  try {
+    target = new URL(apiBase).host;
+  } catch {
+    return;
+  }
+  patchUrlMappings([{ prefix: API_PROXY_PREFIX, target }], { patchSrcAttributes: true });
+  apiProxyPatched = true;
+}
 
 type State =
   | { status: "idle" | "loading" }
@@ -34,11 +58,17 @@ export function isDiscordActivityContext(): boolean {
 function sdkFailureMessage(error: unknown): string {
   if (error instanceof Error && error.message) return error.message;
   if (typeof error === "string" && error) return error;
-  if (error && typeof error === "object" && "message" in error) {
-    const message = error.message;
-    const code = "code" in error ? error.code : undefined;
-    if (typeof message === "string" && message) {
-      return typeof code === "number" ? `${message} (${code})` : message;
+  if (error && typeof error === "object") {
+    const record = error as { message?: unknown; code?: unknown };
+    const message = typeof record.message === "string" ? record.message : "";
+    const code = typeof record.code === "number" ? String(record.code) : "";
+    if (message && code) return `${message} (${code})`;
+    if (message) return message;
+    if (code) return `Discord refused the sign-in (${code}).`;
+    try {
+      return JSON.stringify(error);
+    } catch {
+      return "Failed to start Discord SDK";
     }
   }
   return "Failed to start Discord SDK";
@@ -57,20 +87,16 @@ export function useDiscordSDK(clientId: string | undefined) {
     }
     setState({ status: "loading" });
     try {
+      patchActivityApi();
       const sdk = new DiscordSDK(clientId);
       await sdk.ready();
-      const authorize = {
+      const { code } = await sdk.commands.authorize({
         client_id: clientId,
-        response_type: "code" as const,
+        response_type: "code",
         state: "",
-        scope: ["identify" as const],
-      };
-      let code: string;
-      try {
-        ({ code } = await sdk.commands.authorize({ ...authorize, prompt: "none" }));
-      } catch {
-        ({ code } = await sdk.commands.authorize(authorize));
-      }
+        prompt: "none",
+        scope: ["identify"],
+      });
       const res = await apiFetch("/auth/activity", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -91,6 +117,7 @@ export function useDiscordSDK(clientId: string | undefined) {
       }
       setState({ status: "ready", discordUserId: user.id, accessToken: body.accessToken, sdk });
     } catch (e) {
+      console.error("Discord SDK", e);
       setState({
         status: "error",
         message: sdkFailureMessage(e),

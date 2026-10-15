@@ -34,7 +34,7 @@ Create two projects from this repository.
 **Client.** Root directory `webui/client`. Framework Vite. Set these before the first build:
 
 - `VITE_API_URL` is the API’s public address, with no slash at the end. Example: `https://akira-api.example.com`
-- `VITE_DISCORD_CLIENT_ID` is the same application id as on the Pi, for the Discord Activity.
+- `VITE_DISCORD_CLIENT_ID` is the same application id as on the Pi, for the Discord Activity. In the developer portal, under Activities → URL Mappings, add a prefix `/api` whose target is the API host with no `https://`. Discord’s activity proxy blocks every other address, so the activity sends API calls to `/api` and Discord forwards them.
 
 **Docs.** Root directory `docs`. Framework Astro. No API variables.
 
