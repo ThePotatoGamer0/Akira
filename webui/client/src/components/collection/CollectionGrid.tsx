@@ -3,6 +3,7 @@ import { useGsapCardTilt } from "../../lib/card-tilt.js";
 import { QualityStars, TagMark } from "../marks.js";
 import { qualityCondition, showsShiny } from "../../lib/quality.js";
 import type { CollectionCard } from "../../types/index.js";
+import { apiUrl } from "../../hooks/useAuth.js";
 
 function CollectionTile(props: { card: CollectionCard; onSelect: (card: CollectionCard) => void }) {
   const { card } = props;
@@ -22,7 +23,7 @@ function CollectionTile(props: { card: CollectionCard; onSelect: (card: Collecti
       <span className="collection-tile__art" ref={artRef}>
         <img
           className="thumb"
-          src={showsShiny(card.quality, card.dye) ? card.assets.shiny : card.assets.normal}
+          src={apiUrl(showsShiny(card.quality, card.dye) ? card.assets.shiny : card.assets.normal)}
           alt=""
           loading="lazy"
         />
