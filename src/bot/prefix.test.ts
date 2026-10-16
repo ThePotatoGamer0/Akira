@@ -9,6 +9,7 @@ import { multiburn } from "./commands/multiburn.js";
 import { tag, tagcreate, tagdelete, taglist, untag } from "./commands/tag.js";
 import { editionIndexForVariant, lookup } from "./commands/lookup.js";
 import { reminders } from "./commands/reminders.js";
+import { multitrade } from "./commands/multitrade.js";
 import { give, trade } from "./commands/transfer.js";
 import { view } from "./commands/view.js";
 import { wishlist } from "./commands/wishlist.js";
@@ -34,6 +35,7 @@ test("karuta shortcuts map onto akira commands", () => {
   assert.deepEqual(resolveLegacyCommand("wa"), { command: "wishlist", subcommand: "add" });
   assert.deepEqual(resolveLegacyCommand("wr"), { command: "wishlist", subcommand: "remove" });
   assert.deepEqual(resolveLegacyCommand("drop"), { command: "drop" });
+  assert.deepEqual(resolveLegacyCommand("mt"), { command: "multitrade" });
   assert.deepEqual(resolveLegacyCommand("i"), { command: "inventory" });
   assert.deepEqual(resolveLegacyCommand("t"), { command: "tag" });
   assert.deepEqual(resolveLegacyCommand("tl"), { command: "taglist" });
@@ -100,6 +102,8 @@ test("a prefix command runs only when the arguments are exactly what it accepts"
   assert.equal(invocationIsExpected(frame, "card fmbl40r 2"), true);
   assert.equal(invocationIsExpected(frame, "card fmbl40r clear"), true);
   assert.equal(invocationIsExpected(frame, "card fmbl40r clear extra"), false);
+  assert.equal(invocationIsExpected(multitrade, "<@123>"), true);
+  assert.equal(invocationIsExpected(multitrade, ""), false);
   assert.equal(invocationIsExpected(give, "<@123> fmbl40r"), true);
   assert.equal(invocationIsExpected(give, "fmbl40r"), false);
   assert.equal(invocationIsExpected(give, "<@123> fmbl40r extra"), false);

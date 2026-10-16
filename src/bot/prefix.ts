@@ -35,6 +35,7 @@ const LEGACY_ALIASES: Record<string, { command: string; subcommand?: string }> =
   wr: { command: "wishlist", subcommand: "remove" },
   wishremove: { command: "wishlist", subcommand: "remove" },
   g: { command: "give" },
+  mt: { command: "multitrade" },
   i: { command: "inventory" },
   inv: { command: "inventory" },
   items: { command: "inventory" },

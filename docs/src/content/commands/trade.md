@@ -29,5 +29,6 @@ atrade @friend v8pj8pz v8znvrx
 
 ## See also
 
+- [Multitrade](/commands/multitrade)
 - [Give](/commands/give)
 - [Command list](/commands/reference)

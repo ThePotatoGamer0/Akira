@@ -88,26 +88,46 @@ async function loadCard(cardId: string) {
   });
 }
 
+/** Cards sitting in a pending give, trade, or multitrade. */
+export async function cardsHeldInOpenTransfers(cardIds: string[]): Promise<Set<string>> {
+  if (cardIds.length === 0) return new Set();
+  const [offers, entries] = await Promise.all([
+    prisma.transferOffer.findMany({
+      where: {
+        status: "pending",
+        OR: [{ fromCardId: { in: cardIds } }, { toCardId: { in: cardIds } }],
+      },
+      select: { fromCardId: true, toCardId: true },
+    }),
+    prisma.multitradeEntry.findMany({
+      where: {
+        cardId: { in: cardIds },
+        trade: { status: { in: ["request", "open"] } },
+      },
+      select: { cardId: true },
+    }),
+  ]);
+  const held = new Set<string>();
+  for (const offer of offers) {
+    held.add(offer.fromCardId);
+    if (offer.toCardId) held.add(offer.toCardId);
+  }
+  for (const entry of entries) {
+    if (entry.cardId) held.add(entry.cardId);
+  }
+  return held;
+}
+
 export async function cardInOpenTransfer(cardId: string): Promise<boolean> {
-  const open = await prisma.transferOffer.findFirst({
-    where: {
-      status: "pending",
-      OR: [{ fromCardId: cardId }, { toCardId: cardId }],
-    },
-    select: { id: true },
-  });
-  return open !== null;
+  const held = await cardsHeldInOpenTransfers([cardId]);
+  return held.has(cardId);
 }
 
 async function assertCardsFree(cardIds: string[]): Promise<void> {
-  const open = await prisma.transferOffer.findFirst({
-    where: {
-      status: "pending",
-      OR: [{ fromCardId: { in: cardIds } }, { toCardId: { in: cardIds } }],
-    },
-    select: { id: true },
-  });
-  if (open) throw new GameError("busy", "That card is already in an open give or trade.");
+  const held = await cardsHeldInOpenTransfers(cardIds);
+  if (cardIds.some((cardId) => held.has(cardId))) {
+    throw new GameError("busy", "That card is already in an open trade.");
+  }
 }
 
 async function toView(offer: OfferRow, changed = false): Promise<TransferView> {

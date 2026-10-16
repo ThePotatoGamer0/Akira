@@ -24,13 +24,14 @@ The full command name always works after the prefix (`acollection`). The short a
 | [`/frame`](/commands/frame) | `show`. `default` with required `frame` id (admin). `card` with required `card_id` and `action` (`clear` or a frame id). | |
 | [`/give`](/commands/give) | `user` and `card_id`, both required. Both players press the check mark. | `g` |
 | [`/trade`](/commands/trade) | `user`, `card_id`, and `their_card`, all required. Both players press the check mark. | |
+| [`/multitrade`](/commands/multitrade) | `user` required. A mention. After they agree, send card codes and `100 bits` in that channel. | `mt` |
 | [`/tag`](/commands/tag) | `tag_name` required. `card_ids` optional, space-separated. No codes tags the last grab. | `t` |
 | [`/taglist`](/commands/taglist) | `user` optional. | `tags`, `tl` |
 | [`/tagcreate`](/commands/tagcreate) | `tag_name` and `emoji`, both required. Server emojis are not allowed. | `tagadd`, `ta`, `tc` |
 | [`/tagdelete`](/commands/tagdelete) | `tag_name` required. | `tagremove`, `tr`, `td` |
 | [`/untag`](/commands/untag) | `card_ids` optional, space-separated. No codes untags the last grab. | `ut` |
 
-Examples: `ad`, `ac`, `av`, `av fmbl40r`, `alu denji`, `awl`, `awa Power`, `awr Power`, `aframe`, `aframe default 1`, `aframe card fmbl40r clear`, `agive @friend fmbl40r`, `atrade @friend fmbl40r abc1234`.
+Examples: `ad`, `ac`, `av`, `av fmbl40r`, `alu denji`, `awl`, `awa Power`, `awr Power`, `aframe`, `aframe default 1`, `aframe card fmbl40r clear`, `agive @friend fmbl40r`, `atrade @friend fmbl40r abc1234`, `amt @friend`.
 
 ## Timers
 

@@ -74,7 +74,7 @@ export async function burnOwnedCard(discordId: string, username: string, cardId:
     throw new GameError("not-owner", "Akira only burns cards that belong to you.");
   }
   if (await cardInOpenTransfer(card.id)) {
-    throw new GameError("busy", "That card is in an open give or trade.");
+    throw new GameError("busy", "That card is in an open trade.");
   }
 
   const imagePath = await ensureCardImage({
