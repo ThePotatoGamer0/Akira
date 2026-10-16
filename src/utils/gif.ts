@@ -1,7 +1,20 @@
 import sharp from "sharp";
 
+export type GifEncodeOptions = {
+  dither?: number;
+  reuse?: boolean;
+  interFrameMaxError?: number;
+  effort?: number;
+};
+
 /** Build a looping GIF from RGBA8 frames. Discord animates GIF attachments and leaves APNG still. */
-export async function encodeGif(frames: Buffer[], width: number, height: number, delaysMs: number[]): Promise<Buffer> {
+export async function encodeGif(
+  frames: Buffer[],
+  width: number,
+  height: number,
+  delaysMs: number[],
+  options?: GifEncodeOptions,
+): Promise<Buffer> {
   if (frames.length === 0) {
     throw new Error("encodeGif: at least one frame required");
   }
@@ -17,6 +30,13 @@ export async function encodeGif(frames: Buffer[], width: number, height: number,
     pngs.push(await sharp(frame, { raw: { width, height, channels: 4 } }).png().toBuffer());
   }
   return sharp(pngs, { join: { animated: true } })
-    .gif({ delay: delaysMs, loop: 0, effort: 4 })
+    .gif({
+      delay: delaysMs,
+      loop: 0,
+      effort: options?.effort ?? 4,
+      dither: options?.dither,
+      reuse: options?.reuse,
+      interFrameMaxError: options?.interFrameMaxError,
+    })
     .toBuffer();
 }
