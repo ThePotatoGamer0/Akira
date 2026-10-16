@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { encodeApng } from "../utils/apng.js";
-import { paintCardShine, shinePrism } from "./card-animations.js";
+import { ditherCardFade, paintCardShine, paintCornerBurn, shinePrism } from "./card-animations.js";
 
 function solid(width: number, height: number, color: [number, number, number, number]): Buffer {
   const buf = Buffer.alloc(width * height * 4);
@@ -54,6 +54,45 @@ test("the shine crosses from the top-left toward the bottom-right", () => {
   assert.equal(earlyFar, 30);
   assert.equal(lateCorner, 30);
   assert.ok(lateFar > 30);
+});
+
+function clearCount(buf: Buffer, width: number, x0: number, y0: number, x1: number, y1: number): number {
+  let count = 0;
+  for (let y = y0; y <= y1; y++) {
+    for (let x = x0; x <= x1; x++) {
+      if ((buf[(y * width + x) * 4 + 3] ?? 0) === 0) count++;
+    }
+  }
+  return count;
+}
+
+test("the burn starts in the top-left and finishes in the bottom-right", () => {
+  const width = 48;
+  const height = 72;
+  const base = solid(width, height, [40, 50, 70, 255]);
+  const early = paintCornerBurn(base, width, height, 0.2);
+  const late = paintCornerBurn(base, width, height, 0.92);
+  assert.ok(clearCount(early, width, 0, 0, 8, 8) > clearCount(early, width, 36, 60, 47, 71));
+  assert.ok(clearCount(late, width, 36, 60, 47, 71) > 20);
+});
+
+test("the burn fades back as grain, with pixels either clear or solid", () => {
+  const width = 32;
+  const height = 32;
+  const base = solid(width, height, [40, 50, 70, 255]);
+  const faded = ditherCardFade(base, width, height, 0.45);
+  let clear = 0;
+  let solidPixels = 0;
+  let partial = 0;
+  for (let i = 3; i < faded.length; i += 4) {
+    const alpha = faded[i] ?? 0;
+    if (alpha === 0) clear++;
+    else if (alpha === 255) solidPixels++;
+    else partial++;
+  }
+  assert.equal(partial, 0);
+  assert.ok(clear > 200);
+  assert.ok(solidPixels > 200);
 });
 
 test("the fringe is prismatic and clear pixels stay clear", () => {
