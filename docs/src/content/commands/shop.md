@@ -9,7 +9,7 @@ shortcuts: is, itemshop
 
 Three buttons sit under it: previous, next, and buy. Previous is quiet on the first item. Next is quiet on the last. Buy purchases the item on that page. Akira edits the message to say it went through, or that you cannot afford it.
 
-There is no `/shop buy`. You use the button.
+Buy is the button on that message.
 
 Buying starts the clock. Buying the same buff again adds the duration onto the time you have left. These are not items you stack in a pile. `/inventory` lists what is currently on you.
 

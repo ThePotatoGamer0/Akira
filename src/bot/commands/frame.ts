@@ -27,11 +27,17 @@ async function isAdmin(client: Client, guildId: string, userId: string): Promise
 }
 
 function usage(prefix: string): string {
+  const listed = frameIdsOnDisk()
+    .map((id) => `${frameName(id)} (${id})`)
+    .join("\n");
   return [
-    `Frames on disk: ${frameIdsOnDisk().map((id) => `\`${frameName(id)}\``).join(", ") || "none"}.`,
-    `An admin sets the server default with \`${prefix}frame default dark\`.`,
-    `\`${prefix}frame card <code> yellow\` gives one card that frame. \`${prefix}frame card <code> clear\` uses the server frame again.`,
-  ].join(" ");
+    "Frames:",
+    listed || "none",
+    "",
+    `An admin sets the server default with \`${prefix}frame default yellow\`.`,
+    `\`${prefix}frame card <code> pink\` gives one card that frame.`,
+    `\`${prefix}frame card <code> clear\` uses the server frame again.`,
+  ].join("\n");
 }
 
 export const frame: AkiraCommand = {
@@ -44,7 +50,7 @@ export const frame: AkiraCommand = {
         .setName("default")
         .setDescription("Set the frame for cards that don't have their own")
         .addStringOption((option) =>
-          option.setName("frame").setDescription("dark, yellow, or a frame number").setRequired(true),
+          option.setName("frame").setDescription("A frame name or number. aframe lists them.").setRequired(true),
         ),
     )
     .addSubcommand((sub) =>
@@ -55,7 +61,7 @@ export const frame: AkiraCommand = {
           option.setName("card_id").setDescription("The 7 character card code").setRequired(true),
         )
         .addStringOption((option) =>
-          option.setName("action").setDescription("dark, yellow, a frame number, or clear").setRequired(true),
+          option.setName("action").setDescription("A frame name, a frame number, or clear").setRequired(true),
         ),
     ),
   execute: async (interaction: ChatInputCommandInteraction, client: Client) => {
@@ -69,7 +75,7 @@ export const frame: AkiraCommand = {
       if (sub === "show") {
         const current = await serverDefaultFrame(interaction.guildId);
         await interaction.reply({
-          content: `Cards without their own frame use \`${frameName(current)}\`. ${usage(prefix)}`,
+          content: `Cards without their own frame use \`${frameName(current)}\`.\n\n${usage(prefix)}`,
         });
         return;
       }

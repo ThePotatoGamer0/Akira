@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-olruggio",
+  "name": "Olruggio",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-olruggio-base",
+      "name": "Olruggio",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

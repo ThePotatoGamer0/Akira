@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-custas",
+  "name": "Custas",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-custas-base",
+      "name": "Custas",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

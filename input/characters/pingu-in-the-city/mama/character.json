@@ -1,0 +1,14 @@
+{
+  "id": "pingu-in-the-city-mama",
+  "name": "Mama",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "pingu-in-the-city-mama-base",
+      "name": "Mama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

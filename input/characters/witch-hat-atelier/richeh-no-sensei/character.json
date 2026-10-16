@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-richeh-no-sensei",
+  "name": "Richeh no Sensei",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-richeh-no-sensei-base",
+      "name": "Richeh no Sensei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

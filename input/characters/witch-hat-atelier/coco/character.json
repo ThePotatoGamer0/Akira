@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-coco",
+  "name": "Coco",
+  "gender": "Female",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-coco-base",
+      "name": "Coco",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

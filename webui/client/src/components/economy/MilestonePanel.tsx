@@ -68,6 +68,10 @@ export function CyclePanel(props: {
 
   if (!status) return null;
 
+  const groups = [status.shop.length > 0, status.server !== null, status.prestige.length > 0].filter(Boolean).length;
+  const effectHome = groups > 1 ? "together" : status.shop.length > 0 ? "shop" : status.server ? "server" : null;
+  const anyBuff = groups > 0;
+
   return (
     <>
       <div className="panel">
@@ -80,9 +84,14 @@ export function CyclePanel(props: {
         </p>
         <ol className="milestone-list">
           {status.milestones.map((row) => (
-            <li key={row.step}>
-              {row.claimed ? "Claimed" : `${row.cost.toLocaleString()} given, pays ${row.payout.toLocaleString()}`}
-              {row.prestige ? `. Prestige reward: ${row.prestige}` : ""}
+            <li key={row.step} className={row.claimed ? "is-claimed" : undefined}>
+              <span className="milestone-step">Step {row.step}</span>
+              <span>
+                {row.claimed
+                  ? "Claimed"
+                  : `${row.cost.toLocaleString()} bits given, pays ${row.payout.toLocaleString()}`}
+              </span>
+              {row.prestige ? <span className="milestone-note">{row.prestige}</span> : null}
             </li>
           ))}
         </ol>
@@ -130,6 +139,13 @@ export function CyclePanel(props: {
                 </li>
               ))}
             </ul>
+            {effectHome === "shop" ? (
+              <ul>
+                {status.combined.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            ) : null}
           </>
         ) : null}
         {status.server ? (
@@ -138,6 +154,13 @@ export function CyclePanel(props: {
             <p>
               {status.server.names.join(", ")} until {status.server.expiresAt.replace("T", " ").slice(0, 16)} UTC
             </p>
+            {effectHome === "server" ? (
+              <ul>
+                {status.combined.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            ) : null}
           </>
         ) : null}
         {status.prestige.length > 0 ? (
@@ -150,7 +173,7 @@ export function CyclePanel(props: {
             </ul>
           </>
         ) : null}
-        {status.combined.length > 0 ? (
+        {effectHome === "together" && status.combined.length > 0 ? (
           <>
             <h4>Together</h4>
             <ul>
@@ -159,9 +182,8 @@ export function CyclePanel(props: {
               ))}
             </ul>
           </>
-        ) : (
-          <p>No buffs are on you right now.</p>
-        )}
+        ) : null}
+        {anyBuff ? null : <p>No buffs are on you right now.</p>}
       </div>
       {msg ? <p>{msg}</p> : null}
     </>

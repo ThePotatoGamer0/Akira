@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-coco-no-haha",
+  "name": "Coco no Haha",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-coco-no-haha-base",
+      "name": "Coco no Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

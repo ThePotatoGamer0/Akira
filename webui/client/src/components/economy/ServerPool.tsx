@@ -14,7 +14,7 @@ export function ServerPool(props: {
   onChange?: () => void;
 }) {
   const [pool, setPool] = useState<PoolState | null>(null);
-  const [contribute, setContribute] = useState(50);
+  const [contribute, setContribute] = useState("50");
   const [msg, setMsg] = useState<string | null>(null);
 
   async function load() {
@@ -28,10 +28,15 @@ export function ServerPool(props: {
 
   async function send() {
     setMsg(null);
+    const bits = Number(contribute);
+    if (!Number.isInteger(bits) || bits < 1) {
+      setMsg("Enter a whole number of bits.");
+      return;
+    }
     const res = await props.fetchApi("/economy/pool/contribute", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ bits: contribute }),
+      body: JSON.stringify({ bits }),
     });
     const j = (await res.json()) as { error?: string; poolTotal?: number };
     if (!res.ok) {
@@ -61,7 +66,7 @@ export function ServerPool(props: {
           type="number"
           min={1}
           value={contribute}
-          onChange={(e) => setContribute(Number(e.target.value))}
+          onChange={(e) => setContribute(e.target.value)}
         />
       </label>
       <button type="button" onClick={() => void send()}>

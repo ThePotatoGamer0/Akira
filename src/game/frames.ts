@@ -6,6 +6,14 @@ import { GameError } from "./errors.js";
 const FRAME_NAMES: Record<number, string> = {
   0: "dark",
   1: "yellow",
+  2: "white",
+  3: "red",
+  4: "blue",
+  5: "green",
+  6: "pink",
+  7: "purple",
+  8: "orange",
+  9: "teal",
 };
 
 /** Short name for a frame. Unknown frames stay as their number. */
@@ -13,11 +21,12 @@ export function frameName(id: number): string {
   return FRAME_NAMES[id] ?? String(id);
 }
 
-/** `dark`, `yellow`, or a frame number. Anything else is not a frame. */
+/** A frame name (`dark`, `yellow`, `pink`) or a frame number. Anything else is not a frame. */
 export function parseFrameToken(token: string): number | null {
   const key = token.trim().toLowerCase();
-  if (key === "dark") return 0;
-  if (key === "yellow") return 1;
+  for (const [id, name] of Object.entries(FRAME_NAMES)) {
+    if (name === key) return Number(id);
+  }
   if (!/^\d+$/.test(key)) return null;
   return Number(key);
 }

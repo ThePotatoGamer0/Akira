@@ -4,10 +4,11 @@ type Entry = { userId: string; expiresAt: number };
 
 const byCode = new Map<string, Entry>();
 
-export function createVerificationCode(userId: string): string {
+export function createVerificationCode(userId: string): { code: string; expiresAt: number } {
   const code = String(Math.floor(100000 + Math.random() * 900000));
-  byCode.set(code, { userId, expiresAt: Date.now() + ttlMs });
-  return code;
+  const expiresAt = Date.now() + ttlMs;
+  byCode.set(code, { userId, expiresAt });
+  return { code, expiresAt };
 }
 
 export function consumeVerificationCode(code: string): string | null {

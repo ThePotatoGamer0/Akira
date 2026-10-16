@@ -1,7 +1,7 @@
 /**
  * Ask the Discord bot (internal HTTP) to DM a verification code.
  */
-export async function sendVerificationDm(discordId: string, code: string): Promise<void> {
+export async function sendVerificationDm(discordId: string, code: string, expiresAt: number): Promise<void> {
   const base = process.env["BOT_INTERNAL_URL"]?.replace(/\/$/, "");
   const secret = process.env["AKIRA_INTERNAL_SECRET"] ?? "";
   if (!base || !secret) {
@@ -19,7 +19,7 @@ export async function sendVerificationDm(discordId: string, code: string): Promi
       "Content-Type": "application/json",
       Authorization: `Bearer ${secret}`,
     },
-    body: JSON.stringify({ discordId, code }),
+    body: JSON.stringify({ discordId, code, expiresAt }),
   });
   if (!res.ok) {
     throw new Error(`Bot notify failed: ${res.status} ${await res.text()}`);

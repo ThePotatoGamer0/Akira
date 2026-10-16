@@ -21,6 +21,8 @@ const ANILIST_SEARCH: Record<string, string | null> = {
   "yarichin-bitch-club": "Yarichin☆Bitch-bu",
   "haikyuu-2nd-season": "Haikyuu!! 2nd Season",
   "cyberpunk-edgerunners": "Cyberpunk: Edgerunners",
+  "pingu-in-the-city": "Pingu in the City",
+  "witch-hat-atelier": "Witch Hat Atelier",
 };
 
 function searchTitle(seriesSlug: string): string | null {

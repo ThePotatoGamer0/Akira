@@ -5,7 +5,7 @@ description: A bar that fills only when you give bits to the server. Each step p
 
 Your **milestone bar** fills only when you [give bits to the server pool](/commands/pool). Shop purchases do not count. The bar is yours. The pot is the server's. The same gift updates both.
 
-Each step costs twice the one before it. Five is meant to be reachable. Ten is a long push. There is no step past 10. Leftover bits stay on the bar, and you claim one step at a time.
+Each step costs twice the one before it. Five is meant to be reachable. Ten is the last step. Leftover bits stay on the bar, and you claim one step at a time.
 
 Claiming pays the bits immediately. It does not grant the prestige reward on that row. That reward is stamped only if you [prestige](/prestige/overview) after the step is claimed.
 

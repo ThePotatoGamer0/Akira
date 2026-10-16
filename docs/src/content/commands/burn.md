@@ -19,17 +19,19 @@ shortcuts: b
 
 | Name | Required | What it is |
 | --- | --- | --- |
-| `card_id` | Yes | The 7 character card code. |
+| `card_id` | For `/burn` | The 7 character card code. `ab` or `kb` with no code asks before burning the last card you grabbed. |
 
 ## Aliases
 
-`b`. `ab fmbl40r` burns that card. `ab` alone is ignored.
+`b`. `ab fmbl40r` burns that card. `ab` or `kb` alone asks first, then burns the last grab if you press Yes.
 
 ## Example usage
 
 ```
 /burn card_id:fmbl40r
 ab fmbl40r
+ab
+kb
 ```
 
 ## Tips

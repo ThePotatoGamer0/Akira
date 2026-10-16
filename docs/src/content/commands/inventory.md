@@ -1,19 +1,19 @@
 ---
 title: Inventory
-description: Every buff on you, split by shop, server, and prestige, then what that adds up to.
+description: Every buff on you, with the effect written under the source that caused it.
 command: inventory
 shortcuts: i, inv, items
 ---
 
-**/inventory** lists every buff on you. Shop, server, and prestige are separate. A source with nothing is left out. Under those, **Together** says what it adds up to.
+**/inventory** lists every buff on you. Shop, server, and prestige are separate. A source with nothing is left out. The effect sentence sits under the one source that caused it. **Together** appears only when more than one source is on, and that heading is the combined result.
 
 Shop rows show the time left. A featured series row also names the series you locked in. Server rows show the buffs chosen at the last midnight and when they end. Prestige rows show each percent and how many times it has stacked, such as burns paying 2% more when you have taken that stamp twice.
 
-The Economy page uses the same three groups and the same sentences.
+The Economy page uses the same groups and the same sentences.
 
-## What Together says
+## What the effect line says
 
-The line is the result, not the arithmetic.
+The line is the result, not the arithmetic. A shop-only Four cards buff says "Your drops have four cards." under Shop.
 
 - Shop grab cooldown alone: "Reduces your grab cooldown to 2 minutes 30 seconds."
 - Shop and server grab cooldown: "Reduces your grab cooldown to 1 minute 15 seconds."
