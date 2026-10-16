@@ -2,6 +2,8 @@
 
 The Discord bot and the WebUI API run together on the Pi. The docs site and the WebUI client run on Vercel.
 
+[![Akira Status](https://badge.uptimerobot.com/psp/1ef6de73c77b068f1854841c0105e80c.svg?style=logo&theme=dark)](https://stats.uptimerobot.com/Zlw32vDcCg?utm_source=status_badge&utm_medium=referral)
+
 ## Pi (Portainer)
 
 Each push to `main` builds this image in GitHub Actions and publishes `ghcr.io/thepotatogamer0/akira-bot:latest`. The build includes an arm64 copy for the Pi. In Portainer, add a stack from `docker-compose.yml` and pull that image. After a later push, pull the image again and recreate the container.
