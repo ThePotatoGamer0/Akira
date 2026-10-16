@@ -1,0 +1,32 @@
+{
+  "ambient": true,
+  "textElements": {
+    "characterName": {
+      "x": 200,
+      "y": 464,
+      "fontSize": 26,
+      "fontFamily": "Roboto-Bold",
+      "color": "#F4F5F7",
+      "horizontal-anchor": "center",
+      "vertical-anchor": "top"
+    },
+    "seriesName": {
+      "x": 200,
+      "y": 536,
+      "fontSize": 16,
+      "fontFamily": "Roboto-Regular",
+      "color": "#A3A8B0",
+      "horizontal-anchor": "center",
+      "vertical-anchor": "top"
+    },
+    "printNumber": {
+      "x": 364,
+      "y": 572,
+      "fontSize": 14,
+      "fontFamily": "Roboto-Regular",
+      "color": "#8E939C",
+      "horizontal-anchor": "right",
+      "vertical-anchor": "center"
+    }
+  }
+}
