@@ -68,16 +68,12 @@ function attachmentName(view: TransferView): string {
 
 function transferButtons(view: TransferView) {
   if (view.status !== "pending") return [];
-  const confirm = new ActionRowBuilder<ButtonBuilder>().addComponents(
-    new ButtonBuilder().setCustomId(`xfer:no:${view.id}`).setEmoji(icon("x")).setStyle(ButtonStyle.Danger),
-    new ButtonBuilder().setCustomId(`xfer:yes:${view.id}`).setEmoji(icon("check")).setStyle(ButtonStyle.Success),
-  );
-  if (view.kind !== "trade") return [confirm];
-  const marks = new ActionRowBuilder<ButtonBuilder>().addComponents(
-    new ButtonBuilder().setCustomId(`xfer:q:from:${view.id}`).setEmoji(icon("circle-help")).setStyle(ButtonStyle.Secondary),
-    new ButtonBuilder().setCustomId(`xfer:q:to:${view.id}`).setEmoji(icon("circle-help")).setStyle(ButtonStyle.Secondary),
-  );
-  return [marks, confirm];
+  return [
+    new ActionRowBuilder<ButtonBuilder>().addComponents(
+      new ButtonBuilder().setCustomId(`xfer:no:${view.id}`).setEmoji(icon("x")).setStyle(ButtonStyle.Danger),
+      new ButtonBuilder().setCustomId(`xfer:yes:${view.id}`).setEmoji(icon("check")).setStyle(ButtonStyle.Success),
+    ),
+  ];
 }
 
 async function transferMessage(

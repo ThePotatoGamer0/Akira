@@ -6,7 +6,7 @@ command: trade
 
 **`/trade`** offers one of your cards for one of theirs. Nothing moves until both of you press the check mark. Either of you can press the cross to cancel. The offer expires after 5 minutes.
 
-The message is a **Card Trade** embed. The image is the two cards with a swap arrow between them. The question mark under each card shows that card's line.
+The message is a **Card Trade** embed. The image is the two cards with a swap arrow between them. Each player's card line sits under their name.
 
 ## Parameters
 
