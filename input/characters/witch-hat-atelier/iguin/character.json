@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-iguin",
+  "name": "Iguin",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-iguin-base",
+      "name": "Iguin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-tetia",
+  "name": "Tetia",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-tetia-base",
+      "name": "Tetia",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,11 +1,9 @@
 ---
 title: Grab
-description: React on a live drop to claim that card. There is no grab command.
+description: React on a live drop to claim that card.
 ---
 
 Grabbing is the number reaction on a [drop](/commands/drop). 1️⃣ takes the first card, 2️⃣ the second, and 3️⃣ the third. When a drop has four cards, 4️⃣ takes the fourth. Akira checks that the drop is still open, that the card is free, and that your grab cooldown has finished. For the first 20 seconds, the person who dropped can still take a card someone else already grabbed.
-
-There is no `/grab` and no `agrab`.
 
 ## Example
 

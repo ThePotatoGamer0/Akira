@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-euini",
+  "name": "Euini",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-euini-base",
+      "name": "Euini",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

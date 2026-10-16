@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-fudemushi",
+  "name": "Fudemushi",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-fudemushi-base",
+      "name": "Fudemushi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

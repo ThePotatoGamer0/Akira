@@ -14,7 +14,7 @@ export async function seedCatalog(): Promise<void> {
     // 1. Upsert the Series using the directory name slug
     const series = await prisma.series.upsert({
       where: { slug: seriesSlug },
-      create: { name: humanizeSlug(seriesSlug), slug: seriesSlug },
+      create: { name: seriesTitle(seriesSlug), slug: seriesSlug },
       update: {},
     });
 
@@ -75,6 +75,15 @@ export async function seedCatalog(): Promise<void> {
       }
     }
   }
+}
+
+const SERIES_TITLES: Record<string, string> = {
+  "pingu-in-the-city": "Pingu in the City",
+  "witch-hat-atelier": "Witch Hat Atelier",
+};
+
+function seriesTitle(slug: string): string {
+  return SERIES_TITLES[slug] ?? humanizeSlug(slug);
 }
 
 function humanizeSlug(slug: string): string {

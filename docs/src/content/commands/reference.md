@@ -17,11 +17,11 @@ The full command name always works after the prefix (`acollection`). The short a
 | [Grab](/commands/grab) | No command. React 1️⃣ 2️⃣ or 3️⃣ on the drop. A four-card drop also takes 4️⃣. | |
 | [`/collection`](/commands/collection) | `user` optional. A mention. Defaults to you. Optional filters: `s:` series, `c:` character, `e:` edition, `t:` tag, `q:` quality 1-5, `o:#` low prints, `o:w` wishlists. `type is value` works too. | `c`, `col` |
 | [`/view`](/commands/view) | `card_id` required for `/view`. Prefix `av` or `aview` with no code opens the card you just grabbed. | `v` |
-| [`/burn`](/commands/burn) | `card_id` required. The 7 character code. | `b` |
+| [`/burn`](/commands/burn) | `card_id` required for `/burn`. Prefix `ab` or `kb` with no code asks, then burns the last grab. | `b` |
 | [`/multiburn`](/commands/multiburn) | `tag_name` required. Burns every card on that tag after a confirmation. | `mb` |
 | [`/lookup`](/commands/lookup) | `name` required for `/lookup`. Character, series, or alias. Several words are fine. Prefix `alu` with no name opens the character of the last grab, on that edition. | `lu`, `search`, `find` |
 | [`/wishlist`](/commands/wishlist) | `show` with optional `user`. `add` with required `character`. `remove` with required `character`. | `wl`. Add: `wa`, `wish`, `wishadd`. Remove: `wr`, `wishremove`. |
-| [`/frame`](/commands/frame) | `show`. `default` with required `frame` id (admin). `card` with required `card_id` and `action` (`clear` or a frame id). | |
+| [`/frame`](/commands/frame) | `show` lists the frames. `default` with a required frame name or number (admin). `card` with required `card_id` and `action` (`clear`, a name, or a number). | |
 | [`/give`](/commands/give) | `user` and `card_id`, both required. Both players press the check mark. | `g` |
 | [`/trade`](/commands/trade) | `user`, `card_id`, and `their_card`, all required. Both players press the check mark. | |
 | [`/multitrade`](/commands/multitrade) | `user` required. A mention. After they agree, send card codes and `100 bits` in that channel. | `mt` |

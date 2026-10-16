@@ -1,0 +1,14 @@
+{
+  "id": "pingu-in-the-city-ojii-chan",
+  "name": "Ojii-chan",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "pingu-in-the-city-ojii-chan-base",
+      "name": "Ojii-chan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

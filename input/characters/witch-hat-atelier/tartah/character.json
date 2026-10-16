@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-tartah",
+  "name": "Tartah",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-tartah-base",
+      "name": "Tartah",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

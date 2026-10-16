@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-utowin",
+  "name": "Utowin",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-utowin-base",
+      "name": "Utowin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

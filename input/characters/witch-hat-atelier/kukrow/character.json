@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-kukrow",
+  "name": "Kukrow",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-kukrow-base",
+      "name": "Kukrow",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

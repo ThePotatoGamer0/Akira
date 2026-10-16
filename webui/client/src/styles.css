@@ -600,7 +600,35 @@ html[data-theme="dark"] .theme-toggle__moon {
 }
 
 .milestone-list {
-  padding-left: 1.2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.milestone-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  line-height: 1.45;
+}
+
+.milestone-step {
+  font-weight: 700;
+}
+
+.milestone-note {
+  color: var(--ink2);
+  font-size: 0.88rem;
+}
+
+.milestone-list li.is-claimed {
+  opacity: 0.62;
 }
 
 .panel h3 {
@@ -629,7 +657,17 @@ html[data-theme="dark"] .theme-toggle__moon {
   font-size: 0.82rem;
   font-weight: 500;
   color: var(--ink2);
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+}
+
+.panel label input,
+.panel label select {
+  margin: 0;
+  width: 100%;
 }
 
 .panel [role="alert"] {
@@ -1082,14 +1120,14 @@ button.danger:hover {
 }
 
 .collection-tile__condition {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex: none;
   white-space: nowrap;
 }
 
 .collection-tile__chin code {
-  flex: none;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin-left: auto;
   padding: 0.05rem 0.28rem;
   background: var(--code-bg);

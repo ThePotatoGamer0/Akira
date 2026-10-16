@@ -2,6 +2,7 @@ import type { Client } from "discord.js";
 import type { CooldownType } from "../generated/prisma/client.js";
 import { prisma } from "../db/client.js";
 import { reminderLabel, type ReminderAction } from "../game/reminders.js";
+import { REMINDER_DM_TTL_MS, rememberEphemeralDm } from "./dm-mailbox.js";
 
 const LABEL: Record<CooldownType, ReminderAction> = {
   DAILY: "daily",
@@ -53,7 +54,8 @@ async function deliver(discordId: string, type: CooldownType): Promise<void> {
   try {
     const discordUser = await bound.users.fetch(discordId);
     const label = reminderLabel(LABEL[type]);
-    await discordUser.send(`**${label}** is ready.`);
+    const sent = await discordUser.send(`**${label}** is ready.`);
+    await rememberEphemeralDm(sent, new Date(Date.now() + REMINDER_DM_TTL_MS));
   } catch (err) {
     console.error(`Akira couldn't ping ${discordId} about ${type}:`, err);
   }

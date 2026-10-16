@@ -287,6 +287,20 @@ export function mintSentence(legendaryWeight: number, shinySources: number): str
     : "Mints appear 1 in 34 cards.";
 }
 
+/**
+ * Where the effect sentences belong.
+ * One source keeps them with that source. Prestige already explains itself.
+ * Shop and server together (or either with prestige) use the Together heading.
+ */
+export function effectHome(counts: { shop: number; server: boolean; prestige: number }): "shop" | "server" | "together" | null {
+  const groups = [counts.shop > 0, counts.server, counts.prestige > 0].filter(Boolean).length;
+  if (groups === 0) return null;
+  if (groups > 1) return "together";
+  if (counts.shop > 0) return "shop";
+  if (counts.server) return "server";
+  return null;
+}
+
 export function combinedLines(input: ActiveEffects): string[] {
   const resolved = resolveEffects(input);
   const lines: string[] = [];

@@ -69,9 +69,9 @@ authRouter.post("/init", async (req, res) => {
     });
     return;
   }
-  const code = createVerificationCode(user.id);
+  const issued = createVerificationCode(user.id);
   try {
-    await sendVerificationDm(user.discordId, code);
+    await sendVerificationDm(user.discordId, issued.code, issued.expiresAt);
   } catch (e) {
     console.error(e);
     res.status(502).json({ error: "Akira couldn't reach the bot to send your DM. Try again soon." });

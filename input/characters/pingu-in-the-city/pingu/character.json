@@ -1,0 +1,14 @@
+{
+  "id": "pingu-in-the-city-pingu",
+  "name": "Pingu",
+  "gender": "Male",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "pingu-in-the-city-pingu-base",
+      "name": "Pingu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

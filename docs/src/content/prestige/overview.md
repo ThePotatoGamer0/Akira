@@ -3,7 +3,7 @@ title: Prestige
 description: Reset the milestone bar after step 5 and keep a small permanent percent.
 ---
 
-Prestige is optional. It opens once you have claimed [milestone 5](/economy/personal-milestone). You can keep climbing instead. There is no frame for prestiging, and prestige does not add bits to [daily](/commands/daily). Cards, bits, tags, and frames stay where they are. The only thing that resets is the milestone cycle, so the 250-bit step is available again.
+Prestige is optional. It opens once you have claimed [milestone 5](/economy/personal-milestone). You can keep climbing instead. Cards, bits, tags, and frames stay where they are. Daily stays the same. The milestone cycle goes back to the 250-bit step.
 
 ## What you keep
 

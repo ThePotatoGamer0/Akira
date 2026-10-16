@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-sasaran",
+  "name": "Sasaran",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-sasaran-base",
+      "name": "Sasaran",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

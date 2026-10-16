@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-richeh",
+  "name": "Richeh",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-richeh-base",
+      "name": "Richeh",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

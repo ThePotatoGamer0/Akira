@@ -20,14 +20,18 @@ import { handleCollectionButton } from "./commands/collection.js";
 import { handlePrestigeButton } from "./commands/prestige.js";
 import { handleShopButton } from "./commands/shop.js";
 import { startPoolSchedule } from "./pool-midnight.js";
+import { handleBurnConfirmButton, offerLastGrabBurn } from "./commands/burn.js";
 import { handleMultiburnButton } from "./commands/multiburn.js";
 import { handleMultitradeButton, handleMultitradeMessage } from "./commands/multitrade.js";
 import { handleTransferButton } from "./commands/transfer.js";
 import { handleLookupButton, handleLookupSelect, replyCharacterEdition } from "./commands/lookup.js";
 import { resumeDropExpiries } from "./drop-expiry.js";
 import { bindReminderClient, resumeReminders } from "./reminder-schedule.js";
+import { startDmCleanup } from "./dm-mailbox.js";
+import { easterEgg } from "./easter-eggs.js";
 import { registerReactionHandler } from "./events/reactions.js";
 import { getCard, lastGrabbedCard, shortenLegacyCardCodes } from "../game/cards.js";
+import { GameError } from "../game/errors.js";
 import { guildListensForKaruta, handleKarutaOverride, handleKarutaOverrideButton, KARUTA_PREFIXES, loadKarutaGuilds } from "./karuta-override.js";
 import { commandPrefix, createPrefixInteraction, invocationIsExpected, matchPrefixedCommand, resolveLegacyCommand, viewCardArgument } from "./prefix.js";
 import { syncApplicationIcons } from "./icon-sync.js";
@@ -136,6 +140,7 @@ client.once(Events.ClientReady, (c) => {
   startInternalApi(c);
   startPoolSchedule(c);
   void registerEveryGuild(c).catch((err) => console.error(err));
+  startDmCleanup(c);
   void syncApplicationIcons()
     .catch((err) => console.error("Lucide icon sync failed.", err))
     .then(() => shortenLegacyCardCodes())
@@ -180,6 +185,13 @@ client.on(Events.MessageCreate, async (message) => {
   const route = resolveLegacyCommand(parsed.name);
   const cmd = commandMap.get(route.command);
   if (!cmd) {
+    if (message.content.trim().toLowerCase().startsWith(commandPrefix().toLowerCase())) {
+      const egg = easterEgg(parsed.name, parsed.rest);
+      if (egg) {
+        await message.reply(egg);
+        return;
+      }
+    }
     await handleMultitradeMessage(message, client);
     return;
   }
@@ -214,6 +226,18 @@ client.on(Events.MessageCreate, async (message) => {
     }
     return;
   }
+  if (route.command === "burn" && rest === "") {
+    try {
+      await offerLastGrabBurn(message);
+    } catch (err) {
+      console.error(err);
+      const text = err instanceof GameError
+        ? err.message
+        : "Akira tripped over something. Mind trying again in a moment?";
+      await message.reply(text).catch(() => undefined);
+    }
+    return;
+  }
   if (!invocationIsExpected(cmd, rest, route.subcommand)) return;
   const interaction = createPrefixInteraction(message, cmd, rest, route.subcommand);
   try {
@@ -237,6 +261,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
     if (await refuseUnsetServer(interaction)) return;
     try {
       if (await handleKarutaOverrideButton(interaction)) return;
+      if (await handleBurnConfirmButton(interaction)) return;
       if (await handleMultiburnButton(interaction)) return;
       if (await handleMultitradeButton(interaction)) return;
       if (await handleTransferButton(interaction)) return;

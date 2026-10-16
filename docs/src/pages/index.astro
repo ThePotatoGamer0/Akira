@@ -67,7 +67,7 @@ import botPkg from "../../../package.json";
 
   <div class="section-label s2">WebUI</div>
   <p class="webui-intro">
-    Akira's browser app sits alongside Discord: <a href="/webui/authentication">two sign-in paths</a> (embedded vs normal browser), then <a href="/webui/collection">collection</a>, <a href="/webui/economy-and-leaderboard">economy &amp; leaderboard</a>, and <strong>admin</strong> when your account allows. Feature depth is still growing - those pages say what exists today.
+    Akira's browser app sits alongside Discord: <a href="/webui/authentication">two sign-in paths</a> (embedded vs normal browser), then <a href="/webui/collection">collection</a>, <a href="/webui/economy-and-leaderboard">economy &amp; leaderboard</a>, and <strong>admin</strong> when your account allows.
   </p>
   <div class="start-strip">
     <a href="/webui/authentication" class="start-card">
@@ -81,7 +81,7 @@ import botPkg from "../../../package.json";
       <div class="start-num">2</div>
       <div>
         <div class="start-title">Collection</div>
-        <div class="start-desc">Grid and card viewer from Home - filters and search are not built yet.</div>
+        <div class="start-desc">Search, sort, and open a card. Tag it, burn it, or select several and do both together.</div>
       </div>
     </a>
     <a href="/webui/economy-and-leaderboard" class="start-card">
@@ -120,12 +120,12 @@ import botPkg from "../../../package.json";
 
   <div class="section-label s4">Commands</div>
   <p class="webui-intro">
-    Text commands start with <strong>a</strong>. <a href="/commands/reference">The command list</a> has every command, its parameters, and its aliases. Grab is a reaction, not a slash command.
+    Text commands start with <strong>a</strong>. <a href="/commands/reference">The command list</a> has every command, its parameters, and its aliases. Grab is the reaction under a drop.
   </p>
   <div class="cmd-grid">
     <a href="/commands/reference" class="cmd-card">
       <div class="cmd-name">All commands</div>
-      <div class="cmd-desc">Parameters and aliases. Dye and import are the commands that are not finished.</div>
+      <div class="cmd-desc">Every command, its parameters, and its aliases.</div>
       <div class="cmd-arrow">↗</div>
     </a>
     <a href="/commands/drop" class="cmd-card">
@@ -135,7 +135,7 @@ import botPkg from "../../../package.json";
     </a>
     <a href="/commands/grab" class="cmd-card">
       <div class="cmd-name">Grab</div>
-      <div class="cmd-desc">React 1️⃣ 2️⃣ or 3️⃣ on a drop. A fourth card takes 4️⃣. There is no /grab.</div>
+      <div class="cmd-desc">React 1️⃣ 2️⃣ or 3️⃣ on a drop. A fourth card takes 4️⃣.</div>
       <div class="cmd-arrow">↗</div>
     </a>
     <a href="/commands/view" class="cmd-card">
@@ -160,7 +160,7 @@ import botPkg from "../../../package.json";
     </a>
     <a href="/commands/burn" class="cmd-card">
       <div class="cmd-name"><span class="cmd-slash">/</span>burn</div>
-      <div class="cmd-desc">Destroy one of your cards for bits. Alias <strong>b</strong>.</div>
+      <div class="cmd-desc">Destroy one of your cards for bits. Bare <strong>ab</strong> asks before burning the last grab.</div>
       <div class="cmd-arrow">↗</div>
     </a>
     <a href="/commands/daily" class="cmd-card">
@@ -180,12 +180,72 @@ import botPkg from "../../../package.json";
     </a>
     <a href="/commands/frame" class="cmd-card">
       <div class="cmd-name"><span class="cmd-slash">/</span>frame</div>
-      <div class="cmd-desc">Server default frame, or a frame on one card.</div>
+      <div class="cmd-desc">Bare <strong>aframe</strong> lists the colors. An admin sets the server default, or you frame one card.</div>
       <div class="cmd-arrow">↗</div>
     </a>
     <a href="/commands/userinfo" class="cmd-card">
       <div class="cmd-name"><span class="cmd-slash">/</span>userinfo</div>
       <div class="cmd-desc">Bits, cards, and prestige. Aliases <strong>ui</strong> and <strong>whois</strong>.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/multiburn" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>multiburn</div>
+      <div class="cmd-desc">Burn every card on a tag after you confirm. Alias <strong>mb</strong>.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/give" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>give</div>
+      <div class="cmd-desc">Hand a card to someone. Both of you press the check mark. Alias <strong>g</strong>.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/trade" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>trade</div>
+      <div class="cmd-desc">Swap one card for one card. Both players confirm.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/multitrade" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>multitrade</div>
+      <div class="cmd-desc">A longer swap of cards and bits. Alias <strong>mt</strong>.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/tag" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>tag</div>
+      <div class="cmd-desc">Put a tag on cards. Alias <strong>t</strong>. Create one with <strong>tagcreate</strong>.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/shop" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>shop</div>
+      <div class="cmd-desc">Browse personal buffs and buy with the button. Aliases <strong>is</strong> and <strong>itemshop</strong>.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/inventory" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>inventory</div>
+      <div class="cmd-desc">Shop, server, and prestige buffs that are on you. Aliases <strong>i</strong> and <strong>inv</strong>.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/pool" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>pool</div>
+      <div class="cmd-desc">See the server pot, or give bits to it.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/milestone" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>milestone</div>
+      <div class="cmd-desc">See the bar, or claim the step you reached.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/prestige" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>prestige</div>
+      <div class="cmd-desc">After milestone 5, reset the bar and keep the percents from later steps.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/set" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>set</div>
+      <div class="cmd-desc">An admin runs this in the channel where cards should drop.</div>
+      <div class="cmd-arrow">↗</div>
+    </a>
+    <a href="/commands/help" class="cmd-card">
+      <div class="cmd-name"><span class="cmd-slash">/</span>help</div>
+      <div class="cmd-desc">A short overview. Also saves your Discord name for the WebUI.</div>
       <div class="cmd-arrow">↗</div>
     </a>
   </div>

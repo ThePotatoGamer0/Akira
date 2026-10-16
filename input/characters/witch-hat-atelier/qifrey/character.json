@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-qifrey",
+  "name": "Qifrey",
+  "gender": "Male",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-qifrey-base",
+      "name": "Qifrey",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

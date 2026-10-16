@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-riliphin",
+  "name": "Riliphin",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-riliphin-base",
+      "name": "Riliphin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

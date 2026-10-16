@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-easthies",
+  "name": "Easthies",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-easthies-base",
+      "name": "Easthies",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-dagda",
+  "name": "Dagda",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-dagda-base",
+      "name": "Dagda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

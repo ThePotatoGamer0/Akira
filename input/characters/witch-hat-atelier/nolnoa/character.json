@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-nolnoa",
+  "name": "Nolnoa",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-nolnoa-base",
+      "name": "Nolnoa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

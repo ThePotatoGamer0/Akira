@@ -297,6 +297,13 @@ model PrintCounter {
   nextPrint Int         @default(1)
 }
 
+/** A bot DM that should disappear. Messages with no row are swept as old mail. */
+model EphemeralMessage {
+  id        String   @id
+  channelId String
+  expiresAt DateTime
+}
+
 model Drop {
   id        String     @id @default(cuid())
   guildId   String

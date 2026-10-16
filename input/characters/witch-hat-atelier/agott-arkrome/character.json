@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-agott-arkrome",
+  "name": "Agott Arkrome",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-agott-arkrome-base",
+      "name": "Agott Arkrome",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

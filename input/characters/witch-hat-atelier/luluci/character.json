@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-luluci",
+  "name": "Luluci",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-luluci-base",
+      "name": "Luluci",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

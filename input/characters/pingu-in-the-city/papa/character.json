@@ -1,0 +1,14 @@
+{
+  "id": "pingu-in-the-city-papa",
+  "name": "Papa",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "pingu-in-the-city-papa-base",
+      "name": "Papa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

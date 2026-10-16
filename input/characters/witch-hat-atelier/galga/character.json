@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-galga",
+  "name": "Galga",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-galga-base",
+      "name": "Galga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

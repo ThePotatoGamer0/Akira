@@ -243,9 +243,23 @@ declare module 'astro:content' {
   collection: "commands";
   data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
+"milestone.md": {
+	id: "milestone.md";
+  slug: "milestone";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
 "multiburn.md": {
 	id: "multiburn.md";
   slug: "multiburn";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"multitrade.md": {
+	id: "multitrade.md";
+  slug: "multitrade";
   body: string;
   collection: "commands";
   data: InferEntrySchema<"commands">
@@ -271,6 +285,13 @@ declare module 'astro:content' {
   collection: "commands";
   data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
+"prestige.md": {
+	id: "prestige.md";
+  slug: "prestige";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
 "reference.md": {
 	id: "reference.md";
   slug: "reference";
@@ -285,9 +306,44 @@ declare module 'astro:content' {
   collection: "commands";
   data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
+"set.md": {
+	id: "set.md";
+  slug: "set";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
 "shop.md": {
 	id: "shop.md";
   slug: "shop";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"tag.md": {
+	id: "tag.md";
+  slug: "tag";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"tagcreate.md": {
+	id: "tagcreate.md";
+  slug: "tagcreate";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"tagdelete.md": {
+	id: "tagdelete.md";
+  slug: "tagdelete";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"taglist.md": {
+	id: "taglist.md";
+  slug: "taglist";
   body: string;
   collection: "commands";
   data: InferEntrySchema<"commands">
@@ -302,6 +358,13 @@ declare module 'astro:content' {
 "trade.md": {
 	id: "trade.md";
   slug: "trade";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"untag.md": {
+	id: "untag.md";
+  slug: "untag";
   body: string;
   collection: "commands";
   data: InferEntrySchema<"commands">

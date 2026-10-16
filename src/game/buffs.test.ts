@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import {
   combinedLines,
+  effectHome,
   EMPTY_PRESTIGE,
   dropWeight,
   extendExpiry,
@@ -142,6 +143,16 @@ describe("milestones and prestige", () => {
       mintSentence(1.02, 0),
       "Mints appear a little more often than 1 in 100 cards.",
     );
+  });
+});
+
+describe("effect home", () => {
+  it("keeps a shop-only explanation with the shop", () => {
+    assert.equal(effectHome({ shop: 1, server: false, prestige: 0 }), "shop");
+    assert.equal(effectHome({ shop: 0, server: true, prestige: 0 }), "server");
+    assert.equal(effectHome({ shop: 1, server: true, prestige: 0 }), "together");
+    assert.equal(effectHome({ shop: 0, server: false, prestige: 1 }), null);
+    assert.equal(effectHome({ shop: 0, server: false, prestige: 0 }), null);
   });
 });
 

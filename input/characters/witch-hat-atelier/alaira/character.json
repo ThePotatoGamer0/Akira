@@ -1,0 +1,14 @@
+{
+  "id": "witch-hat-atelier-alaira",
+  "name": "Alaira",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "witch-hat-atelier-alaira-base",
+      "name": "Alaira",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}
