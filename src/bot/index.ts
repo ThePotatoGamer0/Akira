@@ -28,7 +28,7 @@ import { handleLookupButton, handleLookupSelect, replyCharacterEdition } from ".
 import { resumeDropExpiries } from "./drop-expiry.js";
 import { bindReminderClient, resumeReminders } from "./reminder-schedule.js";
 import { startDmCleanup } from "./dm-mailbox.js";
-import { easterEgg } from "./easter-eggs.js";
+import { easterEgg, easterEggFromMessage } from "./easter-eggs.js";
 import { registerReactionHandler } from "./events/reactions.js";
 import { getCard, lastGrabbedCard, shortenLegacyCardCodes } from "../game/cards.js";
 import { GameError } from "../game/errors.js";
@@ -168,10 +168,23 @@ client.on(Events.MessageCreate, async (message) => {
   if (guildListensForKaruta(message.guildId)) prefixes.push(...KARUTA_PREFIXES);
   const parsed = matchPrefixedCommand(message.content, prefixes);
   if (!parsed) {
+    const egg = easterEggFromMessage(message.content, [commandPrefix(), "a", "k!", "k"]);
+    if (egg) {
+      await message.reply(egg);
+      return;
+    }
     await handleMultitradeMessage(message, client);
     return;
   }
   const commandName = parsed.name === "overridekaruta" ? parsed.name : resolveLegacyCommand(parsed.name).command;
+  const earlyRoute = resolveLegacyCommand(parsed.name);
+  if (parsed.name !== "overridekaruta" && !commandMap.get(earlyRoute.command)) {
+    const egg = easterEgg(parsed.name, parsed.rest);
+    if (egg) {
+      await message.reply(egg);
+      return;
+    }
+  }
   if (!(await serverIsReady(message.guildId, commandName))) return;
   if (parsed.name === "overridekaruta") {
     if (parsed.rest !== "") return;
@@ -185,13 +198,6 @@ client.on(Events.MessageCreate, async (message) => {
   const route = resolveLegacyCommand(parsed.name);
   const cmd = commandMap.get(route.command);
   if (!cmd) {
-    if (message.content.trim().toLowerCase().startsWith(commandPrefix().toLowerCase())) {
-      const egg = easterEgg(parsed.name, parsed.rest);
-      if (egg) {
-        await message.reply(egg);
-        return;
-      }
-    }
     await handleMultitradeMessage(message, client);
     return;
   }
