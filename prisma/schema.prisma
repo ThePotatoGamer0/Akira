@@ -105,6 +105,9 @@ model User {
   drops               Drop[]
   transfersSent       TransferOffer[] @relation("TransferFrom")
   transfersReceived   TransferOffer[] @relation("TransferTo")
+  multitradesSent     Multitrade[]    @relation("MultitradeFrom")
+  multitradesReceived Multitrade[]    @relation("MultitradeTo")
+  multitradeEntries   MultitradeEntry[]
   tags                Tag[]
   trackedSeries       TrackedSeries[]
   buffs               Buff[]
@@ -240,6 +243,43 @@ model TransferOffer {
 
   @@index([status, fromCardId])
   @@index([status, toCardId])
+}
+
+model Multitrade {
+  id          String            @id
+  guildId     String
+  channelId   String
+  messageId   String?
+  fromUserId  String
+  fromUser    User              @relation("MultitradeFrom", fields: [fromUserId], references: [id], onDelete: Cascade)
+  toUserId    String
+  toUser      User              @relation("MultitradeTo", fields: [toUserId], references: [id], onDelete: Cascade)
+  /** request, open, done, cancelled, or expired. */
+  status      String            @default("request")
+  fromLocked  Boolean           @default(false)
+  toLocked    Boolean           @default(false)
+  closeReason String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  entries     MultitradeEntry[]
+
+  @@index([status, channelId])
+  @@index([fromUserId, status])
+  @@index([toUserId, status])
+}
+
+model MultitradeEntry {
+  id        String     @id @default(cuid())
+  tradeId   String
+  trade     Multitrade @relation(fields: [tradeId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cardId    String?
+  bits      Int        @default(0)
+  createdAt DateTime   @default(now())
+
+  @@index([tradeId, userId])
+  @@index([cardId])
 }
 
 model GuildConfig {

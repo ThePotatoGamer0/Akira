@@ -15,6 +15,7 @@ import { set } from "./set.js";
 import { shop } from "./shop.js";
 import { multiburn } from "./multiburn.js";
 import { tag, tagcreate, tagdelete, taglist, untag } from "./tag.js";
+import { multitrade } from "./multitrade.js";
 import { give, trade } from "./transfer.js";
 import { reminders } from "./reminders.js";
 import { lookup } from "./lookup.js";
@@ -44,6 +45,7 @@ export const commands: AkiraCommand[] = [
   wishlist,
   give,
   trade,
+  multitrade,
   userinfo,
   shop,
   pool,

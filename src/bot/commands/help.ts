@@ -18,6 +18,7 @@ export const help: AkiraCommand = {
         `Use \`/drop\` or \`${commandPrefix()}d\` in the drop channel, react with ${icon("slot-1")} ${icon("slot-2")} ${icon("slot-3")} to grab, then \`${commandPrefix()}c\`, \`${commandPrefix()}v\`, \`${commandPrefix()}b\`, and \`/daily\`. ` +
         `Lookup is \`${commandPrefix()}lu\`, cooldowns are \`${commandPrefix()}cd\`, wishlist is \`${commandPrefix()}wl\`, and frames are \`${commandPrefix()}frame\`. ` +
         `Bits go to \`/shop\`, \`/pool\`, \`/milestone\`, and \`/prestige\`. ` +
+        `A longer trade is \`${commandPrefix()}mt @friend\`. ` +
         `An admin runs \`${commandPrefix()}set\` in a channel to make that the drop channel. ` +
         "`/wishlist add` pings you when a character appears. " +
         "Running `/ping` or `/help` also saves your Discord name so the browser WebUI can find you.",

@@ -21,6 +21,7 @@ import { handlePrestigeButton } from "./commands/prestige.js";
 import { handleShopButton } from "./commands/shop.js";
 import { startPoolSchedule } from "./pool-midnight.js";
 import { handleMultiburnButton } from "./commands/multiburn.js";
+import { handleMultitradeButton, handleMultitradeMessage } from "./commands/multitrade.js";
 import { handleTransferButton } from "./commands/transfer.js";
 import { handleLookupButton, handleLookupSelect, replyCharacterEdition } from "./commands/lookup.js";
 import { resumeDropExpiries } from "./drop-expiry.js";
@@ -161,7 +162,10 @@ client.on(Events.MessageCreate, async (message) => {
   const prefixes = [commandPrefix()];
   if (guildListensForKaruta(message.guildId)) prefixes.push(...KARUTA_PREFIXES);
   const parsed = matchPrefixedCommand(message.content, prefixes);
-  if (!parsed) return;
+  if (!parsed) {
+    await handleMultitradeMessage(message, client);
+    return;
+  }
   const commandName = parsed.name === "overridekaruta" ? parsed.name : resolveLegacyCommand(parsed.name).command;
   if (!(await serverIsReady(message.guildId, commandName))) return;
   if (parsed.name === "overridekaruta") {
@@ -175,7 +179,10 @@ client.on(Events.MessageCreate, async (message) => {
   }
   const route = resolveLegacyCommand(parsed.name);
   const cmd = commandMap.get(route.command);
-  if (!cmd) return;
+  if (!cmd) {
+    await handleMultitradeMessage(message, client);
+    return;
+  }
   let rest = parsed.rest;
   if (route.command === "view" && rest === "") {
     const last = viewCardArgument(rest, await lastGrabbedCard(message.author.id));
@@ -231,6 +238,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
     try {
       if (await handleKarutaOverrideButton(interaction)) return;
       if (await handleMultiburnButton(interaction)) return;
+      if (await handleMultitradeButton(interaction)) return;
       if (await handleTransferButton(interaction)) return;
       if (await handleShopButton(interaction)) return;
       if (await handlePrestigeButton(interaction)) return;

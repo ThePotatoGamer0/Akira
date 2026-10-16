@@ -3,6 +3,7 @@ import { burnPayout, QUALITIES, type Quality } from "./balance.js";
 import { qualityStars } from "./display.js";
 import { GameError } from "./errors.js";
 import { assertTagName } from "./tags.js";
+import { cardsHeldInOpenTransfers } from "./transfer.js";
 import { ensureUser, findUserByDiscordId } from "./users.js";
 
 export type TaggedBurnCard = {
@@ -31,20 +32,7 @@ function asQuality(quality: string): Quality {
 }
 
 async function busyCardIds(cardIds: string[]): Promise<Set<string>> {
-  if (cardIds.length === 0) return new Set();
-  const offers = await prisma.transferOffer.findMany({
-    where: {
-      status: "pending",
-      OR: [{ fromCardId: { in: cardIds } }, { toCardId: { in: cardIds } }],
-    },
-    select: { fromCardId: true, toCardId: true },
-  });
-  const busy = new Set<string>();
-  for (const offer of offers) {
-    busy.add(offer.fromCardId);
-    if (offer.toCardId) busy.add(offer.toCardId);
-  }
-  return busy;
+  return cardsHeldInOpenTransfers(cardIds);
 }
 
 export function rarestCards(cards: readonly TaggedBurnCard[]): TaggedBurnCard[] {
@@ -63,7 +51,7 @@ export function multiburnConfirmText(plan: TaggedBurnPlan): string {
   if (plan.held > 0) {
     const stays = plan.held === 1 ? "card stays" : "cards stay";
     const pronoun = plan.held === 1 ? "It's" : "They're";
-    lines.push(`**${plan.held}** ${stays} put. ${pronoun} in an open give or trade.`);
+    lines.push(`**${plan.held}** ${stays} put. ${pronoun} in an open trade.`);
   }
   return lines.join("\n");
 }
@@ -99,7 +87,7 @@ export async function planTaggedBurn(discordId: string, rawName: string): Promis
       quality: asQuality(card.quality),
       characterName: card.variant.character.name,
     }));
-  if (cards.length === 0) throw new GameError("busy", "Those cards are in an open give or trade.");
+  if (cards.length === 0) throw new GameError("busy", "Those cards are in an open trade.");
   return { tagName: tag.name, emoji: tag.emoji, cards, held: owned.length - cards.length };
 }
 
@@ -118,7 +106,7 @@ export async function burnTaggedCards(
   const busy = await busyCardIds(owned.map((card) => card.id));
   const burning = owned.filter((card) => !busy.has(card.id));
   if (burning.length === 0) {
-    if (owned.length > 0) throw new GameError("busy", "Those cards are in an open give or trade.");
+    if (owned.length > 0) throw new GameError("busy", "Those cards are in an open trade.");
     throw new GameError("empty", "Those cards aren't yours to burn anymore.");
   }
   const awarded = burning.reduce((sum, card) => sum + burnPayout(card.quality), 0);
