@@ -20,11 +20,11 @@ export const GRAB_BITS = 5;
 export const DAILY_BITS = 100;
 
 export const BURN_BITS: Record<Quality, number> = {
-  COMMON: 10,
-  UNCOMMON: 25,
-  RARE: 50,
-  EPIC: 100,
-  LEGENDARY: 250,
+  COMMON: 20,
+  UNCOMMON: 50,
+  RARE: 100,
+  EPIC: 200,
+  LEGENDARY: 500,
 };
 
 const QUALITY_TABLE: { quality: Quality; weight: number }[] = [

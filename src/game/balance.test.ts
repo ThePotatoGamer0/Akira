@@ -67,12 +67,12 @@ test("three slots can repeat the same art", () => {
 });
 
 test("burn payouts follow quality", () => {
-  assert.equal(burnPayout("COMMON"), 10);
-  assert.equal(burnPayout("UNCOMMON"), 25);
-  assert.equal(burnPayout("RARE"), 50);
-  assert.equal(burnPayout("EPIC"), 100);
-  assert.equal(burnPayout("LEGENDARY"), 250);
-  assert.equal(burnPayout("nope"), 10);
+  assert.equal(burnPayout("COMMON"), 20);
+  assert.equal(burnPayout("UNCOMMON"), 50);
+  assert.equal(burnPayout("RARE"), 100);
+  assert.equal(burnPayout("EPIC"), 200);
+  assert.equal(burnPayout("LEGENDARY"), 500);
+  assert.equal(burnPayout("nope"), 20);
 });
 
 test("daily payout adds the prestige bonus", () => {

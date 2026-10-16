@@ -9,11 +9,11 @@ shortcuts: b
 
 | Quality | Bits |
 | --- | --- |
-| Common | 10 |
-| Uncommon | 25 |
-| Rare | 50 |
-| Epic | 100 |
-| Legendary | 250 |
+| Common | 20 |
+| Uncommon | 50 |
+| Rare | 100 |
+| Epic | 200 |
+| Legendary | 500 |
 
 ## Parameters
 

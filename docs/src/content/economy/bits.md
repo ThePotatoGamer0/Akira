@@ -11,7 +11,7 @@ Nothing here deletes your cards. Prestige does not take your bits either.
 
 - A grab pays **5** bits.
 - Daily pays **100** bits, plus any daily bonus already on your profile, once every 24 hours. New prestiges do not add to this.
-- Burning one card pays from its quality: common 10, uncommon 25, rare 50, epic 100, legendary 250. [Burn value](/commands/shop) doubles that while it is on you.
+- Burning one card pays from its quality: common 20, uncommon 50, rare 100, epic 200, legendary 500. [Burn value](/commands/shop) doubles that while it is on you.
 - Claiming a [milestone](/economy/personal-milestone) pays a smaller pile of bits back. It is always less than you gave to reach it.
 
 ## Where they go
