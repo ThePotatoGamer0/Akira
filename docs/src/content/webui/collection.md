@@ -12,17 +12,14 @@ When you are [signed in](/webui/authentication), your cards live under **Collect
 
 ## What you see
 
-- Your cards appear as a **grid of thumbnails**, with the character name and print number under each.
+- Your cards appear as a **grid of thumbnails**. Search by name, series, tag, or card code, and change the order from the menu beside the search box.
 - The picture is the framed card. Cards without their own frame use the server's default frame. The first time a card is opened, Akira draws that image, so it can take a moment. Later opens use the saved picture.
-- **Click** a card to focus it. The viewer shows the same image larger, plus series, frame, quality, and print. A legendary card can switch to its shiny animation.
-
-That is the whole flow for browsing in the browser today: open Collection, scroll the grid, tap what you want to inspect.
+- **Click** a card to focus it. From there you can change its frame, set its tag, or **burn** it. A legendary card can switch to its shiny animation. Burning plays the flame, then the card is gone and the bits are yours.
+- **Select** ticks cards instead of opening them. Tag the ones you picked, or burn them together. One card pays the same as [**/burn**](/commands/burn), including Burn value. Several cards pay the plain rates, the same as [multiburn](/commands/multiburn). Akira asks before anything is destroyed. A card in an open trade stays put.
 
 ## What you cannot do yet
 
-There is **no** search box, **no** filters, and **no** sort menu yet - everything is one long grid. Big binders mean a lot of scrolling until those features exist.
-
-In Discord, [**/collection**](/commands/collection) may give you a different experience; the WebUI will grow toward similar ideas over time, but they will not match overnight.
+In Discord, [**/collection**](/commands/collection) can filter by series, quality, and print. The WebUI search is a single box, not those filters.
 
 ## See also
 

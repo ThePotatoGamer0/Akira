@@ -1,5 +1,6 @@
 import { Router } from "express";
 import type { CardQuality, Prisma } from "../../../../src/generated/prisma/client.js";
+import { burnOwnedCards, quoteOwnedBurn } from "../../../../src/game/economy.js";
 import { displayFrameId, frameIdsOnDisk, serverDefaultFrame, setCardFrame } from "../../../../src/game/frames.js";
 import { GameError } from "../../../../src/game/errors.js";
 import { applyTag, clearTag, createTag, deleteTag, listTags } from "../../../../src/game/tags.js";
@@ -41,6 +42,16 @@ function dyeKey(dye: string | null): string {
 
 function assetBase(variantId: string, frameId: number, printNumber: number, dye: string | null): string {
   return `/api/static/cards/${variantId}/${frameId}/p${printNumber}/${dyeKey(dye)}`;
+}
+
+function guildForBuffs(): string | null {
+  const id = process.env["DISCORD_GUILD_ID"] ?? process.env["AKIRA_GUILD_ID"] ?? "";
+  return id || null;
+}
+
+function cardIdList(value: unknown): string[] | null {
+  if (!Array.isArray(value) || value.length === 0 || value.some((id) => typeof id !== "string")) return null;
+  return value;
 }
 
 function queryParam(value: unknown): string {
@@ -181,6 +192,71 @@ collectionRouter.delete("/:userId/tags/:name", async (req, res) => {
   try {
     const tag = await deleteTag(viewer.discordId, viewer.discordUsername ?? viewer.discordId, req.params["name"] ?? "");
     res.json({ name: tag.name, emoji: tag.emoji });
+  } catch (err) {
+    res.status(400).json({ error: gameMessage(err) });
+  }
+});
+
+collectionRouter.post("/:userId/burn-quote", async (req, res) => {
+  const userId = req.params["userId"] ?? "";
+  const viewer = req.user!;
+  if (viewer.id !== userId) {
+    res.status(403).json({ error: "Akira only burns cards you own." });
+    return;
+  }
+  const cardIds = cardIdList((req.body as { cardIds?: unknown }).cardIds);
+  if (!cardIds) {
+    res.status(400).json({ error: "Akira needs a card code for that." });
+    return;
+  }
+  try {
+    const quote = await quoteOwnedBurn(viewer.discordId, viewer.discordUsername ?? viewer.discordId, cardIds, guildForBuffs());
+    res.json(quote);
+  } catch (err) {
+    res.status(400).json({ error: gameMessage(err) });
+  }
+});
+
+collectionRouter.post("/:userId/burn", async (req, res) => {
+  const userId = req.params["userId"] ?? "";
+  const viewer = req.user!;
+  if (viewer.id !== userId) {
+    res.status(403).json({ error: "Akira only burns cards you own." });
+    return;
+  }
+  const cardIds = cardIdList((req.body as { cardIds?: unknown }).cardIds);
+  if (!cardIds) {
+    res.status(400).json({ error: "Akira needs a card code for that." });
+    return;
+  }
+  try {
+    const result = await burnOwnedCards(viewer.discordId, viewer.discordUsername ?? viewer.discordId, cardIds, guildForBuffs());
+    res.json(result);
+  } catch (err) {
+    res.status(400).json({ error: gameMessage(err) });
+  }
+});
+
+collectionRouter.post("/:userId/tag-cards", async (req, res) => {
+  const userId = req.params["userId"] ?? "";
+  const viewer = req.user!;
+  if (viewer.id !== userId) {
+    res.status(403).json({ error: "Akira only changes cards you own." });
+    return;
+  }
+  const body = req.body as { tag?: unknown; cardIds?: unknown };
+  const cardIds = cardIdList(body.cardIds);
+  if (!cardIds || (body.tag !== null && typeof body.tag !== "string")) {
+    res.status(400).json({ error: "Akira needs a tag name and a card code for that." });
+    return;
+  }
+  try {
+    const username = viewer.discordUsername ?? viewer.discordId;
+    if (body.tag === null) await clearTag(viewer.discordId, username, cardIds);
+    else await applyTag(viewer.discordId, username, body.tag, cardIds);
+    const tags = await prisma.tag.findMany({ where: { userId: viewer.id } });
+    const emoji = body.tag === null ? "◾" : tags.find((tag) => tag.name === body.tag)?.emoji ?? "◾";
+    res.json({ tag: body.tag, tagEmoji: emoji, cardIds: cardIds.map((id) => id.trim().toLowerCase()) });
   } catch (err) {
     res.status(400).json({ error: gameMessage(err) });
   }
