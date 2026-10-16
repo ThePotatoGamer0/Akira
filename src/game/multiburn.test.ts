@@ -75,11 +75,11 @@ test("a tag burn names the rarest card and skips one in a transfer", async () =>
   assert.match(multiburnConfirmText(plan), /The rarest is ★★★★★ \*\*Izuku Midoriya\*\*/);
   const result = await burnTaggedCards("owner", "owner", "fav", plan.cards.map((card) => card.id));
   assert.equal(result.burned, 2);
-  assert.equal(result.awarded, 260);
+  assert.equal(result.awarded, 520);
   assert.equal(result.skipped, 0);
   assert.equal(await prisma.card.count({ where: { ownerId: (await prisma.user.findUnique({ where: { discordId: "owner" } }))!.id } }), 1);
   const owner = await prisma.user.findUnique({ where: { discordId: "owner" } });
-  assert.equal(owner?.bits, 260);
+  assert.equal(owner?.bits, 520);
   assert.equal(owner?.lastGrabbedCardId, null);
   assert.equal((await prisma.card.findUnique({ where: { id: "held001" } }))?.tag, "fav");
 });
