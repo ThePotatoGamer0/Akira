@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-ichiryusai-madarame",
+  "name": "Ichiryusai Madarame",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-ichiryusai-madarame-base",
+      "name": "Ichiryusai Madarame",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

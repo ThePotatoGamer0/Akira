@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-akio-kawanabe",
+  "name": "Akio Kawanabe",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-akio-kawanabe-base",
+      "name": "Akio Kawanabe",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

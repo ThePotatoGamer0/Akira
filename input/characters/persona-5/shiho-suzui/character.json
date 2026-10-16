@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-shiho-suzui",
+  "name": "Shiho Suzui",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-shiho-suzui-base",
+      "name": "Shiho Suzui",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

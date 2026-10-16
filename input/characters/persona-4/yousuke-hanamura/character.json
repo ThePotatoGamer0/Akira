@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-yousuke-hanamura",
+  "name": "Yousuke Hanamura",
+  "gender": "Male",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "persona-4-yousuke-hanamura-base",
+      "name": "Yousuke Hanamura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

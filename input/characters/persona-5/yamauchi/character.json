@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-yamauchi",
+  "name": "Yamauchi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-yamauchi-base",
+      "name": "Yamauchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

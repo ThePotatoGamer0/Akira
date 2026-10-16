@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-eiko-takao",
+  "name": "Eiko Takao",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-eiko-takao-base",
+      "name": "Eiko Takao",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-yuuki-mishima",
+  "name": "Yuuki Mishima",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-yuuki-mishima-base",
+      "name": "Yuuki Mishima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

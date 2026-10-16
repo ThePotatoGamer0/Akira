@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-kanji-tatsumi",
+  "name": "Kanji Tatsumi",
+  "gender": "Male",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "persona-4-kanji-tatsumi-base",
+      "name": "Kanji Tatsumi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

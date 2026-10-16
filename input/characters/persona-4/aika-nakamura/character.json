@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-aika-nakamura",
+  "name": "Aika Nakamura",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-4-aika-nakamura-base",
+      "name": "Aika Nakamura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

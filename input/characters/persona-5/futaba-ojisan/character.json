@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-futaba-ojisan",
+  "name": "Futaba Ojisan",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-futaba-ojisan-base",
+      "name": "Futaba Ojisan",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

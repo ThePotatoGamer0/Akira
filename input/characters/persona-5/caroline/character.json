@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-caroline",
+  "name": "Caroline",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-caroline-base",
+      "name": "Caroline",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

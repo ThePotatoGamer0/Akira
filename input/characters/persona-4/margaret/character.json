@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-margaret",
+  "name": "Margaret",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-4-margaret-base",
+      "name": "Margaret",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

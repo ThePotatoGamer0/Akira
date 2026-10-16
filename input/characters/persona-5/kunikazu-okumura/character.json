@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-kunikazu-okumura",
+  "name": "Kunikazu Okumura",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-kunikazu-okumura-base",
+      "name": "Kunikazu Okumura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

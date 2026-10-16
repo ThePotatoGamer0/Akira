@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-ryotarou-dojima",
+  "name": "Ryotarou Dojima",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-4-ryotarou-dojima-base",
+      "name": "Ryotarou Dojima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

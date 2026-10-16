@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-mitsuyo-tougou",
+  "name": "Mitsuyo Tougou",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-mitsuyo-tougou-base",
+      "name": "Mitsuyo Tougou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

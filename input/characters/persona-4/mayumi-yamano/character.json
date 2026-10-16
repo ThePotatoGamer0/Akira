@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-mayumi-yamano",
+  "name": "Mayumi Yamano",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-4-mayumi-yamano-base",
+      "name": "Mayumi Yamano",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

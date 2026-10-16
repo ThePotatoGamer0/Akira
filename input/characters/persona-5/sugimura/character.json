@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-sugimura",
+  "name": "Sugimura",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-sugimura-base",
+      "name": "Sugimura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

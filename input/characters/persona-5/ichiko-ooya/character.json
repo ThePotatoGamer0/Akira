@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-ichiko-ooya",
+  "name": "Ichiko Ooya",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-ichiko-ooya-base",
+      "name": "Ichiko Ooya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

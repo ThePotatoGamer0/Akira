@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-kuma",
+  "name": "Kuma",
+  "gender": "Male",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "persona-4-kuma-base",
+      "name": "Kuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-mika",
+  "name": "Mika",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-mika-base",
+      "name": "Mika",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

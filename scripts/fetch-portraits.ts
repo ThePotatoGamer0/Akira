@@ -23,6 +23,8 @@ const ANILIST_SEARCH: Record<string, string | null> = {
   "cyberpunk-edgerunners": "Cyberpunk: Edgerunners",
   "pingu-in-the-city": "Pingu in the City",
   "witch-hat-atelier": "Witch Hat Atelier",
+  "persona-4": "Persona 4 the Animation",
+  "persona-5": "PERSONA5 the Animation",
 };
 
 function searchTitle(seriesSlug: string): string | null {

@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-sayoko-uehara",
+  "name": "Sayoko Uehara",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-4-sayoko-uehara-base",
+      "name": "Sayoko Uehara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

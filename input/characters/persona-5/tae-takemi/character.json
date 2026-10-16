@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-tae-takemi",
+  "name": "Tae Takemi",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-tae-takemi-base",
+      "name": "Tae Takemi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-matsushita",
+  "name": "Matsushita",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-matsushita-base",
+      "name": "Matsushita",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

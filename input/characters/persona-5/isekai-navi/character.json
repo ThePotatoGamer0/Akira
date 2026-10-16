@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-isekai-navi",
+  "name": "Isekai Navi",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-isekai-navi-base",
+      "name": "Isekai Navi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

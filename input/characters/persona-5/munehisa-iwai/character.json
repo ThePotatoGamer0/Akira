@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-munehisa-iwai",
+  "name": "Munehisa Iwai",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-munehisa-iwai-base",
+      "name": "Munehisa Iwai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

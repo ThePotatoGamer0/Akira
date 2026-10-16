@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-chihaya-mifune",
+  "name": "Chihaya Mifune",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-chihaya-mifune-base",
+      "name": "Chihaya Mifune",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-sadayo-kawakami",
+  "name": "Sadayo Kawakami",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-sadayo-kawakami-base",
+      "name": "Sadayo Kawakami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

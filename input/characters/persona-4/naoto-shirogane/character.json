@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-naoto-shirogane",
+  "name": "Naoto Shirogane",
+  "gender": null,
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "persona-4-naoto-shirogane-base",
+      "name": "Naoto Shirogane",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}
