@@ -19,6 +19,7 @@ export function CardOverlay(props: {
   canEdit: boolean;
   onClose: () => void;
   onSaved: (cardId: string, patch: Partial<CollectionCard>) => void;
+  onBurned: (cardId: string) => void;
   fetchApi: (path: string, init?: RequestInit) => Promise<Response>;
   userId: string;
 }) {
@@ -29,6 +30,9 @@ export function CardOverlay(props: {
   const [drawnSrc, setDrawnSrc] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
+  const [burnAsk, setBurnAsk] = useState(false);
+  const [burnedBits, setBurnedBits] = useState<number | null>(null);
+  const [quoteBits, setQuoteBits] = useState<number | null>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const tiltRef = useRef<HTMLDivElement>(null);
   useGsapCardTilt(stageRef, tiltRef, 10, "driver");
@@ -56,7 +60,7 @@ export function CardOverlay(props: {
 
   const previewFrame = draftFrame ?? studio.serverFrame;
   const canShiny = card.quality === "LEGENDARY" || Boolean(card.dye);
-  const src = assetUrl(card, previewFrame, canShiny && shiny);
+  const src = burnedBits !== null ? apiUrl(card.assets.burn) : assetUrl(card, previewFrame, canShiny && shiny);
   const shownEmoji = tagValue ? studio.tags.find((tag) => tag.name === tagValue)?.emoji ?? card.tagEmoji : null;
   const edition = card.variant.name !== card.character.name ? card.variant.name : null;
 
@@ -115,6 +119,54 @@ export function CardOverlay(props: {
     }
   }
 
+  async function askBurn() {
+    setBusy("burn");
+    setError(null);
+    try {
+      const res = await props.fetchApi(`/collection/${props.userId}/burn-quote`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cardIds: [card.id] }),
+      });
+      const json = (await res.json()) as { awarded?: number; error?: string };
+      if (!res.ok || typeof json.awarded !== "number") {
+        setError(json.error ?? "Akira couldn't price that burn.");
+        return;
+      }
+      setQuoteBits(json.awarded);
+      setBurnAsk(true);
+    } catch {
+      setError("Akira couldn't price that burn.");
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  async function confirmBurn() {
+    setBusy("burn");
+    setError(null);
+    try {
+      const res = await props.fetchApi(`/collection/${props.userId}/burn`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cardIds: [card.id] }),
+      });
+      const json = (await res.json()) as { awarded?: number; error?: string };
+      if (!res.ok || typeof json.awarded !== "number") {
+        setError(json.error ?? "Akira couldn't burn that card.");
+        return;
+      }
+      setBurnedBits(json.awarded);
+      setBurnAsk(false);
+      setDrawnSrc("");
+      props.onBurned(card.id);
+    } catch {
+      setError("Akira couldn't burn that card.");
+    } finally {
+      setBusy(null);
+    }
+  }
+
   return createPortal(
     <div className="card-overlay" role="dialog" aria-modal="true" aria-labelledby="card-overlay-title">
       <div
@@ -143,7 +195,7 @@ export function CardOverlay(props: {
             <span className="card-glare" />
           </div>
         </div>
-        {canShiny ? (
+        {canShiny && burnedBits === null ? (
           <div className="card-overlay__shiny">
             <button type="button" className="chip" aria-pressed={!shiny} onClick={() => setShiny(false)}>
               Normal
@@ -182,7 +234,7 @@ export function CardOverlay(props: {
             className="card-overlay__select"
             aria-label="Frame"
             value={draftFrame === null ? "" : String(draftFrame)}
-            disabled={!props.canEdit || busy !== null}
+            disabled={!props.canEdit || busy !== null || burnedBits !== null}
             onChange={(event) => void changeFrame(event.target.value)}
           >
             <option value="">Server default · {frameLabel(studio.serverFrame)}</option>
@@ -200,7 +252,7 @@ export function CardOverlay(props: {
             className="card-overlay__select"
             aria-label="Tag"
             value={tagValue}
-            disabled={!props.canEdit || busy !== null}
+            disabled={!props.canEdit || busy !== null || burnedBits !== null}
             onChange={(event) => void changeTag(event.target.value)}
           >
             <option value="">Untagged</option>
@@ -216,6 +268,27 @@ export function CardOverlay(props: {
           {studio.tags.length === 0 ? (
             <p className="card-overlay__hint">Add tags from Tags on the collection page.</p>
           ) : null}
+        </section>
+
+        <section>
+          <h3>Burn</h3>
+          {burnedBits !== null ? (
+            <p className="card-overlay__note">Akira tucked {burnedBits} bits away. This card is gone.</p>
+          ) : burnAsk ? (
+            <div className="card-overlay__confirm">
+              <p>Burn this card for {quoteBits ?? "…"} bits? This can't be undone.</p>
+              <button type="button" className="danger" disabled={busy !== null} onClick={() => void confirmBurn()}>
+                {busy === "burn" ? "Burning…" : "Burn it"}
+              </button>
+              <button type="button" className="secondary" disabled={busy !== null} onClick={() => setBurnAsk(false)}>
+                Keep it
+              </button>
+            </div>
+          ) : (
+            <button type="button" className="secondary" disabled={!props.canEdit || busy !== null} onClick={() => void askBurn()}>
+              {busy === "burn" ? "Checking…" : "Burn this card"}
+            </button>
+          )}
         </section>
 
         {error ? (

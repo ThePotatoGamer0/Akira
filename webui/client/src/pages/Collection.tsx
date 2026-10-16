@@ -43,6 +43,14 @@ export function CollectionPage(props: {
   const [cards, setCards] = useState<CollectionCard[]>([]);
   const [studio, setStudio] = useState<CollectionStudio>(EMPTY_STUDIO);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [burnedCard, setBurnedCard] = useState<CollectionCard | null>(null);
+  const [selecting, setSelecting] = useState(false);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set());
+  const [tagChoice, setTagChoice] = useState("");
+  const [actionBusy, setActionBusy] = useState<string | null>(null);
+  const [actionError, setActionError] = useState<string | null>(null);
+  const [actionNote, setActionNote] = useState<string | null>(null);
+  const [burnQuote, setBurnQuote] = useState<{ awarded: number; skipped: number; count: number } | null>(null);
   const [tagsOpen, setTagsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [search, setSearch] = useState({ q: "", page: 0, order: "character" as CollectionOrder });
@@ -173,8 +181,11 @@ export function CollectionPage(props: {
     return () => observer.disconnect();
   }, [hasMore, loadMore, cards.length]);
 
-  const close = useCallback(() => setSelectedId(null), []);
-  const selected = cards.find((card) => card.id === selectedId) ?? null;
+  const close = useCallback(() => {
+    setSelectedId(null);
+    setBurnedCard(null);
+  }, []);
+  const selected = cards.find((card) => card.id === selectedId) ?? (burnedCard?.id === selectedId ? burnedCard : null);
 
   function saveCard(cardId: string, patch: Partial<CollectionCard>) {
     setCards((current) => current.map((card) => (card.id === cardId ? { ...card, ...patch } : card)));
@@ -189,6 +200,144 @@ export function CollectionPage(props: {
     setTotal(json.total);
     setOwned(json.owned);
     setCounted(true);
+  }
+
+  function leaveSelect() {
+    setSelecting(false);
+    setSelectedIds(new Set());
+    setBurnQuote(null);
+    setTagChoice("");
+    setActionError(null);
+  }
+
+  function toggleSelected(card: CollectionCard) {
+    setBurnQuote(null);
+    setActionNote(null);
+    setSelectedIds((current) => {
+      const next = new Set(current);
+      if (next.has(card.id)) next.delete(card.id);
+      else if (next.size < 100) next.add(card.id);
+      return next;
+    });
+  }
+
+  function selectLoaded() {
+    setBurnQuote(null);
+    setSelectedIds((current) => {
+      const next = new Set(current);
+      for (const card of cards) {
+        if (next.size >= 100) break;
+        next.add(card.id);
+      }
+      return next;
+    });
+  }
+
+  function dropCards(ids: string[]) {
+    const gone = new Set(ids);
+    setCards((current) => current.filter((card) => !gone.has(card.id)));
+    setSelectedIds((current) => {
+      const next = new Set(current);
+      for (const id of ids) next.delete(id);
+      return next;
+    });
+    setOwned((count) => Math.max(0, count - ids.length));
+    const nextTotal = Math.max(0, total - ids.length);
+    setTotal(nextTotal);
+    const lastPage = Math.max(0, Math.ceil(nextTotal / PAGE_SIZE) - 1);
+    setSearch((current) => (current.page > lastPage ? { ...current, page: lastPage } : current));
+  }
+
+  function rememberBurn(cardId: string) {
+    const card = cards.find((item) => item.id === cardId);
+    if (card) setBurnedCard(card);
+    dropCards([cardId]);
+  }
+
+  async function applySelectionTag() {
+    if (!tagChoice || selectedIds.size === 0) return;
+    const cardIds = [...selectedIds];
+    const clearing = tagChoice === "__clear";
+    setActionBusy("tag");
+    setActionError(null);
+    setActionNote(null);
+    try {
+      const res = await props.fetchApi(`/collection/${props.me.id}/tag-cards`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ tag: clearing ? null : tagChoice, cardIds }),
+      });
+      const json = (await res.json()) as { tag?: string | null; tagEmoji?: string; error?: string };
+      if (!res.ok || !("tag" in json)) {
+        setActionError(json.error ?? "Akira couldn't tag those cards.");
+        return;
+      }
+      const tagged = new Set(cardIds);
+      setCards((current) =>
+        current.map((card) => (tagged.has(card.id) ? { ...card, tag: json.tag ?? null, tagEmoji: json.tagEmoji } : card)),
+      );
+      await loadStudio();
+      setActionNote(clearing ? `Removed the tag from ${cardIds.length === 1 ? "that card" : `${cardIds.length} cards`}.` : `Tagged ${cardIds.length === 1 ? "that card" : `${cardIds.length} cards`}.`);
+      setSelectedIds(new Set());
+      setTagChoice("");
+    } catch {
+      setActionError("Akira couldn't tag those cards.");
+    } finally {
+      setActionBusy(null);
+    }
+  }
+
+  async function askSelectionBurn() {
+    const cardIds = [...selectedIds];
+    if (cardIds.length === 0) return;
+    setActionBusy("quote");
+    setActionError(null);
+    setActionNote(null);
+    try {
+      const res = await props.fetchApi(`/collection/${props.me.id}/burn-quote`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cardIds }),
+      });
+      const json = (await res.json()) as { burning?: string[]; awarded?: number; skipped?: number; error?: string };
+      if (!res.ok || !json.burning || typeof json.awarded !== "number") {
+        setError(null);
+        setActionError(json.error ?? "Akira couldn't price that burn.");
+        return;
+      }
+      setBurnQuote({ awarded: json.awarded, skipped: json.skipped ?? 0, count: json.burning.length });
+    } catch {
+      setActionError("Akira couldn't price that burn.");
+    } finally {
+      setActionBusy(null);
+    }
+  }
+
+  async function confirmSelectionBurn() {
+    const cardIds = [...selectedIds];
+    if (cardIds.length === 0) return;
+    setActionBusy("burn");
+    setActionError(null);
+    try {
+      const res = await props.fetchApi(`/collection/${props.me.id}/burn`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cardIds }),
+      });
+      const json = (await res.json()) as { burning?: string[]; awarded?: number; error?: string };
+      if (!res.ok || !json.burning || typeof json.awarded !== "number") {
+        setActionError(json.error ?? "Akira couldn't burn those cards.");
+        return;
+      }
+      dropCards(json.burning);
+      const count = json.burning.length;
+      setActionNote(`Akira burned ${count} ${count === 1 ? "card" : "cards"} and tucked ${json.awarded} bits away.`);
+      setBurnQuote(null);
+    } catch {
+      setActionError("Akira couldn't burn those cards.");
+    } finally {
+      setActionBusy(null);
+    }
   }
 
   function goToPage(page: number) {
@@ -233,14 +382,30 @@ export function CollectionPage(props: {
         <button type="button" className="secondary collection-tags" onClick={() => setTagsOpen(true)}>
           Tags
         </button>
+        <button
+          type="button"
+          className={selecting ? "collection-tags" : "secondary collection-tags"}
+          aria-pressed={selecting}
+          onClick={() => (selecting ? leaveSelect() : setSelecting(true))}
+        >
+          {selecting ? "Done" : "Select"}
+        </button>
       </div>
+      {actionNote ? <p className="collection-note">{actionNote}</p> : null}
+      {actionError ? <p className="webui-alert">{actionError}</p> : null}
       {error ? <p className="webui-alert">{error}</p> : null}
       {cards.length === 0 ? (
         <p className="webui-muted collection-pending">
           {loading ? "Akira is looking through your cards…" : search.q ? "No cards match." : "No cards yet."}
         </p>
       ) : (
-        <CollectionGrid cards={cards} onSelect={(card) => setSelectedId(card.id)} />
+        <CollectionGrid
+          cards={cards}
+          selecting={selecting}
+          selectedIds={selectedIds}
+          onSelect={(card) => setSelectedId(card.id)}
+          onToggle={toggleSelected}
+        />
       )}
       {hasMore ? <div ref={sentinelRef} className="collection-sentinel" /> : null}
       {cards.length > 0 && loading ? <p className="webui-muted collection-pending">Loading more cards…</p> : null}
@@ -279,6 +444,59 @@ export function CollectionPage(props: {
           </span>
         </nav>
       ) : null}
+      {selecting ? (
+        <div className="collection-actions">
+          <p className="collection-actions__count">
+            {selectedIds.size} selected
+            {selectedIds.size >= 100 ? " · 100 is the most at once" : ""}
+          </p>
+          <button type="button" className="secondary" disabled={cards.length === 0 || actionBusy !== null} onClick={selectLoaded}>
+            Select these
+          </button>
+          <button type="button" className="secondary" disabled={selectedIds.size === 0 || actionBusy !== null} onClick={() => setSelectedIds(new Set())}>
+            Clear
+          </button>
+          <select
+            className="collection-order"
+            aria-label="Tag for the selected cards"
+            value={tagChoice}
+            disabled={actionBusy !== null}
+            onChange={(event) => setTagChoice(event.target.value)}
+          >
+            <option value="">Tag…</option>
+            <option value="__clear">Remove tag</option>
+            {studio.tags.map((tag) => (
+              <option key={tag.name} value={tag.name}>
+                {tag.emoji} {tag.name}
+              </option>
+            ))}
+          </select>
+          <button type="button" className="secondary" disabled={!tagChoice || selectedIds.size === 0 || actionBusy !== null} onClick={() => void applySelectionTag()}>
+            {actionBusy === "tag" ? "Tagging…" : "Apply tag"}
+          </button>
+          {burnQuote ? (
+            <div className="collection-actions__confirm">
+              <p>
+                Burn {burnQuote.count} {burnQuote.count === 1 ? "card" : "cards"} for {burnQuote.awarded} bits? This can't be undone.
+                {burnQuote.count > 1 ? " A batch pays the plain rates." : ""}
+                {burnQuote.skipped > 0
+                  ? ` ${burnQuote.skipped} ${burnQuote.skipped === 1 ? "card stays" : "cards stay"} put. ${burnQuote.skipped === 1 ? "It's" : "They're"} in an open trade.`
+                  : ""}
+              </p>
+              <button type="button" className="danger" disabled={actionBusy !== null} onClick={() => void confirmSelectionBurn()}>
+                {actionBusy === "burn" ? "Burning…" : "Burn them"}
+              </button>
+              <button type="button" className="secondary" disabled={actionBusy !== null} onClick={() => setBurnQuote(null)}>
+                Cancel
+              </button>
+            </div>
+          ) : (
+            <button type="button" className="danger" disabled={selectedIds.size === 0 || actionBusy !== null} onClick={() => void askSelectionBurn()}>
+              {actionBusy === "quote" ? "Checking…" : "Burn"}
+            </button>
+          )}
+        </div>
+      ) : null}
       {selected ? (
         <CardOverlay
           key={selected.id}
@@ -289,6 +507,7 @@ export function CollectionPage(props: {
           fetchApi={props.fetchApi}
           onClose={close}
           onSaved={saveCard}
+          onBurned={rememberBurn}
         />
       ) : null}
       {tagsOpen ? (
