@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-ann-takamaki",
+  "name": "Ann Takamaki",
+  "gender": "Female",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "persona-5-ann-takamaki-base",
+      "name": "Ann Takamaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

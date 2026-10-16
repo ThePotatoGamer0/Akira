@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-sojiro-sakura",
+  "name": "Sojiro Sakura",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-sojiro-sakura-base",
+      "name": "Sojiro Sakura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

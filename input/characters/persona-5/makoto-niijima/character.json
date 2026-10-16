@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-makoto-niijima",
+  "name": "Makoto Niijima",
+  "gender": "Female",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "persona-5-makoto-niijima-base",
+      "name": "Makoto Niijima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-igor",
+  "name": "Igor",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-4-igor-base",
+      "name": "Igor",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-chihiro-fushimi",
+  "name": "Chihiro Fushimi",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-4-chihiro-fushimi-base",
+      "name": "Chihiro Fushimi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

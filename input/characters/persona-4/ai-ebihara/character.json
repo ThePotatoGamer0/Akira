@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-ai-ebihara",
+  "name": "Ai Ebihara",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-4-ai-ebihara-base",
+      "name": "Ai Ebihara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

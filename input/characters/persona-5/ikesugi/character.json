@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-ikesugi",
+  "name": "Ikesugi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-ikesugi-base",
+      "name": "Ikesugi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

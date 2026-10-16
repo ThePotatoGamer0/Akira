@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-ameno-sagiri",
+  "name": "Ameno-sagiri",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-4-ameno-sagiri-base",
+      "name": "Ameno-sagiri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

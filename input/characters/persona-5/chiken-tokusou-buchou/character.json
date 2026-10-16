@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-chiken-tokusou-buchou",
+  "name": "Chiken Tokusou Buchou",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-chiken-tokusou-buchou-base",
+      "name": "Chiken Tokusou Buchou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

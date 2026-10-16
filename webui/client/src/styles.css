@@ -1079,8 +1079,9 @@ button.danger:hover {
 
 .collection-tile__chin {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.28rem 0.35rem;
   min-width: 0;
   margin-top: 0.4rem;
   padding: 0 0.05rem;
@@ -1125,15 +1126,14 @@ button.danger:hover {
 }
 
 .collection-tile__chin code {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex: none;
   margin-left: auto;
   padding: 0.05rem 0.28rem;
   background: var(--code-bg);
   border-radius: 5px;
   color: var(--ink2);
   font-size: 0.72rem;
+  white-space: nowrap;
 }
 
 @media (prefers-reduced-motion: reduce) {

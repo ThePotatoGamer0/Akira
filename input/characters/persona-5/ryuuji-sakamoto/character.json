@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-ryuuji-sakamoto",
+  "name": "Ryuuji Sakamoto",
+  "gender": "Male",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "persona-5-ryuuji-sakamoto-base",
+      "name": "Ryuuji Sakamoto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

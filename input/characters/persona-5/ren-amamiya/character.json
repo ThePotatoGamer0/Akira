@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-ren-amamiya",
+  "name": "Ren Amamiya",
+  "gender": "Male",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "persona-5-ren-amamiya-base",
+      "name": "Ren Amamiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

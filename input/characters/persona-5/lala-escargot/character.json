@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-lala-escargot",
+  "name": "Lala Escargot",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-lala-escargot-base",
+      "name": "Lala Escargot",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

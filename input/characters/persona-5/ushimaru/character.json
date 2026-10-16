@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-ushimaru",
+  "name": "Ushimaru",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-ushimaru-base",
+      "name": "Ushimaru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

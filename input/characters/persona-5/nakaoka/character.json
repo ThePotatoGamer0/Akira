@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-nakaoka",
+  "name": "Nakaoka",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-nakaoka-base",
+      "name": "Nakaoka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

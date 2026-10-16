@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-daisuke-nagase",
+  "name": "Daisuke Nagase",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-4-daisuke-nagase-base",
+      "name": "Daisuke Nagase",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

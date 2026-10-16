@@ -80,6 +80,8 @@ export async function seedCatalog(): Promise<void> {
 const SERIES_TITLES: Record<string, string> = {
   "pingu-in-the-city": "Pingu in the City",
   "witch-hat-atelier": "Witch Hat Atelier",
+  "persona-4": "Persona 4",
+  "persona-5": "Persona 5",
 };
 
 function seriesTitle(slug: string): string {

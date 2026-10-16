@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-haru-okumura",
+  "name": "Haru Okumura",
+  "gender": "Female",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "persona-5-haru-okumura-base",
+      "name": "Haru Okumura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

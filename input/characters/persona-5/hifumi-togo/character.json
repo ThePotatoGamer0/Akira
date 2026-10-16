@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-hifumi-togo",
+  "name": "Hifumi Togo",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-hifumi-togo-base",
+      "name": "Hifumi Togo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

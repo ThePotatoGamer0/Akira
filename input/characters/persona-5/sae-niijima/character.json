@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-sae-niijima",
+  "name": "Sae Niijima",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-sae-niijima-base",
+      "name": "Sae Niijima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

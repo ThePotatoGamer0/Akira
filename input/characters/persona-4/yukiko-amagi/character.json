@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-yukiko-amagi",
+  "name": "Yukiko Amagi",
+  "gender": "Female",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "persona-4-yukiko-amagi-base",
+      "name": "Yukiko Amagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

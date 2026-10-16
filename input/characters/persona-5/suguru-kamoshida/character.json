@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-suguru-kamoshida",
+  "name": "Suguru Kamoshida",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-suguru-kamoshida-base",
+      "name": "Suguru Kamoshida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

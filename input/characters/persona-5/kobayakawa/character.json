@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-kobayakawa",
+  "name": "Kobayakawa",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-kobayakawa-base",
+      "name": "Kobayakawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

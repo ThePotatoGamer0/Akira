@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-yuusuke-kitagawa",
+  "name": "Yuusuke Kitagawa",
+  "gender": "Male",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "persona-5-yuusuke-kitagawa-base",
+      "name": "Yuusuke Kitagawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

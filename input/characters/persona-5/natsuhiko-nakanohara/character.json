@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-natsuhiko-nakanohara",
+  "name": "Natsuhiko Nakanohara",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-natsuhiko-nakanohara-base",
+      "name": "Natsuhiko Nakanohara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

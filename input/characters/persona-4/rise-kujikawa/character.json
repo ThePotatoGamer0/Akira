@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-rise-kujikawa",
+  "name": "Rise Kujikawa",
+  "gender": "Female",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "persona-4-rise-kujikawa-base",
+      "name": "Rise Kujikawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

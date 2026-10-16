@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-noriko-kashiwagi",
+  "name": "Noriko Kashiwagi",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-4-noriko-kashiwagi-base",
+      "name": "Noriko Kashiwagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

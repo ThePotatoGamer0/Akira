@@ -1,0 +1,14 @@
+{
+  "id": "persona-5-tsukasa",
+  "name": "Tsukasa",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-5-tsukasa-base",
+      "name": "Tsukasa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "persona-4-kou-ichijo",
+  "name": "Kou Ichijo",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "persona-4-kou-ichijo-base",
+      "name": "Kou Ichijo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}
