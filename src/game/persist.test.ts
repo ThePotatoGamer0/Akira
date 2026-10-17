@@ -14,6 +14,7 @@ const dbFile = path.join(dir, "test.db");
 
 let prisma: PrismaClient;
 let claimReaction: typeof import("./drops.js").claimReaction;
+let releaseHeldGrabs: typeof import("./drops.js").releaseHeldGrabs;
 
 before(async () => {
   process.env["DATABASE_URL"] = `file:${dbFile}`;
@@ -26,6 +27,7 @@ before(async () => {
   const drops = await import("./drops.js");
   prisma = db.prisma;
   claimReaction = drops.claimReaction;
+  releaseHeldGrabs = drops.releaseHeldGrabs;
 
   const series = await prisma.series.create({
     data: { name: "Chainsaw Man", slug: "chainsaw-man" },
@@ -159,6 +161,10 @@ test("the dropper takes back a card grabbed in the first 20 seconds", async () =
   });
   assert.equal(fought.cardId, sniped.cardId);
   assert.equal(fought.foughtOffDiscordId, "sniper");
+  assert.equal(sniped.notices.length, 0);
+  assert.equal(fought.notices.length, 1);
+  assert.equal(fought.notices[0]?.discordId, "dropper");
+  assert.equal(fought.notices[0]?.foughtOffDiscordId, "sniper");
   const card = await prisma.card.findUnique({ where: { id: fought.cardId }, include: { owner: true } });
   assert.equal(card?.owner?.discordId, "dropper");
   const sniper = await prisma.user.findUnique({ where: { discordId: "sniper" } });
@@ -168,7 +174,37 @@ test("the dropper takes back a card grabbed in the first 20 seconds", async () =
   const sniperGrab = await prisma.cooldown.findUnique({
     where: { userId_type: { userId: sniper!.id, type: "GRAB" } },
   });
-  assert.ok(sniperGrab && sniperGrab.expiresAt.getTime() > Date.now());
+  assert.equal(sniperGrab, null);
+});
+
+test("grab lines wait until the dropper takes a different card", async () => {
+  await makeDrop("hold", new Date(Date.now() + 60_000), [1, 2, 3], "holder");
+  const first = await claimReaction({ messageId: "hold", position: 1, discordId: "snipe-a", username: "snipe-a" });
+  const second = await claimReaction({ messageId: "hold", position: 2, discordId: "snipe-b", username: "snipe-b" });
+  assert.equal(first.notices.length, 0);
+  assert.equal(second.notices.length, 0);
+  const taken = await claimReaction({ messageId: "hold", position: 3, discordId: "holder", username: "holder" });
+  assert.deepEqual(
+    taken.notices.map((notice) => notice.discordId),
+    ["snipe-a", "snipe-b", "holder"],
+  );
+  assert.equal(taken.notices.every((notice) => notice.foughtOffDiscordId === null), true);
+});
+
+test("snipe protection ending posts the grabs that stuck", async () => {
+  await makeDrop("quiet", new Date(Date.now() + 60_000), [1], "quiet-dropper");
+  const held = await claimReaction({ messageId: "quiet", position: 1, discordId: "quiet-sniper", username: "quiet-sniper" });
+  assert.equal(held.notices.length, 0);
+  await prisma.drop.update({
+    where: { messageId: "quiet" },
+    data: { createdAt: new Date(Date.now() - 21_000) },
+  });
+  const released = await releaseHeldGrabs();
+  assert.equal(released.length, 1);
+  assert.equal(released[0]?.notices[0]?.discordId, "quiet-sniper");
+  assert.equal(released[0]?.notices[0]?.foughtOffDiscordId, null);
+  const again = await releaseHeldGrabs();
+  assert.equal(again.length, 0);
 });
 
 test("drop protection ends after 20 seconds", async () => {
@@ -177,7 +213,9 @@ test("drop protection ends after 20 seconds", async () => {
     where: { messageId: "late" },
     data: { createdAt: new Date(Date.now() - 21_000) },
   });
-  await claimReaction({ messageId: "late", position: 1, discordId: "late-sniper", username: "late-sniper" });
+  const late = await claimReaction({ messageId: "late", position: 1, discordId: "late-sniper", username: "late-sniper" });
+  assert.equal(late.notices.length, 1);
+  assert.equal(late.notices[0]?.discordId, "late-sniper");
   await assert.rejects(
     () => claimReaction({ messageId: "late", position: 1, discordId: "late-dropper", username: "late-dropper" }),
     /already took/,

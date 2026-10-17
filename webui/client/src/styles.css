@@ -834,6 +834,8 @@ input::placeholder {
 }
 
 .collection-head {
+  position: relative;
+  z-index: 40;
   display: flex;
   align-items: baseline;
   justify-content: space-between;

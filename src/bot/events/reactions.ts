@@ -1,10 +1,10 @@
 import { Events, type Client, type MessageReaction, type PartialMessageReaction, type PartialUser, type User } from "discord.js";
 import { positionFromEmoji } from "../../game/balance.js";
 import { rememberGrab } from "../../game/cards.js";
-import { fightOffAnnouncement, grabAnnouncement } from "../../game/display.js";
 import { claimReaction, loadDrop } from "../../game/drops.js";
 import { GameError } from "../../game/errors.js";
 import { isInitLocked } from "../../utils/init-lock.js";
+import { grabNoticeText } from "../grab-notices.js";
 import { hostIsInGuild, privateServerMessage } from "../host-gate.js";
 import { queueCooldownReminder } from "../reminder-schedule.js";
 
@@ -57,21 +57,12 @@ async function onReaction(
     });
     void queueCooldownReminder(user.id, "GRAB");
     await rememberGrab(user.id, result.cardId);
-    const announcement = result.foughtOffDiscordId
-      ? fightOffAnnouncement({
-        dropperDiscordId: user.id,
-        sniperDiscordId: result.foughtOffDiscordId,
-        characterName: result.characterName,
-        cardId: result.cardId,
-        quality: result.quality,
-      })
-      : grabAnnouncement({
-        discordId: user.id,
-        characterName: result.characterName,
-        cardId: result.cardId,
-        quality: result.quality,
-      });
-    await tell(reaction, announcement, false);
+    if (result.foughtOffDiscordId) {
+      void queueCooldownReminder(result.foughtOffDiscordId, "GRAB");
+    }
+    for (const notice of result.notices) {
+      await tell(reaction, grabNoticeText(notice), false);
+    }
   } catch (err) {
     if (err instanceof GameError) {
       await tell(reaction, `<@${user.id}> ${err.message}`, true);

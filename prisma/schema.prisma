@@ -338,6 +338,8 @@ model DropSlot {
   claimedBy   User?        @relation(fields: [claimedById], references: [id], onDelete: SetNull)
   cardId      String?      @unique
   card        Card?        @relation(fields: [cardId], references: [id], onDelete: SetNull)
+  /** Grab line has been posted. Stays false during snipe protection until the dropper grabs or the window ends. */
+  announced   Boolean      @default(false)
 
   @@unique([dropId, position])
 }

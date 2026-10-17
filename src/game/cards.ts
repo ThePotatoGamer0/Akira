@@ -63,10 +63,12 @@ export async function getCard(cardId: string) {
 }
 
 export async function rememberGrab(discordId: string, cardId: string): Promise<void> {
-  await prisma.user.updateMany({
-    where: { discordId },
-    data: { lastGrabbedCardId: cardId },
-  });
+  await prisma.$executeRaw`
+    UPDATE "User"
+    SET "lastGrabbedCardId" = ${cardId}
+    WHERE "discordId" = ${discordId}
+      AND "id" = (SELECT "ownerId" FROM "Card" WHERE "id" = ${cardId})
+  `;
 }
 
 export async function lastGrabbedCard(discordId: string): Promise<string | null> {

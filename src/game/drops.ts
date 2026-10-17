@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import type { CardQuality } from "../generated/prisma/client.js";
+import type { TransactionClient } from "../generated/prisma/internal/prismaNamespace.js";
 import { prisma } from "../db/client.js";
 import { loadFrame } from "../utils/frames.js";
 import { variantArtPath } from "../utils/paths.js";
@@ -9,6 +10,7 @@ import {
   decideClaim,
   DROP_COOLDOWN_MS,
   DROP_OPEN_MS,
+  DROP_PROTECTION_MS,
   formatRemaining,
   GRAB_BITS,
   issuePrint,
@@ -214,9 +216,9 @@ export async function prepareDrop(input: {
   };
 }
 
-export async function commitDrop(prepared: PreparedDrop, messageId: string): Promise<void> {
+export async function commitDrop(prepared: PreparedDrop, messageId: string): Promise<Date> {
   const expiresAt = new Date(Date.now() + prepared.dropCooldownMs);
-  await prisma.$transaction(async (tx) => {
+  return prisma.$transaction(async (tx) => {
     const existing = await tx.cooldown.findUnique({
       where: { userId_type: { userId: prepared.userId, type: "DROP" } },
     });
@@ -227,7 +229,7 @@ export async function commitDrop(prepared: PreparedDrop, messageId: string): Pro
       );
     }
 
-    await tx.drop.create({
+    const created = await tx.drop.create({
       data: {
         guildId: prepared.guildId,
         channelId: prepared.channelId,
@@ -254,6 +256,7 @@ export async function commitDrop(prepared: PreparedDrop, messageId: string): Pro
       where: { id: prepared.userId },
       data: { dropsSinceMint: prepared.dropsSinceMint },
     });
+    return created.createdAt;
   });
 }
 
@@ -327,6 +330,15 @@ export async function loadDrop(messageId: string): Promise<DropPresentation | nu
   return present(drop, wishes, serverFrame);
 }
 
+export type GrabNotice = {
+  discordId: string;
+  /** Set when this line is the dropper taking the card back. */
+  foughtOffDiscordId: string | null;
+  characterName: string;
+  cardId: string;
+  quality: string;
+};
+
 export type ClaimResult = {
   cardId: string;
   printNumber: number;
@@ -335,8 +347,45 @@ export type ClaimResult = {
   bits: number;
   /** Discord id of the player who grabbed first, when the dropper took the card back. */
   foughtOffDiscordId: string | null;
+  /** Grab lines to post now. Empty while snipe protection is still holding this drop. */
+  notices: GrabNotice[];
   presentation: DropPresentation;
 };
+
+const noticeInclude = {
+  claimedBy: true,
+  card: true,
+  variant: { include: { character: true } },
+} as const;
+
+async function markHeldGrabs(
+  tx: TransactionClient,
+  dropId: string,
+  foughtOffSlotId: string | null,
+  foughtOffDiscordId: string | null,
+): Promise<GrabNotice[]> {
+  const pending = await tx.dropSlot.findMany({
+    where: { dropId, announced: false, claimedById: { not: null } },
+    include: noticeInclude,
+    orderBy: { position: "asc" },
+  });
+  const notices: GrabNotice[] = [];
+  for (const row of pending) {
+    const flipped = await tx.dropSlot.updateMany({
+      where: { id: row.id, announced: false },
+      data: { announced: true },
+    });
+    if (flipped.count !== 1 || !row.claimedBy || !row.card) continue;
+    notices.push({
+      discordId: row.claimedBy.discordId,
+      foughtOffDiscordId: row.id === foughtOffSlotId ? foughtOffDiscordId : null,
+      characterName: row.variant.character.name,
+      cardId: row.card.id,
+      quality: row.quality,
+    });
+  }
+  return notices;
+}
 
 export async function claimReaction(input: {
   messageId: string;
@@ -381,6 +430,10 @@ export async function claimReaction(input: {
       throw new GameError(decision.reason, claimFailureMessage(decision.reason, remaining));
     }
 
+    let cardId = "";
+    let printNumber = 0;
+    let foughtOffDiscordId: string | null = null;
+
     if (decision.foughtOff) {
       const sniper = slot.claimedBy;
       const card = slot.card;
@@ -406,6 +459,9 @@ export async function claimReaction(input: {
           lastGrabbedCardId: sniperRow?.lastGrabbedCardId === card.id ? null : (sniperRow?.lastGrabbedCardId ?? null),
         },
       });
+      await tx.cooldown.deleteMany({
+        where: { userId: sniper.id, type: "GRAB" },
+      });
       await tx.user.update({
         where: { id: user.id },
         data: { bits: { increment: GRAB_BITS } },
@@ -416,67 +472,72 @@ export async function claimReaction(input: {
         create: { userId: user.id, type: "GRAB", expiresAt: grabExpires },
         update: { expiresAt: grabExpires },
       });
-      return {
-        cardId: card.id,
-        printNumber: card.printNumber,
-        quality: slot.quality,
-        foughtOffDiscordId: sniper.discordId,
-      };
+      cardId = card.id;
+      printNumber = card.printNumber;
+      foughtOffDiscordId = sniper.discordId;
+    } else {
+      const taken = await tx.dropSlot.updateMany({
+        where: { id: slot.id, claimedById: null },
+        data: { claimedById: user.id },
+      });
+      if (taken.count !== 1) {
+        throw new GameError("taken", claimFailureMessage("taken", 0));
+      }
+
+      await tx.printCounter.upsert({
+        where: { variantId: slot.variantId },
+        create: { variantId: slot.variantId, nextPrint: 1 },
+        update: {},
+      });
+      const counter = await tx.printCounter.update({
+        where: { variantId: slot.variantId },
+        data: { nextPrint: { increment: 1 } },
+      });
+      const printed = issuePrint(counter.nextPrint - 1);
+
+      cardId = await mintCardCode(async (id) => {
+        const existing = await tx.card.findUnique({ where: { id }, select: { id: true } });
+        return existing !== null;
+      });
+      const card = await tx.card.create({
+        data: {
+          id: cardId,
+          variantId: slot.variantId,
+          frameId: slot.frameId,
+          printNumber: printed.printNumber,
+          quality: slot.quality,
+          ownerId: user.id,
+        },
+      });
+      printNumber = printed.printNumber;
+      await tx.dropSlot.update({
+        where: { id: slot.id },
+        data: { cardId: card.id },
+      });
+      await tx.user.update({
+        where: { id: user.id },
+        data: { bits: { increment: GRAB_BITS } },
+      });
+      const grabExpires = new Date(Date.now() + grabMs);
+      await tx.cooldown.upsert({
+        where: { userId_type: { userId: user.id, type: "GRAB" } },
+        create: { userId: user.id, type: "GRAB", expiresAt: grabExpires },
+        update: { expiresAt: grabExpires },
+      });
     }
 
-    const taken = await tx.dropSlot.updateMany({
-      where: { id: slot.id, claimedById: null },
-      data: { claimedById: user.id },
-    });
-    if (taken.count !== 1) {
-      throw new GameError("taken", claimFailureMessage("taken", 0));
-    }
-
-    await tx.printCounter.upsert({
-      where: { variantId: slot.variantId },
-      create: { variantId: slot.variantId, nextPrint: 1 },
-      update: {},
-    });
-    const counter = await tx.printCounter.update({
-      where: { variantId: slot.variantId },
-      data: { nextPrint: { increment: 1 } },
-    });
-    const printed = issuePrint(counter.nextPrint - 1);
-
-    const cardId = await mintCardCode(async (id) => {
-      const existing = await tx.card.findUnique({ where: { id }, select: { id: true } });
-      return existing !== null;
-    });
-    const card = await tx.card.create({
-      data: {
-        id: cardId,
-        variantId: slot.variantId,
-        frameId: slot.frameId,
-        printNumber: printed.printNumber,
-        quality: slot.quality,
-        ownerId: user.id,
-      },
-    });
-    await tx.dropSlot.update({
-      where: { id: slot.id },
-      data: { cardId: card.id },
-    });
-    await tx.user.update({
-      where: { id: user.id },
-      data: { bits: { increment: GRAB_BITS } },
-    });
-    const grabExpires = new Date(Date.now() + grabMs);
-    await tx.cooldown.upsert({
-      where: { userId_type: { userId: user.id, type: "GRAB" } },
-      create: { userId: user.id, type: "GRAB", expiresAt: grabExpires },
-      update: { expiresAt: grabExpires },
-    });
+    const protectionOver = Date.now() >= drop.createdAt.getTime() + DROP_PROTECTION_MS;
+    const dropperAlreadyClaimed =
+      drop.dropperId !== null && drop.slots.some((row) => row.id !== slot.id && row.claimedById === drop.dropperId);
+    const release = protectionOver || dropperAlreadyClaimed || (drop.dropperId !== null && drop.dropperId === user.id);
+    const notices = release ? await markHeldGrabs(tx, drop.id, foughtOffDiscordId ? slot.id : null, foughtOffDiscordId) : [];
 
     return {
-      cardId: card.id,
-      printNumber: printed.printNumber,
+      cardId,
+      printNumber,
       quality: slot.quality,
-      foughtOffDiscordId: null,
+      foughtOffDiscordId,
+      notices,
     };
   });
 
@@ -491,6 +552,41 @@ export async function claimReaction(input: {
     bits: GRAB_BITS,
     presentation,
   };
+}
+
+export async function dropsNeedingGrabRelease(now = Date.now()): Promise<Array<{ messageId: string; channelId: string; createdAt: Date }>> {
+  const since = new Date(now - DROP_PROTECTION_MS);
+  return prisma.drop.findMany({
+    where: {
+      OR: [
+        { createdAt: { gt: since } },
+        { slots: { some: { announced: false, claimedById: { not: null } } } },
+      ],
+    },
+    select: { messageId: true, channelId: true, createdAt: true },
+  });
+}
+
+/** Post grab lines once snipe protection has ended. */
+export async function releaseHeldGrabs(
+  now = Date.now(),
+  messageId?: string,
+): Promise<Array<{ messageId: string; channelId: string; notices: GrabNotice[] }>> {
+  const cutoff = new Date(now - DROP_PROTECTION_MS);
+  const drops = await prisma.drop.findMany({
+    where: {
+      ...(messageId ? { messageId } : {}),
+      createdAt: { lte: cutoff },
+      slots: { some: { announced: false, claimedById: { not: null } } },
+    },
+    select: { id: true, messageId: true, channelId: true },
+  });
+  const released: Array<{ messageId: string; channelId: string; notices: GrabNotice[] }> = [];
+  for (const drop of drops) {
+    const notices = await prisma.$transaction((tx) => markHeldGrabs(tx, drop.id, null, null));
+    if (notices.length > 0) released.push({ messageId: drop.messageId, channelId: drop.channelId, notices });
+  }
+  return released;
 }
 
 export async function dropsAwaitingExpiry(): Promise<Array<{ messageId: string; channelId: string; expiresAt: Date }>> {

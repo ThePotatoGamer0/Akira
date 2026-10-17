@@ -4,6 +4,7 @@ import { commitDrop, prepareDrop } from "../../game/drops.js";
 import { GameError } from "../../game/errors.js";
 import type { AkiraCommand } from "../../types/commands.js";
 import { scheduleDropExpiry } from "../drop-expiry.js";
+import { scheduleGrabNotices } from "../grab-notices.js";
 import { queueCooldownReminder } from "../reminder-schedule.js";
 import { renderDropMessage } from "../drop-message.js";
 import { sendGameError } from "../reply.js";
@@ -31,9 +32,14 @@ export const drop: AkiraCommand = {
       const payload = await renderDropMessage(prepared);
       await interaction.editReply(payload);
       const message = await interaction.fetchReply();
-      await commitDrop(prepared, message.id);
+      const createdAt = await commitDrop(prepared, message.id);
       committed = true;
       void queueCooldownReminder(interaction.user.id, "DROP");
+      scheduleGrabNotices(_client, {
+        messageId: message.id,
+        channelId: prepared.channelId,
+        createdAt,
+      });
       scheduleDropExpiry(_client, {
         messageId: message.id,
         channelId: prepared.channelId,
