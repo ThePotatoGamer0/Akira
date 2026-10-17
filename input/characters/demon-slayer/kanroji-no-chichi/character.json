@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-kanroji-no-chichi",
+  "name": "Kanroji no Chichi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-kanroji-no-chichi-base",
+      "name": "Kanroji no Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

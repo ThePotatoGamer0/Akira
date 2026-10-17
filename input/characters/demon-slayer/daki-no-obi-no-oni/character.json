@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-daki-no-obi-no-oni",
+  "name": "Daki no Obi no Oni",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-daki-no-obi-no-oni-base",
+      "name": "Daki no Obi no Oni",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-kanroji-no-haha",
+  "name": "Kanroji no Haha",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-kanroji-no-haha-base",
+      "name": "Kanroji no Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

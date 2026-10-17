@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-suma",
+  "name": "Suma",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-suma-base",
+      "name": "Suma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

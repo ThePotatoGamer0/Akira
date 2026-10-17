@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-kotetsu",
+  "name": "Kotetsu",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-kotetsu-base",
+      "name": "Kotetsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

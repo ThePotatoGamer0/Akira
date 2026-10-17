@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-shizu-shinazugawa",
+  "name": "Shizu Shinazugawa",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-shizu-shinazugawa-base",
+      "name": "Shizu Shinazugawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

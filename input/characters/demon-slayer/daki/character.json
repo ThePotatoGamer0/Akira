@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-daki",
+  "name": "Daki",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-daki-base",
+      "name": "Daki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

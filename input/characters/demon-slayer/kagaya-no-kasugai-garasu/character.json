@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-kagaya-no-kasugai-garasu",
+  "name": "Kagaya no Kasugai Garasu",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-kagaya-no-kasugai-garasu-base",
+      "name": "Kagaya no Kasugai Garasu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

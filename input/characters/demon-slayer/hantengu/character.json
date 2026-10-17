@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-hantengu",
+  "name": "Hantengu",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-hantengu-base",
+      "name": "Hantengu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

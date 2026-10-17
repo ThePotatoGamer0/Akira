@@ -1,0 +1,31 @@
+{
+  "textElements": {
+    "seriesName": {
+      "x": 200,
+      "y": 70,
+      "fontSize": 32,
+      "fontFamily": "DejaVu Serif-Bold",
+      "color": "#2A241C",
+      "horizontal-anchor": "center",
+      "vertical-anchor": "center"
+    },
+    "characterName": {
+      "x": 200,
+      "y": 513,
+      "fontSize": 30,
+      "fontFamily": "DejaVu Serif-Bold",
+      "color": "#2A241C",
+      "horizontal-anchor": "center",
+      "vertical-anchor": "center"
+    },
+    "printNumber": {
+      "x": 200,
+      "y": 572,
+      "fontSize": 16,
+      "fontFamily": "DejaVu Sans",
+      "color": "#F3F6FA",
+      "horizontal-anchor": "center",
+      "vertical-anchor": "center"
+    }
+  }
+}

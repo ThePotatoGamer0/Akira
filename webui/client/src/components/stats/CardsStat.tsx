@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { readStatChoice, writeStatChoice } from "../../lib/statChoice.js";
 import type { CardCountRow, Me } from "../../types/index.js";
+import { MenuSelect } from "../MenuSelect.js";
 import { MeterList } from "./MeterList.js";
 import { StatShell } from "./StatShell.js";
 
@@ -53,21 +54,16 @@ export function CardsStat(props: {
       title="Cards"
       note={quality ? `Who holds the most ${label.toLowerCase()} cards` : "Who holds the most cards"}
       controls={
-        <select
+        <MenuSelect
           className="stats-select"
-          aria-label="Quality"
+          label="Quality"
           value={quality}
-          onChange={(event) => {
-            setQuality(event.target.value);
-            writeStatChoice("cards.quality", event.target.value);
+          options={QUALITIES.map((option) => ({ value: option.id, label: option.label }))}
+          onChange={(next) => {
+            setQuality(next);
+            writeStatChoice("cards.quality", next);
           }}
-        >
-          {QUALITIES.map((option) => (
-            <option key={option.id || "all"} value={option.id}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+        />
       }
     >
       {error ? <p className="webui-alert">{error}</p> : null}

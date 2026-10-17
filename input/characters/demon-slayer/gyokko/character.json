@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-gyokko",
+  "name": "Gyokko",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-gyokko-base",
+      "name": "Gyokko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

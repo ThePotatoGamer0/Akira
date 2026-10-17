@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-makio",
+  "name": "Makio",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-makio-base",
+      "name": "Makio",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

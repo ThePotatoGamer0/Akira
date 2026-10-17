@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-tokitou-no-haha",
+  "name": "Tokitou no Haha",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-tokitou-no-haha-base",
+      "name": "Tokitou no Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

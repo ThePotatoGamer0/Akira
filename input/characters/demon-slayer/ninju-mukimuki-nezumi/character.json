@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-ninju-mukimuki-nezumi",
+  "name": "Ninju Mukimuki Nezumi",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-ninju-mukimuki-nezumi-base",
+      "name": "Ninju Mukimuki Nezumi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

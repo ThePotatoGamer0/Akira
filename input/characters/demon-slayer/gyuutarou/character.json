@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-gyuutarou",
+  "name": "Gyuutarou",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-gyuutarou-base",
+      "name": "Gyuutarou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

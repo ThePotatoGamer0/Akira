@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-tomi",
+  "name": "Tomi",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-tomi-base",
+      "name": "Tomi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

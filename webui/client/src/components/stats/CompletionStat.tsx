@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { readStatChoice, writeStatChoice } from "../../lib/statChoice.js";
 import type { CompletionRow, CompletionStats, Me } from "../../types/index.js";
+import { MenuSelect } from "../MenuSelect.js";
 import { StatShell } from "./StatShell.js";
 
 function settleView(current: string, json: CompletionStats): string {
@@ -114,32 +115,24 @@ export function CompletionStat(props: {
       note={note}
       controls={
         <>
-          <select
+          <MenuSelect
             className="stats-select"
-            aria-label="Player"
+            label="Player"
             value={playerValue}
-            onChange={(event) => choosePlayer(event.target.value)}
-          >
-            {players.map((player) => (
-              <option key={player.id} value={player.id}>
-                {player.name}
-              </option>
-            ))}
-          </select>
-          <select
+            options={players.map((player) => ({ value: player.id, label: player.name }))}
+            onChange={choosePlayer}
+          />
+          <MenuSelect
             className="stats-select"
-            aria-label="Anime"
+            label="Anime"
             value={selectView}
-            onChange={(event) => chooseView(event.target.value)}
-          >
-            <option value="top">Top four</option>
-            {data && data.tracked.length > 0 ? <option value="tracked">Tracked</option> : null}
-            {(data?.series ?? []).map((row) => (
-              <option key={row.seriesId} value={row.seriesId}>
-                {row.name}
-              </option>
-            ))}
-          </select>
+            options={[
+              { value: "top", label: "Top four" },
+              ...(data && data.tracked.length > 0 ? [{ value: "tracked", label: "Tracked" }] : []),
+              ...(data?.series ?? []).map((row) => ({ value: row.seriesId, label: row.name })),
+            ]}
+            onChange={chooseView}
+          />
         </>
       }
     >

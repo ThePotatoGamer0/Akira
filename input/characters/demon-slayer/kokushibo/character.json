@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-kokushibo",
+  "name": "Kokushibo",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-kokushibo-base",
+      "name": "Kokushibo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

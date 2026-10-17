@@ -1,0 +1,14 @@
+{
+  "textElements": {
+    "characterName": {
+      "x": 113,
+      "y": 34,
+      "fontSize": 13,
+      "fontFamily": "Roboto-Bold",
+      "color": "#E7FBFF",
+      "horizontal-anchor": "center",
+      "vertical-anchor": "center",
+      "grow": false
+    }
+  }
+}

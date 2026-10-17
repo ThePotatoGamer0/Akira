@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-omitsu",
+  "name": "Omitsu",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-omitsu-base",
+      "name": "Omitsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

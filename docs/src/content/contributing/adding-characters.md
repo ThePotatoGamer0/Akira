@@ -27,7 +27,7 @@ npm run portraits -- blue-lock servamp one-piece naruto
 
 - The folder slug is the search. `dragon-ball-z` works. `dbz` does not, because it is searched as the word "Dbz".
 - A title has to match AniList's English or romaji name after the slug is spaced out. `my-dress-up-darling` needs a search override in `scripts/fetch-portraits.ts` because the real title still has a hyphen.
-- Each run stops at 100 characters, main and supporting only.
+- Each run stops at 100 characters, main and supporting only. Demon Slayer also pulls the later TV seasons into the same folder. A character already in the folder is left as it is.
 - Danganronpa resolves to the anime, not the visual novels. Yu-Gi-Oh is split across several shows, and the plain name does not match AniList's title.
 - Every installed `base.png` is an equal drop. Delete character folders you do not want before `npm run init`.
 - AniList art is a headshot. Replace `base.png` when you have a wider shot. Alternate arts are a second image you add by hand in `character.json`.

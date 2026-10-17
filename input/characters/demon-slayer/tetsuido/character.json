@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-tetsuido",
+  "name": "Tetsuido",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-tetsuido-base",
+      "name": "Tetsuido",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}
