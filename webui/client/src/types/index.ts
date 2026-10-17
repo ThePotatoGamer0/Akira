@@ -43,6 +43,8 @@ export type CollectionSlice = {
 
 export type CollectionStudio = {
   serverFrame: number;
+  /** The signed-in player's frame. Null uses the server frame. */
+  personalFrame: number | null;
   frames: number[];
   tags: { name: string; emoji: string; count: number }[];
 };

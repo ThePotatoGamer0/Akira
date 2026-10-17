@@ -2,6 +2,7 @@ import type { Client } from "discord.js";
 import { shopItem, startOfUtcDay } from "../game/buffs.js";
 import { rollDuePools, type PoolRollResult } from "../game/live-buffs.js";
 import { resolveDropChannelId } from "../game/drops.js";
+import { hostIsInGuild } from "./host-gate.js";
 
 function rollLine(result: PoolRollResult): string {
   if (!result.spent) {
@@ -11,8 +12,16 @@ function rollLine(result: PoolRollResult): string {
   return `Midnight pool: tier ${result.tier} spent ${result.pot.toLocaleString("en-US")} bits on ${names.join(" and ")}.`;
 }
 
+async function guildsWithHost(client: Client): Promise<Set<string>> {
+  const ids = new Set<string>();
+  for (const guild of client.guilds.cache.values()) {
+    if (await hostIsInGuild(guild)) ids.add(guild.id);
+  }
+  return ids;
+}
+
 async function announceRolls(client: Client): Promise<void> {
-  const results = await rollDuePools();
+  const results = await rollDuePools(new Date(), Math.random, await guildsWithHost(client));
   for (const result of results) {
     const channelId = await resolveDropChannelId(result.guildId);
     if (!channelId) continue;

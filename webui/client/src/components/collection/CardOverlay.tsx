@@ -58,7 +58,10 @@ export function CardOverlay(props: {
     setDraftFrame(card.frameChoice);
   }, [card.frameChoice]);
 
-  const previewFrame = draftFrame ?? studio.serverFrame;
+  const previewFrame = draftFrame ?? studio.personalFrame ?? studio.serverFrame;
+  const fallbackLabel = studio.personalFrame === null
+    ? `Server frame · ${frameLabel(studio.serverFrame)}`
+    : `Your frame · ${frameLabel(studio.personalFrame)}`;
   const canShiny = card.quality === "LEGENDARY" || Boolean(card.dye);
   const src = burnedBits !== null ? apiUrl(card.assets.burn) : assetUrl(card, previewFrame, canShiny && shiny);
   const shownEmoji = tagValue ? studio.tags.find((tag) => tag.name === tagValue)?.emoji ?? card.tagEmoji : null;
@@ -237,7 +240,7 @@ export function CardOverlay(props: {
             disabled={!props.canEdit || busy !== null || burnedBits !== null}
             onChange={(event) => void changeFrame(event.target.value)}
           >
-            <option value="">Server default · {frameLabel(studio.serverFrame)}</option>
+            <option value="">{fallbackLabel}</option>
             {studio.frames.map((id) => (
               <option key={id} value={String(id)}>
                 {frameLabel(id)}

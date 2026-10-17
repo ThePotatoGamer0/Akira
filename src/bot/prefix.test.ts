@@ -13,6 +13,7 @@ import { multitrade } from "./commands/multitrade.js";
 import { give, trade } from "./commands/transfer.js";
 import { view } from "./commands/view.js";
 import { wishlist } from "./commands/wishlist.js";
+import { checklist } from "./commands/checklist.js";
 import { invocationIsExpected, matchPrefixedCommand, parsePrefixedCommand, resolveLegacyCommand, viewCardArgument } from "./prefix.js";
 
 test("legacy commands use the a prefix glued to the name", () => {
@@ -73,6 +74,11 @@ test("a prefix command runs only when the arguments are exactly what it accepts"
   assert.equal(invocationIsExpected(wishlist, "add"), false);
   assert.equal(invocationIsExpected(wishlist, "add Tanjirou Kamado"), true);
   assert.equal(invocationIsExpected(wishlist, "Denji", "add"), true);
+  assert.equal(invocationIsExpected(checklist, ""), true);
+  assert.equal(invocationIsExpected(checklist, "add"), false);
+  assert.equal(invocationIsExpected(checklist, "add Demon Slayer"), true);
+  assert.equal(invocationIsExpected(checklist, "remove Cyberpunk"), true);
+  assert.equal(invocationIsExpected(checklist, "hello"), false);
   assert.equal(invocationIsExpected(inventory, ""), true);
   assert.equal(invocationIsExpected(inventory, "is cool"), false);
   assert.equal(invocationIsExpected(tag, "fav"), true);
@@ -102,6 +108,9 @@ test("a prefix command runs only when the arguments are exactly what it accepts"
   assert.equal(invocationIsExpected(frame, "card fmbl40r 2"), true);
   assert.equal(invocationIsExpected(frame, "card fmbl40r clear"), true);
   assert.equal(invocationIsExpected(frame, "card fmbl40r clear extra"), false);
+  assert.equal(invocationIsExpected(frame, "personal"), false);
+  assert.equal(invocationIsExpected(frame, "personal pink"), true);
+  assert.equal(invocationIsExpected(frame, "personal clear"), true);
   assert.equal(invocationIsExpected(multitrade, "<@123>"), true);
   assert.equal(invocationIsExpected(multitrade, ""), false);
   assert.equal(invocationIsExpected(give, "<@123> fmbl40r"), true);

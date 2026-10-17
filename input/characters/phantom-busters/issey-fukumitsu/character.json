@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-issey-fukumitsu",
+  "name": "Issey Fukumitsu",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "phantom-busters-issey-fukumitsu-base",
+      "name": "Issey Fukumitsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

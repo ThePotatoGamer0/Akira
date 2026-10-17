@@ -1,11 +1,12 @@
 import { Router } from "express";
 import type { CardQuality, Prisma } from "../../../../src/generated/prisma/client.js";
 import { burnOwnedCards, quoteOwnedBurn } from "../../../../src/game/economy.js";
-import { displayFrameId, frameIdsOnDisk, serverDefaultFrame, setCardFrame } from "../../../../src/game/frames.js";
+import { displayFrameId, frameIdsOnDisk, personalDefaultFrame, serverDefaultFrame, setCardFrame, setOwnedFrames, setPersonalDefaultFrame } from "../../../../src/game/frames.js";
 import { GameError } from "../../../../src/game/errors.js";
 import { applyTag, clearTag, createTag, deleteTag, listTags } from "../../../../src/game/tags.js";
 import { prisma } from "../db/client.js";
 import { authMiddleware } from "../middleware/auth.js";
+import { akiraAddressName } from "../utils/akira-address-name.js";
 
 const CONDITION_WORDS: [CardQuality, string][] = [
   ["COMMON", "damaged"],
@@ -155,12 +156,14 @@ collectionRouter.get("/:userId/studio", async (req, res) => {
     res.status(404).json({ error: "Akira couldn't find that player." });
     return;
   }
-  const [serverFrame, tags] = await Promise.all([
+  const [serverFrame, personalFrame, tags] = await Promise.all([
     serverDefaultFrame(process.env["DISCORD_GUILD_ID"] ?? null),
+    personalDefaultFrame(owner.discordId),
     listTags(owner.discordId),
   ]);
   res.json({
     serverFrame,
+    personalFrame,
     frames: frameIdsOnDisk(),
     tags: tags.tags,
   });
@@ -241,6 +244,56 @@ collectionRouter.post("/:userId/burn", async (req, res) => {
   }
 });
 
+collectionRouter.post("/:userId/default-frame", async (req, res) => {
+  const userId = req.params["userId"] ?? "";
+  const viewer = req.user!;
+  if (viewer.id !== userId) {
+    res.status(403).json({ error: "Akira only changes your own frame." });
+    return;
+  }
+  const body = req.body as { frameId?: unknown };
+  if (body.frameId !== null && (typeof body.frameId !== "number" || !Number.isInteger(body.frameId) || body.frameId < 0)) {
+    res.status(400).json({ error: "Akira needs a frame id for that." });
+    return;
+  }
+  try {
+    await setPersonalDefaultFrame(viewer.discordId, viewer.discordUsername ?? viewer.discordId, body.frameId);
+    const personalFrame = await personalDefaultFrame(viewer.discordId);
+    res.json({ personalFrame });
+  } catch (err) {
+    res.status(400).json({ error: gameMessage(err) });
+  }
+});
+
+collectionRouter.post("/:userId/frame-cards", async (req, res) => {
+  const userId = req.params["userId"] ?? "";
+  const viewer = req.user!;
+  if (viewer.id !== userId) {
+    res.status(403).json({ error: "Akira only changes cards you own." });
+    return;
+  }
+  const body = req.body as { frameId?: unknown; cardIds?: unknown };
+  const cardIds = cardIdList(body.cardIds);
+  if (!cardIds || (body.frameId !== null && (typeof body.frameId !== "number" || !Number.isInteger(body.frameId) || body.frameId < 0))) {
+    res.status(400).json({ error: "Akira needs a frame and a card code for that." });
+    return;
+  }
+  try {
+    const ids = await setOwnedFrames(viewer.discordId, cardIds, body.frameId);
+    const [serverFrame, personalFrame] = await Promise.all([
+      serverDefaultFrame(process.env["DISCORD_GUILD_ID"] ?? null),
+      personalDefaultFrame(viewer.discordId),
+    ]);
+    res.json({
+      frameChoice: body.frameId,
+      frameId: displayFrameId(body.frameId, serverFrame, personalFrame),
+      cardIds: ids,
+    });
+  } catch (err) {
+    res.status(400).json({ error: gameMessage(err) });
+  }
+});
+
 collectionRouter.post("/:userId/tag-cards", async (req, res) => {
   const userId = req.params["userId"] ?? "";
   const viewer = req.user!;
@@ -312,8 +365,11 @@ collectionRouter.patch("/:userId/cards/:cardId", async (req, res) => {
       res.status(404).json({ error: "Akira couldn't find that card." });
       return;
     }
-    const serverFrame = await serverDefaultFrame(process.env["DISCORD_GUILD_ID"] ?? null);
-    const frameId = displayFrameId(card.frameId, serverFrame);
+    const [serverFrame, personalFrame] = await Promise.all([
+      serverDefaultFrame(process.env["DISCORD_GUILD_ID"] ?? null),
+      personalDefaultFrame(viewer.discordId),
+    ]);
+    const frameId = displayFrameId(card.frameId, serverFrame, personalFrame);
     const tags = await prisma.tag.findMany({ where: { userId: viewer.id } });
     const emoji = card.tag ? tags.find((tag) => tag.name === card.tag)?.emoji ?? "◾" : "◾";
     const base = assetBase(card.variantId, frameId, card.printNumber, card.dye);
@@ -333,11 +389,24 @@ collectionRouter.patch("/:userId/cards/:cardId", async (req, res) => {
   }
 });
 
+collectionRouter.get("/players", async (_req, res) => {
+  const users = await prisma.user.findMany({
+    select: { id: true, preferredName: true, discordUsername: true },
+  });
+  const players = users
+    .map((user) => ({ id: user.id, name: akiraAddressName(user) }))
+    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
+  res.json({ players });
+});
+
 collectionRouter.get("/:userId", async (req, res) => {
   const userId = req.params["userId"] ?? "";
-  const viewer = req.user!;
-  if (viewer.id !== userId && !viewer.isAdmin) {
-    res.status(403).json({ error: "Akira can only show that collection to its owner (or an admin)." });
+  const owner = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { id: true, discordId: true },
+  });
+  if (!owner) {
+    res.status(404).json({ error: "Akira couldn't find that player." });
     return;
   }
 
@@ -347,7 +416,7 @@ collectionRouter.get("/:userId", async (req, res) => {
   const order = collectionOrder(queryParam(req.query["order"]));
   const where = collectionWhere(userId, q);
 
-  const [owned, total, ranked, serverFrame, tags] = await Promise.all([
+  const [owned, total, ranked, serverFrame, personalFrame, tags] = await Promise.all([
     prisma.card.count({ where: { ownerId: userId } }),
     prisma.card.count({ where }),
     prisma.card.findMany({
@@ -362,6 +431,7 @@ collectionRouter.get("/:userId", async (req, res) => {
       },
     }),
     serverDefaultFrame(process.env["DISCORD_GUILD_ID"] ?? null),
+    personalDefaultFrame(owner.discordId),
     prisma.tag.findMany({ where: { userId } }),
   ]);
   const pageIds = ranked
@@ -394,7 +464,7 @@ collectionRouter.get("/:userId", async (req, res) => {
     offset,
     cards: cards.map((c) => {
       const { character: ch } = c.variant;
-      const frameId = displayFrameId(c.frameId, serverFrame);
+      const frameId = displayFrameId(c.frameId, serverFrame, personalFrame);
       const base = assetBase(c.variant.id, frameId, c.printNumber, c.dye);
 
       return {

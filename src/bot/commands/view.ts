@@ -1,6 +1,6 @@
 import { SlashCommandBuilder, type ChatInputCommandInteraction, type Client } from "discord.js";
 import { getCard } from "../../game/cards.js";
-import { displayFrameId, serverDefaultFrame } from "../../game/frames.js";
+import { displayFrameId, personalDefaultFrame, serverDefaultFrame } from "../../game/frames.js";
 import { ensureCardImage, visualKind } from "../../game/compose.js";
 import { GameError } from "../../game/errors.js";
 import type { AkiraCommand } from "../../types/commands.js";
@@ -23,7 +23,11 @@ export const view: AkiraCommand = {
         throw new GameError("missing", `Akira couldn't find a card with the id \`${cardId}\`.`);
       }
       const kind = visualKind(card.quality, card.dye);
-      const frameId = displayFrameId(card.frameId, await serverDefaultFrame(interaction.guildId));
+      const frameId = displayFrameId(
+        card.frameId,
+        await serverDefaultFrame(interaction.guildId),
+        await personalDefaultFrame(card.owner?.discordId ?? null),
+      );
       const imageRequest = {
         variantId: card.variant.id,
         seriesSlug: card.variant.character.series.slug,

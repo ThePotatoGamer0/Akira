@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { PREFERRED_NAME_MAX, sanitizePreferredName } from "../lib/akiraAddressName.js";
 import type { Me } from "../types/index.js";
 
 export function PersonalisePage(props: {
@@ -6,12 +7,12 @@ export function PersonalisePage(props: {
   fetchApi: (path: string, init?: RequestInit) => Promise<Response>;
   onSaved: () => void;
 }) {
-  const [preferredName, setPreferredName] = useState(props.me.preferredName ?? "");
+  const [preferredName, setPreferredName] = useState(sanitizePreferredName(props.me.preferredName ?? "") ?? "");
   const [msg, setMsg] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    setPreferredName(props.me.preferredName ?? "");
+    setPreferredName(sanitizePreferredName(props.me.preferredName ?? "") ?? "");
   }, [props.me.preferredName, props.me.id]);
 
   async function patchName(value: string) {
@@ -31,7 +32,7 @@ export function PersonalisePage(props: {
     const next = j as Me;
     setPreferredName(next.preferredName ?? "");
     props.onSaved();
-    setMsg("Saved.");
+    setMsg(value.trim() && !next.preferredName ? "Akira is using your Discord name." : "Saved.");
     return true;
   }
 
@@ -42,8 +43,8 @@ export function PersonalisePage(props: {
       </h2>
       <p className="webui-lede">
         Choose how Akira addresses you in the WebUI home greeting and in <code>/ping</code> and{" "}
-        <code>/help</code>. Leave blank to use your Discord handle (
-        <strong>{props.me.discordUsername ?? "-"}</strong>).
+        <code>/help</code>. One word, up to {PREFERRED_NAME_MAX} letters. Akira capitalises the first letter.
+        Leave it blank to use your Discord handle (<strong>{props.me.discordUsername ?? "-"}</strong>).
       </p>
 
       <div className="panel">
@@ -60,10 +61,11 @@ export function PersonalisePage(props: {
             What should Akira call you?
             <input
               value={preferredName}
-              onChange={(e) => setPreferredName(e.target.value)}
+              onChange={(e) => setPreferredName(sanitizePreferredName(e.target.value) ?? "")}
               placeholder={props.me.discordUsername ?? "e.g. Potato"}
               maxLength={64}
               autoComplete="nickname"
+              spellCheck={false}
             />
           </label>
           <button type="submit" disabled={saving}>

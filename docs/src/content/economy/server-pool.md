@@ -3,7 +3,7 @@ title: Server buff pool
 description: A shared pot. At midnight the bits you gave become a buff for the whole server.
 ---
 
-The **server pool** is one pot for the whole server. Anyone can put bits in. At midnight UTC, Akira looks at the pot and applies a buff for the next 24 hours. If the bot was offline at midnight, it does that roll when it comes back, as long as that night has not already been rolled. The result is announced in the drop channel.
+The **server pool** is one pot for the whole server. It only runs in a server Akira's owner is in. Anywhere else, giving bits or looking at the pot gets "You cannot use the server pool in a private server." Anyone in a server she shares can put bits in. At midnight UTC, Akira looks at the pot and applies a buff for the next 24 hours. If the bot was offline at midnight, it does that roll when it comes back, as long as that night has not already been rolled. The result is announced in the drop channel.
 
 Midnight UTC is the same moment for everyone. In the UK that is 1am while the clocks are on summer time.
 

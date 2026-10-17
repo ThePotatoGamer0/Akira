@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-charles-de-noir-mamoru",
+  "name": "Charles De Noir Mamoru",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "phantom-busters-charles-de-noir-mamoru-base",
+      "name": "Charles De Noir Mamoru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

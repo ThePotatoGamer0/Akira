@@ -12,9 +12,12 @@ import {
   pickWeighted,
   positionFromEmoji,
   RARE_ALT_WEIGHT,
+  MINT_PITY_DROPS,
+  nextPity,
   rollArts,
   rollQuality,
   SECRET_RARE_ALT_WEIGHT,
+  type Quality,
 } from "./balance.js";
 
 const catalog = [
@@ -146,4 +149,27 @@ test("number emoji map to drop slots", () => {
   assert.equal(positionFromEmoji("4️⃣"), 4);
   assert.equal(positionFromEmoji("👍"), null);
   assert.equal(positionFromEmoji(null), null);
+});
+
+test("pity stays flat until the 200th drop without a mint", () => {
+  const commons: Quality[] = ["COMMON", "UNCOMMON", "RARE"];
+  const early = nextPity({ dropsSinceMint: 0, qualities: commons, rng: () => 0 });
+  assert.deepEqual(early.qualities, commons);
+  assert.equal(early.dropsSinceMint, 1);
+
+  const almost = nextPity({ dropsSinceMint: MINT_PITY_DROPS - 2, qualities: commons, rng: () => 0 });
+  assert.equal(almost.dropsSinceMint, MINT_PITY_DROPS - 1);
+  assert.equal(almost.qualities.includes("LEGENDARY"), false);
+
+  const forced = nextPity({ dropsSinceMint: MINT_PITY_DROPS - 1, qualities: commons, rng: () => 0.9 });
+  assert.equal(forced.dropsSinceMint, 0);
+  assert.deepEqual(forced.qualities, ["COMMON", "UNCOMMON", "LEGENDARY"]);
+
+  const natural = nextPity({
+    dropsSinceMint: 40,
+    qualities: ["COMMON", "LEGENDARY"],
+    rng: () => 0,
+  });
+  assert.equal(natural.dropsSinceMint, 0);
+  assert.deepEqual(natural.qualities, ["COMMON", "LEGENDARY"]);
 });

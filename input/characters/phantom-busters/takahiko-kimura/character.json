@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-takahiko-kimura",
+  "name": "Takahiko Kimura",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "phantom-busters-takahiko-kimura-base",
+      "name": "Takahiko Kimura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

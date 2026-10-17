@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-hikaru-kanzaki",
+  "name": "Hikaru Kanzaki",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "phantom-busters-hikaru-kanzaki-base",
+      "name": "Hikaru Kanzaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

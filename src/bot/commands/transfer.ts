@@ -14,7 +14,7 @@ import type { Quality } from "../../game/balance.js";
 import { cardSummaryLine } from "../../game/display.js";
 import { emojiForTag, tagEmojisForDiscord } from "../../game/tags.js";
 import { ensureCardImage, visualKind } from "../../game/compose.js";
-import { displayFrameId, serverDefaultFrame } from "../../game/frames.js";
+import { displayFrameId, personalDefaultFrame, serverDefaultFrame } from "../../game/frames.js";
 import { GameError } from "../../game/errors.js";
 import { icon } from "../../utils/icons.js";
 import {
@@ -31,14 +31,14 @@ import { renderTradePair } from "../../renderer/trade-strip.js";
 import type { AkiraCommand } from "../../types/commands.js";
 import { sendGameError } from "../reply.js";
 
-async function line(card: TransferCard | null, serverFrame: number, discordId: string | null): Promise<string> {
+async function line(card: TransferCard | null, serverFrame: number, discordId: string | null, personalFrame: number | null): Promise<string> {
   if (!card) return "That card is gone.";
   const tags = discordId ? await tagEmojisForDiscord(discordId) : new Map<string, string>();
   return cardSummaryLine({
     cardId: card.id,
     quality: card.quality,
     printNumber: card.printNumber,
-    frameId: displayFrameId(card.frameId, serverFrame),
+    frameId: displayFrameId(card.frameId, serverFrame, personalFrame),
     seriesName: card.seriesName,
     characterName: card.characterName,
     tagEmoji: emojiForTag(tags, card.tag),
@@ -82,9 +82,11 @@ async function transferMessage(
   file?: { data: Buffer; name: string },
 ) {
   const serverFrame = await serverDefaultFrame(guildId);
+  const fromFrame = await personalDefaultFrame(view.fromDiscordId);
+  const toFrame = view.kind === "trade" ? await personalDefaultFrame(view.toDiscordId) : null;
   const body = view.kind === "trade"
-    ? `<@${view.fromDiscordId}>\n${await line(view.fromCard, serverFrame, view.fromDiscordId)}\n\n<@${view.toDiscordId}>\n${await line(view.toCard, serverFrame, view.toDiscordId)}`
-    : `<@${view.fromDiscordId}> → <@${view.toDiscordId}>\n\n${await line(view.fromCard, serverFrame, view.fromDiscordId)}`;
+    ? `<@${view.fromDiscordId}>\n${await line(view.fromCard, serverFrame, view.fromDiscordId, fromFrame)}\n\n<@${view.toDiscordId}>\n${await line(view.toCard, serverFrame, view.toDiscordId, toFrame)}`
+    : `<@${view.fromDiscordId}> → <@${view.toDiscordId}>\n\n${await line(view.fromCard, serverFrame, view.fromDiscordId, fromFrame)}`;
   const name = file?.name ?? attachmentName(view);
   const embed = new EmbedBuilder()
     .setTitle(view.kind === "trade" ? "Card Trade" : "Card Transfer")
@@ -122,17 +124,19 @@ async function readCard(card: TransferCard, frameId: number): Promise<{ data: Bu
 
 async function replyOffer(interaction: ChatInputCommandInteraction, view: TransferView): Promise<void> {
   const serverFrame = await serverDefaultFrame(interaction.guildId);
+  const fromFrame = await personalDefaultFrame(view.fromDiscordId);
+  const toFrame = await personalDefaultFrame(view.toDiscordId);
   if (view.kind === "trade") {
     if (!view.fromCard || !view.toCard) throw new GameError("missing", "Akira couldn't find that card anymore.");
-    const left = await readCard(view.fromCard, displayFrameId(view.fromCard.frameId, serverFrame));
-    const right = await readCard(view.toCard, displayFrameId(view.toCard.frameId, serverFrame));
+    const left = await readCard(view.fromCard, displayFrameId(view.fromCard.frameId, serverFrame, fromFrame));
+    const right = await readCard(view.toCard, displayFrameId(view.toCard.frameId, serverFrame, toFrame));
     const pair = await renderTradePair(left.data, right.data, left.animated || right.animated);
     const file = { data: pair.data, name: pair.animated ? "trade.gif" : "trade.png" };
     await interaction.reply(await transferMessage(view, interaction.guildId, file));
     return;
   }
   if (!view.fromCard) throw new GameError("missing", "Akira couldn't find that card anymore.");
-  const image = await readCard(view.fromCard, displayFrameId(view.fromCard.frameId, serverFrame));
+  const image = await readCard(view.fromCard, displayFrameId(view.fromCard.frameId, serverFrame, fromFrame));
   const file = { data: image.data, name: image.animated ? "card.gif" : "card.png" };
   await interaction.reply(await transferMessage(view, interaction.guildId, file));
 }
@@ -214,7 +218,10 @@ export async function handleTransferButton(interaction: ButtonInteraction): Prom
       const serverFrame = await serverDefaultFrame(interaction.guildId);
       const card = side === "from" ? view.fromCard : view.toCard;
       const ownerId = side === "from" ? view.fromDiscordId : view.toDiscordId;
-      await interaction.reply({ content: await line(card, serverFrame, ownerId), ephemeral: true });
+      await interaction.reply({
+        content: await line(card, serverFrame, ownerId, await personalDefaultFrame(ownerId)),
+        ephemeral: true,
+      });
       return true;
     }
     const offerId = parts[2];

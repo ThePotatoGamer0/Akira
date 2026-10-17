@@ -12,11 +12,12 @@ import {
   formatRemaining,
   GRAB_BITS,
   issuePrint,
+  nextPity,
   rollArts,
   rollQuality,
   type Quality,
 } from "./balance.js";
-import { dropWeight } from "./buffs.js";
+import { dropWeight, includeInDrop } from "./buffs.js";
 import { mintCardCode } from "./codes.js";
 import { GameError } from "./errors.js";
 import { activeEffects } from "./live-buffs.js";
@@ -52,6 +53,7 @@ export type PreparedDrop = {
   expiresAt: Date;
   slots: PresentedSlot[];
   wishlistDiscordIds: string[];
+  dropsSinceMint: number;
 };
 
 export type DropPresentation = PreparedDrop & { messageId: string };
@@ -171,7 +173,16 @@ export async function prepareDrop(input: {
 
   const effects = await activeEffects(user.id, input.guildId);
   const rng = input.rng ?? Math.random;
-  const rolled = rollArts(variants, rng, effects.cardCount, (variant) =>
+  const pool = variants.filter((variant) => includeInDrop(variant.character.role, effects.qualityOverQuantity));
+  if (pool.length === 0) {
+    throw new GameError(
+      "empty",
+      effects.qualityOverQuantity
+        ? "Akira doesn't have any main characters to drop yet."
+        : "Akira doesn't have any card art to drop yet.",
+    );
+  }
+  const rolled = rollArts(pool, rng, effects.cardCount, (variant) =>
     dropWeight({
       variantId: variant.id,
       rarity: variant.rarity,
@@ -180,8 +191,13 @@ export async function prepareDrop(input: {
       effects,
     }),
   );
+  const pitied = nextPity({
+    dropsSinceMint: user.dropsSinceMint,
+    qualities: rolled.map(() => rollQuality(rng, effects.legendaryWeight)),
+    rng,
+  });
   const slots = rolled.map((variant, index) =>
-    slotFromVariant(index + 1, variant, rollQuality(rng, effects.legendaryWeight), frameId),
+    slotFromVariant(index + 1, variant, pitied.qualities[index] ?? "COMMON", frameId),
   );
   const wishes = await wishlistDiscordIds(slots.map((slot) => slot.characterId));
 
@@ -194,6 +210,7 @@ export async function prepareDrop(input: {
     expiresAt: new Date(Date.now() + DROP_OPEN_MS),
     slots,
     wishlistDiscordIds: wishes.filter((id) => id !== input.discordId),
+    dropsSinceMint: pitied.dropsSinceMint,
   };
 }
 
@@ -233,6 +250,10 @@ export async function commitDrop(prepared: PreparedDrop, messageId: string): Pro
       create: { userId: prepared.userId, type: "DROP", expiresAt },
       update: { expiresAt },
     });
+    await tx.user.update({
+      where: { id: prepared.userId },
+      data: { dropsSinceMint: prepared.dropsSinceMint },
+    });
   });
 }
 
@@ -262,6 +283,7 @@ function present(drop: DropWithSlots, wishlistIds: string[], serverFrame: number
     dropCooldownMs: DROP_COOLDOWN_MS,
     expiresAt: drop.expiresAt,
     wishlistDiscordIds: wishlistIds,
+    dropsSinceMint: 0,
     slots: drop.slots
       .slice()
       .sort((a, b) => a.position - b.position)

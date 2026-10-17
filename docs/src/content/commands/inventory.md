@@ -23,7 +23,7 @@ The line is the result, not the arithmetic. A shop-only Four cards buff says "Yo
 - A mint prestige with no shiny buff: "Mints appear a little more often than 1 in 100 cards." The same nudge sits on top of 1 in 51 or 1 in 34 when a shiny buff is also up.
 - With no shiny buff and no mint prestige, inventory does not mention mints. A normal drop stays 1 in 100.
 - Four cards: "Your drops have four cards."
-- Quality over quantity: "Your drops have one card, and main characters are much more likely."
+- Quality over quantity: "Your drops have one card, and only MAIN characters can appear."
 - A prestige percent sits on its own line, such as "Burns pay 2% more."
 
 ## Parameters

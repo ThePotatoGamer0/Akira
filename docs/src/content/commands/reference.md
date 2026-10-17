@@ -21,7 +21,8 @@ The full command name always works after the prefix (`acollection`). The short a
 | [`/multiburn`](/commands/multiburn) | `tag_name` required. Burns every card on that tag after a confirmation. | `mb` |
 | [`/lookup`](/commands/lookup) | `name` required for `/lookup`. Character, series, or alias. Several words are fine. Prefix `alu` with no name opens the character of the last grab, on that edition. | `lu`, `search`, `find` |
 | [`/wishlist`](/commands/wishlist) | `show` with optional `user`. `add` with required `character`. `remove` with required `character`. | `wl`. Add: `wa`, `wish`, `wishadd`. Remove: `wr`, `wishremove`. |
-| [`/frame`](/commands/frame) | `show` lists the frames. `default` with a required frame name or number (admin). `card` with required `card_id` and `action` (`clear`, a name, or a number). | |
+| [`/cc`](/commands/cc) | `show` lists missing characters in tracked series. `add` and `remove` take a series name. A unique start of the name is enough. | `cc` |
+| [`/frame`](/commands/frame) | `show` lists the frames. `default` with a required frame name or number (admin). `personal` with a frame name, number, or `clear`. `card` with required `card_id` and `action` (`clear`, a name, or a number). | |
 | [`/give`](/commands/give) | `user` and `card_id`, both required. Both players press the check mark. | `g` |
 | [`/trade`](/commands/trade) | `user`, `card_id`, and `their_card`, all required. Both players press the check mark. | |
 | [`/multitrade`](/commands/multitrade) | `user` required. A mention. After they agree, send card codes and `100 bits` in that channel. | `mt` |
@@ -31,7 +32,7 @@ The full command name always works after the prefix (`acollection`). The short a
 | [`/tagdelete`](/commands/tagdelete) | `tag_name` required. | `tagremove`, `tr`, `td` |
 | [`/untag`](/commands/untag) | `card_ids` optional, space-separated. No codes untags the last grab. | `ut` |
 
-Examples: `ad`, `ac`, `av`, `av fmbl40r`, `alu denji`, `awl`, `awa Power`, `awr Power`, `aframe`, `aframe default 1`, `aframe card fmbl40r clear`, `agive @friend fmbl40r`, `atrade @friend fmbl40r abc1234`, `amt @friend`.
+Examples: `ad`, `ac`, `av`, `av fmbl40r`, `alu denji`, `awl`, `awa Power`, `awr Power`, `acc`, `acc add Demon S`, `acc remove Cyberpunk`, `aframe`, `aframe default 1`, `aframe personal pink`, `aframe card fmbl40r clear`, `agive @friend fmbl40r`, `atrade @friend fmbl40r abc1234`, `amt @friend`.
 
 ## Timers
 

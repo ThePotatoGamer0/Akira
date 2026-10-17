@@ -96,6 +96,9 @@ Numbered results, 25 per page, and a menu. Page buttons show the rest of the mat
 Aliases: `wl` (show, or the next word if it is add, remove, or show). Add: `wa`, `wish`, `wishadd`. Remove: `wr`, `wishremove`.
 Wishlist slots are unlimited. Akira mentions the player when that character is in a drop.
 
+### /cc
+`show` lists characters the player does not own in each tracked series. `add` and `remove` take a series name. A unique start of the name is enough (`Demon S` is Demon Slayer when nothing else starts that way). Alias: `cc` (`acc`, `kcc`). The same four pins as the WebUI completion card.
+
 ### /daily
 Parameters: none. No short alias (`adaily`).
 Pays 100 bits plus `passiveBitsBonus`. Once every 24 hours.
@@ -109,8 +112,8 @@ Parameters: optional `action` of `daily`, `drop`, or `grab`. Aliases: `rm`, `rem
 No action lists those three with a bell if the DM is on. An action toggles the DM for when that cooldown ends.
 
 ### /frame
-`show` has no parameters. `default` requires a frame id and a server admin. `card` requires `card_id` and `action` (a frame id or `clear`). No short alias (`aframe`).
-A null frame on a card uses `GuildConfig.defaultFrameId`.
+`show` has no parameters. `default` requires a frame id and a server admin. `personal` sets your frame (`clear` drops it). `card` requires `card_id` and `action` (a frame id or `clear`). No short alias (`aframe`).
+A card frame wins. Then the owner's personal frame. Then `GuildConfig.defaultFrameId`.
 
 ### /userinfo [user]
 Parameters: optional user mention. Aliases: `ui`, `whois`.
@@ -160,7 +163,7 @@ These reply that the feature is not wired up. They take no parameters.
 
 ### /shop
 Parameters: none. Aliases: `is`, `itemshop`.
-Opens an embed of the first personal buff, with previous, next, and buy. There is no `/shop buy`. Buying starts a timer. Buying again extends the time left. The seven buffs are drop cooldown (400 bits, 24h, 10 minutes), grab cooldown (350, 12h, 2 minutes 30 seconds), burn value (300, 24h, `/burn` pays double), four cards (500, 24h), shiny luck (600, 24h, mints 1 in 51), featured series (450, 24h, that series is twice as likely and stays locked to the series shown at purchase), and quality over quantity (500, 24h, one card and main characters are much more likely).
+Opens an embed of the first personal buff, with previous, next, and buy. There is no `/shop buy`. Buying starts a timer. Buying again extends the time left. The seven buffs are drop cooldown (400 bits, 24h, 10 minutes), grab cooldown (350, 12h, 2 minutes 30 seconds), burn value (300, 24h, `/burn` pays double), four cards (500, 24h), shiny luck (600, 24h, mints 1 in 51), featured series (450, 24h, that series is twice as likely and stays locked to the series shown at purchase), and quality over quantity (500, 24h, one card, and only main characters can appear).
 
 ### /pool
 `show` or `give` with a required bit amount. `apool` is show. `apool give 200` moves 200 bits into the server pot and the player's milestone bar.
@@ -189,7 +192,7 @@ Seven personal buffs. Buying starts the clock. Buying the same one again adds th
 
 A normal mint is 1 in 100 cards (legendary is the only shiny drop). Shiny luck from the shop or the server alone is 1 in 51. Both together is 1 in 34. Player-facing copy says those odds, not a weight.
 
-Quality over quantity forces one card even if four cards is also active. Four cards never becomes five. Main characters are the AniList MAIN cast. Supporting characters, and characters with no role, can still drop.
+Quality over quantity forces one card even if four cards is also active. Four cards never becomes five. That card is an AniList MAIN character. Supporting characters, characters with no role, and series with no main characters are left out. Featured series still doubles a series that has main characters. Mint odds stay at the buff rate until 200 drops in a row have no mint. That 200th drop turns one random card into a mint, then the count starts over. A mint before that also starts the count over. Dropping, grabbing, the server pool, and setting the drop channel only run in a server the owner is in.
 
 ### Server pool
 One pot per server. At midnight UTC, if the pot is under 500 bits, nothing is applied and the bits stay. At 500 or more, the pot is spent to 0 and the chosen buff lasts 24 hours. The roll also runs at startup if that night was missed, and the result is announced in the drop channel.

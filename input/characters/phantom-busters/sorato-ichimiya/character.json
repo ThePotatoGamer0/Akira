@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-sorato-ichimiya",
+  "name": "Sorato Ichimiya",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "phantom-busters-sorato-ichimiya-base",
+      "name": "Sorato Ichimiya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-rinri-gotou",
+  "name": "Rinri Gotou",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "phantom-busters-rinri-gotou-base",
+      "name": "Rinri Gotou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

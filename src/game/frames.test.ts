@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { frameName, parseFrameToken } from "./frames.js";
+import { displayFrameId, frameName, parseFrameToken } from "./frames.js";
 
 test("named frames cover the color set", () => {
   assert.equal(frameName(0), "dark");
@@ -16,4 +16,11 @@ test("named frames cover the color set", () => {
   assert.equal(parseFrameToken("Ambient"), 10);
   assert.equal(parseFrameToken("1"), 1);
   assert.equal(parseFrameToken("gold"), null);
+});
+
+test("a card frame wins, then a personal frame, then the server frame", () => {
+  assert.equal(displayFrameId(6, 0, 1), 6);
+  assert.equal(displayFrameId(null, 0, 1), 1);
+  assert.equal(displayFrameId(null, 0, null), 0);
+  assert.equal(displayFrameId(null, 0, 99), 0);
 });

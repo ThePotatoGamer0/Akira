@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-yuri-kadenokouji",
+  "name": "Yuri Kadenokouji",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "phantom-busters-yuri-kadenokouji-base",
+      "name": "Yuri Kadenokouji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

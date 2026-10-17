@@ -260,10 +260,15 @@ export async function rollServerPool(guildId: string, now = new Date(), rng: () 
   return { guildId, spent: true, tier, buffs, pot: pool.totalBits };
 }
 
-export async function rollDuePools(now = new Date(), rng: () => number = Math.random): Promise<PoolRollResult[]> {
+export async function rollDuePools(
+  now = new Date(),
+  rng: () => number = Math.random,
+  guildIds?: ReadonlySet<string>,
+): Promise<PoolRollResult[]> {
   const pools = await prisma.serverPool.findMany();
   const results: PoolRollResult[] = [];
   for (const pool of pools) {
+    if (guildIds && !guildIds.has(pool.guildId)) continue;
     const result = await rollServerPool(pool.guildId, now, rng);
     if (result) results.push(result);
   }

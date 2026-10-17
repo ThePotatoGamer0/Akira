@@ -9,11 +9,9 @@ import {
 } from "../utils/discord-activity.js";
 import { createVerificationCode, consumeVerificationCode } from "../utils/verificationCodes.js";
 import { sendVerificationDm } from "../utils/notify-bot.js";
-import { akiraAddressName } from "../utils/akira-address-name.js";
+import { akiraAddressName, sanitizePreferredName } from "../utils/akira-address-name.js";
 
 export const authRouter = Router();
-
-const PREFERRED_NAME_MAX = 64;
 
 function serializeMe(u: {
   id: string;
@@ -31,7 +29,7 @@ function serializeMe(u: {
     id: u.id,
     discordId: u.discordId,
     discordUsername: u.discordUsername,
-    preferredName: u.preferredName,
+    preferredName: u.preferredName ? sanitizePreferredName(u.preferredName) : null,
     displayName: akiraAddressName(u),
     bits: u.bits,
     prestigeLevel: u.prestigeLevel,
@@ -235,11 +233,7 @@ authRouter.patch("/me", authMiddleware, async (req, res) => {
     res.status(400).json({ error: "Send preferredName as a string (empty string clears it)." });
     return;
   }
-  if (raw.length > PREFERRED_NAME_MAX) {
-    res.status(400).json({ error: `Keep your name to ${PREFERRED_NAME_MAX} characters or fewer.` });
-    return;
-  }
-  const preferredName = raw.length === 0 ? null : raw.replace(/[\r\n\u0000]/g, "");
+  const preferredName = raw.length === 0 ? null : sanitizePreferredName(raw);
   const updated = await prisma.user.update({
     where: { id: req.user!.id },
     data: { preferredName },

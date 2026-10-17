@@ -203,7 +203,7 @@ export async function burnOwnedCard(discordId: string, username: string, cardId:
     imageFile: card.variant.image,
     characterName: card.variant.character.name,
     seriesName: card.variant.character.series.name,
-    frameId: displayFrameId(card.frameId, await serverDefaultFrame(guildId)),
+    frameId: displayFrameId(card.frameId, await serverDefaultFrame(guildId), card.owner?.defaultFrameId ?? null),
     printNumber: card.printNumber,
     dye: card.dye,
     kind: "burn",

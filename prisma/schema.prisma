@@ -95,6 +95,10 @@ model User {
   passiveBitsBonus    Int                    @default(0)
   /** Card code from the player's latest successful grab. Bare `av` opens this. */
   lastGrabbedCardId   String?
+  /** Drops in a row with no mint. The 200th forces one, then this goes back to 0. */
+  dropsSinceMint      Int                    @default(0)
+  /** Frame for this player's cards that don't have one of their own. Null uses the server frame. */
+  defaultFrameId      Int?
   cards               Card[]
   wishlists           Wishlist[]
   poolContributions   UserPoolContribution[]
