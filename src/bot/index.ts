@@ -36,6 +36,7 @@ import { guildListensForKaruta, handleKarutaOverride, handleKarutaOverrideButton
 import { commandPrefix, createPrefixInteraction, invocationIsExpected, matchPrefixedCommand, resolveLegacyCommand, viewCardArgument } from "./prefix.js";
 import { syncApplicationIcons } from "./icon-sync.js";
 import { serverHasDropChannel } from "../game/drops.js";
+import { collaborativeAction, hostIsInGuild, privateServerMessage } from "./host-gate.js";
 import { registerGuildCommands } from "../init/register-commands.js";
 
 const token = process.env["DISCORD_TOKEN"];
@@ -94,6 +95,18 @@ function setupHint(): string {
 async function serverIsReady(guildId: string | null, commandName: string): Promise<boolean> {
   if (!guildId || commandName === "set") return true;
   return serverHasDropChannel(guildId);
+}
+
+async function refusePrivateServer(
+  guild: Guild | null,
+  commandName: string,
+  reply: (content: string) => Promise<unknown>,
+): Promise<boolean> {
+  const action = collaborativeAction(commandName);
+  if (!action) return false;
+  if (await hostIsInGuild(guild)) return false;
+  await reply(privateServerMessage(action));
+  return true;
 }
 
 async function refuseUnsetServer(interaction: RepliableInteraction): Promise<boolean> {
@@ -184,6 +197,11 @@ client.on(Events.MessageCreate, async (message) => {
       await message.reply(egg);
       return;
     }
+  }
+  if (
+    await refusePrivateServer(message.guild, commandName, (content) => message.reply(content))
+  ) {
+    return;
   }
   if (!(await serverIsReady(message.guildId, commandName))) return;
   if (parsed.name === "overridekaruta") {
@@ -293,6 +311,13 @@ client.on(Events.InteractionCreate, async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
   if (isInitLocked()) {
     await interaction.reply({ content: waitingMessage, ephemeral: true });
+    return;
+  }
+  if (
+    await refusePrivateServer(interaction.guild, interaction.commandName, (content) =>
+      interaction.reply({ content, ephemeral: true }),
+    )
+  ) {
     return;
   }
   if (await refuseUnsetServer(interaction)) return;

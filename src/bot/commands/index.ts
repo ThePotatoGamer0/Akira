@@ -23,6 +23,7 @@ import { ping } from "./ping.js";
 import { userinfo } from "./userinfo.js";
 import { view } from "./view.js";
 import { wishlist } from "./wishlist.js";
+import { checklist } from "./checklist.js";
 
 export const commands: AkiraCommand[] = [
   ping,
@@ -43,6 +44,7 @@ export const commands: AkiraCommand[] = [
   tagdelete,
   untag,
   wishlist,
+  checklist,
   give,
   trade,
   multitrade,

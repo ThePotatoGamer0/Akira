@@ -10,7 +10,7 @@ import {
   type Client,
 } from "discord.js";
 import { COLLECTION_PAGE_SIZE, listCollection } from "../../game/cards.js";
-import { displayFrameId, serverDefaultFrame } from "../../game/frames.js";
+import { displayFrameId, personalDefaultFrame, serverDefaultFrame } from "../../game/frames.js";
 import { cardSummaryLine } from "../../game/display.js";
 import { GameError } from "../../game/errors.js";
 import { packFilterText, parseCardFilters, unpackFilterText, type CardFilter } from "../../game/filters.js";
@@ -68,6 +68,7 @@ function collectionButtons(ownerId: string, page: number, total: number, canonic
 async function collectionPayload(ownerId: string, page: number, guildId: string | null, filter: CardFilter, filterText: string) {
   const { total, cards, page: safePage, owned } = await listCollection(ownerId, page, filter);
   const serverFrame = await serverDefaultFrame(guildId);
+  const personalFrame = await personalDefaultFrame(ownerId);
   const start = total === 0 ? 0 : safePage * COLLECTION_PAGE_SIZE + 1;
   const end = total === 0 ? 0 : safePage * COLLECTION_PAGE_SIZE + cards.length;
   const tags = await tagEmojisForDiscord(ownerId);
@@ -76,7 +77,7 @@ async function collectionPayload(ownerId: string, page: number, guildId: string 
       cardId: card.id,
       quality: card.quality,
       printNumber: card.printNumber,
-      frameId: displayFrameId(card.frameId, serverFrame),
+      frameId: displayFrameId(card.frameId, serverFrame, personalFrame),
       seriesName: card.variant.character.series.name,
       characterName: card.variant.character.name,
       tagEmoji: emojiForTag(tags, card.tag),

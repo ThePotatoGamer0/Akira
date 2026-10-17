@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { isCardCode, mintCardCode, randomCardCode } from "./codes.js";
-import { cardSummaryLine, cooldownLine, fightOffAnnouncement, formatDuration, grabAnnouncement, qualityStars } from "./display.js";
+import { cardSummaryLine, cooldownLine, dropAnnouncement, fightOffAnnouncement, formatDuration, grabAnnouncement, qualityStars } from "./display.js";
 
 test("card codes are 7 lowercase letters or digits", () => {
   const code = randomCardCode(() => 0);
@@ -76,4 +76,11 @@ test("collection and grab lines use the short code", () => {
     }),
     "<@1> fought off <@2> and took the **The Commander** card `v8ppgb1`! Unfortunately, it was badly **damaged**.",
   );
+});
+
+test("the drop line names how many cards are in the picture", () => {
+  assert.equal(dropAnnouncement("9", []), "<@9> is dropping 3 cards!");
+  assert.equal(dropAnnouncement("9", [], 1), "<@9> is dropping 1 card!");
+  assert.equal(dropAnnouncement("9", [], 4), "<@9> is dropping 4 cards!");
+  assert.match(dropAnnouncement("9", ["4"], 1), /<@9> is dropping 1 card!\n\n<@4> /);
 });

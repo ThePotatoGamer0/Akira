@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-ren-shishikuno",
+  "name": "Ren Shishikuno",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "phantom-busters-ren-shishikuno-base",
+      "name": "Ren Shishikuno",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

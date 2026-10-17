@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-mikabane-shishikuno",
+  "name": "Mikabane Shishikuno",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "phantom-busters-mikabane-shishikuno-base",
+      "name": "Mikabane Shishikuno",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

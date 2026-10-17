@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-maria-yotsuya",
+  "name": "Maria Yotsuya",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "phantom-busters-maria-yotsuya-base",
+      "name": "Maria Yotsuya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

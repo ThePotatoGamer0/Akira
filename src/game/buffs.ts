@@ -66,7 +66,7 @@ export const SHOP_ITEMS: ShopItem[] = [
   {
     id: "quality_over_quantity",
     name: "Quality over quantity",
-    description: "Your drop is one card, and MAIN characters are eight times as likely.",
+    description: "Your drop is one card, and only MAIN characters can appear.",
     priceBits: 500,
     durationHours: 24,
   },
@@ -247,7 +247,7 @@ export function resolveEffects(input: ActiveEffects): ResolvedEffects {
   const legendaryBase = shinySources === 0 ? 1 : shinySources === 1 ? 2 : 3;
   const legendaryWeight = legendaryBase * (1 + 0.01 * input.prestige.mint);
   const seriesId = has(input.shop, "featured_series") ? input.seriesId : null;
-  const mainMultiplier = (qualityOverQuantity ? 8 : 1) * (1 + 0.01 * input.prestige.main);
+  const mainMultiplier = 1 + 0.01 * input.prestige.main;
 
   return {
     dropCooldownMs,
@@ -325,11 +325,17 @@ export function combinedLines(input: ActiveEffects): string[] {
   }
   if (resolved.cardCount === 4) lines.push("Your drops have four cards.");
   if (resolved.qualityOverQuantity) {
-    lines.push("Your drops have one card, and MAIN characters are much more likely.");
+    lines.push("Your drops have one card, and only MAIN characters can appear.");
   }
   if (resolved.seriesId) lines.push("Today's bought series is twice as likely in your drops.");
   if (input.prestige.main > 0) lines.push(`MAIN characters are ${input.prestige.main}% more likely.`);
   return lines;
+}
+
+/** Quality over quantity ignores supporting characters and anyone with no role. */
+export function includeInDrop(role: string | null, qualityOverQuantity: boolean): boolean {
+  if (!qualityOverQuantity) return true;
+  return role === "MAIN";
 }
 
 export function dropWeight(input: {

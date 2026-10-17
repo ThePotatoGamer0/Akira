@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-sunao-usami",
+  "name": "Sunao Usami",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "phantom-busters-sunao-usami-base",
+      "name": "Sunao Usami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

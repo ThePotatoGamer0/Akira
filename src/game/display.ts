@@ -45,8 +45,9 @@ export function cooldownLine(name: string, ms: number): string {
   return `**${name}** is available in \`${formatDuration(ms)}\``;
 }
 
-export function dropAnnouncement(dropperDiscordId: string, wishlistDiscordIds: string[]): string {
-  const lines = [`<@${dropperDiscordId}> is dropping 3 cards!`];
+export function dropAnnouncement(dropperDiscordId: string, wishlistDiscordIds: string[], cardCount = 3): string {
+  const noun = cardCount === 1 ? "1 card" : `${cardCount} cards`;
+  const lines = [`<@${dropperDiscordId}> is dropping ${noun}!`];
   if (wishlistDiscordIds.length > 0) {
     const mentions = wishlistDiscordIds.map((id) => `<@${id}>`).join(" ");
     lines.push(`${mentions} Akira sees a character you're watching for.`);

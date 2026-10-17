@@ -2,7 +2,7 @@ import { EmbedBuilder, SlashCommandBuilder, type ChatInputCommandInteraction, ty
 import { lastGrabbedCard } from "../../game/cards.js";
 import { cardSummaryLine } from "../../game/display.js";
 import { GameError } from "../../game/errors.js";
-import { displayFrameId, serverDefaultFrame } from "../../game/frames.js";
+import { displayFrameId, personalDefaultFrame, serverDefaultFrame } from "../../game/frames.js";
 import { applyTag, clearTag, createTag, deleteTag, listTags } from "../../game/tags.js";
 import { icon } from "../../utils/icons.js";
 import type { AkiraCommand } from "../../types/commands.js";
@@ -127,12 +127,13 @@ export const untag: AkiraCommand = {
       }
       const cards = await clearTag(interaction.user.id, interaction.user.username, ids);
       const serverFrame = await serverDefaultFrame(interaction.guildId);
+      const personalFrame = await personalDefaultFrame(interaction.user.id);
       const lines = cards.map((card) =>
         cardSummaryLine({
           cardId: card.id,
           quality: card.quality,
           printNumber: card.printNumber,
-          frameId: displayFrameId(card.frameId, serverFrame),
+          frameId: displayFrameId(card.frameId, serverFrame, personalFrame),
           seriesName: card.variant.character.series.name,
           characterName: card.variant.character.name,
           tagEmoji: icon("square"),

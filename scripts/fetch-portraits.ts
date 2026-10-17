@@ -57,9 +57,9 @@ type ManifestEntry = {
 };
 
 const SEARCH_QUERY = `
-query ($search: String) {
+query ($search: String, $type: MediaType) {
   Page(perPage: 10) {
-    media(search: $search, type: ANIME, sort: SEARCH_MATCH) {
+    media(search: $search, type: $type, sort: SEARCH_MATCH) {
       id
       popularity
       title { romaji english }
@@ -68,9 +68,14 @@ query ($search: String) {
 }
 `;
 
+/** Extra AniList media whose cast should join an existing series folder. */
+const EXTRA_CAST: Record<string, { type: "ANIME" | "MANGA"; search: string }> = {
+  "phantom-busters": { type: "MANGA", search: "Phantom Busters" },
+};
+
 const CAST_QUERY = `
 query ($id: Int, $page: Int) {
-  Media(id: $id, type: ANIME) {
+  Media(id: $id) {
     id
     title { romaji english }
     characters(page: $page, perPage: ${PAGE_SIZE}, sort: [ROLE, RELEVANCE]) {
@@ -191,7 +196,7 @@ function titleScore(
   return rank * 1_000_000_000 + (popularity ?? 0);
 }
 
-async function resolveSeries(search: string): Promise<{ id: number; title: string }> {
+async function resolveSeries(search: string, type: "ANIME" | "MANGA"): Promise<{ id: number; title: string }> {
   const data = await anilist<{
     Page: {
       media: Array<{
@@ -200,13 +205,13 @@ async function resolveSeries(search: string): Promise<{ id: number; title: strin
         title: { romaji: string | null; english: string | null };
       }>;
     };
-  }>(SEARCH_QUERY, { search });
+  }>(SEARCH_QUERY, { search, type });
   const ranked = data.Page.media
     .map((hit) => ({ hit, score: titleScore(search, hit.title, hit.popularity) }))
     .sort((a, b) => b.score - a.score);
   const best = ranked[0];
   if (!best || best.score < 1_000_000_000) {
-    throw new Error(`AniList has no anime whose title matches "${search}"`);
+    throw new Error(`AniList has no ${type === "MANGA" ? "manga" : "anime"} whose title matches "${search}"`);
   }
   return {
     id: best.hit.id,
@@ -237,7 +242,7 @@ async function castFor(id: number): Promise<AniCharacter[]> {
     }>(CAST_QUERY, { id, page });
 
     if (!data.Media) {
-      throw new Error(`AniList has no anime with id ${id}`);
+      throw new Error(`AniList has no media with id ${id}`);
     }
 
     let sawBackgroundOnly = data.Media.characters.edges.length > 0;
@@ -272,9 +277,24 @@ async function writePng(url: string, dest: string): Promise<void> {
 async function fetchSeries(seriesSlug: string, search: string, force: boolean): Promise<void> {
   const existing = readExisting(path.join(charactersRoot, seriesSlug));
   console.log(`Looking up ${search} on AniList (${existing.length} catalog characters)...`);
-  const resolved = await resolveSeries(search);
+  const resolved = await resolveSeries(search, "ANIME");
   console.log(`  matched ${resolved.title} (${resolved.id})`);
-  const characters = await castFor(resolved.id);
+  let characters = await castFor(resolved.id);
+  const extra = EXTRA_CAST[seriesSlug];
+  if (extra) {
+    const manga = await resolveSeries(extra.search, extra.type);
+    console.log(`  also ${manga.title} (${manga.id}, ${extra.type})`);
+    const added = await castFor(manga.id);
+    const seen = new Set(characters.map((character) => character.id));
+    const names = new Set(characters.map((character) => character.name.trim().toLowerCase()));
+    for (const character of added) {
+      const name = character.name.trim().toLowerCase();
+      if (seen.has(character.id) || names.has(name)) continue;
+      seen.add(character.id);
+      names.add(name);
+      characters.push(character);
+    }
+  }
   const outDir = path.join(portraitsRoot, seriesSlug);
   fs.mkdirSync(outDir, { recursive: true });
 

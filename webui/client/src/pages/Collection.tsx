@@ -2,9 +2,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { CardOverlay } from "../components/collection/CardOverlay.js";
 import { CollectionGrid } from "../components/collection/CollectionGrid.js";
 import { TagMenu } from "../components/collection/TagMenu.js";
+import { frameLabel } from "../lib/frames.js";
 import type { CollectionCard, CollectionSlice, CollectionStudio, Me } from "../types/index.js";
 
-const EMPTY_STUDIO: CollectionStudio = { serverFrame: 0, frames: [0], tags: [] };
+const EMPTY_STUDIO: CollectionStudio = { serverFrame: 0, personalFrame: null, frames: [0], tags: [] };
 const BATCH = 16;
 const PAGE_SIZE = 32;
 
@@ -17,6 +18,12 @@ const COLLECTION_ORDERS = [
 ] as const;
 
 type CollectionOrder = (typeof COLLECTION_ORDERS)[number]["id"];
+
+type CollectionPlayer = { id: string; name: string };
+
+function possessive(name: string): string {
+  return `${name}'s`;
+}
 
 function slicePath(userId: string, offset: number, limit: number, q: string, order: CollectionOrder): string {
   const params = new URLSearchParams({ offset: String(offset), limit: String(limit), order });
@@ -48,11 +55,16 @@ export function CollectionPage(props: {
   const [selecting, setSelecting] = useState(false);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set());
   const [tagChoice, setTagChoice] = useState("");
+  const [framePick, setFramePick] = useState("");
   const [actionBusy, setActionBusy] = useState<string | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
   const [actionNote, setActionNote] = useState<string | null>(null);
   const [burnQuote, setBurnQuote] = useState<{ awarded: number; skipped: number; count: number } | null>(null);
   const [tagsOpen, setTagsOpen] = useState(false);
+  const [viewedId, setViewedId] = useState(props.me.id);
+  const [players, setPlayers] = useState<CollectionPlayer[]>([]);
+  const [whoOpen, setWhoOpen] = useState(false);
+  const whoRef = useRef<HTMLSpanElement>(null);
   const [query, setQuery] = useState("");
   const [search, setSearch] = useState({ q: "", page: 0, order: "character" as CollectionOrder });
   const [total, setTotal] = useState(0);
@@ -75,12 +87,15 @@ export function CollectionPage(props: {
 
   const readSlice = useCallback(
     async (offset: number, limit: number, q: string, order: CollectionOrder): Promise<CollectionSlice | null> => {
-      const res = await props.fetchApi(slicePath(props.me.id, offset, limit, q, order));
+      const res = await props.fetchApi(slicePath(viewedId, offset, limit, q, order));
       if (!res.ok) return null;
       return (await res.json()) as CollectionSlice;
     },
-    [props.fetchApi, props.me.id],
+    [props.fetchApi, viewedId],
   );
+
+  const viewingSelf = viewedId === props.me.id;
+  const viewedName = players.find((player) => player.id === viewedId)?.name ?? props.me.displayName;
 
   useEffect(() => {
     const handle = window.setTimeout(() => {
@@ -91,8 +106,38 @@ export function CollectionPage(props: {
   }, [query]);
 
   useEffect(() => {
+    if (!viewingSelf) return;
     void loadStudio();
-  }, [loadStudio]);
+  }, [loadStudio, viewingSelf]);
+
+  useEffect(() => {
+    let cancelled = false;
+    void (async () => {
+      const res = await props.fetchApi("/collection/players");
+      if (!res.ok || cancelled) return;
+      const json = (await res.json()) as { players?: CollectionPlayer[] };
+      if (!cancelled && Array.isArray(json.players)) setPlayers(json.players);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [props.fetchApi]);
+
+  useEffect(() => {
+    if (!whoOpen) return;
+    function onPointer(event: MouseEvent) {
+      if (!whoRef.current?.contains(event.target as Node)) setWhoOpen(false);
+    }
+    function onKey(event: KeyboardEvent) {
+      if (event.key === "Escape") setWhoOpen(false);
+    }
+    document.addEventListener("mousedown", onPointer);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onPointer);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [whoOpen]);
 
   useEffect(() => {
     const ticket = ++epoch.current;
@@ -208,6 +253,7 @@ export function CollectionPage(props: {
     setSelectedIds(new Set());
     setBurnQuote(null);
     setTagChoice("");
+    setFramePick("");
     setActionError(null);
   }
 
@@ -253,6 +299,90 @@ export function CollectionPage(props: {
     const card = cards.find((item) => item.id === cardId);
     if (card) setBurnedCard(card);
     dropCards([cardId]);
+  }
+
+  function assetsFor(card: CollectionCard, frameId: number): CollectionCard["assets"] {
+    const dye = card.dye && /^[a-zA-Z0-9_-]+$/.test(card.dye) ? card.dye : "none";
+    const base = `/api/static/cards/${card.variant.id}/${frameId}/p${card.printNumber}/${dye}`;
+    return { normal: `${base}/normal.png`, shiny: `${base}/shiny.apng`, burn: `${base}/burn.apng` };
+  }
+
+  async function savePersonalFrame(value: string) {
+    const frameId = value === "" ? null : Number(value);
+    if (frameId !== null && !Number.isInteger(frameId)) return;
+    setActionBusy("default-frame");
+    setActionError(null);
+    setActionNote(null);
+    try {
+      const res = await props.fetchApi(`/collection/${props.me.id}/default-frame`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ frameId }),
+      });
+      const json = (await res.json()) as { error?: string };
+      if (!res.ok) {
+        setActionError(json.error ?? "Akira couldn't save your frame.");
+        return;
+      }
+      await loadStudio();
+      const ticket = epoch.current;
+      const slice = await readSlice(search.page * PAGE_SIZE, Math.max(cards.length, BATCH), search.q, search.order);
+      if (slice && ticket === epoch.current) {
+        setCards(slice.cards);
+        setTotal(slice.total);
+        setOwned(slice.owned);
+      }
+      setActionNote(frameId === null ? "Your cards use the server frame again." : "Your frame is saved.");
+    } catch {
+      setActionError("Akira couldn't save your frame.");
+    } finally {
+      setActionBusy(null);
+    }
+  }
+
+  async function applySelectionFrame() {
+    if (!framePick || selectedIds.size === 0) return;
+    const cardIds = [...selectedIds];
+    const clearing = framePick === "__default";
+    const frameId = clearing ? null : Number(framePick);
+    if (frameId !== null && !Number.isInteger(frameId)) return;
+    setActionBusy("frame");
+    setActionError(null);
+    setActionNote(null);
+    try {
+      const res = await props.fetchApi(`/collection/${props.me.id}/frame-cards`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ frameId, cardIds }),
+      });
+      const json = (await res.json()) as { frameChoice?: number | null; frameId?: number; cardIds?: string[]; error?: string };
+      if (!res.ok || typeof json.frameId !== "number" || !json.cardIds) {
+        setActionError(json.error ?? "Akira couldn't frame those cards.");
+        return;
+      }
+      const chosen = new Set(json.cardIds);
+      const drawn = json.frameId;
+      setCards((current) =>
+        current.map((card) =>
+          chosen.has(card.id)
+            ? { ...card, frameChoice: json.frameChoice ?? null, frameId: drawn, assets: assetsFor(card, drawn) }
+            : card,
+        ),
+      );
+      const count = json.cardIds.length;
+      const fallback = studio.personalFrame === null ? "the server frame" : "your frame";
+      setActionNote(
+        clearing
+          ? `${count === 1 ? "That card uses" : `${count} cards use`} ${fallback} again.`
+          : `Framed ${count === 1 ? "that card" : `${count} cards`}.`,
+      );
+      setSelectedIds(new Set());
+      setFramePick("");
+    } catch {
+      setActionError("Akira couldn't frame those cards.");
+    } finally {
+      setActionBusy(null);
+    }
   }
 
   async function applySelectionTag() {
@@ -353,7 +483,52 @@ export function CollectionPage(props: {
     <div className="collection-page">
       <div className="collection-head" ref={headRef}>
         <h2 className="page-title">
-          Your <span className="gradient-text">collection</span>
+          <span className="collection-who" ref={whoRef}>
+            <button
+              type="button"
+              className="collection-who__toggle"
+              aria-expanded={whoOpen}
+              aria-haspopup="listbox"
+              aria-label="Choose whose collection"
+              onClick={() => setWhoOpen((open) => !open)}
+            >
+              {viewingSelf ? "Your" : possessive(viewedName)}
+              <span className="collection-who__arrow" aria-hidden />
+            </button>
+            {whoOpen ? (
+              <ul className="collection-who__menu" role="listbox" aria-label="Players">
+                {(players.some((player) => player.id === props.me.id)
+                  ? players
+                  : [{ id: props.me.id, name: props.me.displayName }, ...players]
+                ).map((player) => {
+                  const self = player.id === props.me.id;
+                  const selected = player.id === viewedId;
+                  return (
+                    <li key={player.id}>
+                      <button
+                        type="button"
+                        role="option"
+                        className="collection-who__option"
+                        aria-selected={selected}
+                        onClick={() => {
+                          setWhoOpen(false);
+                          if (player.id === viewedId) return;
+                          setViewedId(player.id);
+                          setSelecting(false);
+                          setSelectedIds(new Set());
+                          setSelectedId(null);
+                          setSearch((current) => ({ ...current, page: 0 }));
+                        }}
+                      >
+                        {self ? "Your collection" : `${possessive(player.name)} collection`}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : null}
+          </span>{" "}
+          <span className="gradient-text">collection</span>
         </h2>
         <p className="collection-count">{counted ? countLabel : "…"}</p>
       </div>
@@ -363,7 +538,7 @@ export function CollectionPage(props: {
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Search name, series, tag, or card code"
-          aria-label="Search your collection"
+          aria-label={viewingSelf ? "Search your collection" : `Search ${possessive(viewedName)} collection`}
         />
         <select
           className="collection-order"
@@ -380,24 +555,53 @@ export function CollectionPage(props: {
             </option>
           ))}
         </select>
-        <button type="button" className="secondary collection-tags" onClick={() => setTagsOpen(true)}>
-          Tags
-        </button>
-        <button
-          type="button"
-          className={selecting ? "collection-tags" : "secondary collection-tags"}
-          aria-pressed={selecting}
-          onClick={() => (selecting ? leaveSelect() : setSelecting(true))}
-        >
-          {selecting ? "Done" : "Select"}
-        </button>
+        {viewingSelf ? (
+          <label className="collection-frame">
+            Your frame
+            <select
+              className="collection-order"
+              aria-label="Your default frame"
+              value={studio.personalFrame === null ? "" : String(studio.personalFrame)}
+              disabled={actionBusy !== null}
+              onChange={(event) => void savePersonalFrame(event.target.value)}
+            >
+              <option value="">{`Server frame · ${frameLabel(studio.serverFrame)}`}</option>
+              {studio.frames.map((id) => (
+                <option key={id} value={String(id)}>
+                  {frameLabel(id)}
+                </option>
+              ))}
+            </select>
+          </label>
+        ) : null}
+        {viewingSelf ? (
+          <button type="button" className="secondary collection-tags" onClick={() => setTagsOpen(true)}>
+            Tags
+          </button>
+        ) : null}
+        {viewingSelf ? (
+          <button
+            type="button"
+            className={selecting ? "collection-tags" : "secondary collection-tags"}
+            aria-pressed={selecting}
+            onClick={() => (selecting ? leaveSelect() : setSelecting(true))}
+          >
+            {selecting ? "Done" : "Select"}
+          </button>
+        ) : null}
       </div>
       {actionNote ? <p className="collection-note">{actionNote}</p> : null}
       {actionError ? <p className="webui-alert">{actionError}</p> : null}
       {error ? <p className="webui-alert">{error}</p> : null}
       {cards.length === 0 ? (
         <p className="webui-muted collection-pending">
-          {loading ? "Akira is looking through your cards…" : search.q ? "No cards match." : "No cards yet."}
+          {loading
+            ? viewingSelf
+              ? "Akira is looking through your cards…"
+              : "Akira is looking through their cards…"
+            : search.q
+              ? "No cards match."
+              : "No cards yet."}
         </p>
       ) : (
         <CollectionGrid
@@ -445,7 +649,7 @@ export function CollectionPage(props: {
           </span>
         </nav>
       ) : null}
-      {selecting ? (
+      {selecting && viewingSelf ? (
         <div className="collection-actions">
           <p className="collection-actions__count">
             {selectedIds.size} selected
@@ -475,6 +679,24 @@ export function CollectionPage(props: {
           <button type="button" className="secondary" disabled={!tagChoice || selectedIds.size === 0 || actionBusy !== null} onClick={() => void applySelectionTag()}>
             {actionBusy === "tag" ? "Tagging…" : "Apply tag"}
           </button>
+          <select
+            className="collection-order"
+            aria-label="Frame for the selected cards"
+            value={framePick}
+            disabled={actionBusy !== null}
+            onChange={(event) => setFramePick(event.target.value)}
+          >
+            <option value="">Frame…</option>
+            <option value="__default">{studio.personalFrame === null ? "Server frame" : "Your frame"}</option>
+            {studio.frames.map((id) => (
+              <option key={id} value={String(id)}>
+                {frameLabel(id)}
+              </option>
+            ))}
+          </select>
+          <button type="button" className="secondary" disabled={!framePick || selectedIds.size === 0 || actionBusy !== null} onClick={() => void applySelectionFrame()}>
+            {actionBusy === "frame" ? "Framing…" : "Apply frame"}
+          </button>
           {burnQuote ? (
             <div className="collection-actions__confirm">
               <p>
@@ -503,8 +725,8 @@ export function CollectionPage(props: {
           key={selected.id}
           card={selected}
           studio={studio}
-          canEdit
-          userId={props.me.id}
+          canEdit={viewingSelf}
+          userId={viewedId}
           fetchApi={props.fetchApi}
           onClose={close}
           onSaved={saveCard}

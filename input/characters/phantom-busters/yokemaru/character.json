@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-yokemaru",
+  "name": "Yokemaru",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "phantom-busters-yokemaru-base",
+      "name": "Yokemaru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-botan-kadenokouji",
+  "name": "Botan Kadenokouji",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "phantom-busters-botan-kadenokouji-base",
+      "name": "Botan Kadenokouji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import {
   EMPTY_PRESTIGE,
   dropWeight,
   extendExpiry,
+  includeInDrop,
   MILESTONES,
   mintSentence,
   missedMidnight,
@@ -86,23 +87,35 @@ describe("shop duration and card count", () => {
     assert.equal(locked.seriesId, "bought");
   });
 
-  it("weights MAIN characters above SUPPORTING ones", () => {
-    const effects = resolveEffects(base({ shop: ["quality_over_quantity"] }));
-    const main = dropWeight({
+  it("drops only MAIN characters while quality over quantity is on", () => {
+    assert.equal(includeInDrop("MAIN", true), true);
+    assert.equal(includeInDrop("SUPPORTING", true), false);
+    assert.equal(includeInDrop(null, true), false);
+    assert.equal(includeInDrop("SUPPORTING", false), true);
+    const effects = resolveEffects(
+      base({ shop: ["quality_over_quantity", "featured_series"], seriesId: "show" }),
+    );
+    assert.equal(effects.cardCount, 1);
+    assert.equal(effects.mainMultiplier, 1);
+    const featured = dropWeight({
       variantId: "hero-base",
       rarity: "Common",
       seriesId: "show",
       role: "MAIN",
       effects,
     });
-    const support = dropWeight({
-      variantId: "friend-base",
+    const other = dropWeight({
+      variantId: "lead-base",
       rarity: "Common",
-      seriesId: "show",
-      role: "SUPPORTING",
+      seriesId: "other",
+      role: "MAIN",
       effects,
     });
-    assert.equal(main, support * 8);
+    assert.equal(featured, other * 2);
+    assert.match(
+      combinedLines(base({ shop: ["quality_over_quantity"] })).join(" "),
+      /only MAIN characters can appear/,
+    );
   });
 
   it("never makes five cards, and one card wins over four", () => {

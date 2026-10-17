@@ -5,6 +5,7 @@ import { fightOffAnnouncement, grabAnnouncement } from "../../game/display.js";
 import { claimReaction, loadDrop } from "../../game/drops.js";
 import { GameError } from "../../game/errors.js";
 import { isInitLocked } from "../../utils/init-lock.js";
+import { hostIsInGuild, privateServerMessage } from "../host-gate.js";
 import { queueCooldownReminder } from "../reminder-schedule.js";
 
 async function tell(reaction: MessageReaction | PartialMessageReaction, text: string, temporary: boolean): Promise<void> {
@@ -41,6 +42,11 @@ async function onReaction(
   if (reaction.partial) await reaction.fetch();
   if (reaction.message.partial) await reaction.message.fetch();
   if (user.partial) await user.fetch();
+
+  if (!(await hostIsInGuild(reaction.message.guild))) {
+    await tell(reaction, `<@${user.id}> ${privateServerMessage("grab")}`, true);
+    return;
+  }
 
   try {
     const result = await claimReaction({

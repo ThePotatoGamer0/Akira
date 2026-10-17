@@ -31,7 +31,7 @@ export async function renderDropMessage(input: {
   const strip = await renderDropStrip(cards);
   const name = strip.animated ? "drop.gif" : "drop.png";
   return {
-    content: dropAnnouncement(input.dropperDiscordId, input.wishlistDiscordIds),
+    content: dropAnnouncement(input.dropperDiscordId, input.wishlistDiscordIds, input.slots.length),
     embeds: [],
     files: [new AttachmentBuilder(strip.data, { name })],
   };

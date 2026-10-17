@@ -21,6 +21,7 @@ export const help: AkiraCommand = {
         `A longer trade is \`${commandPrefix()}mt @friend\`. ` +
         `An admin runs \`${commandPrefix()}set\` in a channel to make that the drop channel. ` +
         "`/wishlist add` pings you when a character appears. " +
+        `\`${commandPrefix()}cc\` lists characters you still don't have in the series you track. ` +
         "Running `/ping` or `/help` also saves your Discord name so the browser WebUI can find you.",
       ephemeral: true,
     });

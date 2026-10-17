@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-mukuro-shishikuno",
+  "name": "Mukuro Shishikuno",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "phantom-busters-mukuro-shishikuno-base",
+      "name": "Mukuro Shishikuno",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

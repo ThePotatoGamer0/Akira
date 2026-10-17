@@ -7,6 +7,8 @@ export const SECRET_RARE_ALT_WEIGHT = 3;
 export const DEFAULT_ALT_WEIGHT = RARE_ALT_WEIGHT;
 
 export const DROP_SLOT_COUNT = 3;
+/** A dropper's 200th drop in a row with no mint forces one card in that drop to mint. */
+export const MINT_PITY_DROPS = 200;
 export const DEFAULT_FRAME_ID = 0;
 
 export const DROP_COOLDOWN_MS = 20 * 60 * 1000;
@@ -68,6 +70,28 @@ export function rollQuality(rng: () => number, legendaryWeight = 1): Quality {
     row.quality === "LEGENDARY" ? { quality: row.quality, weight: legendaryWeight } : row,
   );
   return pickWeighted(table, rng).quality;
+}
+
+/**
+ * Mint odds stay at the dropper's normal rate.
+ * A mint in the drop puts the count back to zero.
+ * The 200th drop with no mint turns one card into a mint, chosen at random, and the count starts over.
+ */
+export function nextPity(input: {
+  dropsSinceMint: number;
+  qualities: readonly Quality[];
+  rng: () => number;
+}): { qualities: Quality[]; dropsSinceMint: number } {
+  const qualities = [...input.qualities];
+  if (qualities.length === 0) return { qualities, dropsSinceMint: input.dropsSinceMint };
+  if (qualities.some((quality) => quality === "LEGENDARY")) {
+    return { qualities, dropsSinceMint: 0 };
+  }
+  const next = input.dropsSinceMint + 1;
+  if (next < MINT_PITY_DROPS) return { qualities, dropsSinceMint: next };
+  const index = Math.min(qualities.length - 1, Math.floor(input.rng() * qualities.length));
+  qualities[index] = "LEGENDARY";
+  return { qualities, dropsSinceMint: 0 };
 }
 
 export function rollArts<T extends { id: string; rarity: string }>(

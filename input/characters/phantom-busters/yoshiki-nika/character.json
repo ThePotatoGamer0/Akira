@@ -1,0 +1,14 @@
+{
+  "id": "phantom-busters-yoshiki-nika",
+  "name": "Yoshiki Nika",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "phantom-busters-yoshiki-nika-base",
+      "name": "Yoshiki Nika",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

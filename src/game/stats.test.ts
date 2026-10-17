@@ -17,6 +17,7 @@ let cardCountStats: typeof import("./stats.js").cardCountStats;
 let bitsStats: typeof import("./stats.js").bitsStats;
 let completionStats: typeof import("./stats.js").completionStats;
 let setSeriesTracked: typeof import("./stats.js").setSeriesTracked;
+let trackedMissing: typeof import("./checklist.js").trackedMissing;
 
 before(async () => {
   process.env["DATABASE_URL"] = `file:${dbFile}`;
@@ -27,11 +28,13 @@ before(async () => {
   });
   const db = await import("../db/client.js");
   const stats = await import("./stats.js");
+  const checklist = await import("./checklist.js");
   prisma = db.prisma;
   cardCountStats = stats.cardCountStats;
   bitsStats = stats.bitsStats;
   completionStats = stats.completionStats;
   setSeriesTracked = stats.setSeriesTracked;
+  trackedMissing = checklist.trackedMissing;
 
   const hero = await prisma.series.create({ data: { name: "My Hero Academia", slug: "hero" } });
   const note = await prisma.series.create({ data: { name: "Death Note", slug: "note" } });
@@ -115,4 +118,15 @@ test("completion uses distinct characters and tracked series replace the top fou
   await setSeriesTracked(ada.id, hero.seriesId, true);
   const refilled = await completionStats(ada.id);
   assert.deepEqual(refilled.bars.map((row) => row.name), ["Death Note", "Extra", "More", "My Hero Academia"]);
+
+  const missing = await trackedMissing(ada.id);
+  assert.deepEqual(
+    missing.map((row) => [row.name, row.missing]),
+    [
+      ["Death Note", []],
+      ["Extra", ["Side"]],
+      ["More", ["Other"]],
+      ["My Hero Academia", ["Ochaco"]],
+    ],
+  );
 });

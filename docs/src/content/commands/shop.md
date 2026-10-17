@@ -23,7 +23,7 @@ Buying starts the clock. Buying the same buff again adds the duration onto the t
 | Four cards | 500 | 24 hours | Your drop has four cards instead of three. |
 | Shiny luck | 600 | 24 hours | Mints appear 1 in 51 cards instead of 1 in 100. |
 | Featured series | 450 | 24 hours | One series is twice as likely in your drops. |
-| Quality over quantity | 500 | 24 hours | Your drop is a single card, and main characters show up much more often. |
+| Quality over quantity | 500 | 24 hours | Your drop is a single card, and only main characters can appear. |
 
 A normal drop is still three cards, and a mint is still 1 in 100, until one of these is on you.
 
@@ -33,7 +33,7 @@ A normal drop is still three cards, and a mint is still 1 in 100, until one of t
 - **One card wins.** If Quality over quantity is also on, the drop is one card, not four.
 - **You do not pick the series.** Every night, at the same midnight UTC as the [server pool](/economy/server-pool), the shop chooses one series that has at least one character and prints that name on Featured series. Buying locks that series onto your buff, so the next night does not swap what you already paid for.
 - **Burn value, Featured series, and Quality over quantity are shop-only.** The server pool cannot grant them.
-- **Main characters** are the leads of a series. Supporting characters, and anyone who has no role stored, can still appear. They just show up much less often while Quality over quantity is on.
+- **Main characters** are the leads of a series. While Quality over quantity is on, the drop is one of those leads. Supporting characters, anyone with no role stored, and a series that has no main characters are left out. Featured series still doubles a series when that series has main characters.
 
 The same shop and the same Buy button are on the Economy page.
 
