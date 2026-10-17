@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-yoriichi-tsugikuni",
+  "name": "Yoriichi Tsugikuni",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-yoriichi-tsugikuni-base",
+      "name": "Yoriichi Tsugikuni",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

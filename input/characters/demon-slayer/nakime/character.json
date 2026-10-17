@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-nakime",
+  "name": "Nakime",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-nakime-base",
+      "name": "Nakime",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

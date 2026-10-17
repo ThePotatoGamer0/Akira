@@ -1,0 +1,24 @@
+{
+  "textElements": {
+    "characterName": {
+      "x": 120,
+      "y": 34,
+      "fontSize": 12,
+      "fontFamily": "Roboto-Bold",
+      "color": "#F4F4F4",
+      "horizontal-anchor": "center",
+      "vertical-anchor": "center",
+      "grow": false
+    },
+    "printNumber": {
+      "x": 261,
+      "y": 560,
+      "fontSize": 12,
+      "fontFamily": "Roboto-Regular",
+      "color": "#F7F7F7",
+      "horizontal-anchor": "center",
+      "vertical-anchor": "center",
+      "grow": false
+    }
+  }
+}

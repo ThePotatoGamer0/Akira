@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useGsapCardTilt } from "../../lib/card-tilt.js";
+import { MenuSelect } from "../MenuSelect.js";
 import { QualityStars, TagMark } from "../marks.js";
 import { frameLabel } from "../../lib/frames.js";
 import { qualityCondition, showsShiny } from "../../lib/quality.js";
@@ -233,41 +234,33 @@ export function CardOverlay(props: {
 
         <section>
           <h3>Frame</h3>
-          <select
+          <MenuSelect
             className="card-overlay__select"
-            aria-label="Frame"
+            label="Frame"
             value={draftFrame === null ? "" : String(draftFrame)}
             disabled={!props.canEdit || busy !== null || burnedBits !== null}
-            onChange={(event) => void changeFrame(event.target.value)}
-          >
-            <option value="">{fallbackLabel}</option>
-            {studio.frames.map((id) => (
-              <option key={id} value={String(id)}>
-                {frameLabel(id)}
-              </option>
-            ))}
-          </select>
+            options={[
+              { value: "", label: fallbackLabel },
+              ...studio.frames.map((id) => ({ value: String(id), label: frameLabel(id) })),
+            ]}
+            onChange={(value) => void changeFrame(value)}
+          />
         </section>
 
         <section>
           <h3>Tag</h3>
-          <select
+          <MenuSelect
             className="card-overlay__select"
-            aria-label="Tag"
+            label="Tag"
             value={tagValue}
             disabled={!props.canEdit || busy !== null || burnedBits !== null}
-            onChange={(event) => void changeTag(event.target.value)}
-          >
-            <option value="">Untagged</option>
-            {studio.tags.map((tag) => (
-              <option key={tag.name} value={tag.name}>
-                {tag.emoji} {tag.name}
-              </option>
-            ))}
-            {tagValue && !studio.tags.some((tag) => tag.name === tagValue) ? (
-              <option value={tagValue}>{tagValue}</option>
-            ) : null}
-          </select>
+            options={[
+              { value: "", label: "Untagged" },
+              ...studio.tags.map((tag) => ({ value: tag.name, label: `${tag.emoji} ${tag.name}` })),
+              ...(tagValue && !studio.tags.some((tag) => tag.name === tagValue) ? [{ value: tagValue, label: tagValue }] : []),
+            ]}
+            onChange={(value) => void changeTag(value)}
+          />
           {studio.tags.length === 0 ? (
             <p className="card-overlay__hint">Add tags from Tags on the collection page.</p>
           ) : null}

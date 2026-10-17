@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-kirisaki",
+  "name": "Kirisaki",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-kirisaki-base",
+      "name": "Kirisaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

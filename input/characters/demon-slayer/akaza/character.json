@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-akaza",
+  "name": "Akaza",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-akaza-base",
+      "name": "Akaza",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

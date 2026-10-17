@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-sumiyoshi",
+  "name": "Sumiyoshi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-sumiyoshi-base",
+      "name": "Sumiyoshi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

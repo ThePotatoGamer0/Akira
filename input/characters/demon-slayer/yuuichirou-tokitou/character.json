@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-yuuichirou-tokitou",
+  "name": "Yuuichirou Tokitou",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-yuuichirou-tokitou-base",
+      "name": "Yuuichirou Tokitou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

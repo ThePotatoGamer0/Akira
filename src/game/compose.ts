@@ -55,6 +55,16 @@ function measureName(text: string, fontSize: number, family: string, bold: boole
   return Math.ceil(measureContext.measureText(text).width);
 }
 
+/** The next label under this one. A label above the name does not limit how tall the name can grow. */
+function closestBelow(origin: TextStyle, candidates: Array<TextStyle | null>): TextStyle | null {
+  let best: TextStyle | null = null;
+  for (const candidate of candidates) {
+    if (!candidate || candidate.y <= origin.y) continue;
+    if (!best || candidate.y < best.y) best = candidate;
+  }
+  return best;
+}
+
 function nameLines(style: TextStyle, name: string, width: number, height: number, print: TextStyle | null): OverlayText[] {
   const family = familyOf(style);
   const bold = /bold/i.test(style.fontFamily);
@@ -63,7 +73,7 @@ function nameLines(style: TextStyle, name: string, width: number, height: number
     name,
     fontSize: style.fontSize,
     maxWidth: limits.maxWidth,
-    maxHeight: limits.maxHeight,
+    maxHeight: style.grow ? limits.maxHeight : Math.min(limits.maxHeight, style.fontSize),
     measure: (text, size) => measureName(text, size, family, bold),
   });
   return fitted.map((line, index) => ({
@@ -100,7 +110,9 @@ export async function ensureCardImage(request: CardImageRequest, format: CardAni
   const meta = await sharp(frame.imagePath).metadata();
   const width = meta.width ?? 0;
   const height = meta.height ?? 0;
-  const belowName = frame.seriesName ?? frame.printNumber;
+  const belowName = frame.characterName
+    ? closestBelow(frame.characterName, [frame.seriesName, frame.printNumber])
+    : null;
   if (frame.characterName && request.characterName.trim()) {
     texts.push(
       ...nameLines(

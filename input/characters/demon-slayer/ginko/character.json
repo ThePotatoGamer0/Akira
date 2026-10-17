@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-ginko",
+  "name": "Ginko",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-ginko-base",
+      "name": "Ginko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

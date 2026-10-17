@@ -13,6 +13,8 @@ export type TextStyle = {
   color: string;
   horizontalAnchor: TextAnchorH;
   verticalAnchor: TextAnchorV;
+  /** When false, the name stays at fontSize instead of growing to fill the space below it. */
+  grow: boolean;
 };
 
 export type FrameAsset = {
@@ -33,6 +35,7 @@ type RawText = {
   color?: string;
   "horizontal-anchor"?: string;
   "vertical-anchor"?: string;
+  grow?: boolean;
 };
 
 function anchorH(value: string | undefined): TextAnchorH {
@@ -55,6 +58,7 @@ function readStyle(raw: RawText | undefined): TextStyle | null {
     color: raw.color ?? "#FFFFFF",
     horizontalAnchor: anchorH(raw["horizontal-anchor"]),
     verticalAnchor: anchorV(raw["vertical-anchor"]),
+    grow: raw.grow !== false,
   };
 }
 

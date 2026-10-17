@@ -69,8 +69,14 @@ query ($search: String, $type: MediaType) {
 `;
 
 /** Extra AniList media whose cast should join an existing series folder. */
-const EXTRA_CAST: Record<string, { type: "ANIME" | "MANGA"; search: string }> = {
-  "phantom-busters": { type: "MANGA", search: "Phantom Busters" },
+const EXTRA_CAST: Record<string, Array<{ type: "ANIME" | "MANGA"; search: string }>> = {
+  "phantom-busters": [{ type: "MANGA", search: "Phantom Busters" }],
+  "demon-slayer": [
+    { type: "ANIME", search: "Kimetsu no Yaiba: Mugen Ressha-hen (TV)" },
+    { type: "ANIME", search: "Kimetsu no Yaiba: Yuukaku-hen" },
+    { type: "ANIME", search: "Kimetsu no Yaiba: Katanakaji no Sato-hen" },
+    { type: "ANIME", search: "Kimetsu no Yaiba: Hashira Geiko-hen" },
+  ],
 };
 
 const CAST_QUERY = `
@@ -142,7 +148,9 @@ function matchExisting(name: string, existing: ExistingCharacter[]): ExistingCha
   });
   if (exact) return exact;
 
-  const first = full.split(/\s+/)[0] ?? full;
+  const parts = full.split(/\s+/);
+  if (parts.length !== 1) return null;
+  const first = parts[0] ?? full;
   const byFirst = existing.filter((character) => {
     const slug = character.slug.toLowerCase();
     const ownFirst = character.name.toLowerCase().split(/\s+/)[0];
@@ -280,14 +288,13 @@ async function fetchSeries(seriesSlug: string, search: string, force: boolean): 
   const resolved = await resolveSeries(search, "ANIME");
   console.log(`  matched ${resolved.title} (${resolved.id})`);
   let characters = await castFor(resolved.id);
-  const extra = EXTRA_CAST[seriesSlug];
-  if (extra) {
-    const manga = await resolveSeries(extra.search, extra.type);
-    console.log(`  also ${manga.title} (${manga.id}, ${extra.type})`);
-    const added = await castFor(manga.id);
-    const seen = new Set(characters.map((character) => character.id));
-    const names = new Set(characters.map((character) => character.name.trim().toLowerCase()));
-    for (const character of added) {
+  const seen = new Set(characters.map((character) => character.id));
+  const names = new Set(characters.map((character) => character.name.trim().toLowerCase()));
+  for (const extra of EXTRA_CAST[seriesSlug] ?? []) {
+    await sleep(800);
+    const more = await resolveSeries(extra.search, extra.type);
+    console.log(`  also ${more.title} (${more.id}, ${extra.type})`);
+    for (const character of await castFor(more.id)) {
       const name = character.name.trim().toLowerCase();
       if (seen.has(character.id) || names.has(name)) continue;
       seen.add(character.id);

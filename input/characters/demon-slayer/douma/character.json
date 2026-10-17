@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-douma",
+  "name": "Douma",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-douma-base",
+      "name": "Douma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

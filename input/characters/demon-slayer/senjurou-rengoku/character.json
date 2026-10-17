@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-senjurou-rengoku",
+  "name": "Senjurou Rengoku",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-senjurou-rengoku-base",
+      "name": "Senjurou Rengoku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

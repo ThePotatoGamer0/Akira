@@ -1,0 +1,24 @@
+{
+  "textElements": {
+    "seriesName": {
+      "x": 91,
+      "y": 28,
+      "fontSize": 13,
+      "fontFamily": "Roboto-Bold",
+      "color": "#FFE8B0",
+      "horizontal-anchor": "center",
+      "vertical-anchor": "center",
+      "grow": false
+    },
+    "characterName": {
+      "x": 310,
+      "y": 573,
+      "fontSize": 13,
+      "fontFamily": "Roboto-Bold",
+      "color": "#FFE8B0",
+      "horizontal-anchor": "center",
+      "vertical-anchor": "center",
+      "grow": false
+    }
+  }
+}

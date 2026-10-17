@@ -59,7 +59,7 @@ input/showcase/         ← reserved for a future Akira's Gift animation
 ```
 
 ### Frames
-Dark (frame 0) and Yellow (frame 1) are the frames in the game. Prestige does not grant a frame. The showcase folder is unused.
+Frames 0–9 are the polaroid in dark, yellow, white, red, blue, green, pink, purple, orange, and teal. Ambient (10) fills that polaroid from the card's art. Plaque (11) is a metal frame with the series on the top plate and the character name on the bottom plate. Frames 12–32 are further frames. Some have a series plate and a character plate, and some omit one or both. Prestige does not grant a frame. The showcase folder is unused.
 
 ---
 

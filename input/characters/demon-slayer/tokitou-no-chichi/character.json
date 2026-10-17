@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-tokitou-no-chichi",
+  "name": "Tokitou no Chichi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-tokitou-no-chichi-base",
+      "name": "Tokitou no Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

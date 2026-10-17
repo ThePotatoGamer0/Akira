@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-amane-ubuyashiki",
+  "name": "Amane Ubuyashiki",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-amane-ubuyashiki-base",
+      "name": "Amane Ubuyashiki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

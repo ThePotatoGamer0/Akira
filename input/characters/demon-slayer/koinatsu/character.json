@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-koinatsu",
+  "name": "Koinatsu",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-koinatsu-base",
+      "name": "Koinatsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

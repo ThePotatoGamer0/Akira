@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-fuku",
+  "name": "Fuku",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-fuku-base",
+      "name": "Fuku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

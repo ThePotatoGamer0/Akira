@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { CardOverlay } from "../components/collection/CardOverlay.js";
 import { CollectionGrid } from "../components/collection/CollectionGrid.js";
 import { TagMenu } from "../components/collection/TagMenu.js";
+import { MenuSelect } from "../components/MenuSelect.js";
 import { frameLabel } from "../lib/frames.js";
 import type { CollectionCard, CollectionSlice, CollectionStudio, Me } from "../types/index.js";
 
@@ -63,8 +64,6 @@ export function CollectionPage(props: {
   const [tagsOpen, setTagsOpen] = useState(false);
   const [viewedId, setViewedId] = useState(props.me.id);
   const [players, setPlayers] = useState<CollectionPlayer[]>([]);
-  const [whoOpen, setWhoOpen] = useState(false);
-  const whoRef = useRef<HTMLSpanElement>(null);
   const [query, setQuery] = useState("");
   const [search, setSearch] = useState({ q: "", page: 0, order: "character" as CollectionOrder });
   const [total, setTotal] = useState(0);
@@ -122,22 +121,6 @@ export function CollectionPage(props: {
       cancelled = true;
     };
   }, [props.fetchApi]);
-
-  useEffect(() => {
-    if (!whoOpen) return;
-    function onPointer(event: MouseEvent) {
-      if (!whoRef.current?.contains(event.target as Node)) setWhoOpen(false);
-    }
-    function onKey(event: KeyboardEvent) {
-      if (event.key === "Escape") setWhoOpen(false);
-    }
-    document.addEventListener("mousedown", onPointer);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("mousedown", onPointer);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [whoOpen]);
 
   useEffect(() => {
     const ticket = ++epoch.current;
@@ -483,51 +466,26 @@ export function CollectionPage(props: {
     <div className="collection-page">
       <div className="collection-head" ref={headRef}>
         <h2 className="page-title">
-          <span className="collection-who" ref={whoRef}>
-            <button
-              type="button"
-              className="collection-who__toggle"
-              aria-expanded={whoOpen}
-              aria-haspopup="listbox"
-              aria-label="Choose whose collection"
-              onClick={() => setWhoOpen((open) => !open)}
-            >
-              {viewingSelf ? "Your" : possessive(viewedName)}
-              <span className="collection-who__arrow" aria-hidden />
-            </button>
-            {whoOpen ? (
-              <ul className="collection-who__menu" role="listbox" aria-label="Players">
-                {(players.some((player) => player.id === props.me.id)
-                  ? players
-                  : [{ id: props.me.id, name: props.me.displayName }, ...players]
-                ).map((player) => {
-                  const self = player.id === props.me.id;
-                  const selected = player.id === viewedId;
-                  return (
-                    <li key={player.id}>
-                      <button
-                        type="button"
-                        role="option"
-                        className="collection-who__option"
-                        aria-selected={selected}
-                        onClick={() => {
-                          setWhoOpen(false);
-                          if (player.id === viewedId) return;
-                          setViewedId(player.id);
-                          setSelecting(false);
-                          setSelectedIds(new Set());
-                          setSelectedId(null);
-                          setSearch((current) => ({ ...current, page: 0 }));
-                        }}
-                      >
-                        {self ? "Your collection" : `${possessive(player.name)} collection`}
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            ) : null}
-          </span>{" "}
+          <MenuSelect
+            variant="heading"
+            label="Choose whose collection"
+            value={viewedId}
+            display={viewingSelf ? "Your" : possessive(viewedName)}
+            options={(players.some((player) => player.id === props.me.id)
+              ? players
+              : [{ id: props.me.id, name: props.me.displayName }, ...players]
+            ).map((player) => ({
+              value: player.id,
+              label: player.id === props.me.id ? "Your collection" : `${possessive(player.name)} collection`,
+            }))}
+            onChange={(id) => {
+              setViewedId(id);
+              setSelecting(false);
+              setSelectedIds(new Set());
+              setSelectedId(null);
+              setSearch((current) => ({ ...current, page: 0 }));
+            }}
+          />{" "}
           <span className="gradient-text">collection</span>
         </h2>
         <p className="collection-count">{counted ? countLabel : "…"}</p>
@@ -540,38 +498,30 @@ export function CollectionPage(props: {
           placeholder="Search name, series, tag, or card code"
           aria-label={viewingSelf ? "Search your collection" : `Search ${possessive(viewedName)} collection`}
         />
-        <select
+        <MenuSelect
           className="collection-order"
+          label="Order"
           value={search.order}
-          aria-label="Order"
-          onChange={(event) => {
-            const order = event.target.value as CollectionOrder;
-            setSearch((current) => (current.order === order ? current : { ...current, order, page: 0 }));
+          options={COLLECTION_ORDERS.map((option) => ({ value: option.id, label: option.label }))}
+          onChange={(order) => {
+            const next = order as CollectionOrder;
+            setSearch((current) => (current.order === next ? current : { ...current, order: next, page: 0 }));
           }}
-        >
-          {COLLECTION_ORDERS.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+        />
         {viewingSelf ? (
           <label className="collection-frame">
             Your frame
-            <select
+            <MenuSelect
               className="collection-order"
-              aria-label="Your default frame"
+              label="Your default frame"
               value={studio.personalFrame === null ? "" : String(studio.personalFrame)}
               disabled={actionBusy !== null}
-              onChange={(event) => void savePersonalFrame(event.target.value)}
-            >
-              <option value="">{`Server frame · ${frameLabel(studio.serverFrame)}`}</option>
-              {studio.frames.map((id) => (
-                <option key={id} value={String(id)}>
-                  {frameLabel(id)}
-                </option>
-              ))}
-            </select>
+              options={[
+                { value: "", label: `Server frame · ${frameLabel(studio.serverFrame)}` },
+                ...studio.frames.map((id) => ({ value: String(id), label: frameLabel(id) })),
+              ]}
+              onChange={(value) => void savePersonalFrame(value)}
+            />
           </label>
         ) : null}
         {viewingSelf ? (
@@ -661,39 +611,33 @@ export function CollectionPage(props: {
           <button type="button" className="secondary" disabled={selectedIds.size === 0 || actionBusy !== null} onClick={() => setSelectedIds(new Set())}>
             Clear
           </button>
-          <select
+          <MenuSelect
             className="collection-order"
-            aria-label="Tag for the selected cards"
+            label="Tag for the selected cards"
             value={tagChoice}
             disabled={actionBusy !== null}
-            onChange={(event) => setTagChoice(event.target.value)}
-          >
-            <option value="">Tag…</option>
-            <option value="__clear">Remove tag</option>
-            {studio.tags.map((tag) => (
-              <option key={tag.name} value={tag.name}>
-                {tag.emoji} {tag.name}
-              </option>
-            ))}
-          </select>
+            options={[
+              { value: "", label: "Tag…" },
+              { value: "__clear", label: "Remove tag" },
+              ...studio.tags.map((tag) => ({ value: tag.name, label: `${tag.emoji} ${tag.name}` })),
+            ]}
+            onChange={setTagChoice}
+          />
           <button type="button" className="secondary" disabled={!tagChoice || selectedIds.size === 0 || actionBusy !== null} onClick={() => void applySelectionTag()}>
             {actionBusy === "tag" ? "Tagging…" : "Apply tag"}
           </button>
-          <select
+          <MenuSelect
             className="collection-order"
-            aria-label="Frame for the selected cards"
+            label="Frame for the selected cards"
             value={framePick}
             disabled={actionBusy !== null}
-            onChange={(event) => setFramePick(event.target.value)}
-          >
-            <option value="">Frame…</option>
-            <option value="__default">{studio.personalFrame === null ? "Server frame" : "Your frame"}</option>
-            {studio.frames.map((id) => (
-              <option key={id} value={String(id)}>
-                {frameLabel(id)}
-              </option>
-            ))}
-          </select>
+            options={[
+              { value: "", label: "Frame…" },
+              { value: "__default", label: studio.personalFrame === null ? "Server frame" : "Your frame" },
+              ...studio.frames.map((id) => ({ value: String(id), label: frameLabel(id) })),
+            ]}
+            onChange={setFramePick}
+          />
           <button type="button" className="secondary" disabled={!framePick || selectedIds.size === 0 || actionBusy !== null} onClick={() => void applySelectionFrame()}>
             {actionBusy === "frame" ? "Framing…" : "Apply frame"}
           </button>

@@ -847,22 +847,48 @@ input::placeholder {
   margin-bottom: 0.25rem;
 }
 
-.collection-who {
+.menu-select {
   position: relative;
+  min-width: 0;
+}
+
+.menu-select--heading {
   display: inline-block;
 }
 
-.collection-who__toggle {
+.menu-select__toggle {
   display: inline-flex;
   align-items: center;
-  gap: 0.28rem;
+  justify-content: space-between;
+  gap: 0.55rem;
+  width: 100%;
   margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  background-image: none;
+  box-shadow: none;
+  animation: none;
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menu-select--field .menu-select__toggle {
+  padding: 0.55rem 0.75rem;
+}
+
+.menu-select--heading .menu-select__toggle {
+  width: auto;
   padding: 0 0.1rem;
   border: none;
   border-radius: 8px;
   background: none;
-  box-shadow: none;
-  animation: none;
   color: inherit;
   font: inherit;
   font-weight: inherit;
@@ -870,29 +896,62 @@ input::placeholder {
   line-height: inherit;
 }
 
-.collection-who__toggle:hover,
-.collection-who__toggle:active {
+.menu-select__toggle:hover,
+.menu-select__toggle:active,
+.menu-select__toggle:disabled {
   transform: none;
   box-shadow: none;
+  animation: none;
+}
+
+.menu-select--heading .menu-select__toggle:hover,
+.menu-select--heading .menu-select__toggle:active {
   background: var(--code-bg);
 }
 
-.collection-who__arrow {
-  width: 0.42rem;
-  height: 0.42rem;
-  margin-top: -0.2rem;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(45deg);
+.menu-select--field .menu-select__toggle:hover,
+.menu-select--field.is-open .menu-select__toggle {
+  border-color: var(--accent);
 }
 
-.collection-who__menu {
-  position: absolute;
-  z-index: 30;
-  top: calc(100% + 0.35rem);
-  left: 0;
-  min-width: 14rem;
-  max-height: 16rem;
+.menu-select--field.is-open .menu-select__toggle {
+  box-shadow: 0 0 0 3px var(--code-bg);
+}
+
+.menu-select__toggle:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.menu-select__toggle:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--code-bg);
+}
+
+.menu-select__value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menu-select__arrow {
+  width: 0.42rem;
+  height: 0.42rem;
+  flex: none;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-0.12rem) rotate(45deg);
+}
+
+.menu-select.is-open .menu-select__arrow {
+  transform: translateY(0.1rem) rotate(225deg);
+}
+
+.menu-select__menu {
+  position: fixed;
+  z-index: 500;
   margin: 0;
   padding: 0.35rem;
   overflow: auto;
@@ -903,7 +962,11 @@ input::placeholder {
   box-shadow: 0 12px 32px var(--shadow-tint);
 }
 
-.collection-who__option {
+.menu-select__menu.is-up {
+  transform: translateY(-100%);
+}
+
+.menu-select__option {
   display: block;
   width: 100%;
   margin: 0;
@@ -911,6 +974,7 @@ input::placeholder {
   border: none;
   border-radius: 8px;
   background: transparent;
+  background-image: none;
   box-shadow: none;
   animation: none;
   color: var(--ink);
@@ -921,14 +985,14 @@ input::placeholder {
   text-align: left;
 }
 
-.collection-who__option:hover,
-.collection-who__option:active {
+.menu-select__option:hover,
+.menu-select__option:active {
   transform: none;
   box-shadow: none;
   background: var(--code-bg);
 }
 
-.collection-who__option[aria-selected="true"] {
+.menu-select__option[aria-selected="true"] {
   color: var(--accent);
   background: var(--code-bg);
 }
@@ -959,30 +1023,6 @@ input::placeholder {
   flex: 1 1 11rem;
   width: auto;
   max-width: 16rem;
-  margin: 0;
-  padding: 0.55rem 2.1rem 0.55rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  font-family: inherit;
-  font-size: 0.95rem;
-  color: var(--ink);
-  background-color: var(--surface);
-  background-image:
-    linear-gradient(45deg, transparent 50%, var(--muted) 50%),
-    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
-  background-position:
-    calc(100% - 16px) calc(50% - 1px),
-    calc(100% - 11px) calc(50% - 1px);
-  background-size: 5px 5px, 5px 5px;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  appearance: none;
-}
-
-.collection-order:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--code-bg);
 }
 
 .collection-tags {
@@ -1002,6 +1042,10 @@ input::placeholder {
 
 .collection-frame .collection-order {
   flex: none;
+  width: auto;
+}
+
+.collection-frame .menu-select__toggle {
   width: auto;
 }
 
@@ -1477,35 +1521,6 @@ button.danger:hover {
 .card-overlay__select {
   width: 100%;
   max-width: none;
-  margin: 0;
-  padding: 0.55rem 2.1rem 0.55rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  font-family: inherit;
-  font-size: 0.95rem;
-  color: var(--ink);
-  background-color: var(--bg);
-  background-image:
-    linear-gradient(45deg, transparent 50%, var(--muted) 50%),
-    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
-  background-position:
-    calc(100% - 16px) calc(50% - 1px),
-    calc(100% - 11px) calc(50% - 1px);
-  background-size: 5px 5px, 5px 5px;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  appearance: none;
-}
-
-.card-overlay__select:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--code-bg);
-}
-
-.card-overlay__select:disabled {
-  opacity: 0.55;
-  cursor: default;
 }
 
 .tag-menu {
@@ -1716,30 +1731,12 @@ button.danger:hover {
 
 .stats-select {
   max-width: 14rem;
-  margin: 0;
-  padding: 0.38rem 1.8rem 0.38rem 0.6rem;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  font-family: inherit;
-  font-size: 0.82rem;
-  color: var(--ink);
-  background-color: var(--bg);
-  background-image:
-    linear-gradient(45deg, transparent 50%, var(--muted) 50%),
-    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
-  background-position:
-    calc(100% - 14px) calc(50% - 1px),
-    calc(100% - 9px) calc(50% - 1px);
-  background-size: 5px 5px, 5px 5px;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  appearance: none;
 }
 
-.stats-select:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--code-bg);
+.stats-select .menu-select__toggle {
+  padding: 0.38rem 0.6rem;
+  font-size: 0.82rem;
+  background: var(--bg);
 }
 
 .stats-card button {

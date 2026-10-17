@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-tecchin-tecchikawahara",
+  "name": "Tecchin Tecchikawahara",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-tecchin-tecchikawahara-base",
+      "name": "Tecchin Tecchikawahara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "demon-slayer-ruka-rengoku",
+  "name": "Ruka Rengoku",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "demon-slayer-ruka-rengoku-base",
+      "name": "Ruka Rengoku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}
