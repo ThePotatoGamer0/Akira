@@ -224,7 +224,7 @@ export function CardOverlay(props: {
         </p>
         {card.alias ? <p className="card-overlay__note">Alias · {card.alias}</p> : null}
         <p className="card-overlay__note">
-          Grabbed{" "}
+          Yours since{" "}
           {new Date(card.obtainedAt).toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" })}
         </p>
 

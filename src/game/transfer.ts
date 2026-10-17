@@ -302,9 +302,10 @@ export async function acceptTransfer(offerId: string, discordId: string): Promis
       });
       return { offer: cancelled, changed: true };
     }
-    await tx.card.update({ where: { id: fromCard.id }, data: { ownerId: offer.toUserId, tag: null } });
+    const receivedAt = new Date();
+    await tx.card.update({ where: { id: fromCard.id }, data: { ownerId: offer.toUserId, tag: null, obtainedAt: receivedAt } });
     if (offer.kind === "trade" && toCard) {
-      await tx.card.update({ where: { id: toCard.id }, data: { ownerId: offer.fromUserId, tag: null } });
+      await tx.card.update({ where: { id: toCard.id }, data: { ownerId: offer.fromUserId, tag: null, obtainedAt: receivedAt } });
     }
     const done = await tx.transferOffer.update({
       where: { id: offer.id },

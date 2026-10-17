@@ -13,6 +13,7 @@ const COLLECTION_ORDERS = [
   { id: "series", label: "Series, then character" },
   { id: "quality", label: "Quality" },
   { id: "tag", label: "Tag, then character" },
+  { id: "recent", label: "Most recent" },
 ] as const;
 
 type CollectionOrder = (typeof COLLECTION_ORDERS)[number]["id"];

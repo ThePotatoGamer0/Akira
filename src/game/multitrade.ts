@@ -251,13 +251,14 @@ export async function lockMultitrade(id: string, discordId: string): Promise<Mul
         include: tradeInclude,
       });
     }
+    const receivedAt = new Date();
     for (const entry of fromCards) {
       if (!entry.cardId) continue;
-      await tx.card.update({ where: { id: entry.cardId }, data: { ownerId: trade.toUserId, tag: null } });
+      await tx.card.update({ where: { id: entry.cardId }, data: { ownerId: trade.toUserId, tag: null, obtainedAt: receivedAt } });
     }
     for (const entry of toCards) {
       if (!entry.cardId) continue;
-      await tx.card.update({ where: { id: entry.cardId }, data: { ownerId: trade.fromUserId, tag: null } });
+      await tx.card.update({ where: { id: entry.cardId }, data: { ownerId: trade.fromUserId, tag: null, obtainedAt: receivedAt } });
     }
     await tx.user.update({
       where: { id: trade.fromUserId },

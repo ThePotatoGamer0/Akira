@@ -21,6 +21,8 @@ export type FrameAsset = {
   characterName: TextStyle | null;
   seriesName: TextStyle | null;
   printNumber: TextStyle | null;
+  /** The polaroid fill is painted from the card's own artwork. */
+  ambient: boolean;
 };
 
 type RawText = {
@@ -65,21 +67,24 @@ export function loadFrame(id: number): FrameAsset | null {
   let characterName: TextStyle | null = null;
   let seriesName: TextStyle | null = null;
   let printNumber: TextStyle | null = null;
+  let ambient = false;
   const configPath = path.join(dir, "config.json");
   if (fs.existsSync(configPath)) {
     try {
       const parsed = JSON.parse(fs.readFileSync(configPath, "utf8")) as {
+        ambient?: boolean;
         textElements?: { characterName?: RawText; seriesName?: RawText; printNumber?: RawText };
       };
       characterName = readStyle(parsed.textElements?.characterName);
       seriesName = readStyle(parsed.textElements?.seriesName);
       printNumber = readStyle(parsed.textElements?.printNumber);
+      ambient = parsed.ambient === true;
     } catch (err) {
       console.error(`Akira couldn't read the frame config at ${configPath}:`, err);
     }
   }
 
-  return { id, imagePath, characterName, seriesName, printNumber };
+  return { id, imagePath, characterName, seriesName, printNumber, ambient };
 }
 
 export function listFrames(): FrameAsset[] {

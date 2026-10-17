@@ -14,6 +14,7 @@ const FRAME_NAMES: Record<number, string> = {
   7: "purple",
   8: "orange",
   9: "teal",
+  10: "ambient",
 };
 
 /** Short name for a frame. Unknown frames stay as their number. */

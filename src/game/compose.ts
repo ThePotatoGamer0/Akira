@@ -127,7 +127,7 @@ export async function ensureCardImage(request: CardImageRequest, format: CardAni
     if (print) texts.push(print);
   }
 
-  const still = await renderCardImage(artPath, frame.imagePath, texts);
+  const still = await renderCardImage(artPath, frame.imagePath, texts, { ambient: frame.ambient });
   const output =
     request.kind === "shiny"
       ? format === "apng"
