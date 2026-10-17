@@ -6,7 +6,7 @@ import { MenuSelect } from "../components/MenuSelect.js";
 import { frameLabel } from "../lib/frames.js";
 import type { CollectionCard, CollectionSlice, CollectionStudio, Me } from "../types/index.js";
 
-const EMPTY_STUDIO: CollectionStudio = { serverFrame: 0, personalFrame: null, frames: [0], tags: [] };
+const EMPTY_STUDIO: CollectionStudio = { serverFrame: 0, personalFrame: null, frames: [{ id: 0, name: "Dark" }], tags: [] };
 const BATCH = 16;
 const PAGE_SIZE = 32;
 
@@ -517,8 +517,8 @@ export function CollectionPage(props: {
               value={studio.personalFrame === null ? "" : String(studio.personalFrame)}
               disabled={actionBusy !== null}
               options={[
-                { value: "", label: `Server frame · ${frameLabel(studio.serverFrame)}` },
-                ...studio.frames.map((id) => ({ value: String(id), label: frameLabel(id) })),
+                { value: "", label: `Server frame · ${frameLabel(studio.frames, studio.serverFrame)}` },
+                ...studio.frames.map((frame) => ({ value: String(frame.id), label: frame.name })),
               ]}
               onChange={(value) => void savePersonalFrame(value)}
             />
@@ -634,7 +634,7 @@ export function CollectionPage(props: {
             options={[
               { value: "", label: "Frame…" },
               { value: "__default", label: studio.personalFrame === null ? "Server frame" : "Your frame" },
-              ...studio.frames.map((id) => ({ value: String(id), label: frameLabel(id) })),
+              ...studio.frames.map((frame) => ({ value: String(frame.id), label: frame.name })),
             ]}
             onChange={setFramePick}
           />

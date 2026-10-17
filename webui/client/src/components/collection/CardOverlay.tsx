@@ -61,8 +61,8 @@ export function CardOverlay(props: {
 
   const previewFrame = draftFrame ?? studio.personalFrame ?? studio.serverFrame;
   const fallbackLabel = studio.personalFrame === null
-    ? `Server frame · ${frameLabel(studio.serverFrame)}`
-    : `Your frame · ${frameLabel(studio.personalFrame)}`;
+    ? `Server frame · ${frameLabel(studio.frames, studio.serverFrame)}`
+    : `Your frame · ${frameLabel(studio.frames, studio.personalFrame)}`;
   const canShiny = card.quality === "LEGENDARY" || Boolean(card.dye);
   const src = burnedBits !== null ? apiUrl(card.assets.burn) : assetUrl(card, previewFrame, canShiny && shiny);
   const shownEmoji = tagValue ? studio.tags.find((tag) => tag.name === tagValue)?.emoji ?? card.tagEmoji : null;
@@ -224,7 +224,7 @@ export function CardOverlay(props: {
           <TagMark emoji={shownEmoji} size={15} />
           <code>{card.id}</code>
           <span>· #{card.printNumber}</span>
-          <span>· {frameLabel(previewFrame)}</span>
+          <span>· {frameLabel(studio.frames, previewFrame)}</span>
         </p>
         {card.alias ? <p className="card-overlay__note">Alias · {card.alias}</p> : null}
         <p className="card-overlay__note">
@@ -241,7 +241,7 @@ export function CardOverlay(props: {
             disabled={!props.canEdit || busy !== null || burnedBits !== null}
             options={[
               { value: "", label: fallbackLabel },
-              ...studio.frames.map((id) => ({ value: String(id), label: frameLabel(id) })),
+              ...studio.frames.map((frame) => ({ value: String(frame.id), label: frame.name })),
             ]}
             onChange={(value) => void changeFrame(value)}
           />

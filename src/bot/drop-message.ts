@@ -10,8 +10,7 @@ export async function renderDropMessage(input: {
   slots: PresentedSlot[];
   wishlistDiscordIds: string[];
 }) {
-  const cards = [];
-  for (const slot of input.slots) {
+  const cards = await Promise.all(input.slots.map(async (slot) => {
     const kind = visualKind(slot.quality, null);
     const imagePath = await ensureCardImage({
       variantId: slot.variantId,
@@ -25,8 +24,8 @@ export async function renderDropMessage(input: {
       dye: null,
       kind,
     });
-    cards.push({ image: fs.readFileSync(imagePath), animated: kind === "shiny" });
-  }
+    return { image: fs.readFileSync(imagePath), animated: kind === "shiny" };
+  }));
 
   const strip = await renderDropStrip(cards);
   const name = strip.animated ? "drop.gif" : "drop.png";

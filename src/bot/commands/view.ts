@@ -39,7 +39,6 @@ export const view: AkiraCommand = {
         printNumber: card.printNumber,
         dye: card.dye,
       };
-      await ensureCardImage({ ...imageRequest, kind: "normal" });
       const imagePath = await ensureCardImage({ ...imageRequest, kind });
       const fileName = kind === "shiny" ? "card.gif" : "card.png";
       const tags = card.owner ? await tagEmojisForDiscord(card.owner.discordId) : new Map<string, string>();

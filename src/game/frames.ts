@@ -16,7 +16,6 @@ const FRAME_NAMES: Record<number, string> = {
   8: "orange",
   9: "teal",
   10: "ambient",
-  11: "plaque",
   12: "celestial",
   13: "arcademachine",
   14: "bloodmoonbite",
@@ -40,9 +39,49 @@ const FRAME_NAMES: Record<number, string> = {
   32: "yinandyang",
 };
 
+const FRAME_LABELS: Record<number, string> = {
+  0: "Dark",
+  1: "Yellow",
+  2: "White",
+  3: "Red",
+  4: "Blue",
+  5: "Green",
+  6: "Pink",
+  7: "Purple",
+  8: "Orange",
+  9: "Teal",
+  10: "Ambient",
+  12: "Celestial",
+  13: "Arcade Machine",
+  14: "Blood Moon Bite",
+  15: "Crystal Wings",
+  16: "Deviation",
+  17: "Explosion",
+  18: "Glinted",
+  19: "Lab Punk",
+  20: "Moon Altar",
+  21: "Samurai",
+  22: "Spider Lily",
+  23: "Boreal Sparkles",
+  24: "Hacker",
+  25: "Haunted Thicket",
+  26: "Phantom's Lament",
+  27: "Runic",
+  28: "Tetromino",
+  29: "Midnight Petal",
+  30: "Shoji",
+  31: "Azure Claw",
+  32: "Yin and Yang",
+};
+
 /** Short name for a frame. Unknown frames stay as their number. */
 export function frameName(id: number): string {
   return FRAME_NAMES[id] ?? String(id);
+}
+
+/** Name shown in the WebUI. Command tokens stay the unspaced slug from frameName. */
+export function frameLabel(id: number): string {
+  return FRAME_LABELS[id] ?? `Frame ${id}`;
 }
 
 /** A frame name (`dark`, `yellow`, `pink`) or a frame number. Anything else is not a frame. */

@@ -128,8 +128,10 @@ async function replyOffer(interaction: ChatInputCommandInteraction, view: Transf
   const toFrame = await personalDefaultFrame(view.toDiscordId);
   if (view.kind === "trade") {
     if (!view.fromCard || !view.toCard) throw new GameError("missing", "Akira couldn't find that card anymore.");
-    const left = await readCard(view.fromCard, displayFrameId(view.fromCard.frameId, serverFrame, fromFrame));
-    const right = await readCard(view.toCard, displayFrameId(view.toCard.frameId, serverFrame, toFrame));
+    const [left, right] = await Promise.all([
+      readCard(view.fromCard, displayFrameId(view.fromCard.frameId, serverFrame, fromFrame)),
+      readCard(view.toCard, displayFrameId(view.toCard.frameId, serverFrame, toFrame)),
+    ]);
     const pair = await renderTradePair(left.data, right.data, left.animated || right.animated);
     const file = { data: pair.data, name: pair.animated ? "trade.gif" : "trade.png" };
     await interaction.reply(await transferMessage(view, interaction.guildId, file));

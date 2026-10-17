@@ -1,7 +1,7 @@
 import { Router } from "express";
 import type { CardQuality, Prisma } from "../../../../src/generated/prisma/client.js";
 import { burnOwnedCards, quoteOwnedBurn } from "../../../../src/game/economy.js";
-import { displayFrameId, frameIdsOnDisk, personalDefaultFrame, serverDefaultFrame, setCardFrame, setOwnedFrames, setPersonalDefaultFrame } from "../../../../src/game/frames.js";
+import { displayFrameId, frameIdsOnDisk, frameLabel, personalDefaultFrame, serverDefaultFrame, setCardFrame, setOwnedFrames, setPersonalDefaultFrame } from "../../../../src/game/frames.js";
 import { GameError } from "../../../../src/game/errors.js";
 import { applyTag, clearTag, createTag, deleteTag, listTags } from "../../../../src/game/tags.js";
 import { prisma } from "../db/client.js";
@@ -164,7 +164,7 @@ collectionRouter.get("/:userId/studio", async (req, res) => {
   res.json({
     serverFrame,
     personalFrame,
-    frames: frameIdsOnDisk(),
+    frames: frameIdsOnDisk().map((id) => ({ id, name: frameLabel(id) })),
     tags: tags.tags,
   });
 });
