@@ -121,6 +121,74 @@ function withInk(texts: OverlayText[], ink: AmbientInk): OverlayText[] {
   return texts.map((text, index) => ({ ...text, color: chosen.get(index) ?? text.color }));
 }
 
+type Opening = { minX: number; minY: number; maxX: number; maxY: number };
+
+/** The clear window inside the polaroid, not the transparent outer corners. */
+function windowOpening(outside: Uint8Array, frame: Buffer, width: number, height: number): Opening | null {
+  let minX = width;
+  let minY = height;
+  let maxX = -1;
+  let maxY = -1;
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const index = y * width + x;
+      if (outside[index] || (frame[index * 4 + 3] ?? 0) > 16) continue;
+      if (x < minX) minX = x;
+      if (y < minY) minY = y;
+      if (x > maxX) maxX = x;
+      if (y > maxY) maxY = y;
+    }
+  }
+  if (maxX < 0) return null;
+  return { minX, minY, maxX, maxY };
+}
+
+/** How many clear pixels sit in the window, and how far the picture starts below the top. */
+function openingGaps(art: Buffer, width: number, opening: Opening): { holes: number; topGap: number } {
+  let holes = 0;
+  let top = -1;
+  for (let y = opening.minY; y <= opening.maxY; y++) {
+    for (let x = opening.minX; x <= opening.maxX; x++) {
+      if ((art[(y * width + x) * 4 + 3] ?? 0) > 16) {
+        if (top < 0) top = y;
+      } else {
+        holes += 1;
+      }
+    }
+  }
+  return { holes, topGap: top < 0 ? 0 : top - opening.minY };
+}
+
+/** Slide the picture up so a wide portrait sits on the top of the window. */
+function shiftUp(art: Buffer, width: number, height: number, dy: number): Buffer {
+  if (dy <= 0) return art;
+  const out = Buffer.alloc(art.length);
+  for (let y = dy; y < height; y++) {
+    art.copy(out, (y - dy) * width * 4, y * width * 4, (y + 1) * width * 4);
+  }
+  return out;
+}
+
+/**
+ * Portraits that are taller or wider than the window keep every pixel.
+ * The empty strip is a blur of the same picture, not a crop and not a hole.
+ */
+async function backedArt(artPath: string, art: Buffer, width: number, height: number, opening: Opening): Promise<Buffer> {
+  const gaps = openingGaps(art, width, opening);
+  if (gaps.holes < 80) return art;
+  const placed = gaps.topGap > 2 ? shiftUp(art, width, height, gaps.topGap) : art;
+  const wash = await sharp(artPath)
+    .ensureAlpha()
+    .resize(width, height, { fit: "cover", position: "centre" })
+    .blur(28)
+    .modulate({ brightness: 0.82 })
+    .png()
+    .toBuffer();
+  const foreground = await sharp(placed, { raw: { width, height, channels: 4 } }).png().toBuffer();
+  const stacked = await sharp(wash).composite([{ input: foreground, blend: "over" }]).ensureAlpha().raw().toBuffer();
+  return stacked;
+}
+
 /**
  * Composite character art under a frame. Art is clipped to the frame opening
  * so it does not show through the transparent outer corners.
@@ -141,11 +209,13 @@ export async function renderNormalCard(
 
   const frameRaw = await sharp(framePngPath).ensureAlpha().raw().toBuffer();
   const outside = outsideMask(framePngPath, fw, fh, frameRaw);
-  const artRaw = await sharp(characterPngPath)
+  let artRaw = await sharp(characterPngPath)
     .ensureAlpha()
     .resize(fw, fh, { fit: "contain", position: "centre", background: { r: 0, g: 0, b: 0, alpha: 0 } })
     .raw()
     .toBuffer();
+  const opening = windowOpening(outside, frameRaw, fw, fh);
+  if (opening) artRaw = await backedArt(characterPngPath, artRaw, fw, fh, opening);
   for (let index = 0; index < outside.length; index++) {
     if (outside[index]) artRaw[index * 4 + 3] = 0;
   }

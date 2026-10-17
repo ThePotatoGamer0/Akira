@@ -32,6 +32,21 @@ test("composites character art, the frame, and a print number", async (t) => {
   assert.notEqual(data[windowIndex + 3], 0);
 });
 
+test("a wide portrait keeps the character and fills the empty strip", async (t) => {
+  const frame = loadFrame(0);
+  const art = variantArtPath("death-note", "kiichiro-osoreda", "base.png");
+  if (!frame || !fs.existsSync(art)) {
+    t.skip("sample frame or wide portrait is not in this checkout");
+    return;
+  }
+  const buf = await renderCardImage(art, frame.imagePath, []);
+  const { data, info } = await sharp(buf).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const top = (40 * info.width + 200) * 4;
+  const picture = (220 * info.width + 200) * 4;
+  assert.ok((data[top + 3] ?? 0) > 200);
+  assert.ok((data[picture + 3] ?? 0) > 200);
+});
+
 test("ambient frame fills the polaroid from the card art", async (t) => {
   const frame = loadFrame(10);
   const art = variantArtPath("chainsaw-man", "denji", "base.png");

@@ -71,7 +71,7 @@ function qualitiesForQuery(q: string): CardQuality[] {
   return CONDITION_WORDS.filter(([, word]) => word.includes(needle)).map(([quality]) => quality);
 }
 
-const COLLECTION_ORDERS = ["character", "series", "quality", "tag"] as const;
+const COLLECTION_ORDERS = ["character", "series", "quality", "tag", "recent"] as const;
 type CollectionOrder = (typeof COLLECTION_ORDERS)[number];
 
 /** Mint first, then down through damaged. SQLite would otherwise sort the enum names alphabetically. */
@@ -98,6 +98,7 @@ type SortRow = {
   printNumber: number;
   character: string;
   series: string;
+  obtainedAt: Date;
 };
 
 function compareCards(order: CollectionOrder, a: SortRow, b: SortRow): number {
@@ -115,6 +116,9 @@ function compareCards(order: CollectionOrder, a: SortRow, b: SortRow): number {
       const tag = compareText(a.tag, b.tag);
       if (tag !== 0) return tag;
     }
+  } else if (order === "recent") {
+    const recent = b.obtainedAt.getTime() - a.obtainedAt.getTime();
+    if (recent !== 0) return recent;
   }
   const name = compareText(a.character, b.character);
   if (name !== 0) return name;
@@ -353,6 +357,7 @@ collectionRouter.get("/:userId", async (req, res) => {
         tag: true,
         quality: true,
         printNumber: true,
+        obtainedAt: true,
         variant: { select: { character: { select: { name: true, series: { select: { name: true } } } } } },
       },
     }),
@@ -367,6 +372,7 @@ collectionRouter.get("/:userId", async (req, res) => {
       printNumber: card.printNumber,
       character: card.variant.character.name,
       series: card.variant.character.series.name,
+      obtainedAt: card.obtainedAt,
     }))
     .sort((a, b) => compareCards(order, a, b))
     .slice(offset, offset + limit)

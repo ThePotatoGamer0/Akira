@@ -89,10 +89,12 @@ test("a give moves the card only after both players accept", async () => {
   const waiting = await acceptTransfer(offer.id, "getter");
   assert.equal(waiting.status, "pending");
   assert.equal((await prisma.card.findUnique({ where: { id: "giveaaa" } }))?.ownerId, (await prisma.user.findUnique({ where: { discordId: "giver" } }))?.id);
+  await prisma.card.update({ where: { id: "giveaaa" }, data: { obtainedAt: new Date("2020-01-01T00:00:00Z") } });
   const done = await acceptTransfer(offer.id, "giver");
   assert.equal(done.status, "done");
   const card = await prisma.card.findUnique({ where: { id: "giveaaa" }, include: { owner: true } });
   assert.equal(card?.owner?.discordId, "getter");
+  assert.ok(card && card.obtainedAt.getTime() > new Date("2020-01-01T00:00:00Z").getTime());
 });
 
 test("a trade swaps the two cards only after both players accept", async () => {
