@@ -26,6 +26,7 @@ import { handleMultitradeButton, handleMultitradeMessage } from "./commands/mult
 import { handleTransferButton } from "./commands/transfer.js";
 import { handleLookupButton, handleLookupSelect, replyCharacterEdition } from "./commands/lookup.js";
 import { resumeDropExpiries } from "./drop-expiry.js";
+import { resumeGrabNotices } from "./grab-notices.js";
 import { bindReminderClient, resumeReminders } from "./reminder-schedule.js";
 import { startDmCleanup } from "./dm-mailbox.js";
 import { easterEgg, easterEggFromMessage } from "./easter-eggs.js";
@@ -158,6 +159,7 @@ client.once(Events.ClientReady, (c) => {
     .catch((err) => console.error("Lucide icon sync failed.", err))
     .then(() => shortenLegacyCardCodes())
     .then(() => resumeDropExpiries(c))
+    .then(() => resumeGrabNotices(c))
     .then(() => resumeReminders())
     .catch((err) => console.error(err));
   if (isInitLocked()) {
