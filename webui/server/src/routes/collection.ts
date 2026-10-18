@@ -1,7 +1,7 @@
 import { Router } from "express";
 import type { CardQuality, Prisma } from "../../../../src/generated/prisma/client.js";
 import { burnOwnedCards, quoteOwnedBurn } from "../../../../src/game/economy.js";
-import { displayFrameId, frameIdsOnDisk, frameLabel, personalDefaultFrame, serverDefaultFrame, setCardFrame, setOwnedFrames, setPersonalDefaultFrame } from "../../../../src/game/frames.js";
+import { displayFrameId, frameIdsOnDisk, frameLabel, personalDefaultFrame, serverDefaultFrame, setCardFrame, setOwnedFrames, setPersonalDefaultFrame, storedFrameChoice } from "../../../../src/game/frames.js";
 import { GameError } from "../../../../src/game/errors.js";
 import { applyTag, clearTag, createTag, deleteTag, listTags } from "../../../../src/game/tags.js";
 import { prisma } from "../db/client.js";
@@ -285,7 +285,7 @@ collectionRouter.post("/:userId/frame-cards", async (req, res) => {
       personalDefaultFrame(viewer.discordId),
     ]);
     res.json({
-      frameChoice: body.frameId,
+      frameChoice: storedFrameChoice(body.frameId),
       frameId: displayFrameId(body.frameId, serverFrame, personalFrame),
       cardIds: ids,
     });
@@ -374,7 +374,7 @@ collectionRouter.patch("/:userId/cards/:cardId", async (req, res) => {
     const emoji = card.tag ? tags.find((tag) => tag.name === card.tag)?.emoji ?? "◾" : "◾";
     const base = assetBase(card.variantId, frameId, card.printNumber, card.dye);
     res.json({
-      frameChoice: card.frameId,
+      frameChoice: storedFrameChoice(card.frameId),
       frameId,
       tag: card.tag,
       tagEmoji: emoji,
@@ -471,7 +471,7 @@ collectionRouter.get("/:userId", async (req, res) => {
         id: c.id,
         printNumber: c.printNumber,
         quality: c.quality,
-        frameChoice: c.frameId,
+        frameChoice: storedFrameChoice(c.frameId),
         frameId,
         tag: c.tag,
         tagEmoji: c.tag ? tagEmoji.get(c.tag) ?? "◾" : "◾",

@@ -3,7 +3,7 @@ import { CardOverlay } from "../components/collection/CardOverlay.js";
 import { CollectionGrid } from "../components/collection/CollectionGrid.js";
 import { TagMenu } from "../components/collection/TagMenu.js";
 import { MenuSelect } from "../components/MenuSelect.js";
-import { frameLabel } from "../lib/frames.js";
+import { frameLabel, studioFrames } from "../lib/frames.js";
 import type { CollectionCard, CollectionSlice, CollectionStudio, Me } from "../types/index.js";
 
 const EMPTY_STUDIO: CollectionStudio = { serverFrame: 0, personalFrame: null, frames: [{ id: 0, name: "Dark" }], tags: [] };
@@ -81,7 +81,8 @@ export function CollectionPage(props: {
   const loadStudio = useCallback(async () => {
     const res = await props.fetchApi(`/collection/${props.me.id}/studio`);
     if (!res.ok) return;
-    setStudio((await res.json()) as CollectionStudio);
+    const json = (await res.json()) as CollectionStudio;
+    setStudio({ ...json, frames: studioFrames(json.frames) });
   }, [props.fetchApi, props.me.id]);
 
   const readSlice = useCallback(

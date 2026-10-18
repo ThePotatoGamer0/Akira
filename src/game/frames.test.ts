@@ -19,6 +19,8 @@ test("named frames cover the color set", () => {
   assert.equal(parseFrameToken("gold"), null);
   assert.equal(frameName(11), "11");
   assert.equal(parseFrameToken("plaque"), null);
+  assert.equal(parseFrameToken("11"), null);
+  assert.equal(loadFrame(11), null);
   assert.equal(frameName(12), "celestial");
   assert.equal(frameLabel(12), "Celestial");
   assert.equal(frameLabel(13), "Arcade Machine");
