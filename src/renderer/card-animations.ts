@@ -462,9 +462,10 @@ export async function renderBurnGif(base: Buffer): Promise<Buffer> {
   const built = await buildBurnFrames(base);
   return encodeGif(built.frames, built.width, built.height, built.delays, {
     dither: 0,
-    reuse: false,
+    reuse: true,
     interFrameMaxError: 0,
-    effort: 4,
+    effort: 1,
+    native: true,
   });
 }
 

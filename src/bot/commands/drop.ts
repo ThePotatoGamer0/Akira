@@ -1,12 +1,17 @@
 import { SlashCommandBuilder, type ChatInputCommandInteraction, type Client } from "discord.js";
 import { icon } from "../../utils/icons.js";
 import { commitDrop, prepareDrop, releaseDropCooldown } from "../../game/drops.js";
+import { dropShape } from "../../game/drop-stock.js";
 import { GameError } from "../../game/errors.js";
+import { serverDefaultFrame } from "../../game/frames.js";
+import { activeEffects } from "../../game/live-buffs.js";
+import { ensureUser } from "../../game/users.js";
 import type { AkiraCommand } from "../../types/commands.js";
 import { scheduleDropExpiry } from "../drop-expiry.js";
+import { dropMessageFromStrip, renderDropMessage } from "../drop-message.js";
+import { restoreDrop, takeDrop, type ShelvedDrop } from "../drop-shelf.js";
 import { scheduleGrabNotices } from "../grab-notices.js";
 import { queueCooldownReminder } from "../reminder-schedule.js";
-import { renderDropMessage } from "../drop-message.js";
 import { sendGameError } from "../reply.js";
 
 const settingDown = new Set<string>();
@@ -28,19 +33,42 @@ export const drop: AkiraCommand = {
     settingDown.add(interaction.user.id);
     let prepared: Awaited<ReturnType<typeof prepareDrop>> | null = null;
     let committed = false;
+    let shelved: ShelvedDrop | null = null;
     try {
+      const user = await ensureUser(interaction.user.id, interaction.user.username);
+      const frameId = await serverDefaultFrame(interaction.guildId);
+      const effects = await activeEffects(user.id, interaction.guildId);
+      const shape = dropShape(effects, frameId);
+      shelved = shape ? takeDrop(shape, user.dropsSinceMint) : null;
       prepared = await prepareDrop({
         guildId: interaction.guildId,
         channelId: interaction.channelId,
         discordId: interaction.user.id,
         username: interaction.user.username,
+        presetSlots: shelved?.slots ?? null,
       });
+      if (shelved && !prepared.fromShelf) {
+        restoreDrop(shelved);
+        shelved = null;
+      }
       await interaction.deferReply();
-      const payload = await renderDropMessage(prepared);
+      const started = Date.now();
+      const payload =
+        shelved && prepared.fromShelf
+          ? dropMessageFromStrip({
+              dropperDiscordId: prepared.dropperDiscordId,
+              slots: prepared.slots,
+              wishlistDiscordIds: prepared.wishlistDiscordIds,
+              strip: shelved.strip,
+              animated: shelved.animated,
+              elapsedMs: Date.now() - started,
+            })
+          : await renderDropMessage(prepared);
       await interaction.editReply(payload);
       const message = await interaction.fetchReply();
       const createdAt = await commitDrop(prepared, message.id);
       committed = true;
+      shelved = null;
       void queueCooldownReminder(interaction.user.id, "DROP");
       scheduleGrabNotices(_client, {
         messageId: message.id,
@@ -57,6 +85,7 @@ export const drop: AkiraCommand = {
         await message.react(icon(key));
       }
     } catch (err) {
+      if (shelved) restoreDrop(shelved);
       if (prepared && !committed) {
         await releaseDropCooldown(prepared.userId).catch(() => undefined);
       }

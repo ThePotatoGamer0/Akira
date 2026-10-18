@@ -1,10 +1,13 @@
 import sharp from "sharp";
+import { encodeDiffGif } from "./gif-fast.js";
 
 export type GifEncodeOptions = {
   dither?: number;
   reuse?: boolean;
   interFrameMaxError?: number;
   effort?: number;
+  /** Quantize every frame in libvips. Burns change the whole card, and that path is faster there. */
+  native?: boolean;
 };
 
 /** Build a looping GIF from RGBA8 frames. Discord animates GIF attachments and leaves APNG still. */
@@ -26,6 +29,9 @@ export async function encodeGif(
     if (frame.byteLength !== expected) {
       throw new Error(`encodeGif: expected ${expected} bytes per frame, got ${frame.byteLength}`);
     }
+  }
+  if (frames.length > 1 && options?.native !== true) {
+    return encodeDiffGif(frames, width, height, delaysMs, options?.dither ?? 1);
   }
   return sharp(Buffer.concat(frames), {
     raw: { width, height: height * frames.length, channels: 4, pageHeight: height },
