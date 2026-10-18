@@ -11,8 +11,8 @@ type AnimationFrames = {
   delays: number[];
 };
 
-const SHINE_FRAMES = 32;
-const SHINE_DELAY_MS = 55;
+export const SHINE_FRAMES = 32;
+export const SHINE_DELAY_MS = 55;
 
 /** Magenta, gold, cyan, then violet across the shine band. */
 export function shinePrism(hue: number): [number, number, number] {
@@ -38,6 +38,134 @@ function screenChannel(base: number, light: number): number {
   return Math.round(255 - ((255 - base) * (255 - light)) / 255);
 }
 
+const SHINE_HALF = 0.08;
+const SHINE_CORE_HALF = 0.022;
+
+function shineCenter(progress: number): number {
+  return -0.2 + progress * 2.4;
+}
+
+/** Light colour of the shine band, before the card's own transparency dims it. */
+function forEachShinePixel(
+  width: number,
+  height: number,
+  progress: number,
+  visit: (x: number, y: number, lightR: number, lightG: number, lightB: number) => void,
+): void {
+  const center = shineCenter(progress);
+  const xDenom = width <= 1 ? 1 : width - 1;
+  const yDenom = height <= 1 ? 1 : height - 1;
+  for (let y = 0; y < height; y++) {
+    const v = height <= 1 ? 0 : y / yDenom;
+    const uLow = center - SHINE_HALF - v;
+    const uHigh = center + SHINE_HALF - v;
+    let x0 = Math.floor(uLow * xDenom) - 1;
+    let x1 = Math.ceil(uHigh * xDenom) + 1;
+    if (x0 < 0) x0 = 0;
+    if (x1 >= width) x1 = width - 1;
+    if (x0 > x1) continue;
+    for (let x = x0; x <= x1; x++) {
+      const u = width <= 1 ? 0 : x / xDenom;
+      const dist = u + v - center;
+      const abs = Math.abs(dist);
+      if (abs >= SHINE_HALF) continue;
+      const glow = Math.cos((abs / SHINE_HALF) * Math.PI * 0.5) ** 2;
+      const core = abs >= SHINE_CORE_HALF ? 0 : Math.cos((abs / SHINE_CORE_HALF) * Math.PI * 0.5) ** 2;
+      const [prismR, prismG, prismB] = shinePrism((dist / SHINE_HALF + 1) / 2);
+      const fringe = glow * (1 - core * 0.85);
+      visit(
+        x,
+        y,
+        Math.min(255, prismR * fringe * 0.7 + 255 * core * 0.92),
+        Math.min(255, prismG * fringe * 0.7 + 255 * core * 0.92),
+        Math.min(255, prismB * fringe * 0.7 + 255 * core * 0.92),
+      );
+    }
+  }
+}
+
+type ShineStamp = {
+  x: Uint16Array;
+  y: Uint16Array;
+  r: Uint8Array;
+  g: Uint8Array;
+  b: Uint8Array;
+};
+
+type ShineOverlay = {
+  frames: ShineStamp[];
+};
+
+const shineOverlays = new Map<string, ShineOverlay>();
+
+/** The moving shine, built once per card size and screened onto every mint. */
+function shineOverlay(width: number, height: number): ShineOverlay {
+  const key = `${width}x${height}`;
+  const cached = shineOverlays.get(key);
+  if (cached) return cached;
+  const frames: ShineStamp[] = [];
+  for (let i = 0; i < SHINE_FRAMES; i++) {
+    const xs: number[] = [];
+    const ys: number[] = [];
+    const rs: number[] = [];
+    const gs: number[] = [];
+    const bs: number[] = [];
+    forEachShinePixel(width, height, i / SHINE_FRAMES, (x, y, lightR, lightG, lightB) => {
+      xs.push(x);
+      ys.push(y);
+      rs.push(Math.round(lightR));
+      gs.push(Math.round(lightG));
+      bs.push(Math.round(lightB));
+    });
+    frames.push({
+      x: Uint16Array.from(xs),
+      y: Uint16Array.from(ys),
+      r: Uint8Array.from(rs),
+      g: Uint8Array.from(gs),
+      b: Uint8Array.from(bs),
+    });
+  }
+  const overlay = { frames };
+  shineOverlays.set(key, overlay);
+  return overlay;
+}
+
+function screenStamp(
+  out: Buffer,
+  outWidth: number,
+  originX: number,
+  originY: number,
+  stamp: ShineStamp,
+): void {
+  for (let i = 0; i < stamp.x.length; i++) {
+    const pixel = ((originY + (stamp.y[i] ?? 0)) * outWidth + originX + (stamp.x[i] ?? 0)) * 4;
+    const alpha = out[pixel + 3] ?? 0;
+    if (alpha === 0) continue;
+    const cover = alpha / 255;
+    out[pixel] = screenChannel(out[pixel] ?? 0, Math.min(255, (stamp.r[i] ?? 0) * cover));
+    out[pixel + 1] = screenChannel(out[pixel + 1] ?? 0, Math.min(255, (stamp.g[i] ?? 0) * cover));
+    out[pixel + 2] = screenChannel(out[pixel + 2] ?? 0, Math.min(255, (stamp.b[i] ?? 0) * cover));
+  }
+}
+
+/**
+ * Screen one cached shine frame onto a card. `outWidth` is the buffer's stride,
+ * so the same overlay can land on a card or on that card's place in a drop strip.
+ */
+export function blendShineOverlay(
+  out: Buffer,
+  outWidth: number,
+  originX: number,
+  originY: number,
+  cardWidth: number,
+  cardHeight: number,
+  frameIndex: number,
+): void {
+  const stamp = shineOverlay(cardWidth, cardHeight).frames[frameIndex];
+  if (!stamp) return;
+  screenStamp(out, outWidth, originX, originY, stamp);
+}
+
 /**
  * One frame of a holographic shine. `progress` moves a diagonal band from the
  * top-left corner toward the bottom-right. The band screens the art brighter,
@@ -45,32 +173,15 @@ function screenChannel(base: number, light: number): number {
  */
 export function paintCardShine(rgba: Buffer, width: number, height: number, progress: number): Buffer {
   const out = Buffer.from(rgba);
-  const center = -0.2 + progress * 2.4;
-  const half = 0.08;
-  const coreHalf = 0.022;
-  for (let y = 0; y < height; y++) {
-    const v = height <= 1 ? 0 : y / (height - 1);
-    for (let x = 0; x < width; x++) {
-      const u = width <= 1 ? 0 : x / (width - 1);
-      const dist = u + v - center;
-      const abs = Math.abs(dist);
-      if (abs >= half) continue;
-      const pixel = (y * width + x) * 4;
-      const alpha = out[pixel + 3] ?? 0;
-      if (alpha === 0) continue;
-      const cover = alpha / 255;
-      const glow = Math.cos((abs / half) * Math.PI * 0.5) ** 2;
-      const core = abs >= coreHalf ? 0 : Math.cos((abs / coreHalf) * Math.PI * 0.5) ** 2;
-      const [prismR, prismG, prismB] = shinePrism((dist / half + 1) / 2);
-      const fringe = glow * (1 - core * 0.85);
-      const lightR = Math.min(255, (prismR * fringe * 0.7 + 255 * core * 0.92) * cover);
-      const lightG = Math.min(255, (prismG * fringe * 0.7 + 255 * core * 0.92) * cover);
-      const lightB = Math.min(255, (prismB * fringe * 0.7 + 255 * core * 0.92) * cover);
-      out[pixel] = screenChannel(out[pixel] ?? 0, lightR);
-      out[pixel + 1] = screenChannel(out[pixel + 1] ?? 0, lightG);
-      out[pixel + 2] = screenChannel(out[pixel + 2] ?? 0, lightB);
-    }
-  }
+  forEachShinePixel(width, height, progress, (x, y, lightR, lightG, lightB) => {
+    const pixel = (y * width + x) * 4;
+    const alpha = out[pixel + 3] ?? 0;
+    if (alpha === 0) return;
+    const cover = alpha / 255;
+    out[pixel] = screenChannel(out[pixel] ?? 0, Math.min(255, lightR * cover));
+    out[pixel + 1] = screenChannel(out[pixel + 1] ?? 0, Math.min(255, lightG * cover));
+    out[pixel + 2] = screenChannel(out[pixel + 2] ?? 0, Math.min(255, lightB * cover));
+  });
   return out;
 }
 
@@ -85,7 +196,9 @@ async function buildShinyFrames(base: Buffer): Promise<AnimationFrames> {
   const frames: Buffer[] = [];
   const delays: number[] = [];
   for (let i = 0; i < SHINE_FRAMES; i++) {
-    frames.push(paintCardShine(rgba, width, height, i / SHINE_FRAMES));
+    const frame = Buffer.from(rgba);
+    blendShineOverlay(frame, width, 0, 0, width, height, i);
+    frames.push(frame);
     delays.push(SHINE_DELAY_MS);
   }
   return { frames, width, height, delays };
