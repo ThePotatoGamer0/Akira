@@ -1,6 +1,7 @@
 import { Events, type Client, type MessageReaction, type PartialMessageReaction, type PartialUser, type User } from "discord.js";
 import { positionFromEmoji } from "../../game/balance.js";
 import { rememberGrab } from "../../game/cards.js";
+import { queueBurnWarm } from "../drop-shelf.js";
 import { claimReaction, loadDrop } from "../../game/drops.js";
 import { GameError } from "../../game/errors.js";
 import { isInitLocked } from "../../utils/init-lock.js";
@@ -57,6 +58,7 @@ async function onReaction(
     });
     void queueCooldownReminder(user.id, "GRAB");
     await rememberGrab(user.id, result.cardId);
+    queueBurnWarm(result.cardId, reaction.message.guildId);
     if (result.foughtOffDiscordId) {
       void queueCooldownReminder(result.foughtOffDiscordId, "GRAB");
     }

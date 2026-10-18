@@ -1,4 +1,5 @@
 import sharp from "sharp";
+import { encodeRepaintedGif } from "../utils/gif-fast.js";
 import { encodeGif } from "../utils/gif.js";
 import { blendShineOverlay, SHINE_DELAY_MS, SHINE_FRAMES } from "./card-animations.js";
 
@@ -162,24 +163,21 @@ export async function renderDropStripFromStills(cards: Array<{ image: Buffer; sh
     places.push({ x: cursor, width: still.width, height: still.height, shiny: cards[index]?.shiny === true });
     cursor += still.width + DROP_STRIP_GAP;
   }
-  const frames: Buffer[] = [];
-  const delays: number[] = [];
-  for (let i = 0; i < SHINE_FRAMES; i++) {
-    const frame = Buffer.from(base.data);
-    for (const place of places) {
-      if (!place.shiny) continue;
-      blendShineOverlay(frame, base.width, place.x, DROP_STRIP_GAP, place.width, place.height, i);
-    }
-    frames.push(frame);
-    delays.push(SHINE_DELAY_MS);
-  }
-  const size = { width: base.width, height: base.height };
+  const regions = places
+    .filter((place) => place.shiny)
+    .map((place) => ({ x: place.x, y: DROP_STRIP_GAP, width: place.width, height: place.height }));
   return {
-    data: await encodeGif(frames, size.width, size.height, delays, {
-      effort: 4,
-      reuse: true,
-      interFrameMaxError: 0,
-    }),
+    data: await encodeRepaintedGif(
+      base.data,
+      base.width,
+      base.height,
+      SHINE_FRAMES,
+      SHINE_DELAY_MS,
+      regions,
+      (frameIndex, scratch, regionWidth, regionHeight) => {
+        blendShineOverlay(scratch, regionWidth, 0, 0, regionWidth, regionHeight, frameIndex);
+      },
+    ),
     animated: true,
   };
 }

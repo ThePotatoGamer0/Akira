@@ -19,8 +19,9 @@ import {
   rollQuality,
   type Quality,
 } from "./balance.js";
-import { dropWeight, includeInDrop } from "./buffs.js";
+import { dropWeight, includeInDrop, type ResolvedEffects } from "./buffs.js";
 import { mintCardCode } from "./codes.js";
+import { dropShape, pityKeepsQualities } from "./drop-stock.js";
 import { GameError } from "./errors.js";
 import { activeEffects } from "./live-buffs.js";
 import { ensureUser } from "./users.js";
@@ -56,6 +57,7 @@ export type PreparedDrop = {
   slots: PresentedSlot[];
   wishlistDiscordIds: string[];
   dropsSinceMint: number;
+  fromShelf: boolean;
 };
 
 export type DropPresentation = PreparedDrop & { messageId: string };
@@ -140,12 +142,46 @@ async function wishlistDiscordIds(characterIds: string[]): Promise<string[]> {
   return [...new Set(rows.map((row) => row.user.discordId))];
 }
 
+export async function rollFreshSlots(
+  effects: ResolvedEffects,
+  frameId: number,
+  rng: () => number = Math.random,
+): Promise<PresentedSlot[]> {
+  const variants = await drawableVariants();
+  if (variants.length === 0) {
+    throw new GameError("empty", "Akira doesn't have any card art to drop yet.");
+  }
+  const pool = variants.filter((variant) => includeInDrop(variant.character.role, effects.qualityOverQuantity));
+  if (pool.length === 0) {
+    throw new GameError(
+      "empty",
+      effects.qualityOverQuantity
+        ? "Akira doesn't have any main characters to drop yet."
+        : "Akira doesn't have any card art to drop yet.",
+    );
+  }
+  const rolled = rollArts(pool, rng, effects.cardCount, (variant) =>
+    dropWeight({
+      variantId: variant.id,
+      rarity: variant.rarity,
+      seriesId: variant.character.seriesId,
+      role: variant.character.role,
+      effects,
+    }),
+  );
+  const qualities = rolled.map(() => rollQuality(rng, effects.legendaryWeight));
+  return rolled.map((variant, index) =>
+    slotFromVariant(index + 1, variant, qualities[index] ?? "COMMON", frameId),
+  );
+}
+
 export async function prepareDrop(input: {
   guildId: string;
   channelId: string;
   discordId: string;
   username: string;
   rng?: () => number;
+  presetSlots?: PresentedSlot[] | null;
 }): Promise<PreparedDrop> {
   const channelId = await resolveDropChannelId(input.guildId);
   if (!channelId) {
@@ -168,40 +204,10 @@ export async function prepareDrop(input: {
     throw new GameError("cooldown", `Akira needs you to wait ${formatRemaining(wait)} before dropping again.`);
   }
 
-  const variants = await drawableVariants();
-  if (variants.length === 0) {
-    throw new GameError("empty", "Akira doesn't have any card art to drop yet.");
-  }
-
   const effects = await activeEffects(user.id, input.guildId);
   const rng = input.rng ?? Math.random;
-  const pool = variants.filter((variant) => includeInDrop(variant.character.role, effects.qualityOverQuantity));
-  if (pool.length === 0) {
-    throw new GameError(
-      "empty",
-      effects.qualityOverQuantity
-        ? "Akira doesn't have any main characters to drop yet."
-        : "Akira doesn't have any card art to drop yet.",
-    );
-  }
-  const rolled = rollArts(pool, rng, effects.cardCount, (variant) =>
-    dropWeight({
-      variantId: variant.id,
-      rarity: variant.rarity,
-      seriesId: variant.character.seriesId,
-      role: variant.character.role,
-      effects,
-    }),
-  );
-  const pitied = nextPity({
-    dropsSinceMint: user.dropsSinceMint,
-    qualities: rolled.map(() => rollQuality(rng, effects.legendaryWeight)),
-    rng,
-  });
-  const slots = rolled.map((variant, index) =>
-    slotFromVariant(index + 1, variant, pitied.qualities[index] ?? "COMMON", frameId),
-  );
-  const wishes = await wishlistDiscordIds(slots.map((slot) => slot.characterId));
+  const rolled = await rolledSlots(effects, frameId, user.dropsSinceMint, rng, input.presetSlots ?? null);
+  const wishes = await wishlistDiscordIds(rolled.slots.map((slot) => slot.characterId));
   await claimDropCooldown(user.id, effects.dropCooldownMs);
 
   return {
@@ -211,9 +217,55 @@ export async function prepareDrop(input: {
     dropperDiscordId: input.discordId,
     dropCooldownMs: effects.dropCooldownMs,
     expiresAt: new Date(Date.now() + DROP_OPEN_MS),
-    slots,
+    slots: rolled.slots,
     wishlistDiscordIds: wishes.filter((id) => id !== input.discordId),
+    dropsSinceMint: rolled.dropsSinceMint,
+    fromShelf: rolled.fromShelf,
+  };
+}
+
+async function rolledSlots(
+  effects: ResolvedEffects,
+  frameId: number,
+  dropsSinceMint: number,
+  rng: () => number,
+  preset: PresentedSlot[] | null,
+): Promise<{ slots: PresentedSlot[]; dropsSinceMint: number; fromShelf: boolean }> {
+  const shape = dropShape(effects, frameId);
+  const presetOk =
+    preset !== null &&
+    shape !== null &&
+    preset.length === effects.cardCount &&
+    preset.every((slot) => slot.frameId === frameId) &&
+    pityKeepsQualities(
+      dropsSinceMint,
+      preset.map((slot) => slot.quality),
+    );
+  if (presetOk && preset) {
+    const pitied = nextPity({
+      dropsSinceMint,
+      qualities: preset.map((slot) => slot.quality),
+      rng,
+    });
+    const unchanged = pitied.qualities.every((quality, index) => quality === preset[index]?.quality);
+    if (unchanged) {
+      return {
+        slots: preset.map((slot) => ({ ...slot })),
+        dropsSinceMint: pitied.dropsSinceMint,
+        fromShelf: true,
+      };
+    }
+  }
+  const fresh = await rollFreshSlots(effects, frameId, rng);
+  const pitied = nextPity({
+    dropsSinceMint,
+    qualities: fresh.map((slot) => slot.quality),
+    rng,
+  });
+  return {
+    slots: fresh.map((slot, index) => ({ ...slot, quality: pitied.qualities[index] ?? slot.quality })),
     dropsSinceMint: pitied.dropsSinceMint,
+    fromShelf: false,
   };
 }
 
@@ -303,6 +355,7 @@ function present(drop: DropWithSlots, wishlistIds: string[], serverFrame: number
     expiresAt: drop.expiresAt,
     wishlistDiscordIds: wishlistIds,
     dropsSinceMint: 0,
+    fromShelf: false,
     slots: drop.slots
       .slice()
       .sort((a, b) => a.position - b.position)

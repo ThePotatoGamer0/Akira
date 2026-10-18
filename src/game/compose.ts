@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { threadId } from "node:worker_threads";
 import { createCanvas } from "canvas";
 import sharp from "sharp";
 import { renderBurnApng, renderBurnGif, renderShinyApng, renderShinyGif } from "../renderer/card-animations.js";
@@ -28,7 +29,7 @@ export type CardImageRequest = {
 
 function writeCache(cachePath: string, output: Buffer): void {
   ensureDir(path.dirname(cachePath));
-  const temporary = `${cachePath}.${process.pid}.tmp`;
+  const temporary = `${cachePath}.${process.pid}.${threadId}.tmp`;
   fs.writeFileSync(temporary, output);
   fs.renameSync(temporary, cachePath);
 }

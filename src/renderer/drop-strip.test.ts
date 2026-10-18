@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import sharp from "sharp";
 import { encodeGif } from "../utils/gif.js";
-import { DROP_STRIP_GAP, renderDropStrip } from "./drop-strip.js";
+import { DROP_STRIP_GAP, renderDropStrip, renderDropStripFromStills } from "./drop-strip.js";
 
 async function solid(width: number, height: number, color: { r: number; g: number; b: number }): Promise<Buffer> {
   return sharp({
@@ -75,4 +75,36 @@ test("one shiny card makes the strip a gif", async () => {
   assert.equal(first[at(stillX)], 10);
   assert.equal(first[at(shinyX)], 255);
   assert.equal(second[at(shinyX)], 20);
+});
+
+test("a mint drop shines one card and leaves the others still", async () => {
+  const red = await solid(48, 64, { r: 180, g: 20, b: 20 });
+  const blue = await solid(48, 64, { r: 20, g: 40, b: 160 });
+  const strip = await renderDropStripFromStills([
+    { image: red, shiny: false },
+    { image: blue, shiny: true },
+  ]);
+  assert.equal(strip.animated, true);
+  assert.equal(strip.data.subarray(0, 6).toString(), "GIF89a");
+  const meta = await sharp(strip.data, { animated: true }).metadata();
+  const pages = meta.pages ?? 1;
+  assert.ok(pages > 8);
+  const raw = await sharp(strip.data, { animated: true, pages: -1 }).ensureAlpha().raw().toBuffer();
+  const width = meta.width ?? 0;
+  const height = meta.pageHeight ?? 0;
+  const at = (page: number, x: number, y: number) => {
+    const offset = (page * height + y) * width * 4 + x * 4;
+    return [raw[offset], raw[offset + 1], raw[offset + 2]];
+  };
+  const y = DROP_STRIP_GAP + 32;
+  const stillX = DROP_STRIP_GAP + 8;
+  const shinyX = DROP_STRIP_GAP + 48 + DROP_STRIP_GAP + 24;
+  assert.deepEqual(at(0, stillX, y), at(pages - 1, stillX, y));
+  let moved = false;
+  for (let page = 1; page < pages; page++) {
+    const early = at(0, shinyX, y);
+    const later = at(page, shinyX, y);
+    if (early[0] !== later[0] || early[1] !== later[1] || early[2] !== later[2]) moved = true;
+  }
+  assert.equal(moved, true);
 });
