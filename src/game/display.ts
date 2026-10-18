@@ -45,6 +45,12 @@ export function cooldownLine(name: string, ms: number): string {
   return `**${name}** is available in \`${formatDuration(ms)}\``;
 }
 
+/** Small gray Discord line, so a GIF's processing time can be read back. */
+export function processingTimeNote(ms: number): string {
+  const shown = String(Math.max(0, Math.round(ms))).padStart(4, "0");
+  return `-# ${shown}ms`;
+}
+
 export function dropAnnouncement(dropperDiscordId: string, wishlistDiscordIds: string[], cardCount = 3): string {
   const noun = cardCount === 1 ? "1 card" : `${cardCount} cards`;
   const lines = [`<@${dropperDiscordId}> is dropping ${noun}!`];

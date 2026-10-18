@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { encodeApng } from "../utils/apng.js";
-import { ditherCardFade, paintCardShine, paintCornerBurn, shinePrism } from "./card-animations.js";
+import { blendShineOverlay, ditherCardFade, paintCardShine, paintCornerBurn, shinePrism } from "./card-animations.js";
 
 function solid(width: number, height: number, color: [number, number, number, number]): Buffer {
   const buf = Buffer.alloc(width * height * 4);
@@ -54,6 +54,18 @@ test("the shine crosses from the top-left toward the bottom-right", () => {
   assert.equal(earlyFar, 30);
   assert.equal(lateCorner, 30);
   assert.ok(lateFar > 30);
+});
+
+test("the cached shine overlay matches painting that frame", () => {
+  const width = 48;
+  const height = 72;
+  const base = solid(width, height, [30, 40, 50, 255]);
+  const painted = paintCardShine(base, width, height, 8 / 32);
+  const overlaid = Buffer.from(base);
+  blendShineOverlay(overlaid, width, 0, 0, width, height, 8);
+  assert.equal(overlaid[0], painted[0]);
+  assert.equal(overlaid[(36 * width + 20) * 4], painted[(36 * width + 20) * 4]);
+  assert.equal(overlaid[(70 * width + 46) * 4 + 3], painted[(70 * width + 46) * 4 + 3]);
 });
 
 function clearCount(buf: Buffer, width: number, x0: number, y0: number, x1: number, y1: number): number {

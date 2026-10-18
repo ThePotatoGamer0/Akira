@@ -1,7 +1,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { isCardCode, mintCardCode, randomCardCode } from "./codes.js";
-import { cardSummaryLine, cooldownLine, dropAnnouncement, fightOffAnnouncement, formatDuration, grabAnnouncement, qualityStars } from "./display.js";
+import { cardSummaryLine, cooldownLine, dropAnnouncement, fightOffAnnouncement, formatDuration, grabAnnouncement, processingTimeNote, qualityStars } from "./display.js";
+
+test("processing time is a small gray millisecond count", () => {
+  assert.equal(processingTimeNote(42), "-# 0042ms");
+  assert.equal(processingTimeNote(1842), "-# 1842ms");
+});
 
 test("card codes are 7 lowercase letters or digits", () => {
   const code = randomCardCode(() => 0);

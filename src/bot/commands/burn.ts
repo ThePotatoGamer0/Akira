@@ -12,6 +12,7 @@ import {
   type Message,
 } from "discord.js";
 import { getCard, lastGrabbedCard } from "../../game/cards.js";
+import { processingTimeNote } from "../../game/display.js";
 import { burnOwnedCard, quoteOwnedBurn } from "../../game/economy.js";
 import { GameError } from "../../game/errors.js";
 import type { AkiraCommand } from "../../types/commands.js";
@@ -89,10 +90,11 @@ export async function handleBurnConfirmButton(interaction: ButtonInteraction): P
   }
   try {
     await interaction.deferUpdate();
+    const started = Date.now();
     const result = await burnOwnedCard(pending.userId, interaction.user.username, pending.cardId, pending.guildId);
     const file = new AttachmentBuilder(result.imagePath, { name: "burn.gif" });
     await interaction.editReply({
-      content: `Akira burned **${result.characterName}** #${result.printNumber} and tucked ${result.awarded} bits away. You now have ${result.balance}.`,
+      content: `Akira burned **${result.characterName}** #${result.printNumber} and tucked ${result.awarded} bits away. You now have ${result.balance}.\n${processingTimeNote(Date.now() - started)}`,
       embeds: [],
       components: [],
       files: [file],
@@ -115,10 +117,11 @@ export const burn: AkiraCommand = {
     const cardId = interaction.options.getString("card_id", true);
     try {
       await interaction.deferReply();
+      const started = Date.now();
       const result = await burnOwnedCard(interaction.user.id, interaction.user.username, cardId, interaction.guildId);
       const file = new AttachmentBuilder(result.imagePath, { name: "burn.gif" });
       await interaction.editReply({
-        content: `Akira burned **${result.characterName}** #${result.printNumber} and tucked ${result.awarded} bits away. You now have ${result.balance}.`,
+        content: `Akira burned **${result.characterName}** #${result.printNumber} and tucked ${result.awarded} bits away. You now have ${result.balance}.\n${processingTimeNote(Date.now() - started)}`,
         files: [file],
       });
     } catch (err) {

@@ -22,20 +22,21 @@ export async function encodeGif(
     throw new Error("encodeGif: frames and delaysMs length mismatch");
   }
   const expected = width * height * 4;
-  const pngs = await Promise.all(frames.map((frame) => {
+  for (const frame of frames) {
     if (frame.byteLength !== expected) {
       throw new Error(`encodeGif: expected ${expected} bytes per frame, got ${frame.byteLength}`);
     }
-    return sharp(frame, { raw: { width, height, channels: 4 } }).png({ compressionLevel: 0 }).toBuffer();
-  }));
-  return sharp(pngs, { join: { animated: true } })
+  }
+  return sharp(Buffer.concat(frames), {
+    raw: { width, height: height * frames.length, channels: 4, pageHeight: height },
+  })
     .gif({
       delay: delaysMs,
       loop: 0,
       effort: options?.effort ?? 4,
       dither: options?.dither,
-      reuse: options?.reuse,
-      interFrameMaxError: options?.interFrameMaxError,
+      reuse: options?.reuse ?? true,
+      interFrameMaxError: options?.interFrameMaxError ?? 0,
     })
     .toBuffer();
 }

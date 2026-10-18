@@ -202,6 +202,7 @@ export async function prepareDrop(input: {
     slotFromVariant(index + 1, variant, pitied.qualities[index] ?? "COMMON", frameId),
   );
   const wishes = await wishlistDiscordIds(slots.map((slot) => slot.characterId));
+  await claimDropCooldown(user.id, effects.dropCooldownMs);
 
   return {
     guildId: input.guildId,
@@ -216,11 +217,11 @@ export async function prepareDrop(input: {
   };
 }
 
-export async function commitDrop(prepared: PreparedDrop, messageId: string): Promise<Date> {
-  const expiresAt = new Date(Date.now() + prepared.dropCooldownMs);
-  return prisma.$transaction(async (tx) => {
+async function claimDropCooldown(userId: string, dropCooldownMs: number): Promise<void> {
+  const expiresAt = new Date(Date.now() + dropCooldownMs);
+  await prisma.$transaction(async (tx) => {
     const existing = await tx.cooldown.findUnique({
-      where: { userId_type: { userId: prepared.userId, type: "DROP" } },
+      where: { userId_type: { userId, type: "DROP" } },
     });
     if (existing && existing.expiresAt.getTime() > Date.now()) {
       throw new GameError(
@@ -228,7 +229,22 @@ export async function commitDrop(prepared: PreparedDrop, messageId: string): Pro
         `Akira needs you to wait ${formatRemaining(existing.expiresAt.getTime() - Date.now())} before dropping again.`,
       );
     }
+    await tx.cooldown.upsert({
+      where: { userId_type: { userId, type: "DROP" } },
+      create: { userId, type: "DROP", expiresAt },
+      update: { expiresAt },
+    });
+  });
+}
 
+/** Drop the cooldown when the card image never went up, so the player can try again. */
+export async function releaseDropCooldown(userId: string): Promise<void> {
+  await prisma.cooldown.deleteMany({ where: { userId, type: "DROP" } });
+}
+
+export async function commitDrop(prepared: PreparedDrop, messageId: string): Promise<Date> {
+  const expiresAt = new Date(Date.now() + prepared.dropCooldownMs);
+  return prisma.$transaction(async (tx) => {
     const created = await tx.drop.create({
       data: {
         guildId: prepared.guildId,

@@ -1,5 +1,6 @@
 import sharp from "sharp";
 import { encodeGif } from "../utils/gif.js";
+import { blendShineOverlay, SHINE_DELAY_MS, SHINE_FRAMES } from "./card-animations.js";
 
 export type DropStripCard = {
   image: Buffer;
@@ -113,4 +114,72 @@ export async function renderDropStrip(cards: DropStripCard[]): Promise<DropStrip
     delays.push(delay > 0 ? delay : 60);
   }
   return { data: await encodeGif(frames, first.width, first.height, delays), animated: true };
+}
+
+type StillRgba = {
+  width: number;
+  height: number;
+  rgba: Buffer;
+};
+
+async function decodeStill(image: Buffer): Promise<StillRgba> {
+  const { data, info } = await sharp(image).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  if (!info.width || !info.height || info.channels !== 4) throw new Error("drop strip: still has no size");
+  return { width: info.width, height: info.height, rgba: data };
+}
+
+function stitchStillRgba(cards: StillRgba[]): { data: Buffer; width: number; height: number } {
+  const cardHeight = Math.max(...cards.map((card) => card.height));
+  const { width, height } = stripSize(cards.map((card) => card.width), cardHeight);
+  const out = Buffer.alloc(width * height * 4);
+  let x = DROP_STRIP_GAP;
+  for (const card of cards) {
+    for (let y = 0; y < card.height; y++) {
+      const src = y * card.width * 4;
+      card.rgba.copy(out, ((y + DROP_STRIP_GAP) * width + x) * 4, src, src + card.width * 4);
+    }
+    x += card.width + DROP_STRIP_GAP;
+  }
+  return { data: out, width, height };
+}
+
+/**
+ * Build a drop from still cards. A mint is shone here, instead of encoding a
+ * card GIF and then decoding it to build the strip.
+ */
+export async function renderDropStripFromStills(cards: Array<{ image: Buffer; shiny: boolean }>): Promise<DropStrip> {
+  if (cards.length === 0) throw new Error("drop strip: no cards");
+  if (!cards.some((card) => card.shiny)) {
+    return { data: await stitchStill(cards.map((card) => card.image)), animated: false };
+  }
+  const stills = await Promise.all(cards.map((card) => decodeStill(card.image)));
+  const base = stitchStillRgba(stills);
+  const places: Array<{ x: number; width: number; height: number; shiny: boolean }> = [];
+  let cursor = DROP_STRIP_GAP;
+  for (let index = 0; index < stills.length; index++) {
+    const still = stills[index];
+    if (!still) continue;
+    places.push({ x: cursor, width: still.width, height: still.height, shiny: cards[index]?.shiny === true });
+    cursor += still.width + DROP_STRIP_GAP;
+  }
+  const frames: Buffer[] = [];
+  const delays: number[] = [];
+  for (let i = 0; i < SHINE_FRAMES; i++) {
+    const frame = Buffer.from(base.data);
+    for (const place of places) {
+      if (!place.shiny) continue;
+      blendShineOverlay(frame, base.width, place.x, DROP_STRIP_GAP, place.width, place.height, i);
+    }
+    frames.push(frame);
+    delays.push(SHINE_DELAY_MS);
+  }
+  const size = { width: base.width, height: base.height };
+  return {
+    data: await encodeGif(frames, size.width, size.height, delays, {
+      effort: 4,
+      reuse: true,
+      interFrameMaxError: 0,
+    }),
+    animated: true,
+  };
 }

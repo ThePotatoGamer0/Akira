@@ -1,6 +1,6 @@
 import { SlashCommandBuilder, type ChatInputCommandInteraction, type Client } from "discord.js";
 import { icon } from "../../utils/icons.js";
-import { commitDrop, prepareDrop } from "../../game/drops.js";
+import { commitDrop, prepareDrop, releaseDropCooldown } from "../../game/drops.js";
 import { GameError } from "../../game/errors.js";
 import type { AkiraCommand } from "../../types/commands.js";
 import { scheduleDropExpiry } from "../drop-expiry.js";
@@ -8,6 +8,8 @@ import { scheduleGrabNotices } from "../grab-notices.js";
 import { queueCooldownReminder } from "../reminder-schedule.js";
 import { renderDropMessage } from "../drop-message.js";
 import { sendGameError } from "../reply.js";
+
+const settingDown = new Set<string>();
 
 export const drop: AkiraCommand = {
   data: new SlashCommandBuilder().setName("drop").setDescription("Set cards down in the drop channel"),
@@ -20,9 +22,14 @@ export const drop: AkiraCommand = {
       return;
     }
 
+    if (settingDown.has(interaction.user.id)) {
+      throw new GameError("drop-busy", "Akira is still setting those cards down.");
+    }
+    settingDown.add(interaction.user.id);
+    let prepared: Awaited<ReturnType<typeof prepareDrop>> | null = null;
     let committed = false;
     try {
-      const prepared = await prepareDrop({
+      prepared = await prepareDrop({
         guildId: interaction.guildId,
         channelId: interaction.channelId,
         discordId: interaction.user.id,
@@ -50,6 +57,9 @@ export const drop: AkiraCommand = {
         await message.react(icon(key));
       }
     } catch (err) {
+      if (prepared && !committed) {
+        await releaseDropCooldown(prepared.userId).catch(() => undefined);
+      }
       if (interaction.deferred && !committed) {
         await interaction.deleteReply().catch(() => undefined);
       }
@@ -58,6 +68,8 @@ export const drop: AkiraCommand = {
         return;
       }
       await sendGameError(interaction, err);
+    } finally {
+      settingDown.delete(interaction.user.id);
     }
   },
 };
