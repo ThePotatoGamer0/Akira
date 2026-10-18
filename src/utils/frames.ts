@@ -62,8 +62,11 @@ function readStyle(raw: RawText | undefined): TextStyle | null {
   };
 }
 
+/** Plaque used this id. Later frames keep their numbers, so 11 stays unused. */
+const RETIRED_FRAME_IDS = new Set([11]);
+
 export function loadFrame(id: number): FrameAsset | null {
-  if (!Number.isInteger(id) || id < 0) return null;
+  if (!Number.isInteger(id) || id < 0 || RETIRED_FRAME_IDS.has(id)) return null;
   const dir = path.join(DIR_INPUT_FRAMES, String(id));
   const imagePath = path.join(dir, "frame.png");
   if (!fs.existsSync(imagePath)) return null;

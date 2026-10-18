@@ -87,11 +87,20 @@ export function frameLabel(id: number): string {
 /** A frame name (`dark`, `yellow`, `pink`) or a frame number. Anything else is not a frame. */
 export function parseFrameToken(token: string): number | null {
   const key = token.trim().toLowerCase();
-  for (const [id, name] of Object.entries(FRAME_NAMES)) {
-    if (name === key) return Number(id);
+  if (key === "plaque") return null;
+  let id: number | null = null;
+  for (const [frameId, name] of Object.entries(FRAME_NAMES)) {
+    if (name === key) id = Number(frameId);
   }
-  if (!/^\d+$/.test(key)) return null;
-  return Number(key);
+  if (id === null && /^\d+$/.test(key)) id = Number(key);
+  if (id === null || !loadFrame(id)) return null;
+  return id;
+}
+
+/** A saved frame id that still has artwork. A removed frame, including plaque, is no choice at all. */
+export function storedFrameChoice(id: number | null): number | null {
+  if (id === null || !loadFrame(id)) return null;
+  return id;
 }
 
 /**
