@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import sharp from "sharp";
 import { encodeApng } from "../utils/apng.js";
 import { encodeGif } from "../utils/gif.js";
@@ -231,24 +232,57 @@ function makeBlueNoise(size: number): Float32Array {
   return thresholds;
 }
 
-let blueNoise: Float32Array | null = null;
+/** Loaded once at startup. Generating this table is a long loop, so the file is shipped with the bot. */
+function loadBlueNoise(): Float32Array {
+  const count = BLUE_SIZE * BLUE_SIZE;
+  try {
+    const bytes = readFileSync(new URL("./blue-noise.bin", import.meta.url));
+    if (bytes.byteLength === count * 4) {
+      const copy = Buffer.from(bytes);
+      return new Float32Array(copy.buffer, copy.byteOffset, count);
+    }
+  } catch {
+    // Fall through and build the table if the file is missing.
+  }
+  return makeBlueNoise(BLUE_SIZE);
+}
+
+const blueNoise = loadBlueNoise();
 
 function blueThreshold(x: number, y: number): number {
-  blueNoise ??= makeBlueNoise(BLUE_SIZE);
   return blueNoise[(y % BLUE_SIZE) * BLUE_SIZE + (x % BLUE_SIZE)] ?? 0.5;
 }
 
-/** Flame front that starts in the top-left and eats the card toward the bottom-right. */
-export function paintCornerBurn(rgba: Buffer, width: number, height: number, progress: number): Buffer {
-  const out = Buffer.from(rgba);
-  const front = -0.08 + smoothstep(progress) * 1.35;
+/** Where the flame sits on each pixel. It does not move between frames, so a burn builds it once. */
+function flameEdge(width: number, height: number): Float32Array {
+  const edge = new Float32Array(width * height);
   for (let y = 0; y < height; y++) {
     const v = height <= 1 ? 0 : y / (height - 1);
     for (let x = 0; x < width; x++) {
+      const u = width <= 1 ? 0 : x / (width - 1);
+      const wander = (valueNoise(x, y, 36) - 0.5) * 0.22 + (valueNoise(x + 120, y, 14) - 0.5) * 0.07;
+      edge[y * width + x] = (u + v) * 0.5 + wander;
+    }
+  }
+  return edge;
+}
+
+/** Flame front that starts in the top-left and eats the card toward the bottom-right. */
+export function paintCornerBurn(
+  rgba: Buffer,
+  width: number,
+  height: number,
+  progress: number,
+  edge?: Float32Array,
+): Buffer {
+  const field = edge ?? flameEdge(width, height);
+  const out = Buffer.from(rgba);
+  const front = -0.08 + smoothstep(progress) * 1.35;
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
       const pixel = (y * width + x) * 4;
       if ((out[pixel + 3] ?? 0) === 0) continue;
-      const wander = (valueNoise(x, y, 36) - 0.5) * 0.22 + (valueNoise(x + 120, y, 14) - 0.5) * 0.07;
-      const ahead = ((width <= 1 ? 0 : x / (width - 1)) + v) * 0.5 + wander - front;
+      const ahead = (field[y * width + x] ?? 0) - front;
       if (ahead < -0.015) {
         out[pixel + 3] = 0;
         continue;
@@ -297,10 +331,11 @@ async function buildBurnFrames(base: Buffer): Promise<AnimationFrames> {
   if (!width || !height) throw new Error("burn: invalid dimensions");
 
   const rgba = await pngBufferToRgba(base, width, height);
+  const edge = flameEdge(width, height);
   const frames: Buffer[] = [];
   const delays: number[] = [];
   for (let i = 0; i < BURN_STEPS; i++) {
-    frames.push(paintCornerBurn(rgba, width, height, i / (BURN_STEPS - 1)));
+    frames.push(paintCornerBurn(rgba, width, height, i / (BURN_STEPS - 1), edge));
     delays.push(BURN_DELAY_MS);
   }
   for (let i = 1; i <= BURN_FADE_STEPS; i++) {
@@ -316,7 +351,7 @@ export async function renderBurnGif(base: Buffer): Promise<Buffer> {
     dither: 0,
     reuse: false,
     interFrameMaxError: 0,
-    effort: 7,
+    effort: 4,
   });
 }
 

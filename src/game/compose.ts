@@ -26,6 +26,13 @@ export type CardImageRequest = {
   kind: CardImageKind;
 };
 
+function writeCache(cachePath: string, output: Buffer): void {
+  ensureDir(path.dirname(cachePath));
+  const temporary = `${cachePath}.${process.pid}.tmp`;
+  fs.writeFileSync(temporary, output);
+  fs.renameSync(temporary, cachePath);
+}
+
 function cacheFileName(kind: CardImageKind, format: CardAnimationFormat): CardCacheFileName {
   if (kind === "normal") return "normal.png";
   if (kind === "shiny") return format === "apng" ? "shiny.apng" : "shiny.gif";
@@ -106,40 +113,53 @@ export async function ensureCardImage(request: CardImageRequest, format: CardAni
     throw new GameError("missing-frame", "Akira is missing the frame artwork for that card.");
   }
 
-  const texts: OverlayText[] = [];
-  const meta = await sharp(frame.imagePath).metadata();
-  const width = meta.width ?? 0;
-  const height = meta.height ?? 0;
-  const belowName = frame.characterName
-    ? closestBelow(frame.characterName, [frame.seriesName, frame.printNumber])
-    : null;
-  if (frame.characterName && request.characterName.trim()) {
-    texts.push(
-      ...nameLines(
-        frame.characterName,
-        request.characterName,
-        width,
-        height,
-        belowName,
-      ),
-    );
-  }
-  if (frame.seriesName && request.seriesName.trim()) {
-    const limits = nameLimits(frame.seriesName, frame.printNumber, width, height);
-    const fitted = fitSingleLine({
-      text: request.seriesName,
-      fontSize: frame.seriesName.fontSize,
-      maxWidth: limits.maxWidth,
-      measure: (text, size) => measureName(text, size, familyOf(frame.seriesName!), /bold/i.test(frame.seriesName!.fontFamily)),
-    });
-    texts.push({ ...frame.seriesName, text: fitted.text, fontSize: fitted.fontSize });
-  }
-  if (request.printNumber !== null) {
-    const print = withText(frame.printNumber, `#${request.printNumber}`);
-    if (print) texts.push(print);
-  }
+  const stillPath = cardCacheFile({
+    variantId: request.variantId,
+    frameId: request.frameId,
+    printKey,
+    dyeKey,
+    fileName: "normal.png",
+  });
+  let still: Buffer;
+  if (request.kind !== "normal" && fs.existsSync(stillPath)) {
+    still = fs.readFileSync(stillPath);
+  } else {
+    const texts: OverlayText[] = [];
+    const meta = await sharp(frame.imagePath).metadata();
+    const width = meta.width ?? 0;
+    const height = meta.height ?? 0;
+    const belowName = frame.characterName
+      ? closestBelow(frame.characterName, [frame.seriesName, frame.printNumber])
+      : null;
+    if (frame.characterName && request.characterName.trim()) {
+      texts.push(
+        ...nameLines(
+          frame.characterName,
+          request.characterName,
+          width,
+          height,
+          belowName,
+        ),
+      );
+    }
+    if (frame.seriesName && request.seriesName.trim()) {
+      const limits = nameLimits(frame.seriesName, frame.printNumber, width, height);
+      const fitted = fitSingleLine({
+        text: request.seriesName,
+        fontSize: frame.seriesName.fontSize,
+        maxWidth: limits.maxWidth,
+        measure: (text, size) => measureName(text, size, familyOf(frame.seriesName!), /bold/i.test(frame.seriesName!.fontFamily)),
+      });
+      texts.push({ ...frame.seriesName, text: fitted.text, fontSize: fitted.fontSize });
+    }
+    if (request.printNumber !== null) {
+      const print = withText(frame.printNumber, `#${request.printNumber}`);
+      if (print) texts.push(print);
+    }
 
-  const still = await renderCardImage(artPath, frame.imagePath, texts, { ambient: frame.ambient });
+    still = await renderCardImage(artPath, frame.imagePath, texts, { ambient: frame.ambient });
+    if (request.kind !== "normal") writeCache(stillPath, still);
+  }
   const output =
     request.kind === "shiny"
       ? format === "apng"
@@ -151,9 +171,6 @@ export async function ensureCardImage(request: CardImageRequest, format: CardAni
           : await renderBurnGif(still)
         : still;
 
-  ensureDir(path.dirname(cachePath));
-  const temporary = `${cachePath}.${process.pid}.tmp`;
-  fs.writeFileSync(temporary, output);
-  fs.renameSync(temporary, cachePath);
+  writeCache(cachePath, output);
   return cachePath;
 }

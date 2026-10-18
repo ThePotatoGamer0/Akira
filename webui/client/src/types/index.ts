@@ -45,7 +45,7 @@ export type CollectionStudio = {
   serverFrame: number;
   /** The signed-in player's frame. Null uses the server frame. */
   personalFrame: number | null;
-  frames: number[];
+  frames: { id: number; name: string }[];
   tags: { name: string; emoji: string; count: number }[];
 };
 

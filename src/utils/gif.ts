@@ -22,13 +22,12 @@ export async function encodeGif(
     throw new Error("encodeGif: frames and delaysMs length mismatch");
   }
   const expected = width * height * 4;
-  const pngs: Buffer[] = [];
-  for (const frame of frames) {
+  const pngs = await Promise.all(frames.map((frame) => {
     if (frame.byteLength !== expected) {
       throw new Error(`encodeGif: expected ${expected} bytes per frame, got ${frame.byteLength}`);
     }
-    pngs.push(await sharp(frame, { raw: { width, height, channels: 4 } }).png().toBuffer());
-  }
+    return sharp(frame, { raw: { width, height, channels: 4 } }).png({ compressionLevel: 0 }).toBuffer();
+  }));
   return sharp(pngs, { join: { animated: true } })
     .gif({
       delay: delaysMs,

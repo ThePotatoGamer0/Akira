@@ -4,7 +4,7 @@ description: See or change the frame drawn around cards.
 command: frame
 ---
 
-A frame is a folder in `input/frames`, numbered from 0. Frame 0 is the dark frame that ships as the default. Frames 1 through 9 are that same polaroid in yellow, white, red, blue, green, pink, purple, orange, and teal. Ambient (10) keeps that polaroid and fills it with a soft wash of the card's own artwork. Plaque (11) is a metal frame: the series sits on the top plate, and the character name sits on the bottom plate. Higher numbers are other frames. Some of them have a plate for the series and another for the character name, and some leave one or both off. A card that has been given a frame keeps that one. A card with no frame of its own uses your personal frame when you have one, and the server frame otherwise.
+A frame is a folder in `input/frames`, numbered from 0. Frame 0 is the dark frame that ships as the default. Frames 1 through 9 are that same polaroid in yellow, white, red, blue, green, pink, purple, orange, and teal. Ambient (10) keeps that polaroid and fills it with a soft wash of the card's own artwork. Higher numbers are other frames. Some of them have a plate for the series and another for the character name, and some leave one or both off. A card that has been given a frame keeps that one. A card with no frame of its own uses your personal frame when you have one, and the server frame otherwise.
 
 `aframe` on its own lists every frame that is on disk, with its name and number.
 
