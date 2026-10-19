@@ -2,6 +2,7 @@ import type { AkiraCommand } from "../../types/commands.js";
 import { burn } from "./burn.js";
 import { collection } from "./collection.js";
 import { cooldowns } from "./cooldowns.js";
+import { compensate } from "./compensate.js";
 import { daily } from "./daily.js";
 import { drop } from "./drop.js";
 import { frame } from "./frame.js";
@@ -34,6 +35,7 @@ export const commands: AkiraCommand[] = [
   burn,
   multiburn,
   daily,
+  compensate,
   cooldowns,
   lookup,
   reminders,

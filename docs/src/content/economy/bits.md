@@ -11,6 +11,7 @@ Nothing here deletes your cards. Prestige does not take your bits either.
 
 - A grab pays **5** bits.
 - Daily pays **100** bits, plus any daily bonus already on your profile, once every 24 hours. New prestiges do not add to this.
+- [Compensate](/commands/compensate) pays **100** bits after Akira was down for at least 30 minutes. Each player claims once, and the claim stays open for 48 hours.
 - Burning one card pays from its quality: common 20, uncommon 50, rare 100, epic 200, legendary 500. [Burn value](/commands/shop) doubles that while it is on you.
 - Claiming a [milestone](/economy/personal-milestone) pays a smaller pile of bits back. It is always less than you gave to reach it.
 
@@ -26,6 +27,7 @@ The Economy page on the website shows the same shop, pool, milestones, and prest
 ## See also
 
 - [Shop](/commands/shop)
+- [Compensate](/commands/compensate)
 - [Server buff pool](/economy/server-pool)
 - [Personal milestones](/economy/personal-milestone)
 - [Prestige](/prestige/overview)

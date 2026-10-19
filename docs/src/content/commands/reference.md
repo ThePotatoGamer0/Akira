@@ -40,6 +40,7 @@ Examples: `ad`, `ac`, `av`, `av fmbl40r`, `alu denji`, `awl`, `awa Power`, `awr 
 | --- | --- | --- |
 | [`/cooldowns`](/commands/cooldowns) | `user` optional. | `cd`, `timers` |
 | [`/daily`](/commands/daily) | None. | |
+| [`/compensate`](/commands/compensate) | None. Pays 100 bits after an outage of at least 30 minutes. Open for 48 hours. | |
 | [`/reminders`](/commands/reminders) | `action` optional: `daily`, `drop`, or `grab`. Omit it to see the list. | `rm`, `remind` |
 
 Examples: `acd`, `atimers`, `adaily`, `areminders`, `areminders drop`, `arm drop`.

@@ -116,6 +116,36 @@ model User {
   trackedSeries       TrackedSeries[]
   buffs               Buff[]
   prestigeBuffs       PrestigeBuff[]
+  outageClaims        OutageClaim[]
+}
+
+/** One row. The last time the bot process was alive, and whether it exited on purpose. */
+model BotPresence {
+  id        String   @id
+  beatAt    DateTime
+  cleanExit Boolean  @default(false)
+}
+
+/** A gap where the bot was down. Players claim the bits themselves. */
+model Outage {
+  id         String        @id @default(cuid())
+  offlineAt  DateTime
+  onlineAt   DateTime
+  bits       Int
+  claimUntil DateTime
+  claims     OutageClaim[]
+
+  @@index([claimUntil])
+}
+
+model OutageClaim {
+  outageId  String
+  userId    String
+  claimedAt DateTime @default(now())
+  outage    Outage   @relation(fields: [outageId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([outageId, userId])
 }
 
 model Tag {

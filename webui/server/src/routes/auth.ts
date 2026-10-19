@@ -9,6 +9,7 @@ import {
 } from "../utils/discord-activity.js";
 import { createVerificationCode, consumeVerificationCode } from "../utils/verificationCodes.js";
 import { sendVerificationDm } from "../utils/notify-bot.js";
+import { userIsAdmin } from "../host.js";
 import { akiraAddressName, sanitizePreferredName } from "../utils/akira-address-name.js";
 
 export const authRouter = Router();
@@ -36,7 +37,7 @@ function serializeMe(u: {
     milestoneCount: u.milestoneCount,
     milestoneProgress: u.milestoneProgress,
     passiveBitsBonus: u.passiveBitsBonus,
-    isAdmin: u.isAdmin,
+    isAdmin: userIsAdmin(u),
   };
 }
 
