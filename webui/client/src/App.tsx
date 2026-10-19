@@ -10,7 +10,9 @@ import { CollectionPage } from "./pages/Collection.js";
 import { EconomyPage } from "./pages/Economy.js";
 import { StatsPage } from "./pages/Stats.js";
 import { AdminPage } from "./pages/Admin.js";
-import { PersonalisePage } from "./pages/Personalise.js";
+import { NoticeBell } from "./components/NoticeBell.js";
+import { SettingsPage } from "./pages/Settings.js";
+import { ChannelPage } from "./pages/Channel.js";
 import "./styles.css";
 
 type AuthView = "login" | "verify" | "setpass";
@@ -110,6 +112,7 @@ export function App() {
 
   return (
     <WebUiShell>
+      <NoticeBell fetchApi={auth.fetchApi} />
       <header className="webui-header">
         <div>
           <div className="webui-kana">ア キ ラ - WebUI</div>
@@ -140,9 +143,14 @@ export function App() {
         <NavLink to="/stats" className={({ isActive }) => (isActive ? "active" : "")}>
           Stats
         </NavLink>
-        <NavLink to="/personalise" className={({ isActive }) => (isActive ? "active" : "")}>
-          Personalise
+        <NavLink to="/settings" className={({ isActive }) => (isActive ? "active" : "")}>
+          Settings
         </NavLink>
+        {auth.isDiscordActivity ? null : (
+          <NavLink to="/channel" className={({ isActive }) => (isActive ? "active" : "")}>
+            Channel <span className="beta-tag">BETA</span>
+          </NavLink>
+        )}
         {me.isAdmin ? (
           <NavLink to="/admin" className={({ isActive }) => (isActive ? "active" : "")}>
             Admin
@@ -151,7 +159,7 @@ export function App() {
       </nav>
       <div className="webui-main">
         <Routes>
-          <Route path="/" element={<Home me={me} />} />
+          <Route path="/" element={<Home me={me} showChannel={!auth.isDiscordActivity} />} />
           <Route path="/collection" element={<CollectionPage me={me} fetchApi={auth.fetchApi} />} />
           <Route
             path="/economy"
@@ -165,10 +173,17 @@ export function App() {
           />
           <Route path="/stats" element={<StatsPage me={me} fetchApi={auth.fetchApi} />} />
           <Route path="/leaderboard" element={<Navigate to="/stats" replace />} />
+          <Route path="/personalise" element={<Navigate to="/settings" replace />} />
           <Route
-            path="/personalise"
+            path="/settings"
             element={
-              <PersonalisePage me={me} fetchApi={auth.fetchApi} onSaved={() => void auth.refreshMe()} />
+              <SettingsPage me={me} fetchApi={auth.fetchApi} onSaved={() => void auth.refreshMe()} />
+            }
+          />
+          <Route
+            path="/channel"
+            element={
+              auth.isDiscordActivity ? <Navigate to="/" replace /> : <ChannelPage fetchApi={auth.fetchApi} />
             }
           />
           <Route

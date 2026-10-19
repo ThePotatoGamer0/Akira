@@ -8,6 +8,9 @@ import { collectionRouter } from "./routes/collection.js";
 import { economyRouter } from "./routes/economy.js";
 import { statsRouter } from "./routes/stats.js";
 import { adminRouter } from "./routes/admin.js";
+import { noticesRouter } from "./routes/notices.js";
+import { remindersRouter } from "./routes/reminders.js";
+import { channelRouter } from "./routes/channel.js";
 import { serveMissingCardAsset } from "./routes/card-assets.js";
 import { REPO_ROOT } from "./utils/repo-root.js";
 
@@ -108,6 +111,9 @@ app.use("/collection", collectionRouter);
 app.use("/economy", economyRouter);
 app.use("/stats", statsRouter);
 app.use("/admin", adminRouter);
+app.use("/notices", noticesRouter);
+app.use("/reminders", remindersRouter);
+app.use("/channel", channelRouter);
 
 app.get("/health", (_req, res) => res.json({ ok: true }));
 

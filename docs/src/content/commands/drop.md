@@ -41,3 +41,4 @@ ad
 - [Cooldowns](/commands/cooldowns)
 - [Wishlist](/commands/wishlist)
 - [Command list](/commands/reference)
+- [Drop channel in the WebUI](/webui/channel)

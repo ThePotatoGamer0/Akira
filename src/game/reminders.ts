@@ -57,22 +57,34 @@ export async function listReminders(discordId: string): Promise<ReminderRow[]> {
   });
 }
 
-export async function toggleReminder(
+export async function setReminder(
   discordId: string,
   username: string,
   action: ReminderAction,
+  enabled: boolean,
 ): Promise<{ enabled: boolean }> {
   const user = await ensureUser(discordId, username);
   const type = TYPE_OF[action];
   const existing = await prisma.reminder.findUnique({
     where: { userId_type: { userId: user.id, type } },
   });
-  if (existing) {
-    await prisma.reminder.delete({ where: { id: existing.id } });
-    return { enabled: false };
-  }
-  await prisma.reminder.create({ data: { userId: user.id, type } });
-  return { enabled: true };
+  if (enabled && !existing) await prisma.reminder.create({ data: { userId: user.id, type } });
+  if (!enabled && existing) await prisma.reminder.delete({ where: { id: existing.id } });
+  return { enabled };
+}
+
+export async function toggleReminder(
+  discordId: string,
+  username: string,
+  action: ReminderAction,
+): Promise<{ enabled: boolean }> {
+  const user = await prisma.user.findUnique({
+    where: { discordId },
+    include: { reminders: true },
+  });
+  const type = TYPE_OF[action];
+  const enabled = !user?.reminders.some((row) => row.type === type);
+  return setReminder(discordId, username, action, enabled);
 }
 
 export function unknownReminder(input: string): GameError {

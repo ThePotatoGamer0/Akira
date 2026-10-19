@@ -1,6 +1,7 @@
 import type { Client } from "discord.js";
 import type { CooldownType } from "../generated/prisma/client.js";
 import { prisma } from "../db/client.js";
+import { recordCooldownNotice } from "../game/notices.js";
 import { reminderLabel, type ReminderAction } from "../game/reminders.js";
 import { REMINDER_DM_TTL_MS, rememberEphemeralDm } from "./dm-mailbox.js";
 
@@ -50,6 +51,11 @@ async function deliver(discordId: string, type: CooldownType): Promise<void> {
   if (cooldown && cooldown.expiresAt.getTime() > Date.now() + 1500) {
     arm(discordId, type, cooldown.expiresAt);
     return;
+  }
+  try {
+    await recordCooldownNotice(user.id, type);
+  } catch (err) {
+    console.error(`Akira couldn't save a ${type} notice for ${discordId}:`, err);
   }
   try {
     const discordUser = await bound.users.fetch(discordId);

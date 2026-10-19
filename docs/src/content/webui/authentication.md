@@ -30,5 +30,6 @@ The **sign-in screens and wording** may still feel plain or change as the WebUI 
 ## See also
 
 - [Collection in the WebUI](/webui/collection)
+- [Settings in the WebUI](/webui/settings)
 - [Economy & leaderboard in the WebUI](/webui/economy-and-leaderboard)
 - [Your first card](/getting-started/your-first-card)

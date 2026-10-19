@@ -1,0 +1,11 @@
+{
+  "name": "discord-log-html",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Turn a Discord channel log into HTML. The host page supplies the look; styles.css is the default.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./styles.css"
+  }
+}

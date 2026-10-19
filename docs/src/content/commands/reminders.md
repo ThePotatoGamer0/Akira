@@ -33,6 +33,7 @@ areminders grab
 - The DM says the cooldown is ready, then Akira deletes it about an hour later. A WebUI sign-in code is deleted when the code expires. Discord has to allow her DMs.
 - Turning a ping on while a timer is already running schedules that DM. Turning it off cancels the pending one.
 - A ping that is already ready does not send a message until the next time that cooldown starts.
+- The WebUI uses these same switches. A note shows up in the bell when the DM would, and you can turn each one on or off from Settings.
 
 ## See also
 
