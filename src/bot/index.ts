@@ -27,6 +27,7 @@ import { handleTransferButton } from "./commands/transfer.js";
 import { handleLookupButton, handleLookupSelect, replyCharacterEdition } from "./commands/lookup.js";
 import { resumeDropExpiries } from "./drop-expiry.js";
 import { startDropShelf } from "./drop-shelf.js";
+import { startOutageWatch } from "../game/outage.js";
 import { resumeGrabNotices } from "./grab-notices.js";
 import { bindReminderClient, resumeReminders } from "./reminder-schedule.js";
 import { startDmCleanup } from "./dm-mailbox.js";
@@ -157,6 +158,7 @@ client.once(Events.ClientReady, (c) => {
   void registerEveryGuild(c).catch((err) => console.error(err));
   startDmCleanup(c);
   startDropShelf();
+  startOutageWatch();
   void syncApplicationIcons()
     .catch((err) => console.error("Lucide icon sync failed.", err))
     .then(() => shortenLegacyCardCodes())

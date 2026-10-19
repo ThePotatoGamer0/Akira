@@ -20,6 +20,12 @@ export const DROP_PROTECTION_MS = 20 * 1000;
 
 export const GRAB_BITS = 5;
 export const DAILY_BITS = 100;
+/** One daily. Enough to notice, and short of the cheapest buff. */
+export const OUTAGE_BITS = DAILY_BITS;
+/** A restart shorter than this is a blip, not an outage players missed. */
+export const OUTAGE_MIN_MS = 30 * 60 * 1000;
+/** How long a player can claim after Akira is back. */
+export const OUTAGE_CLAIM_MS = 48 * 60 * 60 * 1000;
 
 export const BURN_BITS: Record<Quality, number> = {
   COMMON: 20,

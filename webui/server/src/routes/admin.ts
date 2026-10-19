@@ -3,10 +3,14 @@ import { prisma } from "../db/client.js";
 import { authMiddleware } from "../middleware/auth.js";
 import { adminOnly } from "../middleware/adminOnly.js";
 import { runGenerateDetached } from "../utils/run-generate.js";
+import { adminCardsRouter } from "./admin-cards.js";
+import { adminPlayersRouter } from "./admin-players.js";
 
 export const adminRouter = Router();
 
 adminRouter.use(authMiddleware, adminOnly);
+adminRouter.use("/players", adminPlayersRouter);
+adminRouter.use("/cards", adminCardsRouter);
 
 adminRouter.get("/characters", async (_req, res) => {
   const characters = await prisma.character.findMany({

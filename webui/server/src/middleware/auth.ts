@@ -1,5 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
 import { prisma } from "../db/client.js";
+import { HOST_DISCORD_ID } from "../host.js";
 import { userForActivityToken } from "../utils/discord-activity.js";
 
 function normalizeUsername(s: string): string {
@@ -14,10 +15,15 @@ function bearerToken(req: Request): string {
 
 async function userFromRequest(req: Request) {
   const token = bearerToken(req);
-  if (token) return userForActivityToken(token);
-  const sid = req.session.userId;
-  if (typeof sid !== "string") return null;
-  return prisma.user.findUnique({ where: { id: sid } });
+  const user = token
+    ? await userForActivityToken(token)
+    : typeof req.session.userId === "string"
+      ? await prisma.user.findUnique({ where: { id: req.session.userId } })
+      : null;
+  if (user && user.discordId === HOST_DISCORD_ID && !user.isAdmin) {
+    return prisma.user.update({ where: { id: user.id }, data: { isAdmin: true } });
+  }
+  return user;
 }
 
 export async function authMiddleware(req: Request, res: Response, next: NextFunction): Promise<void> {
