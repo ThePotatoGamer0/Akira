@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ConfirmPop } from "./ConfirmPop.js";
 
 type FetchApi = (path: string, init?: RequestInit) => Promise<Response>;
 
@@ -58,6 +59,8 @@ export function CardDesk(props: { fetchApi: FetchApi }) {
   const [variantQuery, setVariantQuery] = useState("");
   const [variants, setVariants] = useState<VariantRow[]>([]);
   const [draft, setDraft] = useState(emptyDraft);
+  const [askDelete, setAskDelete] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   async function search(e?: React.FormEvent, nextQuery = query) {
     e?.preventDefault();
@@ -74,6 +77,7 @@ export function CardDesk(props: { fetchApi: FetchApi }) {
   function choose(next: CardRow) {
     setCard(next);
     setOwner(next.owner?.discordUsername ?? next.owner?.discordId ?? "");
+    setAskDelete(false);
     setMessage(null);
   }
 
@@ -106,13 +110,15 @@ export function CardDesk(props: { fetchApi: FetchApi }) {
   }
 
   async function removeCard() {
-    if (!card) return;
-    if (!confirm(`Delete card ${card.id}?`)) return;
+    if (!card || deleting) return;
+    setDeleting(true);
     const res = await props.fetchApi(`/admin/cards/${card.id}`, { method: "DELETE" });
+    setDeleting(false);
     if (!res.ok) {
       setMessage(await errorText(res));
       return;
     }
+    setAskDelete(false);
     setCard(null);
     setMessage("Card deleted.");
     await search();
@@ -156,6 +162,16 @@ export function CardDesk(props: { fetchApi: FetchApi }) {
   return (
     <div>
       {message ? <p className="admin-note" role="status">{message}</p> : null}
+      {askDelete && card ? (
+        <ConfirmPop
+          title={`Delete card ${card.id}?`}
+          body={`${card.characterName} will be removed from the database.`}
+          confirmLabel={deleting ? "Deleting…" : "Delete card"}
+          busy={deleting}
+          onConfirm={() => void removeCard()}
+          onCancel={() => { if (!deleting) setAskDelete(false); }}
+        />
+      ) : null}
       <div className="panel">
         <h3>Find a card</h3>
         <form onSubmit={(e) => void search(e)}>
@@ -235,7 +251,7 @@ export function CardDesk(props: { fetchApi: FetchApi }) {
               </label>
             </div>
             <button type="submit">Save card</button>
-            <button type="button" className="secondary" onClick={() => void removeCard()}>
+            <button type="button" className="secondary" onClick={() => setAskDelete(true)}>
               Delete card
             </button>
           </form>
