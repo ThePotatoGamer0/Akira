@@ -775,6 +775,54 @@ button.admin-pick:hover {
   margin: 0 0 0.8rem;
 }
 
+.confirm-pop {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+}
+
+.confirm-pop__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 12, 20, 0.78);
+  backdrop-filter: blur(10px);
+}
+
+.confirm-pop__card {
+  position: relative;
+  width: min(26rem, 100%);
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.35rem 1.1rem;
+  box-shadow: 0 12px 40px rgba(15, 12, 20, 0.28);
+}
+
+.confirm-pop__card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+}
+
+.confirm-pop__card p {
+  margin: 0 0 1rem;
+  color: var(--ink2);
+  line-height: 1.5;
+}
+
+.confirm-pop__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.confirm-pop__actions button {
+  margin: 0;
+}
+
 .panel [role="alert"] {
   color: var(--accent3);
   font-size: 0.88rem;

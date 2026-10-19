@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ConfirmPop } from "./ConfirmPop.js";
 
 type FetchApi = (path: string, init?: RequestInit) => Promise<Response>;
 
@@ -60,6 +61,8 @@ export function PlayerDesk(props: { fetchApi: FetchApi }) {
   const [message, setMessage] = useState<string | null>(null);
   const [discordId, setDiscordId] = useState("");
   const [newUsername, setNewUsername] = useState("");
+  const [askDelete, setAskDelete] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   async function search(e?: React.FormEvent) {
     e?.preventDefault();
@@ -81,6 +84,7 @@ export function PlayerDesk(props: { fetchApi: FetchApi }) {
       return;
     }
     const body = (await res.json()) as { player: PlayerDetail };
+    setAskDelete(false);
     setPlayer(body.player);
   }
 
@@ -189,14 +193,15 @@ export function PlayerDesk(props: { fetchApi: FetchApi }) {
   }
 
   async function removePlayer() {
-    if (!player) return;
-    const name = player.discordUsername ?? player.discordId;
-    if (!confirm(`Delete ${name}? Their cards stay in the database with no owner.`)) return;
+    if (!player || deleting) return;
+    setDeleting(true);
     const res = await props.fetchApi(`/admin/players/${player.id}`, { method: "DELETE" });
+    setDeleting(false);
     if (!res.ok) {
       setMessage(await errorText(res));
       return;
     }
+    setAskDelete(false);
     setPlayer(null);
     setMessage("Player deleted.");
     await search();
@@ -211,6 +216,16 @@ export function PlayerDesk(props: { fetchApi: FetchApi }) {
   return (
     <div>
       {message ? <p className="admin-note" role="status">{message}</p> : null}
+      {askDelete && player ? (
+        <ConfirmPop
+          title={`Delete ${player.discordUsername ?? player.discordId}?`}
+          body="Their cards stay in the database with no owner."
+          confirmLabel={deleting ? "Deleting…" : "Delete player"}
+          busy={deleting}
+          onConfirm={() => void removePlayer()}
+          onCancel={() => { if (!deleting) setAskDelete(false); }}
+        />
+      ) : null}
       <div className="panel">
         <h3>Find a player</h3>
         <form onSubmit={(e) => void search(e)}>
@@ -338,7 +353,7 @@ export function PlayerDesk(props: { fetchApi: FetchApi }) {
                 </label>
               </div>
               <button type="submit">Save player</button>
-              <button type="button" className="secondary" onClick={() => void removePlayer()}>
+              <button type="button" className="secondary" onClick={() => setAskDelete(true)}>
                 Delete player
               </button>
             </form>

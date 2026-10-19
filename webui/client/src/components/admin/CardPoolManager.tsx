@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ConfirmPop } from "./ConfirmPop.js";
 
 type Row = {
   id: string;
@@ -16,6 +17,8 @@ export function CardPoolManager(props: {
   const [characterName, setCharacterName] = useState("");
   const [characterSlug, setCharacterSlug] = useState("");
   const [msg, setMsg] = useState<string | null>(null);
+  const [pending, setPending] = useState<Row | null>(null);
+  const [removing, setRemoving] = useState(false);
 
   async function load() {
     const res = await props.fetchApi("/admin/characters");
@@ -53,9 +56,12 @@ export function CardPoolManager(props: {
     await load();
   }
 
-  async function remove(id: string) {
-    if (!confirm("Remove this character from the pool?")) return;
-    await props.fetchApi(`/admin/characters/${id}`, { method: "DELETE" });
+  async function remove(row: Row) {
+    if (removing) return;
+    setRemoving(true);
+    await props.fetchApi(`/admin/characters/${row.id}`, { method: "DELETE" });
+    setRemoving(false);
+    setPending(null);
     await load();
   }
 
@@ -86,12 +92,22 @@ export function CardPoolManager(props: {
         {rows.map((r) => (
           <li key={r.id}>
             {r.series.name} / {r.name}{" "}
-            <button type="button" className="secondary" onClick={() => void remove(r.id)}>
+            <button type="button" className="secondary" onClick={() => setPending(r)}>
               Remove
             </button>
           </li>
         ))}
       </ul>
+      {pending ? (
+        <ConfirmPop
+          title={`Remove ${pending.name}?`}
+          body={`${pending.series.name} will lose this character from the pool.`}
+          confirmLabel={removing ? "Removing…" : "Remove character"}
+          busy={removing}
+          onConfirm={() => void remove(pending)}
+          onCancel={() => { if (!removing) setPending(null); }}
+        />
+      ) : null}
     </div>
   );
 }
