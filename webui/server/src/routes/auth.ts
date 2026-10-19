@@ -12,6 +12,8 @@ import { sendVerificationDm } from "../utils/notify-bot.js";
 import { userIsAdmin } from "../host.js";
 import { akiraAddressName, sanitizePreferredName } from "../utils/akira-address-name.js";
 
+const COLLECTION_ORDERS = new Set(["character", "series", "quality", "tag", "recent"]);
+
 export const authRouter = Router();
 
 function serializeMe(u: {
@@ -19,6 +21,8 @@ function serializeMe(u: {
   discordId: string;
   discordUsername: string | null;
   preferredName: string | null;
+  collectionOrder: string;
+  continuousScroll: boolean;
   bits: number;
   prestigeLevel: number;
   milestoneCount: number;
@@ -31,6 +35,8 @@ function serializeMe(u: {
     discordId: u.discordId,
     discordUsername: u.discordUsername,
     preferredName: u.preferredName ? sanitizePreferredName(u.preferredName) : null,
+    collectionOrder: COLLECTION_ORDERS.has(u.collectionOrder) ? u.collectionOrder : "character",
+    continuousScroll: u.continuousScroll === true,
     displayName: akiraAddressName(u),
     bits: u.bits,
     prestigeLevel: u.prestigeLevel,
@@ -228,16 +234,37 @@ authRouter.get("/me", authMiddleware, async (req, res) => {
 });
 
 authRouter.patch("/me", authMiddleware, async (req, res) => {
-  const raw =
-    typeof req.body?.preferredName === "string" ? req.body.preferredName.trim() : undefined;
-  if (raw === undefined) {
-    res.status(400).json({ error: "Send preferredName as a string (empty string clears it)." });
+  const body = req.body ?? {};
+  const data: { preferredName?: string | null; collectionOrder?: string; continuousScroll?: boolean } = {};
+  if ("preferredName" in body) {
+    if (typeof body.preferredName !== "string") {
+      res.status(400).json({ error: "Send preferredName as a string (empty string clears it)." });
+      return;
+    }
+    const raw = body.preferredName.trim();
+    data.preferredName = raw.length === 0 ? null : sanitizePreferredName(raw);
+  }
+  if ("collectionOrder" in body) {
+    if (typeof body.collectionOrder !== "string" || !COLLECTION_ORDERS.has(body.collectionOrder)) {
+      res.status(400).json({ error: "Akira doesn't know that collection order." });
+      return;
+    }
+    data.collectionOrder = body.collectionOrder;
+  }
+  if ("continuousScroll" in body) {
+    if (typeof body.continuousScroll !== "boolean") {
+      res.status(400).json({ error: "Continuous scrolling needs to be on or off." });
+      return;
+    }
+    data.continuousScroll = body.continuousScroll;
+  }
+  if (Object.keys(data).length === 0) {
+    res.status(400).json({ error: "Akira needs something to save." });
     return;
   }
-  const preferredName = raw.length === 0 ? null : sanitizePreferredName(raw);
   const updated = await prisma.user.update({
     where: { id: req.user!.id },
-    data: { preferredName },
+    data,
   });
   res.json(serializeMe(updated));
 });

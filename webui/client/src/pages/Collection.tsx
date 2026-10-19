@@ -3,22 +3,13 @@ import { CardOverlay } from "../components/collection/CardOverlay.js";
 import { CollectionGrid } from "../components/collection/CollectionGrid.js";
 import { TagMenu } from "../components/collection/TagMenu.js";
 import { MenuSelect } from "../components/MenuSelect.js";
-import { frameLabel, studioFrames } from "../lib/frames.js";
+import { COLLECTION_ORDERS, collectionOrder, type CollectionOrder } from "../lib/collectionView.js";
+import { studioFrames } from "../lib/frames.js";
 import type { CollectionCard, CollectionSlice, CollectionStudio, Me } from "../types/index.js";
 
 const EMPTY_STUDIO: CollectionStudio = { serverFrame: 0, personalFrame: null, frames: [{ id: 0, name: "Dark" }], tags: [] };
 const BATCH = 16;
 const PAGE_SIZE = 32;
-
-const COLLECTION_ORDERS = [
-  { id: "character", label: "Character name" },
-  { id: "series", label: "Series, then character" },
-  { id: "quality", label: "Quality" },
-  { id: "tag", label: "Tag, then character" },
-  { id: "recent", label: "Most recent" },
-] as const;
-
-type CollectionOrder = (typeof COLLECTION_ORDERS)[number]["id"];
 
 type CollectionPlayer = { id: string; name: string };
 
@@ -65,7 +56,7 @@ export function CollectionPage(props: {
   const [viewedId, setViewedId] = useState(props.me.id);
   const [players, setPlayers] = useState<CollectionPlayer[]>([]);
   const [query, setQuery] = useState("");
-  const [search, setSearch] = useState({ q: "", page: 0, order: "character" as CollectionOrder });
+  const [search, setSearch] = useState({ q: "", page: 0, order: collectionOrder(props.me.collectionOrder) });
   const [total, setTotal] = useState(0);
   const [owned, setOwned] = useState(0);
   const [counted, setCounted] = useState(false);
@@ -76,7 +67,8 @@ export function CollectionPage(props: {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const headRef = useRef<HTMLDivElement>(null);
   const skipScroll = useRef(true);
-  const live = useRef({ page: 0, q: "", order: "character" as CollectionOrder, count: 0, total: 0, loading: true });
+  const continuous = props.me.continuousScroll === true;
+  const live = useRef({ page: 0, q: "", order: collectionOrder(props.me.collectionOrder), count: 0, total: 0, loading: true, continuous });
 
   const loadStudio = useCallback(async () => {
     const res = await props.fetchApi(`/collection/${props.me.id}/studio`);
@@ -164,13 +156,14 @@ export function CollectionPage(props: {
     headRef.current?.scrollIntoView({ block: "start", behavior: "smooth" });
   }, [search.page, search.q, search.order]);
 
-  live.current = { page: search.page, q: search.q, order: search.order, count: cards.length, total, loading };
+  live.current = { page: search.page, q: search.q, order: search.order, count: cards.length, total, loading, continuous };
 
   const loadMore = useCallback(async () => {
     const snap = live.current;
     if (snap.loading || busy.current) return;
-    const start = snap.page * PAGE_SIZE;
-    const room = Math.min(PAGE_SIZE, Math.max(0, snap.total - start)) - snap.count;
+    const start = snap.continuous ? 0 : snap.page * PAGE_SIZE;
+    const cap = snap.continuous ? snap.total : Math.min(PAGE_SIZE, Math.max(0, snap.total - start));
+    const room = cap - snap.count;
     if (room <= 0) return;
     const ticket = epoch.current;
     busy.current = true;
@@ -195,7 +188,7 @@ export function CollectionPage(props: {
   }, [readSlice]);
 
   const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
-  const shownOnPage = Math.min(PAGE_SIZE, Math.max(0, total - search.page * PAGE_SIZE));
+  const shownOnPage = continuous ? total : Math.min(PAGE_SIZE, Math.max(0, total - search.page * PAGE_SIZE));
   const hasMore = cards.length > 0 && cards.length < shownOnPage && !error;
 
   useEffect(() => {
@@ -289,39 +282,6 @@ export function CollectionPage(props: {
     const dye = card.dye && /^[a-zA-Z0-9_-]+$/.test(card.dye) ? card.dye : "none";
     const base = `/api/static/cards/${card.variant.id}/${frameId}/p${card.printNumber}/${dye}`;
     return { normal: `${base}/normal.png`, shiny: `${base}/shiny.apng`, burn: `${base}/burn.apng` };
-  }
-
-  async function savePersonalFrame(value: string) {
-    const frameId = value === "" ? null : Number(value);
-    if (frameId !== null && !Number.isInteger(frameId)) return;
-    setActionBusy("default-frame");
-    setActionError(null);
-    setActionNote(null);
-    try {
-      const res = await props.fetchApi(`/collection/${props.me.id}/default-frame`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ frameId }),
-      });
-      const json = (await res.json()) as { error?: string };
-      if (!res.ok) {
-        setActionError(json.error ?? "Akira couldn't save your frame.");
-        return;
-      }
-      await loadStudio();
-      const ticket = epoch.current;
-      const slice = await readSlice(search.page * PAGE_SIZE, Math.max(cards.length, BATCH), search.q, search.order);
-      if (slice && ticket === epoch.current) {
-        setCards(slice.cards);
-        setTotal(slice.total);
-        setOwned(slice.owned);
-      }
-      setActionNote(frameId === null ? "Your cards use the server frame again." : "Your frame is saved.");
-    } catch {
-      setActionError("Akira couldn't save your frame.");
-    } finally {
-      setActionBusy(null);
-    }
   }
 
   async function applySelectionFrame() {
@@ -510,22 +470,6 @@ export function CollectionPage(props: {
           }}
         />
         {viewingSelf ? (
-          <label className="collection-frame">
-            Your frame
-            <MenuSelect
-              className="collection-order"
-              label="Your default frame"
-              value={studio.personalFrame === null ? "" : String(studio.personalFrame)}
-              disabled={actionBusy !== null}
-              options={[
-                { value: "", label: `Server frame · ${frameLabel(studio.frames, studio.serverFrame)}` },
-                ...studio.frames.map((frame) => ({ value: String(frame.id), label: frame.name })),
-              ]}
-              onChange={(value) => void savePersonalFrame(value)}
-            />
-          </label>
-        ) : null}
-        {viewingSelf ? (
           <button type="button" className="secondary collection-tags" onClick={() => setTagsOpen(true)}>
             Tags
           </button>
@@ -565,7 +509,7 @@ export function CollectionPage(props: {
       )}
       {hasMore ? <div ref={sentinelRef} className="collection-sentinel" /> : null}
       {cards.length > 0 && loading ? <p className="webui-muted collection-pending">Loading more cards…</p> : null}
-      {pageCount > 1 ? (
+      {!continuous && pageCount > 1 ? (
         <nav className="collection-pager" aria-label="Collection pages">
           <button type="button" className="secondary" disabled={search.page === 0} onClick={() => goToPage(search.page - 1)}>
             Prev

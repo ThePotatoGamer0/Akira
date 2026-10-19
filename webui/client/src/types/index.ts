@@ -4,6 +4,10 @@ export type Me = {
   discordUsername: string | null;
   /** Custom name for Akira to use; empty in API means unset. */
   preferredName: string | null;
+  /** How the collection opens. The menu on that page can change it for one visit. */
+  collectionOrder: string;
+  /** Collection skips page buttons and keeps loading 16 cards at a time. */
+  continuousScroll: boolean;
   /** Resolved: preferredName ?? discordUsername ?? fallback. */
   displayName: string;
   bits: number;

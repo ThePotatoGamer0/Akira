@@ -1,7 +1,10 @@
 import http from "node:http";
 import { URL } from "node:url";
 import type { Client } from "discord.js";
+import type { CooldownType } from "../generated/prisma/client.js";
+import { readDropChannelLog } from "./drop-log.js";
 import { rememberEphemeralDm } from "./dm-mailbox.js";
+import { queueCooldownReminder } from "./reminder-schedule.js";
 
 function readBody(req: http.IncomingMessage): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -25,21 +28,41 @@ export function startInternalApi(bot: Client): void {
 
   const server = http.createServer(async (req, res) => {
     try {
-      if (req.method !== "POST") {
-        res.writeHead(404).end();
-        return;
-      }
       const url = new URL(req.url ?? "/", `http://127.0.0.1:${port}`);
-      if (url.pathname !== "/internal/dm-verify") {
-        res.writeHead(404).end();
-        return;
-      }
       const auth = req.headers["authorization"];
       if (auth !== `Bearer ${secret}`) {
         res.writeHead(401).end("unauthorized");
         return;
       }
+      if (req.method === "GET" && url.pathname === "/internal/drop-log") {
+        const log = await readDropChannelLog(bot);
+        if (!log) {
+          res.writeHead(404, { "Content-Type": "application/json" }).end(JSON.stringify({ error: "no-channel" }));
+          return;
+        }
+        res.writeHead(200, { "Content-Type": "application/json" }).end(JSON.stringify(log));
+        return;
+      }
+      if (req.method !== "POST") {
+        res.writeHead(404).end();
+        return;
+      }
       const raw = await readBody(req);
+      if (url.pathname === "/internal/queue-reminder") {
+        const json = JSON.parse(raw) as { discordId?: string; type?: string };
+        const type = json.type;
+        if (!json.discordId || (type !== "DAILY" && type !== "DROP" && type !== "GRAB")) {
+          res.writeHead(400).end("bad json");
+          return;
+        }
+        await queueCooldownReminder(json.discordId, type as CooldownType);
+        res.writeHead(204).end();
+        return;
+      }
+      if (url.pathname !== "/internal/dm-verify") {
+        res.writeHead(404).end();
+        return;
+      }
       const json = JSON.parse(raw) as { discordId?: string; code?: string; expiresAt?: number };
       if (!json.discordId || !json.code) {
         res.writeHead(400).end("bad json");
@@ -59,6 +82,6 @@ export function startInternalApi(bot: Client): void {
   });
 
   server.listen(port, "0.0.0.0", () => {
-    console.log(`Akira internal API listening on ${port} (dm-verify)`);
+    console.log(`Akira internal API listening on ${port} (dm-verify, queue-reminder, drop-log)`);
   });
 }

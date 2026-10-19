@@ -4,7 +4,7 @@ import { akiraAddressName } from "../lib/akiraAddressName.js";
 import { homeWelcomeParts } from "../lib/homeWelcome.js";
 import type { Me } from "../types/index.js";
 
-export function Home(props: { me: Me | null }) {
+export function Home(props: { me: Me | null; showChannel?: boolean }) {
   const address = props.me ? akiraAddressName(props.me) : undefined;
   const welcome = useMemo(
     () => homeWelcomeParts(new Date(), address),
@@ -39,10 +39,17 @@ export function Home(props: { me: Me | null }) {
           </Link>
         </li>
         <li>
-          <Link to="/personalise" className="webui-link-card">
-            Personalise
+          <Link to="/settings" className="webui-link-card">
+            Settings
           </Link>
         </li>
+        {props.showChannel ? (
+          <li>
+            <Link to="/channel" className="webui-link-card">
+              Channel <span className="beta-tag">BETA</span>
+            </Link>
+          </li>
+        ) : null}
         {props.me?.isAdmin ? (
           <li>
             <Link to="/admin" className="webui-link-card">

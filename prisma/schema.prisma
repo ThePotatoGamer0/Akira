@@ -99,12 +99,17 @@ model User {
   dropsSinceMint      Int                    @default(0)
   /** Frame for this player's cards that don't have one of their own. Null uses the server frame. */
   defaultFrameId      Int?
+  /** How the WebUI collection opens. The menu on that page can change it for one visit. */
+  collectionOrder     String                 @default("character")
+  /** WebUI collection skips page buttons and keeps loading 16 cards at a time. */
+  continuousScroll    Boolean                @default(false)
   cards               Card[]
   wishlists           Wishlist[]
   poolContributions   UserPoolContribution[]
   inventory           Inventory[]
   cooldowns           Cooldown[]
   reminders           Reminder[]
+  notices             Notice[]
   claimedSlots        DropSlot[]
   drops               Drop[]
   transfersSent       TransferOffer[] @relation("TransferFrom")
@@ -259,6 +264,19 @@ model Reminder {
   type   CooldownType
 
   @@unique([userId, type])
+}
+
+/** A cooldown ping the WebUI can show. The Discord DM uses the same Reminder row. */
+model Notice {
+  id        String       @id @default(cuid())
+  userId    String
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      CooldownType
+  body      String
+  createdAt DateTime     @default(now())
+  readAt    DateTime?
+
+  @@index([userId, createdAt])
 }
 
 model TransferOffer {

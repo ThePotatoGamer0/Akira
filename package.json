@@ -10,7 +10,7 @@
     "start": "node dist/bot/index.js",
     "build": "prisma generate && tsc",
     "generate": "tsx src/init/generator/index.ts",
-    "test": "node --import tsx --test src/game/*.test.ts src/renderer/*.test.ts src/bot/*.test.ts",
+    "test": "node --import tsx --test src/game/*.test.ts src/renderer/*.test.ts src/bot/*.test.ts modules/discord-log-html/src/*.test.ts",
     "icons": "tsx src/bot/icon-sync.ts",
     "portraits": "tsx scripts/fetch-portraits.ts",
     "portraits:install": "tsx scripts/install-portraits.ts"
