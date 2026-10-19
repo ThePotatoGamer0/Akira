@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { fileURLToPath } from "node:url";
 import { Worker } from "node:worker_threads";
 import { prisma } from "../db/client.js";
 import type { CardImageRequest } from "../game/compose.js";
@@ -91,16 +92,46 @@ function wake(delayMs: number): void {
   timer.unref?.();
 }
 
-function workerUrl(): URL {
+export function workerUrl(): URL {
   const ts = new URL("./drop-shelf-worker.ts", import.meta.url);
   if (fs.existsSync(ts)) return ts;
   return new URL("./drop-shelf-worker.js", import.meta.url);
 }
 
+function isTsxImport(spec: string): boolean {
+  return spec === "tsx" || spec === "tsx/esm" || spec.includes("/tsx/dist/");
+}
+
+export function workerExecArgv(): string[] {
+  const hook = fileURLToPath(new URL("./drop-shelf-register.mjs", import.meta.url));
+  const argv: string[] = [];
+  let sawTsx = false;
+  for (let i = 0; i < process.execArgv.length; i += 1) {
+    const arg = process.execArgv[i] ?? "";
+    if (arg === "--import" || arg === "--require") {
+      const spec = process.execArgv[i + 1] ?? "";
+      argv.push(arg, spec);
+      if (arg === "--import" && isTsxImport(spec)) sawTsx = true;
+      i += 1;
+      continue;
+    }
+    if (arg.startsWith("--import=") || arg.startsWith("--require=")) {
+      const spec = arg.slice(arg.indexOf("=") + 1);
+      argv.push(arg);
+      if (arg.startsWith("--import=") && isTsxImport(spec)) sawTsx = true;
+    }
+  }
+  // Node 22 strips types in the worker and does not install tsx on its own.
+  // The register hook has to follow the tsx import or the .js specifiers stay unresolved.
+  if (!sawTsx) argv.push("--import", "tsx");
+  argv.push("--import", hook);
+  return argv;
+}
+
 function ensureWorker(): Worker | null {
   if (worker) return worker;
   try {
-    worker = new Worker(workerUrl(), { execArgv: process.execArgv });
+    worker = new Worker(workerUrl(), { execArgv: workerExecArgv() });
   } catch (err) {
     console.error("Drop shelf worker did not start.", err);
     worker = null;
