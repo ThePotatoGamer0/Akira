@@ -17,15 +17,11 @@ import { INIT_LOCK } from "../utils/paths.js";
 import { isInitLocked } from "../utils/init-lock.js";
 import { waitingMessage } from "./voice.js";
 import { startInternalApi } from "./internal-http.js";
-import { handleCollectionButton } from "./commands/collection.js";
-import { handlePrestigeButton } from "./commands/prestige.js";
-import { handleShopButton } from "./commands/shop.js";
 import { startPoolSchedule } from "./pool-midnight.js";
-import { handleBurnConfirmButton, offerLastGrabBurn } from "./commands/burn.js";
-import { handleMultiburnButton } from "./commands/multiburn.js";
-import { handleMultitradeButton, handleMultitradeMessage } from "./commands/multitrade.js";
-import { handleTransferButton } from "./commands/transfer.js";
-import { handleLookupButton, handleLookupSelect, replyCharacterEdition } from "./commands/lookup.js";
+import { offerLastGrabBurn } from "./commands/burn.js";
+import { handleMultitradeMessage } from "./commands/multitrade.js";
+import { replyCharacterEdition } from "./commands/lookup.js";
+import { dispatchMessageComponent } from "./component-dispatch.js";
 import { resumeDropExpiries } from "./drop-expiry.js";
 import { startDropShelf } from "./drop-shelf.js";
 import { startOutageWatch } from "../game/outage.js";
@@ -36,7 +32,7 @@ import { easterEgg, easterEggFromMessage } from "./easter-eggs.js";
 import { registerReactionHandler } from "./events/reactions.js";
 import { getCard, lastGrabbedCard, shortenLegacyCardCodes } from "../game/cards.js";
 import { GameError } from "../game/errors.js";
-import { guildListensForKaruta, handleKarutaOverride, handleKarutaOverrideButton, KARUTA_PREFIXES, loadKarutaGuilds } from "./karuta-override.js";
+import { guildListensForKaruta, handleKarutaOverride, KARUTA_PREFIXES, loadKarutaGuilds } from "./karuta-override.js";
 import { commandPrefix, createPrefixInteraction, invocationIsExpected, matchPrefixedCommand, resolveLegacyCommand, viewCardArgument } from "./prefix.js";
 import { adoptWebsiteSpeaker } from "./website-message.js";
 import { syncApplicationIcons } from "./icon-sync.js";
@@ -294,29 +290,11 @@ async function handleGuildMessage(message: Message): Promise<void> {
 }
 
 client.on(Events.InteractionCreate, async (interaction) => {
-  if (interaction.isButton()) {
+  if (interaction.isButton() || interaction.isStringSelectMenu()) {
     if (isInitLocked()) return;
     if (await refuseUnsetServer(interaction)) return;
     try {
-      if (await handleKarutaOverrideButton(interaction)) return;
-      if (await handleBurnConfirmButton(interaction)) return;
-      if (await handleMultiburnButton(interaction)) return;
-      if (await handleMultitradeButton(interaction)) return;
-      if (await handleTransferButton(interaction)) return;
-      if (await handleShopButton(interaction)) return;
-      if (await handlePrestigeButton(interaction)) return;
-      if (await handleCollectionButton(interaction)) return;
-      await handleLookupButton(interaction);
-    } catch (err) {
-      console.error(err);
-    }
-    return;
-  }
-  if (interaction.isStringSelectMenu()) {
-    if (isInitLocked()) return;
-    if (await refuseUnsetServer(interaction)) return;
-    try {
-      await handleLookupSelect(interaction);
+      await dispatchMessageComponent(interaction);
     } catch (err) {
       console.error(err);
     }

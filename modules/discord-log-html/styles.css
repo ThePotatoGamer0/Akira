@@ -300,6 +300,27 @@
   pointer-events: none;
 }
 
+.dlog button.dlog-reaction:not(:disabled),
+.dlog button.dlog-action:not(:disabled),
+.dlog select.dlog-select {
+  cursor: pointer;
+}
+
+.dlog button.dlog-reaction:not(:disabled):hover,
+.dlog button.dlog-action:not(:disabled):hover {
+  border-color: var(--dlog-line);
+}
+
+.dlog button.dlog-action[data-style="1"] { background: #5865f2; color: #fff; }
+.dlog button.dlog-action[data-style="2"] { background: #4e5058; color: #fff; }
+.dlog button.dlog-action[data-style="3"] { background: #248046; color: #fff; }
+.dlog button.dlog-action[data-style="4"] { background: #da373c; color: #fff; }
+
+.dlog select.dlog-select {
+  max-width: 100%;
+  appearance: auto;
+}
+
 .dlog-reaction-count { color: var(--dlog-muted); font-weight: 600; }
 
 .dlog-file {

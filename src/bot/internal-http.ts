@@ -9,6 +9,7 @@ import { bindDropLive, subscribeDropLive } from "./drop-live.js";
 import { rememberEphemeralDm } from "./dm-mailbox.js";
 import { queueCooldownReminder } from "./reminder-schedule.js";
 import { postWebsiteMessage, WebsitePostError } from "./website-message.js";
+import { runWebsiteAction, WebsiteActionError } from "./website-action.js";
 
 function readBody(req: http.IncomingMessage, max = 1_000_000): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -109,6 +110,54 @@ export function startInternalApi(bot: Client): void {
         res.writeHead(204).end();
         return;
       }
+      if (req.method === "POST" && url.pathname === "/internal/channel-action") {
+        const raw = await readBody(req);
+        let json: {
+          discordId?: unknown;
+          messageId?: unknown;
+          kind?: unknown;
+          emojiName?: unknown;
+          customId?: unknown;
+          values?: unknown;
+        };
+        try {
+          json = JSON.parse(raw) as typeof json;
+        } catch {
+          res.writeHead(400).end("bad json");
+          return;
+        }
+        if (typeof json.discordId !== "string" || typeof json.messageId !== "string") {
+          res.writeHead(400).end("bad json");
+          return;
+        }
+        if (json.kind !== "reaction" && json.kind !== "button" && json.kind !== "select") {
+          res.writeHead(400).end("bad json");
+          return;
+        }
+        const values = Array.isArray(json.values) ? json.values.filter((item): item is string => typeof item === "string") : [];
+        try {
+          const result = await runWebsiteAction(bot, {
+            discordId: json.discordId,
+            messageId: json.messageId,
+            kind: json.kind,
+            ...(typeof json.emojiName === "string" ? { emojiName: json.emojiName } : {}),
+            ...(typeof json.customId === "string" ? { customId: json.customId } : {}),
+            values,
+          });
+          if (result.notice) {
+            res.writeHead(200, { "Content-Type": "application/json" }).end(JSON.stringify({ notice: result.notice }));
+            return;
+          }
+          res.writeHead(204).end();
+        } catch (err) {
+          if (err instanceof WebsiteActionError) {
+            res.writeHead(err.status, { "Content-Type": "application/json" }).end(JSON.stringify({ error: err.message }));
+            return;
+          }
+          throw err;
+        }
+        return;
+      }
       if (req.method !== "POST") {
         res.writeHead(404).end();
         return;
@@ -164,6 +213,6 @@ export function startInternalApi(bot: Client): void {
   });
 
   server.listen(port, "0.0.0.0", () => {
-    console.log(`Akira internal API listening on ${port} (dm-verify, queue-reminder, drop-log, channel-message)`);
+    console.log(`Akira internal API listening on ${port} (dm-verify, queue-reminder, drop-log, channel-message, channel-action)`);
   });
 }

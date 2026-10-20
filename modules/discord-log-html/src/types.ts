@@ -67,14 +67,25 @@ export type RawEmoji = {
   animated?: boolean;
 };
 
+export type RawSelectOption = {
+  label?: string;
+  value?: string;
+  description?: string;
+  emoji?: RawEmoji | null;
+  default?: boolean;
+};
+
 export type RawComponent = {
   type?: number;
   components?: RawComponent[];
   style?: number;
   label?: string;
+  custom_id?: string;
+  disabled?: boolean;
   placeholder?: string;
   url?: string;
   emoji?: RawEmoji | null;
+  options?: RawSelectOption[];
 };
 
 export type RawMessage = {

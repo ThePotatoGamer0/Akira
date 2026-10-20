@@ -46,6 +46,39 @@ export async function postChannelMessage(post: ChannelPost): Promise<void> {
   throw error;
 }
 
+export type ChannelAction = {
+  discordId: string;
+  messageId: string;
+  kind: "reaction" | "button" | "select";
+  emojiName?: string;
+  customId?: string;
+  values?: string[];
+};
+
+/** Ask the bot to grab, press a button, or choose a menu item as this player. */
+export async function postChannelAction(action: ChannelAction): Promise<{ notice: string | null }> {
+  const base = process.env["BOT_INTERNAL_URL"]?.replace(/\/$/, "");
+  const secret = process.env["AKIRA_INTERNAL_SECRET"] ?? "";
+  if (!base || !secret) throw new Error("missing");
+  const res = await fetch(`${base}/internal/channel-action`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${secret}`, "Content-Type": "application/json" },
+    body: JSON.stringify(action),
+  });
+  if (res.status === 204) return { notice: null };
+  let message = "";
+  try {
+    const json = (await res.json()) as { error?: string; notice?: string };
+    if (res.ok) return { notice: json.notice ?? null };
+    message = json.error ?? "";
+  } catch {
+    message = "";
+  }
+  const error = new Error(message || "failed") as Error & { status?: number };
+  error.status = res.status;
+  throw error;
+}
+
 /** Guild emoji and stickers for the message bar. */
 export async function fetchComposerAssets(): Promise<unknown> {
   const base = process.env["BOT_INTERNAL_URL"]?.replace(/\/$/, "");

@@ -40,7 +40,22 @@ const log: ChatLog = {
       components: [
         {
           type: 1,
-          components: [{ type: 2, style: 1, label: "Grab" }, { type: 2, style: 5, label: "Rules", url: "https://example.com/rules" }],
+          components: [
+            { type: 2, style: 1, label: "Next", custom_id: "lookup:page:1:next:0:abc" },
+            { type: 2, style: 5, label: "Rules", url: "https://example.com/rules" },
+            { type: 2, style: 2, label: "Gone", custom_id: "old", disabled: true },
+          ],
+        },
+        {
+          type: 1,
+          components: [
+            {
+              type: 3,
+              custom_id: "lookup:pick:1:abc",
+              placeholder: "Pick a character",
+              options: [{ label: "Mika", value: "mika" }],
+            },
+          ],
         },
       ],
     },
@@ -77,8 +92,11 @@ test("a channel log becomes discord-shaped html", () => {
   assert.match(html, /Three cards/);
   assert.match(html, /other\.png/);
   assert.equal(html.match(/<img[^>]*card\.gif/g)?.length, 1);
-  assert.match(html, /class="dlog-reaction"/);
-  assert.match(html, /disabled/);
+  assert.match(html, /class="dlog-reaction" data-emoji-name="1️⃣"/);
+  assert.match(html, /class="dlog-reaction" disabled/);
+  assert.match(html, /data-custom-id="lookup:page:1:next:0:abc"/);
+  assert.match(html, /data-custom-id="lookup:pick:1:abc"/);
+  assert.match(html, /<option value="mika">Mika<\/option>/);
   assert.match(html, /31-20e3\.svg/);
   assert.match(html, /emojis\/555\.webp/);
   assert.match(html, /class="dlog-action"/);

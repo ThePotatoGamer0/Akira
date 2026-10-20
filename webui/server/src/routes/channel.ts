@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { authMiddleware } from "../middleware/auth.js";
-import { fetchComposerAssets, fetchDropLog, postChannelMessage } from "../utils/drop-log.js";
+import { fetchComposerAssets, fetchDropLog, postChannelAction, postChannelMessage } from "../utils/drop-log.js";
 
 export const channelRouter = Router();
 
@@ -108,6 +108,55 @@ channelRouter.post("/messages", authMiddleware, async (req, res) => {
         ? "Akira isn't connected to the bot from here."
         : "Akira couldn't send that.";
     if (status >= 500) console.error("channel message:", err);
+    res.status(status >= 400 && status < 600 ? status : 502).json({ error: message });
+  }
+});
+
+channelRouter.post("/actions", authMiddleware, async (req, res) => {
+  if (bearerToken(req)) {
+    res.status(403).json({ error: "The drop channel view is on the website." });
+    return;
+  }
+  const messageId = typeof req.body?.messageId === "string" ? req.body.messageId : "";
+  const kind = req.body?.kind;
+  const emojiName = typeof req.body?.emojiName === "string" ? req.body.emojiName : "";
+  const customId = typeof req.body?.customId === "string" ? req.body.customId : "";
+  const valuesIn = Array.isArray(req.body?.values) ? req.body.values : [];
+  if (!/^\d{17,22}$/.test(messageId) || (kind !== "reaction" && kind !== "button" && kind !== "select")) {
+    res.status(400).json({ error: "Akira couldn't tell which message that was." });
+    return;
+  }
+  if (kind === "reaction" && (emojiName.length === 0 || emojiName.length > 80)) {
+    res.status(400).json({ error: "That reaction isn't a card." });
+    return;
+  }
+  if (kind !== "reaction" && (customId.length === 0 || customId.length > 100)) {
+    res.status(400).json({ error: "That control isn't on this message." });
+    return;
+  }
+  const values = valuesIn.filter((item: unknown): item is string => typeof item === "string" && item.length > 0 && item.length <= 100).slice(0, 25);
+  try {
+    const result = await postChannelAction({
+      discordId: req.user!.discordId,
+      messageId,
+      kind,
+      ...(emojiName ? { emojiName } : {}),
+      ...(customId ? { customId } : {}),
+      values,
+    });
+    if (result.notice) {
+      res.json({ notice: result.notice });
+      return;
+    }
+    res.status(204).end();
+  } catch (err) {
+    const status = err instanceof Error && "status" in err && typeof err.status === "number" ? err.status : 502;
+    const message = err instanceof Error && err.message && err.message !== "failed" && err.message !== "missing"
+      ? err.message
+      : err instanceof Error && err.message === "missing"
+        ? "Akira isn't connected to the bot from here."
+        : "Akira couldn't do that.";
+    if (status >= 500) console.error("channel action:", err);
     res.status(status >= 400 && status < 600 ? status : 502).json({ error: message });
   }
 });

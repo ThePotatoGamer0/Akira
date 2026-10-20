@@ -37,12 +37,14 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
   const [older, setOlder] = useState(false);
   const [unseen, setUnseen] = useState(0);
   const [viewer, setViewer] = useState<ViewMedia | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
   const scroller = useRef<HTMLDivElement>(null);
   const stick = useRef(true);
   const anchor = useRef<{ id: string; offset: number } | null>(null);
   const holding = useRef(false);
   const olderLock = useRef(false);
   const armed = useRef(false);
+  const acting = useRef(false);
   const logRef = useRef<Payload | null>(null);
   const queue = useRef<LiveEvent[]>([]);
   logRef.current = log;
@@ -155,9 +157,29 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
     const root = document.querySelector(".webui-root");
     root?.classList.add("channel-lock");
     document.body.classList.add("channel-lock");
+    const viewport = window.visualViewport;
+    const phone = window.matchMedia("(max-width: 700px)");
+    const place = () => {
+      if (!viewport || !phone.matches) {
+        document.documentElement.style.removeProperty("--vv-height");
+        document.documentElement.style.removeProperty("--vv-offset");
+        return;
+      }
+      document.documentElement.style.setProperty("--vv-height", `${viewport.height}px`);
+      document.documentElement.style.setProperty("--vv-offset", `${viewport.offsetTop}px`);
+    };
+    place();
+    viewport?.addEventListener("resize", place);
+    viewport?.addEventListener("scroll", place);
+    phone.addEventListener("change", place);
     return () => {
       root?.classList.remove("channel-lock");
       document.body.classList.remove("channel-lock");
+      document.documentElement.style.removeProperty("--vv-height");
+      document.documentElement.style.removeProperty("--vv-offset");
+      viewport?.removeEventListener("resize", place);
+      viewport?.removeEventListener("scroll", place);
+      phone.removeEventListener("change", place);
     };
   }, []);
 
@@ -230,7 +252,45 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
     return () => el.removeEventListener("load", pin, true);
   }, [html]);
 
+  async function act(body: { messageId: string; kind: "reaction" | "button" | "select"; emojiName?: string; customId?: string; values?: string[] }) {
+    if (acting.current) return;
+    acting.current = true;
+    setNotice(null);
+    try {
+      const res = await props.fetchApi("/channel/actions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      if (res.status === 204) return;
+      const json = (await res.json()) as { notice?: string; error?: string };
+      setNotice(json.notice ?? json.error ?? "Akira couldn't do that.");
+    } catch {
+      setNotice("Akira couldn't do that.");
+    } finally {
+      acting.current = false;
+    }
+  }
+
   const name = log?.channel?.name ? `# ${log.channel.name}` : "Channel";
+
+  useEffect(() => {
+    const el = scroller.current;
+    if (!el) return;
+    const onChange = (event: Event) => {
+      const select = event.target;
+      if (!(select instanceof HTMLSelectElement) || !select.classList.contains("dlog-select")) return;
+      const message = select.closest("[data-message-id]");
+      const messageId = message instanceof HTMLElement ? message.dataset.messageId : "";
+      const customId = select.dataset.customId;
+      const value = select.value;
+      select.value = "";
+      if (!messageId || !customId || !value) return;
+      void act({ messageId, kind: "select", customId, values: [value] });
+    };
+    el.addEventListener("change", onChange);
+    return () => el.removeEventListener("change", onChange);
+  });
 
   return (
     <div className="channel-page">
@@ -253,18 +313,31 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
           if (armed.current && el.scrollTop < 240) void loadOlder();
         }}
         onClick={(event) => {
-          const button = (event.target as HTMLElement).closest("button.dlog-view");
-          if (!(button instanceof HTMLButtonElement)) return;
-          const src = button.dataset.src;
-          if (!src) return;
-          setViewer({
-            src,
-            name: button.dataset.name ?? "",
-            avatar: button.dataset.avatar ?? "",
-            app: button.dataset.app === "1",
-            time: button.dataset.time ?? "",
-            color: button.dataset.color ?? "",
-          });
+          const target = event.target as HTMLElement;
+          const view = target.closest("button.dlog-view");
+          if (view instanceof HTMLButtonElement && view.dataset.src) {
+            setViewer({
+              src: view.dataset.src,
+              name: view.dataset.name ?? "",
+              avatar: view.dataset.avatar ?? "",
+              app: view.dataset.app === "1",
+              time: view.dataset.time ?? "",
+              color: view.dataset.color ?? "",
+            });
+            return;
+          }
+          const control = target.closest("button.dlog-reaction, button.dlog-action");
+          if (!(control instanceof HTMLButtonElement) || control.disabled) return;
+          const message = control.closest("[data-message-id]");
+          const messageId = message instanceof HTMLElement ? message.dataset.messageId : "";
+          if (!messageId) return;
+          if (control.dataset.emojiName) {
+            void act({ messageId, kind: "reaction", emojiName: control.dataset.emojiName });
+            return;
+          }
+          if (control.dataset.customId) {
+            void act({ messageId, kind: "button", customId: control.dataset.customId });
+          }
         }}
       >
         {error ? (
@@ -274,6 +347,7 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
         ) : null}
         {html ? <div className="channel-log" dangerouslySetInnerHTML={{ __html: html }} /> : null}
       </div>
+      {notice ? <p className="channel-note" role="status">{notice}</p> : null}
       <MessageBar channelName={log?.channel?.name ?? "channel"} fetchApi={props.fetchApi} />
       {older ? <p className="channel-older">Loading earlier messages…</p> : null}
       {unseen > 0 ? (

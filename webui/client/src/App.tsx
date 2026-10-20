@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { NavLink, Navigate, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useAuth } from "./hooks/useAuth.js";
 import { LoginScreen } from "./components/auth/LoginScreen.js";
 import { VerifyScreen } from "./components/auth/VerifyScreen.js";
@@ -32,8 +32,19 @@ function CompactActivity(props: { name?: string; loading: boolean; error: string
 
 export function App() {
   const auth = useAuth();
+  const location = useLocation();
   const [authView, setAuthView] = useState<AuthView>("login");
   const compact = auth.activityLayout === "pip" || auth.activityLayout === "grid";
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("webui-activity", auth.isDiscordActivity);
+    return () => document.documentElement.classList.remove("webui-activity");
+  }, [auth.isDiscordActivity]);
+
+  useEffect(() => {
+    if (!window.matchMedia("(max-width: 700px)").matches) return;
+    document.querySelector(".webui-nav a.active")?.scrollIntoView({ inline: "nearest", block: "nearest" });
+  }, [location.pathname]);
 
   if (compact) {
     return (
