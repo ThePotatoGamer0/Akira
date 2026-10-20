@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { renderChatLog, type ChatLog, type RawMessage } from "../../../../modules/discord-log-html/src/index.js";
 import "../../../../modules/discord-log-html/styles.css";
+import { apiSocketUrl } from "../lib/api.js";
 
 type Payload = ChatLog & { hasMore?: boolean };
 type LiveEvent = {
@@ -122,9 +123,7 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
     let closed = false;
     const connect = () => {
       if (closed) return;
-      const url = new URL("/channel/live", window.location.href);
-      url.protocol = url.protocol === "https:" ? "wss:" : "ws:";
-      socket = new WebSocket(url);
+      socket = new WebSocket(apiSocketUrl("/channel/live"));
       socket.onmessage = (event) => {
         let payload: LiveEvent;
         try {
