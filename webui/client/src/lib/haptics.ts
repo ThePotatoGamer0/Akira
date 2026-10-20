@@ -1,5 +1,11 @@
 const KEY = "akira-haptics";
 
+/** Phones and tablets with a vibration motor. Desktop browsers can expose vibrate without one. */
+export function hapticsSupported(): boolean {
+  if (typeof navigator.vibrate !== "function") return false;
+  return window.matchMedia("(pointer: coarse)").matches;
+}
+
 export function hapticsEnabled(): boolean {
   try {
     return localStorage.getItem(KEY) !== "off";
@@ -9,7 +15,7 @@ export function hapticsEnabled(): boolean {
 }
 
 function pulse(ms: number): void {
-  if (!hapticsEnabled()) return;
+  if (!hapticsSupported() || !hapticsEnabled()) return;
   try {
     navigator.vibrate?.(ms);
   } catch {
