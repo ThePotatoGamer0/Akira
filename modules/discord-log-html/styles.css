@@ -186,11 +186,17 @@
   cursor: zoom-in;
 }
 
-.dlog button.dlog-view:hover,
-.dlog button.dlog-view:active {
+.dlog button.dlog-view:hover {
   transform: none;
   box-shadow: none;
   background: none;
+}
+
+.dlog button.dlog-view:active {
+  transform: scale(0.98);
+  box-shadow: none;
+  background: none;
+  filter: brightness(0.92);
 }
 
 .dlog-media,
@@ -292,6 +298,7 @@
   transform: none;
   cursor: default;
   text-decoration: none;
+  transition: transform 0.12s ease, filter 0.12s ease, border-color 0.12s ease;
 }
 
 .dlog button.dlog-reaction:disabled,
@@ -309,6 +316,14 @@
 .dlog button.dlog-reaction:not(:disabled):hover,
 .dlog button.dlog-action:not(:disabled):hover {
   border-color: var(--dlog-line);
+}
+
+.dlog button.dlog-reaction:not(:disabled):active,
+.dlog button.dlog-action:not(:disabled):active,
+.dlog a.dlog-action:active,
+.dlog select.dlog-select:active {
+  transform: scale(0.96);
+  filter: brightness(0.9);
 }
 
 .dlog button.dlog-action[data-style="1"] { background: #5865f2; color: #fff; }

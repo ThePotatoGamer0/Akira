@@ -5,6 +5,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 @keyframes gradient-shift {
@@ -518,7 +519,14 @@ html[data-theme="dark"] .theme-toggle__moon {
   transition:
     color 0.2s,
     border-color 0.2s,
-    background 0.2s;
+    background 0.2s,
+    transform 0.12s ease,
+    filter 0.12s ease;
+}
+
+.webui-nav a:active {
+  transform: scale(0.96);
+  filter: brightness(0.92);
 }
 
 .webui-nav a:hover {
@@ -745,6 +753,7 @@ html[data-theme="dark"] .composer {
   flex: none;
   color: var(--ink2);
   cursor: pointer;
+  transition: transform 0.12s ease, color 0.15s ease;
 }
 
 .composer-plus input {
@@ -757,6 +766,10 @@ html[data-theme="dark"] .composer {
 
 .composer-plus:hover {
   color: var(--ink);
+}
+
+.composer-plus:active {
+  transform: scale(0.92);
 }
 
 .composer textarea {
@@ -1191,11 +1204,17 @@ html[data-theme="dark"] .composer-pop > input {
   animation: none;
 }
 
-.media-viewer-tools button:hover,
-.media-viewer-tools button:active {
+.media-viewer-tools button:hover {
   transform: none;
   background: rgba(255, 255, 255, 0.14);
   box-shadow: none;
+}
+
+.media-viewer-tools button:active {
+  transform: scale(0.9);
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+  filter: brightness(0.92);
 }
 
 .media-viewer-tools button[aria-pressed="true"] {
@@ -1735,7 +1754,7 @@ button {
   font-size: 0.92rem;
   margin-top: 0.35rem;
   margin-right: 0.5rem;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.12s ease, box-shadow 0.15s ease, filter 0.12s ease;
   box-shadow: 0 2px 12px var(--shadow-tint);
 }
 
@@ -1744,8 +1763,15 @@ button:hover {
   box-shadow: 0 4px 16px var(--home-shadow-strong);
 }
 
-button:active {
-  transform: translateY(0);
+button:active:not(:disabled) {
+  transform: translateY(1px) scale(0.96);
+  filter: brightness(0.92);
+}
+
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible),
+select:focus:not(:focus-visible) {
+  outline: none;
 }
 
 button.secondary {
@@ -1897,11 +1923,17 @@ input::placeholder {
 }
 
 .menu-select__toggle:hover,
-.menu-select__toggle:active,
 .menu-select__toggle:disabled {
   transform: none;
   box-shadow: none;
   animation: none;
+}
+
+.menu-select__toggle:active:not(:disabled) {
+  transform: scale(0.97);
+  box-shadow: none;
+  animation: none;
+  filter: brightness(0.94);
 }
 
 .menu-select--heading .menu-select__toggle:hover,
@@ -1985,11 +2017,17 @@ input::placeholder {
   text-align: left;
 }
 
-.menu-select__option:hover,
-.menu-select__option:active {
+.menu-select__option:hover {
   transform: none;
   box-shadow: none;
   background: var(--code-bg);
+}
+
+.menu-select__option:active {
+  transform: scale(0.98);
+  box-shadow: none;
+  background: var(--code-bg);
+  filter: brightness(0.94);
 }
 
 .menu-select__option[aria-selected="true"] {
@@ -2086,10 +2124,15 @@ input::placeholder {
   position: relative;
 }
 
-.settings-switch button:hover,
-.settings-switch button:active {
+.settings-switch button:hover {
   transform: none;
   box-shadow: none;
+}
+
+.settings-switch button:active {
+  transform: scale(0.94);
+  box-shadow: none;
+  filter: none;
 }
 
 .settings-switch button[aria-checked="true"] {
@@ -2262,9 +2305,9 @@ button.danger:hover {
   font-size: 0.8rem;
 }
 
-.collection-tile,
-.collection-tile:hover,
-.collection-tile:active {
+button.collection-tile,
+button.collection-tile:hover,
+button.collection-tile:active {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -2280,6 +2323,7 @@ button.danger:hover {
   box-shadow: none;
   animation: none;
   transform: none;
+  filter: none;
 }
 
 .collection-tile__art {
@@ -2288,6 +2332,12 @@ button.danger:hover {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  transition: transform 0.12s ease;
+}
+
+.collection-tile:active .collection-tile__art {
+  transform: scale(0.97);
+  filter: brightness(0.94);
 }
 
 .collection-tile .thumb,
@@ -2981,9 +3031,19 @@ button.danger:hover {
     padding-top: max(0.85rem, env(safe-area-inset-top));
   }
 
-  .webui-kana,
-  .webui-brand {
+  .webui-kana {
     display: none;
+  }
+
+  .webui-header > div:first-child {
+    flex: none;
+    min-width: 0;
+  }
+
+  .webui-brand {
+    font-size: 1.35rem;
+    line-height: 1;
+    white-space: nowrap;
   }
 
   .webui-header {
@@ -3061,5 +3121,9 @@ button.danger:hover {
   html.webui-activity .theme-toggle-host,
   html.webui-activity .notice-bell-host {
     top: max(3.25rem, env(safe-area-inset-top));
+  }
+
+  html.webui-activity .card-overlay {
+    padding-top: max(3.25rem, env(safe-area-inset-top));
   }
 }

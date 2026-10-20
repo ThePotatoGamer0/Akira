@@ -1,6 +1,6 @@
 ---
 title: Settings in the WebUI
-description: The name Akira uses for you, collection choices that stay between visits, and cooldown reminders.
+description: The name Akira uses for you, a phone buzz for button presses, collection choices that stay between visits, and cooldown reminders.
 ---
 
 When you are [signed in](/webui/authentication), **Settings** holds the choices you rarely change. Search, the order for this visit, tags, and select stay on [Collection](/webui/collection).
@@ -8,6 +8,8 @@ When you are [signed in](/webui/authentication), **Settings** holds the choices 
 ## General
 
 **What should Akira call you?** is one word, up to 15 letters. Akira capitalises the first letter. She uses it in the home greeting and in `/ping` and `/help`. Leave it blank to use your Discord handle.
+
+**Button buzz** is on at first. This phone gives a short buzz when you press a button or pick something from a menu. The switch is saved on this device.
 
 ## Collection
 
