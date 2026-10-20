@@ -16,7 +16,8 @@ channelRouter.get("/", authMiddleware, async (req, res) => {
     return;
   }
   try {
-    const log = await fetchDropLog();
+    const before = typeof req.query["before"] === "string" ? req.query["before"] : undefined;
+    const log = await fetchDropLog(before);
     res.json({ log });
   } catch (err) {
     const code = err instanceof Error ? err.message : "";

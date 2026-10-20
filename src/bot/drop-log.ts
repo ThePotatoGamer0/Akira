@@ -1,4 +1,4 @@
-import type { Client, GuildMember, Message } from "discord.js";
+import type { Client, GuildMember, Message, PartialMessage } from "discord.js";
 import { resolveDropChannelId } from "../game/drops.js";
 
 /**
@@ -77,7 +77,7 @@ function serialize(message: Message) {
   return raw;
 }
 
-export async function readDropChannelLog(client: Client) {
+export async function readDropChannelLog(client: Client, query?: { before?: string }) {
   const guildId = configuredGuildId(client);
   if (!guildId) return null;
   const channelId = await resolveDropChannelId(guildId);
@@ -85,7 +85,8 @@ export async function readDropChannelLog(client: Client) {
   const channel = await client.channels.fetch(channelId);
   if (!channel?.isTextBased() || channel.isDMBased()) return null;
 
-  const fetched = await channel.messages.fetch({ limit: 50 });
+  const before = query?.before && /^\d{17,22}$/.test(query.before) ? query.before : undefined;
+  const fetched = await channel.messages.fetch({ limit: 50, ...(before ? { before } : {}) });
   const ordered = [...fetched.values()].sort((a, b) => a.createdTimestamp - b.createdTimestamp);
   const byId = new Map(ordered.map((message) => [message.id, message]));
   const extras = new Map<string, Message>();
@@ -141,5 +142,29 @@ export async function readDropChannelLog(client: Client) {
     members: [...members.values()],
     channels: [...channels.entries()].map(([id, name]) => ({ id, name })),
     messages,
+    hasMore: fetched.size === 50,
   };
+}
+
+/** One message, including the reply it points at, for the live channel feed. */
+export async function snapshotMessage(message: Message | PartialMessage) {
+  let full: Message;
+  if (message.partial) {
+    try {
+      full = await message.fetch();
+    } catch {
+      return null;
+    }
+  } else {
+    full = message;
+  }
+  const raw = serialize(full);
+  const referencedId = full.reference?.messageId;
+  if (!referencedId) return raw;
+  try {
+    const referenced = serialize(await full.fetchReference());
+    return { ...raw, referenced_message: referenced };
+  } catch {
+    return raw;
+  }
 }

@@ -11,6 +11,7 @@ import { adminRouter } from "./routes/admin.js";
 import { noticesRouter } from "./routes/notices.js";
 import { remindersRouter } from "./routes/reminders.js";
 import { channelRouter } from "./routes/channel.js";
+import { attachChannelLive } from "./live/channel-socket.js";
 import { serveMissingCardAsset } from "./routes/card-assets.js";
 import { REPO_ROOT } from "./utils/repo-root.js";
 
@@ -76,21 +77,20 @@ app.use((_req, res, next) => {
 
 app.use(express.json());
 
-app.use(
-  session({
-    name: "akira.sid",
-    secret: process.env["SESSION_SECRET"] ?? "dev-change-me",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      httpOnly: true,
-      sameSite: crossSite ? "none" : "lax",
-      secure: crossSite || process.env["COOKIE_SECURE"] === "1",
-      partitioned: crossSite,
-      maxAge: 30 * 24 * 60 * 60 * 1000,
-    },
-  }),
-);
+const sessionMiddleware = session({
+  name: "akira.sid",
+  secret: process.env["SESSION_SECRET"] ?? "dev-change-me",
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    sameSite: crossSite ? "none" : "lax",
+    secure: crossSite || process.env["COOKIE_SECURE"] === "1",
+    partitioned: crossSite,
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+  },
+});
+app.use(sessionMiddleware);
 
 const cardsStatic = path.join(REPO_ROOT, "assets", "cards");
 app.use(
@@ -126,6 +126,7 @@ app.use((err: unknown, _req: express.Request, res: express.Response, _next: expr
   }
 });
 
-app.listen(port, "0.0.0.0", () => {
+const server = app.listen(port, "0.0.0.0", () => {
   console.log(`Akira WebUI API on http://0.0.0.0:${port}`);
 });
+attachChannelLive(server, sessionMiddleware);

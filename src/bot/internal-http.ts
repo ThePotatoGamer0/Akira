@@ -1,8 +1,10 @@
 import http from "node:http";
 import { URL } from "node:url";
 import type { Client } from "discord.js";
+import { WebSocketServer } from "ws";
 import type { CooldownType } from "../generated/prisma/client.js";
 import { readDropChannelLog } from "./drop-log.js";
+import { bindDropLive, subscribeDropLive } from "./drop-live.js";
 import { rememberEphemeralDm } from "./dm-mailbox.js";
 import { queueCooldownReminder } from "./reminder-schedule.js";
 
@@ -35,7 +37,8 @@ export function startInternalApi(bot: Client): void {
         return;
       }
       if (req.method === "GET" && url.pathname === "/internal/drop-log") {
-        const log = await readDropChannelLog(bot);
+        const before = url.searchParams.get("before") ?? undefined;
+        const log = await readDropChannelLog(bot, before ? { before } : {});
         if (!log) {
           res.writeHead(404, { "Content-Type": "application/json" }).end(JSON.stringify({ error: "no-channel" }));
           return;
@@ -79,6 +82,22 @@ export function startInternalApi(bot: Client): void {
       console.error("internal-api:", e);
       res.writeHead(500).end("error");
     }
+  });
+
+  const live = new WebSocketServer({ noServer: true });
+  bindDropLive(bot);
+  server.on("upgrade", (req, socket, head) => {
+    const url = new URL(req.url ?? "/", `http://127.0.0.1:${port}`);
+    if (url.pathname !== "/internal/drop-live" || req.headers["authorization"] !== `Bearer ${secret}`) {
+      socket.destroy();
+      return;
+    }
+    live.handleUpgrade(req, socket, head, (ws) => {
+      const unsubscribe = subscribeDropLive((payload) => {
+        if (ws.readyState === ws.OPEN) ws.send(payload);
+      });
+      ws.on("close", unsubscribe);
+    });
   });
 
   server.listen(port, "0.0.0.0", () => {
