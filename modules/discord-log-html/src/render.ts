@@ -293,7 +293,7 @@ function dayLabel(iso: string | undefined): string | null {
  * Render a Discord channel log to HTML.
  * Reactions and message buttons are present and disabled: the host cannot act as the account that sent them.
  */
-export function renderChatLog(log: ChatLog): string {
+export function renderChatLog(log: ChatLog, options?: { channelHeader?: boolean }): string {
   const messages = log.messages ?? [];
   if (messages.length === 0) {
     return `<div class="dlog"><p class="dlog-empty">Nothing has been said here yet.</p></div>`;
@@ -312,6 +312,9 @@ export function renderChatLog(log: ChatLog): string {
     html += renderMessage(message, log, grouped);
     previous = message;
   }
-  const name = log.channel?.name ? `<div class="dlog-channel"># ${escapeHtml(log.channel.name)}</div>` : "";
+  const name =
+    options?.channelHeader === false || !log.channel?.name
+      ? ""
+      : `<div class="dlog-channel"># ${escapeHtml(log.channel.name)}</div>`;
   return `<div class="dlog">${name}${html}</div>`;
 }

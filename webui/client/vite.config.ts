@@ -22,7 +22,7 @@ export default defineConfig({
       "/stats": { target: "http://127.0.0.1:3333", changeOrigin: true, bypass: htmlBypass },
       "/leaderboard": { target: "http://127.0.0.1:3333", changeOrigin: true, bypass: htmlBypass },
       "/admin": { target: "http://127.0.0.1:3333", changeOrigin: true, bypass: htmlBypass },
-      "/channel": { target: "http://127.0.0.1:3333", changeOrigin: true, bypass: htmlBypass },
+      "/channel": { target: "http://127.0.0.1:3333", changeOrigin: true, ws: true, bypass: htmlBypass },
       "/notices": { target: "http://127.0.0.1:3333", changeOrigin: true },
       "/reminders": { target: "http://127.0.0.1:3333", changeOrigin: true },
       "/api": { target: "http://127.0.0.1:3333", changeOrigin: true },

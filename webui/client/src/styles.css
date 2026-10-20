@@ -237,6 +237,7 @@ a:hover {
   justify-content: center;
   width: 2.65rem;
   height: 2.65rem;
+  margin: 0;
   padding: 0;
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -283,7 +284,7 @@ html[data-theme="dark"] .theme-toggle__moon {
 .notice-bell-host {
   position: fixed;
   top: max(0.85rem, env(safe-area-inset-top));
-  right: calc(max(1rem, env(safe-area-inset-right)) + 3.15rem);
+  right: calc(max(1rem, env(safe-area-inset-right)) + 2.65rem + 0.45rem);
   z-index: 200;
 }
 
@@ -540,6 +541,97 @@ html[data-theme="dark"] .theme-toggle__moon {
   vertical-align: 0.15em;
 }
 
+body.channel-lock {
+  overflow: hidden;
+  height: 100vh;
+  height: 100dvh;
+}
+
+.webui-root.channel-lock {
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-bottom: 0.75rem;
+}
+
+.webui-root.channel-lock .webui-header {
+  flex: none;
+  margin-bottom: 0.35rem;
+  padding-top: 0.85rem;
+  padding-bottom: 0.45rem;
+}
+
+.webui-root.channel-lock .webui-nav {
+  flex: none;
+  margin-bottom: 0.35rem;
+  padding-top: 0.35rem;
+}
+
+.webui-root.channel-lock .webui-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 1;
+  animation: none;
+}
+
+.channel-page {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.channel-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: none;
+  padding: 0.1rem 0 0.45rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.channel-name {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.channel-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.channel-older {
+  position: absolute;
+  top: 2.4rem;
+  left: 0.2rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.channel-page button.channel-jump {
+  position: absolute;
+  left: 50%;
+  bottom: 0.75rem;
+  margin: 0;
+  transform: translateX(-50%);
+}
+
+.channel-page button.channel-jump:hover {
+  transform: translateX(-50%);
+}
+
 .dlog {
   --dlog-text: var(--ink);
   --dlog-muted: var(--muted);
@@ -553,8 +645,13 @@ html[data-theme="dark"] .theme-toggle__moon {
   margin-top: 1rem;
 }
 
+.channel-scroll .dlog {
+  margin-top: 0;
+  padding: 0.75rem 0 1.25rem;
+}
+
 .channel-log {
-  margin-top: 0.5rem;
+  margin-top: 0;
 }
 
 .webui-nav a.active {
