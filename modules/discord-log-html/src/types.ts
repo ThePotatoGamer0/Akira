@@ -54,8 +54,8 @@ export type RawEmbed = {
   timestamp?: string;
   type?: string;
   author?: { name?: string; url?: string; icon_url?: string };
-  thumbnail?: { url?: string; proxy_url?: string };
-  image?: { url?: string; proxy_url?: string };
+  thumbnail?: { url?: string; proxy_url?: string; width?: number | null; height?: number | null };
+  image?: { url?: string; proxy_url?: string; width?: number | null; height?: number | null };
   video?: { url?: string; proxy_url?: string };
   footer?: { text?: string; icon_url?: string };
   fields?: Array<{ name?: string; value?: string; inline?: boolean }>;

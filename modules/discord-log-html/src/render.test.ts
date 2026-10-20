@@ -76,7 +76,7 @@ test("a channel log becomes discord-shaped html", () => {
   assert.match(html, /class="dlog-embed"/);
   assert.match(html, /Three cards/);
   assert.match(html, /other\.png/);
-  assert.equal(html.match(/card\.gif/g)?.length, 1);
+  assert.equal(html.match(/<img[^>]*card\.gif/g)?.length, 1);
   assert.match(html, /class="dlog-reaction"/);
   assert.match(html, /disabled/);
   assert.match(html, /1️⃣/);
@@ -86,7 +86,11 @@ test("a channel log becomes discord-shaped html", () => {
   assert.match(html, /class="dlog-reply"/);
   assert.match(html, /dlog-spoiler/);
   assert.match(html, /<code class="dlog-code">code<\/code>/);
-  assert.match(html, /class="dlog-bot"/);
+  assert.match(html, /class="dlog-app"/);
+  assert.match(html, />APP</);
+  assert.doesNotMatch(html, />BOT</);
+  assert.match(html, /class="dlog-view"/);
+  assert.doesNotMatch(html, /dlog-media-link/);
   assert.doesNotMatch(html, /href="javascript:/);
 });
 

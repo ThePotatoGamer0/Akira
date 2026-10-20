@@ -1,9 +1,46 @@
 import type { ChatLog, ChatMember, ChatRole, RawUser } from "./types.js";
 
+export type MediaView = {
+  name: string;
+  avatar: string;
+  app: boolean;
+  time: string;
+  color: string;
+};
+
 export type InlineContext = {
   log: ChatLog;
   media: Set<string>;
+  view?: MediaView;
 };
+
+const MEDIA_MAX_W = 400;
+const MEDIA_MAX_H = 300;
+
+export function fitMedia(width?: number | null, height?: number | null): { width: number; height: number } | null {
+  if (!width || !height || width <= 0 || height <= 0) return null;
+  const scale = Math.min(MEDIA_MAX_W / width, MEDIA_MAX_H / height, 1);
+  return { width: Math.max(1, Math.round(width * scale)), height: Math.max(1, Math.round(height * scale)) };
+}
+
+/** Image the host page can open in a viewer. Falls back to a plain img when no sender is known. */
+export function viewableImage(options: {
+  src: string;
+  className: string;
+  alt?: string;
+  width?: number | null;
+  height?: number | null;
+  ctx: InlineContext;
+}): string {
+  const fitted = fitMedia(options.width, options.height);
+  const size = fitted
+    ? ` width="${fitted.width}" height="${fitted.height}" style="width:${fitted.width}px;aspect-ratio:${fitted.width}/${fitted.height}"`
+    : "";
+  const img = `<img class="${options.className}" src="${escapeAttr(options.src)}" alt="${escapeAttr(options.alt ?? "")}"${size} loading="lazy">`;
+  const view = options.ctx.view;
+  if (!view) return img;
+  return `<button type="button" class="dlog-view" data-src="${escapeAttr(options.src)}" data-name="${escapeAttr(view.name)}" data-avatar="${escapeAttr(view.avatar)}" data-app="${view.app ? "1" : "0"}" data-time="${escapeAttr(view.time)}" data-color="${escapeAttr(view.color)}">${img}</button>`;
+}
 
 const URL_TAIL = /[),.;!?\]>]+$/;
 
@@ -38,11 +75,10 @@ function mediaKind(url: string): "image" | "video" | null {
   return null;
 }
 
-function mediaTag(url: string): string {
+function mediaTag(url: string, ctx: InlineContext): string {
   const kind = mediaKind(url);
-  const src = escapeAttr(url);
-  if (kind === "video") return `<video class="dlog-video" src="${src}" controls playsinline></video>`;
-  return `<img class="dlog-media" src="${src}" alt="" loading="lazy">`;
+  if (kind === "video") return `<video class="dlog-video" src="${escapeAttr(url)}" controls playsinline></video>`;
+  return viewableImage({ src: url, className: "dlog-media", ctx });
 }
 
 function linkTag(url: string, label: string, ctx: InlineContext): string {
@@ -50,7 +86,7 @@ function linkTag(url: string, label: string, ctx: InlineContext): string {
   if (!safe) return escapeHtml(label);
   if (mediaKind(safe)) {
     ctx.media.add(safe);
-    return mediaTag(safe);
+    return mediaTag(safe, ctx);
   }
   return `<a class="dlog-link" href="${escapeAttr(safe)}" target="_blank" rel="noreferrer noopener">${label}</a>`;
 }
