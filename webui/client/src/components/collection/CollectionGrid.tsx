@@ -48,7 +48,6 @@ function CollectionTile(props: {
         <span className="collection-tile__stars">
           <QualityStars quality={card.quality} size={12} />
         </span>
-        <span className="collection-tile__condition">{condition}</span>
         <code>{card.id}</code>
       </span>
     </button>

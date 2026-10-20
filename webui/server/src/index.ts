@@ -13,6 +13,7 @@ import { remindersRouter } from "./routes/reminders.js";
 import { channelRouter } from "./routes/channel.js";
 import { attachChannelLive } from "./live/channel-socket.js";
 import { serveMissingCardAsset } from "./routes/card-assets.js";
+import { allowsCrossSite, originAllowed, parseOriginList } from "./utils/origins.js";
 import { REPO_ROOT } from "./utils/repo-root.js";
 
 const app = express();
@@ -24,19 +25,8 @@ const defaultOrigins = [
   "http://localhost:5173",
   "http://127.0.0.1:5173",
 ];
-const extra = (process.env["WEBUI_ORIGINS"] ?? "")
-  .split(",")
-  .map((s) => s.trim())
-  .filter(Boolean);
-
-const crossSite = extra.some((origin) => {
-  try {
-    const url = new URL(origin);
-    return url.protocol === "https:" && url.hostname !== "localhost";
-  } catch {
-    return false;
-  }
-});
+const extra = parseOriginList(process.env["WEBUI_ORIGINS"] ?? "");
+const crossSite = allowsCrossSite(extra);
 
 app.set("trust proxy", 1);
 
@@ -48,13 +38,7 @@ app.use(
         return;
       }
       try {
-        const host = new URL(origin).hostname;
-        if (
-          defaultOrigins.includes(origin) ||
-          extra.includes(origin) ||
-          host.endsWith("discordsays.com") ||
-          host === "localhost"
-        ) {
+        if (originAllowed(origin, extra, defaultOrigins)) {
           cb(null, true);
           return;
         }
