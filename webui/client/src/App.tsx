@@ -57,7 +57,10 @@ export function App() {
   if (auth.loading) {
     return (
       <WebUiShell>
-        <p className="webui-muted webui-fade">Akira is loading…</p>
+        <div className="webui-loading" role="status">
+          <span className="webui-spinner" aria-hidden="true" />
+          <p>Akira is loading…</p>
+        </div>
       </WebUiShell>
     );
   }

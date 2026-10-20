@@ -1842,6 +1842,44 @@ input::placeholder {
   font-style: italic;
 }
 
+.webui-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  min-height: calc(100dvh - 6rem);
+  text-align: center;
+}
+
+.webui-loading p {
+  margin: 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.webui-spinner {
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 3px solid color-mix(in srgb, var(--accent) 24%, var(--border));
+  border-top-color: var(--accent);
+  border-right-color: var(--accent2);
+  border-radius: 50%;
+  animation: webui-spin 0.75s linear infinite;
+}
+
+@keyframes webui-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .webui-spinner {
+    animation: none;
+  }
+}
+
 .webui-fade {
   opacity: 0;
   animation: fade-in 0.5s ease 0.1s forwards;
