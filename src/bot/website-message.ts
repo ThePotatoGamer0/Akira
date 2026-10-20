@@ -97,7 +97,7 @@ function allowedRemote(raw: string): URL | null {
   }
   if (url.protocol !== "https:") return null;
   if (url.hostname === "cdn.discordapp.com" || url.hostname === "media.discordapp.net") return url;
-  if (url.hostname === "c.tenor.com" || /^media\d*\.tenor\.com$/.test(url.hostname)) return url;
+  if (url.hostname === "i.giphy.com" || url.hostname === "media.giphy.com" || /^media\d+\.giphy\.com$/.test(url.hostname)) return url;
   return null;
 }
 

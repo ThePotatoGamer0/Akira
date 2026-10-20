@@ -23,23 +23,33 @@ channelRouter.get("/composer", authMiddleware, async (req, res) => {
   }
 });
 
-type TenorGif = { id?: string; content_description?: string; media_formats?: Record<string, { url?: string }> };
+type GiphyImage = { url?: string };
+type GiphyGif = {
+  id?: string;
+  title?: string;
+  images?: {
+    original?: GiphyImage;
+    downsized?: GiphyImage;
+    fixed_width?: GiphyImage;
+    fixed_width_small?: GiphyImage;
+  };
+};
 
 channelRouter.get("/gifs", authMiddleware, async (req, res) => {
   if (bearerToken(req)) {
     res.status(403).json({ error: "The drop channel view is on the website." });
     return;
   }
-  const key = process.env["TENOR_API_KEY"] ?? "";
+  const key = process.env["GIPHY_API_KEY"] ?? "";
   if (!key) {
     res.json({ gifs: [], unavailable: true });
     return;
   }
   const q = typeof req.query["q"] === "string" ? req.query["q"].trim().slice(0, 80) : "";
-  const url = new URL(`https://tenor.googleapis.com/v2/${q ? "search" : "featured"}`);
-  url.searchParams.set("key", key);
+  const url = new URL(q ? "https://api.giphy.com/v1/gifs/search" : "https://api.giphy.com/v1/gifs/trending");
+  url.searchParams.set("api_key", key);
   url.searchParams.set("limit", "24");
-  url.searchParams.set("media_filter", "gif,tinygif");
+  url.searchParams.set("rating", "pg-13");
   if (q) url.searchParams.set("q", q);
   try {
     const upstream = await fetch(url);
@@ -47,18 +57,18 @@ channelRouter.get("/gifs", authMiddleware, async (req, res) => {
       res.json({ gifs: [] });
       return;
     }
-    const json = (await upstream.json()) as { results?: TenorGif[] };
-    const gifs = (json.results ?? [])
+    const json = (await upstream.json()) as { data?: GiphyGif[] };
+    const gifs = (json.data ?? [])
       .map((item) => {
-        const full = item.media_formats?.["gif"]?.url;
-        const preview = item.media_formats?.["tinygif"]?.url ?? full;
+        const full = item.images?.downsized?.url ?? item.images?.fixed_width?.url ?? item.images?.original?.url;
+        const preview = item.images?.fixed_width_small?.url ?? item.images?.fixed_width?.url ?? full;
         if (!item.id || !full || !preview) return null;
-        return { id: item.id, name: item.content_description ?? "GIF", url: full, preview };
+        return { id: item.id, name: item.title?.trim() || "GIF", url: full, preview };
       })
       .filter((item) => item != null);
     res.json({ gifs });
   } catch (err) {
-    console.error("tenor:", err);
+    console.error("giphy:", err);
     res.json({ gifs: [] });
   }
 });

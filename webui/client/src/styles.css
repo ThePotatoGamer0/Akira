@@ -936,6 +936,16 @@ html[data-theme="dark"] .composer-pop {
   font-size: 0.85rem;
 }
 
+.composer-gif-credit {
+  margin: 0.15rem 0 0.35rem;
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.composer-gif-credit a {
+  color: inherit;
+}
+
 .stamp-backdrop {
   position: fixed;
   inset: 0;
