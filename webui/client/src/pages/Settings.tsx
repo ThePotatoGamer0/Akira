@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { MenuSelect } from "../components/MenuSelect.js";
 import { PREFERRED_NAME_MAX, sanitizePreferredName } from "../lib/akiraAddressName.js";
+import { hapticsEnabled, setHapticsEnabled } from "../lib/haptics.js";
 import { COLLECTION_ORDERS, collectionOrder } from "../lib/collectionView.js";
 import { frameLabel, studioFrames } from "../lib/frames.js";
 import type { CollectionStudio, Me } from "../types/index.js";
@@ -23,6 +24,7 @@ export function SettingsPage(props: {
   const [reminders, setReminders] = useState<{ action: string; enabled: boolean }[] | null>(null);
   const [reminderBusy, setReminderBusy] = useState<string | null>(null);
   const [reminderMsg, setReminderMsg] = useState<string | null>(null);
+  const [haptics, setHaptics] = useState(hapticsEnabled);
 
   useEffect(() => {
     setPreferredName(sanitizePreferredName(props.me.preferredName ?? "") ?? "");
@@ -186,6 +188,25 @@ export function SettingsPage(props: {
         <p className="settings-current">
           Currently: <strong>{props.me.displayName}</strong>
         </p>
+        <div className="settings-row settings-switch">
+          <div>
+            <span className="settings-label">Button buzz</span>
+            <p className="settings-hint">A short buzz on this phone when you press a button or pick something from a menu.</p>
+          </div>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={haptics}
+            aria-label="Button buzz"
+            onClick={() => {
+              const next = !haptics;
+              setHaptics(next);
+              setHapticsEnabled(next);
+            }}
+          >
+            <span />
+          </button>
+        </div>
       </div>
 
       <div className="panel">
