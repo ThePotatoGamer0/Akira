@@ -2,6 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import { renderChatLog, type ChatLog, type RawMessage } from "../../../../modules/discord-log-html/src/index.js";
 import "../../../../modules/discord-log-html/styles.css";
 import { apiSocketUrl } from "../lib/api.js";
+import { MediaViewer, type ViewMedia } from "../components/MediaViewer.js";
 
 type Payload = ChatLog & { hasMore?: boolean };
 type LiveEvent = {
@@ -34,9 +35,11 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
   const [error, setError] = useState<string | null>(null);
   const [older, setOlder] = useState(false);
   const [unseen, setUnseen] = useState(0);
+  const [viewer, setViewer] = useState<ViewMedia | null>(null);
   const scroller = useRef<HTMLDivElement>(null);
   const stick = useRef(true);
-  const prepend = useRef<{ height: number; top: number } | null>(null);
+  const anchor = useRef<{ id: string; offset: number } | null>(null);
+  const holding = useRef(false);
   const olderLock = useRef(false);
   const armed = useRef(false);
   const logRef = useRef<Payload | null>(null);
@@ -86,15 +89,11 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
     if (!current?.hasMore || !oldest || olderLock.current) return;
     olderLock.current = true;
     setOlder(true);
-    const el = scroller.current;
-    if (el && !stick.current) prepend.current = { height: el.scrollHeight, top: el.scrollTop };
     const res = await props.fetchApi(`/channel?before=${oldest}`);
     olderLock.current = false;
     setOlder(false);
-    if (!res.ok) {
-      prepend.current = null;
-      return;
-    }
+    if (!res.ok) return;
+    holdPlace();
     const json = (await res.json()) as { log?: Payload };
     const page = json.log?.messages ?? [];
     setLog((prev) => {
@@ -135,6 +134,7 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
           queue.current.push(payload);
           return;
         }
+        holdPlace();
         if (!stick.current && payload.type === "message") setUnseen((count) => count + 1);
         applyLive(payload);
       };
@@ -160,6 +160,44 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
     };
   }, []);
 
+  function readAnchor(el: HTMLElement): { id: string; offset: number } | null {
+    const top = el.getBoundingClientRect().top;
+    for (const node of el.querySelectorAll<HTMLElement>("[data-message-id]")) {
+      const rect = node.getBoundingClientRect();
+      if (rect.bottom <= top + 4) continue;
+      const id = node.dataset.messageId;
+      if (id) return { id, offset: rect.top - top };
+    }
+    return null;
+  }
+
+  function holdPlace() {
+    const el = scroller.current;
+    if (!el || stick.current) {
+      anchor.current = null;
+      holding.current = false;
+      return;
+    }
+    anchor.current = readAnchor(el);
+    holding.current = anchor.current != null;
+  }
+
+  function restorePlace(el: HTMLElement) {
+    const saved = anchor.current;
+    if (!saved) {
+      holding.current = false;
+      return;
+    }
+    const node = el.querySelector<HTMLElement>(`[data-message-id="${CSS.escape(saved.id)}"]`);
+    if (!node) {
+      holding.current = false;
+      return;
+    }
+    const delta = node.getBoundingClientRect().top - el.getBoundingClientRect().top - saved.offset;
+    if (Math.abs(delta) > 0.5) el.scrollTop += delta;
+    holding.current = false;
+  }
+
   const html = useMemo(
     () => (log ? renderChatLog(log, { channelHeader: false }) : ""),
     [log],
@@ -170,21 +208,22 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
     if (!el) return;
     if (stick.current) {
       el.scrollTop = el.scrollHeight;
-      prepend.current = null;
+      anchor.current = null;
       armed.current = true;
       return;
     }
-    if (prepend.current) {
-      el.scrollTop = prepend.current.top + (el.scrollHeight - prepend.current.height);
-      prepend.current = null;
-    }
+    restorePlace(el);
   }, [html]);
 
   useEffect(() => {
     const el = scroller.current;
     if (!el) return;
     const pin = () => {
-      if (stick.current) el.scrollTop = el.scrollHeight;
+      if (stick.current) {
+        el.scrollTop = el.scrollHeight;
+        return;
+      }
+      restorePlace(el);
     };
     el.addEventListener("load", pin, true);
     return () => el.removeEventListener("load", pin, true);
@@ -202,10 +241,29 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
         ref={scroller}
         onScroll={() => {
           const el = scroller.current;
-          if (!el) return;
+          if (!el || holding.current) return;
           stick.current = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
-          if (stick.current) setUnseen(0);
+          if (stick.current) {
+            setUnseen(0);
+            anchor.current = null;
+          } else {
+            anchor.current = readAnchor(el);
+          }
           if (armed.current && el.scrollTop < 240) void loadOlder();
+        }}
+        onClick={(event) => {
+          const button = (event.target as HTMLElement).closest("button.dlog-view");
+          if (!(button instanceof HTMLButtonElement)) return;
+          const src = button.dataset.src;
+          if (!src) return;
+          setViewer({
+            src,
+            name: button.dataset.name ?? "",
+            avatar: button.dataset.avatar ?? "",
+            app: button.dataset.app === "1",
+            time: button.dataset.time ?? "",
+            color: button.dataset.color ?? "",
+          });
         }}
       >
         {error ? (
@@ -230,6 +288,7 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
           New messages
         </button>
       ) : null}
+      {viewer ? <MediaViewer media={viewer} onClose={() => setViewer(null)} /> : null}
     </div>
   );
 }

@@ -86,7 +86,7 @@
   font-size: 0.75rem;
 }
 
-.dlog-bot {
+.dlog-app {
   margin-right: 0.25rem;
   padding: 0 0.25rem;
   border-radius: 3px;
@@ -173,6 +173,26 @@
   vertical-align: middle;
 }
 
+.dlog button.dlog-view {
+  display: block;
+  max-width: min(100%, 400px);
+  margin: 0.35rem 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  box-shadow: none;
+  animation: none;
+  cursor: zoom-in;
+}
+
+.dlog button.dlog-view:hover,
+.dlog button.dlog-view:active {
+  transform: none;
+  box-shadow: none;
+  background: none;
+}
+
 .dlog-media,
 .dlog-attachment-image,
 .dlog-embed-image,
@@ -180,12 +200,20 @@
 .dlog-sticker {
   display: block;
   max-width: min(100%, 400px);
+  max-height: 300px;
+  width: auto;
   height: auto;
+  object-fit: contain;
   margin-top: 0.35rem;
   border-radius: 8px;
 }
 
-.dlog-attachment-image { max-width: min(100%, 550px); }
+.dlog-view .dlog-media,
+.dlog-view .dlog-attachment-image,
+.dlog-view .dlog-embed-image {
+  margin-top: 0;
+  max-width: 100%;
+}
 .dlog-sticker { width: 160px; height: 160px; object-fit: contain; background: transparent; }
 
 .dlog-reply {

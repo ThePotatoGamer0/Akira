@@ -1,4 +1,4 @@
-import { authorColor, displayName, escapeAttr, escapeHtml, renderContent, renderInline, roleInk, safeHttpUrl, type InlineContext } from "./markdown.js";
+import { authorColor, displayName, escapeAttr, escapeHtml, renderContent, renderInline, roleInk, safeHttpUrl, viewableImage, type InlineContext } from "./markdown.js";
 import type { ChatLog, RawAttachment, RawComponent, RawEmbed, RawEmoji, RawMessage } from "./types.js";
 
 const SUPPRESS_EMBEDS = 1 << 2;
@@ -69,14 +69,26 @@ function wrapSpoiler(html: string, spoiler: boolean): string {
   return `<details class="dlog-spoiler-block"><summary>Spoiler</summary>${html}</details>`;
 }
 
-function renderAttachment(file: RawAttachment): string {
+function renderAttachment(file: RawAttachment, ctx: InlineContext): string {
   const url = attachmentUrl(file);
   const name = escapeHtml(attachmentName(file));
   if (!url) return `<div class="dlog-file">${name}</div>`;
   const kind = fileKind(file, url);
   const src = escapeAttr(url);
   let body = "";
-  if (kind === "image") body = `<a class="dlog-media-link" href="${src}" target="_blank" rel="noreferrer noopener"><img class="dlog-attachment-image" src="${src}" alt="${name}" loading="lazy"></a>`;
+  if (kind === "image") {
+    return wrapSpoiler(
+      viewableImage({
+        src: url,
+        className: "dlog-attachment-image",
+        alt: attachmentName(file),
+        width: file.width,
+        height: file.height,
+        ctx,
+      }),
+      isSpoiler(file),
+    );
+  }
   else if (kind === "video") body = `<video class="dlog-video" src="${src}" controls playsinline></video>`;
   else if (kind === "audio") body = `<audio class="dlog-audio" src="${src}" controls></audio>`;
   else {
@@ -141,7 +153,7 @@ function renderEmbed(embed: RawEmbed, ctx: InlineContext): string {
       ${titleHtml ? `<div class="dlog-embed-title">${titleHtml}</div>` : ""}
       ${embed.description ? `<div class="dlog-embed-desc">${renderContent(embed.description, ctx)}</div>` : ""}
       ${fields ? `<div class="dlog-embed-fields">${fields}</div>` : ""}
-      ${image ? `<img class="dlog-embed-image" src="${escapeAttr(image)}" alt="" loading="lazy">` : ""}
+      ${image ? viewableImage({ src: image, className: "dlog-embed-image", width: embed.image?.width, height: embed.image?.height, ctx }) : ""}
       ${video ? `<video class="dlog-video" src="${escapeAttr(video)}" controls playsinline loop muted></video>` : ""}
       ${embed.footer?.text || embed.timestamp ? `<div class="dlog-embed-footer">${footerIcon ? `<img src="${escapeAttr(footerIcon)}" alt="">` : ""}<span>${escapeHtml(embed.footer?.text ?? "")}</span>${embedFooterTime(embed.timestamp)}</div>` : ""}
     </div>
@@ -232,13 +244,23 @@ function onlyEmoji(content: string): boolean {
 }
 
 function renderMessage(message: RawMessage, log: ChatLog, grouped: boolean): string {
-  const ctx: InlineContext = { log, media: new Set() };
   const author = message.author;
   const name = displayName(author, message.member?.nick, log);
   const roleIds = message.member?.roles ?? log.members?.find((member) => member.id === author?.id)?.roles;
   const color = authorColor(roleIds, log.roles);
   const when = message.timestamp ? new Date(message.timestamp) : null;
   const time = when && !Number.isNaN(when.getTime()) ? when.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" }) : "";
+  const ctx: InlineContext = {
+    log,
+    media: new Set(),
+    view: {
+      name,
+      avatar: author ? avatarUrl(author) : "",
+      app: author?.bot === true,
+      time: when && !Number.isNaN(when.getTime()) ? when.toISOString() : "",
+      color: color ?? "",
+    },
+  };
   const content = renderContent(message.content ?? "", ctx);
   const jumbo = onlyEmoji(message.content ?? "") ? " dlog-jumbo" : "";
   const embeds = (message.flags ?? 0) & SUPPRESS_EMBEDS
@@ -247,15 +269,15 @@ function renderMessage(message: RawMessage, log: ChatLog, grouped: boolean): str
         .filter((embed) => !bareMediaEmbed(embed, ctx.media))
         .map((embed) => renderEmbed(embed, ctx))
         .join("");
-  const attachments = (message.attachments ?? []).map((file) => renderAttachment(file)).join("");
+  const attachments = (message.attachments ?? []).map((file) => renderAttachment(file, ctx)).join("");
   const nameStyle = color ? ` style="color:${color}"` : "";
   const head = grouped
     ? ""
-    : `<header class="dlog-meta"><span class="dlog-author"${nameStyle}>${escapeHtml(name)}</span>${author?.bot ? `<span class="dlog-bot">BOT</span>` : ""}${when ? `<time datetime="${when.toISOString()}">${escapeHtml(time)}</time>` : ""}${message.edited_timestamp ? `<span class="dlog-edited">(edited)</span>` : ""}</header>`;
+    : `<header class="dlog-meta"><span class="dlog-author"${nameStyle}>${escapeHtml(name)}</span>${author?.bot ? `<span class="dlog-app">APP</span>` : ""}${when ? `<time datetime="${when.toISOString()}">${escapeHtml(time)}</time>` : ""}${message.edited_timestamp ? `<span class="dlog-edited">(edited)</span>` : ""}</header>`;
   const avatar = grouped || !author
     ? `<span class="dlog-avatar-spacer" aria-hidden="true"></span>`
     : `<img class="dlog-avatar" src="${escapeAttr(avatarUrl(author))}" alt="">`;
-  return `<article class="dlog-message${grouped ? " dlog-continued" : ""}" id="dlog-${escapeAttr(message.id)}">
+  return `<article class="dlog-message${grouped ? " dlog-continued" : ""}" id="dlog-${escapeAttr(message.id)}" data-message-id="${escapeAttr(message.id)}">
     ${avatar}
     <div class="dlog-body">
       ${renderReply(message, log)}

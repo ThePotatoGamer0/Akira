@@ -608,6 +608,7 @@ body.channel-lock {
   min-height: 0;
   overflow-x: hidden;
   overflow-y: auto;
+  overflow-anchor: none;
   overscroll-behavior: contain;
 }
 
@@ -630,6 +631,119 @@ body.channel-lock {
 
 .channel-page button.channel-jump:hover {
   transform: translateX(-50%);
+}
+
+.media-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+}
+
+.media-viewer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex: none;
+  padding: 0.85rem 1rem 0.35rem;
+}
+
+.media-viewer-who {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.media-viewer-who img,
+.media-viewer-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #313338;
+}
+
+.media-viewer-who strong {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.media-viewer-who time {
+  color: #b5bac1;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.media-viewer-tools {
+  display: flex;
+  gap: 0.45rem;
+  flex: none;
+}
+
+.media-viewer-tools button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  box-shadow: none;
+  animation: none;
+}
+
+.media-viewer-tools button:hover,
+.media-viewer-tools button:active {
+  transform: none;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+}
+
+.media-viewer-tools button[aria-pressed="true"] {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.media-viewer-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0.5rem 1.5rem 1.5rem;
+}
+
+.media-viewer-stage img {
+  max-width: min(100%, 1100px);
+  max-height: calc(100vh - 6rem);
+  object-fit: contain;
+  border-radius: 4px;
+  cursor: zoom-in;
+  user-select: none;
+}
+
+.media-viewer-stage.is-zoomed {
+  overflow: auto;
+  align-items: flex-start;
+  justify-content: flex-start;
+  cursor: grab;
+}
+
+.media-viewer-stage.is-zoomed img {
+  max-width: none;
+  max-height: none;
+  cursor: grab;
 }
 
 .dlog {
