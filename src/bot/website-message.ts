@@ -1,4 +1,3 @@
-import { randomBytes } from "node:crypto";
 import {
   AttachmentBuilder,
   DiscordAPIError,
@@ -9,15 +8,16 @@ import {
   type User,
   type Webhook,
 } from "discord.js";
+import { prisma } from "../db/client.js";
 import { resolveDropChannelId } from "../game/drops.js";
 import { isInitLocked } from "../utils/init-lock.js";
+import { syncDiscordUsernameForWebUi } from "./sync-webui-username.js";
 
 const MARK_RE = /\u200b\u200c\u200d([0-9a-f]{8}):(\d{17,20})\u200d\u200c\u200b$/;
 const MAX_CONTENT = 2000;
 const MAX_FILES = 10;
 const MAX_FILE_BYTES = 8 * 1024 * 1024;
 const MAX_TOTAL_BYTES = 25 * 1024 * 1024;
-const TICKET_MS = 30_000;
 
 export class WebsitePostError extends Error {
   readonly status: number;
@@ -28,11 +28,15 @@ export class WebsitePostError extends Error {
   }
 }
 
-type Ticket = { discordId: string; content: string; files: number; at: number };
-
-const tickets = new Map<string, Ticket>();
 const recentSends = new Map<string, number[]>();
 let webhookCache: { channelId: string; hook: Webhook } | null = null;
+
+export type NamedAccount = {
+  discordId: string;
+  username: string;
+  displayName: string;
+  globalName: string | null;
+};
 
 export function readSpeakerMark(content: string): { text: string; key: string | null; discordId: string | null } {
   const match = MARK_RE.exec(content);
@@ -40,45 +44,17 @@ export function readSpeakerMark(content: string): { text: string; key: string | 
   return { text: content.slice(0, match.index), key: match[1] ?? null, discordId: match[2] ?? null };
 }
 
-function speakerMark(key: string, discordId: string): string {
-  return `\u200b\u200c\u200d${key}:${discordId}\u200d\u200c\u200b`;
-}
-
-function pruneTickets(now: number): void {
-  for (const [key, ticket] of tickets) {
-    if (now - ticket.at > TICKET_MS) tickets.delete(key);
-  }
-}
-
-export function claimSpeaker(content: string, files: number): string | null {
-  const now = Date.now();
-  pruneTickets(now);
-  const mark = readSpeakerMark(content);
-  if (mark.key) {
-    const ticket = tickets.get(mark.key);
-    tickets.delete(mark.key);
-    if (!ticket || ticket.discordId !== mark.discordId) return null;
-    return ticket.discordId;
-  }
-  for (const [key, ticket] of tickets) {
-    if (ticket.content !== mark.text || ticket.files !== files) continue;
-    tickets.delete(key);
-    return ticket.discordId;
-  }
+/** The Discord username on an Akira webhook message is the player who posted it. */
+export function speakerIdForName(spoken: string, accounts: NamedAccount[]): string | null {
+  const wanted = spoken.trim().toLowerCase();
+  if (!wanted) return null;
+  const byUsername = accounts.filter((account) => account.username.trim().toLowerCase() === wanted);
+  if (byUsername.length === 1) return byUsername[0]?.discordId ?? null;
+  const matches = accounts.filter((account) =>
+    [account.displayName, account.globalName ?? ""].some((name) => webhookName(name).toLowerCase() === wanted),
+  );
+  if (matches.length === 1) return matches[0]?.discordId ?? null;
   return null;
-}
-
-export function stageSpeaker(key: string, discordId: string, content: string, files: number): void {
-  noteSpeaker(key, { discordId, content, files, at: Date.now() });
-}
-
-function noteSpeaker(key: string, ticket: Ticket): void {
-  pruneTickets(ticket.at);
-  tickets.set(key, ticket);
-}
-
-function forgetSpeaker(key: string): void {
-  tickets.delete(key);
 }
 
 function allowSend(discordId: string): boolean {
@@ -201,6 +177,7 @@ export async function postWebsiteMessage(client: Client, post: WebsitePost): Pro
   const user = await client.users.fetch(post.discordId).catch(() => null);
   if (!user) throw new WebsitePostError("Akira couldn't find that Discord account.", 404);
   const member = await channel.guild.members.fetch(post.discordId).catch(() => null);
+  await syncDiscordUsernameForWebUi(post.discordId, user.username);
   const username = webhookName(member?.displayName ?? user.globalName ?? user.username);
   const avatarURL = user.displayAvatarURL({ extension: "png", size: 128 });
 
@@ -222,15 +199,11 @@ export async function postWebsiteMessage(client: Client, post: WebsitePost): Pro
     }
   }
 
-  const key = randomBytes(4).toString("hex");
-  const marked = `${content}${speakerMark(key, post.discordId)}`;
-  if (marked.length > MAX_CONTENT) throw new WebsitePostError("That message is too long for Discord.", 400);
   if (!allowSend(post.discordId)) throw new WebsitePostError("Slow down a little and try that again.", 429);
-  noteSpeaker(key, { discordId: post.discordId, content, files: attachments.length, at: Date.now() });
 
-  const send = async (hook: Webhook) =>
+  const send = (hook: Webhook) =>
     hook.send({
-      content: marked,
+      content,
       username,
       avatarURL,
       files: attachments,
@@ -250,17 +223,52 @@ export async function postWebsiteMessage(client: Client, post: WebsitePost): Pro
       throw err;
     }
   } catch (err) {
-    forgetSpeaker(key);
     throw explainSendError(err);
   }
 }
 
+async function akiraWebhookId(message: Message): Promise<string | null> {
+  const channel = message.channel;
+  if (!channel.isTextBased() || channel.isDMBased() || !("fetchWebhooks" in channel)) return null;
+  if (webhookCache?.channelId === channel.id) return webhookCache.hook.id;
+  try {
+    const hooks = await channel.fetchWebhooks();
+    const mine = hooks.find((hook) => hook.owner?.id === message.client.user?.id && hook.name === "Akira");
+    if (!mine) return null;
+    webhookCache = { channelId: channel.id, hook: mine };
+    return mine.id;
+  } catch (err) {
+    console.error("website speaker:", err);
+    return null;
+  }
+}
+
+/** Player behind an Akira webhook message, recognized by the username she posted it with. */
+export async function websiteSpeaker(message: Message): Promise<User | null> {
+  if (!message.webhookId || !message.guild) return null;
+  const hookId = await akiraWebhookId(message);
+  if (hookId !== message.webhookId) return null;
+  const accounts: NamedAccount[] = [...message.guild.members.cache.values()].map((member) => ({
+    discordId: member.id,
+    username: member.user.username,
+    displayName: member.displayName,
+    globalName: member.user.globalName,
+  }));
+  let discordId = speakerIdForName(message.author.username, accounts);
+  if (!discordId) {
+    const row = await prisma.user.findFirst({
+      where: { discordUsername: message.author.username.trim().toLowerCase() },
+      select: { discordId: true },
+    });
+    discordId = row?.discordId ?? null;
+  }
+  if (!discordId) return null;
+  return message.client.users.fetch(discordId).catch(() => null);
+}
+
 /** The website message, spoken as the player Akira posted it for. */
 export async function adoptWebsiteSpeaker(message: Message): Promise<Message | null> {
-  if (!message.webhookId) return null;
-  const discordId = claimSpeaker(message.content, message.attachments.size);
-  if (!discordId) return null;
-  const user = await message.client.users.fetch(discordId).catch(() => null);
+  const user = await websiteSpeaker(message);
   if (!user) return null;
   return asSpeaker(message, user);
 }

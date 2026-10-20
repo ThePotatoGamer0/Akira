@@ -1,6 +1,6 @@
 import type { Client, GuildMember, Message, PartialMessage } from "discord.js";
 import { resolveDropChannelId } from "../game/drops.js";
-import { readSpeakerMark } from "./website-message.js";
+import { readSpeakerMark, websiteSpeaker } from "./website-message.js";
 
 /**
  * Read the drop channel into the JSON shape `discord-log-html` renders.
@@ -87,21 +87,21 @@ function serialize(message: Message) {
   return raw;
 }
 
-/** Website posts carry the player's id in a hidden mark. Show that person, not the webhook. */
+/** Website posts are Akira's webhook using the player's name. Show that person. */
 async function presentMessage(message: Message) {
   const raw = serialize(message);
   const mark = readSpeakerMark(message.content);
   let speaker: ReturnType<typeof memberOf> | null = null;
-  if (incomingWebhook(message) && mark.discordId && message.guild) {
-    const user = await message.client.users.fetch(mark.discordId).catch(() => null);
-    if (user) {
-      raw.author = userOf(user, true);
-      const member = await message.guild.members.fetch(user.id).catch(() => null);
-      if (member) {
-        raw.member = { nick: member.nickname, roles: [...member.roles.cache.keys()] };
-        speaker = memberOf(member);
-      }
-    }
+  if (!incomingWebhook(message) || !message.guild) return { raw, speaker };
+  const user = mark.discordId
+    ? await message.client.users.fetch(mark.discordId).catch(() => null)
+    : await websiteSpeaker(message);
+  if (!user) return { raw, speaker };
+  raw.author = userOf(user, true);
+  const member = await message.guild.members.fetch(user.id).catch(() => null);
+  if (member) {
+    raw.member = { nick: member.nickname, roles: [...member.roles.cache.keys()] };
+    speaker = memberOf(member);
   }
   return { raw, speaker };
 }
