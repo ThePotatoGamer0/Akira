@@ -9,6 +9,7 @@ import {
   PermissionFlagsBits,
   type Guild,
   type GuildBasedChannel,
+  type Message,
   type RepliableInteraction,
 } from "discord.js";
 import { commandMap } from "./commands/index.js";
@@ -37,6 +38,7 @@ import { getCard, lastGrabbedCard, shortenLegacyCardCodes } from "../game/cards.
 import { GameError } from "../game/errors.js";
 import { guildListensForKaruta, handleKarutaOverride, handleKarutaOverrideButton, KARUTA_PREFIXES, loadKarutaGuilds } from "./karuta-override.js";
 import { commandPrefix, createPrefixInteraction, invocationIsExpected, matchPrefixedCommand, resolveLegacyCommand, viewCardArgument } from "./prefix.js";
+import { adoptWebsiteSpeaker } from "./website-message.js";
 import { syncApplicationIcons } from "./icon-sync.js";
 import { serverHasDropChannel } from "../game/drops.js";
 import { collaborativeAction, hostIsInGuild, privateServerMessage } from "./host-gate.js";
@@ -182,7 +184,13 @@ client.on(Events.GuildCreate, (guild) => {
 });
 
 client.on(Events.MessageCreate, async (message) => {
-  if (message.author.bot || isInitLocked()) return;
+  if (isInitLocked()) return;
+  const speaker = await adoptWebsiteSpeaker(message);
+  if (message.author.bot && !speaker) return;
+  await handleGuildMessage(speaker ?? message);
+});
+
+async function handleGuildMessage(message: Message): Promise<void> {
   const prefixes = [commandPrefix()];
   if (guildListensForKaruta(message.guildId)) prefixes.push(...KARUTA_PREFIXES);
   const parsed = matchPrefixedCommand(message.content, prefixes);
@@ -283,7 +291,7 @@ client.on(Events.MessageCreate, async (message) => {
       await interaction.reply({ content: text }).catch(() => undefined);
     }
   }
-});
+}
 
 client.on(Events.InteractionCreate, async (interaction) => {
   if (interaction.isButton()) {

@@ -3,15 +3,26 @@ import { URL } from "node:url";
 import type { Client } from "discord.js";
 import { WebSocketServer } from "ws";
 import type { CooldownType } from "../generated/prisma/client.js";
+import { readComposerAssets } from "./composer-assets.js";
 import { readDropChannelLog } from "./drop-log.js";
 import { bindDropLive, subscribeDropLive } from "./drop-live.js";
 import { rememberEphemeralDm } from "./dm-mailbox.js";
 import { queueCooldownReminder } from "./reminder-schedule.js";
+import { postWebsiteMessage, WebsitePostError } from "./website-message.js";
 
-function readBody(req: http.IncomingMessage): Promise<string> {
+function readBody(req: http.IncomingMessage, max = 1_000_000): Promise<string> {
   return new Promise((resolve, reject) => {
     const chunks: Buffer[] = [];
-    req.on("data", (c) => chunks.push(c));
+    let size = 0;
+    req.on("data", (chunk: Buffer) => {
+      size += chunk.length;
+      if (size > max) {
+        reject(new Error("too-large"));
+        req.destroy();
+        return;
+      }
+      chunks.push(chunk);
+    });
     req.on("end", () => resolve(Buffer.concat(chunks).toString("utf8")));
     req.on("error", reject);
   });
@@ -44,6 +55,58 @@ export function startInternalApi(bot: Client): void {
           return;
         }
         res.writeHead(200, { "Content-Type": "application/json" }).end(JSON.stringify(log));
+        return;
+      }
+      if (req.method === "GET" && url.pathname === "/internal/composer") {
+        const assets = await readComposerAssets(bot);
+        res.writeHead(200, { "Content-Type": "application/json" }).end(JSON.stringify(assets));
+        return;
+      }
+      if (req.method === "POST" && url.pathname === "/internal/channel-message") {
+        const raw = await readBody(req, 35_000_000);
+        let json: { discordId?: unknown; content?: unknown; files?: unknown; gifUrls?: unknown; stickerIds?: unknown };
+        try {
+          json = JSON.parse(raw) as typeof json;
+        } catch {
+          res.writeHead(400).end("bad json");
+          return;
+        }
+        if (typeof json.discordId !== "string") {
+          res.writeHead(400).end("bad json");
+          return;
+        }
+        const files = Array.isArray(json.files) ? json.files : [];
+        const parsedFiles: Array<{ name: string; data: Buffer }> = [];
+        for (const item of files) {
+          if (!item || typeof item !== "object") {
+            res.writeHead(400).end("bad json");
+            return;
+          }
+          const row = item as { name?: unknown; data?: unknown };
+          if (typeof row.name !== "string" || typeof row.data !== "string") {
+            res.writeHead(400).end("bad json");
+            return;
+          }
+          parsedFiles.push({ name: row.name, data: Buffer.from(row.data, "base64") });
+        }
+        const gifUrls = Array.isArray(json.gifUrls) ? json.gifUrls.filter((item): item is string => typeof item === "string") : [];
+        const stickerIds = Array.isArray(json.stickerIds) ? json.stickerIds.filter((item): item is string => typeof item === "string") : [];
+        try {
+          await postWebsiteMessage(bot, {
+            discordId: json.discordId,
+            content: typeof json.content === "string" ? json.content : "",
+            files: parsedFiles,
+            gifUrls,
+            stickerIds,
+          });
+        } catch (err) {
+          if (err instanceof WebsitePostError) {
+            res.writeHead(err.status, { "Content-Type": "application/json" }).end(JSON.stringify({ error: err.message }));
+            return;
+          }
+          throw err;
+        }
+        res.writeHead(204).end();
         return;
       }
       if (req.method !== "POST") {
@@ -101,6 +164,6 @@ export function startInternalApi(bot: Client): void {
   });
 
   server.listen(port, "0.0.0.0", () => {
-    console.log(`Akira internal API listening on ${port} (dm-verify, queue-reminder, drop-log)`);
+    console.log(`Akira internal API listening on ${port} (dm-verify, queue-reminder, drop-log, channel-message)`);
   });
 }
