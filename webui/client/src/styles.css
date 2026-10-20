@@ -2452,11 +2452,6 @@ button.collection-tile:active {
   flex: none;
 }
 
-.collection-tile__condition {
-  flex: none;
-  white-space: nowrap;
-}
-
 .collection-tile__chin code {
   flex: none;
   margin-left: auto;
