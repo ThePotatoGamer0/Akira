@@ -1,3 +1,4 @@
+import { discordEmojiImg } from "./emoji.js";
 import { authorColor, displayName, escapeAttr, escapeHtml, renderContent, renderInline, roleInk, safeHttpUrl, viewableImage, type InlineContext } from "./markdown.js";
 import type { ChatLog, RawAttachment, RawComponent, RawEmbed, RawEmoji, RawMessage } from "./types.js";
 
@@ -30,7 +31,7 @@ function emojiImg(emoji: RawEmoji | null | undefined, jumbo = false): string {
     const className = jumbo ? "dlog-emoji dlog-emoji-jumbo" : "dlog-emoji";
     return `<img class="${className}" src="https://cdn.discordapp.com/emojis/${emoji.id}.${ext}?size=48&amp;quality=lossless" alt=":${alt}:">`;
   }
-  return `<span class="${jumbo ? "dlog-emoji-jumbo" : ""}">${escapeHtml(emoji.name ?? "")}</span>`;
+  return discordEmojiImg(emoji.name ?? "", jumbo ? "dlog-emoji dlog-emoji-jumbo" : "dlog-emoji");
 }
 
 function attachmentUrl(file: RawAttachment): string | null {

@@ -1,3 +1,4 @@
+import { discordEmojiImg, matchDiscordEmoji } from "./emoji.js";
 import type { ChatLog, ChatMember, ChatRole, RawUser } from "./types.js";
 
 export type MediaView = {
@@ -319,6 +320,12 @@ export function renderInline(input: string, ctx: InlineContext): string {
       break;
     }
     if (wrapped) continue;
+    const emoji = matchDiscordEmoji(input.slice(i));
+    if (emoji) {
+      out += discordEmojiImg(emoji, "dlog-emoji");
+      i += emoji.length;
+      continue;
+    }
     out += escapeHtml(ch);
     i++;
   }

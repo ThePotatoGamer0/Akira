@@ -79,7 +79,7 @@ test("a channel log becomes discord-shaped html", () => {
   assert.equal(html.match(/<img[^>]*card\.gif/g)?.length, 1);
   assert.match(html, /class="dlog-reaction"/);
   assert.match(html, /disabled/);
-  assert.match(html, /1️⃣/);
+  assert.match(html, /31-20e3\.svg/);
   assert.match(html, /emojis\/555\.webp/);
   assert.match(html, /class="dlog-action"/);
   assert.match(html, /href="https:\/\/example\.com\/rules"/);

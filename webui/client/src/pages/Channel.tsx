@@ -3,6 +3,7 @@ import { renderChatLog, type ChatLog, type RawMessage } from "../../../../module
 import "../../../../modules/discord-log-html/styles.css";
 import { apiSocketUrl } from "../lib/api.js";
 import { MediaViewer, type ViewMedia } from "../components/MediaViewer.js";
+import { MessageBar } from "../components/channel/MessageBar.js";
 
 type Payload = ChatLog & { hasMore?: boolean };
 type LiveEvent = {
@@ -273,6 +274,7 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
         ) : null}
         {html ? <div className="channel-log" dangerouslySetInnerHTML={{ __html: html }} /> : null}
       </div>
+      <MessageBar channelName={log?.channel?.name ?? "channel"} fetchApi={props.fetchApi} />
       {older ? <p className="channel-older">Loading earlier messages…</p> : null}
       {unseen > 0 ? (
         <button

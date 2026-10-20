@@ -75,6 +75,7 @@ app.use((_req, res, next) => {
   next();
 });
 
+app.use("/channel/messages", express.json({ limit: "35mb" }));
 app.use(express.json());
 
 const sessionMiddleware = session({

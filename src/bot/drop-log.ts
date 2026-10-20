@@ -1,5 +1,6 @@
 import type { Client, GuildMember, Message, PartialMessage } from "discord.js";
 import { resolveDropChannelId } from "../game/drops.js";
+import { readSpeakerMark } from "./website-message.js";
 
 /**
  * Read the drop channel into the JSON shape `discord-log-html` renders.
@@ -12,14 +13,17 @@ function configuredGuildId(client: Client): string | null {
   return null;
 }
 
-function userOf(user: { id: string; username: string; globalName: string | null; discriminator: string; avatar: string | null; bot: boolean }) {
+function userOf(
+  user: { id: string; username: string; globalName: string | null; discriminator: string; avatar: string | null; bot: boolean },
+  person = false,
+) {
   return {
     id: user.id,
     username: user.username,
     global_name: user.globalName,
     discriminator: user.discriminator,
     avatar: user.avatar,
-    bot: user.bot || undefined,
+    bot: person ? undefined : user.bot || undefined,
   };
 }
 
@@ -31,15 +35,21 @@ function memberOf(member: GuildMember) {
   };
 }
 
+function incomingWebhook(message: Message): boolean {
+  return Boolean(message.webhookId) && message.applicationId == null;
+}
+
 function serialize(message: Message) {
+  const spoken = readSpeakerMark(message.content);
+  const person = incomingWebhook(message);
   const raw = {
     id: message.id,
     type: message.type,
-    content: message.content,
+    content: spoken.text,
     timestamp: message.createdAt.toISOString(),
     edited_timestamp: message.editedAt ? message.editedAt.toISOString() : null,
     flags: message.flags.bitfield,
-    author: userOf(message.author),
+    author: userOf(message.author, person),
     member: message.member
       ? { nick: message.member.nickname, roles: [...message.member.roles.cache.keys()] }
       : undefined,
@@ -77,6 +87,25 @@ function serialize(message: Message) {
   return raw;
 }
 
+/** Website posts carry the player's id in a hidden mark. Show that person, not the webhook. */
+async function presentMessage(message: Message) {
+  const raw = serialize(message);
+  const mark = readSpeakerMark(message.content);
+  let speaker: ReturnType<typeof memberOf> | null = null;
+  if (incomingWebhook(message) && mark.discordId && message.guild) {
+    const user = await message.client.users.fetch(mark.discordId).catch(() => null);
+    if (user) {
+      raw.author = userOf(user, true);
+      const member = await message.guild.members.fetch(user.id).catch(() => null);
+      if (member) {
+        raw.member = { nick: member.nickname, roles: [...member.roles.cache.keys()] };
+        speaker = memberOf(member);
+      }
+    }
+  }
+  return { raw, speaker };
+}
+
 export async function readDropChannelLog(client: Client, query?: { before?: string }) {
   const guildId = configuredGuildId(client);
   if (!guildId) return null;
@@ -102,9 +131,13 @@ export async function readDropChannelLog(client: Client, query?: { before?: stri
     }),
   );
 
-  const serialized = new Map<string, ReturnType<typeof serialize>>();
-  for (const message of ordered) serialized.set(message.id, serialize(message));
-  for (const message of extras.values()) serialized.set(message.id, serialize(message));
+  const serialized = new Map<string, Awaited<ReturnType<typeof presentMessage>>["raw"]>();
+  const speakers = new Map<string, ReturnType<typeof memberOf>>();
+  for (const message of [...ordered, ...extras.values()]) {
+    const presented = await presentMessage(message);
+    serialized.set(message.id, presented.raw);
+    if (presented.speaker) speakers.set(presented.speaker.id, presented.speaker);
+  }
 
   const messages = ordered.map((message) => {
     const raw = serialized.get(message.id);
@@ -116,7 +149,7 @@ export async function readDropChannelLog(client: Client, query?: { before?: stri
     return { ...raw, referenced_message: { ...referenced, referenced_message: undefined } };
   }).filter((message) => message !== null);
 
-  const members = new Map<string, ReturnType<typeof memberOf>>();
+  const members = new Map<string, ReturnType<typeof memberOf>>(speakers);
   const channels = new Map<string, string>();
   for (const message of [...ordered, ...extras.values()]) {
     if (message.member) members.set(message.member.id, memberOf(message.member));
@@ -158,11 +191,11 @@ export async function snapshotMessage(message: Message | PartialMessage) {
   } else {
     full = message;
   }
-  const raw = serialize(full);
+  const raw = (await presentMessage(full)).raw;
   const referencedId = full.reference?.messageId;
   if (!referencedId) return raw;
   try {
-    const referenced = serialize(await full.fetchReference());
+    const referenced = (await presentMessage(await full.fetchReference())).raw;
     return { ...raw, referenced_message: referenced };
   } catch {
     return raw;
