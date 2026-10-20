@@ -162,6 +162,13 @@ function renderEmbed(embed: RawEmbed, ctx: InlineContext): string {
   </article>`;
 }
 
+function slotEmoji(name: string | null | undefined): boolean {
+  if (!name) return false;
+  if (name === "ak_slot_1" || name === "ak_slot_2" || name === "ak_slot_3" || name === "ak_slot_4") return true;
+  const normalized = name.replace(/\uFE0F/g, "");
+  return normalized === "1⃣" || normalized === "2⃣" || normalized === "3⃣" || normalized === "4⃣";
+}
+
 function renderReactions(message: RawMessage): string {
   const reactions = (message.reactions ?? []).filter((reaction) => (reaction.count ?? 0) > 0 && reaction.emoji);
   if (reactions.length === 0) return "";
@@ -169,10 +176,18 @@ function renderReactions(message: RawMessage): string {
     .map((reaction) => {
       const count = reaction.count ?? 0;
       const name = reaction.emoji?.name ?? "reaction";
-      return `<button type="button" class="dlog-reaction" disabled aria-disabled="true" aria-label="${escapeAttr(name)} ${count}"><span class="dlog-reaction-emoji">${emojiImg(reaction.emoji)}</span><span class="dlog-reaction-count">${count}</span></button>`;
+      const grab = slotEmoji(reaction.emoji?.name);
+      const open = grab ? ` data-emoji-name="${escapeAttr(name)}"` : " disabled aria-disabled=\"true\"";
+      return `<button type="button" class="dlog-reaction"${open} aria-label="${escapeAttr(name)} ${count}"><span class="dlog-reaction-emoji">${emojiImg(reaction.emoji)}</span><span class="dlog-reaction-count">${count}</span></button>`;
     })
     .join("");
   return `<div class="dlog-reactions">${buttons}</div>`;
+}
+
+function optionText(option: NonNullable<RawComponent["options"]>[number]): string {
+  const name = option.emoji?.name;
+  const glyph = name && !option.emoji?.id ? `${name} ` : "";
+  return `${glyph}${option.label ?? option.value ?? "Choice"}`;
 }
 
 function renderComponents(rows: RawComponent[] | undefined): string {
@@ -180,13 +195,26 @@ function renderComponents(rows: RawComponent[] | undefined): string {
   const html = rows
     .map((row) => {
       const parts = (row.components ?? []).map((component) => {
-        if (component.type === 3 || component.placeholder) {
-          return `<div class="dlog-select" aria-disabled="true">${escapeHtml(component.placeholder || "Choose")}</div>`;
+        if (component.type === 3 || component.placeholder || component.options) {
+          const customId = component.custom_id?.trim();
+          if (!customId || component.disabled) {
+            return `<div class="dlog-select" aria-disabled="true">${escapeHtml(component.placeholder || "Choose")}</div>`;
+          }
+          const choices = (component.options ?? [])
+            .filter((option) => option.value)
+            .map((option) => `<option value="${escapeAttr(option.value ?? "")}">${escapeHtml(optionText(option))}</option>`)
+            .join("");
+          return `<select class="dlog-select" data-custom-id="${escapeAttr(customId)}" aria-label="${escapeAttr(component.placeholder || "Choose")}"><option value="" selected disabled>${escapeHtml(component.placeholder || "Choose")}</option>${choices}</select>`;
         }
         const label = `${component.emoji ? emojiImg(component.emoji) : ""}${component.label ? `<span>${escapeHtml(component.label)}</span>` : ""}`;
         const url = component.url ? safeHttpUrl(component.url) : null;
         if (url) return `<a class="dlog-action dlog-action-link" href="${escapeAttr(url)}" target="_blank" rel="noreferrer noopener">${label}</a>`;
-        return `<button type="button" class="dlog-action" disabled aria-disabled="true">${label || "Button"}</button>`;
+        const customId = component.custom_id?.trim();
+        if (!customId || component.disabled) {
+          return `<button type="button" class="dlog-action" disabled aria-disabled="true">${label || "Button"}</button>`;
+        }
+        const style = component.style ? ` data-style="${component.style}"` : "";
+        return `<button type="button" class="dlog-action" data-custom-id="${escapeAttr(customId)}"${style}>${label || "Button"}</button>`;
       });
       return `<div class="dlog-action-row">${parts.join("")}</div>`;
     })
@@ -314,7 +342,7 @@ function dayLabel(iso: string | undefined): string | null {
 
 /**
  * Render a Discord channel log to HTML.
- * Reactions and message buttons are present and disabled: the host cannot act as the account that sent them.
+ * Card reactions, buttons, and menus are clickable. Link buttons open their url.
  */
 export function renderChatLog(log: ChatLog, options?: { channelHeader?: boolean }): string {
   const messages = log.messages ?? [];

@@ -590,6 +590,7 @@ body.channel-lock {
 }
 
 .channel-page button,
+.channel-page select,
 .media-viewer button {
   font-family: inherit;
 }
@@ -624,6 +625,13 @@ body.channel-lock {
   overflow-y: auto;
   overflow-anchor: none;
   overscroll-behavior: contain;
+}
+
+.channel-note {
+  flex: none;
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
 }
 
 .channel-older {
@@ -2964,5 +2972,94 @@ button.danger:hover {
 
   .webui-badge {
     white-space: normal;
+  }
+}
+
+/* Phones only. Tablets and desktops keep the full header. */
+@media (max-width: 700px) {
+  .webui-root {
+    padding-top: max(0.85rem, env(safe-area-inset-top));
+  }
+
+  .webui-kana,
+  .webui-brand {
+    display: none;
+  }
+
+  .webui-header {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 2.65rem;
+    min-height: 0;
+    margin: 0 0 0.45rem;
+    padding: 0 6.5rem 0 0;
+    border-bottom: none;
+  }
+
+  .webui-badge {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .webui-nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
+    padding: 0.2rem 0 0.35rem;
+    scrollbar-width: none;
+  }
+
+  .webui-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .webui-nav a {
+    flex: none;
+  }
+
+  .webui-hero {
+    padding: 0.35rem 0 1rem;
+    margin-bottom: 1.15rem;
+  }
+
+  .webui-root.channel-lock .webui-header {
+    margin-bottom: 0.2rem;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .webui-root.channel-lock .webui-nav {
+    margin-bottom: 0.25rem;
+  }
+
+  body.channel-lock {
+    height: var(--vv-height, 100dvh);
+  }
+
+  .webui-root.channel-lock {
+    position: fixed;
+    top: var(--vv-offset, 0px);
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 900px;
+    height: var(--vv-height, 100dvh);
+    max-height: var(--vv-height, 100dvh);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  html.webui-activity .webui-root,
+  html.webui-activity .webui-pip-root {
+    padding-top: max(3.25rem, env(safe-area-inset-top));
+  }
+
+  html.webui-activity .theme-toggle-host,
+  html.webui-activity .notice-bell-host {
+    top: max(3.25rem, env(safe-area-inset-top));
   }
 }
