@@ -5,6 +5,15 @@ export function apiUrl(path: string): string {
   return `${apiBase}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
+/** WebSocket URL for an API path. Uses the API host when VITE_API_URL is set. */
+export function apiSocketUrl(path: string): string {
+  const httpUrl = apiUrl(path);
+  if (/^https?:\/\//.test(httpUrl)) return httpUrl.replace(/^http/, "ws");
+  const url = new URL(httpUrl, window.location.href);
+  url.protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+  return url.toString();
+}
+
 export async function apiFetch(
   path: string,
   init?: RequestInit,
