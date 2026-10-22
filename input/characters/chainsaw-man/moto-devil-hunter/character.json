@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-moto-devil-hunter",
+  "name": "Moto Devil Hunter",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-moto-devil-hunter-base",
+      "name": "Moto Devil Hunter",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

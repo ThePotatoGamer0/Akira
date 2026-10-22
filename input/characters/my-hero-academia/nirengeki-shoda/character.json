@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-nirengeki-shoda",
+  "name": "Nirengeki Shoda",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-nirengeki-shoda-base",
+      "name": "Nirengeki Shoda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

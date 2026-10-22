@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-shihai-kuroiro",
+  "name": "Shihai Kuroiro",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-shihai-kuroiro-base",
+      "name": "Shihai Kuroiro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

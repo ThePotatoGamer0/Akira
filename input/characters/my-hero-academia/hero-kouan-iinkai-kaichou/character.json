@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-hero-kouan-iinkai-kaichou",
+  "name": "Hero Kouan Iinkai Kaichou",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-hero-kouan-iinkai-kaichou-base",
+      "name": "Hero Kouan Iinkai Kaichou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

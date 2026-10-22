@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kouta-izumi",
+  "name": "Kouta Izumi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-kouta-izumi-base",
+      "name": "Kouta Izumi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

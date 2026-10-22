@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-kitano",
+  "name": "Kitano",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-kitano-base",
+      "name": "Kitano",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

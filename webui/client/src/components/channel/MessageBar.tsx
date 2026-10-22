@@ -446,7 +446,10 @@ export function MessageBar(props: { channelName: string; fetchApi: FetchApi }) {
 
       {panel === "gif" ? (
         <div className="composer-pop" role="dialog" aria-label="GIFs">
-          <input value={gifQuery} onChange={(event) => setGifQuery(event.target.value)} placeholder="Search Tenor" aria-label="Search Tenor" />
+          <input value={gifQuery} onChange={(event) => setGifQuery(event.target.value)} placeholder="Search GIPHY" aria-label="Search GIPHY" />
+          <p className="composer-gif-credit">
+            <a href="https://giphy.com/" target="_blank" rel="noreferrer">Powered by GIPHY</a>
+          </p>
           <div className="composer-pop-scroll">
             {gifNote ? <p className="composer-empty">{gifNote}</p> : null}
             <div className="composer-gif-grid">

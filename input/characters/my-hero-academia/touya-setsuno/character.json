@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-touya-setsuno",
+  "name": "Touya Setsuno",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-touya-setsuno-base",
+      "name": "Touya Setsuno",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

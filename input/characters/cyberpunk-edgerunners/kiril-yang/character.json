@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-kiril-yang",
+  "name": "Kiril Yang",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-kiril-yang-base",
+      "name": "Kiril Yang",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-dhruv-lakdawalla",
+  "name": "Dhruv Lakdawalla",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-dhruv-lakdawalla-base",
+      "name": "Dhruv Lakdawalla",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

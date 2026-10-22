@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-fuutou-nahashira",
+  "name": "Fuutou Nahashira",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-fuutou-nahashira-base",
+      "name": "Fuutou Nahashira",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

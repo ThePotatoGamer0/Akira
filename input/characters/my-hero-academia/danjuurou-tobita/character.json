@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-danjuurou-tobita",
+  "name": "Danjuurou Tobita",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-danjuurou-tobita-base",
+      "name": "Danjuurou Tobita",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

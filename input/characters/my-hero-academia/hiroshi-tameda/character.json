@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-hiroshi-tameda",
+  "name": "Hiroshi Tameda",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-hiroshi-tameda-base",
+      "name": "Hiroshi Tameda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

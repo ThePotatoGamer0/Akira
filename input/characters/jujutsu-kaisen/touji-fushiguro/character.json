@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-touji-fushiguro",
+  "name": "Touji Fushiguro",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-touji-fushiguro-base",
+      "name": "Touji Fushiguro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

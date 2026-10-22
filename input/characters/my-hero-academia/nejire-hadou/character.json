@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-nejire-hadou",
+  "name": "Nejire Hadou",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-nejire-hadou-base",
+      "name": "Nejire Hadou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

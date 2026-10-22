@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-tomie-takami",
+  "name": "Tomie Takami",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-tomie-takami-base",
+      "name": "Tomie Takami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

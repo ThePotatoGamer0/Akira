@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-tetsutetsu-tetsutetsu",
+  "name": "Tetsutetsu Tetsutetsu",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-tetsutetsu-tetsutetsu-base",
+      "name": "Tetsutetsu Tetsutetsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

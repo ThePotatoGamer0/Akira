@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-rumi-usagiyama",
+  "name": "Rumi Usagiyama",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-rumi-usagiyama-base",
+      "name": "Rumi Usagiyama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

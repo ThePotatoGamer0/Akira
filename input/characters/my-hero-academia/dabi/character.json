@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-dabi",
+  "name": "Dabi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-dabi-base",
+      "name": "Dabi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

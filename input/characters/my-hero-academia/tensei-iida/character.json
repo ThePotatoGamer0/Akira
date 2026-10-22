@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-tensei-iida",
+  "name": "Tensei Iida",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-tensei-iida-base",
+      "name": "Tensei Iida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-crambon",
+  "name": "Crambon",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-crambon-base",
+      "name": "Crambon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

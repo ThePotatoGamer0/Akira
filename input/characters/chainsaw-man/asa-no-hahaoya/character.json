@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-asa-no-hahaoya",
+  "name": "Asa no Hahaoya",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-asa-no-hahaoya-base",
+      "name": "Asa no Hahaoya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

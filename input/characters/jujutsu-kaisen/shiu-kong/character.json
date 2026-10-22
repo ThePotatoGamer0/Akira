@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-shiu-kong",
+  "name": "Shiu Kong",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-shiu-kong-base",
+      "name": "Shiu Kong",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

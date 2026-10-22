@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-inasa-yoarashi",
+  "name": "Inasa Yoarashi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-inasa-yoarashi-base",
+      "name": "Inasa Yoarashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

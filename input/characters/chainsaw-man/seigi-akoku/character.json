@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-seigi-akoku",
+  "name": "Seigi Akoku",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-seigi-akoku-base",
+      "name": "Seigi Akoku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

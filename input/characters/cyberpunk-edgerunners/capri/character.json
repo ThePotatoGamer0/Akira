@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-capri",
+  "name": "Capri",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-capri-base",
+      "name": "Capri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

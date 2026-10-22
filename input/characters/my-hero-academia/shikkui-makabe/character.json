@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-shikkui-makabe",
+  "name": "Shikkui Makabe",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-shikkui-makabe-base",
+      "name": "Shikkui Makabe",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

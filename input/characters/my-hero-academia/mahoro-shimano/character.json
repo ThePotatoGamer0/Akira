@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-mahoro-shimano",
+  "name": "Mahoro Shimano",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-mahoro-shimano-base",
+      "name": "Mahoro Shimano",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

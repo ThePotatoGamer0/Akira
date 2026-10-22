@@ -36,8 +36,12 @@ function characterRecord(seriesSlug: string, entry: ManifestEntry) {
   };
 }
 
+const requested = process.argv.slice(2);
 const seriesSlugs = fs.existsSync(portraitsRoot)
-  ? fs.readdirSync(portraitsRoot).filter((name) => fs.existsSync(path.join(portraitsRoot, name, "manifest.json")))
+  ? fs.readdirSync(portraitsRoot).filter((name) => {
+      if (requested.length > 0 && !requested.includes(name)) return false;
+      return fs.existsSync(path.join(portraitsRoot, name, "manifest.json"));
+    })
   : [];
 
 let created = 0;

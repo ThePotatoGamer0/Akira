@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kaina-tsutsumi",
+  "name": "Kaina Tsutsumi",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-kaina-tsutsumi-base",
+      "name": "Kaina Tsutsumi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

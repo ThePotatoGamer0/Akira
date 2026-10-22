@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-hiromi-higuruma",
+  "name": "Hiromi Higuruma",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-hiromi-higuruma-base",
+      "name": "Hiromi Higuruma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

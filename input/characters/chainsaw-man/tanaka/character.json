@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-tanaka",
+  "name": "Tanaka",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-tanaka-base",
+      "name": "Tanaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

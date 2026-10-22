@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kuugo-sakamata",
+  "name": "Kuugo Sakamata",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-kuugo-sakamata-base",
+      "name": "Kuugo Sakamata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

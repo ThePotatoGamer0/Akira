@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-tolka",
+  "name": "Tolka",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-tolka-base",
+      "name": "Tolka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-hajime-kashimo",
+  "name": "Hajime Kashimo",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-hajime-kashimo-base",
+      "name": "Hajime Kashimo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

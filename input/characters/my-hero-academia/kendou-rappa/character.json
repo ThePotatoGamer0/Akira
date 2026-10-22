@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kendou-rappa",
+  "name": "Kendou Rappa",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-kendou-rappa-base",
+      "name": "Kendou Rappa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

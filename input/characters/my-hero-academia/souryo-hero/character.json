@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-souryo-hero",
+  "name": "Souryo Hero",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-souryo-hero-base",
+      "name": "Souryo Hero",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

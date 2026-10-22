@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-furudate",
+  "name": "Furudate",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-furudate-base",
+      "name": "Furudate",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

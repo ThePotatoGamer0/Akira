@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-joui-irinaka",
+  "name": "Joui Irinaka",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-joui-irinaka-base",
+      "name": "Joui Irinaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

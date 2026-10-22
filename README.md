@@ -20,6 +20,7 @@ On the Pi, create `/home/james/akira-data/`. Set the variables below in the Port
 | `AKIRA_INTERNAL_SECRET` | A long random string. The API uses it to ask the bot to send sign-in codes. |
 | `SESSION_SECRET` | A different long random string for login cookies. |
 | `WEBUI_ORIGINS` | The client’s public address, for example `https://akira.vercel.app`. A star covers one site and its subdomains, for example `https://*.potatogamer.uk`. Several addresses are separated by commas. |
+| `GIPHY_API_KEY` | A Giphy API key. The channel GIF picker uses it. Leave it empty and GIF search stays off. |
 
 The stack publishes port **3333**. That is the API. Put HTTPS in front of it (Caddy, Traefik, or a Cloudflare tunnel). The browser will not keep a login cookie for a Vercel site unless the API is HTTPS.
 

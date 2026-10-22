@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-barem-bridge",
+  "name": "Barem Bridge",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-barem-bridge-base",
+      "name": "Barem Bridge",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

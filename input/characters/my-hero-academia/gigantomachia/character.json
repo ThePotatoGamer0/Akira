@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-gigantomachia",
+  "name": "Gigantomachia",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-gigantomachia-base",
+      "name": "Gigantomachia",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kaoruko-awata",
+  "name": "Kaoruko Awata",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-kaoruko-awata-base",
+      "name": "Kaoruko Awata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-deidoro-sakaki",
+  "name": "Deidoro Sakaki",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-deidoro-sakaki-base",
+      "name": "Deidoro Sakaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-misato-kuroi",
+  "name": "Misato Kuroi",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-misato-kuroi-base",
+      "name": "Misato Kuroi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

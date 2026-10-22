@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-jirou-awasaka",
+  "name": "Jirou Awasaka",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-jirou-awasaka-base",
+      "name": "Jirou Awasaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

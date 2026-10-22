@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-rin-amai",
+  "name": "Rin Amai",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-rin-amai-base",
+      "name": "Rin Amai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-riko-amanai",
+  "name": "Riko Amanai",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-riko-amanai-base",
+      "name": "Riko Amanai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

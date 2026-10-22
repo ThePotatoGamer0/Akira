@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-taishirou-toyomitsu",
+  "name": "Taishirou Toyomitsu",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-taishirou-toyomitsu-base",
+      "name": "Taishirou Toyomitsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

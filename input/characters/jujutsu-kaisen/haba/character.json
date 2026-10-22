@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-haba",
+  "name": "Haba",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-haba-base",
+      "name": "Haba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

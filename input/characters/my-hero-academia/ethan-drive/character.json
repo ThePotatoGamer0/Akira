@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-ethan-drive",
+  "name": "Ethan Drive",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-ethan-drive-base",
+      "name": "Ethan Drive",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

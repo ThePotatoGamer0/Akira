@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-tsugihagi",
+  "name": "Tsugihagi",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-tsugihagi-base",
+      "name": "Tsugihagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

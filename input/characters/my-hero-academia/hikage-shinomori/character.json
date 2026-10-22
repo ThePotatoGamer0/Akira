@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-hikage-shinomori",
+  "name": "Hikage Shinomori",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-hikage-shinomori-base",
+      "name": "Hikage Shinomori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

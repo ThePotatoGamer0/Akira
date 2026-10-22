@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-hari-kurono",
+  "name": "Hari Kurono",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-hari-kurono-base",
+      "name": "Hari Kurono",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

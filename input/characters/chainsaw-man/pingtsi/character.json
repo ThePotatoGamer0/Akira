@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-pingtsi",
+  "name": "Pingtsi",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-pingtsi-base",
+      "name": "Pingtsi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

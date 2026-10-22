@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-mago",
+  "name": "Mago",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-mago-base",
+      "name": "Mago",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kojiro-bondo",
+  "name": "Kojiro Bondo",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-kojiro-bondo-base",
+      "name": "Kojiro Bondo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

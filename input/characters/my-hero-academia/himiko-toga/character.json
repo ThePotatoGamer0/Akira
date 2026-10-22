@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-himiko-toga",
+  "name": "Himiko Toga",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-himiko-toga-base",
+      "name": "Himiko Toga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

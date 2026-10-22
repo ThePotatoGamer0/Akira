@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-tomoyasu-chikazoku",
+  "name": "Tomoyasu Chikazoku",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-tomoyasu-chikazoku-base",
+      "name": "Tomoyasu Chikazoku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-camie-utsushimi",
+  "name": "Camie Utsushimi",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-camie-utsushimi-base",
+      "name": "Camie Utsushimi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

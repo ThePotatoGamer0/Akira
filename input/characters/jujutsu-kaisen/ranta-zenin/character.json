@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-ranta-zenin",
+  "name": "Ranta Zenin",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-ranta-zenin-base",
+      "name": "Ranta Zenin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

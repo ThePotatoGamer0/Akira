@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kunieda",
+  "name": "Kunieda",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-kunieda-base",
+      "name": "Kunieda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

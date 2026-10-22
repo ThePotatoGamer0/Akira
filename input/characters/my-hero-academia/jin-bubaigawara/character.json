@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-jin-bubaigawara",
+  "name": "Jin Bubaigawara",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-jin-bubaigawara-base",
+      "name": "Jin Bubaigawara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

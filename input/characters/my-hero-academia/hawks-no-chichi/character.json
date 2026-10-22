@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-hawks-no-chichi",
+  "name": "Hawks no Chichi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-hawks-no-chichi-base",
+      "name": "Hawks no Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

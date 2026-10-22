@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-crust",
+  "name": "Crust",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-crust-base",
+      "name": "Crust",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

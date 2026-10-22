@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-tengen",
+  "name": "Tengen",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-tengen-base",
+      "name": "Tengen",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-cosmo",
+  "name": "Cosmo",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-cosmo-base",
+      "name": "Cosmo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

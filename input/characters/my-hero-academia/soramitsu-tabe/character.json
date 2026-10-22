@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-soramitsu-tabe",
+  "name": "Soramitsu Tabe",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-soramitsu-tabe-base",
+      "name": "Soramitsu Tabe",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

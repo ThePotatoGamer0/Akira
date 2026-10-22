@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-melissa-shield",
+  "name": "Melissa Shield",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-melissa-shield-base",
+      "name": "Melissa Shield",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-muscular",
+  "name": "Muscular",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-muscular-base",
+      "name": "Muscular",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

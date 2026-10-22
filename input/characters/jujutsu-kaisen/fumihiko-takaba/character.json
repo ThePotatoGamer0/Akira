@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-fumihiko-takaba",
+  "name": "Fumihiko Takaba",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-fumihiko-takaba-base",
+      "name": "Fumihiko Takaba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-en-tayutai",
+  "name": "En Tayutai",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-en-tayutai-base",
+      "name": "En Tayutai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

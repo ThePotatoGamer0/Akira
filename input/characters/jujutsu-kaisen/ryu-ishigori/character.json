@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-ryu-ishigori",
+  "name": "Ryu Ishigori",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-ryu-ishigori-base",
+      "name": "Ryu Ishigori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

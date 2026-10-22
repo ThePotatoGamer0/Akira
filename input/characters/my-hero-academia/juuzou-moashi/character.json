@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-juuzou-moashi",
+  "name": "Juuzou Moashi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-juuzou-moashi-base",
+      "name": "Juuzou Moashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

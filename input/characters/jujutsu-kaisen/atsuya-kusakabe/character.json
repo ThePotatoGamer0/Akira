@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-atsuya-kusakabe",
+  "name": "Atsuya Kusakabe",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-atsuya-kusakabe-base",
+      "name": "Atsuya Kusakabe",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

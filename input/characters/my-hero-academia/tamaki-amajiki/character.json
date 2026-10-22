@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-tamaki-amajiki",
+  "name": "Tamaki Amajiki",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-tamaki-amajiki-base",
+      "name": "Tamaki Amajiki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

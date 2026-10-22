@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-kusakabe",
+  "name": "Kusakabe",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-kusakabe-base",
+      "name": "Kusakabe",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

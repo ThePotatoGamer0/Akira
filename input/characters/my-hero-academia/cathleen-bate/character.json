@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-cathleen-bate",
+  "name": "Cathleen Bate",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-cathleen-bate-base",
+      "name": "Cathleen Bate",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

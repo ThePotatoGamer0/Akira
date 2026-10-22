@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-oboro-shirakumo",
+  "name": "Oboro Shirakumo",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-oboro-shirakumo-base",
+      "name": "Oboro Shirakumo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

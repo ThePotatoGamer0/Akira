@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-long",
+  "name": "Long",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-long-base",
+      "name": "Long",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

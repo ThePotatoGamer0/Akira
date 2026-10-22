@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-yui-kodai",
+  "name": "Yui Kodai",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-yui-kodai-base",
+      "name": "Yui Kodai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

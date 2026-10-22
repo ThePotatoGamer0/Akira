@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-hirofumi-yoshida",
+  "name": "Hirofumi Yoshida",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-hirofumi-yoshida-base",
+      "name": "Hirofumi Yoshida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

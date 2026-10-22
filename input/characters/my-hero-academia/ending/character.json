@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-ending",
+  "name": "Ending",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-ending-base",
+      "name": "Ending",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

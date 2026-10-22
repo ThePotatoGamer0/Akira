@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-manami-aiba",
+  "name": "Manami Aiba",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-manami-aiba-base",
+      "name": "Manami Aiba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-shigeru-sonoda",
+  "name": "Shigeru Sonoda",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-shigeru-sonoda-base",
+      "name": "Shigeru Sonoda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

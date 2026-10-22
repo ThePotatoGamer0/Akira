@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-kinji-hakari",
+  "name": "Kinji Hakari",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-kinji-hakari-base",
+      "name": "Kinji Hakari",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

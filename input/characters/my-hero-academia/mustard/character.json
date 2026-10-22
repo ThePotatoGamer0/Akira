@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-mustard",
+  "name": "Mustard",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-mustard-base",
+      "name": "Mustard",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

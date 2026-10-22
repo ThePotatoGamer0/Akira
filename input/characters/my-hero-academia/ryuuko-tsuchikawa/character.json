@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-ryuuko-tsuchikawa",
+  "name": "Ryuuko Tsuchikawa",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-ryuuko-tsuchikawa-base",
+      "name": "Ryuuko Tsuchikawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

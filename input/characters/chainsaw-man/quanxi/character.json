@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-quanxi",
+  "name": "Quanxi",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-quanxi-base",
+      "name": "Quanxi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

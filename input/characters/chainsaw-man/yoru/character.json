@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-yoru",
+  "name": "Yoru",
+  "gender": "Female",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "chainsaw-man-yoru-base",
+      "name": "Yoru",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

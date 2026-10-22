@@ -77,6 +77,22 @@ const EXTRA_CAST: Record<string, Array<{ type: "ANIME" | "MANGA"; search: string
     { type: "ANIME", search: "Kimetsu no Yaiba: Katanakaji no Sato-hen" },
     { type: "ANIME", search: "Kimetsu no Yaiba: Hashira Geiko-hen" },
   ],
+  "jujutsu-kaisen": [
+    { type: "ANIME", search: "JUJUTSU KAISEN 0" },
+    { type: "ANIME", search: "JUJUTSU KAISEN Season 2" },
+    { type: "ANIME", search: "JUJUTSU KAISEN Season 3: The Culling Game Part 1" },
+  ],
+  "chainsaw-man": [{ type: "MANGA", search: "Chainsaw Man" }],
+  "my-hero-academia": [
+    { type: "ANIME", search: "My Hero Academia Season 2" },
+    { type: "ANIME", search: "My Hero Academia Season 3" },
+    { type: "ANIME", search: "My Hero Academia Season 4" },
+    { type: "ANIME", search: "My Hero Academia Season 5" },
+    { type: "ANIME", search: "My Hero Academia Season 6" },
+    { type: "ANIME", search: "My Hero Academia Season 7" },
+    { type: "ANIME", search: "My Hero Academia FINAL SEASON" },
+  ],
+  "cyberpunk-edgerunners": [{ type: "ANIME", search: "Cyberpunk: Edgerunners 2" }],
 };
 
 const CAST_QUERY = `

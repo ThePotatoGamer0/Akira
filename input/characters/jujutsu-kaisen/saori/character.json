@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-saori",
+  "name": "Saori",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-saori-base",
+      "name": "Saori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

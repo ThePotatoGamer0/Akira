@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-hana-kurusu",
+  "name": "Hana Kurusu",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-hana-kurusu-base",
+      "name": "Hana Kurusu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

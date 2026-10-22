@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-alam",
+  "name": "Alam",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-alam-base",
+      "name": "Alam",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

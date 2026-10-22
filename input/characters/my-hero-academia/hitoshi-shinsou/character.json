@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-hitoshi-shinsou",
+  "name": "Hitoshi Shinsou",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-hitoshi-shinsou-base",
+      "name": "Hitoshi Shinsou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

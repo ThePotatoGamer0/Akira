@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-tsunagu-hakamada",
+  "name": "Tsunagu Hakamada",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-tsunagu-hakamada-base",
+      "name": "Tsunagu Hakamada",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-bix",
+  "name": "Bix",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-bix-base",
+      "name": "Bix",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

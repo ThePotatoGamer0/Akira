@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-tiger-hero",
+  "name": "Tiger Hero",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-tiger-hero-base",
+      "name": "Tiger Hero",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

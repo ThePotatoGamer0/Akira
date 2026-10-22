@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-iori-hazenoki",
+  "name": "Iori Hazenoki",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-iori-hazenoki-base",
+      "name": "Iori Hazenoki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

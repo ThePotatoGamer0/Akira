@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-fumi",
+  "name": "Fumi",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-fumi-base",
+      "name": "Fumi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

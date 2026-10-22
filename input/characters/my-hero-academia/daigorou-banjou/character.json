@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-daigorou-banjou",
+  "name": "Daigorou Banjou",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-daigorou-banjou-base",
+      "name": "Daigorou Banjou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

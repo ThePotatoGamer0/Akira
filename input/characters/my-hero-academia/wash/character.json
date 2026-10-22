@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-wash",
+  "name": "Wash",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-wash-base",
+      "name": "Wash",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

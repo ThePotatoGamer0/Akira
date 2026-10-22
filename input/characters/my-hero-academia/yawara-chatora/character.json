@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-yawara-chatora",
+  "name": "Yawara Chatora",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-yawara-chatora-base",
+      "name": "Yawara Chatora",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-selkie",
+  "name": "Selkie",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-selkie-base",
+      "name": "Selkie",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

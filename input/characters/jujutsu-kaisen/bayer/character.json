@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-bayer",
+  "name": "Bayer",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-bayer-base",
+      "name": "Bayer",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

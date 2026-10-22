@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-hassaikai-kumichou",
+  "name": "Hassaikai Kumichou",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-hassaikai-kumichou-base",
+      "name": "Hassaikai Kumichou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

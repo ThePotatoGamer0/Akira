@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-tatami-nakagame",
+  "name": "Tatami Nakagame",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-tatami-nakagame-base",
+      "name": "Tatami Nakagame",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

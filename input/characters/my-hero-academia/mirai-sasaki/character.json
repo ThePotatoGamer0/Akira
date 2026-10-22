@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-mirai-sasaki",
+  "name": "Mirai Sasaki",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-mirai-sasaki-base",
+      "name": "Mirai Sasaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

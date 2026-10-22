@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-nanako-hasaba",
+  "name": "Nanako Hasaba",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-nanako-hasaba-base",
+      "name": "Nanako Hasaba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

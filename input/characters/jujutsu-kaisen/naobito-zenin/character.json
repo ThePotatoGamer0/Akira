@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-naobito-zenin",
+  "name": "Naobito Zenin",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-naobito-zenin-base",
+      "name": "Naobito Zenin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

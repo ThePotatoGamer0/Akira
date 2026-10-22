@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-taneo-tokuda",
+  "name": "Taneo Tokuda ",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-taneo-tokuda-base",
+      "name": "Taneo Tokuda ",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

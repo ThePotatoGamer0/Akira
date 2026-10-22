@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-naoya-zenin",
+  "name": "Naoya Zenin",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-naoya-zenin-base",
+      "name": "Naoya Zenin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

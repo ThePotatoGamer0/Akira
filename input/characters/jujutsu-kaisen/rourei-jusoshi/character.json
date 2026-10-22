@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-rourei-jusoshi",
+  "name": "Rourei Jusoshi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-rourei-jusoshi-base",
+      "name": "Rourei Jusoshi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

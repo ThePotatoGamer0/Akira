@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-cider-house-leader",
+  "name": "Cider House Leader",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-cider-house-leader-base",
+      "name": "Cider House Leader",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

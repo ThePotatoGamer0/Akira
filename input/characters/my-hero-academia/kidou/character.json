@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kidou",
+  "name": "Kidou",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-kidou-base",
+      "name": "Kidou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

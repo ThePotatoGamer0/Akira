@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-mitsuki-bakugou",
+  "name": "Mitsuki Bakugou",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-mitsuki-bakugou-base",
+      "name": "Mitsuki Bakugou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

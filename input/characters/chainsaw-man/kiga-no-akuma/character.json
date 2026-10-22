@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-kiga-no-akuma",
+  "name": "Kiga no Akuma",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-kiga-no-akuma-base",
+      "name": "Kiga no Akuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

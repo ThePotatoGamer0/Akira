@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-miguel",
+  "name": "Miguel",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-miguel-base",
+      "name": "Miguel",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

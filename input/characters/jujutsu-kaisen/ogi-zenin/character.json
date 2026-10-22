@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-ogi-zenin",
+  "name": "Ogi Zenin",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-ogi-zenin-base",
+      "name": "Ogi Zenin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

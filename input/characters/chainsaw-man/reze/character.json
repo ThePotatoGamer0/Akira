@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-reze",
+  "name": "Reze",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-reze-base",
+      "name": "Reze",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-astro",
+  "name": "Astro",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-astro-base",
+      "name": "Astro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

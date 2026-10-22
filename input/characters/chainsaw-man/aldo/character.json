@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-aldo",
+  "name": "Aldo",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-aldo-base",
+      "name": "Aldo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

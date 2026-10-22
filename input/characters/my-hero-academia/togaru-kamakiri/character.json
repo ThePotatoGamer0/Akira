@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-togaru-kamakiri",
+  "name": "Togaru Kamakiri",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-togaru-kamakiri-base",
+      "name": "Togaru Kamakiri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

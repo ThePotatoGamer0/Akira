@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-masaki-mizushima",
+  "name": "Masaki Mizushima",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-masaki-mizushima-base",
+      "name": "Masaki Mizushima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-keigo-takami",
+  "name": "Keigo Takami",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-keigo-takami-base",
+      "name": "Keigo Takami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

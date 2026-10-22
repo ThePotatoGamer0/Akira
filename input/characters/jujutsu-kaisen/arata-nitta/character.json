@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-arata-nitta",
+  "name": "Arata Nitta",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-arata-nitta-base",
+      "name": "Arata Nitta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

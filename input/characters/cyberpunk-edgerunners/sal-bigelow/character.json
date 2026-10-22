@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-sal-bigelow",
+  "name": "Sal Bigelow",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-sal-bigelow-base",
+      "name": "Sal Bigelow",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

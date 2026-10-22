@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-mika-jirou",
+  "name": "Mika Jirou",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-mika-jirou-base",
+      "name": "Mika Jirou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-ken-takagi",
+  "name": "Ken Takagi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-ken-takagi-base",
+      "name": "Ken Takagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

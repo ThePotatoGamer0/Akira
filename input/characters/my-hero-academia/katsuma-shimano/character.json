@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-katsuma-shimano",
+  "name": "Katsuma Shimano",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-katsuma-shimano-base",
+      "name": "Katsuma Shimano",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

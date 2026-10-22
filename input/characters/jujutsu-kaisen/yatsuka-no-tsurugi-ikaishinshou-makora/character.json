@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-yatsuka-no-tsurugi-ikaishinshou-makora",
+  "name": "Yatsuka no Tsurugi Ikaishinshou Makora",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-yatsuka-no-tsurugi-ikaishinshou-makora-base",
+      "name": "Yatsuka no Tsurugi Ikaishinshou Makora",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

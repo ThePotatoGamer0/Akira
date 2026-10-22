@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-toshihisa-negi",
+  "name": "Toshihisa Negi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-toshihisa-negi-base",
+      "name": "Toshihisa Negi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

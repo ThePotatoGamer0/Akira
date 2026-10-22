@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-ui-ui",
+  "name": "Ui Ui",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-ui-ui-base",
+      "name": "Ui Ui",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

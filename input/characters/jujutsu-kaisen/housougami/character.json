@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-housougami",
+  "name": "Housougami",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-housougami-base",
+      "name": "Housougami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-rikiya-yotsubashi",
+  "name": "Rikiya Yotsubashi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-rikiya-yotsubashi-base",
+      "name": "Rikiya Yotsubashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

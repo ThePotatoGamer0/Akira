@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-shinya-kamihara",
+  "name": "Shinya Kamihara",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-shinya-kamihara-base",
+      "name": "Shinya Kamihara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-rakka-no-akuma",
+  "name": "Rakka no Akuma",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-rakka-no-akuma-base",
+      "name": "Rakka no Akuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

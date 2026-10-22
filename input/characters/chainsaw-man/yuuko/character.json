@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-yuuko",
+  "name": "Yuuko",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-yuuko-base",
+      "name": "Yuuko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

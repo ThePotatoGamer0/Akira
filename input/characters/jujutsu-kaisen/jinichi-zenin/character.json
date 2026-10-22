@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-jinichi-zenin",
+  "name": "Jinichi Zenin",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-jinichi-zenin-base",
+      "name": "Jinichi Zenin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

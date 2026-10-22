@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-john-bobby",
+  "name": "John☆Bobby",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-john-bobby-base",
+      "name": "John☆Bobby",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

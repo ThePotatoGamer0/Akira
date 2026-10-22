@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-emi-fukukado",
+  "name": "Emi Fukukado",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-emi-fukukado-base",
+      "name": "Emi Fukukado",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

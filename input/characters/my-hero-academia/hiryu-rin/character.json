@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-hiryu-rin",
+  "name": "Hiryu Rin",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-hiryu-rin-base",
+      "name": "Hiryu Rin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

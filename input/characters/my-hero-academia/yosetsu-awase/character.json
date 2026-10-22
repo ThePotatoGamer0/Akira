@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-yosetsu-awase",
+  "name": "Yosetsu Awase",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-yosetsu-awase-base",
+      "name": "Yosetsu Awase",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}
