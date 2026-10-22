@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-yuuta-okkotsu",
+  "name": "Yuuta Okkotsu",
+  "gender": "Male",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-yuuta-okkotsu-base",
+      "name": "Yuuta Okkotsu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

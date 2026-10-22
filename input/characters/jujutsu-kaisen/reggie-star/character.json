@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-reggie-star",
+  "name": "Reggie Star",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-reggie-star-base",
+      "name": "Reggie Star",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

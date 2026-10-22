@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-oi-no-akuma",
+  "name": "Oi no Akuma",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-oi-no-akuma-base",
+      "name": "Oi no Akuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

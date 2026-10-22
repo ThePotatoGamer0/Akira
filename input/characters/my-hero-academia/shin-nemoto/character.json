@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-shin-nemoto",
+  "name": "Shin Nemoto",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-shin-nemoto-base",
+      "name": "Shin Nemoto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

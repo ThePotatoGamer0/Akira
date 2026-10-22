@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-kuchisake-onna",
+  "name": "Kuchisake-Onna",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-kuchisake-onna-base",
+      "name": "Kuchisake-Onna",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

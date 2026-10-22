@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-x-less",
+  "name": "X-Less",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-x-less-base",
+      "name": "X-Less",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

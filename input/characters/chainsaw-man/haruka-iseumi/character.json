@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-haruka-iseumi",
+  "name": "Haruka Iseumi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-haruka-iseumi-base",
+      "name": "Haruka Iseumi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

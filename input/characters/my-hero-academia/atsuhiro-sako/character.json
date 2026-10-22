@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-atsuhiro-sako",
+  "name": "Atsuhiro  Sako",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-atsuhiro-sako-base",
+      "name": "Atsuhiro  Sako",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-tatsuyuki-tokoname",
+  "name": "Tatsuyuki Tokoname",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-tatsuyuki-tokoname-base",
+      "name": "Tatsuyuki Tokoname",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

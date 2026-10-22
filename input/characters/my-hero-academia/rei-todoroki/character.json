@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-rei-todoroki",
+  "name": "Rei Todoroki",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-rei-todoroki-base",
+      "name": "Rei Todoroki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

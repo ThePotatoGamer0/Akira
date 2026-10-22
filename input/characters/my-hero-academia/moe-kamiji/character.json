@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-moe-kamiji",
+  "name": "Moe Kamiji",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-moe-kamiji-base",
+      "name": "Moe Kamiji",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

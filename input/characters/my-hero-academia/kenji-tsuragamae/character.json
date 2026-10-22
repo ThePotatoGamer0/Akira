@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kenji-tsuragamae",
+  "name": "Kenji Tsuragamae",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-kenji-tsuragamae-base",
+      "name": "Kenji Tsuragamae",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

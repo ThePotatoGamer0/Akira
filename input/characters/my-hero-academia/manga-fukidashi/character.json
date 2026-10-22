@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-manga-fukidashi",
+  "name": "Manga Fukidashi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-manga-fukidashi-base",
+      "name": "Manga Fukidashi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

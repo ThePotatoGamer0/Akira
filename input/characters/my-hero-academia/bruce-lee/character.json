@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-bruce-lee",
+  "name": "Bruce Lee",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-bruce-lee-base",
+      "name": "Bruce Lee",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

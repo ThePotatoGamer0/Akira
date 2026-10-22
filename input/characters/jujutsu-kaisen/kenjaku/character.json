@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-kenjaku",
+  "name": "Kenjaku",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-kenjaku-base",
+      "name": "Kenjaku",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

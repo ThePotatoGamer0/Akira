@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-native",
+  "name": "Native",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-native-base",
+      "name": "Native",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

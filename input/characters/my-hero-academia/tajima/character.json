@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-tajima",
+  "name": "Tajima",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-tajima-base",
+      "name": "Tajima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-onima",
+  "name": "Onima",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-onima-base",
+      "name": "Onima",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

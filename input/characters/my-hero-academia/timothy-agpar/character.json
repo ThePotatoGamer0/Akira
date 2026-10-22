@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-timothy-agpar",
+  "name": "Timothy Agpar",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-timothy-agpar-base",
+      "name": "Timothy Agpar",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

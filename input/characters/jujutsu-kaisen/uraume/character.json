@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-uraume",
+  "name": "Uraume",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-uraume-base",
+      "name": "Uraume",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

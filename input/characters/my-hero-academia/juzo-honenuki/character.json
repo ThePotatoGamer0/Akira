@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-juzo-honenuki",
+  "name": "Juzo Honenuki",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-juzo-honenuki-base",
+      "name": "Juzo Honenuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

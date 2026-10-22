@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-yoroi-musha",
+  "name": "Yoroi Musha",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-yoroi-musha-base",
+      "name": "Yoroi Musha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

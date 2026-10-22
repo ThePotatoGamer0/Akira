@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-moonfish",
+  "name": "Moonfish",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-moonfish-base",
+      "name": "Moonfish",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

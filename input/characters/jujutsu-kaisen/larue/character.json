@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-larue",
+  "name": "Larue",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-larue-base",
+      "name": "Larue",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

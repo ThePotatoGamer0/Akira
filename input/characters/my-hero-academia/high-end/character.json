@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-high-end",
+  "name": "High End",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-high-end-base",
+      "name": "High End",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

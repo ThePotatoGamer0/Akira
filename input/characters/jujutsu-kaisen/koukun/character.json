@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-koukun",
+  "name": "Koukun",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-koukun-base",
+      "name": "Koukun",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

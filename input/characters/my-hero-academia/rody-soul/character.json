@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-rody-soul",
+  "name": "Rody Soul",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-rody-soul-base",
+      "name": "Rody Soul",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

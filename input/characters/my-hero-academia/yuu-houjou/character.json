@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-yuu-houjou",
+  "name": "Yuu Houjou",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-yuu-houjou-base",
+      "name": "Yuu Houjou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

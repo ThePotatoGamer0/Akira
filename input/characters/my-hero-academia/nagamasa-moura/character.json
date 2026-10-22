@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-nagamasa-moura",
+  "name": "Nagamasa Moura",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-nagamasa-moura-base",
+      "name": "Nagamasa Moura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

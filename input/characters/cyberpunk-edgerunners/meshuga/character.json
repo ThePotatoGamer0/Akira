@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-meshuga",
+  "name": "Meshuga",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-meshuga-base",
+      "name": "Meshuga",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

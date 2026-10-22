@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-fuyumi-todoroki",
+  "name": "Fuyumi Todoroki",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-fuyumi-todoroki-base",
+      "name": "Fuyumi Todoroki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

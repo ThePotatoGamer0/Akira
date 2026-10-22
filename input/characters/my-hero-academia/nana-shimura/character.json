@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-nana-shimura",
+  "name": "Nana Shimura",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-nana-shimura-base",
+      "name": "Nana Shimura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

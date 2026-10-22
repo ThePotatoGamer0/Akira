@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-miri-sugou",
+  "name": "Miri Sugou",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-miri-sugou-base",
+      "name": "Miri Sugou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

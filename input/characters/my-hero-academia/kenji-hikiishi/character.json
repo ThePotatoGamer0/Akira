@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kenji-hikiishi",
+  "name": "Kenji Hikiishi",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-kenji-hikiishi-base",
+      "name": "Kenji Hikiishi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

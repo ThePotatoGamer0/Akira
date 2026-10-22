@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-reiko-yanagi",
+  "name": "Reiko Yanagi",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-reiko-yanagi-base",
+      "name": "Reiko Yanagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

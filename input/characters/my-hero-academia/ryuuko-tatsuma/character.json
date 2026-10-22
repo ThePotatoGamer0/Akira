@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-ryuuko-tatsuma",
+  "name": "Ryuuko Tatsuma",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-ryuuko-tatsuma-base",
+      "name": "Ryuuko Tatsuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-daikaku-miyagi",
+  "name": "Daikaku Miyagi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-daikaku-miyagi-base",
+      "name": "Daikaku Miyagi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

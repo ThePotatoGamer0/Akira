@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-kamibukuro-jusoshi",
+  "name": "Kamibukuro Jusoshi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-kamibukuro-jusoshi-base",
+      "name": "Kamibukuro Jusoshi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

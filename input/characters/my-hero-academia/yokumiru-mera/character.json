@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-yokumiru-mera",
+  "name": "Yokumiru Mera",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-yokumiru-mera-base",
+      "name": "Yokumiru Mera",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

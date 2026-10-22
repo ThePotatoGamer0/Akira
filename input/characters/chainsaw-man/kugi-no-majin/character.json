@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-kugi-no-majin",
+  "name": "Kugi no Majin",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-kugi-no-majin-base",
+      "name": "Kugi no Majin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

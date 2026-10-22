@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-chizome-akaguro",
+  "name": "Chizome Akaguro",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-chizome-akaguro-base",
+      "name": "Chizome Akaguro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

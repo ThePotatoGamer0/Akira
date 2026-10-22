@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-chitose-kizuki",
+  "name": "Chitose Kizuki",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-chitose-kizuki-base",
+      "name": "Chitose Kizuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

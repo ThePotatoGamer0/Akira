@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-asa-mitaka",
+  "name": "Asa Mitaka",
+  "gender": "Female",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "chainsaw-man-asa-mitaka-base",
+      "name": "Asa Mitaka",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

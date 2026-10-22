@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kotarou-shimura",
+  "name": "Kotarou Shimura",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-kotarou-shimura-base",
+      "name": "Kotarou Shimura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

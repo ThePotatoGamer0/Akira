@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-neito-monoma",
+  "name": "Neito Monoma",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-neito-monoma-base",
+      "name": "Neito Monoma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-aoyama-no-hahaoya",
+  "name": "Aoyama no Hahaoya",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-aoyama-no-hahaoya-base",
+      "name": "Aoyama no Hahaoya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

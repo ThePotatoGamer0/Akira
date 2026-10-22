@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-nobana-higashiyama",
+  "name": "Nobana Higashiyama",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-nobana-higashiyama-base",
+      "name": "Nobana Higashiyama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

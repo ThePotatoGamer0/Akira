@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-meryl",
+  "name": "Meryl",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-meryl-base",
+      "name": "Meryl",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

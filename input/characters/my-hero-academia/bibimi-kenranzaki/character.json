@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-bibimi-kenranzaki",
+  "name": "Bibimi Kenranzaki",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-bibimi-kenranzaki-base",
+      "name": "Bibimi Kenranzaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-giran",
+  "name": "Giran",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-giran-base",
+      "name": "Giran",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

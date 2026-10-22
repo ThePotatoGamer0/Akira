@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-aoyama-no-chichi",
+  "name": "Aoyama no Chichi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-aoyama-no-chichi-base",
+      "name": "Aoyama no Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

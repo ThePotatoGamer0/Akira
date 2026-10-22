@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-sajin-higawara",
+  "name": "Sajin Higawara",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-sajin-higawara-base",
+      "name": "Sajin Higawara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

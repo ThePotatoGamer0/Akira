@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-hanyu",
+  "name": "Hanyu",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-hanyu-base",
+      "name": "Hanyu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

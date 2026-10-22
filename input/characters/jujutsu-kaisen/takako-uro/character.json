@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-takako-uro",
+  "name": "Takako Uro",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-takako-uro-base",
+      "name": "Takako Uro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

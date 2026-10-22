@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-buki-ningen-yari",
+  "name": "Buki Ningen Yari",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-buki-ningen-yari-base",
+      "name": "Buki Ningen Yari",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-shishido",
+  "name": "Shishido",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-shishido-base",
+      "name": "Shishido",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

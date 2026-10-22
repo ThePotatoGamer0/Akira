@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-rikiya-katsukame",
+  "name": "Rikiya Katsukame",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-rikiya-katsukame-base",
+      "name": "Rikiya Katsukame",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

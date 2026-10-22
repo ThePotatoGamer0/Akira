@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-manami-suda",
+  "name": "Manami Suda",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-manami-suda-base",
+      "name": "Manami Suda",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-sen-kaibara",
+  "name": "Sen Kaibara",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-sen-kaibara-base",
+      "name": "Sen Kaibara",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

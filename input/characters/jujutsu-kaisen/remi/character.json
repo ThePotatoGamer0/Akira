@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-remi",
+  "name": "Remi",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-remi-base",
+      "name": "Remi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

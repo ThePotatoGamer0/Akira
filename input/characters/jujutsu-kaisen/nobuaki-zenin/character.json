@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-nobuaki-zenin",
+  "name": "Nobuaki Zenin",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-nobuaki-zenin-base",
+      "name": "Nobuaki Zenin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

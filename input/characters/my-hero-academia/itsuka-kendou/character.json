@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-itsuka-kendou",
+  "name": "Itsuka Kendou",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-itsuka-kendou-base",
+      "name": "Itsuka Kendou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

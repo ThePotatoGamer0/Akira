@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-tsumiki-fushiguro",
+  "name": "Tsumiki Fushiguro",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-tsumiki-fushiguro-base",
+      "name": "Tsumiki Fushiguro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

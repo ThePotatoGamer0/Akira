@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-buki-ningen-muchi",
+  "name": "Buki Ningen Muchi",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-buki-ningen-muchi-base",
+      "name": "Buki Ningen Muchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

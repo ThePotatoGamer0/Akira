@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kousei-tsuburaba",
+  "name": "Kousei Tsuburaba",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-kousei-tsuburaba-base",
+      "name": "Kousei Tsuburaba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

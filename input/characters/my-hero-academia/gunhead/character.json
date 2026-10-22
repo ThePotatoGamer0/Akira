@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-gunhead",
+  "name": "Gunhead",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-gunhead-base",
+      "name": "Gunhead",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

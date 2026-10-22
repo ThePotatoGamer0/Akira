@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-juurouta-shishida",
+  "name": "Juurouta Shishida",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-juurouta-shishida-base",
+      "name": "Juurouta Shishida",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

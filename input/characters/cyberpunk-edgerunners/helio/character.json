@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-helio",
+  "name": "Helio",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-helio-base",
+      "name": "Helio",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

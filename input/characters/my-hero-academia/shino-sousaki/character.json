@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-shino-sousaki",
+  "name": "Shino Sousaki",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-shino-sousaki-base",
+      "name": "Shino Sousaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

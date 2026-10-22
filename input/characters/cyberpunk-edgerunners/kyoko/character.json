@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-kyoko",
+  "name": "Kyoko",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-kyoko-base",
+      "name": "Kyoko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

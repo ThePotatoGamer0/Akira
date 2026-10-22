@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-yupi",
+  "name": "Yupi",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-yupi-base",
+      "name": "Yupi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

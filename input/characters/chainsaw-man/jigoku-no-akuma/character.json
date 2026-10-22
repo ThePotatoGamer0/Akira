@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-jigoku-no-akuma",
+  "name": "Jigoku no Akuma",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-jigoku-no-akuma-base",
+      "name": "Jigoku no Akuma",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

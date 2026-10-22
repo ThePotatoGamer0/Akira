@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-kurourushi",
+  "name": "Kurourushi",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-kurourushi-base",
+      "name": "Kurourushi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

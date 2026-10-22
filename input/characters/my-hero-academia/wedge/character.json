@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-wedge",
+  "name": "Wedge",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-wedge-base",
+      "name": "Wedge",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

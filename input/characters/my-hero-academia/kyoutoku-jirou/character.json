@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kyoutoku-jirou",
+  "name": "Kyoutoku Jirou",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-kyoutoku-jirou-base",
+      "name": "Kyoutoku Jirou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

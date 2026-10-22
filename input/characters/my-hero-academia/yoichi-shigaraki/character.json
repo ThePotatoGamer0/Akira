@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-yoichi-shigaraki",
+  "name": "Yoichi Shigaraki",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-yoichi-shigaraki-base",
+      "name": "Yoichi Shigaraki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

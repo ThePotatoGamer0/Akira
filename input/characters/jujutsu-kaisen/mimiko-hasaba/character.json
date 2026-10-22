@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-mimiko-hasaba",
+  "name": "Mimiko Hasaba",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-mimiko-hasaba-base",
+      "name": "Mimiko Hasaba",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

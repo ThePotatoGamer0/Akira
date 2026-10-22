@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-hekiji-tengai",
+  "name": "Hekiji Tengai",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-hekiji-tengai-base",
+      "name": "Hekiji Tengai",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-toshigtsugu-kudou",
+  "name": "Toshigtsugu Kudou",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-toshigtsugu-kudou-base",
+      "name": "Toshigtsugu Kudou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

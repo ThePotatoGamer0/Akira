@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-pony-tsunotori",
+  "name": "Pony  Tsunotori",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-pony-tsunotori-base",
+      "name": "Pony  Tsunotori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

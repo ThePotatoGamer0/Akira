@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-judgeman",
+  "name": "Judgeman",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-judgeman-base",
+      "name": "Judgeman",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

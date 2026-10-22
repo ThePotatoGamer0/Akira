@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-enji-todoroki",
+  "name": "Enji Todoroki",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-enji-todoroki-base",
+      "name": "Enji Todoroki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

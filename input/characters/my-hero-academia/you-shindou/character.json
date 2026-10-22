@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-you-shindou",
+  "name": "You Shindou",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-you-shindou-base",
+      "name": "You Shindou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

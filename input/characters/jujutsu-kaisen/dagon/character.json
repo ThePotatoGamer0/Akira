@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-dagon",
+  "name": "Dagon",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-dagon-base",
+      "name": "Dagon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

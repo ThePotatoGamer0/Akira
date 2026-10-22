@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-koku-hanabata",
+  "name": "Koku Hanabata",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-koku-hanabata-base",
+      "name": "Koku Hanabata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

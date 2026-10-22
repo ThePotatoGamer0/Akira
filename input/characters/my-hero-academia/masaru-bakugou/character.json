@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-masaru-bakugou",
+  "name": "Masaru Bakugou",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-masaru-bakugou-base",
+      "name": "Masaru Bakugou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

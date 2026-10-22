@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-mei-hatsume",
+  "name": "Mei Hatsume",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-mei-hatsume-base",
+      "name": "Mei Hatsume",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

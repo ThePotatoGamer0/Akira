@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-eel-boy",
+  "name": "Eel Boy",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-eel-boy-base",
+      "name": "Eel Boy",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

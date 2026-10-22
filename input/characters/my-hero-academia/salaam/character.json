@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-salaam",
+  "name": "Salaam",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-salaam-base",
+      "name": "Salaam",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

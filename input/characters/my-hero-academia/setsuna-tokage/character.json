@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-setsuna-tokage",
+  "name": "Setsuna Tokage",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-setsuna-tokage-base",
+      "name": "Setsuna Tokage",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

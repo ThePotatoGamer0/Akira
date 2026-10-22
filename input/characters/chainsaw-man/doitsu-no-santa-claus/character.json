@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-doitsu-no-santa-claus",
+  "name": "Doitsu no Santa Claus ",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-doitsu-no-santa-claus-base",
+      "name": "Doitsu no Santa Claus ",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

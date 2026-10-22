@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-geten",
+  "name": "Geten",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-geten-base",
+      "name": "Geten",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

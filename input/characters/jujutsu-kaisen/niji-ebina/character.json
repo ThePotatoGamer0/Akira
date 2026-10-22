@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-niji-ebina",
+  "name": "Niji Ebina",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-niji-ebina-base",
+      "name": "Niji Ebina",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

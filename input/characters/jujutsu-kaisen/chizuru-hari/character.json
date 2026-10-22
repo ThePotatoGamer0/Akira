@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-chizuru-hari",
+  "name": "Chizuru Hari",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-chizuru-hari-base",
+      "name": "Chizuru Hari",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

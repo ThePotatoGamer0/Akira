@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-kogane",
+  "name": "Kogane",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-kogane-base",
+      "name": "Kogane",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

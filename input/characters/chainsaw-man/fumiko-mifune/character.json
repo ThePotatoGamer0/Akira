@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-fumiko-mifune",
+  "name": "Fumiko Mifune",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-fumiko-mifune-base",
+      "name": "Fumiko Mifune",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

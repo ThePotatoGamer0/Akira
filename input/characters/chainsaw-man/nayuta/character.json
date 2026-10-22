@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-nayuta",
+  "name": "Nayuta",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-nayuta-base",
+      "name": "Nayuta",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

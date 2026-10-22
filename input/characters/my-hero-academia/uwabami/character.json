@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-uwabami",
+  "name": "Uwabami",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-uwabami-base",
+      "name": "Uwabami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

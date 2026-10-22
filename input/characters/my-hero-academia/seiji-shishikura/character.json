@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-seiji-shishikura",
+  "name": "Seiji Shishikura",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-seiji-shishikura-base",
+      "name": "Seiji Shishikura",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

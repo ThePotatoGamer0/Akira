@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-rika-orimoto",
+  "name": "Rika Orimoto",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-rika-orimoto-base",
+      "name": "Rika Orimoto",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-hayakawa",
+  "name": "Hayakawa",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-hayakawa-base",
+      "name": "Hayakawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

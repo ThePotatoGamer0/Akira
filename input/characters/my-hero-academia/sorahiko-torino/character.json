@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-sorahiko-torino",
+  "name": "Sorahiko Torino",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-sorahiko-torino-base",
+      "name": "Sorahiko Torino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

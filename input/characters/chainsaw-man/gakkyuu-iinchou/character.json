@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-gakkyuu-iinchou",
+  "name": "Gakkyuu Iinchou",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-gakkyuu-iinchou-base",
+      "name": "Gakkyuu Iinchou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

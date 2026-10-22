@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kinoko-komori",
+  "name": "Kinoko  Komori",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-kinoko-komori-base",
+      "name": "Kinoko  Komori",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

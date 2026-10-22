@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-natsuo-todoroki",
+  "name": "Natsuo Todoroki",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-natsuo-todoroki-base",
+      "name": "Natsuo Todoroki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

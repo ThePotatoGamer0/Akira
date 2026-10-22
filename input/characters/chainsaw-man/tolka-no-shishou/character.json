@@ -1,0 +1,14 @@
+{
+  "id": "chainsaw-man-tolka-no-shishou",
+  "name": "Tolka no Shishou",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "chainsaw-man-tolka-no-shishou-base",
+      "name": "Tolka no Shishou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

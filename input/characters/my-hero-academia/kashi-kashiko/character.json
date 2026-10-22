@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kashi-kashiko",
+  "name": "Kashi Kashiko",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-kashi-kashiko-base",
+      "name": "Kashi Kashiko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

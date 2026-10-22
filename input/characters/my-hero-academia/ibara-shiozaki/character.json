@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-ibara-shiozaki",
+  "name": "Ibara Shiozaki",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-ibara-shiozaki-base",
+      "name": "Ibara Shiozaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

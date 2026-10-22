@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-ronaudo-keage",
+  "name": "Ronaudo Keage",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-ronaudo-keage-base",
+      "name": "Ronaudo Keage",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

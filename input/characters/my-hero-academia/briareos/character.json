@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-briareos",
+  "name": "Briareos",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-briareos-base",
+      "name": "Briareos",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

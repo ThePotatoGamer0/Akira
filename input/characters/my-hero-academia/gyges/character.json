@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-gyges",
+  "name": "Gyges",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-gyges-base",
+      "name": "Gyges",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

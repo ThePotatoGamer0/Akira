@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-itejirou-touteki",
+  "name": "Itejirou Touteki",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-itejirou-touteki-base",
+      "name": "Itejirou Touteki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

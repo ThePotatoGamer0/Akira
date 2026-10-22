@@ -1,0 +1,14 @@
+{
+  "id": "cyberpunk-edgerunners-emily",
+  "name": "Emily",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "cyberpunk-edgerunners-emily-base",
+      "name": "Emily",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-shuuichi-iguchi",
+  "name": "Shuuichi Iguchi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-shuuichi-iguchi-base",
+      "name": "Shuuichi Iguchi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

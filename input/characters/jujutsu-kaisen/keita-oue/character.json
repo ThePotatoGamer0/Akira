@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-keita-oue",
+  "name": "Keita Oue",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-keita-oue-base",
+      "name": "Keita Oue",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-kirara-hoshi",
+  "name": "Kirara Hoshi",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-kirara-hoshi-base",
+      "name": "Kirara Hoshi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

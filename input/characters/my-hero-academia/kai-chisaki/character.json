@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-kai-chisaki",
+  "name": "Kai Chisaki",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-kai-chisaki-base",
+      "name": "Kai Chisaki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-batta-no-noroi",
+  "name": "Batta no Noroi",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-batta-no-noroi-base",
+      "name": "Batta no Noroi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

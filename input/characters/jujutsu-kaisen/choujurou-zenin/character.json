@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-choujurou-zenin",
+  "name": "Choujurou Zenin",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-choujurou-zenin-base",
+      "name": "Choujurou Zenin",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

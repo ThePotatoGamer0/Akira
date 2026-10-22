@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-ogami",
+  "name": "Ogami",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-ogami-base",
+      "name": "Ogami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

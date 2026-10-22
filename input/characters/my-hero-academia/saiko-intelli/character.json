@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-saiko-intelli",
+  "name": "Saiko Intelli",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-saiko-intelli-base",
+      "name": "Saiko Intelli",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

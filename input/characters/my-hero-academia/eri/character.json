@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-eri",
+  "name": "Eri",
+  "gender": "Female",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "my-hero-academia-eri-base",
+      "name": "Eri",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

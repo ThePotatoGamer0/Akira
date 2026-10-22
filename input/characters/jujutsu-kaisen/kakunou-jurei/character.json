@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-kakunou-jurei",
+  "name": "Kakunou Jurei",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-kakunou-jurei-base",
+      "name": "Kakunou Jurei",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

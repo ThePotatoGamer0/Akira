@@ -1,0 +1,14 @@
+{
+  "id": "jujutsu-kaisen-yuuko-ozawa",
+  "name": "Yuuko Ozawa",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "jujutsu-kaisen-yuuko-ozawa-base",
+      "name": "Yuuko Ozawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

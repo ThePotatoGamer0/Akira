@@ -1,0 +1,14 @@
+{
+  "id": "my-hero-academia-tomoko-shiretoko",
+  "name": "Tomoko Shiretoko",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "my-hero-academia-tomoko-shiretoko-base",
+      "name": "Tomoko Shiretoko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}
