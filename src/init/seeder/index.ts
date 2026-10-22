@@ -82,6 +82,7 @@ const SERIES_TITLES: Record<string, string> = {
   "witch-hat-atelier": "Witch Hat Atelier",
   "persona-4": "Persona 4",
   "persona-5": "Persona 5",
+  "the-saga-of-tanya-the-evil": "The Saga of Tanya the Evil",
 };
 
 function seriesTitle(slug: string): string {

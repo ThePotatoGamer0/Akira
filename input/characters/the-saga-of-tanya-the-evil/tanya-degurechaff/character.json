@@ -1,0 +1,14 @@
+{
+  "id": "the-saga-of-tanya-the-evil-tanya-degurechaff",
+  "name": "Tanya Degurechaff",
+  "gender": "Female",
+  "cards": [
+    {
+      "id": "the-saga-of-tanya-the-evil-tanya-degurechaff-base",
+      "name": "Tanya Degurechaff",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "MAIN"
+}
