@@ -6,6 +6,7 @@ import { createRequire } from "node:module";
 import { createCanvas } from "canvas";
 import sharp from "sharp";
 import { discordEmojiName, ICONS, installIcons, type IconKey, type IconSpec } from "../utils/icons.js";
+import { ROOT } from "../utils/paths.js";
 
 const require = createRequire(import.meta.url);
 const lucideDir = path.join(path.dirname(require.resolve("lucide-static/package.json")), "icons");
@@ -51,6 +52,7 @@ function slotPng(glyph: string): Buffer {
 
 /** Rasterize one catalog icon. Discord application emojis are PNG, not SVG. */
 export async function renderIconPng(spec: IconSpec): Promise<Buffer> {
+  if ("file" in spec) return readFileSync(path.join(ROOT, "assets", "emoji", "seek-bar", spec.file));
   if ("glyph" in spec) return slotPng(spec.glyph);
   const fill = "fill" in spec && spec.fill === true;
   const svg = framedSvg(lucideInner(spec.lucide), fill);
@@ -112,7 +114,7 @@ export async function syncApplicationIcons(): Promise<void> {
     return;
   }
 
-  console.log("Syncing Lucide icons…");
+  console.log("Syncing application icons…");
   const listed = remoteList(await discordJson(appId, token, "GET", "/emojis"));
   console.log(`Found ${listed.length} application emojis.`);
   const byName = new Map(listed.flatMap((emoji) => (emoji.name ? [[emoji.name, emoji] as const] : [])));
@@ -144,7 +146,7 @@ export async function syncApplicationIcons(): Promise<void> {
 
   writeHashes(hashes);
   installIcons(installed);
-  console.log(`Synced ${installed.length} Lucide icons as application emojis.`);
+  console.log(`Synced ${installed.length} application icons.`);
 }
 
 if (process.argv[1]?.includes("icon-sync")) {

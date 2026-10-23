@@ -26,7 +26,7 @@ Claiming pays the bits immediately. It does not grant the prestige reward on tha
 
 The "bits you need" is the size of that step, not a running total of the whole cycle. After you claim step 1, the 250 is spent from the bar and step 2 asks for another 500.
 
-[`/milestone`](/commands/milestone) lists all ten, which step you are on, how many bits are left until the next one, and which prestige buffs you would keep if you prestiged right now. `/milestone claim` takes the next payout when the bar has reached it.
+[`/milestone`](/commands/milestone) lists all ten, which step you are on, how many bits are left until the next one, and which prestige buffs you would keep if you prestiged right now. The current step is drawn as a bar. `/milestone claim` takes the next payout when the bar has reached it.
 
 The Economy page shows the same list and a Claim button when a step is ready.
 

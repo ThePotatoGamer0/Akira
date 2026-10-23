@@ -2,6 +2,7 @@ import { SlashCommandBuilder, type ChatInputCommandInteraction, type Client } fr
 import { claimMilestone, economySnapshot } from "../../game/live-buffs.js";
 import { ensureUser } from "../../game/users.js";
 import { GameError } from "../../game/errors.js";
+import { progressBar } from "../../utils/progress-bar.js";
 import type { AkiraCommand } from "../../types/commands.js";
 import { sendGameError } from "../reply.js";
 
@@ -28,12 +29,17 @@ export const milestone: AkiraCommand = {
         const extra = row.prestige ? ` Prestige reward: ${row.prestige}` : "";
         return `${row.step}. ${mark}.${extra}`;
       });
+      const upcoming = view.milestones.find((row) => !row.claimed);
+      const ratio = upcoming ? view.progress / upcoming.cost : 1;
+      const filled = upcoming
+        ? `${view.progress.toLocaleString("en-US")} / ${upcoming.cost.toLocaleString("en-US")}`
+        : "The bar is full.";
       const left = view.bitsLeft === null ? "This is the last milestone." : `${view.bitsLeft.toLocaleString("en-US")} bits left until the next one.`;
       const keep = view.prestigePreview.keep.length > 0
         ? `Prestiging now would keep: ${view.prestigePreview.keep.join(" ")}`
         : "Prestiging now would keep no permanent buffs.";
       await interaction.reply({
-        content: [`You are on step ${view.claimed}. ${left}`, keep, ...rows].join("\n"),
+        content: [progressBar(ratio), filled, `You are on step ${view.claimed}. ${left}`, keep, ...rows].join("\n"),
         ephemeral: true,
       });
     } catch (err) {

@@ -1543,6 +1543,20 @@ html[data-theme="dark"] .composer-pop > input {
   margin: 0.35rem 0;
 }
 
+.milestone-meter {
+  height: 0.85rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 22%, var(--border));
+  margin: 0.35rem 0 0.9rem;
+}
+
+.milestone-meter > span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
 .milestone-list {
   list-style: none;
   padding: 0;

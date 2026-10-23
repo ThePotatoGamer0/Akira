@@ -21,6 +21,27 @@ type Status = {
   combined: string[];
 };
 
+function MilestoneMeter(props: { progress: number; milestones: MilestoneRow[] }) {
+  const next = props.milestones.find((row) => !row.claimed);
+  const ratio = !next || next.cost <= 0 ? 1 : Math.min(1, props.progress / next.cost);
+  const label = next ? `${props.progress.toLocaleString()} / ${next.cost.toLocaleString()}` : "The bar is full.";
+  return (
+    <>
+      <div
+        className="milestone-meter"
+        role="meter"
+        aria-label="Milestone progress"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={Math.round(ratio * 100)}
+      >
+        <span style={{ width: `${ratio * 100}%` }} />
+      </div>
+      <p className="milestone-note">{label}</p>
+    </>
+  );
+}
+
 export function CyclePanel(props: {
   bits: number;
   fetchApi: (path: string, init?: RequestInit) => Promise<Response>;
@@ -82,6 +103,7 @@ export function CyclePanel(props: {
             ? " This is the last milestone."
             : ` ${status.bitsLeft.toLocaleString()} bits left until the next one.`}
         </p>
+        <MilestoneMeter progress={status.progress} milestones={status.milestones} />
         <ol className="milestone-list">
           {status.milestones.map((row) => (
             <li key={row.step} className={row.claimed ? "is-claimed" : undefined}>
