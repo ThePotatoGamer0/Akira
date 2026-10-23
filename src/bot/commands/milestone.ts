@@ -3,6 +3,7 @@ import { claimMilestone, economySnapshot } from "../../game/live-buffs.js";
 import { ensureUser } from "../../game/users.js";
 import { GameError } from "../../game/errors.js";
 import { progressBar } from "../../utils/progress-bar.js";
+import { iconsAreReady, whenIconsSynced } from "../icon-sync.js";
 import type { AkiraCommand } from "../../types/commands.js";
 import { sendGameError } from "../reply.js";
 
@@ -22,6 +23,8 @@ export const milestone: AkiraCommand = {
         });
         return;
       }
+      if (!iconsAreReady()) await interaction.deferReply({ ephemeral: true });
+      await whenIconsSynced();
       const user = await ensureUser(interaction.user.id, interaction.user.username);
       const view = await economySnapshot(user.id, interaction.guildId);
       const rows = view.milestones.map((row) => {
@@ -38,13 +41,14 @@ export const milestone: AkiraCommand = {
       const keep = view.prestigePreview.keep.length > 0
         ? `Prestiging now would keep: ${view.prestigePreview.keep.join(" ")}`
         : "Prestiging now would keep no permanent buffs.";
-      await interaction.reply({
-        content: [progressBar(ratio), filled, `You are on step ${view.claimed}. ${left}`, keep, ...rows].join("\n"),
-        ephemeral: true,
-      });
+      const content = [progressBar(ratio), filled, `You are on step ${view.claimed}. ${left}`, keep, ...rows].join("\n");
+      if (interaction.deferred || interaction.replied) await interaction.editReply({ content });
+      else await interaction.reply({ content, ephemeral: true });
     } catch (err) {
       if (err instanceof GameError) {
-        await interaction.reply({ content: err.message, ephemeral: true });
+        const content = err.message;
+        if (interaction.deferred || interaction.replied) await interaction.editReply({ content }).catch(() => undefined);
+        else await interaction.reply({ content, ephemeral: true }).catch(() => undefined);
         return;
       }
       await sendGameError(interaction, err);
