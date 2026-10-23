@@ -72,20 +72,44 @@ function writeHashes(hashes: HashFile): void {
   writeFileSync(hashFile, `${JSON.stringify(hashes, null, 2)}\n`);
 }
 
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 async function discordJson(appId: string, token: string, method: string, pathname: string, body?: unknown): Promise<unknown> {
-  const init: RequestInit = {
-    method,
-    headers: body
-      ? { Authorization: `Bot ${token}`, "Content-Type": "application/json" }
-      : { Authorization: `Bot ${token}` },
-    signal: AbortSignal.timeout(20_000),
-  };
-  if (body !== undefined) init.body = JSON.stringify(body);
-  const res = await fetch(`https://discord.com/api/v10/applications/${appId}${pathname}`, init);
-  if (res.status === 204) return null;
-  const text = await res.text();
-  if (!res.ok) throw new Error(`Discord ${method} ${pathname} returned ${res.status}: ${text.slice(0, 300)}`);
-  return text ? JSON.parse(text) : null;
+  const url = `https://discord.com/api/v10/applications/${appId}${pathname}`;
+  for (let attempt = 0; attempt < 5; attempt += 1) {
+    const init: RequestInit = {
+      method,
+      headers: body
+        ? { Authorization: `Bot ${token}`, "Content-Type": "application/json" }
+        : { Authorization: `Bot ${token}` },
+      signal: AbortSignal.timeout(20_000),
+    };
+    if (body !== undefined) init.body = JSON.stringify(body);
+    const res = await fetch(url, init);
+    if (res.status === 429 && attempt < 4) {
+      const text = await res.text();
+      let waitMs = 1000 * (attempt + 1);
+      const header = Number(res.headers.get("retry-after"));
+      if (Number.isFinite(header) && header >= 0) waitMs = Math.ceil(header * 1000);
+      else {
+        try {
+          const parsed = JSON.parse(text) as { retry_after?: unknown };
+          if (typeof parsed.retry_after === "number") waitMs = Math.ceil(parsed.retry_after * 1000);
+        } catch {
+          // keep the backoff
+        }
+      }
+      await sleep(Math.min(waitMs, 10_000) + 50);
+      continue;
+    }
+    if (res.status === 204) return null;
+    const text = await res.text();
+    if (!res.ok) throw new Error(`Discord ${method} ${pathname} returned ${res.status}: ${text.slice(0, 300)}`);
+    return text ? JSON.parse(text) : null;
+  }
+  throw new Error(`Discord ${method} ${pathname} stayed rate limited.`);
 }
 
 function remoteList(payload: unknown): RemoteEmoji[] {
@@ -102,11 +126,34 @@ function remoteList(payload: unknown): RemoteEmoji[] {
   });
 }
 
+let ready: Promise<void> = Promise.resolve();
+let settled = false;
+
+/** Resolves when this process has finished an icon sync, including a failed one. */
+export function whenIconsSynced(): Promise<void> {
+  return ready;
+}
+
+/** True once icon sync has finished and `icon()` is using whatever Discord has. */
+export function iconsAreReady(): boolean {
+  return settled;
+}
+
+type InstalledIcon = { key: IconKey; id: string; name: string };
+
+function remember(installed: InstalledIcon[], spec: IconSpec, remote: RemoteEmoji, name: string): void {
+  const row = { key: spec.key, id: remote.id, name };
+  const index = installed.findIndex((entry) => entry.key === spec.key);
+  if (index >= 0) installed[index] = row;
+  else installed.push(row);
+}
+
 /**
- * Upload any missing Lucide icons as application emojis and point `icon()` at them.
+ * Upload any missing icons as application emojis and point `icon()` at them.
  * Safe to run on every boot: an unchanged image is left in place.
+ * One picture failing does not throw away the icons that already uploaded.
  */
-export async function syncApplicationIcons(): Promise<void> {
+async function syncApplicationIconsNow(): Promise<void> {
   const token = process.env["DISCORD_TOKEN"];
   const appId = process.env["DISCORD_CLIENT_ID"];
   if (!token || !appId) {
@@ -119,34 +166,60 @@ export async function syncApplicationIcons(): Promise<void> {
   console.log(`Found ${listed.length} application emojis.`);
   const byName = new Map(listed.flatMap((emoji) => (emoji.name ? [[emoji.name, emoji] as const] : [])));
   const hashes = readHashes();
-  const installed: { key: IconKey; id: string; name: string }[] = [];
+  const installed: InstalledIcon[] = [];
 
-  for (const spec of ICONS) {
-    const name = discordEmojiName(spec.key);
-    const png = await renderIconPng(spec);
-    const hash = createHash("sha256").update(png).digest("hex");
-    let remote = byName.get(name);
-    if (remote && hashes[name] && hashes[name] !== hash) {
-      await discordJson(appId, token, "DELETE", `/emojis/${remote.id}`);
-      byName.delete(name);
-      remote = undefined;
+  try {
+    for (const spec of ICONS) {
+      const name = discordEmojiName(spec.key);
+      let remote = byName.get(name);
+      try {
+        const png = await renderIconPng(spec);
+        const hash = createHash("sha256").update(png).digest("hex");
+        const stale = Boolean(remote && hashes[name] && hashes[name] !== hash);
+        if (!remote || stale) {
+          if (remote && stale) {
+            await discordJson(appId, token, "DELETE", `/emojis/${remote.id}`);
+            byName.delete(name);
+            remote = undefined;
+          }
+          const created = remoteList([await discordJson(appId, token, "POST", "/emojis", {
+            name,
+            image: `data:image/png;base64,${png.toString("base64")}`,
+          })])[0];
+          if (!created) throw new Error(`Discord did not return an id for ${name}.`);
+          remote = created;
+          byName.set(name, created);
+          await sleep(400);
+        }
+        hashes[name] = hash;
+      } catch (err) {
+        console.error(`Icon ${name} did not sync.`, err instanceof Error ? err.message : err);
+        if (!remote) remote = byName.get(name);
+      }
+      if (remote) remember(installed, spec, remote, name);
     }
-    if (!remote) {
-      const created = remoteList([await discordJson(appId, token, "POST", "/emojis", {
-        name,
-        image: `data:image/png;base64,${png.toString("base64")}`,
-      })])[0];
-      if (!created) throw new Error(`Discord did not return an id for ${name}.`);
-      remote = created;
-      byName.set(name, created);
+  } finally {
+    if (installed.length > 0) installIcons(installed);
+    try {
+      writeHashes(hashes);
+    } catch (err) {
+      console.error("Icon sync could not save its hash file.", err instanceof Error ? err.message : err);
     }
-    hashes[name] = hash;
-    installed.push({ key: spec.key, id: remote.id, name });
+    console.log(`Synced ${installed.length} application icons.`);
   }
+}
 
-  writeHashes(hashes);
-  installIcons(installed);
-  console.log(`Synced ${installed.length} application icons.`);
+export function syncApplicationIcons(): Promise<void> {
+  const run = syncApplicationIconsNow();
+  ready = run.then(
+    () => {
+      settled = true;
+    },
+    () => {
+      settled = true;
+    },
+  );
+  return run;
 }
 
 if (process.argv[1]?.includes("icon-sync")) {

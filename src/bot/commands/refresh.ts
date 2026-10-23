@@ -4,6 +4,7 @@ import { HOST_DISCORD_ID } from "../host-gate.js";
 import { clearDropShelf, DropShelfBusyError, pauseDropShelf, resumeDropShelf } from "../drop-shelf.js";
 import { removeInitLock, tryCreateInitLock } from "../../utils/init-lock.js";
 import { progressBar } from "../../utils/progress-bar.js";
+import { whenIconsSynced } from "../icon-sync.js";
 import type { AkiraCommand } from "../../types/commands.js";
 
 function finished(redrawn: number, skipped: number): string {
@@ -60,13 +61,16 @@ export const refresh: AkiraCommand = {
       }
       return;
     }
-    if (!tryCreateInitLock()) {
-      await interaction.reply({ content: "Akira is already getting ready.", ephemeral: true });
-      return;
-    }
 
+    let locked = false;
     try {
       await interaction.deferReply();
+      await whenIconsSynced();
+      if (!tryCreateInitLock()) {
+        await interaction.editReply({ content: "Akira is already getting ready." });
+        return;
+      }
+      locked = true;
       await pauseDropShelf();
       clearDropShelf();
       const updates = progressUpdates(interaction);
@@ -86,8 +90,10 @@ export const refresh: AkiraCommand = {
         await interaction.reply({ content }).catch(() => undefined);
       }
     } finally {
-      removeInitLock();
-      resumeDropShelf();
+      if (locked) {
+        removeInitLock();
+        resumeDropShelf();
+      }
     }
   },
 };
