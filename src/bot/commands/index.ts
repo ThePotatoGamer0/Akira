@@ -12,6 +12,7 @@ import { inventory } from "./inventory.js";
 import { milestone } from "./milestone.js";
 import { pool } from "./pool.js";
 import { prestige } from "./prestige.js";
+import { refresh } from "./refresh.js";
 import { set } from "./set.js";
 import { shop } from "./shop.js";
 import { multiburn } from "./multiburn.js";
@@ -55,6 +56,7 @@ export const commands: AkiraCommand[] = [
   pool,
   milestone,
   prestige,
+  refresh,
   dye,
   frame,
   inventory,

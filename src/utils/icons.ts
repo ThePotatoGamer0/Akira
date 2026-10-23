@@ -20,6 +20,13 @@ export const ICONS = [
   { key: "slot-2", fallback: "2️⃣", glyph: "2" },
   { key: "slot-3", fallback: "3️⃣", glyph: "3" },
   { key: "slot-4", fallback: "4️⃣", glyph: "4" },
+  { key: "bar-start", fallback: "▰", file: "start.png" },
+  { key: "bar-start-empty", fallback: "▱", file: "start-empty.png" },
+  { key: "bar-fill", fallback: "▰", file: "fill.png" },
+  { key: "bar-empty", fallback: "▱", file: "empty.png" },
+  { key: "bar-end", fallback: "▱", file: "end.png" },
+  { key: "bar-end-fill", fallback: "▰", file: "end-fill.png" },
+  { key: "bar-head", fallback: "▰", file: "head.png" },
 ] as const;
 
 export type IconKey = (typeof ICONS)[number]["key"];

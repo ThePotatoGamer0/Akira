@@ -5,6 +5,18 @@ export function createInitLock(): void {
   fs.writeFileSync(INIT_LOCK, `${Date.now()}\n`, "utf8");
 }
 
+/** True when this call created the lock. False when Akira is already paused. */
+export function tryCreateInitLock(): boolean {
+  try {
+    fs.writeFileSync(INIT_LOCK, `${Date.now()}\n`, { encoding: "utf8", flag: "wx" });
+    return true;
+  } catch (err) {
+    const code = (err as NodeJS.ErrnoException).code;
+    if (code === "EEXIST") return false;
+    throw err;
+  }
+}
+
 export function removeInitLock(): void {
   try {
     fs.unlinkSync(INIT_LOCK);

@@ -33,7 +33,7 @@ function keepGlobalCommand(command: APIApplicationCommand) {
 }
 
 function slashBody(extra?: AkiraCommand[]) {
-  return [...commands, ...(extra ?? [])].map((c) => c.data.toJSON());
+  return [...commands, ...(extra ?? [])].filter((command) => !command.hidden).map((command) => command.data.toJSON());
 }
 
 /** Guild commands show up quickly. Call this for every server the bot is in. */

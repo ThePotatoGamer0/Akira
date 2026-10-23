@@ -35,6 +35,7 @@ const queues = new Map<string, ShelvedDrop[]>();
 let worker: Worker | null = null;
 let jobId = 0;
 let busy = false;
+let shelfPaused = false;
 let started = false;
 let timer: NodeJS.Timeout | null = null;
 let pendingBurn: { cardId: string; guildId: string | null } | null = null;
@@ -286,7 +287,39 @@ async function burnRequest(): Promise<CardImageRequest | null> {
   };
 }
 
+export class DropShelfBusyError extends Error {
+  constructor() {
+    super("Drop shelf stayed busy.");
+    this.name = "DropShelfBusyError";
+  }
+}
+
+/** Stop new shelf renders and wait until the current one finishes. */
+export async function pauseDropShelf(): Promise<void> {
+  shelfPaused = true;
+  const deadline = Date.now() + 60_000;
+  while (busy) {
+    if (Date.now() > deadline) throw new DropShelfBusyError();
+    await new Promise((resolve) => setTimeout(resolve, 50));
+  }
+}
+
+export function resumeDropShelf(): void {
+  shelfPaused = false;
+  wake(50);
+}
+
+/** Drop pre-drawn strips so the next drops use freshly redrawn cards. */
+export function clearDropShelf(): void {
+  queues.clear();
+  pendingBurn = null;
+}
+
 function post(job: ShelfJob): void {
+  if (shelfPaused || isInitLocked()) {
+    wake(5_000);
+    return;
+  }
   const thread = ensureWorker();
   if (!thread) {
     busy = false;
@@ -320,8 +353,8 @@ function post(job: ShelfJob): void {
 }
 
 async function tick(): Promise<void> {
-  if (busy || isInitLocked()) {
-    wake(isInitLocked() ? 5_000 : 200);
+  if (busy || shelfPaused || isInitLocked()) {
+    wake(shelfPaused || isInitLocked() ? 5_000 : 200);
     return;
   }
   try {
