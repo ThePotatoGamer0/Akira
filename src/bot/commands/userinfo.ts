@@ -35,7 +35,7 @@ export const userinfo: AkiraCommand = {
             `**Bits** · ${count(summary.user.bits)}`,
             `**Cards** · ${count(summary.cards)}`,
             `**Prestige** · ${count(summary.user.prestigeLevel)}`,
-            `**Milestones this cycle** · ${count(summary.user.milestoneCount)}`,
+            `**Stages this cycle** · ${count(summary.user.milestoneCount)}`,
             `**Bits given this cycle** · ${count(summary.user.milestoneProgress)}`,
             `**Daily bonus** · ${count(summary.user.passiveBitsBonus)}`,
           ].join("\n"),

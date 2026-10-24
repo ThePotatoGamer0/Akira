@@ -1,12 +1,12 @@
 ---
 title: Milestone
-description: See the ten steps on your bar, or claim the next payout.
+description: See the ten stages on your bar, or claim the next payout.
 command: milestone
 ---
 
-**/milestone** lists all ten steps. The first step is **250** bits and pays 200. Each step after that asks for twice as many bits. The tenth is **128,000** bits and pays 30,000. From step 6 onward the row also shows the prestige reward, which you only receive if you prestige after that step is claimed.
+**/milestone** lists all ten stages. The first stage is **250** bits and pays 200. Each stage after that asks for twice as many bits. The tenth is **128,000** bits and pays 30,000. From stage 6 onward the row also shows the prestige reward, which you only receive if you prestige after that stage is claimed.
 
-| Step | Bits on the bar | Bits you get back |
+| Stage | Bits on the bar | Bits you get back |
 | --- | --- | --- |
 | 1 | 250 | 200 |
 | 2 | 500 | 350 |
@@ -19,16 +19,16 @@ command: milestone
 | 9 | 64,000 | 18,000 |
 | 10 | 128,000 | 30,000 |
 
-The reply is an embed. It says which step the bar is filling, how many bits are left until the next one, and which prestige buffs you would keep if you prestiged right now. A bar at the top shows how full the current step is. From step 6 the prestige sentence sits on the line under that step.
+The reply is an embed. It says which stage you are on, how many bits are left until the next stage, and which prestige buffs you would keep if you prestiged right now. A bar at the top shows how full the current stage is. From stage 6 the prestige sentence sits on the line under that stage.
 
-**/milestone claim** takes the next step when your bar has enough. Akira pays those bits immediately. The rest of the bar stays. Claiming does not stamp a prestige buff.
+**/milestone claim** takes the next stage when your bar has enough. Akira pays those bits immediately. The rest of the bar stays. Claiming does not stamp a prestige buff.
 
 ## Parameters
 
 | Action | What you pass | What it does |
 | --- | --- | --- |
-| `show` | Nothing | The ten steps and where you are. |
-| `claim` | Nothing | Pays the next step, if the bar has reached it. |
+| `show` | Nothing | The ten stages and where you are. |
+| `claim` | Nothing | Pays the next stage, if the bar has reached it. |
 
 `amilestone` on its own is the list. `amilestone claim` takes the payout.
 

@@ -19,6 +19,7 @@ const QUALITY_IDS = new Set<string>(QUALITIES.map((option) => option.id));
 export function CardsStat(props: {
   me: Me;
   fetchApi: (path: string, init?: RequestInit) => Promise<Response>;
+  liveRev?: number;
 }) {
   const [quality, setQuality] = useState(() => {
     const saved = readStatChoice("cards.quality", "");
@@ -28,8 +29,11 @@ export function CardsStat(props: {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    let cancelled = false;
     setRows(null);
+  }, [quality]);
+
+  useEffect(() => {
+    let cancelled = false;
     void (async () => {
       const path = quality ? `/stats/cards?quality=${quality}` : "/stats/cards";
       const res = await props.fetchApi(path);
@@ -45,7 +49,7 @@ export function CardsStat(props: {
     return () => {
       cancelled = true;
     };
-  }, [props.fetchApi, quality]);
+  }, [props.fetchApi, quality, props.liveRev]);
 
   const label = QUALITIES.find((option) => option.id === quality)?.label ?? "All cards";
 
@@ -66,8 +70,9 @@ export function CardsStat(props: {
         />
       }
     >
-      {error ? <p className="webui-alert">{error}</p> : null}
-      {rows ? (
+      {error ? (
+        <p className="webui-muted">She wandered off with those numbers.</p>
+      ) : rows ? (
         <MeterList
           youId={props.me.id}
           empty="No players yet."

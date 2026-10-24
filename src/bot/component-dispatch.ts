@@ -1,5 +1,6 @@
 import type { ButtonInteraction, StringSelectMenuInteraction } from "discord.js";
 import { handleCollectionButton } from "./commands/collection.js";
+import { handleChecklistButton } from "./commands/checklist.js";
 import { handleLookupButton, handleLookupSelect } from "./commands/lookup.js";
 import { handleBurnConfirmButton } from "./commands/burn.js";
 import { handleMultiburnButton } from "./commands/multiburn.js";
@@ -22,6 +23,7 @@ export async function dispatchMessageComponent(
     if (await handleShopButton(interaction)) return true;
     if (await handlePrestigeButton(interaction)) return true;
     if (await handleCollectionButton(interaction)) return true;
+    if (await handleChecklistButton(interaction)) return true;
     return handleLookupButton(interaction);
   }
   if (interaction.isStringSelectMenu()) return handleLookupSelect(interaction);

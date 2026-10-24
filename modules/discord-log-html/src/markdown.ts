@@ -24,6 +24,27 @@ export function fitMedia(width?: number | null, height?: number | null): { width
   return { width: Math.max(1, Math.round(width * scale)), height: Math.max(1, Math.round(height * scale)) };
 }
 
+/** Ask Discord's media CDN for the size we actually draw, when the URL allows it. */
+export function displayMediaUrl(url: string, width?: number | null, height?: number | null): string {
+  try {
+    const parsed = new URL(url);
+    const host = parsed.hostname;
+    if (host !== "cdn.discordapp.com" && host !== "media.discordapp.net") return url;
+    const signed = parsed.searchParams.has("ex") || parsed.searchParams.has("hm");
+    if (!signed && host === "cdn.discordapp.com" && parsed.pathname.includes("/attachments/")) {
+      parsed.hostname = "media.discordapp.net";
+    }
+    const fitted = fitMedia(width, height);
+    if (fitted && parsed.hostname === "media.discordapp.net") {
+      parsed.searchParams.set("width", String(fitted.width));
+      parsed.searchParams.set("height", String(fitted.height));
+    }
+    return parsed.toString();
+  } catch {
+    return url;
+  }
+}
+
 /** Image the host page can open in a viewer. Falls back to a plain img when no sender is known. */
 export function viewableImage(options: {
   src: string;
@@ -37,7 +58,8 @@ export function viewableImage(options: {
   const size = fitted
     ? ` width="${fitted.width}" height="${fitted.height}" style="width:${fitted.width}px;aspect-ratio:${fitted.width}/${fitted.height}"`
     : "";
-  const img = `<img class="${options.className}" src="${escapeAttr(options.src)}" alt="${escapeAttr(options.alt ?? "")}"${size} loading="lazy">`;
+  const shown = displayMediaUrl(options.src, options.width, options.height);
+  const img = `<img class="${options.className}" src="${escapeAttr(shown)}" alt="${escapeAttr(options.alt ?? "")}"${size} loading="eager" fetchpriority="high" decoding="async">`;
   const view = options.ctx.view;
   if (!view) return img;
   return `<button type="button" class="dlog-view" data-src="${escapeAttr(options.src)}" data-name="${escapeAttr(view.name)}" data-avatar="${escapeAttr(view.avatar)}" data-app="${view.app ? "1" : "0"}" data-time="${escapeAttr(view.time)}" data-color="${escapeAttr(view.color)}">${img}</button>`;

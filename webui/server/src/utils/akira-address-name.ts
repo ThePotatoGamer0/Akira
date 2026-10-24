@@ -2,7 +2,7 @@
 
 export const PREFERRED_NAME_MAX = 15;
 
-/** One word, 15 latin letters at most. First letter capital, the rest lowercase. */
+/** One word, 15 latin letters at most. Only the first letter may be a capital. */
 export function sanitizePreferredName(raw: string): string | null {
   const letters = raw
     .normalize("NFKD")
@@ -10,7 +10,7 @@ export function sanitizePreferredName(raw: string): string | null {
     .replace(/[^A-Za-z]/g, "")
     .slice(0, PREFERRED_NAME_MAX);
   if (!letters) return null;
-  return letters.charAt(0).toUpperCase() + letters.slice(1).toLowerCase();
+  return letters.charAt(0) + letters.slice(1).toLowerCase();
 }
 
 export function akiraAddressName(user: {

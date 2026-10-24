@@ -1,10 +1,11 @@
 import { useState } from "react";
 
 export function VerifyScreen(props: {
+  username: string;
+  onUsernameChange: (username: string) => void;
   onVerified: (needsPassword: boolean) => void;
   fetchApi: (path: string, init?: RequestInit) => Promise<Response>;
 }) {
-  const [username, setUsername] = useState("");
   const [sent, setSent] = useState(false);
   const [code, setCode] = useState("");
   const [msg, setMsg] = useState<string | null>(null);
@@ -15,7 +16,7 @@ export function VerifyScreen(props: {
     const res = await props.fetchApi("/auth/init", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username }),
+      body: JSON.stringify({ username: props.username }),
     });
     const j = (await res.json()) as { error?: string; message?: string };
     if (!res.ok) {
@@ -52,7 +53,11 @@ export function VerifyScreen(props: {
         <form onSubmit={(e) => void sendCode(e)}>
           <label>
             Discord username
-            <input value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input
+              value={props.username}
+              onChange={(e) => props.onUsernameChange(e.target.value)}
+              autoComplete="username"
+            />
           </label>
           <button type="submit">Send code</button>
           {msg ? <p>{msg}</p> : null}

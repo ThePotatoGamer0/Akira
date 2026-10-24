@@ -4,6 +4,7 @@ import type { Me } from "../types/index.js";
 export function StatsPage(props: {
   me: Me;
   fetchApi: (path: string, init?: RequestInit) => Promise<Response>;
+  liveRev?: number;
 }) {
   return (
     <div className="stats-page">
@@ -13,7 +14,7 @@ export function StatsPage(props: {
       <div className="stats-grid">
         {statCards.map((card) => (
           <section key={card.id} className="stats-card" data-stat={card.id} data-place={card.place}>
-            <card.Component me={props.me} fetchApi={props.fetchApi} />
+            <card.Component me={props.me} fetchApi={props.fetchApi} liveRev={props.liveRev} />
           </section>
         ))}
       </div>

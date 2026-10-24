@@ -4,6 +4,7 @@ import "../../../../modules/discord-log-html/styles.css";
 import { apiSocketUrl } from "../lib/api.js";
 import { MediaViewer, type ViewMedia } from "../components/MediaViewer.js";
 import { MessageBar } from "../components/channel/MessageBar.js";
+import { NappingNotice } from "../components/NappingNotice.js";
 
 type Payload = ChatLog & { hasMore?: boolean };
 type LiveEvent = {
@@ -77,7 +78,7 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
     const json = (await res.json()) as { log?: Payload; error?: string };
     if (!res.ok || !json.log) {
       setLog(null);
-      setError(json.error ?? "Akira couldn't read the drop channel.");
+      setError(res.status >= 500 ? "napping" : (json.error ?? "Akira couldn't read the drop channel."));
       return;
     }
     stick.current = true;
@@ -292,6 +293,17 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
     return () => el.removeEventListener("change", onChange);
   });
 
+  if (error === "napping") {
+    return (
+      <div className="channel-page">
+        <div className="channel-bar">
+          <span className="channel-name">{name}</span>
+        </div>
+        <NappingNotice body="The drop channel is with her. Peek back in a moment?" />
+      </div>
+    );
+  }
+
   return (
     <div className="channel-page">
       <div className="channel-bar">
@@ -340,11 +352,6 @@ export function ChannelPage(props: { fetchApi: (path: string, init?: RequestInit
           }
         }}
       >
-        {error ? (
-          <p className="webui-alert" role="alert">
-            {error}
-          </p>
-        ) : null}
         {html ? <div className="channel-log" dangerouslySetInnerHTML={{ __html: html }} /> : null}
       </div>
       {notice ? <p className="channel-note" role="status">{notice}</p> : null}

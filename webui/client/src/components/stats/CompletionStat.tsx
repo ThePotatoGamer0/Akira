@@ -14,6 +14,7 @@ function settleView(current: string, json: CompletionStats): string {
 export function CompletionStat(props: {
   me: Me;
   fetchApi: (path: string, init?: RequestInit) => Promise<Response>;
+  liveRev?: number;
 }) {
   const [userId, setUserId] = useState(() => readStatChoice("completion.player", props.me.id));
   const [view, setView] = useState(() => readStatChoice("completion.view", ""));
@@ -34,8 +35,11 @@ export function CompletionStat(props: {
   );
 
   useEffect(() => {
-    let cancelled = false;
     setData(null);
+  }, [userId]);
+
+  useEffect(() => {
+    let cancelled = false;
     void load(userId)
       .then((json) => {
         if (cancelled) return;
@@ -59,7 +63,7 @@ export function CompletionStat(props: {
     return () => {
       cancelled = true;
     };
-  }, [load, userId]);
+  }, [load, userId, props.liveRev]);
 
   const mine = userId === props.me.id;
   const focused = data?.series.find((row) => row.seriesId === view) ?? null;
@@ -126,6 +130,9 @@ export function CompletionStat(props: {
             className="stats-select"
             label="Anime"
             value={selectView}
+            searchable
+            searchPlaceholder="Search series"
+            pinValues={["top", "tracked"]}
             options={[
               { value: "top", label: "Top four" },
               ...(data && data.tracked.length > 0 ? [{ value: "tracked", label: "Tracked" }] : []),
@@ -136,28 +143,29 @@ export function CompletionStat(props: {
         </>
       }
     >
-      {error ? <p className="webui-alert">{error}</p> : null}
-      {data ? (
+      {error ? (
+        <p className="webui-muted">She wandered off with those numbers.</p>
+      ) : data ? (
         bars.length === 0 ? (
           <p className="webui-muted">No characters collected yet.</p>
         ) : (
           <div className="completion-stack">
             {bars.map((row) => (
-              <div key={row.seriesId} className={mine ? "completion-row completion-row--editable" : "completion-row"}>
+              <div key={row.seriesId} className="completion-row">
                 <div className="completion-row__label">
                   <span>{row.name}</span>
-                  <span>
+                  <span className="completion-row__count">
                     {row.owned}/{row.total} · {row.percent}%
                   </span>
+                  {mine ? (
+                    <button type="button" className="secondary stats-pin" disabled={busy} onClick={() => void toggle(row)}>
+                      {row.tracked ? "Untrack" : "Track"}
+                    </button>
+                  ) : null}
                 </div>
                 <div className="completion-row__track" aria-hidden="true">
                   <span className="completion-row__fill" style={{ width: `${row.percent}%` }} />
                 </div>
-                {mine ? (
-                  <button type="button" className="secondary stats-pin" disabled={busy} onClick={() => void toggle(row)}>
-                    {row.tracked ? "Untrack" : "Track"}
-                  </button>
-                ) : null}
               </div>
             ))}
           </div>

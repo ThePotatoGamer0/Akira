@@ -12,7 +12,7 @@ type StatCard = {
   id: string;
   /** feature is the tall left card, wide sits beside it, tile is half of the next row. */
   place: StatPlace;
-  Component: ComponentType<{ me: Me; fetchApi: StatFetch }>;
+  Component: ComponentType<{ me: Me; fetchApi: StatFetch; liveRev?: number }>;
 };
 
 /**

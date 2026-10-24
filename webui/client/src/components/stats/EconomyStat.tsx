@@ -6,6 +6,7 @@ import { StatShell } from "./StatShell.js";
 export function EconomyStat(props: {
   me: Me;
   fetchApi: (path: string, init?: RequestInit) => Promise<Response>;
+  liveRev?: number;
 }) {
   const [rows, setRows] = useState<BitsRow[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -26,12 +27,13 @@ export function EconomyStat(props: {
     return () => {
       cancelled = true;
     };
-  }, [props.fetchApi]);
+  }, [props.fetchApi, props.liveRev]);
 
   return (
     <StatShell title="Economy" note="Who has the most bits">
-      {error ? <p className="webui-alert">{error}</p> : null}
-      {rows ? (
+      {error ? (
+        <p className="webui-muted">She wandered off with those numbers.</p>
+      ) : rows ? (
         <MeterList
           youId={props.me.id}
           empty="No players yet."

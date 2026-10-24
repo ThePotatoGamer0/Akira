@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { MenuSelect } from "../components/MenuSelect.js";
 import { PREFERRED_NAME_MAX, sanitizePreferredName } from "../lib/akiraAddressName.js";
 import { hapticsEnabled, hapticsSupported, setHapticsEnabled } from "../lib/haptics.js";
+import { writeCollectionPrefs } from "../lib/collectionPrefs.js";
 import { COLLECTION_ORDERS, collectionOrder } from "../lib/collectionView.js";
 import { frameLabel, studioFrames } from "../lib/frames.js";
 import type { CollectionStudio, Me } from "../types/index.js";
@@ -11,6 +12,7 @@ const EMPTY_STUDIO: CollectionStudio = { serverFrame: 0, personalFrame: null, fr
 export function SettingsPage(props: {
   me: Me;
   fetchApi: (path: string, init?: RequestInit) => Promise<Response>;
+  readOnly?: boolean;
   onSaved: () => void;
 }) {
   const [preferredName, setPreferredName] = useState(sanitizePreferredName(props.me.preferredName ?? "") ?? "");
@@ -22,6 +24,7 @@ export function SettingsPage(props: {
   const [collectionMsg, setCollectionMsg] = useState<string | null>(null);
   const [collectionBusy, setCollectionBusy] = useState<string | null>(null);
   const [reminders, setReminders] = useState<{ action: string; enabled: boolean }[] | null>(null);
+  const [remindersDown, setRemindersDown] = useState(false);
   const [reminderBusy, setReminderBusy] = useState<string | null>(null);
   const [reminderMsg, setReminderMsg] = useState<string | null>(null);
   const [haptics, setHaptics] = useState(hapticsEnabled);
@@ -61,9 +64,14 @@ export function SettingsPage(props: {
     let cancelled = false;
     void (async () => {
       const res = await props.fetchApi("/reminders");
-      if (!res.ok || cancelled) return;
+      if (cancelled) return;
+      if (!res.ok) {
+        setRemindersDown(true);
+        return;
+      }
       const json = (await res.json()) as { reminders?: { action: string; enabled: boolean }[] };
-      if (!cancelled) setReminders(json.reminders ?? []);
+      setRemindersDown(false);
+      setReminders(json.reminders ?? []);
     })();
     return () => {
       cancelled = true;
@@ -89,6 +97,10 @@ export function SettingsPage(props: {
   }
 
   async function patchName(value: string) {
+    if (props.readOnly) {
+      setNameMsg("She'll remember that name when she's back.");
+      return;
+    }
     setNameMsg(null);
     setSavingName(true);
     const res = await props.fetchApi("/auth/me", {
@@ -110,7 +122,10 @@ export function SettingsPage(props: {
 
   async function patchCollection(body: { collectionOrder?: string; continuousScroll?: boolean }) {
     const key = "collectionOrder" in body ? "order" : "scroll";
+    const previous = { collectionOrder: order, continuousScroll: continuous };
+    writeCollectionPrefs(props.me.id, body);
     setCollectionMsg(null);
+    if (props.readOnly) return true;
     setCollectionBusy(key);
     const res = await props.fetchApi("/auth/me", {
       method: "PATCH",
@@ -119,16 +134,22 @@ export function SettingsPage(props: {
     });
     const j = (await res.json()) as Me | { error?: string };
     setCollectionBusy(null);
-    if (!res.ok) {
-      setCollectionMsg("error" in j ? (j.error ?? "Could not save") : "Could not save");
-      return false;
+    if (res.ok) {
+      props.onSaved();
+      setCollectionMsg("Saved.");
+      return true;
     }
-    props.onSaved();
-    setCollectionMsg("Saved.");
-    return true;
+    if (res.status >= 500) return true;
+    writeCollectionPrefs(props.me.id, previous);
+    setCollectionMsg("error" in j ? (j.error ?? "Could not save") : "Could not save");
+    return false;
   }
 
   async function saveFrame(value: string) {
+    if (props.readOnly) {
+      setCollectionMsg("She'll keep that frame when she's back.");
+      return;
+    }
     const frameId = value === "" ? null : Number(value);
     if (frameId !== null && !Number.isInteger(frameId)) return;
     setCollectionMsg(null);
@@ -167,7 +188,7 @@ export function SettingsPage(props: {
           <span className="gradient-text">General</span>
         </h2>
         <p className="settings-hint">
-          Choose how Akira addresses you in the WebUI home greeting and in <code>/ping</code> and <code>/help</code>. One word, up to {PREFERRED_NAME_MAX} letters. Akira capitalises the first letter. Leave it blank to use your Discord handle (<strong>{props.me.discordUsername ?? "-"}</strong>).
+          Choose how Akira addresses you in the WebUI home greeting and in <code>/ping</code> and <code>/help</code>. One word, up to {PREFERRED_NAME_MAX} letters. Only the first letter can be a capital. Leave it blank to use your Discord handle (<strong>{props.me.discordUsername ?? "-"}</strong>).
         </p>
         <form
           onSubmit={(e) => {
@@ -184,12 +205,13 @@ export function SettingsPage(props: {
               maxLength={64}
               autoComplete="nickname"
               spellCheck={false}
+              disabled={props.readOnly}
             />
           </label>
-          <button type="submit" disabled={savingName}>
+          <button type="submit" disabled={savingName || props.readOnly}>
             {savingName ? "Saving…" : "Save"}
           </button>
-          <button type="button" className="secondary" disabled={savingName} onClick={() => void patchName("")}>
+          <button type="button" className="secondary" disabled={savingName || props.readOnly} onClick={() => void patchName("")}>
             Use Discord name only
           </button>
           {nameMsg ? <p role="status">{nameMsg}</p> : null}
@@ -230,7 +252,7 @@ export function SettingsPage(props: {
             className="settings-menu"
             label="Your default frame"
             value={studio.personalFrame === null ? "" : String(studio.personalFrame)}
-            disabled={collectionBusy !== null}
+            disabled={collectionBusy !== null || props.readOnly}
             options={[
               { value: "", label: `Server frame · ${frameLabel(studio.frames, studio.serverFrame)}` },
               ...studio.frames.map((frame) => ({ value: String(frame.id), label: frame.name })),
@@ -289,7 +311,9 @@ export function SettingsPage(props: {
         <p className="settings-hint">
           These are the same switches as /reminders. When one is on, Akira DMs you and leaves a note in the bell.
         </p>
-        {reminders === null ? (
+        {remindersDown ? (
+          <p className="settings-hint">She'll take reminder notes when she's back.</p>
+        ) : reminders === null ? (
           <p className="settings-hint">Loading…</p>
         ) : (
           reminders.map((row) => (
@@ -302,7 +326,7 @@ export function SettingsPage(props: {
                 role="switch"
                 aria-checked={row.enabled}
                 aria-label={`${row.action} reminder`}
-                disabled={reminderBusy !== null}
+                disabled={reminderBusy !== null || props.readOnly}
                 onClick={() => {
                   const next = !row.enabled;
                   setReminders((current) =>
@@ -323,9 +347,7 @@ export function SettingsPage(props: {
           ))
         )}
         {reminderMsg ? (
-          <p className="webui-alert" role="alert">
-            {reminderMsg}
-          </p>
+          <p role="alert">{reminderMsg}</p>
         ) : null}
       </div>
     </div>

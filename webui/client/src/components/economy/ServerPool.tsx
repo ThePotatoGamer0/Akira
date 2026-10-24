@@ -11,20 +11,30 @@ type PoolState = {
 export function ServerPool(props: {
   bits: number;
   fetchApi: (path: string, init?: RequestInit) => Promise<Response>;
+  liveRev?: number;
   onChange?: () => void;
+  onSettled?: (state: "ok" | "down") => void;
 }) {
   const [pool, setPool] = useState<PoolState | null>(null);
   const [contribute, setContribute] = useState("50");
   const [msg, setMsg] = useState<string | null>(null);
+  const [down, setDown] = useState(false);
 
   async function load() {
     const res = await props.fetchApi("/economy/pool");
-    if (res.ok) setPool((await res.json()) as PoolState);
+    if (res.ok) {
+      setPool((await res.json()) as PoolState);
+      setDown(false);
+      props.onSettled?.("ok");
+      return;
+    }
+    setDown(true);
+    props.onSettled?.("down");
   }
 
   useEffect(() => {
     void load();
-  }, [props.fetchApi]);
+  }, [props.fetchApi, props.liveRev]);
 
   async function send() {
     setMsg(null);
@@ -48,7 +58,7 @@ export function ServerPool(props: {
     props.onChange?.();
   }
 
-  if (!pool) return <p>Loading pool…</p>;
+  if (down || !pool) return null;
 
   return (
     <div className="panel">

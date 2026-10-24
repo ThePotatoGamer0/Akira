@@ -19,7 +19,7 @@ The pot, the tier, which buffs can be chosen tonight, and the buffs that are alr
 
 ## Milestones
 
-All ten steps, how far along the bar you are, and a Claim button when the next step is ready. Claiming pays the bits. It does not grant the prestige reward. That reward is only stamped if you prestige after the step is claimed. The amounts are on [Personal milestones](/economy/personal-milestone).
+All ten stages, how far along the bar you are, and a Claim button when the next stage is ready. Claiming pays the bits. It does not grant the prestige reward. That reward is only stamped if you prestige after the stage is claimed. The amounts are on [Personal milestones](/economy/personal-milestone).
 
 ## Prestige
 

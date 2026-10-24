@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { CardOverlay } from "../components/collection/CardOverlay.js";
 import { CollectionGrid } from "../components/collection/CollectionGrid.js";
 import { TagMenu } from "../components/collection/TagMenu.js";
+import { NappingNotice } from "../components/NappingNotice.js";
 import { MenuSelect } from "../components/MenuSelect.js";
 import { COLLECTION_ORDERS, collectionOrder, type CollectionOrder } from "../lib/collectionView.js";
 import { studioFrames } from "../lib/frames.js";
@@ -39,6 +40,7 @@ function pageWindow(current: number, count: number): (number | "gap")[] {
 export function CollectionPage(props: {
   me: Me;
   fetchApi: (path: string, init?: RequestInit) => Promise<Response>;
+  liveRev?: number;
 }) {
   const [cards, setCards] = useState<CollectionCard[]>([]);
   const [studio, setStudio] = useState<CollectionStudio>(EMPTY_STUDIO);
@@ -157,6 +159,25 @@ export function CollectionPage(props: {
   }, [search.page, search.q, search.order]);
 
   live.current = { page: search.page, q: search.q, order: search.order, count: cards.length, total, loading, continuous };
+
+  useEffect(() => {
+    if (!props.liveRev || live.current.loading || busy.current) return;
+    let cancelled = false;
+    void (async () => {
+      const snap = live.current;
+      const start = snap.continuous ? 0 : snap.page * PAGE_SIZE;
+      const take = Math.max(snap.count, BATCH);
+      const json = await readSlice(start, take, snap.q, snap.order);
+      if (cancelled || !json) return;
+      setCards(json.cards);
+      setTotal(json.total);
+      setOwned(json.owned);
+      setCounted(true);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [props.liveRev, readSlice]);
 
   const loadMore = useCallback(async () => {
     const snap = live.current;
@@ -422,6 +443,7 @@ export function CollectionPage(props: {
   const countLabel = search.q
     ? `${total} of ${owned} ${owned === 1 ? "card" : "cards"}`
     : `${owned} ${owned === 1 ? "card" : "cards"}`;
+  const napping = Boolean(error && cards.length === 0 && !loading);
 
   return (
     <div className="collection-page">
@@ -449,8 +471,9 @@ export function CollectionPage(props: {
           />{" "}
           <span className="gradient-text">collection</span>
         </h2>
-        <p className="collection-count">{counted ? countLabel : "…"}</p>
+        <p className="collection-count">{napping ? "" : counted ? countLabel : "…"}</p>
       </div>
+      {napping ? null : (
       <div className="collection-tools">
         <input
           className="collection-search"
@@ -485,9 +508,19 @@ export function CollectionPage(props: {
           </button>
         ) : null}
       </div>
+      )}
+      {napping ? (
+        <NappingNotice
+          body={
+            viewingSelf
+              ? "Your binder is with her. Peek back in a moment?"
+              : "That binder is with her. Peek back in a moment?"
+          }
+        />
+      ) : (
+      <>
       {actionNote ? <p className="collection-note">{actionNote}</p> : null}
-      {actionError ? <p className="webui-alert">{actionError}</p> : null}
-      {error ? <p className="webui-alert">{error}</p> : null}
+      {actionError ? <p className="collection-note" role="alert">{actionError}</p> : null}
       {cards.length === 0 ? (
         <p className="webui-muted collection-pending">
           {loading
@@ -631,6 +664,8 @@ export function CollectionPage(props: {
           onChanged={refreshTags}
         />
       ) : null}
+      </>
+      )}
     </div>
   );
 }

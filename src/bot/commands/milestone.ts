@@ -10,8 +10,8 @@ import { sendGameError } from "../reply.js";
 export const milestone: AkiraCommand = {
   data: new SlashCommandBuilder()
     .setName("milestone")
-    .setDescription("See this cycle's bar. The first step is 250 bits, then each step doubles.")
-    .addSubcommand((sub) => sub.setName("show").setDescription("List all ten steps, from 250 bits up to 128,000"))
+    .setDescription("See this cycle's bar. The first stage is 250 bits, then each stage doubles.")
+    .addSubcommand((sub) => sub.setName("show").setDescription("List all ten stages, from 250 bits up to 128,000"))
     .addSubcommand((sub) => sub.setName("claim").setDescription("Take the next payout when the bar has reached it")),
   execute: async (interaction: ChatInputCommandInteraction, _client: Client) => {
     try {
@@ -19,7 +19,7 @@ export const milestone: AkiraCommand = {
       if (sub === "claim") {
         const claimed = await claimMilestone(interaction.user.id, interaction.user.username);
         await interaction.reply({
-          content: `Milestone ${claimed.step} paid ${claimed.payout.toLocaleString("en-US")} bits. You have ${claimed.balance.toLocaleString("en-US")} bits, and ${claimed.progress.toLocaleString("en-US")} left on the bar.`,
+          content: `Stage ${claimed.step} paid ${claimed.payout.toLocaleString("en-US")} bits. You have ${claimed.balance.toLocaleString("en-US")} bits, and ${claimed.progress.toLocaleString("en-US")} left on the bar.`,
         });
         return;
       }
@@ -33,7 +33,9 @@ export const milestone: AkiraCommand = {
         ? `${view.progress.toLocaleString("en-US")} / ${upcoming.cost.toLocaleString("en-US")}`
         : "The bar is full.";
       const step = upcoming ? upcoming.step : view.claimed;
-      const left = view.bitsLeft === null ? "This is the last milestone." : `${view.bitsLeft.toLocaleString("en-US")} bits left until the next one.`;
+      const left = view.bitsLeft === null
+        ? "This is the last stage."
+        : `${view.bitsLeft.toLocaleString("en-US")} bits left until you reach the next stage.`;
       const keep = view.prestigePreview.keep.length > 0
         ? `Prestiging now would keep: ${view.prestigePreview.keep.join(" ")}`
         : "Prestiging now would keep no permanent buffs.";
@@ -41,7 +43,7 @@ export const milestone: AkiraCommand = {
         const mark = row.claimed
           ? "Claimed"
           : `${row.cost.toLocaleString("en-US")} bits, pays ${row.payout.toLocaleString("en-US")}`;
-        const head = `**${row.step}** · ${mark}`;
+        const head = `**Stage ${row.step}** · ${mark}`;
         return row.prestige ? `${head}\n${row.prestige}` : head;
       });
       const embed = new EmbedBuilder()
@@ -53,7 +55,7 @@ export const milestone: AkiraCommand = {
             "",
             progressBar(ratio),
             filled,
-            `The bar is on step ${step}. ${left}`,
+            `You are on stage ${step}. ${left}`,
             keep,
             "",
             ...rows,

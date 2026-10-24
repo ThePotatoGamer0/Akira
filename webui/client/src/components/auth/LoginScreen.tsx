@@ -1,11 +1,12 @@
 import { useState } from "react";
 
 export function LoginScreen(props: {
+  username: string;
+  onUsernameChange: (username: string) => void;
   onLoggedIn: () => void;
   onNeedVerify: () => void;
   fetchApi: (path: string, init?: RequestInit) => Promise<Response>;
 }) {
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState<string | null>(null);
 
@@ -15,7 +16,7 @@ export function LoginScreen(props: {
     const res = await props.fetchApi("/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username: props.username, password }),
     });
     const j = (await res.json()) as { error?: string };
     if (!res.ok) {
@@ -34,7 +35,11 @@ export function LoginScreen(props: {
       <form onSubmit={(e) => void login(e)}>
         <label>
           Discord username
-          <input value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="username" />
+          <input
+            value={props.username}
+            onChange={(e) => props.onUsernameChange(e.target.value)}
+            autoComplete="username"
+          />
         </label>
         <label>
           Site password
