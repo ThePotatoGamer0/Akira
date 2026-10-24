@@ -11,6 +11,7 @@ export const INIT_LOCK = path.join(ROOT, "init.lock");
 export const DIR_INPUT_CHARACTERS = path.join(ROOT, "input", "characters");
 export const DIR_INPUT_FRAMES = path.join(ROOT, "input", "frames");
 export const DIR_INPUT_SHOWCASE = path.join(ROOT, "input", "showcase");
+export const DIR_INPUT_SEEK_BAR = path.join(ROOT, "input", "emoji", "seek-bar");
 
 /** Pre-generated Akira's Gift animations per frame */
 export const DIR_ASSETS_FRAMES_GIFT = path.join(ROOT, "assets", "frames", "gift");

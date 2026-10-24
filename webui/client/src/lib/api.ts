@@ -7,11 +7,35 @@ import {
   shouldUseCache,
 } from "./offlineCache.js";
 
-const apiBase = (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
+const configuredApiBase = (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
+
+/** Must match the Activities → URL Mappings prefix whose target is the API host. */
+export const API_PROXY_PREFIX = "/api";
+
+/** True on discordsays.com, where other hosts are blocked and `/api` is the mapped proxy. */
+export function onDiscordActivityProxy(): boolean {
+  return typeof window !== "undefined" && window.location.hostname.endsWith("discordsays.com");
+}
+
+function liveApiBase(): string {
+  return onDiscordActivityProxy() ? API_PROXY_PREFIX : configuredApiBase;
+}
 
 export function apiUrl(path: string): string {
-  if (/^https?:\/\//.test(path)) return path;
-  return `${apiBase}${path.startsWith("/") ? path : `/${path}`}`;
+  if (/^https?:\/\//.test(path)) {
+    if (onDiscordActivityProxy() && configuredApiBase) {
+      try {
+        const url = new URL(path);
+        if (url.host === new URL(configuredApiBase).host) {
+          return `${API_PROXY_PREFIX}${url.pathname}${url.search}`;
+        }
+      } catch {
+        return path;
+      }
+    }
+    return path;
+  }
+  return `${liveApiBase()}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
 /** WebSocket URL for an API path. Uses the API host when VITE_API_URL is set. */
@@ -37,7 +61,7 @@ export async function apiFetch(
   const headers = new Headers(init?.headers);
   if (activityToken) headers.set("Authorization", `Bearer ${activityToken}`);
   try {
-    const res = await fetch(`${apiBase}${path}`, {
+    const res = await fetch(apiUrl(path), {
       ...init,
       headers,
       credentials: activityToken ? "omit" : "include",
@@ -65,7 +89,7 @@ export async function apiIsUp(timeoutMs = 5000): Promise<boolean> {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
-    const res = await fetch(`${apiBase}/health`, { signal: ctrl.signal, credentials: "include" });
+    const res = await fetch(apiUrl("/health"), { signal: ctrl.signal, credentials: "include" });
     if (!res.ok) return false;
     const body = (await res.json().catch(() => null)) as { ok?: unknown } | null;
     return body?.ok === true;
