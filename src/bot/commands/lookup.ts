@@ -109,7 +109,14 @@ function resultsPayload(userId: string, query: string, total: number, page: numb
   return { embeds: [embed], components: [row, ...resultsButtons(userId, query, page, total)] };
 }
 
-async function detailPayload(userId: string, query: string, characterId: string, editionIndex: number, resultsPage: number) {
+async function detailPayload(
+  userId: string,
+  query: string,
+  characterId: string,
+  editionIndex: number,
+  resultsPage: number,
+  opts?: { back?: boolean },
+) {
   const character = await getLookupCharacter(characterId);
   if (!character) {
     return {
@@ -163,22 +170,30 @@ async function detailPayload(userId: string, query: string, characterId: string,
 
   const packed = packQuery(query);
   const page = Math.max(0, resultsPage);
-  const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
+  const showBack = opts?.back !== false;
+  const backFlag = showBack ? "1" : "0";
+  const buttons: ButtonBuilder[] = [];
+  if (showBack) {
+    buttons.push(
+      new ButtonBuilder()
+        .setCustomId(`lookup:back:${userId}:${page}:${packed}`)
+        .setLabel("Back")
+        .setStyle(ButtonStyle.Secondary),
+    );
+  }
+  buttons.push(
     new ButtonBuilder()
-      .setCustomId(`lookup:back:${userId}:${page}:${packed}`)
-      .setLabel("Back")
-      .setStyle(ButtonStyle.Secondary),
-    new ButtonBuilder()
-      .setCustomId(`lookup:ed:${index - 1}:${character.id}:${userId}:${page}:${packed}`)
+      .setCustomId(`lookup:ed:${index - 1}:${character.id}:${userId}:${page}:${packed}:${backFlag}`)
       .setEmoji(icon("chevron-left"))
       .setStyle(ButtonStyle.Primary)
       .setDisabled(index <= 0),
     new ButtonBuilder()
-      .setCustomId(`lookup:ed:${index + 1}:${character.id}:${userId}:${page}:${packed}`)
+      .setCustomId(`lookup:ed:${index + 1}:${character.id}:${userId}:${page}:${packed}:${backFlag}`)
       .setEmoji(icon("chevron-right"))
       .setStyle(ButtonStyle.Primary)
       .setDisabled(index >= editions.length - 1),
   );
+  const row = new ActionRowBuilder<ButtonBuilder>().addComponents(...buttons);
 
   return { content: null, embeds: [embed], components: [row], files };
 }
@@ -216,6 +231,16 @@ export const lookup: AkiraCommand = {
         await interaction.reply({
           content: `Akira couldn't find anything matching "${name.trim()}".`,
           ephemeral: true,
+        });
+        return;
+      }
+      if (total === 1 && characters[0]) {
+        const payload = await detailPayload(interaction.user.id, name, characters[0].id, 0, 0, { back: false });
+        await interaction.reply({
+          embeds: payload.embeds,
+          components: payload.components,
+          files: payload.files,
+          ...(payload.content ? { content: payload.content } : {}),
         });
         return;
       }
@@ -277,13 +302,23 @@ export async function handleLookupButton(interaction: ButtonInteraction): Promis
     return true;
   }
 
-  const edition = /^lookup:ed:(-?\d+):([a-z0-9]+):(\d+):(\d+):([A-Za-z0-9_-]+)$/.exec(interaction.customId)
+  const edition = /^lookup:ed:(-?\d+):([a-z0-9]+):(\d+):(\d+):([A-Za-z0-9_-]+):([01])$/.exec(interaction.customId)
+    ?? /^lookup:ed:(-?\d+):([a-z0-9]+):(\d+):(\d+):([A-Za-z0-9_-]+)$/.exec(interaction.customId)
     ?? /^lookup:ed:(-?\d+):([a-z0-9]+):(\d+):([A-Za-z0-9_-]+)$/.exec(interaction.customId);
   if (!edition) return false;
-  const hasPage = edition.length === 6;
+  const hasBackFlag = edition.length === 7;
+  const hasPage = hasBackFlag || edition.length === 6;
   const resultsPage = hasPage ? Number(edition[4]) : 0;
   const packed = hasPage ? edition[5]! : edition[4]!;
-  const payload = await detailPayload(edition[3]!, unpackQuery(packed), edition[2]!, Number(edition[1]), resultsPage);
+  const showBack = hasBackFlag ? edition[6] === "1" : true;
+  const payload = await detailPayload(
+    edition[3]!,
+    unpackQuery(packed),
+    edition[2]!,
+    Number(edition[1]),
+    resultsPage,
+    { back: showBack },
+  );
   await interaction.update(payload);
   return true;
 }

@@ -5,15 +5,7 @@ command: cc
 shortcuts: cc
 ---
 
-**/cc** lists the series pinned on your WebUI completion card. Under each name, every character you do not own yet sits on its own line.
-
-```
-Demon Slayer
-• Tanjirou
-
-Cyberpunk
-• Maine
-```
+**/cc** lists the series pinned on your WebUI completion card. One embed page is one series. Under the name, every character you do not own yet sits on its own line. Buttons move between series. A series with a long missing list gets extra pages of its own.
 
 A series you have finished says you have every character. Akira tracks four series, the same four the WebUI uses.
 

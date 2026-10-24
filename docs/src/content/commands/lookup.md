@@ -5,7 +5,7 @@ command: lookup
 shortcuts: lu, search, find
 ---
 
-**/lookup** answers with a numbered list and a menu. Pick a character to see the series, wishlist count, aliases, how many prints exist, and how many are in circulation. Buttons move between editions. An edition is one card image for that character. The portrait in the corner is that edition's art.
+**/lookup** answers with a numbered list and a menu when more than one character fits. One match opens that character straight away. Pick a character to see the series, wishlist count, aliases, how many prints exist, and how many are in circulation. Buttons move between editions. An edition is one card image for that character. The portrait in the corner is that edition's art.
 
 ## Parameters
 
@@ -28,7 +28,7 @@ asearch Chainsaw Man
 
 ## Tips
 
-- Matches are listed 25 at a time, which is as many as the menu can hold. The buttons under the menu move between pages. Back returns to the page you were on. Exact names come first, then names that start with the search, then names that contain it.
+- One match opens that character. Several matches are listed 25 at a time, which is as many as the menu can hold. The buttons under the menu move between pages. Back returns to the page you were on. Exact names come first, then names that start with the search, then names that contain it.
 - Owning the card still means grabbing it from a [drop](/commands/drop).
 
 ## See also

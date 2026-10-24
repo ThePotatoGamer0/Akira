@@ -3,10 +3,13 @@ import type { ShopItem } from "../../types/index.js";
 
 export function ShopPanel(props: {
   fetchApi: (path: string, init?: RequestInit) => Promise<Response>;
+  liveRev?: number;
   onBought?: () => void;
+  onSettled?: (state: "ok" | "down") => void;
 }) {
-  const [items, setItems] = useState<ShopItem[]>([]);
+  const [items, setItems] = useState<ShopItem[] | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
+  const [down, setDown] = useState(false);
 
   useEffect(() => {
     void (async () => {
@@ -14,9 +17,14 @@ export function ShopPanel(props: {
       if (res.ok) {
         const j = (await res.json()) as { items: ShopItem[] };
         setItems(j.items);
+        setDown(false);
+        props.onSettled?.("ok");
+        return;
       }
+      setDown(true);
+      props.onSettled?.("down");
     })();
-  }, [props.fetchApi]);
+  }, [props.fetchApi, props.liveRev]);
 
   async function buy(id: string) {
     setMsg(null);
@@ -34,6 +42,8 @@ export function ShopPanel(props: {
     setMsg(`Bought ${j.name}.${series}`);
     props.onBought?.();
   }
+
+  if (down || items === null) return null;
 
   return (
     <div className="panel">

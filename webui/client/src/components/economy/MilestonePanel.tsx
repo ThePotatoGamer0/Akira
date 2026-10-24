@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 type MilestoneRow = {
   step: number;
@@ -20,6 +20,130 @@ type Status = {
   prestige: { line: string; stacks: number }[];
   combined: string[];
 };
+
+function MilestoneSteps(props: { milestones: MilestoneRow[]; currentStep: number }) {
+  const scroller = useRef<HTMLDivElement>(null);
+  const current = useRef<HTMLLIElement>(null);
+
+  useLayoutEffect(() => {
+    const box = scroller.current;
+    const row = current.current;
+    if (!box || !row) return;
+    const top = row.getBoundingClientRect().top - box.getBoundingClientRect().top + box.scrollTop;
+    box.scrollTop = top;
+  }, [props.currentStep, props.milestones]);
+
+  return (
+    <div className="milestone-scroll" ref={scroller}>
+      <ol className="milestone-list">
+        {props.milestones.map((row) => (
+          <li
+            key={row.step}
+            ref={row.step === props.currentStep ? current : undefined}
+            className={row.claimed ? "is-claimed" : undefined}
+          >
+            <span className="milestone-step">Stage {row.step}</span>
+            <span>
+              {row.claimed
+                ? "Claimed"
+                : `${row.cost.toLocaleString()} bits given, pays ${row.payout.toLocaleString()}`}
+            </span>
+            {row.prestige ? <span className="milestone-note">{row.prestige}</span> : null}
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+function clockLeft(expiresAt: string, now: number): string {
+  const total = Math.max(0, Math.floor((new Date(expiresAt).getTime() - now) / 1000));
+  const hours = Math.floor(total / 3600);
+  const minutes = Math.floor((total % 3600) / 60);
+  const seconds = total % 60;
+  const pad = (value: number) => String(value).padStart(2, "0");
+  return `${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
+}
+
+function useNow(ticking: boolean): number {
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    if (!ticking) return;
+    const id = window.setInterval(() => setNow(Date.now()), 1000);
+    return () => window.clearInterval(id);
+  }, [ticking]);
+  return now;
+}
+
+function BuffEffects(props: { lines: string[] }) {
+  if (props.lines.length === 0) return null;
+  return (
+    <div className="buff-effects">
+      {props.lines.map((line) => (
+        <p key={line}>{line}</p>
+      ))}
+    </div>
+  );
+}
+
+function BuffBoard(props: { status: Status; effectHome: "shop" | "server" | "together" | null }) {
+  const timed = props.status.shop.length > 0 || props.status.server !== null;
+  const now = useNow(timed);
+  const { status, effectHome } = props;
+  return (
+    <div className="buff-groups">
+      {status.shop.length > 0 ? (
+        <section className="buff-group">
+          <h4>Shop</h4>
+          <ul>
+            {status.shop.map((row) => (
+              <li className="buff-row" key={`${row.name}-${row.seriesName ?? ""}`}>
+                <span>
+                  <strong>{row.name}</strong>
+                  {row.seriesName ? <span className="buff-row__detail">{row.seriesName}</span> : null}
+                </span>
+                <span className="buff-clock">{clockLeft(row.expiresAt, now)}</span>
+              </li>
+            ))}
+          </ul>
+          {effectHome === "shop" ? <BuffEffects lines={status.combined} /> : null}
+        </section>
+      ) : null}
+      {status.server ? (
+        <section className="buff-group">
+          <h4>Server</h4>
+          <ul>
+            {status.server.names.map((name) => (
+              <li className="buff-row" key={name}>
+                <strong>{name}</strong>
+                <span className="buff-clock">{clockLeft(status.server!.expiresAt, now)}</span>
+              </li>
+            ))}
+          </ul>
+          {effectHome === "server" ? <BuffEffects lines={status.combined} /> : null}
+        </section>
+      ) : null}
+      {status.prestige.length > 0 ? (
+        <section className="buff-group">
+          <h4>Prestige</h4>
+          <ul>
+            {status.prestige.map((row) => (
+              <li className="buff-row" key={row.line}>
+                <span>{row.line}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+      {effectHome === "together" ? (
+        <section className="buff-group">
+          <h4>Together</h4>
+          <BuffEffects lines={status.combined} />
+        </section>
+      ) : null}
+    </div>
+  );
+}
 
 function MilestoneMeter(props: { progress: number; milestones: MilestoneRow[] }) {
   const next = props.milestones.find((row) => !row.claimed);
@@ -45,7 +169,9 @@ function MilestoneMeter(props: { progress: number; milestones: MilestoneRow[] })
 export function CyclePanel(props: {
   bits: number;
   fetchApi: (path: string, init?: RequestInit) => Promise<Response>;
+  liveRev?: number;
   onChange?: () => void;
+  onSettled?: (state: "ok" | "down") => void;
 }) {
   const [status, setStatus] = useState<Status | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
@@ -53,12 +179,17 @@ export function CyclePanel(props: {
 
   async function load() {
     const res = await props.fetchApi("/economy/status");
-    if (res.ok) setStatus((await res.json()) as Status);
+    if (res.ok) {
+      setStatus((await res.json()) as Status);
+      props.onSettled?.("ok");
+      return;
+    }
+    props.onSettled?.("down");
   }
 
   useEffect(() => {
     void load();
-  }, [props.fetchApi, props.bits]);
+  }, [props.fetchApi, props.bits, props.liveRev]);
 
   async function claim() {
     setMsg(null);
@@ -89,6 +220,8 @@ export function CyclePanel(props: {
 
   if (!status) return null;
 
+  const upcoming = status.milestones.find((row) => !row.claimed);
+  const step = upcoming ? upcoming.step : status.claimed;
   const groups = [status.shop.length > 0, status.server !== null, status.prestige.length > 0].filter(Boolean).length;
   const effectHome = groups > 1 ? "together" : status.shop.length > 0 ? "shop" : status.server ? "server" : null;
   const anyBuff = groups > 0;
@@ -98,25 +231,13 @@ export function CyclePanel(props: {
       <div className="panel">
         <h3>Milestones</h3>
         <p>
-          Step {status.claimed}. Bar {status.progress.toLocaleString()} bits.
+          You are on stage {step}.
           {status.bitsLeft === null
-            ? " This is the last milestone."
-            : ` ${status.bitsLeft.toLocaleString()} bits left until the next one.`}
+            ? " This is the last stage."
+            : ` ${status.bitsLeft.toLocaleString()} bits left until you reach the next stage.`}
         </p>
         <MilestoneMeter progress={status.progress} milestones={status.milestones} />
-        <ol className="milestone-list">
-          {status.milestones.map((row) => (
-            <li key={row.step} className={row.claimed ? "is-claimed" : undefined}>
-              <span className="milestone-step">Step {row.step}</span>
-              <span>
-                {row.claimed
-                  ? "Claimed"
-                  : `${row.cost.toLocaleString()} bits given, pays ${row.payout.toLocaleString()}`}
-              </span>
-              {row.prestige ? <span className="milestone-note">{row.prestige}</span> : null}
-            </li>
-          ))}
-        </ol>
+        <MilestoneSteps milestones={status.milestones} currentStep={step} />
         {status.canClaim ? (
           <button type="button" onClick={() => void claim()}>
             Claim
@@ -150,62 +271,7 @@ export function CyclePanel(props: {
       </div>
       <div className="panel">
         <h3>Buffs</h3>
-        {status.shop.length > 0 ? (
-          <>
-            <h4>Shop</h4>
-            <ul>
-              {status.shop.map((row) => (
-                <li key={row.name}>
-                  {row.name}
-                  {row.seriesName ? ` (${row.seriesName})` : ""} until {row.expiresAt.replace("T", " ").slice(0, 16)} UTC
-                </li>
-              ))}
-            </ul>
-            {effectHome === "shop" ? (
-              <ul>
-                {status.combined.map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-              </ul>
-            ) : null}
-          </>
-        ) : null}
-        {status.server ? (
-          <>
-            <h4>Server</h4>
-            <p>
-              {status.server.names.join(", ")} until {status.server.expiresAt.replace("T", " ").slice(0, 16)} UTC
-            </p>
-            {effectHome === "server" ? (
-              <ul>
-                {status.combined.map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-              </ul>
-            ) : null}
-          </>
-        ) : null}
-        {status.prestige.length > 0 ? (
-          <>
-            <h4>Prestige</h4>
-            <ul>
-              {status.prestige.map((row) => (
-                <li key={row.line}>{row.line}</li>
-              ))}
-            </ul>
-          </>
-        ) : null}
-        {effectHome === "together" && status.combined.length > 0 ? (
-          <>
-            <h4>Together</h4>
-            <ul>
-              {status.combined.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-            </ul>
-          </>
-        ) : null}
-        {anyBuff ? null : <p>No buffs are on you right now.</p>}
+        {anyBuff ? <BuffBoard status={status} effectHome={effectHome} /> : <p>No buffs are on you right now.</p>}
       </div>
       {msg ? <p>{msg}</p> : null}
     </>

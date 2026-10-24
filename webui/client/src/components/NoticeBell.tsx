@@ -37,7 +37,15 @@ export function NoticeBell(props: { fetchApi: (path: string, init?: RequestInit)
     const fresh = next.filter((notice) => !notice.readAt && !known.current!.has(notice.id));
     for (const notice of next) known.current.add(notice.id);
     if (fresh.length > 0) {
-      setToasts((current) => [...fresh, ...current].slice(0, 3));
+      setToasts((current) => {
+        const next = [...current];
+        for (const notice of fresh) {
+          const index = next.findIndex((row) => row.type === notice.type);
+          if (index >= 0) next[index] = notice;
+          else next.unshift(notice);
+        }
+        return next;
+      });
     }
   }
 

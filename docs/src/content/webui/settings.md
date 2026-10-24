@@ -7,7 +7,7 @@ When you are [signed in](/webui/authentication), **Settings** holds the choices 
 
 ## General
 
-**What should Akira call you?** is one word, up to 15 letters. Akira capitalises the first letter. She uses it in the home greeting and in `/ping` and `/help`. Leave it blank to use your Discord handle.
+**What should Akira call you?** is one word, up to 15 letters. Only the first letter can be a capital. She uses it in the home greeting and in `/ping` and `/help`. Leave it blank to use your Discord handle.
 
 **Button buzz** appears on a phone or tablet that can vibrate, and it is on at first. A press or a menu choice gives a short buzz. The switch is saved on this device.
 

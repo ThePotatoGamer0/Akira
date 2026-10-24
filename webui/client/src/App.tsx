@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { NavLink, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useAuth } from "./hooks/useAuth.js";
+import { ApiDownScreen } from "./components/auth/ApiDownScreen.js";
+import { ReadOnlyBanner } from "./components/ReadOnlyBanner.js";
 import { LoginScreen } from "./components/auth/LoginScreen.js";
 import { VerifyScreen } from "./components/auth/VerifyScreen.js";
 import { SetPasswordScreen } from "./components/auth/SetPasswordScreen.js";
@@ -34,7 +36,19 @@ export function App() {
   const auth = useAuth();
   const location = useLocation();
   const [authView, setAuthView] = useState<AuthView>("login");
+  const [authUsername, setAuthUsername] = useState("");
   const compact = auth.activityLayout === "pip" || auth.activityLayout === "grid";
+  const pokeConnection = useCallback(() => auth.checkConnection({ quiet: true }), [auth.checkConnection]);
+  const readOnly = !auth.apiUp && Boolean(auth.me);
+
+  useEffect(() => {
+    if (!readOnly) return;
+    const previous = document.title;
+    document.title = "Akira is taking a nap";
+    return () => {
+      document.title = previous || "Akira - WebUI";
+    };
+  }, [readOnly]);
 
   useEffect(() => {
     document.documentElement.classList.toggle("webui-activity", auth.isDiscordActivity);
@@ -56,7 +70,7 @@ export function App() {
 
   if (auth.loading) {
     return (
-      <WebUiShell>
+      <WebUiShell roomy>
         <div className="webui-loading" role="status">
           <span className="webui-spinner" aria-hidden="true" />
           <p>Akira is loading…</p>
@@ -67,10 +81,18 @@ export function App() {
 
   if (auth.isDiscordActivity && auth.error) {
     return (
-      <WebUiShell>
+      <WebUiShell roomy>
         <p className="webui-alert" role="alert">
           Could not connect to Discord: {auth.error}
         </p>
+      </WebUiShell>
+    );
+  }
+
+  if (!auth.isDiscordActivity && !auth.me && !auth.apiUp) {
+    return (
+      <WebUiShell roomy>
+        <ApiDownScreen onRetry={pokeConnection} />
       </WebUiShell>
     );
   }
@@ -80,9 +102,11 @@ export function App() {
 
     if (authView === "verify") {
       return (
-        <WebUiShell>
+        <WebUiShell roomy>
           <div className="webui-auth-stack">
             <VerifyScreen
+              username={authUsername}
+              onUsernameChange={setAuthUsername}
               fetchApi={fetchBrowser}
               onVerified={(needs) => {
                 if (needs) setAuthView("setpass");
@@ -98,14 +122,16 @@ export function App() {
     }
     if (authView === "setpass") {
       return (
-        <WebUiShell>
+        <WebUiShell roomy>
           <SetPasswordScreen fetchApi={fetchBrowser} onDone={() => void auth.refreshMe()} />
         </WebUiShell>
       );
     }
     return (
-      <WebUiShell>
+      <WebUiShell roomy>
         <LoginScreen
+          username={authUsername}
+          onUsernameChange={setAuthUsername}
           fetchApi={fetchBrowser}
           onLoggedIn={() => void auth.refreshMe()}
           onNeedVerify={() => setAuthView("verify")}
@@ -165,35 +191,25 @@ export function App() {
             Channel <span className="beta-tag">BETA</span>
           </NavLink>
         )}
-        {me.isAdmin ? (
+        {me.isAdmin && !readOnly ? (
           <NavLink to="/admin" className={({ isActive }) => (isActive ? "active" : "")}>
             Admin
           </NavLink>
         ) : null}
       </nav>
+      {readOnly ? (
+        <ReadOnlyBanner
+          onPoke={() => void pokeConnection()}
+          message={
+            location.pathname === "/settings"
+              ? "Akira is napping. Some settings are unavailable."
+              : undefined
+          }
+        />
+      ) : null}
       <div className="webui-main">
         <Routes>
           <Route path="/" element={<Home me={me} showChannel={!auth.isDiscordActivity} />} />
-          <Route path="/collection" element={<CollectionPage me={me} fetchApi={auth.fetchApi} />} />
-          <Route
-            path="/economy"
-            element={
-              <EconomyPage
-                me={me}
-                fetchApi={auth.fetchApi}
-                onRefreshMe={() => void auth.refreshMe()}
-              />
-            }
-          />
-          <Route path="/stats" element={<StatsPage me={me} fetchApi={auth.fetchApi} />} />
-          <Route path="/leaderboard" element={<Navigate to="/stats" replace />} />
-          <Route path="/personalise" element={<Navigate to="/settings" replace />} />
-          <Route
-            path="/settings"
-            element={
-              <SettingsPage me={me} fetchApi={auth.fetchApi} onSaved={() => void auth.refreshMe()} />
-            }
-          />
           <Route
             path="/channel"
             element={
@@ -203,11 +219,37 @@ export function App() {
           <Route
             path="/admin"
             element={
-              me.isAdmin ? (
+              me.isAdmin && !readOnly ? (
                 <AdminPage fetchApi={auth.fetchApi} />
               ) : (
                 <Navigate to="/" replace />
               )
+            }
+          />
+          <Route path="/collection" element={<CollectionPage me={me} fetchApi={auth.fetchApi} liveRev={auth.liveRev} />} />
+          <Route
+            path="/economy"
+            element={
+              <EconomyPage
+                me={me}
+                fetchApi={auth.fetchApi}
+                liveRev={auth.liveRev}
+                onRefreshMe={() => void auth.refreshMe()}
+              />
+            }
+          />
+          <Route path="/stats" element={<StatsPage me={me} fetchApi={auth.fetchApi} liveRev={auth.liveRev} />} />
+          <Route path="/leaderboard" element={<Navigate to="/stats" replace />} />
+          <Route path="/personalise" element={<Navigate to="/settings" replace />} />
+          <Route
+            path="/settings"
+            element={
+              <SettingsPage
+                me={me}
+                fetchApi={auth.fetchApi}
+                readOnly={readOnly}
+                onSaved={() => void auth.refreshMe()}
+              />
             }
           />
           <Route path="*" element={<Navigate to="/" replace />} />

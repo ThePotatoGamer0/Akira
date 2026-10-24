@@ -19,7 +19,10 @@ const log: ChatLog = {
         {
           filename: "strip.gif",
           url: "https://cdn.discordapp.com/attachments/1/strip.gif",
+          proxy_url: "https://media.discordapp.net/attachments/1/strip.gif",
           content_type: "image/gif",
+          width: 800,
+          height: 400,
           size: 2048,
         },
       ],
@@ -88,6 +91,9 @@ test("a channel log becomes discord-shaped html", () => {
   assert.match(html, /&lt;script&gt;alert\(1\)&lt;\/script&gt;/);
   assert.doesNotMatch(html, /<script>/);
   assert.match(html, /class="dlog-attachment-image"/);
+  assert.match(html, /media\.discordapp\.net\/attachments\/1\/strip\.gif/);
+  assert.match(html, /width=400/);
+  assert.match(html, /fetchpriority="high"/);
   assert.match(html, /class="dlog-embed"/);
   assert.match(html, /Three cards/);
   assert.match(html, /other\.png/);

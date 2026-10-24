@@ -1,8 +1,12 @@
-import { SlashCommandBuilder, type ChatInputCommandInteraction, type Client } from "discord.js";
+import { EmbedBuilder, SlashCommandBuilder, type ChatInputCommandInteraction, type Client } from "discord.js";
 import { playerSummary } from "../../game/cards.js";
 import { akiraAddressName } from "../../utils/akira-address-name.js";
 import type { AkiraCommand } from "../../types/commands.js";
 import { sendGameError } from "../reply.js";
+
+function count(value: number): string {
+  return value.toLocaleString("en-US");
+}
 
 export const userinfo: AkiraCommand = {
   data: new SlashCommandBuilder()
@@ -21,18 +25,22 @@ export const userinfo: AkiraCommand = {
         return;
       }
       const name = akiraAddressName(summary.user);
-      await interaction.reply({
-        content: [
-          `**${name}**`,
-          `Bits: ${summary.user.bits}`,
-          `Cards: ${summary.cards}`,
-          `Prestige: ${summary.user.prestigeLevel}`,
-          `Milestones this cycle: ${summary.user.milestoneCount}`,
-          `Bits given this cycle: ${summary.user.milestoneProgress}`,
-          `Daily bonus: ${summary.user.passiveBitsBonus}`,
-        ].join("\n"),
-        ephemeral: true,
-      });
+      const embed = new EmbedBuilder()
+        .setTitle("User Info")
+        .setColor("#2b2d31")
+        .setDescription(
+          [
+            `**${name}** · <@${target.id}>`,
+            "",
+            `**Bits** · ${count(summary.user.bits)}`,
+            `**Cards** · ${count(summary.cards)}`,
+            `**Prestige** · ${count(summary.user.prestigeLevel)}`,
+            `**Stages this cycle** · ${count(summary.user.milestoneCount)}`,
+            `**Bits given this cycle** · ${count(summary.user.milestoneProgress)}`,
+            `**Daily bonus** · ${count(summary.user.passiveBitsBonus)}`,
+          ].join("\n"),
+        );
+      await interaction.reply({ embeds: [embed] });
     } catch (err) {
       await sendGameError(interaction, err);
     }
