@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Common, DiscordSDK, Events, patchUrlMappings } from "@discord/embedded-app-sdk";
-import { apiFetch } from "../lib/api.js";
+import { API_PROXY_PREFIX, apiFetch, onDiscordActivityProxy } from "../lib/api.js";
 
 /** Discord's small activity frames. Focused is the full activity. */
 export type ActivityLayout = "focused" | "pip" | "grid";
@@ -18,18 +18,17 @@ function devLayoutOverride(): ActivityLayout | null {
   return null;
 }
 
-/** Must match the Activities → URL Mappings prefix whose target is the API host. */
-const API_PROXY_PREFIX = "/api";
 let apiProxyPatched = false;
 
 /**
  * Inside Discord the page is served from discordsays.com, and that proxy
- * refuses any request to another host. Rewrite the API address onto /api,
- * which the portal mapping forwards to the real API.
+ * refuses any request to another host. Rewrite leftover API-host URLs onto /api,
+ * which the portal mapping forwards to the real API. Fetches already use /api
+ * via `apiUrl` when this host is discordsays.com.
  */
 function patchActivityApi(): void {
   if (apiProxyPatched) return;
-  if (!window.location.hostname.endsWith("discordsays.com")) return;
+  if (!onDiscordActivityProxy()) return;
   const apiBase = (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
   if (!apiBase) return;
   let target: string;
@@ -41,6 +40,8 @@ function patchActivityApi(): void {
   patchUrlMappings([{ prefix: API_PROXY_PREFIX, target }], { patchSrcAttributes: true });
   apiProxyPatched = true;
 }
+
+if (typeof window !== "undefined") patchActivityApi();
 
 type State =
   | { status: "idle" | "loading" }

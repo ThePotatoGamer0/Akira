@@ -83,38 +83,41 @@ export function useAuth() {
       return false;
     }
     setApiUp(true);
-    try {
-      await refreshMe();
-    } catch {
-      setMe((current) => current ?? cached);
-    }
-    if (!opts?.quiet) setLoading(false);
-    return true;
-  }, [refreshMe]);
-
-  useEffect(() => {
-    if (isDiscordActivity) return;
-    let cancelled = false;
-    void (async () => {
-      setLoading(true);
-      const cached = readCachedMe();
-      if (cached) {
-        setMe(cached);
-        setLoading(false);
-      }
-      const up = await apiIsUp();
-      if (cancelled) return;
-      if (!up) {
-        setApiUp(false);
-        setMe((current) => current ?? cached);
-        setLoading(false);
-        return;
-      }
-      setApiUp(true);
+    if (!isDiscordActivity || activityToken) {
       try {
         await refreshMe();
       } catch {
-        if (!cancelled) setMe((current) => current ?? cached);
+        setMe((current) => current ?? cached);
+      }
+    }
+    if (!opts?.quiet) setLoading(false);
+    return true;
+  }, [refreshMe, isDiscordActivity, activityToken]);
+
+  useEffect(() => {
+    let cancelled = false;
+    void (async () => {
+      if (!isDiscordActivity) {
+        setLoading(true);
+        const cached = readCachedMe();
+        if (cached) {
+          setMe(cached);
+          setLoading(false);
+        }
+      }
+      const up = await apiIsUp();
+      if (cancelled) return;
+      setApiUp(up);
+      if (isDiscordActivity) return;
+      if (!up) {
+        setMe((current) => current ?? readCachedMe());
+        setLoading(false);
+        return;
+      }
+      try {
+        await refreshMe();
+      } catch {
+        if (!cancelled) setMe((current) => current ?? readCachedMe());
       }
       if (!cancelled) setLoading(false);
     })();
@@ -124,12 +127,12 @@ export function useAuth() {
   }, [isDiscordActivity, refreshMe]);
 
   useEffect(() => {
-    if (isDiscordActivity || apiUp || loading) return;
+    if (apiUp || loading) return;
     const id = window.setInterval(() => {
       void checkConnection({ quiet: true });
     }, 8000);
     return () => window.clearInterval(id);
-  }, [isDiscordActivity, apiUp, loading, checkConnection]);
+  }, [apiUp, loading, checkConnection]);
 
   useEffect(() => {
     if (sdkState.status === "ready") {
