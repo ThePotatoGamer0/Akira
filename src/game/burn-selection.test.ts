@@ -64,15 +64,15 @@ test("one card pays the boosted burn rate", async () => {
   assert.equal(await prisma.card.findUnique({ where: { id: "common1" } }), null);
 });
 
-test("a batch pays the plain table and leaves a card that is in a trade", async () => {
+test("a batch pays the boosted rate and leaves a card that is in a trade", async () => {
   const quote = await quoteOwnedBurn("owner", "owner", ["common2", "rare001", "held001"], null);
-  assert.equal(quote.awarded, 120);
+  assert.equal(quote.awarded, 240);
   assert.equal(quote.skipped, 1);
-  assert.equal(quote.boosted, false);
+  assert.equal(quote.boosted, true);
   const result = await burnOwnedCards("owner", "owner", ["common2", "rare001", "held001"], null);
   assert.deepEqual(result.burning.sort(), ["common2", "rare001"]);
-  assert.equal(result.awarded, 120);
-  assert.equal(result.balance, 170);
+  assert.equal(result.awarded, 240);
+  assert.equal(result.balance, 290);
   assert.equal(await prisma.card.findUnique({ where: { id: "held001" } }) !== null, true);
 });
 

@@ -123,6 +123,11 @@ export function burnPayout(quality: string): number {
   return BURN_BITS.COMMON;
 }
 
+/** Shop Burn value and prestige burn percent, rounded per card. */
+export function scaledBurnPayout(quality: string, multiplier: number): number {
+  return Math.round(burnPayout(quality) * multiplier);
+}
+
 export function dailyPayout(passiveBitsBonus: number): number {
   return DAILY_BITS + Math.max(0, passiveBitsBonus);
 }

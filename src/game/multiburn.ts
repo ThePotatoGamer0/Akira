@@ -1,7 +1,8 @@
 import { prisma } from "../db/client.js";
-import { burnPayout, QUALITIES, type Quality } from "./balance.js";
+import { QUALITIES, scaledBurnPayout, type Quality } from "./balance.js";
 import { qualityStars } from "./display.js";
 import { GameError } from "./errors.js";
+import { activeEffects } from "./live-buffs.js";
 import { assertTagName } from "./tags.js";
 import { cardsHeldInOpenTransfers } from "./transfer.js";
 import { ensureUser, findUserByDiscordId } from "./users.js";
@@ -17,6 +18,7 @@ export type TaggedBurnPlan = {
   emoji: string;
   cards: TaggedBurnCard[];
   held: number;
+  awarded: number;
 };
 
 const RANK: Record<Quality, number> = {
@@ -47,6 +49,7 @@ export function multiburnConfirmText(plan: TaggedBurnPlan): string {
   const lines = [
     `Burning **${count}** ${cardWord} tagged ${plan.emoji} **${plan.tagName}**.`,
     rarestSentence(plan.cards),
+    `That pays **${plan.awarded}** bits.`,
   ];
   if (plan.held > 0) {
     const stays = plan.held === 1 ? "card stays" : "cards stay";
@@ -68,7 +71,11 @@ function rarestSentence(cards: readonly TaggedBurnCard[]): string {
   return `The rarest are ${stars} ${shown[0]}, ${shown[1]}, and ${shown[2]}.`;
 }
 
-export async function planTaggedBurn(discordId: string, rawName: string): Promise<TaggedBurnPlan> {
+export async function planTaggedBurn(
+  discordId: string,
+  rawName: string,
+  guildId: string | null = null,
+): Promise<TaggedBurnPlan> {
   const name = assertTagName(rawName);
   const user = await findUserByDiscordId(discordId);
   if (!user) throw new GameError("missing", `You don't have a tag named **${name}**.`);
@@ -88,7 +95,9 @@ export async function planTaggedBurn(discordId: string, rawName: string): Promis
       characterName: card.variant.character.name,
     }));
   if (cards.length === 0) throw new GameError("busy", "Those cards are in an open trade.");
-  return { tagName: tag.name, emoji: tag.emoji, cards, held: owned.length - cards.length };
+  const multiplier = (await activeEffects(user.id, guildId)).burnMultiplier;
+  const awarded = cards.reduce((sum, card) => sum + scaledBurnPayout(card.quality, multiplier), 0);
+  return { tagName: tag.name, emoji: tag.emoji, cards, held: owned.length - cards.length, awarded };
 }
 
 export async function burnTaggedCards(
@@ -96,6 +105,7 @@ export async function burnTaggedCards(
   username: string,
   rawName: string,
   cardIds: string[],
+  guildId: string | null = null,
 ): Promise<{ burned: number; awarded: number; balance: number; skipped: number; emoji: string; tagName: string }> {
   const name = assertTagName(rawName);
   const user = await ensureUser(discordId, username);
@@ -109,7 +119,8 @@ export async function burnTaggedCards(
     if (owned.length > 0) throw new GameError("busy", "Those cards are in an open trade.");
     throw new GameError("empty", "Those cards aren't yours to burn anymore.");
   }
-  const awarded = burning.reduce((sum, card) => sum + burnPayout(card.quality), 0);
+  const multiplier = (await activeEffects(user.id, guildId)).burnMultiplier;
+  const awarded = burning.reduce((sum, card) => sum + scaledBurnPayout(card.quality, multiplier), 0);
   const burnIds = burning.map((card) => card.id);
   const updated = await prisma.$transaction(async (tx) => {
     await tx.card.deleteMany({ where: { id: { in: burnIds }, ownerId: user.id } });

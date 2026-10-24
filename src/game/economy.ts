@@ -1,5 +1,5 @@
 import { prisma } from "../db/client.js";
-import { burnPayout, DAILY_COOLDOWN_MS, dailyPayout, formatRemaining, type Quality } from "./balance.js";
+import { DAILY_COOLDOWN_MS, dailyPayout, formatRemaining, scaledBurnPayout, type Quality } from "./balance.js";
 import { isCardCode } from "./codes.js";
 import { activeEffects } from "./live-buffs.js";
 import { ensureCardImage } from "./compose.js";
@@ -75,7 +75,7 @@ function normalizeBurnIds(rawIds: string[]): string[] {
   return ids;
 }
 
-/** One card pays the burn rate, including Burn value and prestige. A batch pays the plain table. */
+/** Burn value and prestige apply to every card, one or a pile. */
 async function planOwnedBurn(
   discordId: string,
   username: string,
@@ -97,18 +97,14 @@ async function planOwnedBurn(
   if (burning.length === 0) {
     throw new GameError("busy", ids.length === 1 ? "That card is in an open trade." : "Those cards are in an open trade.");
   }
-  const single = ids.length === 1;
-  const multiplier = single ? (await activeEffects(user.id, guildId)).burnMultiplier : 1;
-  const awarded = burning.reduce((sum, id) => {
-    const payout = burnPayout(mine.get(id)?.quality ?? "COMMON");
-    return sum + (single ? Math.round(payout * multiplier) : payout);
-  }, 0);
+  const multiplier = (await activeEffects(user.id, guildId)).burnMultiplier;
+  const awarded = burning.reduce((sum, id) => sum + scaledBurnPayout(mine.get(id)?.quality ?? "COMMON", multiplier), 0);
   return {
     userId: user.id,
     burning,
     awarded,
     skipped: ids.length - burning.length,
-    boosted: single && multiplier !== 1,
+    boosted: multiplier !== 1,
   };
 }
 
@@ -131,7 +127,7 @@ export async function burnOwnedCards(
   const ids = normalizeBurnIds(rawIds);
   const plan = await planOwnedBurn(discordId, username, ids, guildId);
   const user = await ensureUser(discordId, username);
-  const multiplier = ids.length === 1 ? (await activeEffects(user.id, guildId)).burnMultiplier : 1;
+  const multiplier = (await activeEffects(user.id, guildId)).burnMultiplier;
   const updated = await prisma.$transaction(async (tx) => {
     const fresh = await tx.card.findMany({
       where: { id: { in: plan.burning }, ownerId: plan.userId },
@@ -140,11 +136,7 @@ export async function burnOwnedCards(
     if (fresh.length === 0) {
       throw new GameError("empty", "Those cards aren't yours to burn anymore.");
     }
-    const boostEach = ids.length === 1;
-    const awarded = fresh.reduce((sum, card) => {
-      const payout = burnPayout(card.quality);
-      return sum + (boostEach ? Math.round(payout * multiplier) : payout);
-    }, 0);
+    const awarded = fresh.reduce((sum, card) => sum + scaledBurnPayout(card.quality, multiplier), 0);
     const burnIds = fresh.map((card) => card.id);
     await tx.card.deleteMany({ where: { id: { in: burnIds }, ownerId: plan.userId } });
     const current = await tx.user.findUnique({ where: { id: plan.userId } });
@@ -161,7 +153,7 @@ export async function burnOwnedCards(
       burning: burnIds,
       awarded,
       skipped: ids.length - burnIds.length,
-      boosted: boostEach && multiplier !== 1,
+      boosted: multiplier !== 1,
     };
   });
   return {

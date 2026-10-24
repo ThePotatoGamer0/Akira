@@ -46,6 +46,9 @@ before(async () => {
   await prisma.transferOffer.create({
     data: { id: "offer1", kind: "give", fromUserId: owner.id, toUserId: other.id, fromCardId: "held001", status: "pending" },
   });
+  await prisma.buff.create({
+    data: { userId: owner.id, kind: "burn_value", expiresAt: new Date(Date.now() + 60_000) },
+  });
 });
 
 after(async () => {
@@ -58,6 +61,7 @@ test("several cards at the top quality are all named", () => {
     tagName: "fav",
     emoji: "⭐",
     held: 0,
+    awarded: 1000,
     cards: [
       { id: "a", quality: "LEGENDARY", characterName: "Izuku Midoriya" },
       { id: "b", quality: "LEGENDARY", characterName: "Katsuki Bakugou" },
@@ -73,13 +77,15 @@ test("a tag burn names the rarest card and skips one in a transfer", async () =>
   assert.equal(plan.held, 1);
   assert.match(multiburnConfirmText(plan), /Burning \*\*2\*\* cards tagged ⭐ \*\*fav\*\*/);
   assert.match(multiburnConfirmText(plan), /The rarest is ★★★★★ \*\*Izuku Midoriya\*\*/);
+  assert.match(multiburnConfirmText(plan), /That pays \*\*1040\*\* bits/);
+  assert.equal(plan.awarded, 1040);
   const result = await burnTaggedCards("owner", "owner", "fav", plan.cards.map((card) => card.id));
   assert.equal(result.burned, 2);
-  assert.equal(result.awarded, 520);
+  assert.equal(result.awarded, 1040);
   assert.equal(result.skipped, 0);
   assert.equal(await prisma.card.count({ where: { ownerId: (await prisma.user.findUnique({ where: { discordId: "owner" } }))!.id } }), 1);
   const owner = await prisma.user.findUnique({ where: { discordId: "owner" } });
-  assert.equal(owner?.bits, 520);
+  assert.equal(owner?.bits, 1040);
   assert.equal(owner?.lastGrabbedCardId, null);
   assert.equal((await prisma.card.findUnique({ where: { id: "held001" } }))?.tag, "fav");
 });

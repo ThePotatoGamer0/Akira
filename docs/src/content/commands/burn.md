@@ -37,9 +37,9 @@ kb
 ## Tips
 
 - Burns are permanent.
-- [Burn value](/commands/shop) doubles this payout while it is on you. A prestige percent adds a little more on the same burn.
-- [Multiburn](/commands/multiburn) burns every card on a tag after you confirm. It pays the table above, not the doubled rate.
-- The [collection page](/webui/collection) can burn the card you are looking at, or several you select. One card pays this table. A batch pays the plain rates.
+- [Burn value](/commands/shop) doubles this payout while it is on you. A prestige percent adds a little more on the same burn. That applies to one card, a [multiburn](/commands/multiburn), and a [collection](/webui/collection) batch.
+- [Multiburn](/commands/multiburn) burns every card on a tag after you confirm.
+- The [collection page](/webui/collection) can burn the card you are looking at, or several you select.
 
 ## See also
 

@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-chika-takiishi",
+  "name": "Chika Takiishi",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-chika-takiishi-base",
+      "name": "Chika Takiishi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

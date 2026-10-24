@@ -5,9 +5,9 @@ command: multiburn
 shortcuts: mb
 ---
 
-**/multiburn** burns every card you own that has one tag. Akira asks first. The confirmation says how many cards will burn and names the rarest one. Press **Yes** to burn them. Press **No** to leave them.
+**/multiburn** burns every card you own that has one tag. Akira asks first. The confirmation says how many cards will burn, names the rarest one, and shows the bits. Press **Yes** to burn them. Press **No** to leave them.
 
-Cards in an open give, trade, or multitrade are left alone. The bits are the plain [burn](/commands/burn) table: 20, 50, 100, 200, or 500 from the quality. Burn value and a burn prestige percent apply to a single `/burn`, not to this pile.
+Cards in an open give, trade, or multitrade are left alone. Bits follow the [burn](/commands/burn) table: 20, 50, 100, 200, or 500 from the quality. [Burn value](/commands/shop) and a burn prestige percent apply the same as `/burn`.
 
 ## Parameters
 

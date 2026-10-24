@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-tasuku-tsubakino",
+  "name": "Tasuku Tsubakino",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-tasuku-tsubakino-base",
+      "name": "Tasuku Tsubakino",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}

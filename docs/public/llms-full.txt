@@ -85,7 +85,7 @@ Shows the framed card, code, stars, print, frame, series, and character.
 
 ### /burn <card_id>
 Parameters: required 7 character code. Alias: `b`.
-Destroys an owned card and plays the burn animation. Bits: Common 10, Uncommon 25, Rare 50, Epic 100, Legendary 250.
+Destroys an owned card and plays the burn animation. Bits: Common 20, Uncommon 50, Rare 100, Epic 200, Legendary 500. Burn value and prestige apply.
 
 ### /lookup <name>
 Parameters: `name` required on slash (character, series, or alias). Aliases: `lu`, `search`, `find`.
@@ -155,7 +155,7 @@ No codes untags the last grabbed card. The line goes back to ◾.
 
 ### /multiburn tag_name
 Parameters: required `tag_name`. Alias: `mb`.
-Burns every card on that tag. Asks first: the confirmation says how many cards and names the rarest. Cards in an open give or trade are left alone. Pays the same bits as burn.
+Burns every card on that tag. Asks first: the confirmation says how many cards, names the rarest, and shows the bits. Cards in an open give or trade are left alone. Pays the same bits as burn, including Burn value and prestige.
 
 ### Not finished
 These reply that the feature is not wired up. They take no parameters.
@@ -163,7 +163,7 @@ These reply that the feature is not wired up. They take no parameters.
 
 ### /shop
 Parameters: none. Aliases: `is`, `itemshop`.
-Opens an embed of the first personal buff, with previous, next, and buy. There is no `/shop buy`. Buying starts a timer. Buying again extends the time left. The seven buffs are drop cooldown (400 bits, 24h, 10 minutes), grab cooldown (350, 12h, 2 minutes 30 seconds), burn value (300, 24h, `/burn` pays double), four cards (500, 24h), shiny luck (600, 24h, mints 1 in 51), featured series (450, 24h, that series is twice as likely and stays locked to the series shown at purchase), and quality over quantity (500, 24h, one card, and only main characters can appear).
+Opens an embed of the first personal buff, with previous, next, and buy. There is no `/shop buy`. Buying starts a timer. Buying again extends the time left. The seven buffs are drop cooldown (400 bits, 24h, 10 minutes), grab cooldown (350, 12h, 2 minutes 30 seconds), burn value (300, 24h, burns pay double), four cards (500, 24h), shiny luck (600, 24h, mints 1 in 51), featured series (450, 24h, that series is twice as likely and stays locked to the series shown at purchase), and quality over quantity (500, 24h, one card, and only main characters can appear).
 
 ### /pool
 `show` or `give` with a required bit amount. `apool` is show. `apool give 200` moves 200 bits into the server pot and the player's milestone bar.
@@ -183,7 +183,7 @@ Parameters: none. Always says how far the next milestone is and what waiting wou
 ## Economy
 
 ### Bits
-Bits are the only currency. Grabbing pays 5. Daily pays 100, plus any bonus already stored on the profile, once every 24 hours. New prestiges do not add to daily. Burning one card pays 10, 25, 50, 100, or 250 by quality. Burn value doubles a single `/burn`. Multiburn pays the plain table.
+Bits are the only currency. Grabbing pays 5. Daily pays 100, plus any bonus already stored on the profile, once every 24 hours. New prestiges do not add to daily. Burning pays 20, 50, 100, 200, or 500 by quality. Burn value and prestige apply to `/burn`, multiburn, and a collection batch.
 
 Bits leave the wallet in two ways. The shop buys a personal timed buff. A pool gift enters the server pot and the giver's milestone bar. Shop purchases do not fill the bar. Cards, tags, and frames are never wiped by spending or prestiging.
 
