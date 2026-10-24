@@ -1,0 +1,14 @@
+{
+  "id": "wind-breaker-yamato-endou",
+  "name": "Yamato Endou",
+  "gender": "Male",
+  "cards": [
+    {
+      "id": "wind-breaker-yamato-endou-base",
+      "name": "Yamato Endou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ],
+  "role": "SUPPORTING"
+}
