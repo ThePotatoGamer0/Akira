@@ -19,7 +19,7 @@ command: milestone
 | 9 | 64,000 | 18,000 |
 | 10 | 128,000 | 30,000 |
 
-It also says which step you are on, how many bits are left until the next one, and which prestige buffs you would keep if you prestiged right now. A bar at the top shows how full the current step is.
+The reply is an embed. It says which step the bar is filling, how many bits are left until the next one, and which prestige buffs you would keep if you prestiged right now. A bar at the top shows how full the current step is. From step 6 the prestige sentence sits on the line under that step.
 
 **/milestone claim** takes the next step when your bar has enough. Akira pays those bits immediately. The rest of the bar stays. Claiming does not stamp a prestige buff.
 

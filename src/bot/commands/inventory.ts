@@ -1,10 +1,15 @@
-import { SlashCommandBuilder, type ChatInputCommandInteraction, type Client } from "discord.js";
+import { EmbedBuilder, SlashCommandBuilder, type ChatInputCommandInteraction, type Client } from "discord.js";
 import { formatRemaining } from "../../game/balance.js";
 import { effectHome } from "../../game/buffs.js";
 import { economySnapshot } from "../../game/live-buffs.js";
 import { ensureUser } from "../../game/users.js";
 import type { AkiraCommand } from "../../types/commands.js";
 import { sendGameError } from "../reply.js";
+
+function leftLabel(expiresAt: string): string {
+  const left = formatRemaining(new Date(expiresAt).getTime() - Date.now());
+  return left === "ready" ? "ending now" : `${left} left`;
+}
 
 export const inventory: AkiraCommand = {
   data: new SlashCommandBuilder().setName("inventory").setDescription("See your shop, server, and prestige buffs"),
@@ -17,34 +22,35 @@ export const inventory: AkiraCommand = {
         server: view.server !== null,
         prestige: view.prestige.length,
       });
-      const lines: string[] = [];
+      const lines: string[] = [`<@${interaction.user.id}>`];
       if (view.shop.length > 0) {
-        lines.push("**Shop**");
+        lines.push("", "**Shop**");
         for (const row of view.shop) {
-          const left = formatRemaining(new Date(row.expiresAt).getTime() - Date.now());
           const series = row.seriesName ? ` (${row.seriesName})` : "";
-          lines.push(`${row.name}${series}: ${left} left`);
+          lines.push(`**${row.name}**${series} · ${leftLabel(row.expiresAt)}`);
         }
         if (home === "shop") lines.push(...view.combined);
       }
       if (view.server) {
-        lines.push("**Server**");
-        const left = formatRemaining(new Date(view.server.expiresAt).getTime() - Date.now());
-        lines.push(`${view.server.names.join(", ")}: ${left} left`);
+        lines.push("", "**Server**");
+        const left = leftLabel(view.server.expiresAt);
+        for (const name of view.server.names) lines.push(`**${name}** · ${left}`);
         if (home === "server") lines.push(...view.combined);
       }
       if (view.prestige.length > 0) {
-        lines.push("**Prestige**");
+        lines.push("", "**Prestige**");
         for (const row of view.prestige) lines.push(row.line);
       }
       if (home === "together" && view.combined.length > 0) {
-        lines.push("**Together**");
+        lines.push("", "**Together**");
         lines.push(...view.combined);
       }
-      await interaction.reply({
-        content: lines.length > 0 ? lines.join("\n") : "No buffs are on you right now.",
-        ephemeral: true,
-      });
+      if (lines.length === 1) lines.push("", "No buffs are on you right now.");
+      const embed = new EmbedBuilder()
+        .setTitle("Inventory")
+        .setColor("#2b2d31")
+        .setDescription(lines.join("\n"));
+      await interaction.reply({ embeds: [embed] });
     } catch (err) {
       await sendGameError(interaction, err);
     }

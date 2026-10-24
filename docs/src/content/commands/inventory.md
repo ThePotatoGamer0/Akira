@@ -5,9 +5,9 @@ command: inventory
 shortcuts: i, inv, items
 ---
 
-**/inventory** lists every buff on you. Shop, server, and prestige are separate. A source with nothing is left out. The effect sentence sits under the one source that caused it. **Together** appears only when more than one source is on, and that heading is the combined result.
+**/inventory** replies with an embed that lists every buff on you. Shop, server, and prestige are separate. A source with nothing is left out. The effect sentence sits under the one source that caused it. **Together** appears only when more than one source is on, and that heading is the combined result.
 
-Shop rows show the time left. A featured series row also names the series you locked in. Server rows show the buffs chosen at the last midnight and when they end. Prestige rows show each percent and how many times it has stacked, such as burns paying 2% more when you have taken that stamp twice.
+Shop and server each put one buff on its own line, with the time left on that line. A featured series row also names the series you locked in. Server lines are the buffs chosen at the last midnight. Prestige rows show each percent and how many times it has stacked, such as burns paying 2% more when you have taken that stamp twice.
 
 The Economy page uses the same groups and the same sentences.
 

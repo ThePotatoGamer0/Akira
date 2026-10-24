@@ -89,6 +89,8 @@ export function CyclePanel(props: {
 
   if (!status) return null;
 
+  const upcoming = status.milestones.find((row) => !row.claimed);
+  const step = upcoming ? upcoming.step : status.claimed;
   const groups = [status.shop.length > 0, status.server !== null, status.prestige.length > 0].filter(Boolean).length;
   const effectHome = groups > 1 ? "together" : status.shop.length > 0 ? "shop" : status.server ? "server" : null;
   const anyBuff = groups > 0;
@@ -98,7 +100,7 @@ export function CyclePanel(props: {
       <div className="panel">
         <h3>Milestones</h3>
         <p>
-          Step {status.claimed}. Bar {status.progress.toLocaleString()} bits.
+          The bar is on step {step}.
           {status.bitsLeft === null
             ? " This is the last milestone."
             : ` ${status.bitsLeft.toLocaleString()} bits left until the next one.`}
@@ -173,9 +175,13 @@ export function CyclePanel(props: {
         {status.server ? (
           <>
             <h4>Server</h4>
-            <p>
-              {status.server.names.join(", ")} until {status.server.expiresAt.replace("T", " ").slice(0, 16)} UTC
-            </p>
+            <ul>
+              {status.server.names.map((name) => (
+                <li key={name}>
+                  {name} until {status.server?.expiresAt.replace("T", " ").slice(0, 16)} UTC
+                </li>
+              ))}
+            </ul>
             {effectHome === "server" ? (
               <ul>
                 {status.combined.map((line) => (
