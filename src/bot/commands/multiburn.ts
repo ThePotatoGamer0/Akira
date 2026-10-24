@@ -21,6 +21,7 @@ type PendingBurn = {
   discordId: string;
   tagName: string;
   cardIds: string[];
+  guildId: string | null;
   expiresAt: number;
 };
 
@@ -56,11 +57,16 @@ export const multiburn: AkiraCommand = {
     .addStringOption((option) => option.setName("tag_name").setDescription("The tag").setRequired(true)),
   execute: async (interaction: ChatInputCommandInteraction, _client: Client) => {
     try {
-      const plan = await planTaggedBurn(interaction.user.id, interaction.options.getString("tag_name", true));
+      const plan = await planTaggedBurn(
+        interaction.user.id,
+        interaction.options.getString("tag_name", true),
+        interaction.guildId,
+      );
       const token = remember({
         discordId: interaction.user.id,
         tagName: plan.tagName,
         cardIds: plan.cards.map((card) => card.id),
+        guildId: interaction.guildId,
         expiresAt: Date.now() + WINDOW_MS,
       });
       await interaction.reply(confirmPayload(token, multiburnConfirmText(plan)));
@@ -92,7 +98,13 @@ export async function handleMultiburnButton(interaction: ButtonInteraction): Pro
   }
   await interaction.deferUpdate();
   try {
-    const result = await burnTaggedCards(interaction.user.id, interaction.user.username, saved.tagName, saved.cardIds);
+    const result = await burnTaggedCards(
+      interaction.user.id,
+      interaction.user.username,
+      saved.tagName,
+      saved.cardIds,
+      saved.guildId,
+    );
     await interaction.editReply({ content: burnedLine(result), embeds: [], components: [] });
   } catch (err) {
     const content = err instanceof GameError

@@ -19,7 +19,7 @@ Buying starts the clock. Buying the same buff again adds the duration onto the t
 | --- | --- | --- | --- |
 | Drop cooldown | 400 | 24 hours | Your drop wait is 10 minutes instead of 20. |
 | Grab cooldown | 350 | 12 hours | Your grab wait is 2 minutes 30 seconds instead of 5. |
-| Burn value | 300 | 24 hours | `/burn` pays double. |
+| Burn value | 300 | 24 hours | Burns pay double. |
 | Four cards | 500 | 24 hours | Your drop has four cards instead of three. |
 | Shiny luck | 600 | 24 hours | Mints appear 1 in 51 cards instead of 1 in 100. |
 | Featured series | 450 | 24 hours | One series is twice as likely in your drops. |

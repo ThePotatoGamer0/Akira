@@ -16,7 +16,7 @@ When you are [signed in](/webui/authentication), your cards live under **Collect
 - The grid arrives **16 cards at a time**. Page buttons step through the rest, 32 cards a page. Continuous scrolling in Settings removes those buttons and keeps loading 16 at a time.
 - The picture is the framed card. A card with its own frame keeps that one. The rest use your frame from Settings when you have set one, and the server frame otherwise. The first time a card is opened, Akira draws that image, so it can take a moment. Later opens use the saved picture.
 - **Click** a card to focus it. From there you can change its frame, set its tag, or **burn** it. A legendary card can switch to its shiny animation. Burning plays the flame, then the card is gone and the bits are yours.
-- **Select** ticks cards instead of opening them. Tag the ones you picked, give them one frame, or burn them together. One card pays the same as [**/burn**](/commands/burn), including Burn value. Several cards pay the plain rates, the same as [multiburn](/commands/multiburn). Akira asks before anything is destroyed. A card in an open trade stays put.
+- **Select** ticks cards instead of opening them. Tag the ones you picked, give them one frame, or burn them together. Bits follow [**/burn**](/commands/burn), including Burn value, whether you pick one card or several. Akira asks before anything is destroyed. A card in an open trade stays put.
 
 ## What you cannot do yet
 

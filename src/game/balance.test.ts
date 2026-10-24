@@ -4,6 +4,7 @@ import {
   artWeight,
   BASE_ART_WEIGHT,
   burnPayout,
+  scaledBurnPayout,
   claimFailureMessage,
   dailyPayout,
   decideClaim,
@@ -76,6 +77,8 @@ test("burn payouts follow quality", () => {
   assert.equal(burnPayout("EPIC"), 200);
   assert.equal(burnPayout("LEGENDARY"), 500);
   assert.equal(burnPayout("nope"), 20);
+  assert.equal(scaledBurnPayout("COMMON", 2), 40);
+  assert.equal(scaledBurnPayout("RARE", 2.02), 202);
 });
 
 test("daily payout adds the prestige bonus", () => {
