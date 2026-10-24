@@ -623,7 +623,7 @@ export function CollectionPage(props: {
             <div className="collection-actions__confirm">
               <p>
                 Burn {burnQuote.count} {burnQuote.count === 1 ? "card" : "cards"} for {burnQuote.awarded} bits? This can't be undone.
-                {burnQuote.skipped > 0}
+                {burnQuote.skipped > 0
                   ? ` ${burnQuote.skipped} ${burnQuote.skipped === 1 ? "card stays" : "cards stay"} put. ${burnQuote.skipped === 1 ? "It's" : "They're"} in an open trade.`
                   : ""}
               </p>
