@@ -13,7 +13,7 @@ const FILL = "rgb(124, 77, 255)";
 const EMPTY = "rgb(61, 47, 90)";
 const EXTEND = 256;
 
-export type BarRole = "start" | "mid" | "end" | "solo";
+export type BarRole = "start" | "mid" | "end";
 export type BarFill = number | "full";
 
 export type BarTile = {
@@ -27,36 +27,32 @@ export type BarIconSpec = {
   bar: BarTile;
 };
 
-function stadium(
-  ctx: ReturnType<ReturnType<typeof createCanvas>["getContext"]>,
-  x: number,
-  y: number,
-  w: number,
-  h: number,
-  color: string,
-): void {
-  if (w <= 0) return;
-  const radius = Math.min(h / 2, w / 2);
-  ctx.fillStyle = color;
+type BarContext = ReturnType<ReturnType<typeof createCanvas>["getContext"]>;
+
+function stadiumPath(ctx: BarContext, x: number, y: number, w: number, h: number): boolean {
+  if (w <= 0) return false;
   ctx.beginPath();
-  ctx.roundRect(x, y, w, h, radius);
+  ctx.roundRect(x, y, w, h, Math.min(h / 2, w / 2));
+  return true;
+}
+
+function fillStadium(ctx: BarContext, x: number, y: number, w: number, h: number, color: string): void {
+  if (!stadiumPath(ctx, x, y, w, h)) return;
+  ctx.fillStyle = color;
   ctx.fill();
 }
 
 function trackLeft(role: BarRole): number {
-  if (role === "start" || role === "solo") return 0;
-  return -EXTEND;
+  return role === "start" ? 0 : -EXTEND;
 }
 
 function trackRight(role: BarRole): number {
-  if (role === "end" || role === "solo") return BAR_SOURCE_PX;
-  return BAR_SOURCE_PX + EXTEND;
+  return role === "end" ? BAR_SOURCE_PX : BAR_SOURCE_PX + EXTEND;
 }
 
 function fillRight(tile: BarTile): number | null {
   if (tile.fill === "full") {
-    if (tile.role === "end" || tile.role === "solo") return BAR_SOURCE_PX;
-    return BAR_SOURCE_PX + EXTEND;
+    return tile.role === "end" ? BAR_SOURCE_PX : BAR_SOURCE_PX + EXTEND;
   }
   if (tile.fill <= 0) return null;
   return tile.fill * (BAR_SOURCE_PX / BAR_CELL_PX);
@@ -68,7 +64,7 @@ export function barIconKey(role: BarRole, fill: BarFill): string {
 }
 
 export function barCellKey(role: BarRole, localDisplay: number): string {
-  if (role === "end" || role === "solo") {
+  if (role === "end") {
     return barIconKey(role, Math.min(BAR_CELL_PX, Math.max(0, Math.round(localDisplay))));
   }
   const stepped = Math.round(localDisplay);
@@ -87,14 +83,13 @@ export function allBarIconSpecs(): BarIconSpec[] {
     for (let fill = 0; fill <= BAR_CELL_PX + BAR_OVERHANG_PX; fill += 1) add(role, fill);
     add(role, "full");
   }
-  for (const role of ["end", "solo"] as const) {
-    for (let fill = 0; fill <= BAR_CELL_PX; fill += 1) add(role, fill);
-  }
+  for (let fill = 0; fill <= BAR_CELL_PX; fill += 1) add("end", fill);
   return specs;
 }
 
 export const BAR_ICONS = allBarIconSpecs();
 
+/** Drawn at icon-sync and uploaded. These tiles are not stored as PNGs. */
 export function renderSeekBarPng(tile: BarTile): Buffer {
   const canvas = createCanvas(BAR_SOURCE_PX, BAR_SOURCE_PX);
   const ctx = canvas.getContext("2d");
@@ -102,11 +97,16 @@ export function renderSeekBarPng(tile: BarTile): Buffer {
   const y = BAR_PAD_Y;
   const h = BAR_HEIGHT;
   const left = trackLeft(tile.role);
-  stadium(ctx, left, y, trackRight(tile.role) - left, h, EMPTY);
+  const trackW = trackRight(tile.role) - left;
+  fillStadium(ctx, left, y, trackW, h, EMPTY);
   const right = fillRight(tile);
   if (right !== null) {
-    const fillLeft = tile.role === "start" || tile.role === "solo" ? 0 : -EXTEND;
-    stadium(ctx, fillLeft, y, right - fillLeft, h, FILL);
+    const fillLeft = tile.role === "start" ? 0 : -EXTEND;
+    ctx.save();
+    stadiumPath(ctx, left, y, trackW, h);
+    ctx.clip();
+    fillStadium(ctx, fillLeft, y, right - fillLeft, h, FILL);
+    ctx.restore();
   }
   return canvas.toBuffer("image/png");
 }

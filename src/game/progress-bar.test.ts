@@ -38,16 +38,13 @@ test("a sliver of progress is one pixel in the start cap", () => {
     { key: "bar-head", id: "3", name: "ak_bar_head" },
     { key: "bar-mid-0", id: "4", name: "ak_bar_mid_0" },
     { key: "bar-end-0", id: "5", name: "ak_bar_end_0" },
-    { key: "bar-solo-0", id: "6", name: "ak_bar_solo_0" },
-    { key: "bar-solo-32", id: "7", name: "ak_bar_solo_32" },
   ]);
   const sliver = progressBar(0.001, 8);
   assert.equal(sliver.startsWith("<:ak_bar_start_1:1>"), true);
   assert.equal(sliver.includes("<:ak_bar_start:2>"), false);
   assert.equal(sliver.includes("<:ak_bar_head:3>"), false);
-  assert.equal(progressBarKeys(0.001, 8)[0], "bar-start-1");
-  assert.equal(progressBar(0, 1), "<:ak_bar_solo_0:6>");
-  assert.equal(progressBar(1, 1), "<:ak_bar_solo_32:7>");
+  assert.deepEqual(progressBarKeys(0.001, 8).slice(0, 3), ["bar-start-1", "bar-mid-0", "bar-mid-0"]);
+  assert.deepEqual(progressBarKeys(16 / 256, 8).slice(0, 2), ["bar-start-16", "bar-mid-0"]);
   installIcons([]);
 });
 
@@ -60,9 +57,9 @@ test("a fill that ends on a seam uses the leftover cap on the next emoji", () =>
 
 test("every 32px fill and cap-spill tile has a unique emoji", () => {
   const startMid = 2 * (BAR_CELL_PX + BAR_OVERHANG_PX + 1 + 1);
-  const endSolo = 2 * (BAR_CELL_PX + 1);
-  assert.equal(BAR_ICONS.length, startMid + endSolo);
-  assert.equal(BAR_ICONS.length, 150);
+  const end = BAR_CELL_PX + 1;
+  assert.equal(BAR_ICONS.length, startMid + end);
+  assert.equal(BAR_ICONS.length, 117);
   const names = new Set(BAR_ICONS.map((spec) => spec.key));
   assert.equal(names.size, BAR_ICONS.length);
   for (const spec of BAR_ICONS) {

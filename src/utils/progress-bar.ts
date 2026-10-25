@@ -4,14 +4,13 @@ import { BAR_CELL_PX, barCellKey, type BarRole } from "./seek-bar.js";
 const DEFAULT_CELLS = 8;
 
 function roleAt(index: number, count: number): BarRole {
-  if (count === 1) return "solo";
   if (index === 0) return "start";
   if (index === count - 1) return "end";
   return "mid";
 }
 
 export function progressBarKeys(ratio: number, cells = DEFAULT_CELLS): string[] {
-  const count = Math.max(1, Math.floor(cells));
+  const count = Math.max(2, Math.floor(cells));
   const clamped = Number.isFinite(ratio) ? Math.min(1, Math.max(0, ratio)) : 0;
   const maxPx = count * BAR_CELL_PX;
   const filled =
