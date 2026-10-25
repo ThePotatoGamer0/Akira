@@ -3,7 +3,9 @@
  * Before Discord application emojis are synced, these fall back to Unicode.
  */
 
-export const ICONS = [
+import { BAR_ICONS } from "./seek-bar.js";
+
+export const CORE_ICONS = [
   { key: "skip-back", lucide: "skip-back", fallback: "⏪" },
   { key: "chevron-left", lucide: "chevron-left", fallback: "◀️" },
   { key: "chevron-right", lucide: "chevron-right", fallback: "▶️" },
@@ -20,14 +22,9 @@ export const ICONS = [
   { key: "slot-2", fallback: "2️⃣", glyph: "2" },
   { key: "slot-3", fallback: "3️⃣", glyph: "3" },
   { key: "slot-4", fallback: "4️⃣", glyph: "4" },
-  { key: "bar-start", fallback: "▰", file: "start.png" },
-  { key: "bar-start-empty", fallback: "▱", file: "start-empty.png" },
-  { key: "bar-fill", fallback: "▰", file: "fill.png" },
-  { key: "bar-empty", fallback: "▱", file: "empty.png" },
-  { key: "bar-end", fallback: "▱", file: "end.png" },
-  { key: "bar-end-fill", fallback: "▰", file: "end-fill.png" },
-  { key: "bar-head", fallback: "▰", file: "head.png" },
 ] as const;
+
+export const ICONS = [...CORE_ICONS, ...BAR_ICONS];
 
 export type IconKey = (typeof ICONS)[number]["key"];
 export type IconSpec = (typeof ICONS)[number];
@@ -47,9 +44,11 @@ export function installIcons(entries: { key: string; id: string; name: string }[
 }
 
 export function icon(key: IconKey): string {
-  return live.get(key) ?? ICONS.find((item) => item.key === key)!.fallback;
+  return live.get(key) ?? ICONS.find((item) => item.key === key)?.fallback ?? "▱";
 }
 
 export function iconSpec(key: IconKey): IconSpec {
-  return ICONS.find((item) => item.key === key)!;
+  const spec = ICONS.find((item) => item.key === key);
+  if (!spec) throw new Error(`Unknown icon ${key}`);
+  return spec;
 }

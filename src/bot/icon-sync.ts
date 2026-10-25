@@ -6,7 +6,7 @@ import { createRequire } from "node:module";
 import { createCanvas } from "canvas";
 import sharp from "sharp";
 import { discordEmojiName, ICONS, installIcons, type IconKey, type IconSpec } from "../utils/icons.js";
-import { DIR_INPUT_SEEK_BAR } from "../utils/paths.js";
+import { renderSeekBarPng } from "../utils/seek-bar.js";
 
 const require = createRequire(import.meta.url);
 const lucideDir = path.join(path.dirname(require.resolve("lucide-static/package.json")), "icons");
@@ -52,7 +52,7 @@ function slotPng(glyph: string): Buffer {
 
 /** Rasterize one catalog icon. Discord application emojis are PNG, not SVG. */
 export async function renderIconPng(spec: IconSpec): Promise<Buffer> {
-  if ("file" in spec) return readFileSync(path.join(DIR_INPUT_SEEK_BAR, spec.file));
+  if ("bar" in spec) return renderSeekBarPng(spec.bar);
   if ("glyph" in spec) return slotPng(spec.glyph);
   const fill = "fill" in spec && spec.fill === true;
   const svg = framedSvg(lucideInner(spec.lucide), fill);
