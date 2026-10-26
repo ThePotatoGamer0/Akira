@@ -8,6 +8,8 @@ export type Me = {
   collectionOrder: string;
   /** Collection skips page buttons and keeps loading 16 cards at a time. */
   continuousScroll: boolean;
+  /** Series names: english or romaji. */
+  seriesTitle: string;
   /** Resolved: preferredName ?? discordUsername ?? fallback. */
   displayName: string;
   bits: number;
@@ -84,4 +86,86 @@ export type CompletionStats = {
   top: CompletionRow[];
   tracked: CompletionRow[];
   series: CompletionRow[];
+};
+
+export type CatalogCover = {
+  seriesSlug: string;
+  characterSlug: string;
+  image: string;
+  v?: number;
+};
+
+export type CatalogSeries = {
+  id: string;
+  name: string;
+  slug: string;
+  owned: number;
+  total: number;
+  percent: number;
+  coverUrl: string | null;
+  tracked: boolean;
+  lastGot: number | null;
+};
+
+export type CatalogCharacterCard = {
+  id: string;
+  name: string;
+  slug: string;
+  owned: boolean;
+  wishlisted: boolean;
+  cover: CatalogCover | null;
+  lastGot: number | null;
+};
+
+export type CatalogSeriesDetail = {
+  id: string;
+  name: string;
+  slug: string;
+  owned: number;
+  total: number;
+  percent: number;
+  characters: CatalogCharacterCard[];
+};
+
+export type CatalogHolder = {
+  cardId: string;
+  ownerId: string | null;
+  printNumber: number;
+  quality: string;
+  ownerName: string;
+  avatarUrl: string | null;
+  mine: boolean;
+};
+
+export type CatalogEdition = {
+  id: string;
+  name: string;
+  image: string;
+  v?: number;
+  generated: number;
+  circulation: number;
+  byQuality: Record<string, number>;
+  holders: CatalogHolder[];
+};
+
+export type CatalogCharacterDetail = {
+  id: string;
+  name: string;
+  slug: string;
+  series: { id: string; name: string; slug: string };
+  owned: boolean;
+  wishlisted: boolean;
+  wishlistCount: number;
+  aliases: string[];
+  editions: CatalogEdition[];
+};
+
+export type CatalogSearchHit = {
+  id: string;
+  name: string;
+  slug: string;
+  series: { name: string; slug: string };
+  owned: boolean;
+  cover: CatalogCover | null;
+  lastGot: number | null;
 };

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { Link } from "react-router-dom";
 import { useGsapCardTilt } from "../../lib/card-tilt.js";
 import { MenuSelect } from "../MenuSelect.js";
 import { QualityStars, TagMark } from "../marks.js";
@@ -67,6 +68,8 @@ export function CardOverlay(props: {
   const src = burnedBits !== null ? apiUrl(card.assets.burn) : assetUrl(card, previewFrame, canShiny && shiny);
   const shownEmoji = tagValue ? studio.tags.find((tag) => tag.name === tagValue)?.emoji ?? card.tagEmoji : null;
   const edition = card.variant.name !== card.character.name ? card.variant.name : null;
+  const seriesHref = `/characters/${encodeURIComponent(card.series.slug)}`;
+  const characterHref = `${seriesHref}/${encodeURIComponent(card.character.slug)}`;
 
   async function changeFrame(next: string) {
     const choice = next === "" ? null : Number(next);
@@ -211,8 +214,12 @@ export function CardOverlay(props: {
         ) : null}
       </div>
       <aside className="card-overlay__meta">
-        <p className="card-overlay__kicker">{card.series.name}</p>
-        <h2 id="card-overlay-title">{card.character.name}</h2>
+        <p className="card-overlay__kicker">
+          <Link to={seriesHref}>{card.series.name}</Link>
+        </p>
+        <h2 id="card-overlay-title">
+          <Link to={characterHref}>{card.character.name}</Link>
+        </h2>
         {edition ? <p className="card-overlay__edition">Edition · {edition}</p> : null}
         <p className="card-overlay__line">
           <span className="card-overlay__stars">
@@ -228,7 +235,7 @@ export function CardOverlay(props: {
         </p>
         {card.alias ? <p className="card-overlay__note">Alias · {card.alias}</p> : null}
         <p className="card-overlay__note">
-          Yours since{" "}
+          {props.canEdit ? "Yours since" : "Collected"}{" "}
           {new Date(card.obtainedAt).toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" })}
         </p>
 
@@ -262,7 +269,7 @@ export function CardOverlay(props: {
             onChange={(value) => void changeTag(value)}
           />
           {studio.tags.length === 0 ? (
-            <p className="card-overlay__hint">Add tags from Tags on the collection page.</p>
+            <p className="card-overlay__hint">Make tags with Tags on the collection page.</p>
           ) : null}
         </section>
 

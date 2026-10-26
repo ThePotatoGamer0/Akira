@@ -10,9 +10,11 @@ import {
 import { createVerificationCode, consumeVerificationCode } from "../utils/verificationCodes.js";
 import { sendVerificationDm } from "../utils/notify-bot.js";
 import { userIsAdmin } from "../host.js";
+import { seriesTitleStyle } from "../../../../src/game/series-meta.js";
 import { akiraAddressName, sanitizePreferredName } from "../utils/akira-address-name.js";
 
 const COLLECTION_ORDERS = new Set(["character", "series", "quality", "tag", "recent"]);
+const SERIES_TITLES = new Set(["romaji", "english"]);
 
 export const authRouter = Router();
 
@@ -23,6 +25,7 @@ function serializeMe(u: {
   preferredName: string | null;
   collectionOrder: string;
   continuousScroll: boolean;
+  seriesTitle: string;
   bits: number;
   prestigeLevel: number;
   milestoneCount: number;
@@ -37,6 +40,7 @@ function serializeMe(u: {
     preferredName: u.preferredName ? sanitizePreferredName(u.preferredName) : null,
     collectionOrder: COLLECTION_ORDERS.has(u.collectionOrder) ? u.collectionOrder : "character",
     continuousScroll: u.continuousScroll === true,
+    seriesTitle: seriesTitleStyle(u.seriesTitle),
     displayName: akiraAddressName(u),
     bits: u.bits,
     prestigeLevel: u.prestigeLevel,
@@ -235,7 +239,12 @@ authRouter.get("/me", authMiddleware, async (req, res) => {
 
 authRouter.patch("/me", authMiddleware, async (req, res) => {
   const body = req.body ?? {};
-  const data: { preferredName?: string | null; collectionOrder?: string; continuousScroll?: boolean } = {};
+  const data: {
+    preferredName?: string | null;
+    collectionOrder?: string;
+    continuousScroll?: boolean;
+    seriesTitle?: string;
+  } = {};
   if ("preferredName" in body) {
     if (typeof body.preferredName !== "string") {
       res.status(400).json({ error: "Send preferredName as a string (empty string clears it)." });
@@ -257,6 +266,13 @@ authRouter.patch("/me", authMiddleware, async (req, res) => {
       return;
     }
     data.continuousScroll = body.continuousScroll;
+  }
+  if ("seriesTitle" in body) {
+    if (typeof body.seriesTitle !== "string" || !SERIES_TITLES.has(body.seriesTitle)) {
+      res.status(400).json({ error: "Akira can show English or Romaji titles." });
+      return;
+    }
+    data.seriesTitle = body.seriesTitle;
   }
   if (Object.keys(data).length === 0) {
     res.status(400).json({ error: "Akira needs something to save." });

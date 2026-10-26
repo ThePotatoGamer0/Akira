@@ -9,6 +9,7 @@ export const ROOT = path.join(here, "..", "..");
 export const INIT_LOCK = path.join(ROOT, "init.lock");
 
 export const DIR_INPUT_CHARACTERS = path.join(ROOT, "input", "characters");
+export const DIR_INPUT_SERIES = path.join(ROOT, "input", "series");
 export const DIR_INPUT_FRAMES = path.join(ROOT, "input", "frames");
 export const DIR_INPUT_SHOWCASE = path.join(ROOT, "input", "showcase");
 
@@ -22,6 +23,13 @@ const SAFE_SEGMENT = /^[a-zA-Z0-9_-]+$/;
 
 export function variantArtPath(seriesSlug: string, characterSlug: string, imageFile: string): string {
   return path.join(DIR_INPUT_CHARACTERS, seriesSlug, characterSlug, imageFile);
+}
+
+export function seriesCoverPath(seriesSlug: string): string {
+  if (!SAFE_SEGMENT.test(seriesSlug)) {
+    throw new Error(`Unsafe series slug: ${seriesSlug}`);
+  }
+  return path.join(DIR_INPUT_SERIES, seriesSlug, "cover.png");
 }
 
 export function printCacheKey(printNumber: number | null): string {

@@ -8,6 +8,12 @@
       "name": "Marin Kitagawa",
       "rarity": "Common",
       "image": "base.png"
+    },
+    {
+      "id": "sono-bisque-doll-wa-koi-wo-suru-marin-kitagawa-kitty",
+      "name": "Kitty",
+      "rarity": "Rare",
+      "image": "kitty.png"
     }
   ],
   "role": "MAIN"

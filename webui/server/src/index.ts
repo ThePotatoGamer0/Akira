@@ -12,9 +12,11 @@ import { noticesRouter } from "./routes/notices.js";
 import { remindersRouter } from "./routes/reminders.js";
 import { channelRouter } from "./routes/channel.js";
 import { attachChannelLive } from "./live/channel-socket.js";
-import { serveMissingCardAsset } from "./routes/card-assets.js";
+import { serveCatalogPortrait, serveMissingCardAsset, serveSeriesCover } from "./routes/card-assets.js";
+import { lookupRouter } from "./routes/lookup.js";
 import { allowsCrossSite, originAllowed, parseOriginList } from "./utils/origins.js";
 import { REPO_ROOT } from "./utils/repo-root.js";
+import { createSqliteSessionStore } from "./session-store.js";
 
 const app = express();
 const port = Number(process.env["WEBUI_SERVER_PORT"] ?? "3333");
@@ -65,6 +67,7 @@ app.use(express.json());
 const sessionMiddleware = session({
   name: "akira.sid",
   secret: process.env["SESSION_SECRET"] ?? "dev-change-me",
+  store: createSqliteSessionStore(),
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -90,11 +93,18 @@ app.use(
 app.get("/api/static/cards/:variantId/:frameId/:printKey/:dyeKey/:fileName", (req, res, next) => {
   void serveMissingCardAsset(req, res).catch(next);
 });
+app.get("/api/static/portraits/:seriesSlug/:characterSlug/:fileName", (req, res) => {
+  serveCatalogPortrait(req, res);
+});
+app.get("/api/static/covers/:seriesSlug", (req, res) => {
+  serveSeriesCover(req, res);
+});
 
 app.use("/auth", authRouter);
 app.use("/collection", collectionRouter);
 app.use("/economy", economyRouter);
 app.use("/stats", statsRouter);
+app.use("/lookup", lookupRouter);
 app.use("/admin", adminRouter);
 app.use("/notices", noticesRouter);
 app.use("/reminders", remindersRouter);

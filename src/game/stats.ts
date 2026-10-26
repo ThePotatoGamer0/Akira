@@ -2,6 +2,7 @@ import type { CardQuality } from "../generated/prisma/client.js";
 import { prisma } from "../db/client.js";
 import { akiraAddressName } from "../utils/akira-address-name.js";
 import { GameError } from "./errors.js";
+import { displaySeriesName, type SeriesTitleStyle } from "./series-meta.js";
 
 const TRACKED_LIMIT = 4;
 
@@ -86,7 +87,7 @@ export async function bitsStats(): Promise<(StatPlayer & { bits: number })[]> {
  * Completion is distinct characters owned in a series, over every character in that series.
  * Tracked series replace the top four when the player has pinned any.
  */
-export async function completionStats(userId: string): Promise<CompletionStats> {
+export async function completionStats(userId: string, style: SeriesTitleStyle = "english"): Promise<CompletionStats> {
   const user = await prisma.user.findUnique({
     where: { id: userId },
     select: { id: true, preferredName: true, discordUsername: true },
@@ -96,7 +97,7 @@ export async function completionStats(userId: string): Promise<CompletionStats> 
   const [people, seriesRows, ownedCards, tracked] = await Promise.all([
     players(),
     prisma.series.findMany({
-      select: { id: true, name: true, _count: { select: { characters: true } } },
+      select: { id: true, name: true, slug: true, _count: { select: { characters: true } } },
     }),
     prisma.card.findMany({
       where: { ownerId: userId },
@@ -124,7 +125,7 @@ export async function completionStats(userId: string): Promise<CompletionStats> 
       const total = row._count.characters;
       return {
         seriesId: row.id,
-        name: row.name,
+        name: displaySeriesName(row.slug, row.name, style),
         owned,
         total,
         percent: percent(owned, total),

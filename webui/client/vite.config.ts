@@ -20,6 +20,7 @@ export default defineConfig({
       "/collection": { target: "http://127.0.0.1:3333", changeOrigin: true, bypass: htmlBypass },
       "/economy": { target: "http://127.0.0.1:3333", changeOrigin: true, bypass: htmlBypass },
       "/stats": { target: "http://127.0.0.1:3333", changeOrigin: true, bypass: htmlBypass },
+      "/lookup": { target: "http://127.0.0.1:3333", changeOrigin: true },
       "/leaderboard": { target: "http://127.0.0.1:3333", changeOrigin: true, bypass: htmlBypass },
       "/admin": { target: "http://127.0.0.1:3333", changeOrigin: true, bypass: htmlBypass },
       "/channel": { target: "http://127.0.0.1:3333", changeOrigin: true, ws: true, bypass: htmlBypass },

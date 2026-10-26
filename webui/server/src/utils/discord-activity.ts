@@ -1,6 +1,7 @@
 import { prisma } from "../db/client.js";
+import { sanitizeDiscordAvatarHash } from "../../../../src/utils/discord-avatar.js";
 
-type DiscordProfile = { id: string; username: string };
+type DiscordProfile = { id: string; username: string; avatar: string | null };
 
 type Cached = { userId: string; expiresAt: number };
 
@@ -15,9 +16,13 @@ async function discordProfile(accessToken: string): Promise<DiscordProfile | nul
     headers: { Authorization: `Bearer ${accessToken}` },
   });
   if (!res.ok) return null;
-  const body = (await res.json()) as { id?: unknown; username?: unknown };
+  const body = (await res.json()) as { id?: unknown; username?: unknown; avatar?: unknown };
   if (typeof body.id !== "string" || typeof body.username !== "string") return null;
-  return { id: body.id, username: body.username };
+  return {
+    id: body.id,
+    username: body.username,
+    avatar: typeof body.avatar === "string" ? body.avatar : null,
+  };
 }
 
 export async function exchangeActivityCode(code: string): Promise<string | null> {
@@ -44,10 +49,12 @@ export async function exchangeActivityCode(code: string): Promise<string | null>
 /** The bot's player row for this Discord account, by id or username. */
 export async function userForDiscordAccount(profile: DiscordProfile) {
   const byId = await prisma.user.findUnique({ where: { discordId: profile.id } });
-  if (byId) return byId;
   const username = normalizeUsername(profile.username);
-  if (!username) return null;
-  return prisma.user.findUnique({ where: { discordUsername: username } });
+  const user = byId ?? (username ? await prisma.user.findUnique({ where: { discordUsername: username } }) : null);
+  if (!user) return null;
+  const hash = sanitizeDiscordAvatarHash(profile.avatar) ?? "";
+  if (user.discordAvatar === hash) return user;
+  return prisma.user.update({ where: { id: user.id }, data: { discordAvatar: hash } });
 }
 
 export async function userForActivityToken(accessToken: string) {

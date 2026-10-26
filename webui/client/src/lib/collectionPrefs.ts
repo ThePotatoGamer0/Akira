@@ -50,12 +50,13 @@ export function applyCollectionPrefs(me: Me): Me {
     ...me,
     collectionOrder: readLocalCollectionOrder(me.id) ?? collectionOrder(me.collectionOrder),
     continuousScroll: readLocalContinuousScroll(me.id) ?? me.continuousScroll === true,
+    seriesTitle: me.seriesTitle === "romaji" ? "romaji" : "english",
   };
 }
 
 export function writeCollectionPrefs(
   userId: string,
-  patch: { collectionOrder?: string; continuousScroll?: boolean },
+  patch: { collectionOrder?: string; continuousScroll?: boolean; seriesTitle?: string },
 ): void {
   if (patch.collectionOrder) writeLocalCollectionOrder(userId, collectionOrder(patch.collectionOrder));
   if (typeof patch.continuousScroll === "boolean") writeLocalContinuousScroll(userId, patch.continuousScroll);

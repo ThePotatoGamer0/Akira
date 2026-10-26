@@ -177,7 +177,7 @@ export async function postWebsiteMessage(client: Client, post: WebsitePost): Pro
   const user = await client.users.fetch(post.discordId).catch(() => null);
   if (!user) throw new WebsitePostError("Akira couldn't find that Discord account.", 404);
   const member = await channel.guild.members.fetch(post.discordId).catch(() => null);
-  await syncDiscordUsernameForWebUi(post.discordId, user.username);
+  await syncDiscordUsernameForWebUi(post.discordId, user.username, user.avatar);
   const username = webhookName(member?.displayName ?? user.globalName ?? user.username);
   const avatarURL = user.displayAvatarURL({ extension: "png", size: 128 });
 

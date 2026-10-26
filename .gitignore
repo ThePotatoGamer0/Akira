@@ -3,6 +3,8 @@ dist/
 .env
 *.db
 *.db-journal
+*.db-wal
+*.db-shm
 init.lock
 data/icon-sync.json
 

@@ -2,8 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
     <title>Akira - WebUI</title>
+    <meta name="application-name" content="Akira" />
+    <meta name="apple-mobile-web-app-title" content="Akira" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#0f0c14" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="preconnect" href="https://media.discordapp.net" />
     <link rel="preconnect" href="https://cdn.discordapp.com" crossorigin />
     <link
@@ -12,13 +22,23 @@
     />
     <script>
       (function () {
+        function paint(theme) {
+          document.documentElement.setAttribute("data-theme", theme);
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute("content", theme === "light" ? "#f7f4fc" : "#0f0c14");
+        }
         try {
           var k = "akira-webui-theme";
           var s = localStorage.getItem(k);
           var p = window.matchMedia("(prefers-color-scheme: dark)").matches;
           var t = s === "dark" || s === "light" ? s : p ? "dark" : "light";
-          document.documentElement.setAttribute("data-theme", t);
+          paint(t);
         } catch (e) {}
+        new MutationObserver(function () {
+          var theme = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute("content", theme === "light" ? "#f7f4fc" : "#0f0c14");
+        }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
       })();
     </script>
   </head>

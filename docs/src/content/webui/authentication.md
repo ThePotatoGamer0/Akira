@@ -23,6 +23,10 @@ If you visit the site in **Firefox, Chrome, Edge, etc.**, Akira cannot "see" you
 
 **Before this can work:** Akira must have your **Discord handle** on file. In the server, run **`/ping`** or **`/help`** once (either command saves your name for the WebUI). Then use that **same handle**, lower case, on the WebUI username step - no `discriminator` numbers on newer Discord accounts. If she still cannot find you, ask your server admin.
 
+## On your phone
+
+Open the WebUI in Safari or Chrome and add it to your Home Screen. It opens as **Akira**, the same site, with your cards and shop. Sign in the same way as in the browser. The Discord activity stays inside Discord.
+
 ## Rough edges
 
 The **sign-in screens and wording** may still feel plain or change as the WebUI grows. The important part for you: **inside Discord** should feel instant; **in a browser** is username → DM code → (optional first-time password) → later username + password.
@@ -30,6 +34,7 @@ The **sign-in screens and wording** may still feel plain or change as the WebUI 
 ## See also
 
 - [Collection in the WebUI](/webui/collection)
+- [Characters in the WebUI](/webui/characters)
 - [Settings in the WebUI](/webui/settings)
 - [Economy & leaderboard in the WebUI](/webui/economy-and-leaderboard)
 - [Your first card](/getting-started/your-first-card)
