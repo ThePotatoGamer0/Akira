@@ -84,6 +84,8 @@ model User {
   discordId           String                 @unique
   /** Cached Discord login handle for WebUI username lookup (friend-group scale). */
   discordUsername     String?                @unique
+  /** Discord avatar hash. Empty string means Discord has no custom avatar. Null has not been fetched yet. */
+  discordAvatar       String?
   /** What Akira calls you in WebUI copy and bot greetings (falls back to Discord handle). */
   preferredName       String?
   passwordHash        String?
@@ -103,6 +105,8 @@ model User {
   collectionOrder     String                 @default("character")
   /** WebUI collection skips page buttons and keeps loading 16 cards at a time. */
   continuousScroll    Boolean                @default(false)
+  /** Series names in the WebUI: english or romaji. */
+  seriesTitle         String                 @default("english")
   cards               Card[]
   wishlists           Wishlist[]
   poolContributions   UserPoolContribution[]

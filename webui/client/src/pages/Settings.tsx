@@ -21,6 +21,7 @@ export function SettingsPage(props: {
   const [studio, setStudio] = useState<CollectionStudio>(EMPTY_STUDIO);
   const [order, setOrder] = useState(collectionOrder(props.me.collectionOrder));
   const [continuous, setContinuous] = useState(props.me.continuousScroll === true);
+  const [seriesTitle, setSeriesTitle] = useState(props.me.seriesTitle === "romaji" ? "romaji" : "english");
   const [collectionMsg, setCollectionMsg] = useState<string | null>(null);
   const [collectionBusy, setCollectionBusy] = useState<string | null>(null);
   const [reminders, setReminders] = useState<{ action: string; enabled: boolean }[] | null>(null);
@@ -45,7 +46,8 @@ export function SettingsPage(props: {
   useEffect(() => {
     setOrder(collectionOrder(props.me.collectionOrder));
     setContinuous(props.me.continuousScroll === true);
-  }, [props.me.collectionOrder, props.me.continuousScroll, props.me.id]);
+    setSeriesTitle(props.me.seriesTitle === "romaji" ? "romaji" : "english");
+  }, [props.me.collectionOrder, props.me.continuousScroll, props.me.seriesTitle, props.me.id]);
 
   useEffect(() => {
     let cancelled = false;
@@ -120,9 +122,13 @@ export function SettingsPage(props: {
     setNameMsg(value.trim() && !next.preferredName ? "Akira is using your Discord name." : "Saved.");
   }
 
-  async function patchCollection(body: { collectionOrder?: string; continuousScroll?: boolean }) {
-    const key = "collectionOrder" in body ? "order" : "scroll";
-    const previous = { collectionOrder: order, continuousScroll: continuous };
+  async function patchCollection(body: {
+    collectionOrder?: string;
+    continuousScroll?: boolean;
+    seriesTitle?: string;
+  }) {
+    const key = "seriesTitle" in body ? "titles" : "collectionOrder" in body ? "order" : "scroll";
+    const previous = { collectionOrder: order, continuousScroll: continuous, seriesTitle };
     writeCollectionPrefs(props.me.id, body);
     setCollectionMsg(null);
     if (props.readOnly) return true;
@@ -219,6 +225,30 @@ export function SettingsPage(props: {
         <p className="settings-current">
           Currently: <strong>{props.me.displayName}</strong>
         </p>
+        <div className="settings-row">
+          <span className="settings-label">Series titles</span>
+          <MenuSelect
+            className="settings-menu"
+            label="Series titles"
+            value={seriesTitle}
+            disabled={collectionBusy !== null || props.readOnly}
+            options={[
+              { value: "english", label: "English" },
+              { value: "romaji", label: "Romaji" },
+            ]}
+            onChange={(value) => {
+              const next = value === "english" ? "english" : "romaji";
+              const previous = seriesTitle;
+              setSeriesTitle(next);
+              void patchCollection({ seriesTitle: next }).then((saved) => {
+                if (!saved) setSeriesTitle(previous);
+              });
+            }}
+          />
+          <p className="settings-hint">
+            Names on Characters, Collection, and Stats. Search still finds English and Romaji.
+          </p>
+        </div>
         {canBuzz ? (
           <div className="settings-row settings-switch">
             <div>

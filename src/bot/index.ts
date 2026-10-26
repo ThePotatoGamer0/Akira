@@ -35,6 +35,7 @@ import { GameError } from "../game/errors.js";
 import { guildListensForKaruta, handleKarutaOverride, KARUTA_PREFIXES, loadKarutaGuilds } from "./karuta-override.js";
 import { commandPrefix, createPrefixInteraction, invocationIsExpected, matchPrefixedCommand, resolveLegacyCommand, viewCardArgument } from "./prefix.js";
 import { adoptWebsiteSpeaker } from "./website-message.js";
+import { syncDiscordUsernameForWebUi } from "./sync-webui-username.js";
 import { syncApplicationIcons } from "./icon-sync.js";
 import { serverHasDropChannel } from "../game/drops.js";
 import { collaborativeAction, hostIsInGuild, privateServerMessage } from "./host-gate.js";
@@ -199,6 +200,7 @@ async function handleGuildMessage(message: Message): Promise<void> {
     await handleMultitradeMessage(message, client);
     return;
   }
+  void syncDiscordUsernameForWebUi(message.author.id, message.author.username, message.author.avatar);
   const commandName = parsed.name === "overridekaruta" ? parsed.name : resolveLegacyCommand(parsed.name).command;
   const earlyRoute = resolveLegacyCommand(parsed.name);
   if (parsed.name !== "overridekaruta" && !commandMap.get(earlyRoute.command)) {
@@ -290,6 +292,7 @@ async function handleGuildMessage(message: Message): Promise<void> {
 }
 
 client.on(Events.InteractionCreate, async (interaction) => {
+  void syncDiscordUsernameForWebUi(interaction.user.id, interaction.user.username, interaction.user.avatar);
   if (interaction.isButton() || interaction.isStringSelectMenu()) {
     if (isInitLocked()) return;
     if (await refuseUnsetServer(interaction)) return;

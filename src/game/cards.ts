@@ -1,9 +1,12 @@
 import { prisma } from "../db/client.js";
+import { akiraAddressName } from "../utils/akira-address-name.js";
+import { discordAvatarUrl } from "../utils/discord-avatar.js";
 import { isCardCode, mintCardCode } from "./codes.js";
 import { editionNumber } from "./editions.js";
 import { GameError } from "./errors.js";
 import { applyCardFilters, type CardFilter } from "./filters.js";
-import { ensureUser, findUserByDiscordId } from "./users.js";
+import { matchesSearch, seriesSearchFields } from "./series-meta.js";
+import { ensureUser, findUserByDiscordId, rememberDiscordAvatars } from "./users.js";
 
 export const COLLECTION_PAGE_SIZE = 10;
 
@@ -134,16 +137,15 @@ export async function searchCharacters(query: string, page = 0) {
   if (!q) return { total: 0, page: 0, characters: [] };
   const all = await prisma.character.findMany({ include: lookupInclude });
   const matched = all
-    .filter((character) => {
-      const aliases = character.aliases ?? "";
-      return (
-        normalize(character.name).includes(q) ||
-        normalize(character.slug).includes(q) ||
-        normalize(character.series.name).includes(q) ||
-        normalize(character.series.slug).includes(q) ||
-        normalize(aliases).includes(q)
-      );
-    })
+    .filter((character) =>
+      matchesSearch(
+        query,
+        character.name,
+        character.slug,
+        character.aliases ?? "",
+        ...seriesSearchFields(character.series.slug, character.series.name),
+      ),
+    )
     .sort((a, b) => {
       const score = lookupScore(normalize(a.name), normalize(a.slug), q) - lookupScore(normalize(b.name), normalize(b.slug), q);
       if (score !== 0) return score;
@@ -163,23 +165,100 @@ export async function getLookupCharacter(id: string) {
   });
 }
 
-export async function editionCirculation(variantId: string) {
-  const [counter, grouped] = await Promise.all([
+export type CirculationHolder = {
+  cardId: string;
+  ownerId: string | null;
+  printNumber: number;
+  quality: string;
+  ownerName: string;
+  avatarUrl: string | null;
+  mine: boolean;
+};
+
+type CirculationCard = {
+  id: string;
+  printNumber: number;
+  quality: string;
+  ownerId: string | null;
+  owner: {
+    discordId: string;
+    discordAvatar: string | null;
+    preferredName: string | null;
+    discordUsername: string | null;
+  } | null;
+};
+
+export function collapseHolders(holders: CirculationHolder[]): CirculationHolder[] {
+  const lowest = new Map<string, CirculationHolder>();
+  const unclaimed: CirculationHolder[] = [];
+  for (const holder of holders) {
+    if (!holder.ownerId) {
+      unclaimed.push(holder);
+      continue;
+    }
+    const key = `${holder.quality}:${holder.ownerId}`;
+    const current = lowest.get(key);
+    if (!current || holder.printNumber < current.printNumber) lowest.set(key, holder);
+  }
+  return [...lowest.values(), ...unclaimed].sort(
+    (a, b) => a.printNumber - b.printNumber || a.ownerName.localeCompare(b.ownerName),
+  );
+}
+
+export function summarizeCirculation(nextPrint: number | null | undefined, cards: CirculationCard[], viewerId?: string) {
+  const byQuality: Record<string, number> = {};
+  const holders: CirculationHolder[] = cards
+    .slice()
+    .sort((a, b) => a.printNumber - b.printNumber)
+    .map((card) => {
+      byQuality[card.quality] = (byQuality[card.quality] ?? 0) + 1;
+      return {
+        cardId: card.id,
+        ownerId: card.ownerId,
+        printNumber: card.printNumber,
+        quality: card.quality,
+        ownerName: card.owner ? akiraAddressName(card.owner) : "Unclaimed",
+        avatarUrl: card.owner ? discordAvatarUrl(card.owner.discordId, card.owner.discordAvatar) : null,
+        mine: Boolean(viewerId && card.ownerId === viewerId),
+      };
+    });
+  return {
+    generated: nextPrint ? Math.max(0, nextPrint - 1) : 0,
+    circulation: cards.length,
+    byQuality,
+    holders: collapseHolders(holders),
+  };
+}
+
+export async function editionCirculation(variantId: string, viewerId?: string) {
+  const [counter, cards] = await Promise.all([
     prisma.printCounter.findUnique({ where: { variantId } }),
-    prisma.card.groupBy({
-      by: ["quality"],
+    prisma.card.findMany({
       where: { variantId },
-      _count: { _all: true },
+      select: {
+        id: true,
+        printNumber: true,
+        quality: true,
+        ownerId: true,
+        owner: {
+          select: { discordId: true, discordAvatar: true, preferredName: true, discordUsername: true },
+        },
+      },
+      orderBy: { printNumber: "asc" },
     }),
   ]);
-  const byQuality: Record<string, number> = {};
-  for (const row of grouped) byQuality[row.quality] = row._count._all;
-  const circulation = Object.values(byQuality).reduce((sum, count) => sum + count, 0);
-  return {
-    generated: counter ? Math.max(0, counter.nextPrint - 1) : 0,
-    circulation,
-    byQuality,
-  };
+  const missing = cards
+    .map((card) => card.owner)
+    .filter((owner): owner is NonNullable<typeof owner> => Boolean(owner && owner.discordAvatar == null))
+    .map((owner) => owner.discordId);
+  const remembered = await rememberDiscordAvatars(missing);
+  const hydrated = cards.map((card) => {
+    if (!card.owner) return card;
+    const avatar = remembered.get(card.owner.discordId);
+    if (avatar === undefined) return card;
+    return { ...card, owner: { ...card.owner, discordAvatar: avatar } };
+  });
+  return summarizeCirculation(counter?.nextPrint, hydrated, viewerId);
 }
 
 async function resolveWishlistCharacter(name: string) {

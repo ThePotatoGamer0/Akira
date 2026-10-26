@@ -30,9 +30,11 @@ asearch Chainsaw Man
 
 - One match opens that character. Several matches are listed 25 at a time, which is as many as the menu can hold. The buttons under the menu move between pages. Back returns to the page you were on. Exact names come first, then names that start with the search, then names that contain it.
 - Owning the card still means grabbing it from a [drop](/commands/drop).
+- The WebUI [Characters](/webui/characters) page is the same catalog, with who holds each print.
 
 ## See also
 
+- [Characters in the WebUI](/webui/characters)
 - [Wishlist](/commands/wishlist)
 - [Collection](/commands/collection)
 - [Command list](/commands/reference)

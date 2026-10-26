@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { CardOverlay } from "../components/collection/CardOverlay.js";
 import { CollectionGrid } from "../components/collection/CollectionGrid.js";
 import { TagMenu } from "../components/collection/TagMenu.js";
@@ -44,7 +45,11 @@ export function CollectionPage(props: {
 }) {
   const [cards, setCards] = useState<CollectionCard[]>([]);
   const [studio, setStudio] = useState<CollectionStudio>(EMPTY_STUDIO);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [params, setParams] = useSearchParams();
+  const playerParam = params.get("player");
+  const cardParam = params.get("card")?.trim().toLowerCase() ?? "";
+  const [selectedId, setSelectedId] = useState<string | null>(cardParam || null);
+  const [peeked, setPeeked] = useState<CollectionCard | null>(null);
   const [burnedCard, setBurnedCard] = useState<CollectionCard | null>(null);
   const [selecting, setSelecting] = useState(false);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set());
@@ -55,7 +60,7 @@ export function CollectionPage(props: {
   const [actionNote, setActionNote] = useState<string | null>(null);
   const [burnQuote, setBurnQuote] = useState<{ awarded: number; skipped: number; count: number } | null>(null);
   const [tagsOpen, setTagsOpen] = useState(false);
-  const [viewedId, setViewedId] = useState(props.me.id);
+  const [viewedId, setViewedId] = useState(playerParam || props.me.id);
   const [players, setPlayers] = useState<CollectionPlayer[]>([]);
   const [query, setQuery] = useState("");
   const [search, setSearch] = useState({ q: "", page: 0, order: collectionOrder(props.me.collectionOrder) });
@@ -100,9 +105,29 @@ export function CollectionPage(props: {
   }, [query]);
 
   useEffect(() => {
-    if (!viewingSelf) return;
     void loadStudio();
-  }, [loadStudio, viewingSelf]);
+  }, [loadStudio]);
+
+  useEffect(() => {
+    if (playerParam && playerParam !== viewedId) setViewedId(playerParam);
+  }, [playerParam, viewedId]);
+
+  useEffect(() => {
+    if (!cardParam) return;
+    const ownerId = playerParam || viewedId;
+    let cancelled = false;
+    void (async () => {
+      const res = await props.fetchApi(`/collection/${ownerId}/cards/${encodeURIComponent(cardParam)}`);
+      if (!res.ok || cancelled) return;
+      const card = (await res.json()) as CollectionCard;
+      if (cancelled) return;
+      setPeeked(card);
+      setSelectedId(card.id);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [cardParam, playerParam, viewedId, props.fetchApi]);
 
   useEffect(() => {
     let cancelled = false;
@@ -228,8 +253,17 @@ export function CollectionPage(props: {
   const close = useCallback(() => {
     setSelectedId(null);
     setBurnedCard(null);
-  }, []);
-  const selected = cards.find((card) => card.id === selectedId) ?? (burnedCard?.id === selectedId ? burnedCard : null);
+    setPeeked(null);
+    if (params.has("card")) {
+      const next = new URLSearchParams(params);
+      next.delete("card");
+      setParams(next, { replace: true });
+    }
+  }, [params, setParams]);
+  const selected =
+    cards.find((card) => card.id === selectedId)
+    ?? (burnedCard?.id === selectedId ? burnedCard : null)
+    ?? (peeked?.id === selectedId ? peeked : null);
 
   function saveCard(cardId: string, patch: Partial<CollectionCard>) {
     setCards((current) => current.map((card) => (card.id === cardId ? { ...card, ...patch } : card)));
@@ -466,7 +500,11 @@ export function CollectionPage(props: {
               setSelecting(false);
               setSelectedIds(new Set());
               setSelectedId(null);
+              setPeeked(null);
               setSearch((current) => ({ ...current, page: 0 }));
+              if (params.has("player") || params.has("card")) {
+                setParams({}, { replace: true });
+              }
             }}
           />{" "}
           <span className="gradient-text">collection</span>
@@ -474,7 +512,7 @@ export function CollectionPage(props: {
         <p className="collection-count">{napping ? "" : counted ? countLabel : "…"}</p>
       </div>
       {napping ? null : (
-      <div className="collection-tools">
+      <div className={viewingSelf ? "collection-tools" : "collection-tools is-peek"}>
         <input
           className="collection-search"
           value={query}

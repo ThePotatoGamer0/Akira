@@ -1,6 +1,7 @@
 import { Router } from "express";
 import type { CardQuality } from "../../../../src/generated/prisma/client.js";
 import { GameError } from "../../../../src/game/errors.js";
+import { seriesTitleStyle } from "../../../../src/game/series-meta.js";
 import { bitsStats, cardCountStats, completionStats, setSeriesTracked } from "../../../../src/game/stats.js";
 import { authMiddleware } from "../middleware/auth.js";
 
@@ -39,7 +40,7 @@ statsRouter.get("/completion", async (req, res) => {
   const requested = queryParam(req.query["userId"]);
   const userId = requested || req.user!.id;
   try {
-    res.json(await completionStats(userId));
+    res.json(await completionStats(userId, seriesTitleStyle(req.user!.seriesTitle)));
   } catch (err) {
     const status = err instanceof GameError && err.code === "missing" ? 404 : 400;
     res.status(status).json({ error: gameMessage(err) });
@@ -55,7 +56,7 @@ statsRouter.post("/tracked", async (req, res) => {
   }
   try {
     await setSeriesTracked(viewer.id, body.seriesId, body.tracked);
-    res.json(await completionStats(viewer.id));
+    res.json(await completionStats(viewer.id, seriesTitleStyle(viewer.seriesTitle)));
   } catch (err) {
     res.status(400).json({ error: gameMessage(err) });
   }

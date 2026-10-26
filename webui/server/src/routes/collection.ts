@@ -3,6 +3,7 @@ import type { CardQuality, Prisma } from "../../../../src/generated/prisma/clien
 import { burnOwnedCards, quoteOwnedBurn } from "../../../../src/game/economy.js";
 import { displayFrameId, frameIdsOnDisk, frameLabel, personalDefaultFrame, serverDefaultFrame, setCardFrame, setOwnedFrames, setPersonalDefaultFrame, storedFrameChoice } from "../../../../src/game/frames.js";
 import { GameError } from "../../../../src/game/errors.js";
+import { displaySeriesName, seriesSlugsMatching, seriesTitleStyle } from "../../../../src/game/series-meta.js";
 import { applyTag, clearTag, createTag, deleteTag, listTags } from "../../../../src/game/tags.js";
 import { prisma } from "../db/client.js";
 import { authMiddleware } from "../middleware/auth.js";
@@ -23,6 +24,44 @@ const CARD_INCLUDE = {
     },
   },
 } as const;
+
+type LoadedCard = Prisma.CardGetPayload<{ include: typeof CARD_INCLUDE }>;
+
+function presentCollectionCard(
+  card: LoadedCard,
+  serverFrame: number,
+  personalFrame: number | null,
+  tagEmoji: Map<string, string>,
+  titleStyle: ReturnType<typeof seriesTitleStyle>,
+) {
+  const { character: ch } = card.variant;
+  const frameId = displayFrameId(card.frameId, serverFrame, personalFrame);
+  const base = assetBase(card.variant.id, frameId, card.printNumber, card.dye);
+  return {
+    id: card.id,
+    printNumber: card.printNumber,
+    quality: card.quality,
+    frameChoice: storedFrameChoice(card.frameId),
+    frameId,
+    tag: card.tag,
+    tagEmoji: card.tag ? tagEmoji.get(card.tag) ?? "◾" : "◾",
+    alias: card.alias,
+    dye: card.dye,
+    obtainedAt: card.obtainedAt,
+    variant: { id: card.variant.id, name: card.variant.name },
+    character: { id: ch.id, name: ch.name, slug: ch.slug },
+    series: {
+      id: ch.series.id,
+      name: displaySeriesName(ch.series.slug, ch.series.name, titleStyle),
+      slug: ch.series.slug,
+    },
+    assets: {
+      normal: `${base}/normal.png`,
+      shiny: `${base}/shiny.apng`,
+      burn: `${base}/burn.apng`,
+    },
+  };
+}
 
 export const collectionRouter = Router();
 
@@ -137,6 +176,10 @@ function collectionWhere(userId: string, q: string): Prisma.CardWhereInput {
     { variant: { character: { name: { contains: q } } } },
     { variant: { character: { series: { name: { contains: q } } } } },
   ];
+  const titleSlugs = seriesSlugsMatching(q);
+  if (titleSlugs.length > 0) {
+    or.push({ variant: { character: { series: { slug: { in: titleSlugs } } } } });
+  }
   const qualities = qualitiesForQuery(q);
   if (qualities.length > 0) or.push({ quality: { in: qualities } });
   if (/^\d{1,6}$/.test(q)) or.push({ printNumber: Number(q) });
@@ -399,6 +442,35 @@ collectionRouter.get("/players", async (_req, res) => {
   res.json({ players });
 });
 
+collectionRouter.get("/:userId/cards/:cardId", async (req, res) => {
+  const userId = req.params["userId"] ?? "";
+  const cardId = (req.params["cardId"] ?? "").toLowerCase();
+  const owner = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { id: true, discordId: true },
+  });
+  if (!owner) {
+    res.status(404).json({ error: "Akira couldn't find that player." });
+    return;
+  }
+  const card = await prisma.card.findUnique({
+    where: { id: cardId },
+    include: CARD_INCLUDE,
+  });
+  if (!card || card.ownerId !== userId) {
+    res.status(404).json({ error: "Akira couldn't find that card." });
+    return;
+  }
+  const titleStyle = seriesTitleStyle(req.user!.seriesTitle);
+  const [serverFrame, personalFrame, tags] = await Promise.all([
+    serverDefaultFrame(process.env["DISCORD_GUILD_ID"] ?? null),
+    personalDefaultFrame(owner.discordId),
+    prisma.tag.findMany({ where: { userId } }),
+  ]);
+  const tagEmoji = new Map(tags.map((tag) => [tag.name, tag.emoji]));
+  res.json(presentCollectionCard(card, serverFrame, personalFrame, tagEmoji, titleStyle));
+});
+
 collectionRouter.get("/:userId", async (req, res) => {
   const userId = req.params["userId"] ?? "";
   const owner = await prisma.user.findUnique({
@@ -415,6 +487,7 @@ collectionRouter.get("/:userId", async (req, res) => {
   const q = queryParam(req.query["q"]).trim().slice(0, 80);
   const order = collectionOrder(queryParam(req.query["order"]));
   const where = collectionWhere(userId, q);
+  const titleStyle = seriesTitleStyle(req.user!.seriesTitle);
 
   const [owned, total, ranked, serverFrame, personalFrame, tags] = await Promise.all([
     prisma.card.count({ where: { ownerId: userId } }),
@@ -427,7 +500,7 @@ collectionRouter.get("/:userId", async (req, res) => {
         quality: true,
         printNumber: true,
         obtainedAt: true,
-        variant: { select: { character: { select: { name: true, series: { select: { name: true } } } } } },
+        variant: { select: { character: { select: { name: true, series: { select: { name: true, slug: true } } } } } },
       },
     }),
     serverDefaultFrame(process.env["DISCORD_GUILD_ID"] ?? null),
@@ -441,7 +514,11 @@ collectionRouter.get("/:userId", async (req, res) => {
       quality: card.quality,
       printNumber: card.printNumber,
       character: card.variant.character.name,
-      series: card.variant.character.series.name,
+      series: displaySeriesName(
+        card.variant.character.series.slug,
+        card.variant.character.series.name,
+        titleStyle,
+      ),
       obtainedAt: card.obtainedAt,
     }))
     .sort((a, b) => compareCards(order, a, b))
@@ -462,31 +539,6 @@ collectionRouter.get("/:userId", async (req, res) => {
     owned,
     limit,
     offset,
-    cards: cards.map((c) => {
-      const { character: ch } = c.variant;
-      const frameId = displayFrameId(c.frameId, serverFrame, personalFrame);
-      const base = assetBase(c.variant.id, frameId, c.printNumber, c.dye);
-
-      return {
-        id: c.id,
-        printNumber: c.printNumber,
-        quality: c.quality,
-        frameChoice: storedFrameChoice(c.frameId),
-        frameId,
-        tag: c.tag,
-        tagEmoji: c.tag ? tagEmoji.get(c.tag) ?? "◾" : "◾",
-        alias: c.alias,
-        dye: c.dye,
-        obtainedAt: c.obtainedAt,
-        variant: { id: c.variant.id, name: c.variant.name },
-        character: { id: ch.id, name: ch.name, slug: ch.slug },
-        series: { id: ch.series.id, name: ch.series.name, slug: ch.series.slug },
-        assets: {
-          normal: `${base}/normal.png`,
-          shiny: `${base}/shiny.apng`,
-          burn: `${base}/burn.apng`,
-        },
-      };
-    }),
+    cards: cards.map((card) => presentCollectionCard(card, serverFrame, personalFrame, tagEmoji, titleStyle)),
   });
 });

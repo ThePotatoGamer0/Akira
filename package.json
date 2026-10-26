@@ -1,6 +1,6 @@
 {
   "name": "akira",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The Akira Discord bot.",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,9 @@
     "test": "node --import tsx --test src/game/*.test.ts src/renderer/*.test.ts src/bot/*.test.ts modules/discord-log-html/src/*.test.ts",
     "icons": "tsx src/bot/icon-sync.ts",
     "portraits": "tsx scripts/fetch-portraits.ts",
-    "portraits:install": "tsx scripts/install-portraits.ts"
+    "portraits:install": "tsx scripts/install-portraits.ts",
+    "covers": "tsx scripts/fetch-covers.ts",
+    "titles": "tsx scripts/fetch-titles.ts"
   },
   "keywords": [],
   "author": "",

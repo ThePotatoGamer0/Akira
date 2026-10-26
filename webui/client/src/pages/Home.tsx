@@ -29,6 +29,11 @@ export function Home(props: { me: Me | null; showChannel?: boolean }) {
           </Link>
         </li>
         <li>
+          <Link to="/characters" className="webui-link-card">
+            Characters
+          </Link>
+        </li>
+        <li>
           <Link to="/economy" className="webui-link-card">
             Economy &amp; pool
           </Link>

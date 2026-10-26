@@ -1,13 +1,26 @@
 import { prisma } from "../db/client.js";
+import { sanitizeDiscordAvatarHash } from "../utils/discord-avatar.js";
 
-/** Keep DB discordUsername in sync so browser WebUI can look you up by handle. */
-export async function syncDiscordUsernameForWebUi(discordId: string, username: string): Promise<void> {
+/** Keep DB discordUsername and avatar in sync for the WebUI. */
+export async function syncDiscordUsernameForWebUi(
+  discordId: string,
+  username: string,
+  avatar?: string | null,
+): Promise<void> {
   const norm = username.trim().toLowerCase();
-  if (!norm) return;
+  const hash = avatar === undefined ? undefined : (sanitizeDiscordAvatarHash(avatar) ?? "");
+  if (!norm && hash === undefined) return;
 
   await prisma.user.upsert({
     where: { discordId },
-    create: { discordId, discordUsername: norm },
-    update: { discordUsername: norm },
+    create: {
+      discordId,
+      discordUsername: norm || null,
+      ...(hash !== undefined ? { discordAvatar: hash } : {}),
+    },
+    update: {
+      ...(norm ? { discordUsername: norm } : {}),
+      ...(hash !== undefined ? { discordAvatar: hash } : {}),
+    },
   });
 }

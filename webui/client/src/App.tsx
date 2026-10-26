@@ -8,6 +8,7 @@ import { VerifyScreen } from "./components/auth/VerifyScreen.js";
 import { SetPasswordScreen } from "./components/auth/SetPasswordScreen.js";
 import { WebUiShell } from "./components/WebUiShell.js";
 import { Home } from "./pages/Home.js";
+import { CatalogPage } from "./pages/Catalog.js";
 import { CollectionPage } from "./pages/Collection.js";
 import { EconomyPage } from "./pages/Economy.js";
 import { StatsPage } from "./pages/Stats.js";
@@ -52,8 +53,12 @@ export function App() {
 
   useEffect(() => {
     document.documentElement.classList.toggle("webui-activity", auth.isDiscordActivity);
-    return () => document.documentElement.classList.remove("webui-activity");
-  }, [auth.isDiscordActivity]);
+    document.documentElement.classList.toggle("webui-activity-compact", auth.isDiscordActivity && compact);
+    return () => {
+      document.documentElement.classList.remove("webui-activity");
+      document.documentElement.classList.remove("webui-activity-compact");
+    };
+  }, [auth.isDiscordActivity, compact]);
 
   useEffect(() => {
     if (!window.matchMedia("(max-width: 700px)").matches) return;
@@ -177,6 +182,9 @@ export function App() {
         <NavLink to="/collection" className={({ isActive }) => (isActive ? "active" : "")}>
           Collection
         </NavLink>
+        <NavLink to="/characters" className={({ isActive }) => (isActive ? "active" : "")}>
+          Characters
+        </NavLink>
         <NavLink to="/economy" className={({ isActive }) => (isActive ? "active" : "")}>
           Economy
         </NavLink>
@@ -227,6 +235,12 @@ export function App() {
             }
           />
           <Route path="/collection" element={<CollectionPage me={me} fetchApi={auth.fetchApi} liveRev={auth.liveRev} />} />
+          <Route
+            path="/characters/:seriesSlug/:characterSlug"
+            element={<CatalogPage fetchApi={auth.fetchApi} />}
+          />
+          <Route path="/characters/:seriesSlug" element={<CatalogPage fetchApi={auth.fetchApi} />} />
+          <Route path="/characters" element={<CatalogPage fetchApi={auth.fetchApi} />} />
           <Route
             path="/economy"
             element={

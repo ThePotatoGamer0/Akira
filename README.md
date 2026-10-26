@@ -24,7 +24,7 @@ On the Pi, create `/home/james/akira-data/`. Set the variables below in the Port
 
 The stack publishes port **3333**. That is the API. Put HTTPS in front of it (Caddy, Traefik, or a Cloudflare tunnel). The browser will not keep a login cookie for a Vercel site unless the API is HTTPS.
 
-`/home/james/akira-data/akira.db` is the database. `/home/james/akira-data/cards` is the generated card pictures.
+`/home/james/akira-data/akira.db` is the database. `/home/james/akira-data/sessions.db` is WebUI logins, so pulling a new image does not sign people out. Keep `SESSION_SECRET` the same when you recreate the stack. `/home/james/akira-data/cards` is the generated card pictures.
 
 Character art is inside the image. After you add characters, push to `main` and pull the new image on the Pi.
 

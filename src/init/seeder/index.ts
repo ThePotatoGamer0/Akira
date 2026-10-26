@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { prisma } from "../../db/client.js";
 import { DIR_INPUT_CHARACTERS } from "../../utils/paths.js";
+import { displaySeriesName } from "../../game/series-meta.js";
 import type { CharacterJsonData } from "../generator/index.js";
 
 export async function seedCatalog(): Promise<void> {
@@ -86,7 +87,7 @@ const SERIES_TITLES: Record<string, string> = {
 };
 
 function seriesTitle(slug: string): string {
-  return SERIES_TITLES[slug] ?? humanizeSlug(slug);
+  return displaySeriesName(slug, SERIES_TITLES[slug] ?? humanizeSlug(slug), "romaji");
 }
 
 function humanizeSlug(slug: string): string {

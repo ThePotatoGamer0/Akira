@@ -31,7 +31,7 @@ Shop, server, and prestige are listed separately, then a Together section with t
 
 ## Leaderboard
 
-The Leaderboard link on the site opens Stats. Rankings live there with the rest of the server's numbers.
+Rankings live on **Stats**, with the rest of the server's numbers.
 
 ## See also
 

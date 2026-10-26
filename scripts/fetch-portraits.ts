@@ -1,36 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import sharp from "sharp";
+import { anilist, humanizeSlug, resolveSeries, searchTitle, sleep, writePng } from "./anilist.js";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const charactersRoot = path.join(root, "input", "characters");
 const portraitsRoot = path.join(root, "input", "portraits");
-
-const ANILIST = "https://graphql.anilist.co";
 const PAGE_SIZE = 25;
-
-/**
- * Folder slug to the title AniList actually lists.
- * null means the show is not on AniList, so the script skips it.
- */
-const ANILIST_SEARCH: Record<string, string | null> = {
-  "demon-slayer": "Kimetsu no Yaiba",
-  invincible: null,
-  pokemon: "Pocket Monsters",
-  "yarichin-bitch-club": "Yarichin☆Bitch-bu",
-  "haikyuu-2nd-season": "Haikyuu!! 2nd Season",
-  "cyberpunk-edgerunners": "Cyberpunk: Edgerunners",
-  "pingu-in-the-city": "Pingu in the City",
-  "witch-hat-atelier": "Witch Hat Atelier",
-  "persona-4": "Persona 4 the Animation",
-  "persona-5": "PERSONA5 the Animation",
-};
-
-function searchTitle(seriesSlug: string): string | null {
-  if (Object.hasOwn(ANILIST_SEARCH, seriesSlug)) return ANILIST_SEARCH[seriesSlug] ?? null;
-  return humanizeSlug(seriesSlug);
-}
 
 type ExistingCharacter = {
   slug: string;
@@ -55,18 +31,6 @@ type ManifestEntry = {
   file: string;
   matchedCatalogSlug: string | null;
 };
-
-const SEARCH_QUERY = `
-query ($search: String, $type: MediaType) {
-  Page(perPage: 10) {
-    media(search: $search, type: $type, sort: SEARCH_MATCH) {
-      id
-      popularity
-      title { romaji english }
-    }
-  }
-}
-`;
 
 /** Extra AniList media whose cast should join an existing series folder. */
 const EXTRA_CAST: Record<string, Array<{ type: "ANIME" | "MANGA"; search: string }>> = {
@@ -116,18 +80,6 @@ query ($id: Int, $page: Int) {
 }
 `;
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-function humanizeSlug(slug: string): string {
-  return slug
-    .split(/[-_]+/)
-    .filter(Boolean)
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-}
-
 function slugify(name: string): string {
   return name
     .normalize("NFKD")
@@ -175,74 +127,6 @@ function matchExisting(name: string, existing: ExistingCharacter[]): ExistingCha
   return byFirst.length === 1 ? byFirst[0]! : null;
 }
 
-async function anilist<T>(query: string, variables: Record<string, unknown>): Promise<T> {
-  for (let attempt = 0; attempt < 4; attempt++) {
-    const response = await fetch(ANILIST, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "User-Agent": "AkiraPortraitFetch/0.1",
-      },
-      body: JSON.stringify({ query, variables }),
-    });
-    if (response.status === 429) {
-      const retryAfter = Number(response.headers.get("retry-after") ?? "2");
-      await sleep((Number.isFinite(retryAfter) ? retryAfter : 2) * 1000);
-      continue;
-    }
-    if (!response.ok) {
-      throw new Error(`AniList responded ${response.status}`);
-    }
-    const body = (await response.json()) as { data?: T; errors?: unknown };
-    if (body.errors) {
-      throw new Error(`AniList query failed: ${JSON.stringify(body.errors)}`);
-    }
-    if (!body.data) throw new Error("AniList returned no data");
-    return body.data;
-  }
-  throw new Error("AniList rate limit persisted");
-}
-
-function titleScore(
-  search: string,
-  title: { romaji: string | null; english: string | null },
-  popularity: number | null,
-): number {
-  const query = search.toLowerCase();
-  const names = [title.english, title.romaji].filter((name): name is string => Boolean(name)).map((name) => name.toLowerCase());
-  let rank = 0;
-  for (const name of names) {
-    if (name === query) rank = Math.max(rank, 3);
-    else if (name.startsWith(query)) rank = Math.max(rank, 2);
-    else if (name.includes(query)) rank = Math.max(rank, 1);
-  }
-  return rank * 1_000_000_000 + (popularity ?? 0);
-}
-
-async function resolveSeries(search: string, type: "ANIME" | "MANGA"): Promise<{ id: number; title: string }> {
-  const data = await anilist<{
-    Page: {
-      media: Array<{
-        id: number;
-        popularity: number | null;
-        title: { romaji: string | null; english: string | null };
-      }>;
-    };
-  }>(SEARCH_QUERY, { search, type });
-  const ranked = data.Page.media
-    .map((hit) => ({ hit, score: titleScore(search, hit.title, hit.popularity) }))
-    .sort((a, b) => b.score - a.score);
-  const best = ranked[0];
-  if (!best || best.score < 1_000_000_000) {
-    throw new Error(`AniList has no ${type === "MANGA" ? "manga" : "anime"} whose title matches "${search}"`);
-  }
-  return {
-    id: best.hit.id,
-    title: best.hit.title.english ?? best.hit.title.romaji ?? search,
-  };
-}
-
 async function castFor(id: number): Promise<AniCharacter[]> {
   const characters: AniCharacter[] = [];
   let page = 1;
@@ -287,15 +171,6 @@ async function castFor(id: number): Promise<AniCharacter[]> {
   }
 
   return characters;
-}
-
-async function writePng(url: string, dest: string): Promise<void> {
-  const response = await fetch(url, { headers: { "User-Agent": "AkiraPortraitFetch/0.1" } });
-  if (!response.ok) throw new Error(`Image download failed ${response.status}: ${url}`);
-  const source = Buffer.from(await response.arrayBuffer());
-  const png = await sharp(source).png().toBuffer();
-  fs.mkdirSync(path.dirname(dest), { recursive: true });
-  fs.writeFileSync(dest, png);
 }
 
 async function fetchSeries(seriesSlug: string, search: string, force: boolean): Promise<void> {
