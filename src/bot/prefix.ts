@@ -111,39 +111,80 @@ function optionFields(options: CommandOption[], rest: string, forcedSubcommand?:
   return { fields: sub?.options ?? [], args: known ? tokens.slice(1) : tokens };
 }
 
+/**
+ * Tokens a message actually supplies for each field. A mention can come
+ * anywhere, so `/trade` keeps its required card codes first for Discord and
+ * still reads `atrade @them card1 card2` from chat.
+ */
+function planTokens(fields: CommandOption[], args: string[]): Map<CommandOption, string[]> | null {
+  const userFields = fields.filter((field) => field.type === ApplicationCommandOptionType.User);
+  const looseMentions: string[] = [];
+  if (userFields.length > 0) {
+    args = args.filter((token) => {
+      if (!isUserToken(token)) return true;
+      if (userFields.some((field) => !looseMentions.includes(token)) && looseMentions.length < userFields.length) {
+        looseMentions.push(token);
+        return false;
+      }
+      return true;
+    });
+  }
+  const planned = new Map<CommandOption, string[]>();
+  let index = 0;
+  for (const field of fields) {
+    if (field.type === ApplicationCommandOptionType.User) {
+      const mention = looseMentions.shift();
+      planned.set(field, mention ? [mention] : []);
+      continue;
+    }
+    if (isCardIdList(field)) {
+      const ids: string[] = [];
+      while (index < args.length && isCardToken(args[index] ?? "")) {
+        const token = args[index++] ?? "";
+        // Chat allows `card1,card2`; a slash command needs the comma gone.
+        ids.push(...token.split(",").filter((part) => part.length > 0));
+      }
+      planned.set(field, ids);
+      continue;
+    }
+    if (isFilterField(field) || (field.type === ApplicationCommandOptionType.String && !isSingleToken(field))) {
+      planned.set(field, args.slice(index));
+      index = args.length;
+      continue;
+    }
+    planned.set(field, index < args.length ? [args[index++] ?? ""] : []);
+  }
+  if (index !== args.length) return null;
+  return planned;
+}
+
 /** True when the text after the command is empty, or exactly the options that command accepts. */
 export function invocationIsExpected(command: AkiraCommand, rest: string, forcedSubcommand?: string): boolean {
   const options = (command.data.toJSON().options ?? []) as CommandOption[];
   const { fields, args } = optionFields(options, rest, forcedSubcommand);
-  let index = 0;
+  const planned = planTokens(fields, args);
+  if (!planned) return false;
   for (const field of fields) {
+    const tokens = planned.get(field) ?? [];
     const required = field.required === true;
     if (field.type === ApplicationCommandOptionType.User) {
-      if (index < args.length && isUserToken(args[index] ?? "")) index += 1;
-      else if (required) return false;
+      if (required && tokens.length === 0) return false;
       continue;
     }
     if (isCardIdList(field)) {
-      const start = index;
-      while (index < args.length && isCardToken(args[index] ?? "")) index += 1;
-      if (index < args.length) return false;
-      if (required && index === start) return false;
+      if (required && tokens.length === 0) return false;
       continue;
     }
     if (isFilterField(field)) {
-      return filtersAreInvocable(args.slice(index).join(" "));
+      return filtersAreInvocable(tokens.join(" "));
     }
     if (field.type === ApplicationCommandOptionType.String && !isSingleToken(field)) {
-      if (index >= args.length) return !required;
+      if (tokens.length === 0) return !required;
       return true;
     }
-    if (index >= args.length) {
-      if (required) return false;
-      continue;
-    }
-    index += 1;
+    if (tokens.length === 0 && required) return false;
   }
-  return index === args.length;
+  return true;
 }
 
 function fieldsForSub(options: CommandOption[], sub: string): CommandOption[] {
@@ -157,37 +198,20 @@ function fieldsForSub(options: CommandOption[], sub: string): CommandOption[] {
 /** Values a prefix message supplied, using the same token rules as invocationIsExpected. */
 export function prefixOptionValues(fields: CommandOption[], args: string[]): Map<string, string> {
   const values = new Map<string, string>();
-  let index = 0;
+  const planned = planTokens(fields, args);
+  if (!planned) return values;
   for (const field of fields) {
+    const tokens = planned.get(field) ?? [];
+    if (tokens.length === 0) continue;
     if (field.type === ApplicationCommandOptionType.User) {
-      const token = args[index] ?? "";
-      if (index < args.length && isUserToken(token)) {
-        values.set(field.name, token.replace(/\D/g, ""));
-        index += 1;
-      }
+      values.set(field.name, (tokens[0] ?? "").replace(/\D/g, ""));
       continue;
     }
     if (isCardIdList(field)) {
-      const ids: string[] = [];
-      while (index < args.length && isCardToken(args[index] ?? "")) {
-        ids.push((args[index] ?? "").toLowerCase());
-        index += 1;
-      }
-      if (ids.length > 0) values.set(field.name, ids.join(" "));
+      values.set(field.name, tokens.map((token) => token.toLowerCase()).join(" "));
       continue;
     }
-    if (isFilterField(field)) {
-      const rest = args.slice(index).join(" ");
-      if (rest) values.set(field.name, rest);
-      break;
-    }
-    if (field.type === ApplicationCommandOptionType.String && !isSingleToken(field)) {
-      if (index < args.length) values.set(field.name, args.slice(index).join(" "));
-      break;
-    }
-    if (index >= args.length) continue;
-    values.set(field.name, args[index] ?? "");
-    index += 1;
+    values.set(field.name, tokens.join(" "));
   }
   return values;
 }

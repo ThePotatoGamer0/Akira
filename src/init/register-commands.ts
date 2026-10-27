@@ -33,7 +33,41 @@ function keepGlobalCommand(command: APIApplicationCommand) {
 }
 
 function slashBody(extra?: AkiraCommand[]) {
-  return [...commands, ...(extra ?? [])].filter((command) => !command.hidden).map((command) => command.data.toJSON());
+  const body: ReturnType<AkiraCommand["data"]["toJSON"]>[] = [];
+  for (const command of [...commands, ...(extra ?? [])]) {
+    if (command.hidden) continue;
+    const json = command.data.toJSON();
+    const problem = requiredOrderProblem(json.options);
+    if (problem) {
+      console.error(`Skipping /${json.name}: ${problem}`);
+      continue;
+    }
+    body.push(json);
+  }
+  return body;
+}
+
+type SlashOption = {
+  name: string;
+  required?: boolean | undefined;
+  type: number;
+  options?: SlashOption[] | undefined;
+};
+
+/** Discord refuses a command whose required option comes after an optional one. */
+function requiredOrderProblem(options: SlashOption[] | undefined): string | null {
+  if (!options) return null;
+  for (const option of options) {
+    if (option.options) {
+      const nested = requiredOrderProblem(option.options);
+      if (nested) return nested;
+    }
+  }
+  const plain = options.filter((option) => option.type !== 1 && option.type !== 2);
+  const firstOptional = plain.findIndex((option) => option.required !== true);
+  if (firstOptional === -1) return null;
+  const offender = plain.slice(firstOptional).find((option) => option.required === true);
+  return offender ? `required option "${offender.name}" comes after an optional one` : null;
 }
 
 /** Guild commands show up quickly. Call this for every server the bot is in. */

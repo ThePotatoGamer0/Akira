@@ -179,12 +179,14 @@ export const trade: AkiraCommand = {
   data: new SlashCommandBuilder()
     .setName("trade")
     .setDescription("Offer one of your cards for one of theirs")
-    .addUserOption((option) => option.setName("user").setDescription("Who you are trading with").setRequired(false))
     .addStringOption((option) =>
-      option.setName("card_id").setDescription("One of the two cards").setRequired(true),
+      option.setName("card_id").setDescription("Your card").setRequired(true),
     )
     .addStringOption((option) =>
-      option.setName("their_card").setDescription("The other card").setRequired(true),
+      option.setName("their_card").setDescription("Their card").setRequired(true),
+    )
+    .addUserOption((option) =>
+      option.setName("user").setDescription("Who you are trading with, if you want to ping them").setRequired(false),
     ),
   execute: async (interaction: ChatInputCommandInteraction, _client: Client) => {
     try {

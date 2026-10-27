@@ -152,6 +152,26 @@ test("a trade prefix splits card codes on commas", () => {
   assert.equal(bare.get("their_card"), "abc1234");
 });
 
+test("every slash command declares required options before optional ones", () => {
+  type Option = { name: string; required?: boolean; type: number; options?: Option[] };
+  const bad: string[] = [];
+  const walk = (path: string, options: Option[]) => {
+    for (const option of options) {
+      if (option.options) walk(`${path} ${option.name}`, option.options);
+    }
+    const flat = options.filter((option) => option.type !== 1 && option.type !== 2);
+    const firstOptional = flat.findIndex((option) => !option.required);
+    if (firstOptional === -1) return;
+    for (const option of flat.slice(firstOptional)) {
+      if (option.required) bad.push(`${path} ${option.name}`);
+    }
+  };
+  for (const command of [trade, give, multitrade]) {
+    walk(command.data.name, command.data.toJSON().options ?? []);
+  }
+  assert.deepEqual(bad, []);
+});
+
 test("a bare view uses the card that was just grabbed", () => {
   assert.equal(viewCardArgument("", "fmbl40r"), "fmbl40r");
   assert.equal(viewCardArgument("", null), null);
