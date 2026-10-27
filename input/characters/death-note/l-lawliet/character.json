@@ -8,6 +8,12 @@
       "name": "L Lawliet",
       "rarity": "Common",
       "image": "base.png"
+    },
+    {
+      "id": "death-note-l-lawliet-iaml",
+      "name": "I Am L",
+      "rarity": "Rare",
+      "image": "iaml.png"
     }
   ],
   "role": "MAIN"

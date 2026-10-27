@@ -30,3 +30,4 @@ If you are planning to build a substantial new feature, please drop a message in
 - [Local environment setup](/contributing/local-setup)
 - [Updating documentation](/contributing/documentation)
 - [Adding characters](/contributing/adding-characters)
+- [Rebuilding the card cache](/contributing/card-cache)

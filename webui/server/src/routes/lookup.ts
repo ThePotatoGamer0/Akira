@@ -5,6 +5,7 @@ import {
   catalogSeries,
   catalogSeriesDetail,
   setCatalogWishlist,
+  setSeriesMissingWishlist,
 } from "../../../../src/game/catalog.js";
 import { GameError } from "../../../../src/game/errors.js";
 import { seriesTitleStyle } from "../../../../src/game/series-meta.js";
@@ -60,6 +61,19 @@ lookupRouter.get("/series/:seriesSlug/characters/:characterSlug", async (req, re
         seriesTitleStyle(req.user!.seriesTitle),
       ),
     );
+  } catch (err) {
+    res.status(gameStatus(err)).json({ error: gameMessage(err) });
+  }
+});
+
+lookupRouter.post("/series/:seriesSlug/wishlist", async (req, res) => {
+  const watching = (req.body as { watching?: unknown }).watching;
+  if (typeof watching !== "boolean") {
+    res.status(400).json({ error: "Akira needs to know whether to watch that series." });
+    return;
+  }
+  try {
+    res.json(await setSeriesMissingWishlist(req.user!.id, param(req.params["seriesSlug"]), watching));
   } catch (err) {
     res.status(gameStatus(err)).json({ error: gameMessage(err) });
   }

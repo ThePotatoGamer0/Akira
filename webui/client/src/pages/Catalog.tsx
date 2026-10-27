@@ -1,15 +1,17 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Pin, X } from "lucide-react";
+import { Pin, Star, X } from "lucide-react";
 import { DeskLayout } from "../components/catalog/CharacterLayouts.js";
 import { MenuSelect } from "../components/MenuSelect.js";
 import { apiUrl } from "../hooks/useAuth.js";
 import {
   CATALOG_ORDERS,
   applyCatalogTrack,
+  catalogCharacterNote,
   catalogOrder,
   sortCatalogCharacters,
   sortCatalogSeries,
+  watchingAllMissing,
   type CatalogOrder,
 } from "../lib/catalogView.js";
 import type {
@@ -136,6 +138,11 @@ function Poster(props: {
   pinned?: boolean;
   pinBusy?: boolean;
   onPin?: () => void;
+  starOn?: boolean;
+  starBusy?: boolean;
+  starLabel?: string;
+  onStar?: () => void;
+  badge?: number;
   percent?: number;
   owned?: number;
   total?: number;
@@ -148,6 +155,8 @@ function Poster(props: {
     : hasScore
       ? `${props.title}, ${props.percent}% · ${props.owned} of ${props.total}`
       : props.title;
+  const pinClass = ["catalog-poster__pin", props.pinned ? "is-on" : ""].filter(Boolean).join(" ");
+  const starClass = ["catalog-poster__star", props.starOn ? "is-on" : ""].filter(Boolean).join(" ");
   return (
     <div className={props.dim ? "catalog-poster is-dim" : "catalog-poster"}>
       <Link to={props.to} className="catalog-poster__hit" aria-label={props.pinned ? `${status}, pinned` : status}>
@@ -169,14 +178,39 @@ function Poster(props: {
           ) : null}
         </span>
       </Link>
+      {props.onStar ? (
+        <button
+          type="button"
+          className={starClass}
+          aria-label={props.starLabel ?? (props.starOn ? `Stop watching ${props.title}` : `Watch ${props.title}`)}
+          aria-pressed={props.starOn ?? false}
+          disabled={props.starBusy}
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            props.onStar?.();
+          }}
+        >
+          <Star size={14} strokeWidth={2.2} fill={props.starOn ? "currentColor" : "none"} />
+        </button>
+      ) : null}
+      {props.badge !== undefined ? (
+        <span className="catalog-poster__circ" title={`${props.badge.toLocaleString("en-GB")} in circulation`}>
+          {props.badge.toLocaleString("en-GB")}
+        </span>
+      ) : null}
       {props.onPin ? (
         <button
           type="button"
-          className={props.pinned ? "catalog-poster__pin is-on" : "catalog-poster__pin"}
+          className={pinClass}
           aria-label={props.pinned ? `Untrack ${props.title}` : `Track ${props.title}`}
           aria-pressed={props.pinned ?? false}
           disabled={props.pinBusy}
-          onClick={props.onPin}
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            props.onPin?.();
+          }}
         >
           <Pin size={14} strokeWidth={2.2} fill={props.pinned ? "currentColor" : "none"} />
         </button>
@@ -204,6 +238,7 @@ function SeriesIndex(props: { fetchApi: FetchApi }) {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [pinning, setPinning] = useState<string | null>(null);
+  const [wishing, setWishing] = useState<string | null>(null);
   const [order, setOrder] = useState<CatalogOrder>("completion");
 
   useEffect(() => {
@@ -317,6 +352,77 @@ function SeriesIndex(props: { fetchApi: FetchApi }) {
     }
   }
 
+  async function toggleCharacterWatch(seriesSlug: string, character: { id: string; slug: string; name: string; wishlisted: boolean }) {
+    if (wishing) return;
+    setWishing(character.id);
+    setError(null);
+    const watching = !character.wishlisted;
+    try {
+      const res = await props.fetchApi(
+        `/lookup/series/${encodeURIComponent(seriesSlug)}/characters/${encodeURIComponent(character.slug)}/wishlist`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ watching }),
+        },
+      );
+      const json = (await res.json()) as { error?: string };
+      if (!res.ok) {
+        setError(json.error ?? "Akira couldn't update that.");
+        return;
+      }
+      const nextCharacters = picked?.characters.map((row) =>
+        row.id === character.id ? { ...row, wishlisted: watching } : row,
+      );
+      setPicked((current) =>
+        current && nextCharacters ? { ...current, characters: nextCharacters } : current,
+      );
+      setHits((current) =>
+        current.map((row) => (row.id === character.id ? { ...row, wishlisted: watching } : row)),
+      );
+      if (picked && nextCharacters) {
+        const filled = watchingAllMissing(nextCharacters);
+        setSeries((current) =>
+          current.map((item) => (item.slug === picked.slug ? { ...item, watchingMissing: filled } : item)),
+        );
+      }
+    } catch {
+      setError("Akira couldn't update that.");
+    } finally {
+      setWishing(null);
+    }
+  }
+
+  async function toggleSeriesWatch(row: CatalogSeries) {
+    if (wishing || row.owned >= row.total) return;
+    setWishing(row.id);
+    setError(null);
+    const watching = !row.watchingMissing;
+    try {
+      const res = await props.fetchApi(`/lookup/series/${encodeURIComponent(row.slug)}/wishlist`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ watching }),
+      });
+      const json = (await res.json()) as { watching?: boolean; error?: string };
+      if (!res.ok) {
+        setError(json.error ?? "Akira couldn't update that.");
+        return;
+      }
+      const next = json.watching ?? watching;
+      setSeries((current) => current.map((item) => (item.id === row.id ? { ...item, watchingMissing: next } : item)));
+      setHits((current) =>
+        current.map((hit) =>
+          hit.series.slug === row.slug && !hit.owned ? { ...hit, wishlisted: next } : hit,
+        ),
+      );
+    } catch {
+      setError("Akira couldn't update that.");
+    } finally {
+      setWishing(null);
+    }
+  }
+
   const filterName = picked?.name ?? (seriesSlug ? "Series" : null);
   const countLabel = loading
     ? "…"
@@ -375,8 +481,12 @@ function SeriesIndex(props: { fetchApi: FetchApi }) {
                 to={`/characters/${picked.slug}/${character.slug}`}
                 src={portraitPath(character.cover)}
                 title={character.name}
-                note={character.owned ? "In your collection" : character.wishlisted ? "Watching" : "Missing"}
+                note={catalogCharacterNote(character)}
                 dim={!character.owned}
+                starOn={character.wishlisted}
+                starBusy={wishing === character.id}
+                onStar={() => void toggleCharacterWatch(picked.slug, character)}
+                badge={character.circulation}
               />
             ))}
           </div>
@@ -402,6 +512,14 @@ function SeriesIndex(props: { fetchApi: FetchApi }) {
                     pinned={row.tracked}
                     pinBusy={pinning === row.id}
                     onPin={() => void togglePin(row)}
+                    starOn={row.watchingMissing}
+                    starBusy={wishing === row.id}
+                    starLabel={
+                      row.watchingMissing
+                        ? `Stop watching missing ${row.name} characters`
+                        : `Watch missing ${row.name} characters`
+                    }
+                    onStar={row.owned >= row.total ? undefined : () => void toggleSeriesWatch(row)}
                   />
                 ))}
               </div>
@@ -419,6 +537,10 @@ function SeriesIndex(props: { fetchApi: FetchApi }) {
                     title={hit.name}
                     note={hit.series.name}
                     dim={!hit.owned}
+                    starOn={hit.wishlisted}
+                    starBusy={wishing === hit.id}
+                    onStar={() => void toggleCharacterWatch(hit.series.slug, hit)}
+                    badge={hit.circulation}
                   />
                 ))}
               </div>

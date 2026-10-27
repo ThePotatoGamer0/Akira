@@ -8,6 +8,12 @@
       "name": "Rebecca",
       "rarity": "Common",
       "image": "base.png"
+    },
+    {
+      "id": "cyberpunk-edgerunners-rebecca-paint",
+      "name": "Paint",
+      "rarity": "Rare",
+      "image": "paint.png"
     }
   ],
   "role": "SUPPORTING"

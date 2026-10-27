@@ -27,13 +27,12 @@ export async function renderDropStripBuffer(slots: PresentedSlot[]): Promise<{ d
 export function dropMessageFromStrip(input: {
   dropperDiscordId: string;
   slots: PresentedSlot[];
-  wishlistDiscordIds: string[];
   strip: Buffer;
   animated: boolean;
   elapsedMs: number;
 }) {
   const name = input.animated ? "drop.gif" : "drop.png";
-  const announcement = dropAnnouncement(input.dropperDiscordId, input.wishlistDiscordIds, input.slots.length);
+  const announcement = dropAnnouncement(input.dropperDiscordId, input.slots.length);
   const timing = input.animated ? `\n${processingTimeNote(input.elapsedMs)}` : "";
   return {
     content: `${announcement}${timing}`,
@@ -45,14 +44,12 @@ export function dropMessageFromStrip(input: {
 export async function renderDropMessage(input: {
   dropperDiscordId: string;
   slots: PresentedSlot[];
-  wishlistDiscordIds: string[];
 }) {
   const started = Date.now();
   const strip = await renderDropStripBuffer(input.slots);
   return dropMessageFromStrip({
     dropperDiscordId: input.dropperDiscordId,
     slots: input.slots,
-    wishlistDiscordIds: input.wishlistDiscordIds,
     strip: strip.data,
     animated: strip.animated,
     elapsedMs: Date.now() - started,

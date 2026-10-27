@@ -11,14 +11,8 @@
     {
       "id": "kobenis-car-base",
       "name": "Mint Condition Fiat",
-      "rarity": "Rare",
+      "rarity": "Common",
       "image": "base.png"
-    },
-    {
-      "id": "kobenis-car-wreck",
-      "name": "Totaled Over a Cliff",
-      "rarity": "Secret Rare",
-      "image": "wrecked.png"
     }
   ]
 }

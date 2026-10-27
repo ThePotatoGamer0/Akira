@@ -8,6 +8,12 @@
       "name": "Frieren",
       "rarity": "Common",
       "image": "base.png"
+    },
+    {
+      "id": "frieren-frieren-flower",
+      "name": "Flower",
+      "rarity": "Rare",
+      "image": "flower.png"
     }
   ]
 }

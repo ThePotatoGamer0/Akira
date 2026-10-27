@@ -65,20 +65,14 @@ function readStyle(raw: RawText | undefined): TextStyle | null {
 /** Plaque used this id. Later frames keep their numbers, so 11 stays unused. */
 const RETIRED_FRAME_IDS = new Set([11]);
 
-export function loadFrame(id: number): FrameAsset | null {
-  if (!Number.isInteger(id) || id < 0 || RETIRED_FRAME_IDS.has(id)) return null;
-  const dir = path.join(DIR_INPUT_FRAMES, String(id));
-  const imagePath = path.join(dir, "frame.png");
-  if (!fs.existsSync(imagePath)) return null;
-
+export function frameFromConfig(id: number, imagePath: string, configRaw: string | null): FrameAsset {
   let characterName: TextStyle | null = null;
   let seriesName: TextStyle | null = null;
   let printNumber: TextStyle | null = null;
   let ambient = false;
-  const configPath = path.join(dir, "config.json");
-  if (fs.existsSync(configPath)) {
+  if (configRaw) {
     try {
-      const parsed = JSON.parse(fs.readFileSync(configPath, "utf8")) as {
+      const parsed = JSON.parse(configRaw) as {
         ambient?: boolean;
         textElements?: { characterName?: RawText; seriesName?: RawText; printNumber?: RawText };
       };
@@ -87,11 +81,20 @@ export function loadFrame(id: number): FrameAsset | null {
       printNumber = readStyle(parsed.textElements?.printNumber);
       ambient = parsed.ambient === true;
     } catch (err) {
-      console.error(`Akira couldn't read the frame config at ${configPath}:`, err);
+      console.error(`Akira couldn't read a frame config for ${id}:`, err);
     }
   }
-
   return { id, imagePath, characterName, seriesName, printNumber, ambient };
+}
+
+export function loadFrame(id: number): FrameAsset | null {
+  if (!Number.isInteger(id) || id < 0 || RETIRED_FRAME_IDS.has(id)) return null;
+  const dir = path.join(DIR_INPUT_FRAMES, String(id));
+  const imagePath = path.join(dir, "frame.png");
+  if (!fs.existsSync(imagePath)) return null;
+  const configPath = path.join(dir, "config.json");
+  const configRaw = fs.existsSync(configPath) ? fs.readFileSync(configPath, "utf8") : null;
+  return frameFromConfig(id, imagePath, configRaw);
 }
 
 export function listFrames(): FrameAsset[] {

@@ -8,6 +8,12 @@
       "name": "Gokuu Son",
       "rarity": "Common",
       "image": "base.png"
+    },
+    {
+      "id": "dragon-ball-z-gokuu-son-supersaiyan",
+      "name": "Super Saiyan",
+      "rarity": "Rare",
+      "image": "supersaiyan.png"
     }
   ],
   "role": "MAIN"

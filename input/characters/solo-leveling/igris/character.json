@@ -8,6 +8,12 @@
       "name": "Igris",
       "rarity": "Common",
       "image": "base.png"
+    },
+    {
+      "id": "solo-leveling-igris-shadow",
+      "name": "Shadow",
+      "rarity": "Rare",
+      "image": "shadow.png"
     }
   ]
 }

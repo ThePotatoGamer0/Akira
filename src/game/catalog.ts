@@ -155,8 +155,16 @@ export type CatalogSeries = {
   percent: number;
   coverUrl: string | null;
   tracked: boolean;
+  watchingMissing: boolean;
   lastGot: number | null;
 };
+
+export function watchingAllMissing(
+  characters: ReadonlyArray<{ owned: boolean; wishlisted: boolean }>,
+): boolean {
+  const missing = characters.filter((character) => !character.owned);
+  return missing.length > 0 && missing.every((character) => character.wishlisted);
+}
 
 function titled(slug: string, name: string, style: SeriesTitleStyle): string {
   return displaySeriesName(slug, name, style);
@@ -167,7 +175,7 @@ export async function catalogSeries(
   style: SeriesTitleStyle = "english",
   recency?: CollectionRecency,
 ): Promise<CatalogSeries[]> {
-  const [rows, got, tracked] = await Promise.all([
+  const [rows, got, tracked, wished] = await Promise.all([
     prisma.series.findMany({
       where: { characters: { some: {} } },
       orderBy: { name: "asc" },
@@ -184,9 +192,11 @@ export async function catalogSeries(
       orderBy: { position: "asc" },
       select: { seriesId: true },
     }),
+    prisma.wishlist.findMany({ where: { userId }, select: { characterId: true } }),
   ]);
   const pinOrder = tracked.map((row) => row.seriesId);
   const pinned = new Set(pinOrder);
+  const watching = new Set(wished.map((row) => row.characterId));
   return sortCatalogSeries(
     rows.map((series) => {
       const held = series.characters.filter((character) => got.ownedCharacters.has(character.id)).length;
@@ -199,6 +209,12 @@ export async function catalogSeries(
         percent: percent(held, series.characters.length),
         coverUrl: seriesPosterUrl(series.slug, series.characters),
         tracked: pinned.has(series.id),
+        watchingMissing: watchingAllMissing(
+          series.characters.map((character) => ({
+            owned: got.ownedCharacters.has(character.id),
+            wishlisted: watching.has(character.id),
+          })),
+        ),
         lastGot: got.seriesAt.get(series.id) ?? null,
       };
     }),
@@ -212,9 +228,23 @@ export type CatalogCharacterCard = {
   slug: string;
   owned: boolean;
   wishlisted: boolean;
+  circulation: number;
   cover: CatalogCover | null;
   lastGot: number | null;
 };
+
+async function characterCirculation(characterIds: string[]): Promise<Map<string, number>> {
+  const counts = new Map<string, number>();
+  if (characterIds.length === 0) return counts;
+  const variants = await prisma.cardVariant.findMany({
+    where: { characterId: { in: characterIds } },
+    select: { characterId: true, _count: { select: { cards: true } } },
+  });
+  for (const row of variants) {
+    counts.set(row.characterId, (counts.get(row.characterId) ?? 0) + row._count.cards);
+  }
+  return counts;
+}
 
 export type CatalogSeriesDetail = {
   id: string;
@@ -244,12 +274,14 @@ export async function catalogSeriesDetail(
     },
   });
   if (!series || series.characters.length === 0) throw new GameError("missing", "Akira couldn't find that series.");
-  const [got, wished] = await Promise.all([
+  const characterIds = series.characters.map((character) => character.id);
+  const [got, wished, circulation] = await Promise.all([
     collectionRecency(userId),
     prisma.wishlist.findMany({
-      where: { userId, characterId: { in: series.characters.map((character) => character.id) } },
+      where: { userId, characterId: { in: characterIds } },
       select: { characterId: true },
     }),
+    characterCirculation(characterIds),
   ]);
   const watching = new Set(wished.map((row) => row.characterId));
   const held = series.characters.filter((character) => got.ownedCharacters.has(character.id)).length;
@@ -267,6 +299,7 @@ export async function catalogSeriesDetail(
         slug: character.slug,
         owned: got.ownedCharacters.has(character.id),
         wishlisted: watching.has(character.id),
+        circulation: circulation.get(character.id) ?? 0,
         cover: coverFor(series.slug, [character]),
         lastGot: got.characterAt.get(character.id) ?? null,
       })),
@@ -359,6 +392,8 @@ export type CatalogSearchHit = {
   slug: string;
   series: { name: string; slug: string };
   owned: boolean;
+  wishlisted: boolean;
+  circulation: number;
   cover: CatalogCover | null;
   lastGot: number | null;
 };
@@ -387,28 +422,38 @@ export async function catalogSearch(
   const characters = await prisma.character.findMany({
     include: { series: true, variants: true },
   });
-  const hits = characters
-    .filter((character) =>
-      matchesSearch(
-        query,
-        character.name,
-        character.slug,
-        character.aliases ?? "",
-        ...seriesSearchFields(character.series.slug, character.series.name),
-      ),
-    )
-    .map((character) => ({
-      id: character.id,
-      name: character.name,
-      slug: character.slug,
-      series: {
-        name: titled(character.series.slug, character.series.name, style),
-        slug: character.series.slug,
-      },
-      owned: got.ownedCharacters.has(character.id),
-      cover: coverFor(character.series.slug, [character]),
-      lastGot: got.characterAt.get(character.id) ?? null,
-    }));
+  const matched = characters.filter((character) =>
+    matchesSearch(
+      query,
+      character.name,
+      character.slug,
+      character.aliases ?? "",
+      ...seriesSearchFields(character.series.slug, character.series.name),
+    ),
+  );
+  const matchedIds = matched.map((character) => character.id);
+  const [wished, circulation] = await Promise.all([
+    prisma.wishlist.findMany({
+      where: { userId, characterId: { in: matchedIds } },
+      select: { characterId: true },
+    }),
+    characterCirculation(matchedIds),
+  ]);
+  const watching = new Set(wished.map((row) => row.characterId));
+  const hits = matched.map((character) => ({
+    id: character.id,
+    name: character.name,
+    slug: character.slug,
+    series: {
+      name: titled(character.series.slug, character.series.name, style),
+      slug: character.series.slug,
+    },
+    owned: got.ownedCharacters.has(character.id),
+    wishlisted: watching.has(character.id),
+    circulation: circulation.get(character.id) ?? 0,
+    cover: coverFor(character.series.slug, [character]),
+    lastGot: got.characterAt.get(character.id) ?? null,
+  }));
   const order = catalogViewOrder(viewOrder);
   hits.sort((a, b) => {
     if (order === "alpha") return compareCatalogName(a.name, b.name);
@@ -434,4 +479,37 @@ export async function setCatalogWishlist(userId: string, characterId: string, wa
     await prisma.wishlist.delete({ where: { id: existing.id } });
   }
   return { watching };
+}
+
+export async function setSeriesMissingWishlist(
+  userId: string,
+  seriesSlug: string,
+  watching: boolean,
+): Promise<{ watching: boolean }> {
+  const series = await prisma.series.findUnique({
+    where: { slug: seriesSlug },
+    select: { characters: { select: { id: true } } },
+  });
+  if (!series || series.characters.length === 0) throw new GameError("missing", "Akira couldn't find that series.");
+  const got = await collectionRecency(userId);
+  const missingIds = series.characters
+    .map((character) => character.id)
+    .filter((id) => !got.ownedCharacters.has(id));
+  if (missingIds.length === 0) return { watching: false };
+  if (watching) {
+    const already = await prisma.wishlist.findMany({
+      where: { userId, characterId: { in: missingIds } },
+      select: { characterId: true },
+    });
+    const have = new Set(already.map((row) => row.characterId));
+    const fresh = missingIds.filter((characterId) => !have.has(characterId));
+    if (fresh.length > 0) {
+      await prisma.wishlist.createMany({
+        data: fresh.map((characterId) => ({ userId, characterId })),
+      });
+    }
+    return { watching: true };
+  }
+  await prisma.wishlist.deleteMany({ where: { userId, characterId: { in: missingIds } } });
+  return { watching: false };
 }

@@ -1,7 +1,15 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import sharp from "sharp";
 import { encodeApng } from "../utils/apng.js";
-import { blendShineOverlay, ditherCardFade, paintCardShine, paintCornerBurn, shinePrism } from "./card-animations.js";
+import {
+  blendShineOverlay,
+  ditherCardFade,
+  paintCardShine,
+  paintCornerBurn,
+  renderShinyOutputs,
+  shinePrism,
+} from "./card-animations.js";
 
 function solid(width: number, height: number, color: [number, number, number, number]): Buffer {
   const buf = Buffer.alloc(width * height * 4);
@@ -105,6 +113,16 @@ test("the burn fades back as grain, with pixels either clear or solid", () => {
   assert.equal(partial, 0);
   assert.ok(clear > 200);
   assert.ok(solidPixels > 200);
+});
+
+test("shiny gif and apng encode from one frame pass", async () => {
+  const png = await sharp({
+    create: { width: 16, height: 24, channels: 4, background: { r: 40, g: 40, b: 50, alpha: 1 } },
+  }).png().toBuffer();
+  const encoded = await renderShinyOutputs(png, ["gif", "apng"]);
+  assert.ok(encoded.gif && encoded.gif.length > 32);
+  assert.equal(encoded.gif.subarray(0, 6).toString("ascii"), "GIF89a");
+  assert.ok(encoded.apng && encoded.apng.indexOf("acTL") > 0);
 });
 
 test("the fringe is prismatic and clear pixels stay clear", () => {

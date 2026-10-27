@@ -8,6 +8,12 @@
       "name": "Albedo",
       "rarity": "Common",
       "image": "base.png"
+    },
+    {
+      "id": "overlord-albedo-standing",
+      "name": "Standing",
+      "rarity": "Rare",
+      "image": "standing.png"
     }
   ]
 }

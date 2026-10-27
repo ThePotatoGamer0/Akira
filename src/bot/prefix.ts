@@ -87,8 +87,13 @@ function isCardToken(token: string): boolean {
   return isCardCode(token.toLowerCase());
 }
 
+/** Mentions, card codes, and commas from a multitrade-style list. */
+export function splitPrefixArgs(rest: string): string[] {
+  return rest.length > 0 ? rest.split(/[,\s]+/).filter((part) => part.length > 0) : [];
+}
+
 function optionFields(options: CommandOption[], rest: string, forcedSubcommand?: string): { fields: CommandOption[]; args: string[] } {
-  const tokens = rest.length > 0 ? rest.split(/\s+/) : [];
+  const tokens = splitPrefixArgs(rest);
   const subs = options.filter((option) => option.type === ApplicationCommandOptionType.Subcommand);
   if (forcedSubcommand) {
     const sub = subs.find((option) => option.name === forcedSubcommand);
@@ -247,7 +252,7 @@ export function createPrefixInteraction(
   const json = command.data.toJSON();
   const options = json.options ?? [];
   const subcommands = options.filter((option) => option.type === ApplicationCommandOptionType.Subcommand);
-  const tokens = rest.length > 0 ? rest.split(/\s+/) : [];
+  const tokens = splitPrefixArgs(rest);
   let sub = forcedSubcommand ?? subcommands[0]?.name ?? "show";
   let argTokens = tokens;
   if (!forcedSubcommand && subcommands.length > 0) {

@@ -8,6 +8,12 @@
       "name": "Kafka Hibino",
       "rarity": "Common",
       "image": "base.png"
+    },
+    {
+      "id": "kaiju-no-8-kafka-hibino-standing",
+      "name": "Standing",
+      "rarity": "Rare",
+      "image": "standing.png"
     }
   ]
 }

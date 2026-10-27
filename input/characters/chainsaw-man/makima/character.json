@@ -9,15 +9,21 @@
   "cards": [
     {
       "id": "makima-base",
-      "name": "Chief of Special Division 4",
+      "name": "Makima",
       "rarity": "Common",
       "image": "base.png"
     },
     {
-      "id": "makima-control",
-      "name": "The Control Devil",
+      "id": "makima-butterfly",
+      "name": "Butterfly",
       "rarity": "Rare",
-      "image": "control_devil.png"
+      "image": "butterfly.png"
+    },
+    {
+      "id": "makima-hallway",
+      "name": "Hallway",
+      "rarity": "Rare",
+      "image": "hallway.png"
     }
   ],
   "role": "MAIN"
