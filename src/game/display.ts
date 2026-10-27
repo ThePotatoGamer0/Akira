@@ -51,14 +51,27 @@ export function processingTimeNote(ms: number): string {
   return `-# ${shown}ms`;
 }
 
-export function dropAnnouncement(dropperDiscordId: string, wishlistDiscordIds: string[], cardCount = 3): string {
+export function dropAnnouncement(dropperDiscordId: string, cardCount = 3): string {
   const noun = cardCount === 1 ? "1 card" : `${cardCount} cards`;
-  const lines = [`<@${dropperDiscordId}> is dropping ${noun}!`];
-  if (wishlistDiscordIds.length > 0) {
-    const mentions = wishlistDiscordIds.map((id) => `<@${id}>`).join(" ");
-    lines.push(`${mentions} Akira sees a character you're watching for.`);
-  }
-  return lines.join("\n\n");
+  return `<@${dropperDiscordId}> is dropping ${noun}!`;
+}
+
+export function wishlistDropDm(names: string[], jumpUrl: string): string {
+  const listed = names.map((name) => `**${name}**`).join(", ");
+  return names.length === 1
+    ? `Someone dropped ${listed}! ${jumpUrl}`
+    : `Someone dropped characters you're watching for: ${listed}. ${jumpUrl}`;
+}
+
+export function wishlistClaimedLine(input: { name: string; grabberDiscordId: string; jumpUrl: string }): string {
+  return `<@${input.grabberDiscordId}> grabbed **${input.name}** first. ${input.jumpUrl}`;
+}
+
+export function wishlistReceipt(names: string[]): string {
+  const listed = names.map((name) => `**${name}**`).join(", ");
+  return names.length === 1
+    ? `${listed} is in your collection now, so Akira took it off your wishlist.`
+    : `${listed} are in your collection now, so Akira took them off your wishlist.`;
 }
 
 export function cardSummaryLine(input: {

@@ -17,6 +17,7 @@ import { isInitLocked } from "../../utils/init-lock.js";
 import { grabNoticeText } from "../grab-notices.js";
 import { hostIsInGuild, privateServerMessage } from "../host-gate.js";
 import { queueCooldownReminder } from "../reminder-schedule.js";
+import { sendWishlistReceipt } from "../wishlist-dm.js";
 
 async function tell(channel: TextBasedChannel, text: string, temporary: boolean): Promise<void> {
   if (!("send" in channel)) return;
@@ -28,7 +29,12 @@ async function tell(channel: TextBasedChannel, text: string, temporary: boolean)
 }
 
 /** Claim a drop slot the way a reaction would, without adding a reaction. */
-export async function performGrab(message: Message, emojiName: string | null, user: User): Promise<"done" | "missing" | "skipped"> {
+export async function performGrab(
+  client: Client,
+  message: Message,
+  emojiName: string | null,
+  user: User,
+): Promise<"done" | "missing" | "skipped"> {
   if (user.bot || isInitLocked()) return "skipped";
   const position = positionFromEmoji(emojiName);
   if (!position) return "skipped";
@@ -53,6 +59,9 @@ export async function performGrab(message: Message, emojiName: string | null, us
     if (result.foughtOffDiscordId) {
       void queueCooldownReminder(result.foughtOffDiscordId, "GRAB");
     }
+    if (result.wishlistCleared.length > 0) {
+      void sendWishlistReceipt(client, user.id, result.wishlistCleared);
+    }
     for (const notice of result.notices) {
       await tell(message.channel, grabNoticeText(notice), false);
     }
@@ -69,7 +78,7 @@ export async function performGrab(message: Message, emojiName: string | null, us
 export function registerReactionHandler(client: Client): void {
   client.on(Events.MessageReactionAdd, async (reaction, user) => {
     try {
-      await onReaction(reaction, user);
+      await onReaction(client, reaction, user);
     } catch (err) {
       console.error(err);
     }
@@ -77,6 +86,7 @@ export function registerReactionHandler(client: Client): void {
 }
 
 async function onReaction(
+  client: Client,
   reaction: MessageReaction | PartialMessageReaction,
   user: User | PartialUser,
 ): Promise<void> {
@@ -86,5 +96,5 @@ async function onReaction(
   if (reaction.message.partial) await reaction.message.fetch();
   if (user.partial) await user.fetch();
   if (reaction.message.partial || user.partial) return;
-  await performGrab(reaction.message, reaction.emoji.name, user);
+  await performGrab(client, reaction.message, reaction.emoji.name, user);
 }

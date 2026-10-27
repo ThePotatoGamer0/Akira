@@ -15,6 +15,7 @@ import {
   poolTier,
   prestigeKinds,
   resolveEffects,
+  rollDropArts,
   SHOP_ITEMS,
   type ActiveEffects,
 } from "./buffs.js";
@@ -85,6 +86,51 @@ describe("shop duration and card count", () => {
   it("keeps the series that was paid for after the shop rotates", () => {
     const locked = resolveEffects(base({ shop: ["featured_series"], seriesId: "bought" }));
     assert.equal(locked.seriesId, "bought");
+    assert.equal(locked.featuredSeriesChance, 0.9);
+    assert.equal(resolveEffects(base()).featuredSeriesChance, 0);
+    assert.match(combinedLines(base({ shop: ["featured_series"], seriesId: "bought" })).join(" "), /90% chance/);
+  });
+
+  it("puts nine in ten cards in a featured drop inside the series", () => {
+    const effects = {
+      ...resolveEffects(base({ shop: ["featured_series"], seriesId: "show" })),
+    };
+    const pool = [
+      { id: "show-lead", rarity: "Common", seriesId: "show", role: "MAIN" },
+      { id: "show-alt", rarity: "Common", seriesId: "show", role: "SUPPORTING" },
+      { id: "other-lead", rarity: "Common", seriesId: "other", role: "MAIN" },
+      { id: "other-alt", rarity: "Common", seriesId: "other", role: "SUPPORTING" },
+    ];
+    // The first roll of each card picks the series: under 0.9 hits, over it misses.
+    const hit = rollDropArts(pool, () => 0.5, 200, effects);
+    assert.equal(hit.filter((card) => card.seriesId === "show").length, 200);
+    const miss = rollDropArts(pool, () => 0.95, 200, effects);
+    assert.equal(miss.some((card) => card.seriesId === "show"), false);
+    let seed = 7;
+    const rng = () => {
+      seed = (seed * 16807) % 2147483647;
+      return seed / 2147483647;
+    };
+    const sample = rollDropArts(pool, rng, 2000, effects);
+    const inside = sample.filter((card) => card.seriesId === "show").length / sample.length;
+    // 90% from the featured roll, plus the plain pool's own share of the series.
+    assert.ok(inside > 0.9 && inside < 0.97, `expected about 90% plus the plain share, got ${inside}`);
+    const plain = rollDropArts(pool, rng, 400, { ...effects, seriesId: null, featuredSeriesChance: 0 });
+    assert.ok(plain.filter((card) => card.seriesId === "show").length < 400);
+  });
+
+  it("still stays inside MAIN characters for a featured quality-over-quantity drop", () => {
+    const effects = {
+      ...resolveEffects(base({ shop: ["featured_series", "quality_over_quantity"], seriesId: "show" })),
+    };
+    const pool = [
+      { id: "show-lead", rarity: "Common", seriesId: "show", role: "MAIN" },
+      { id: "show-alt", rarity: "Common", seriesId: "show", role: "SUPPORTING" },
+      { id: "other-lead", rarity: "Common", seriesId: "other", role: "MAIN" },
+    ];
+    const cards = rollDropArts(pool, () => 0.5, 5, effects);
+    assert.equal(cards.length, 5);
+    assert.equal(cards.filter((card) => card.id === "show-lead").length, 5);
   });
 
   it("drops only MAIN characters while quality over quantity is on", () => {
@@ -111,7 +157,7 @@ describe("shop duration and card count", () => {
       role: "MAIN",
       effects,
     });
-    assert.equal(featured, other * 2);
+    assert.equal(featured, other);
     assert.match(
       combinedLines(base({ shop: ["quality_over_quantity"] })).join(" "),
       /only MAIN characters can appear/,

@@ -1,4 +1,10 @@
-import { artWeight, DROP_COOLDOWN_MS, GRAB_COOLDOWN_MS } from "./balance.js";
+import { artWeight, DROP_COOLDOWN_MS, GRAB_COOLDOWN_MS, pickWeighted, rollArts } from "./balance.js";
+
+/**
+ * Chance each card in a featured-series drop comes from that series.
+ * Leaving a little room keeps a non-featured card possible.
+ */
+export const FEATURED_SERIES_CHANCE = 0.9;
 
 export const BUFF_KINDS = [
   "drop_cooldown",
@@ -59,7 +65,7 @@ export const SHOP_ITEMS: ShopItem[] = [
   {
     id: "featured_series",
     name: "Featured series",
-    description: "Today's featured series is twice as likely in your drops. The series is locked in when you buy it.",
+    description: "Each card has a 90% chance to come from today's featured series. The series is locked in when you buy it.",
     priceBits: 450,
     durationHours: 24,
   },
@@ -216,6 +222,8 @@ export type ResolvedEffects = {
   cardCount: number;
   legendaryWeight: number;
   seriesId: string | null;
+  /** Odds a card in the drop is pulled from the featured series. Zero when nothing is featured. */
+  featuredSeriesChance: number;
   qualityOverQuantity: boolean;
   mainMultiplier: number;
 };
@@ -227,8 +235,7 @@ function has(list: BuffKind[], kind: BuffKind): boolean {
 export function resolveEffects(input: ActiveEffects): ResolvedEffects {
   const shopDrop = has(input.shop, "drop_cooldown");
   const serverDrop = has(input.server, "drop_cooldown");
-  let dropCooldownMs = DROP_COOLDOWN_MS;
-  if (shopDrop) dropCooldownMs = 10 * 60 * 1000;
+  let dropCooldownMs = DROP_COOLDOWN_MS;  if (shopDrop) dropCooldownMs = 10 * 60 * 1000;
   if (serverDrop) dropCooldownMs = shopDrop ? 5 * 60 * 1000 : 10 * 60 * 1000;
   dropCooldownMs = Math.round(dropCooldownMs * (1 - 0.01 * input.prestige.drop));
 
@@ -247,6 +254,7 @@ export function resolveEffects(input: ActiveEffects): ResolvedEffects {
   const legendaryBase = shinySources === 0 ? 1 : shinySources === 1 ? 2 : 3;
   const legendaryWeight = legendaryBase * (1 + 0.01 * input.prestige.mint);
   const seriesId = has(input.shop, "featured_series") ? input.seriesId : null;
+  const featuredSeriesChance = seriesId ? FEATURED_SERIES_CHANCE : 0;
   const mainMultiplier = 1 + 0.01 * input.prestige.main;
 
   return {
@@ -256,6 +264,7 @@ export function resolveEffects(input: ActiveEffects): ResolvedEffects {
     cardCount,
     legendaryWeight,
     seriesId,
+    featuredSeriesChance,
     qualityOverQuantity,
     mainMultiplier,
   };
@@ -327,7 +336,9 @@ export function combinedLines(input: ActiveEffects): string[] {
   if (resolved.qualityOverQuantity) {
     lines.push("Your drops have one card, and only MAIN characters can appear.");
   }
-  if (resolved.seriesId) lines.push("Today's bought series is twice as likely in your drops.");
+  if (resolved.seriesId) {
+    lines.push(`Each card has a ${Math.round(resolved.featuredSeriesChance * 100)}% chance to come from today's bought series.`);
+  }
   if (input.prestige.main > 0) lines.push(`MAIN characters are ${input.prestige.main}% more likely.`);
   return lines;
 }
@@ -345,10 +356,49 @@ export function dropWeight(input: {
   role: string | null;
   effects: ResolvedEffects;
 }): number {
-  let weight = artWeight(input.variantId, input.rarity);
-  if (input.effects.seriesId && input.seriesId === input.effects.seriesId) weight *= 2;
-  if (input.role === "MAIN") weight *= input.effects.mainMultiplier;
+  const weight = artWeight(input.variantId, input.rarity);
+  if (input.role === "MAIN") return weight * input.effects.mainMultiplier;
   return weight;
+}
+
+/**
+ * Each card first rolls for the featured series. A hit pulls from that series
+ * (respecting Quality over quantity), otherwise the whole pool rolls as usual.
+ */
+export function rollDropArts<T extends { id: string; rarity: string; seriesId: string; role: string | null }>(
+  pool: readonly T[],
+  rng: () => number,
+  count: number,
+  effects: ResolvedEffects,
+): T[] {
+  const weightOf = (variant: T) => dropWeight({
+    variantId: variant.id,
+    rarity: variant.rarity,
+    seriesId: variant.seriesId,
+    role: variant.role,
+    effects,
+  });
+  const hitLine = (rng: () => number) => Number.isFinite(effects.featuredSeriesChance) && rng() < effects.featuredSeriesChance;
+  const fromSeries = effects.seriesId && effects.featuredSeriesChance > 0
+    ? pool.filter((variant) => variant.seriesId === effects.seriesId)
+    : [];
+  const featurePool = effects.qualityOverQuantity
+    ? fromSeries.filter((variant) => variant.role === "MAIN")
+    : fromSeries;
+  const draws: T[] = [];
+  for (let index = 0; index < count; index++) {
+    if (featurePool.length > 0 && hitLine(rng)) {
+      draws.push(
+        pickWeighted(
+          featurePool.map((variant) => ({ variant, weight: weightOf(variant) })),
+          rng,
+        ).variant,
+      );
+    } else {
+      draws.push(rollArts(pool, rng, 1, weightOf)[0]!);
+    }
+  }
+  return draws;
 }
 
 export function utcDay(now = new Date()): string {

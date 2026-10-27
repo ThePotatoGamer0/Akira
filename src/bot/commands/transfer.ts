@@ -30,6 +30,7 @@ import {
 import { renderTradePair } from "../../renderer/trade-strip.js";
 import type { AkiraCommand } from "../../types/commands.js";
 import { sendGameError } from "../reply.js";
+import { sendWishlistReceipt } from "../wishlist-dm.js";
 
 async function line(card: TransferCard | null, serverFrame: number, discordId: string | null, personalFrame: number | null): Promise<string> {
   if (!card) return "That card is gone.";
@@ -178,21 +179,18 @@ export const trade: AkiraCommand = {
   data: new SlashCommandBuilder()
     .setName("trade")
     .setDescription("Offer one of your cards for one of theirs")
-    .addUserOption((option) => option.setName("user").setDescription("Who you are trading with").setRequired(true))
+    .addUserOption((option) => option.setName("user").setDescription("Who you are trading with").setRequired(false))
     .addStringOption((option) =>
-      option.setName("card_id").setDescription("Your card").setRequired(true),
+      option.setName("card_id").setDescription("One of the two cards").setRequired(true),
     )
     .addStringOption((option) =>
-      option.setName("their_card").setDescription("Their card").setRequired(true),
+      option.setName("their_card").setDescription("The other card").setRequired(true),
     ),
   execute: async (interaction: ChatInputCommandInteraction, _client: Client) => {
     try {
-      const recipient = recipientOf(interaction);
       const view = await proposeTrade({
         fromDiscordId: interaction.user.id,
         fromUsername: interaction.user.username,
-        toDiscordId: recipient.id,
-        toUsername: recipient.username,
         cardId: interaction.options.getString("card_id", true),
         theirCardId: interaction.options.getString("their_card", true),
       });
@@ -234,6 +232,9 @@ export async function handleTransferButton(interaction: ButtonInteraction): Prom
         ? await cancelTransfer(offerId, interaction.user.id)
         : await acceptTransfer(offerId, interaction.user.id));
     await interaction.update(await transferMessage(view, interaction.guildId));
+    if (!expired && parts[1] === "yes" && view.status === "done" && view.wishlistCleared.length > 0) {
+      void sendWishlistReceipt(interaction.client, view.toDiscordId, view.wishlistCleared);
+    }
     return true;
   } catch (err) {
     const content = err instanceof GameError

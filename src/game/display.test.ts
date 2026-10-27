@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { isCardCode, mintCardCode, randomCardCode } from "./codes.js";
-import { cardSummaryLine, cooldownLine, dropAnnouncement, fightOffAnnouncement, formatDuration, grabAnnouncement, processingTimeNote, qualityStars } from "./display.js";
+import { cardSummaryLine, cooldownLine, dropAnnouncement, fightOffAnnouncement, formatDuration, grabAnnouncement, processingTimeNote, qualityStars, wishlistClaimedLine, wishlistDropDm, wishlistReceipt } from "./display.js";
 
 test("processing time is a small gray millisecond count", () => {
   assert.equal(processingTimeNote(42), "-# 0042ms");
@@ -84,8 +84,30 @@ test("collection and grab lines use the short code", () => {
 });
 
 test("the drop line names how many cards are in the picture", () => {
-  assert.equal(dropAnnouncement("9", []), "<@9> is dropping 3 cards!");
-  assert.equal(dropAnnouncement("9", [], 1), "<@9> is dropping 1 card!");
-  assert.equal(dropAnnouncement("9", [], 4), "<@9> is dropping 4 cards!");
-  assert.match(dropAnnouncement("9", ["4"], 1), /<@9> is dropping 1 card!\n\n<@4> /);
+  assert.equal(dropAnnouncement("9"), "<@9> is dropping 3 cards!");
+  assert.equal(dropAnnouncement("9", 1), "<@9> is dropping 1 card!");
+  assert.equal(dropAnnouncement("9", 4), "<@9> is dropping 4 cards!");
+});
+
+test("a wishlist drop DM names the characters and jumps to the drop", () => {
+  assert.equal(
+    wishlistDropDm(["Denji"], "https://discord.com/channels/1/2/3"),
+    "Someone dropped **Denji**! https://discord.com/channels/1/2/3",
+  );
+  assert.equal(
+    wishlistDropDm(["Denji", "Power"], "https://discord.com/channels/1/2/3"),
+    "Someone dropped characters you're watching for: **Denji**, **Power**. https://discord.com/channels/1/2/3",
+  );
+  assert.equal(
+    wishlistClaimedLine({ name: "Denji", grabberDiscordId: "7", jumpUrl: "https://discord.com/channels/1/2/3" }),
+    "<@7> grabbed **Denji** first. https://discord.com/channels/1/2/3",
+  );
+  assert.equal(
+    wishlistReceipt(["Denji"]),
+    "**Denji** is in your collection now, so Akira took it off your wishlist.",
+  );
+  assert.equal(
+    wishlistReceipt(["Denji", "Power"]),
+    "**Denji**, **Power** are in your collection now, so Akira took them off your wishlist.",
+  );
 });

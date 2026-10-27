@@ -1,4 +1,5 @@
 import { prisma } from "../db/client.js";
+import { clearWishlistsForOwnedCards, noteWishlistReceipts } from "./cards.js";
 import { mintCardCode } from "./codes.js";
 import { GameError } from "./errors.js";
 import type { ParsedTradeOffer } from "./multitrade-text.js";
@@ -30,6 +31,8 @@ export type MultitradeView = {
   closeReason: string | null;
   from: MultitradeSide;
   to: MultitradeSide;
+  /** Characters each side started watching and no longer needs to, keyed by Discord id. */
+  wishlistCleared: Array<{ discordId: string; names: string[] }>;
 };
 
 type TradeRow = {
@@ -90,6 +93,7 @@ async function toView(trade: TradeRow): Promise<MultitradeView> {
     closeReason: trade.closeReason,
     from: sideOf(trade.fromUser, trade.fromLocked, entries, names),
     to: sideOf(trade.toUser, trade.toLocked, entries, names),
+    wishlistCleared: [],
   };
 }
 
@@ -274,7 +278,26 @@ export async function lockMultitrade(id: string, discordId: string): Promise<Mul
       include: tradeInclude,
     });
   });
-  return toView(saved);
+  let wishlistCleared: Array<{ discordId: string; names: string[] }> = [];
+  if (saved.status === "done") {
+    const moved = await prisma.multitradeEntry.findMany({
+      where: { tradeId: saved.id, cardId: { not: null } },
+      select: { cardId: true },
+    });
+    await clearWishlistsForOwnedCards(moved.flatMap((entry) => (entry.cardId ? [entry.cardId] : [])));
+    const receipt = await noteWishlistReceipts(moved.flatMap((entry) => (entry.cardId ? [entry.cardId] : [])));
+    const byOwner = new Map<string, string[]>();
+    for (const row of receipt) {
+      const list = byOwner.get(row.ownerId) ?? [];
+      list.push(row.characterName);
+      byOwner.set(row.ownerId, list);
+    }
+    wishlistCleared = [
+      { discordId: saved.fromUser.discordId, names: byOwner.get(saved.fromUser.id) ?? [] },
+      { discordId: saved.toUser.discordId, names: byOwner.get(saved.toUser.id) ?? [] },
+    ].filter((row) => row.names.length > 0);
+  }
+  return { ...(await toView(saved)), wishlistCleared };
 }
 
 export async function addToMultitrade(

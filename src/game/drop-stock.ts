@@ -1,5 +1,5 @@
 import { MINT_PITY_DROPS, type Quality } from "./balance.js";
-import type { ResolvedEffects } from "./buffs.js";
+import { FEATURED_SERIES_CHANCE, type ResolvedEffects } from "./buffs.js";
 
 /**
  * Shared drop shelves.
@@ -67,6 +67,7 @@ export function effectsForShape(shape: DropShape): ResolvedEffects {
     cardCount: shape.cardCount,
     legendaryWeight: shape.legendaryWeight,
     seriesId: shape.seriesId,
+    featuredSeriesChance: shape.seriesId ? FEATURED_SERIES_CHANCE : 0,
     qualityOverQuantity: shape.qualityOverQuantity,
     mainMultiplier: 1,
   };

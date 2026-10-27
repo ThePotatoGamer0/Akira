@@ -23,8 +23,19 @@ import {
 import { parseTradeOffer } from "../../game/multitrade-text.js";
 import type { AkiraCommand } from "../../types/commands.js";
 import { sendGameError } from "../reply.js";
+import { sendWishlistReceipt } from "../wishlist-dm.js";
 
 const EMBED = "#2b2d31";
+
+/** DM each side about the characters they no longer need to watch. */
+export async function sendTradeReceipts(
+  client: Client,
+  view: { wishlistCleared: Array<{ discordId: string; names: string[] }> },
+): Promise<void> {
+  await Promise.all(
+    view.wishlistCleared.map((row) => sendWishlistReceipt(client, row.discordId, row.names)),
+  );
+}
 
 function codeBlock(lines: string[]): string {
   const body = lines.length > 0 ? lines.map((line) => line.replaceAll("`", "'")).join("\n") : " ";
@@ -150,6 +161,9 @@ export async function handleMultitradeButton(interaction: ButtonInteraction): Pr
         ? await cancelMultitrade(id, interaction.user.id)
         : await lockMultitrade(id, interaction.user.id);
     await interaction.update(multitradePayload(view));
+    if (action === "agree" && view.status === "done") {
+      void sendTradeReceipts(interaction.client, view);
+    }
     return true;
   } catch (err) {
     const content = err instanceof GameError

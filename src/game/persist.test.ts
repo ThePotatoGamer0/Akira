@@ -235,4 +235,109 @@ test("a grab can be remembered for a later view", async () => {
   assert.equal(await cards.lastGrabbedCard("gina"), grabbed.cardId);
   assert.equal(await cards.lastGrabbedCard("nobody"), null);
 });
+
+test("grabbing a watched character takes it off the wishlist and leaves the others alone", async () => {
+  const series = await prisma.series.create({ data: { name: "Chainsaw Man Wish", slug: "csm-wish" } });
+  const denji = await prisma.character.create({ data: { name: "Denji", slug: "denji-wish", seriesId: series.id } });
+  const power = await prisma.character.create({ data: { name: "Power", slug: "power-wish", seriesId: series.id } });
+  await prisma.cardVariant.create({
+    data: {
+      id: "denji-wish-base",
+      name: "Public Safety Rookie",
+      rarity: "Common",
+      image: "base.png",
+      characterId: denji.id,
+    },
+  });
+  await prisma.drop.create({
+    data: {
+      guildId: "guild",
+      channelId: "channel",
+      messageId: "watch-grab",
+      expiresAt: new Date(Date.now() + 60_000),
+      slots: { create: [{ position: 1, variantId: "denji-wish-base", quality: "COMMON", frameId: 0 }] },
+    },
+  });
+  const grabber = await prisma.user.upsert({
+    where: { discordId: "wish-grabber" },
+    create: { discordId: "wish-grabber", discordUsername: "wish-grabber" },
+    update: {},
+  });
+  await prisma.wishlist.createMany({
+    data: [
+      { userId: grabber.id, characterId: denji.id },
+      { userId: grabber.id, characterId: power.id },
+    ],
+  });
+  const grabbed = await claimReaction({
+    messageId: "watch-grab",
+    position: 1,
+    discordId: "wish-grabber",
+    username: "wish-grabber",
+  });
+  assert.deepEqual(grabbed.wishlistCleared, ["Denji"]);
+  const left = await prisma.wishlist.findMany({
+    where: { userId: grabber.id },
+    select: { character: { select: { name: true } } },
+  });
+  assert.deepEqual(left.map((row) => row.character.name), ["Power"]);
+});
+
+test("a wishlist heads-up skips the dropper, the grabber, and anyone the dropper already has", async () => {
+  const drops = await import("./drops.js");
+  const series = await prisma.series.create({ data: { name: "Heads Up", slug: "heads-up" } });
+  const denji = await prisma.character.create({ data: { name: "Denji", slug: "denji-heads", seriesId: series.id } });
+  const aki = await prisma.character.create({ data: { name: "Aki", slug: "aki-heads", seriesId: series.id } });
+  await prisma.cardVariant.createMany({
+    data: [
+      { id: "denji-heads-base", name: "Denji", rarity: "Common", image: "base.png", characterId: denji.id },
+      { id: "aki-heads-base", name: "Aki", rarity: "Common", image: "base.png", characterId: aki.id },
+    ],
+  });
+  const dropper = await prisma.user.upsert({
+    where: { discordId: "head-dropper" },
+    create: { discordId: "head-dropper", discordUsername: "head-dropper" },
+    update: {},
+  });
+  await prisma.card.create({
+    data: { id: "headsa1", variantId: "aki-heads-base", printNumber: 1, quality: "COMMON", ownerId: dropper.id },
+  });
+  const grabber = await prisma.user.upsert({
+    where: { discordId: "head-grabber" },
+    create: { discordId: "head-grabber", discordUsername: "head-grabber" },
+    update: {},
+  });
+  const watcher = await prisma.user.upsert({
+    where: { discordId: "head-watcher" },
+    create: { discordId: "head-watcher", discordUsername: "head-watcher" },
+    update: {},
+  });
+  await prisma.wishlist.createMany({
+    data: [
+      { userId: watcher.id, characterId: denji.id },
+      { userId: watcher.id, characterId: aki.id },
+      { userId: grabber.id, characterId: denji.id },
+      { userId: dropper.id, characterId: denji.id },
+    ],
+  });
+  const drop = await prisma.drop.create({
+    data: {
+      guildId: "guild",
+      channelId: "channel",
+      messageId: "heads-up",
+      expiresAt: new Date(Date.now() + 60_000),
+      dropperId: dropper.id,
+      slots: {
+        create: [
+          { position: 1, variantId: "denji-heads-base", quality: "COMMON", frameId: 0 },
+          { position: 2, variantId: "aki-heads-base", quality: "COMMON", frameId: 0 },
+        ],
+      },
+    },
+  });
+  await claimReaction({ messageId: "heads-up", position: 1, discordId: "head-grabber", username: "head-grabber" });
+  const headsUps = await drops.wishlistHeadsUps("heads-up", "head-grabber");
+  assert.deepEqual(headsUps, [{ discordId: "head-watcher", names: ["Denji"], grabbedBy: ["head-grabber"] }]);
+  assert.ok(drop.id);
+});
 });

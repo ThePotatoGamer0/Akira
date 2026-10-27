@@ -56,9 +56,12 @@ export async function featuredSeries(now = new Date()): Promise<{ seriesId: stri
   const series = await prisma.series.findMany({
     where: { characters: { some: {} } },
     orderBy: { slug: "asc" },
+    include: { _count: { select: { characters: true } } },
   });
-  if (series.length === 0) return null;
-  const pick = series[Math.floor(Math.random() * series.length)]!;
+  // A series with one character cannot make a varied featured drop.
+  const eligible = series.filter((row) => row._count.characters > 1);
+  if (eligible.length === 0) return null;
+  const pick = eligible[Math.floor(Math.random() * eligible.length)]!;
   await prisma.featuredSeries.upsert({
     where: { id: "shop" },
     create: { id: "shop", day, seriesId: pick.id },
@@ -90,7 +93,7 @@ export function shopExplanation(id: BuffKind, featuredName: string | null): stri
   if (!item) return "";
   if (id === "featured_series") {
     const name = featuredName ?? "whichever series is featured tonight";
-    return `Today's featured series is ${name}. Buying locks it in, and cards from that series are twice as likely in your drops.`;
+    return `Today's featured series is ${name}. Buying locks it in, and each card has a 90% chance to come from that series.`;
   }
   return item.description;
 }

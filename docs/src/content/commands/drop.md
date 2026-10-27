@@ -26,7 +26,7 @@ ad
 
 - An admin runs `aset` in a channel to choose it. Until then, Akira ignores commands in that server. `DISCORD_DROP_CHANNEL_ID` still counts for the server in `DISCORD_GUILD_ID`.
 - The drop stays open for 2 minutes. Your next drop waits 20 minutes, or less while a drop-cooldown buff is on you. `/cooldowns` shows the wait you actually have.
-- The message says how many cards are in the picture: `1 card`, `3 cards`, or `4 cards`.
+- The message says how many cards are in the picture: `1 card`, `3 cards`, or `4 cards`. If a drop has a character someone is watching, Akira DMs them a link to that drop.
 - [Quality over quantity](/commands/shop) makes the drop one card, and that card is a main character. [Four cards](/commands/shop) makes it four, and adds a fourth grab reaction. If both are on, the drop is one card.
 - Mint odds stay where your buffs put them. After 200 of your drops in a row with no mint, the next drop turns one of its cards into a mint, picked at random, and the count starts over. A mint before that also starts the count over.
 - Dropping, grabbing, the server pool, and choosing the drop channel only run in a server Akira's owner is in. Anywhere else she says you cannot do that in a private server. Collection, trades, and the other personal commands still work.
