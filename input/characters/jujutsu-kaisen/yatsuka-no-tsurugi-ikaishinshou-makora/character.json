@@ -1,14 +1,20 @@
 {
   "id": "jujutsu-kaisen-yatsuka-no-tsurugi-ikaishinshou-makora",
-  "name": "Yatsuka no Tsurugi Ikaishinshou Makora",
+  "name": "Mahoraga",
   "gender": null,
   "role": "SUPPORTING",
   "cards": [
     {
       "id": "jujutsu-kaisen-yatsuka-no-tsurugi-ikaishinshou-makora-base",
-      "name": "Yatsuka no Tsurugi Ikaishinshou Makora",
+      "name": "Mahoraga",
       "rarity": "Common",
       "image": "base.png"
+    },
+    {
+      "id": "jujutsu-kaisen-yatsuka-no-tsurugi-ikaishinshou-makora-standing",
+      "name": "Standing",
+      "rarity": "Common",
+      "image": "standing.png"
     }
   ]
 }

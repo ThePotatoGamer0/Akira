@@ -3590,14 +3590,15 @@ button.linkish {
   filter: grayscale(0.35) brightness(0.78);
 }
 
-.catalog-poster__pin {
+.catalog-poster__pin,
+.catalog-poster__star,
+.catalog-poster__circ {
   position: absolute;
   top: 0.45rem;
-  right: 0.45rem;
   z-index: 2;
   display: grid;
   place-items: center;
-  width: 1.7rem;
+  min-width: 1.7rem;
   height: 1.7rem;
   margin: 0;
   padding: 0;
@@ -3606,6 +3607,10 @@ button.linkish {
   background: rgba(18, 10, 28, 0.62);
   color: #fff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.28);
+}
+
+.catalog-poster__pin {
+  right: 0.45rem;
   cursor: pointer;
   animation: none;
   opacity: 0;
@@ -3613,30 +3618,56 @@ button.linkish {
   transition: opacity 0.12s ease, background 0.12s ease;
 }
 
+.catalog-poster__star {
+  left: 0.45rem;
+  cursor: pointer;
+  animation: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s ease, background 0.12s ease;
+}
+
+.catalog-poster__circ {
+  right: 0.45rem;
+  padding: 0 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  pointer-events: none;
+}
+
 .catalog-poster:hover .catalog-poster__pin,
 .catalog-poster:focus-within .catalog-poster__pin,
-.catalog-poster__pin.is-on {
+.catalog-poster:hover .catalog-poster__star,
+.catalog-poster:focus-within .catalog-poster__star,
+.catalog-poster__pin.is-on,
+.catalog-poster__star.is-on {
   opacity: 1;
   pointer-events: auto;
 }
 
-.catalog-poster__pin:hover {
+.catalog-poster__pin:hover,
+.catalog-poster__star:hover {
   transform: none;
   background: rgba(18, 10, 28, 0.82);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.28);
 }
 
-.catalog-poster__pin:active:not(:disabled) {
+.catalog-poster__pin:active:not(:disabled),
+.catalog-poster__star:active:not(:disabled) {
   transform: scale(0.94);
   filter: none;
 }
 
-.catalog-poster__pin:disabled {
+.catalog-poster__pin:disabled,
+.catalog-poster__star:disabled {
   cursor: wait;
 }
 
 @media (hover: none) {
-  .catalog-poster__pin {
+  .catalog-poster__pin,
+  .catalog-poster__star {
     opacity: 1;
     pointer-events: auto;
   }

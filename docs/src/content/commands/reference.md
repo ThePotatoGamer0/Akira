@@ -24,7 +24,7 @@ The full command name always works after the prefix (`acollection`). The short a
 | [`/cc`](/commands/cc) | `show` lists missing characters in tracked series. `add` and `remove` take a series name. A unique start of the name is enough. | `cc` |
 | [`/frame`](/commands/frame) | `show` lists the frames. `default` with a required frame name or number (admin). `personal` with a frame name, number, or `clear`. `card` with required `card_id` and `action` (`clear`, a name, or a number). | |
 | [`/give`](/commands/give) | `user` and `card_id`, both required. Both players press the check mark. | `g` |
-| [`/trade`](/commands/trade) | `user`, `card_id`, and `their_card`, all required. Both players press the check mark. | |
+| [`/trade`](/commands/trade) | Two card codes. Akira can tell who owns each one. A mention is optional. Both players press the check mark. | |
 | [`/multitrade`](/commands/multitrade) | `user` required. A mention. After they agree, send card codes and `100 bits` in that channel. | `mt` |
 | [`/tag`](/commands/tag) | `tag_name` required. `card_ids` optional, space-separated. No codes tags the last grab. | `t` |
 | [`/taglist`](/commands/taglist) | `user` optional. | `tags`, `tl` |
@@ -32,7 +32,7 @@ The full command name always works after the prefix (`acollection`). The short a
 | [`/tagdelete`](/commands/tagdelete) | `tag_name` required. | `tagremove`, `tr`, `td` |
 | [`/untag`](/commands/untag) | `card_ids` optional, space-separated. No codes untags the last grab. | `ut` |
 
-Examples: `ad`, `ac`, `av`, `av fmbl40r`, `alu denji`, `awl`, `awa Power`, `awr Power`, `acc`, `acc add Demon S`, `acc remove Cyberpunk`, `aframe`, `aframe default 1`, `aframe personal pink`, `aframe card fmbl40r clear`, `agive @friend fmbl40r`, `atrade @friend fmbl40r abc1234`, `amt @friend`.
+Examples: `ad`, `ac`, `av`, `av fmbl40r`, `alu denji`, `awl`, `awa Power`, `awr Power`, `acc`, `acc add Demon S`, `acc remove Cyberpunk`, `aframe`, `aframe default 1`, `aframe personal pink`, `aframe card fmbl40r clear`, `agive @friend fmbl40r`, `atrade fmbl40r abc1234`, `atrade fmbl40r, abc1234`, `amt @friend`.
 
 ## Timers
 

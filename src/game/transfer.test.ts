@@ -103,8 +103,6 @@ test("a trade swaps the two cards only after both players accept", async () => {
   const offer = await proposeTrade({
     fromDiscordId: "left",
     fromUsername: "left",
-    toDiscordId: "right",
-    toUsername: "right",
     cardId: "tradeaa",
     theirCardId: "tradebb",
   });
@@ -187,11 +185,70 @@ test("an outsider cannot accept, and their card has to be theirs", async () => {
     () => proposeTrade({
       fromDiscordId: "seller",
       fromUsername: "seller",
-      toDiscordId: "buyer",
-      toUsername: "buyer",
       cardId: "theiraa",
       theirCardId: "theiraa",
     }),
     (err: unknown) => err instanceof GameError && /isn't theirs|different/.test((err as GameError).message),
+  );
+});
+
+test("getting a watched character in a give takes it off the wishlist", async () => {
+  const getter = await own("getter2", "unusedw1");
+  await own("giver2", "givew01");
+  const character = await prisma.character.findFirst({ where: { slug: "tetsu" } });
+  assert.ok(character);
+  await prisma.wishlist.create({ data: { userId: getter.id, characterId: character.id } });
+  const offer = await proposeGive({
+    fromDiscordId: "giver2",
+    fromUsername: "giver2",
+    toDiscordId: "getter2",
+    toUsername: "getter2",
+    cardId: "givew01",
+  });
+  await acceptTransfer(offer.id, "getter2");
+  const done = await acceptTransfer(offer.id, "giver2");
+  assert.equal(done.status, "done");
+  assert.deepEqual(done.wishlistCleared, [character.name]);
+  const left = await prisma.wishlist.findUnique({
+    where: { userId_characterId: { userId: getter.id, characterId: character.id } },
+  });
+  assert.equal(left, null);
+});
+
+test("a trade finds the other player from the cards and swaps the order if needed", async () => {
+  await own("left", "swapaa1");
+  await own("right", "swapbb1");
+  const swapped = await proposeTrade({
+    fromDiscordId: "left",
+    fromUsername: "left",
+    cardId: "swapbb1",
+    theirCardId: "swapaa1",
+  });
+  assert.equal(swapped.fromDiscordId, "left");
+  assert.equal(swapped.toDiscordId, "right");
+  assert.equal(swapped.fromCard?.id, "swapaa1");
+  assert.equal(swapped.toCard?.id, "swapbb1");
+  await cancelTransfer(swapped.id, "left");
+
+  await own("left", "minecc1");
+  await own("right", "theird1");
+  await own("other", "otherc1");
+  await assert.rejects(
+    () => proposeTrade({
+      fromDiscordId: "left",
+      fromUsername: "left",
+      cardId: "theird1",
+      theirCardId: "otherc1",
+    }),
+    (err: unknown) => err instanceof GameError && err.code === "not-owner",
+  );
+  await assert.rejects(
+    () => proposeTrade({
+      fromDiscordId: "left",
+      fromUsername: "left",
+      cardId: "swapaa1",
+      theirCardId: "minecc1",
+    }),
+    (err: unknown) => err instanceof GameError && err.code === "self",
   );
 });

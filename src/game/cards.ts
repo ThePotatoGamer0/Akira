@@ -316,6 +316,57 @@ export async function removeWishlist(discordId: string, username: string, name: 
   return character;
 }
 
+/** Take watched characters off one player's list after they receive a copy. Returns the names removed. */
+export async function clearWishlistOnObtain(userId: string, characterIds: string[]): Promise<string[]> {
+  const ids = [...new Set(characterIds.filter((id) => id.length > 0))];
+  if (ids.length === 0) return [];
+  const watched = await prisma.wishlist.findMany({
+    where: { userId, characterId: { in: ids } },
+    select: { character: { select: { name: true } } },
+  });
+  if (watched.length === 0) return [];
+  await prisma.wishlist.deleteMany({ where: { userId, characterId: { in: ids } } });
+  return watched.map((row) => row.character.name);
+}
+
+export async function clearWishlistsForOwnedCards(cardIds: string[]): Promise<void> {
+  const ids = [...new Set(cardIds.filter((id) => id.length > 0))];
+  if (ids.length === 0) return;
+  const cards = await prisma.card.findMany({
+    where: { id: { in: ids }, ownerId: { not: null } },
+    select: { ownerId: true, variant: { select: { characterId: true } } },
+  });
+  const byOwner = new Map<string, string[]>();
+  for (const card of cards) {
+    if (!card.ownerId) continue;
+    const list = byOwner.get(card.ownerId) ?? [];
+    list.push(card.variant.characterId);
+    byOwner.set(card.ownerId, list);
+  }
+  await Promise.all([...byOwner.entries()].map(([userId, characterIds]) => clearWishlistOnObtain(userId, characterIds)));
+}
+
+/** Clear watches for the cards that just moved, then say which names the new owner stops watching. */
+export async function noteWishlistReceipts(cardIds: string[]): Promise<Array<{ ownerId: string; characterName: string }>> {
+  const ids = [...new Set(cardIds.filter((id) => id.length > 0))];
+  if (ids.length === 0) return [];
+  const cards = await prisma.card.findMany({
+    where: { id: { in: ids }, ownerId: { not: null } },
+    select: {
+      ownerId: true,
+      variant: { select: { characterId: true, character: { select: { name: true } } } },
+    },
+  });
+  const cleared = await Promise.all(
+    cards.map(async (card) => {
+      if (!card.ownerId) return [];
+      const names = await clearWishlistOnObtain(card.ownerId, [card.variant.characterId]);
+      return names.map((characterName) => ({ ownerId: card.ownerId!, characterName }));
+    }),
+  );
+  return cleared.flat();
+}
+
 export async function playerSummary(discordId: string) {
   const user = await findUserByDiscordId(discordId);
   if (!user) return null;

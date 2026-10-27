@@ -8,6 +8,12 @@
       "name": "Light Yagami",
       "rarity": "Common",
       "image": "base.png"
+    },
+    {
+      "id": "death-note-light-yagami-suit",
+      "name": "Suit",
+      "rarity": "Rare",
+      "image": "suit.png"
     }
   ],
   "role": "MAIN"

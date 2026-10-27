@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   applyCatalogTrack as applyCatalogViewTrack,
+  catalogCharacterNote,
   sortCatalogCharacters as sortCatalogViewCharacters,
   sortCatalogSeries as sortCatalogViewSeries,
 } from "../../webui/client/src/lib/catalogView.ts";
@@ -12,6 +13,7 @@ import {
   sortCatalogSeries,
   sortSeriesByCompletion,
   sortSeriesCharacters,
+  watchingAllMissing,
 } from "./catalog.js";
 
 test("series covers prefer a MAIN character, then the first name", () => {
@@ -110,6 +112,31 @@ test("catalog view order keeps pins first, then completion, alpha, or recency", 
     applyCatalogViewTrack(rows, "d", true, "alpha").map((row) => row.name),
     ["Chainsaw Man", "Blue Lock", "Demon Slayer", "Ace Attorney"],
   );
+});
+
+test("missing character posters stay Missing, Watching, or in collection", () => {
+  assert.equal(catalogCharacterNote({ owned: false, wishlisted: false }), "Missing");
+  assert.equal(catalogCharacterNote({ owned: false, wishlisted: true }), "Watching");
+  assert.equal(catalogCharacterNote({ owned: true, wishlisted: false }), "In your collection");
+});
+
+test("a series star fills when every missing character is watched", () => {
+  assert.equal(
+    watchingAllMissing([
+      { owned: true, wishlisted: false },
+      { owned: false, wishlisted: true },
+      { owned: false, wishlisted: true },
+    ]),
+    true,
+  );
+  assert.equal(
+    watchingAllMissing([
+      { owned: false, wishlisted: true },
+      { owned: false, wishlisted: false },
+    ]),
+    false,
+  );
+  assert.equal(watchingAllMissing([{ owned: true, wishlisted: false }]), false);
 });
 
 test("catalog character view order uses missing first, A to Z, or latest grab", () => {

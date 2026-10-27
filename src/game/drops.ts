@@ -15,11 +15,11 @@ import {
   GRAB_BITS,
   issuePrint,
   nextPity,
-  rollArts,
   rollQuality,
   type Quality,
 } from "./balance.js";
-import { dropWeight, includeInDrop, type ResolvedEffects } from "./buffs.js";
+import { includeInDrop, rollDropArts, type ResolvedEffects } from "./buffs.js";
+import { clearWishlistOnObtain } from "./cards.js";
 import { mintCardCode } from "./codes.js";
 import { dropShape, pityKeepsQualities } from "./drop-stock.js";
 import { GameError } from "./errors.js";
@@ -47,6 +47,8 @@ export type PresentedSlot = {
   printNumber: number | null;
 };
 
+export type WishlistWatcher = { discordId: string; names: string[] };
+
 export type PreparedDrop = {
   guildId: string;
   channelId: string;
@@ -55,7 +57,7 @@ export type PreparedDrop = {
   dropCooldownMs: number;
   expiresAt: Date;
   slots: PresentedSlot[];
-  wishlistDiscordIds: string[];
+  wishlistWatchers: WishlistWatcher[];
   dropsSinceMint: number;
   fromShelf: boolean;
 };
@@ -133,13 +135,94 @@ async function cooldownRemaining(userId: string, type: "DROP" | "GRAB" | "DAILY"
   return Math.max(0, row.expiresAt.getTime() - Date.now());
 }
 
-async function wishlistDiscordIds(characterIds: string[]): Promise<string[]> {
-  if (characterIds.length === 0) return [];
+async function wishlistWatchersForSlots(
+  slots: PresentedSlot[],
+  exceptDiscordId?: string,
+): Promise<WishlistWatcher[]> {
+  const slotsById = new Map(slots.map((slot) => [slot.characterId, slot]));
+  if (slotsById.size === 0) return [];
   const rows = await prisma.wishlist.findMany({
-    where: { characterId: { in: characterIds } },
-    include: { user: true },
+    where: { characterId: { in: [...slotsById.keys()] } },
+    select: { characterId: true, user: { select: { discordId: true } } },
   });
-  return [...new Set(rows.map((row) => row.user.discordId))];
+  const byUser = new Map<string, Set<string>>();
+  for (const row of rows) {
+    if (row.user.discordId === exceptDiscordId) continue;
+    if (!slotsById.has(row.characterId)) continue;
+    const ids = byUser.get(row.user.discordId) ?? new Set<string>();
+    ids.add(row.characterId);
+    byUser.set(row.user.discordId, ids);
+  }
+  return [...byUser.entries()].map(([discordId, ids]) => ({
+    discordId,
+    names: [...ids].map((id) => slotsById.get(id)?.characterName ?? "").filter(Boolean),
+  }));
+}
+
+export type WishlistHeadsUp = {
+  discordId: string;
+  names: string[];
+  /** Discord id of whoever grabbed each character, aligned with `names`. Null while it is still open. */
+  grabbedBy: Array<string | null>;
+};
+
+/**
+ * Watchers of characters in this drop who could still grab one. Read after
+ * snipe protection ends so the DM can say who beat them to it.
+ */
+export async function wishlistHeadsUps(
+  messageId: string,
+  exceptDiscordId?: string,
+): Promise<WishlistHeadsUp[]> {
+  const drop = await prisma.drop.findUnique({
+    where: { messageId },
+    select: {
+      dropperId: true,
+      slots: {
+        select: {
+          claimedBy: { select: { discordId: true } },
+          variant: { select: { characterId: true } },
+        },
+      },
+    },
+  });
+  if (!drop || drop.slots.length === 0) return [];
+  const firstGrab = new Map<string, string | null>();
+  for (const slot of drop.slots) {
+    const characterId = slot.variant.characterId;
+    if (!firstGrab.has(characterId)) firstGrab.set(characterId, slot.claimedBy?.discordId ?? null);
+  }
+  const rows = await prisma.wishlist.findMany({
+    where: { characterId: { in: [...firstGrab.keys()] } },
+    select: {
+      characterId: true,
+      character: { select: { name: true } },
+      user: { select: { id: true, discordId: true } },
+    },
+  });
+  const held = new Map<string, string[]>();
+  if (drop.dropperId) {
+    const cards = await prisma.card.findMany({
+      where: { ownerId: drop.dropperId, variant: { characterId: { in: [...firstGrab.keys()] } } },
+      select: { variant: { select: { characterId: true } } },
+    });
+    for (const card of cards) {
+      const list = held.get(card.variant.characterId) ?? [];
+      list.push(drop.dropperId);
+      held.set(card.variant.characterId, list);
+    }
+  }
+  const excluded = new Set([drop.dropperId, exceptDiscordId].filter((id): id is string => Boolean(id)));
+  const byUser = new Map<string, { names: string[]; grabbedBy: Array<string | null> }>();
+  for (const row of rows) {
+    if (excluded.has(row.user.id)) continue;
+    if (held.has(row.characterId)) continue;
+    const entry = byUser.get(row.user.discordId) ?? { names: [], grabbedBy: [] };
+    entry.names.push(row.character.name);
+    entry.grabbedBy.push(firstGrab.get(row.characterId) ?? null);
+    byUser.set(row.user.discordId, entry);
+  }
+  return [...byUser.entries()].map(([discordId, entry]) => ({ discordId, ...entry }));
 }
 
 export async function rollFreshSlots(
@@ -160,15 +243,18 @@ export async function rollFreshSlots(
         : "Akira doesn't have any card art to drop yet.",
     );
   }
-  const rolled = rollArts(pool, rng, effects.cardCount, (variant) =>
-    dropWeight({
-      variantId: variant.id,
+  const rolled = rollDropArts(
+    pool.map((variant) => ({
+      variant,
+      id: variant.id,
       rarity: variant.rarity,
       seriesId: variant.character.seriesId,
       role: variant.character.role,
-      effects,
-    }),
-  );
+    })),
+    rng,
+    effects.cardCount,
+    effects,
+  ).map((row) => row.variant);
   const qualities = rolled.map(() => rollQuality(rng, effects.legendaryWeight));
   return rolled.map((variant, index) =>
     slotFromVariant(index + 1, variant, qualities[index] ?? "COMMON", frameId),
@@ -207,7 +293,7 @@ export async function prepareDrop(input: {
   const effects = await activeEffects(user.id, input.guildId);
   const rng = input.rng ?? Math.random;
   const rolled = await rolledSlots(effects, frameId, user.dropsSinceMint, rng, input.presetSlots ?? null);
-  const wishes = await wishlistDiscordIds(rolled.slots.map((slot) => slot.characterId));
+  const watchers = await wishlistWatchersForSlots(rolled.slots, input.discordId);
   await claimDropCooldown(user.id, effects.dropCooldownMs);
 
   return {
@@ -218,7 +304,7 @@ export async function prepareDrop(input: {
     dropCooldownMs: effects.dropCooldownMs,
     expiresAt: new Date(Date.now() + DROP_OPEN_MS),
     slots: rolled.slots,
-    wishlistDiscordIds: wishes.filter((id) => id !== input.discordId),
+    wishlistWatchers: watchers,
     dropsSinceMint: rolled.dropsSinceMint,
     fromShelf: rolled.fromShelf,
   };
@@ -344,7 +430,7 @@ type DropWithSlots = {
   }>;
 };
 
-function present(drop: DropWithSlots, wishlistIds: string[], serverFrame: number): DropPresentation {
+function present(drop: DropWithSlots, serverFrame: number): DropPresentation {
   return {
     messageId: drop.messageId,
     guildId: drop.guildId,
@@ -353,7 +439,7 @@ function present(drop: DropWithSlots, wishlistIds: string[], serverFrame: number
     dropperDiscordId: "",
     dropCooldownMs: DROP_COOLDOWN_MS,
     expiresAt: drop.expiresAt,
-    wishlistDiscordIds: wishlistIds,
+    wishlistWatchers: [],
     dropsSinceMint: 0,
     fromShelf: false,
     slots: drop.slots
@@ -394,9 +480,8 @@ export async function loadDrop(messageId: string): Promise<DropPresentation | nu
     include: dropInclude,
   });
   if (!drop) return null;
-  const wishes = await wishlistDiscordIds(drop.slots.map((slot) => slot.variant.character.id));
   const serverFrame = await serverDefaultFrame(drop.guildId);
-  return present(drop, wishes, serverFrame);
+  return present(drop, serverFrame);
 }
 
 export type GrabNotice = {
@@ -419,6 +504,8 @@ export type ClaimResult = {
   /** Grab lines to post now. Empty while snipe protection is still holding this drop. */
   notices: GrabNotice[];
   presentation: DropPresentation;
+  /** Characters that were on this player's wishlist and are now off it. */
+  wishlistCleared: string[];
 };
 
 const noticeInclude = {
@@ -615,11 +702,13 @@ export async function claimReaction(input: {
     throw new GameError("missing", "Akira claimed the card, but the drop disappeared.");
   }
   const slot = presentation.slots.find((row) => row.position === input.position);
+  const cleared = await clearWishlistOnObtain(user.id, slot ? [slot.characterId] : []);
   return {
     ...claimed,
     characterName: slot?.characterName ?? "that card",
     bits: GRAB_BITS,
     presentation,
+    wishlistCleared: cleared,
   };
 }
 

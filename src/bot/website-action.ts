@@ -191,7 +191,7 @@ export async function runWebsiteAction(client: Client, action: WebsiteAction): P
       }
       const listed = message.reactions.cache.some((reaction) => reaction.emoji.name === emojiName);
       if (!listed) throw new WebsiteActionError("That reaction isn't on this message.", 400);
-      const outcome = await performGrab(message, emojiName, user);
+      const outcome = await performGrab(client, message, emojiName, user);
       if (outcome === "missing") throw new WebsiteActionError("Akira couldn't find that drop.", 404);
       if (outcome === "skipped") throw new WebsiteActionError("Akira couldn't grab that card.", 400);
       return { notice: null };

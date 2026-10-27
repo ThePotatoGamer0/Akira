@@ -24,6 +24,8 @@ services:
       GIPHY_API_KEY: ${GIPHY_API_KEY:-}
       WEBUI_SERVER_PORT: "3333"
       AKIRA_REPO_ROOT: /app
+      AKIRA_FARM_URL: ${AKIRA_FARM_URL:-}
     volumes:
       - /home/james/akira-data:/data
       - /home/james/akira-data/cards:/app/assets/cards
+      - /proc/net/fib_trie:/host/fib_trie:ro

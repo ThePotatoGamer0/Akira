@@ -204,14 +204,41 @@ async function buildShinyFrames(base: Buffer): Promise<AnimationFrames> {
   return { frames, width, height, delays };
 }
 
+export type AnimationFormat = "gif" | "apng";
+
+export type EncodedAnimation = {
+  gif?: Buffer;
+  apng?: Buffer;
+};
+
+async function encodeAnimation(built: AnimationFrames, formats: AnimationFormat[]): Promise<EncodedAnimation> {
+  const wanted = new Set(formats);
+  const out: EncodedAnimation = {};
+  if (wanted.has("gif")) {
+    out.gif = await encodeGif(built.frames, built.width, built.height, built.delays);
+  }
+  if (wanted.has("apng")) {
+    out.apng = encodeApng(built.frames, built.width, built.height, built.delays);
+  }
+  return out;
+}
+
+/** One shine pass, then however many encodings were asked for. */
+export async function renderShinyOutputs(base: Buffer, formats: AnimationFormat[]): Promise<EncodedAnimation> {
+  if (formats.length === 0) return {};
+  return encodeAnimation(await buildShinyFrames(base), formats);
+}
+
 export async function renderShinyGif(base: Buffer): Promise<Buffer> {
-  const built = await buildShinyFrames(base);
-  return encodeGif(built.frames, built.width, built.height, built.delays);
+  const gif = (await renderShinyOutputs(base, ["gif"])).gif;
+  if (!gif) throw new Error("shiny gif was not encoded");
+  return gif;
 }
 
 export async function renderShinyApng(base: Buffer): Promise<Buffer> {
-  const built = await buildShinyFrames(base);
-  return encodeApng(built.frames, built.width, built.height, built.delays);
+  const apng = (await renderShinyOutputs(base, ["apng"])).apng;
+  if (!apng) throw new Error("shiny apng was not encoded");
+  return apng;
 }
 
 const BURN_STEPS = 40;
@@ -458,18 +485,38 @@ async function buildBurnFrames(base: Buffer): Promise<AnimationFrames> {
   return { frames, width, height, delays };
 }
 
+async function encodeBurn(built: AnimationFrames, formats: AnimationFormat[]): Promise<EncodedAnimation> {
+  const wanted = new Set(formats);
+  const out: EncodedAnimation = {};
+  if (wanted.has("gif")) {
+    out.gif = await encodeGif(built.frames, built.width, built.height, built.delays, {
+      dither: 0,
+      reuse: true,
+      interFrameMaxError: 0,
+      effort: 1,
+      native: true,
+    });
+  }
+  if (wanted.has("apng")) {
+    out.apng = encodeApng(built.frames, built.width, built.height, built.delays);
+  }
+  return out;
+}
+
+/** One burn pass, then however many encodings were asked for. */
+export async function renderBurnOutputs(base: Buffer, formats: AnimationFormat[]): Promise<EncodedAnimation> {
+  if (formats.length === 0) return {};
+  return encodeBurn(await buildBurnFrames(base), formats);
+}
+
 export async function renderBurnGif(base: Buffer): Promise<Buffer> {
-  const built = await buildBurnFrames(base);
-  return encodeGif(built.frames, built.width, built.height, built.delays, {
-    dither: 0,
-    reuse: true,
-    interFrameMaxError: 0,
-    effort: 1,
-    native: true,
-  });
+  const gif = (await renderBurnOutputs(base, ["gif"])).gif;
+  if (!gif) throw new Error("burn gif was not encoded");
+  return gif;
 }
 
 export async function renderBurnApng(base: Buffer): Promise<Buffer> {
-  const built = await buildBurnFrames(base);
-  return encodeApng(built.frames, built.width, built.height, built.delays);
+  const apng = (await renderBurnOutputs(base, ["apng"])).apng;
+  if (!apng) throw new Error("burn apng was not encoded");
+  return apng;
 }

@@ -8,6 +8,12 @@
       "name": "Dong-Su Hwang",
       "rarity": "Common",
       "image": "base.png"
+    },
+    {
+      "id": "solo-leveling-dong-su-hwang-greed",
+      "name": "Greed",
+      "rarity": "Rare",
+      "image": "greed.png"
     }
   ]
 }

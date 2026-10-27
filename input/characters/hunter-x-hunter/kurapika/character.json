@@ -8,6 +8,12 @@
       "name": "Kurapika",
       "rarity": "Common",
       "image": "base.png"
+    },
+    {
+      "id": "hunter-x-hunter-kurapika-standing",
+      "name": "Standing",
+      "rarity": "Rare",
+      "image": "standing.png"
     }
   ]
 }

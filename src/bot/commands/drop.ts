@@ -13,12 +13,13 @@ import { restoreDrop, takeDrop, type ShelvedDrop } from "../drop-shelf.js";
 import { scheduleGrabNotices } from "../grab-notices.js";
 import { queueCooldownReminder } from "../reminder-schedule.js";
 import { sendGameError } from "../reply.js";
+import { sendWishlistDropDms } from "../wishlist-dm.js";
 
 const settingDown = new Set<string>();
 
 export const drop: AkiraCommand = {
   data: new SlashCommandBuilder().setName("drop").setDescription("Set cards down in the drop channel"),
-  execute: async (interaction: ChatInputCommandInteraction, _client: Client) => {
+  execute: async (interaction: ChatInputCommandInteraction, client: Client) => {
     if (!interaction.guildId || !interaction.channelId) {
       await interaction.reply({
         content: "Akira only drops cards inside a server channel.",
@@ -58,7 +59,6 @@ export const drop: AkiraCommand = {
           ? dropMessageFromStrip({
               dropperDiscordId: prepared.dropperDiscordId,
               slots: prepared.slots,
-              wishlistDiscordIds: prepared.wishlistDiscordIds,
               strip: shelved.strip,
               animated: shelved.animated,
               elapsedMs: Date.now() - started,
@@ -69,13 +69,20 @@ export const drop: AkiraCommand = {
       const createdAt = await commitDrop(prepared, message.id);
       committed = true;
       shelved = null;
+      void sendWishlistDropDms(
+        client,
+        prepared.wishlistWatchers,
+        message.url,
+        message.id,
+        prepared.dropperDiscordId,
+      );
       void queueCooldownReminder(interaction.user.id, "DROP");
-      scheduleGrabNotices(_client, {
+      scheduleGrabNotices(client, {
         messageId: message.id,
         channelId: prepared.channelId,
         createdAt,
       });
-      scheduleDropExpiry(_client, {
+      scheduleDropExpiry(client, {
         messageId: message.id,
         channelId: prepared.channelId,
         expiresAt: prepared.expiresAt,

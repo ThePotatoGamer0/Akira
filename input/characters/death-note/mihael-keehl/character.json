@@ -8,6 +8,12 @@
       "name": "Mihael Keehl",
       "rarity": "Common",
       "image": "base.png"
+    },
+    {
+      "id": "death-note-mihael-keehl-sitting",
+      "name": "sitting",
+      "rarity": "Rare",
+      "image": "sitting.png"
     }
   ],
   "role": "MAIN"

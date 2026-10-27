@@ -1,4 +1,5 @@
 import { prisma } from "../db/client.js";
+import { noteWishlistReceipts } from "./cards.js";
 import { mintCardCode } from "./codes.js";
 import { GameError } from "./errors.js";
 import { ensureUser } from "./users.js";
@@ -38,6 +39,8 @@ export type TransferView = {
   toCard: TransferCard | null;
   /** Set when the cards moved before both players accepted. */
   changed: boolean;
+  /** Characters the recipient already watched, now off their list. */
+  wishlistCleared: string[];
 };
 
 type OfferRow = {
@@ -149,6 +152,7 @@ async function toView(offer: OfferRow, changed = false): Promise<TransferView> {
     fromCard: fromCard ? asCard(fromCard) : null,
     toCard: toCard ? asCard(toCard) : null,
     changed,
+    wishlistCleared: [],
   };
 }
 
@@ -194,24 +198,31 @@ export async function proposeGive(input: {
 export async function proposeTrade(input: {
   fromDiscordId: string;
   fromUsername: string;
-  toDiscordId: string;
-  toUsername: string;
   cardId: string;
   theirCardId: string;
 }): Promise<TransferView> {
-  if (input.fromDiscordId === input.toDiscordId) {
+  const from = await ensureUser(input.fromDiscordId, input.fromUsername);
+  const first = await loadCard(input.cardId);
+  const second = await loadCard(input.theirCardId);
+  if (!first) throw new GameError("missing", `Akira couldn't find a card with the id \`${input.cardId.trim().toLowerCase()}\`.`);
+  if (!second) throw new GameError("missing", `Akira couldn't find a card with the id \`${input.theirCardId.trim().toLowerCase()}\`.`);
+  if (first.id === second.id) throw new GameError("same", "Pick two different cards.");
+
+  const firstMine = first.ownerId === from.id;
+  const secondMine = second.ownerId === from.id;
+  const mine = firstMine ? first : secondMine ? second : null;
+  const theirs = firstMine ? second : secondMine ? first : null;
+  if (!mine || !theirs) {
+    throw new GameError("not-owner", "Akira needs one of your cards and one of theirs.");
+  }
+  if (theirs.ownerId === from.id) {
     throw new GameError("self", "You can't trade with yourself.");
   }
-  const from = await ensureUser(input.fromDiscordId, input.fromUsername);
-  const to = await ensureUser(input.toDiscordId, input.toUsername);
-  const card = await loadCard(input.cardId);
-  const their = await loadCard(input.theirCardId);
-  if (!card) throw new GameError("missing", `Akira couldn't find a card with the id \`${input.cardId.trim().toLowerCase()}\`.`);
-  if (!their) throw new GameError("missing", `Akira couldn't find a card with the id \`${input.theirCardId.trim().toLowerCase()}\`.`);
-  if (card.id === their.id) throw new GameError("same", "Pick two different cards.");
-  if (card.ownerId !== from.id) throw new GameError("not-owner", "That card isn't yours.");
-  if (their.ownerId !== to.id) throw new GameError("not-owner", "That card isn't theirs.");
-  await assertCardsFree([card.id, their.id]);
+  if (!theirs.owner) {
+    throw new GameError("not-owner", "Akira needs one of your cards and one of theirs.");
+  }
+  const to = await ensureUser(theirs.owner.discordId, theirs.owner.discordUsername ?? theirs.owner.discordId);
+  await assertCardsFree([mine.id, theirs.id]);
   const id = await mintOfferId();
   const offer = await prisma.transferOffer.create({
     data: {
@@ -219,8 +230,8 @@ export async function proposeTrade(input: {
       kind: "trade",
       fromUserId: from.id,
       toUserId: to.id,
-      fromCardId: card.id,
-      toCardId: their.id,
+      fromCardId: mine.id,
+      toCardId: theirs.id,
     },
     include: offerInclude,
   });
@@ -314,7 +325,15 @@ export async function acceptTransfer(offerId: string, discordId: string): Promis
     });
     return { offer: done, changed: false };
   });
-  return toView(saved.offer, saved.changed);
+  let cleared: string[] = [];
+  if (saved.offer.status === "done") {
+    const moved = saved.offer.kind === "trade" && saved.offer.toCardId
+      ? [saved.offer.fromCardId, saved.offer.toCardId]
+      : [saved.offer.fromCardId];
+    const receipts = await noteWishlistReceipts(moved);
+    cleared = [...new Set(receipts.filter((row) => row.ownerId === saved.offer.toUserId).map((row) => row.characterName))];
+  }
+  return { ...(await toView(saved.offer, saved.changed)), wishlistCleared: cleared };
 }
 
 export async function cancelTransfer(offerId: string, discordId: string): Promise<TransferView> {

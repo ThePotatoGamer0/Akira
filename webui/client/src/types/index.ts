@@ -104,6 +104,7 @@ export type CatalogSeries = {
   percent: number;
   coverUrl: string | null;
   tracked: boolean;
+  watchingMissing: boolean;
   lastGot: number | null;
 };
 
@@ -113,6 +114,7 @@ export type CatalogCharacterCard = {
   slug: string;
   owned: boolean;
   wishlisted: boolean;
+  circulation: number;
   cover: CatalogCover | null;
   lastGot: number | null;
 };
@@ -166,6 +168,8 @@ export type CatalogSearchHit = {
   slug: string;
   series: { name: string; slug: string };
   owned: boolean;
+  wishlisted: boolean;
+  circulation: number;
   cover: CatalogCover | null;
   lastGot: number | null;
 };

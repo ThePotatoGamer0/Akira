@@ -14,7 +14,7 @@ import { give, trade } from "./commands/transfer.js";
 import { view } from "./commands/view.js";
 import { wishlist } from "./commands/wishlist.js";
 import { checklist } from "./commands/checklist.js";
-import { invocationIsExpected, matchPrefixedCommand, parsePrefixedCommand, resolveLegacyCommand, viewCardArgument } from "./prefix.js";
+import { invocationIsExpected, matchPrefixedCommand, parsePrefixedCommand, prefixOptionValues, resolveLegacyCommand, splitPrefixArgs, viewCardArgument } from "./prefix.js";
 
 test("legacy commands use the a prefix glued to the name", () => {
   assert.deepEqual(parsePrefixedCommand("adrop", "a"), { name: "drop", rest: "" });
@@ -117,7 +117,12 @@ test("a prefix command runs only when the arguments are exactly what it accepts"
   assert.equal(invocationIsExpected(give, "fmbl40r"), false);
   assert.equal(invocationIsExpected(give, "<@123> fmbl40r extra"), false);
   assert.equal(invocationIsExpected(trade, "<@123> fmbl40r abc1234"), true);
+  assert.equal(invocationIsExpected(trade, "<@123> fmbl40r, abc1234"), true);
+  assert.equal(invocationIsExpected(trade, "<@123> fmbl40r,abc1234"), true);
+  assert.equal(invocationIsExpected(trade, "fmbl40r abc1234"), true);
+  assert.equal(invocationIsExpected(trade, "fmbl40r, abc1234"), true);
   assert.equal(invocationIsExpected(trade, "<@123> fmbl40r"), false);
+  assert.equal(invocationIsExpected(trade, "fmbl40r"), false);
   assert.equal(invocationIsExpected(trade, "<@123> fmbl40r abc1234 extra"), false);
 });
 
@@ -128,6 +133,23 @@ test("karuta prefixes are accepted only when they are enabled for the match", ()
   assert.deepEqual(matchPrefixedCommand("k! view", ["a", "k!", "k"]), { name: "view", rest: "" });
   assert.deepEqual(matchPrefixedCommand("adrop", ["a", "k!", "k"]), { name: "drop", rest: "" });
   assert.deepEqual(matchPrefixedCommand("aoverridekaruta", ["a"]), { name: "overridekaruta", rest: "" });
+});
+
+test("a trade prefix splits card codes on commas", () => {
+  const fields = [
+    { name: "user", type: 6, required: false },
+    { name: "card_id", type: 3, required: true },
+    { name: "their_card", type: 3, required: true },
+  ];
+  const withMention = splitPrefixArgs("<@123> fmbl40r, abc1234");
+  assert.deepEqual(withMention, ["<@123>", "fmbl40r", "abc1234"]);
+  const mentioned = prefixOptionValues(fields, withMention);
+  assert.equal(mentioned.get("card_id"), "fmbl40r");
+  assert.equal(mentioned.get("their_card"), "abc1234");
+  const bare = prefixOptionValues(fields, splitPrefixArgs("fmbl40r, abc1234"));
+  assert.equal(bare.get("user"), undefined);
+  assert.equal(bare.get("card_id"), "fmbl40r");
+  assert.equal(bare.get("their_card"), "abc1234");
 });
 
 test("a bare view uses the card that was just grabbed", () => {

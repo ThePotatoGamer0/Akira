@@ -24,6 +24,22 @@ type CharacterRow = {
   lastGot?: number | null;
 };
 
+export function catalogCharacterNote(character: {
+  owned: boolean;
+  wishlisted: boolean;
+}): string {
+  if (character.owned) return "In your collection";
+  if (character.wishlisted) return "Watching";
+  return "Missing";
+}
+
+export function watchingAllMissing(
+  characters: ReadonlyArray<{ owned: boolean; wishlisted: boolean }>,
+): boolean {
+  const missing = characters.filter((character) => !character.owned);
+  return missing.length > 0 && missing.every((character) => character.wishlisted);
+}
+
 function compareName(a: string, b: string): number {
   return a.localeCompare(b, undefined, { sensitivity: "base" });
 }

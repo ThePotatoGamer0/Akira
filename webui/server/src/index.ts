@@ -13,6 +13,7 @@ import { remindersRouter } from "./routes/reminders.js";
 import { channelRouter } from "./routes/channel.js";
 import { attachChannelLive } from "./live/channel-socket.js";
 import { serveCatalogPortrait, serveMissingCardAsset, serveSeriesCover } from "./routes/card-assets.js";
+import { farmInternalRouter, farmRouter } from "./routes/farm.js";
 import { lookupRouter } from "./routes/lookup.js";
 import { allowsCrossSite, originAllowed, parseOriginList } from "./utils/origins.js";
 import { REPO_ROOT } from "./utils/repo-root.js";
@@ -109,6 +110,15 @@ app.use("/admin", adminRouter);
 app.use("/notices", noticesRouter);
 app.use("/reminders", remindersRouter);
 app.use("/channel", channelRouter);
+app.use("/farm", farmRouter);
+app.use("/internal/farm", (req, res, next) => {
+  const secret = process.env["AKIRA_INTERNAL_SECRET"] ?? "";
+  if (!secret || req.headers.authorization !== `Bearer ${secret}`) {
+    res.status(401).end("unauthorized");
+    return;
+  }
+  next();
+}, farmInternalRouter);
 
 app.get("/health", (_req, res) => res.json({ ok: true }));
 

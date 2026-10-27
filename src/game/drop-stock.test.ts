@@ -11,6 +11,7 @@ function effects(partial: Partial<ResolvedEffects> = {}): ResolvedEffects {
     cardCount: 3,
     legendaryWeight: 1,
     seriesId: null,
+    featuredSeriesChance: 0,
     qualityOverQuantity: false,
     mainMultiplier: 1,
     ...partial,

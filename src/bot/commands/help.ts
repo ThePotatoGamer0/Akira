@@ -20,7 +20,7 @@ export const help: AkiraCommand = {
         `Bits go to \`/shop\`, \`/pool\`, \`/milestone\`, and \`/prestige\`. ` +
         `A longer trade is \`${commandPrefix()}mt @friend\`. ` +
         `An admin runs \`${commandPrefix()}set\` in a channel to make that the drop channel. ` +
-        "`/wishlist add` pings you when a character appears. " +
+        "`/wishlist add` DMs you a link when a character shows up in a drop. " +
         `\`${commandPrefix()}cc\` lists characters you still don't have in the series you track. ` +
         "Running `/ping` or `/help` also saves your Discord name so the browser WebUI can find you.",
       ephemeral: true,

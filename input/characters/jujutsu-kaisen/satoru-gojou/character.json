@@ -8,6 +8,12 @@
       "name": "Satoru Gojou",
       "rarity": "Common",
       "image": "base.png"
+    },
+    {
+      "id": "jujutsu-kaisen-satoru-gojou-infinity",
+      "name": "Infinity",
+      "rarity": "Rare",
+      "image": "infinity.png"
     }
   ],
   "role": "MAIN"

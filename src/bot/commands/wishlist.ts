@@ -6,7 +6,7 @@ import { sendGameError } from "../reply.js";
 export const wishlist: AkiraCommand = {
   data: new SlashCommandBuilder()
     .setName("wishlist")
-    .setDescription("Watch characters and get pinged when they drop")
+    .setDescription("Watch characters and get a DM when they drop")
     .addSubcommand((sub) =>
       sub
         .setName("show")
@@ -36,7 +36,7 @@ export const wishlist: AkiraCommand = {
         const name = interaction.options.getString("character", true);
         const character = await addWishlist(interaction.user.id, interaction.user.username, name);
         await interaction.reply({
-          content: `Akira will ping you when ${character.name} shows up in a drop.`,
+        content: `Akira will DM you a link when ${character.name} shows up in a drop.`,
           ephemeral: true,
         });
         return;
