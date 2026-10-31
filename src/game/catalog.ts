@@ -5,7 +5,8 @@ import { prisma } from "../db/client.js";
 import { editionOrder } from "./editions.js";
 import { GameError } from "./errors.js";
 import { seriesCoverPath, variantArtPath } from "../utils/paths.js";
-import { displaySeriesName, matchesSearch, seriesSearchFields, type SeriesTitleStyle } from "./series-meta.js";
+import { rankCharacters, rankSeries } from "./search-records.js";
+import { displaySeriesName, type SeriesTitleStyle } from "./series-meta.js";
 
 function normalize(value: string): string {
   return value.trim().toLowerCase();
@@ -422,15 +423,7 @@ export async function catalogSearch(
   const characters = await prisma.character.findMany({
     include: { series: true, variants: true },
   });
-  const matched = characters.filter((character) =>
-    matchesSearch(
-      query,
-      character.name,
-      character.slug,
-      character.aliases ?? "",
-      ...seriesSearchFields(character.series.slug, character.series.name),
-    ),
-  );
+  const matched = rankCharacters(query, characters);
   const matchedIds = matched.map((character) => character.id);
   const [wished, circulation] = await Promise.all([
     prisma.wishlist.findMany({
@@ -440,7 +433,8 @@ export async function catalogSearch(
     characterCirculation(matchedIds),
   ]);
   const watching = new Set(wished.map((row) => row.characterId));
-  const hits = matched.map((character) => ({
+  const hits = matched.map((character, rank) => ({
+    rank,
     id: character.id,
     name: character.name,
     slug: character.slug,
@@ -455,14 +449,12 @@ export async function catalogSearch(
     lastGot: got.characterAt.get(character.id) ?? null,
   }));
   const order = catalogViewOrder(viewOrder);
-  hits.sort((a, b) => {
-    if (order === "alpha") return compareCatalogName(a.name, b.name);
-    if (order === "recent") return (b.lastGot ?? 0) - (a.lastGot ?? 0) || compareCatalogName(a.name, b.name);
-    return Number(a.owned) - Number(b.owned) || compareCatalogName(a.name, b.name);
-  });
+  const ranked = order === "recent"
+    ? hits.sort((a, b) => (b.lastGot ?? 0) - (a.lastGot ?? 0) || a.rank - b.rank)
+    : hits.sort((a, b) => a.rank - b.rank);
   return {
-    series: series.filter((row) => matchesSearch(query, ...seriesSearchFields(row.slug, row.name))),
-    characters: hits.slice(0, 48),
+    series: rankSeries(query, series),
+    characters: ranked.slice(0, 48).map(({ rank: _rank, ...hit }) => hit),
   };
 }
 
