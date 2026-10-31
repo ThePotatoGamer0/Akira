@@ -19,6 +19,8 @@ Every grabbed card keeps a picture under the cache folder. After a frame or port
 
 Your PC pulls each portrait and frame from the Pi, draws the pictures, and sends them back into `/home/james/akira-data/cards`. She comes back when the last file lands, or after twenty minutes if the PC never arrives. `afarm cancel` stops the wait.
 
+One thread per logical core draws cards, and a quarter of those cores are handed to shine strips so a shiny card's frames are drawn in parallel. Threads never wait on the network: portraits, frames, uploads, and the next batch of cards all download and upload while the other threads draw. If the farm is fighting with something else for the CPU, `AKIRA_FARM_WORKERS=4 npm run farm -- ...` leaves cores free.
+
 Stay on wifi. Sending thousands of GIFs through the public API works, and it is slower. If she prints the wrong address, set `AKIRA_FARM_URL` on the stack.
 
 ## See also

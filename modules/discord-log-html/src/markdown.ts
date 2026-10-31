@@ -13,6 +13,11 @@ export type InlineContext = {
   log: ChatLog;
   media: Set<string>;
   view?: MediaView;
+  /**
+   * Links that must stay links. A gif from Tenor, Klipy, or GIPHY is shown by
+   * its embed, so the same url in the text should not play a second time.
+   */
+  skipMedia?: Set<string>;
 };
 
 const MEDIA_MAX_W = 400;
@@ -107,7 +112,9 @@ function mediaTag(url: string, ctx: InlineContext): string {
 function linkTag(url: string, label: string, ctx: InlineContext): string {
   const safe = safeHttpUrl(url);
   if (!safe) return escapeHtml(label);
-  if (mediaKind(safe)) {
+  // Content kept as a link must not turn into media, even a playable video.
+  const skipped = ctx.skipMedia?.has(url) || ctx.skipMedia?.has(safe);
+  if (mediaKind(safe) && !skipped) {
     ctx.media.add(safe);
     return mediaTag(safe, ctx);
   }

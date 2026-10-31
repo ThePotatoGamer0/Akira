@@ -270,6 +270,18 @@
 .dlog-embed-thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 4px; }
 .dlog-embed-footer { margin-top: 0.45rem; }
 
+/*
+ * A gif from Tenor, Klipy, or GIPHY comes in as a video. It sits in the column
+ * at its own size, not floating inline, and holds that size before it loads so
+ * the channel doesn't jump while the log is being read.
+ */
+.dlog .dlog-embed-video {
+  display: block;
+  max-width: 100%;
+  margin-top: 0.45rem;
+  background: transparent;
+}
+
 .dlog-reactions,
 .dlog-action-row {
   display: flex;

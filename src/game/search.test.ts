@@ -95,6 +95,21 @@ describe("characters", () => {
     );
   });
 
+  it("puts a name typed in full above names that only start that way", () => {
+    const typed = [
+      character("Dio Brando", "dio-brando", "jojo", "JoJo's Bizarre Adventure"),
+      character("Diorite", "diorite"),
+      character("D", "d"),
+      character("Denji", "denji"),
+    ];
+    assert.equal(rankCharacters("d", typed)[0]?.name, "D", "the one-letter name comes first");
+    assert.equal(rankCharacters("dio", typed)[0]?.name, "Dio Brando", "a whole word beats a prefix");
+    assert.deepEqual(
+      rankCharacters("dio", typed).map((row) => row.name),
+      ["Dio Brando", "Diorite"],
+    );
+  });
+
   it("returns nothing for an empty query", () => {
     assert.deepEqual(rankCharacters("  ", rows), []);
   });

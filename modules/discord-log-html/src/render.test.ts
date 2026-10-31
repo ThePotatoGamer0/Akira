@@ -135,3 +135,71 @@ test("javascript links stay text", () => {
 test("an empty log says the channel is quiet", () => {
   assert.match(renderChatLog({ messages: [] }), /Nothing has been said here yet/);
 });
+
+/** A message with embeds and, when given, text in front of them (Tenor posts its .mp4 link). */
+function oneMessage(
+  embeds: NonNullable<ChatLog["messages"]>[number]["embeds"],
+  content = "",
+): string {
+  return renderChatLog({
+    messages: [
+      {
+        id: "g1",
+        content,
+        timestamp: "2026-10-19T18:00:00.000Z",
+        author: { id: "1", username: "mika" },
+        embeds,
+      },
+    ],
+  });
+}
+
+test("a tenor gif plays as a gif instead of a poster with a video under it", () => {
+  const html = oneMessage([
+    {
+      type: "gifv",
+      url: "https://tenor.com/view/cat-gif-123",
+      video: {
+        url: "https://media.tenor.com/abc/cat.mp4",
+        proxy_url: "https://media.tenor.com/abc/cat.mp4",
+        width: 498,
+        height: 498,
+      },
+      thumbnail: { url: "https://media.tenor.com/abc/cat.png" },
+    },
+  ], "https://media.tenor.com/abc/cat.mp4");
+  assert.match(html, /class="dlog-video dlog-embed-video" src="https:\/\/media\.tenor\.com\/[^"]+"[^>]*autoplay loop muted/);
+  assert.match(html, /width="498" height="498"/);
+  assert.doesNotMatch(html, /data-src="https:\/\/tenor\.com\/view/, "the Tenor page is not shown as an image");
+  assert.doesNotMatch(html, /dlog-embed-image/, "the still is not shown next to the gif");
+  assert.equal(html.match(/<video/g)?.length, 1, "the gif plays once, from the text link");
+});
+
+test("a klipy gif without a poster still becomes one video", () => {
+  const html = oneMessage([
+    {
+      type: "image",
+      url: "https://klipy.co/gif/abc",
+      video: { url: "https://static.klipy.com/ii/abc.mp4", width: 320, height: 240 },
+      image: { url: "https://static.klipy.com/ii/abc.png", width: 320, height: 240 },
+    },
+  ]);
+  assert.equal(html.match(/<video/g)?.length, 1);
+  assert.equal(html.match(/<img[^>]*klipy[^>]*\.png/g), null);
+  assert.match(html, /autoplay/);
+});
+
+test("a real video keeps its picture as well", () => {
+  const html = oneMessage([
+    {
+      title: "A clip",
+      image: { url: "https://cdn.example.com/frame.jpg", width: 1280, height: 720 },
+      video: { url: "https://cdn.example.com/clip.mp4", width: 640, height: 360 },
+    },
+  ]);
+  assert.match(html, /dlog-embed-image[^>]*frame\.jpg/);
+  const video = html.match(/<video[^>]*clip\.mp4[^>]*>/)?.[0] ?? "";
+  assert.match(video, /class="dlog-video dlog-embed-video"/);
+  assert.doesNotMatch(video, /autoplay/);
+  assert.match(video, /width="640" height="360"/);
+});

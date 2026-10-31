@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import sharp from "sharp";
 import { encodeApng } from "../utils/apng.js";
+import { writeApng } from "../utils/apng-write.js";
 import {
   blendShineOverlay,
   ditherCardFade,
@@ -46,6 +47,23 @@ test("apng frames loop as an animated png", () => {
   assert.ok(marker > 0);
   assert.equal(apng.readUInt32BE(marker + 4), 2);
   assert.equal(apng.readUInt32BE(marker + 8), 0);
+});
+
+test("apng pages hold what the frames held, written as the bands that changed", async () => {
+  const width = 32;
+  const height = 48;
+  const base = solid(width, height, [30, 60, 90, 255]);
+  const band = Buffer.concat([
+    base.subarray(0, width * 8 * 4),
+    solid(width, 8, [200, 200, 200, 255]),
+    base.subarray(width * 16 * 4),
+  ]);
+  const frames = Buffer.concat([base, band, base]);
+  const written = writeApng(frames, width, height, 3, [40, 40, 40]);
+  assert.ok(written.length < frames.length / 3, "a page that barely changes is stored as its band");
+  const { data } = await sharp(written, { animated: true, pages: -1 }).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const page = width * height * 4;
+  assert.ok(data.subarray(data.length - page).equals(base), "the loop ends on the card");
 });
 
 test("the shine crosses from the top-left toward the bottom-right", () => {

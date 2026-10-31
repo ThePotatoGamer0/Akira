@@ -77,7 +77,7 @@ farmRouter.get("/hello", (_req, res) => {
 });
 
 farmRouter.post("/claim", express.json(), (req, res) => {
-  const count = typeof req.body?.count === "number" ? req.body.count : 8;
+  const count = typeof req.body?.count === "number" ? req.body.count : 64;
   const jobs = claimFarmJobs(bearer(req), count);
   if (!jobs) {
     res.status(401).json({ error: "Akira is not waiting for that token." });

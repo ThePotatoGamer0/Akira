@@ -143,6 +143,35 @@ function windowOpening(outside: Uint8Array, frame: Buffer, width: number, height
   return { minX, minY, maxX, maxY };
 }
 
+/** Frame pixels every card shares. Loading them again for each card was most of a still's time. */
+type PreparedFrame = {
+  png: Buffer;
+  width: number;
+  height: number;
+  raw: Buffer;
+  outside: Uint8Array;
+  opening: Opening | null;
+};
+
+const preparedFrames = new Map<string, PreparedFrame>();
+
+async function prepareFrame(framePngPath: string): Promise<PreparedFrame> {
+  const cached = preparedFrames.get(framePngPath);
+  if (cached) return cached;
+  const png = await sharp(framePngPath).ensureAlpha().png().toBuffer();
+  const meta = await sharp(png).metadata();
+  const width = meta.width ?? 0;
+  const height = meta.height ?? 0;
+  if (!width || !height) {
+    throw new Error(`Invalid frame dimensions: ${framePngPath}`);
+  }
+  const raw = await sharp(png).ensureAlpha().raw().toBuffer();
+  const outside = outsideMask(framePngPath, width, height, raw);
+  const prepared = { png, width, height, raw, outside, opening: windowOpening(outside, raw, width, height) };
+  preparedFrames.set(framePngPath, prepared);
+  return prepared;
+}
+
 /** How many clear pixels sit in the window, and how far the picture starts below the top. */
 function openingGaps(art: Buffer, width: number, opening: Opening): { holes: number; topGap: number } {
   let holes = 0;
@@ -199,22 +228,15 @@ export async function renderNormalCard(
   framePngPath: string,
   overlayPng?: Buffer,
 ): Promise<Buffer> {
-  const frameBuf = overlayPng ?? (await sharp(framePngPath).ensureAlpha().png().toBuffer());
-  const fm = await sharp(framePngPath).metadata();
-  const fw = fm.width;
-  const fh = fm.height;
-  if (!fw || !fh) {
-    throw new Error(`Invalid frame dimensions: ${framePngPath}`);
-  }
+  const prepared = await prepareFrame(framePngPath);
+  const frameBuf = overlayPng ?? prepared.png;
+  const { width: fw, height: fh, outside, opening } = prepared;
 
-  const frameRaw = await sharp(framePngPath).ensureAlpha().raw().toBuffer();
-  const outside = outsideMask(framePngPath, fw, fh, frameRaw);
   let artRaw = await sharp(characterPngPath)
     .ensureAlpha()
     .resize(fw, fh, { fit: "contain", position: "centre", background: { r: 0, g: 0, b: 0, alpha: 0 } })
     .raw()
     .toBuffer();
-  const opening = windowOpening(outside, frameRaw, fw, fh);
   if (opening) artRaw = await backedArt(characterPngPath, artRaw, fw, fh, opening);
   for (let index = 0; index < outside.length; index++) {
     if (outside[index]) artRaw[index * 4 + 3] = 0;
@@ -232,7 +254,7 @@ async function ambientOverlay(characterPngPath: string, framePngPath: string, wi
   ink: AmbientInk;
 }> {
   const field = await ambientField(characterPngPath, width, height);
-  const frameRaw = await sharp(framePngPath).ensureAlpha().raw().toBuffer();
+  const { raw: frameRaw } = await prepareFrame(framePngPath);
   const painted = paintField(frameRaw, field, width, height);
   const png = await sharp(painted, { raw: { width, height, channels: 4 } }).png().toBuffer();
   return { png, ink: inkForField(field, width, height) };
@@ -244,12 +266,7 @@ export async function renderCardImage(
   texts: OverlayText[],
   options?: { ambient?: boolean },
 ): Promise<Buffer> {
-  const frameMeta = await sharp(framePngPath).metadata();
-  const width = frameMeta.width ?? 0;
-  const height = frameMeta.height ?? 0;
-  if (!width || !height) {
-    throw new Error(`Invalid frame dimensions: ${framePngPath}`);
-  }
+  const { width, height } = await prepareFrame(framePngPath);
   const ambient = options?.ambient ? await ambientOverlay(characterPngPath, framePngPath, width, height) : null;
   const drawn = ambient && texts.length > 0 ? withInk(texts, ambient.ink) : texts;
   const base = await renderNormalCard(characterPngPath, framePngPath, ambient?.png);

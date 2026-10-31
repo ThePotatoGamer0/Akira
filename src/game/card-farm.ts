@@ -143,7 +143,7 @@ export function claimFarmJobs(token: string, count: number): FarmRedrawJob[] | n
   if (!farmTokenOk(token) || !session) return null;
   reclaim(Date.now());
   session.seenWorker = true;
-  const take = Math.max(1, Math.min(16, Math.floor(count) || 1));
+  const take = Math.max(1, Math.floor(count) || 1);
   const claimed: FarmRedrawJob[] = [];
   const now = Date.now();
   for (const slot of session.slots) {

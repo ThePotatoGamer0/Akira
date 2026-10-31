@@ -110,16 +110,32 @@ function sameResource(a: string, b: string): boolean {
   }
 }
 
-function embedMedia(embed: RawEmbed): string {
-  return embed.url || embed.image?.url || embed.image?.proxy_url || embed.video?.url || embed.video?.proxy_url || "";
+/**
+ * The player media inside an embed, in the order it should be shown.
+ *
+ * A gif from Tenor, Klipy, or GIPHY (and Discord's own `gifv`) arrives as a
+ * video next to its still, and often with a poster as well. The video is the
+ * animation, the still is one frame of it, so the video is shown once and the
+ * still is left alone. A real video keeps its picture above it.
+ */
+function embedMedia(embed: RawEmbed): string[] {
+  const video = embed.video?.url || embed.video?.proxy_url || "";
+  const image = embed.image?.url || embed.image?.proxy_url || "";
+  if (video && image && isGifVideo(embed, video)) return [video];
+  return [image, video].filter((url) => url !== "");
 }
 
 function bareMediaEmbed(embed: RawEmbed, media: Set<string>): boolean {
   if (embed.title || embed.description || embed.author || embed.footer || (embed.fields && embed.fields.length > 0)) return false;
-  const url = embedMedia(embed);
-  if (!url) return false;
+  // A Tenor, Klipy, or GIPHY gif is the point of its message. Its link stays a
+  // link in the text, so the embed must stay too; it is what plays the gif.
+  const video = embed.video?.url || embed.video?.proxy_url || "";
+  if (video && embedMedia(embed).length > 0 && isGifVideo(embed, video)) return false;
+  // The embed's own link is not media; Discord shows the gif it points at.
+  const urls = [embed.image?.url, embed.image?.proxy_url, video].filter((url): url is string => Boolean(url));
+  if (urls.length === 0) return false;
   for (const item of media) {
-    if (sameResource(item, url)) return true;
+    if (urls.some((url) => sameResource(item, url))) return true;
   }
   return false;
 }
@@ -131,11 +147,41 @@ function embedFooterTime(iso: string | undefined): string {
   return `<time datetime="${escapeAttr(date.toISOString())}">${escapeHtml(date.toLocaleString())}</time>`;
 }
 
+/** A gif that arrived as a video needs no click to play, like every other gif in the log. */
+function isGifVideo(embed: RawEmbed, video: string): boolean {
+  if (/gifv/i.test(video)) return true;
+  if (/(^|\.)tenor\.com|(^|\.)klipy\.com|(^|\.)giphy\.com/i.test(video)) return true;
+  const { width, height } = embed.video ?? {};
+  return Boolean(width && height && width === embed.image?.width && height === embed.image?.height);
+}
+
+/**
+ * An embed video sized from its own width and height, so it holds its space
+ * before it loads and the channel stops jumping while you scroll.
+ */
+function embedVideo(embed: RawEmbed, video: string): string {
+  const width = embed.video?.width;
+  const height = embed.video?.height;
+  const size = width && height
+    ? ` width="${width}" height="${height}" style="width:min(100%,${width}px);aspect-ratio:${width}/${height};height:auto"`
+    : "";
+  const gif = isGifVideo(embed, video) ? " autoplay loop muted" : "";
+  return `<video class="dlog-video dlog-embed-video" src="${escapeAttr(video)}" controls playsinline${gif} preload="metadata"${size}></video>`;
+}
+
 function renderEmbed(embed: RawEmbed, ctx: InlineContext): string {
   const color = roleInk(embed.color) ?? "#202225";
+  const media = embedMedia(embed);
   const thumb = safeHttpUrl(embed.thumbnail?.proxy_url || embed.thumbnail?.url || "");
-  const image = safeHttpUrl(embed.image?.proxy_url || embed.image?.url || "");
-  const video = safeHttpUrl(embed.video?.proxy_url || embed.video?.url || "");
+  const video = safeHttpUrl(embed.video?.proxy_url || embed.video?.url || "") ?? "";
+  // A gif that came in as a video is shown once, as the video. Its still is not repeated.
+  const showMedia = (url: string): string => {
+    if (url === "" || !media.includes(url)) return "";
+    if (video !== "" && sameResource(url, video)) return embedVideo(embed, video);
+    // A gif's still is one frame of the gif shown right above it.
+    if (video !== "" && isGifVideo(embed, video)) return "";
+    return viewableImage({ src: url, className: "dlog-embed-image", width: embed.image?.width, height: embed.image?.height, ctx });
+  };
   const authorIcon = safeHttpUrl(embed.author?.icon_url || "");
   const footerIcon = safeHttpUrl(embed.footer?.icon_url || "");
   const title = embed.title ? renderInline(embed.title, ctx) : "";
@@ -154,8 +200,7 @@ function renderEmbed(embed: RawEmbed, ctx: InlineContext): string {
       ${titleHtml ? `<div class="dlog-embed-title">${titleHtml}</div>` : ""}
       ${embed.description ? `<div class="dlog-embed-desc">${renderContent(embed.description, ctx)}</div>` : ""}
       ${fields ? `<div class="dlog-embed-fields">${fields}</div>` : ""}
-      ${image ? viewableImage({ src: image, className: "dlog-embed-image", width: embed.image?.width, height: embed.image?.height, ctx }) : ""}
-      ${video ? `<video class="dlog-video" src="${escapeAttr(video)}" controls playsinline loop muted></video>` : ""}
+      ${media.map(showMedia).filter((part) => part !== "").join("")}
       ${embed.footer?.text || embed.timestamp ? `<div class="dlog-embed-footer">${footerIcon ? `<img src="${escapeAttr(footerIcon)}" alt="">` : ""}<span>${escapeHtml(embed.footer?.text ?? "")}</span>${embedFooterTime(embed.timestamp)}</div>` : ""}
     </div>
     ${thumb ? `<img class="dlog-embed-thumb" src="${escapeAttr(thumb)}" alt="" loading="lazy">` : ""}
@@ -290,7 +335,20 @@ function renderMessage(message: RawMessage, log: ChatLog, grouped: boolean): str
       color: color ?? "",
     },
   };
-  const content = renderContent(message.content ?? "", ctx);
+  // The embed is checked after the text, because a link in the text is media too.
+  const gifEmbeds = (message.flags ?? 0) & SUPPRESS_EMBEDS
+    ? []
+    : (message.embeds ?? []).filter((embed) => {
+        const video = embed.video?.url || embed.video?.proxy_url || "";
+        return Boolean(video && isGifVideo(embed, video));
+      });
+  const skipMedia = new Set<string>();
+  for (const embed of gifEmbeds) {
+    for (const url of [embed.video?.url, embed.video?.proxy_url, embed.image?.url, embed.image?.proxy_url]) {
+      if (url) skipMedia.add(url);
+    }
+  }
+  const content = renderContent(message.content ?? "", { ...ctx, skipMedia });
   const jumbo = onlyEmoji(message.content ?? "") ? " dlog-jumbo" : "";
   const embeds = (message.flags ?? 0) & SUPPRESS_EMBEDS
     ? ""

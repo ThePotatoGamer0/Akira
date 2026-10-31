@@ -3,11 +3,23 @@ import path from "node:path";
 import { threadId } from "node:worker_threads";
 import { createCanvas } from "canvas";
 import sharp from "sharp";
-import { renderBurnOutputs, renderShinyOutputs } from "../renderer/card-animations.js";
+import {
+  encodeAnimation,
+  renderBurnOutputs,
+  renderShinyOutputs,
+  SHINE_DELAY_MS,
+  shineBase,
+  shineStripFrames,
+  shineStrips,
+  SHINE_TILE,
+  type AnimationFormat,
+  type EncodedAnimation,
+} from "../renderer/card-animations.js";
 import { renderCardImage, type OverlayText } from "../renderer/composite-static.js";
 import { fitCharacterName, fitSingleLine, lineOffset, nameLimits } from "../renderer/name-fit.js";
 import { loadFrame, type FrameAsset, type TextStyle } from "../utils/frames.js";
 import { cardCacheFile, dyeCacheKey, ensureDir, printCacheKey, variantArtPath, type CardCacheFileName } from "../utils/paths.js";
+import type { ShineThreads } from "../farm/shine-pool.js";
 import type { Quality } from "./balance.js";
 import { GameError } from "./errors.js";
 
@@ -160,6 +172,11 @@ export type CardRenderSources = {
   frame: FrameAsset;
   /** When false, the still is always drawn again. Farm work uses that. */
   reuseStill?: boolean;
+  /**
+   * A side thread that can write the shine's APNG while this one encodes its GIF.
+   * Farm work starts a few, since the shine is the same work every card does.
+   */
+  shineThreads?: ShineThreads;
 };
 
 export type RenderedCardFile = { fileName: CardCacheFileName; data: Buffer };
@@ -194,7 +211,9 @@ export async function renderCardFiles(
 
   const shiny = formatsFor(files, "shiny");
   if (shiny.length > 0) {
-    const encoded = await renderShinyOutputs(still, shiny);
+    const encoded = sources?.shineThreads
+      ? await renderShinyOnThreads(still, shiny, sources.shineThreads)
+      : await renderShinyOutputs(still, shiny);
     if (encoded.gif) outputs.push({ fileName: "shiny.gif", data: encoded.gif });
     if (encoded.apng) outputs.push({ fileName: "shiny.apng", data: encoded.apng });
   }
@@ -205,6 +224,39 @@ export async function renderCardFiles(
     if (encoded.apng) outputs.push({ fileName: "burn.apng", data: encoded.apng });
   }
   return outputs;
+}
+
+/**
+ * The shine with its strips drawn on the side threads and its pages written to
+ * APNG there too. What comes back on this thread is the GIF's own pages, so the
+ * GIF starts as soon as the strips hand theirs over.
+ */
+async function renderShinyOnThreads(
+  still: Buffer,
+  formats: AnimationFormat[],
+  threads: ShineThreads,
+): Promise<EncodedAnimation> {
+  const { rgba, width, height } = await shineBase(still);
+  const page = width * height * 4;
+  const strips = shineStrips();
+  let count = 0;
+  for (let strip = 0; strip < strips; strip++) count += shineStripFrames(strip);
+  const image = Buffer.alloc(page * count);
+  for (let index = 0; index < count; index++) image.set(rgba, index * page);
+  const cuts = await Promise.all(Array.from({ length: strips }, (_, strip) => threads.cut({
+    strip,
+    rgba,
+    width,
+    height,
+    apng: formats.includes("apng"),
+    delayMs: SHINE_DELAY_MS,
+  })));
+  cuts.forEach((cut, strip) => cut.image.copy(image, strip * SHINE_TILE * page, 0, page * shineStripFrames(strip)));
+  return encodeAnimation({ image, width, height, frameCount: count, delays: delaysFor(count) }, formats, cuts[0]?.apng ? Promise.resolve(cuts[0].apng) : undefined);
+}
+
+function delaysFor(count: number): number[] {
+  return Array.from({ length: count }, () => SHINE_DELAY_MS);
 }
 
 export async function writeCardImages(
