@@ -10,3 +10,13 @@ data/icon-sync.json
 
 /src/generated/prisma
 /input/portraits
+
+# Generated on each deployment, never committed.
+/assets/
+
+# Per-machine editor and docs settings.
+.cursor/
+docs/.astro/settings.json
+
+# Local database backups next to the dev database.
+prisma/*.db.*
