@@ -8,6 +8,7 @@ import {
   setSeriesMissingWishlist,
 } from "../../../../src/game/catalog.js";
 import { GameError } from "../../../../src/game/errors.js";
+import { searchSuggestions } from "../../../../src/game/search-suggest.js";
 import { seriesTitleStyle } from "../../../../src/game/series-meta.js";
 import { authMiddleware } from "../middleware/auth.js";
 
@@ -36,6 +37,16 @@ lookupRouter.get("/catalog", async (req, res) => {
       return;
     }
     res.json({ series: await catalogSeries(req.user!.id, style), characters: [] });
+  } catch (err) {
+    res.status(gameStatus(err)).json({ error: gameMessage(err) });
+  }
+});
+
+/** Typeahead for the WebUI search boxes: best characters and series for what has been typed so far. */
+lookupRouter.get("/suggest", async (req, res) => {
+  const q = typeof req.query["q"] === "string" ? req.query["q"].slice(0, 60) : "";
+  try {
+    res.json({ suggestions: await searchSuggestions(q, seriesTitleStyle(req.user!.seriesTitle)) });
   } catch (err) {
     res.status(gameStatus(err)).json({ error: gameMessage(err) });
   }

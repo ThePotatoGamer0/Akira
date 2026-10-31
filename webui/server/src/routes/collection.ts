@@ -1,21 +1,14 @@
 import { Router } from "express";
-import type { CardQuality, Prisma } from "../../../../src/generated/prisma/client.js";
+import type { Prisma } from "../../../../src/generated/prisma/client.js";
 import { burnOwnedCards, quoteOwnedBurn } from "../../../../src/game/economy.js";
 import { displayFrameId, frameIdsOnDisk, frameLabel, personalDefaultFrame, serverDefaultFrame, setCardFrame, setOwnedFrames, setPersonalDefaultFrame, storedFrameChoice } from "../../../../src/game/frames.js";
 import { GameError } from "../../../../src/game/errors.js";
-import { displaySeriesName, seriesSlugsMatching, seriesTitleStyle } from "../../../../src/game/series-meta.js";
+import { collectionPrefilter, rankCollection, type SearchableCard } from "../../../../src/game/collection-search.js";
+import { displaySeriesName, seriesTitleStyle } from "../../../../src/game/series-meta.js";
 import { applyTag, clearTag, createTag, deleteTag, listTags } from "../../../../src/game/tags.js";
 import { prisma } from "../db/client.js";
 import { authMiddleware } from "../middleware/auth.js";
 import { akiraAddressName } from "../utils/akira-address-name.js";
-
-const CONDITION_WORDS: [CardQuality, string][] = [
-  ["COMMON", "damaged"],
-  ["UNCOMMON", "poor"],
-  ["RARE", "good"],
-  ["EPIC", "excellent"],
-  ["LEGENDARY", "mint"],
-];
 
 const CARD_INCLUDE = {
   variant: {
@@ -106,11 +99,6 @@ function queryCount(value: unknown, fallback: number, max: number, min = 0): num
   return Math.min(max, Math.max(min, Number(raw)));
 }
 
-function qualitiesForQuery(q: string): CardQuality[] {
-  const needle = q.toLowerCase();
-  return CONDITION_WORDS.filter(([, word]) => word.includes(needle)).map(([quality]) => quality);
-}
-
 const COLLECTION_ORDERS = ["character", "series", "quality", "tag", "recent"] as const;
 type CollectionOrder = (typeof COLLECTION_ORDERS)[number];
 
@@ -141,6 +129,44 @@ type SortRow = {
   obtainedAt: Date;
 };
 
+const RANKED_SELECT = {
+  id: true,
+  tag: true,
+  alias: true,
+  quality: true,
+  dye: true,
+  printNumber: true,
+  obtainedAt: true,
+  variant: {
+    select: {
+      name: true,
+      character: {
+        select: { name: true, slug: true, aliases: true, series: { select: { name: true, slug: true } } },
+      },
+    },
+  },
+} as const;
+
+/** The card as the search sees it, with every field a player might type. */
+type RankedCard = Prisma.CardGetPayload<{ select: typeof RANKED_SELECT }>;
+
+function toSearchableCard(card: RankedCard): SearchableCard {
+  return card;
+}
+
+function toSortRow(card: RankedCard, titleStyle: ReturnType<typeof seriesTitleStyle>): SortRow {
+  const { character } = card.variant;
+  return {
+    id: card.id,
+    tag: card.tag,
+    quality: card.quality,
+    printNumber: card.printNumber,
+    character: character.name,
+    series: displaySeriesName(character.series.slug, character.series.name, titleStyle),
+    obtainedAt: card.obtainedAt,
+  };
+}
+
 function compareCards(order: CollectionOrder, a: SortRow, b: SortRow): number {
   if (order === "series") {
     const series = compareText(a.series, b.series);
@@ -164,27 +190,6 @@ function compareCards(order: CollectionOrder, a: SortRow, b: SortRow): number {
   if (name !== 0) return name;
   if (a.printNumber !== b.printNumber) return a.printNumber - b.printNumber;
   return a.id < b.id ? -1 : a.id > b.id ? 1 : 0;
-}
-
-function collectionWhere(userId: string, q: string): Prisma.CardWhereInput {
-  const where: Prisma.CardWhereInput = { ownerId: userId };
-  if (!q) return where;
-  const or: Prisma.CardWhereInput[] = [
-    { id: { contains: q.toLowerCase() } },
-    { tag: { contains: q.toLowerCase() } },
-    { variant: { name: { contains: q } } },
-    { variant: { character: { name: { contains: q } } } },
-    { variant: { character: { series: { name: { contains: q } } } } },
-  ];
-  const titleSlugs = seriesSlugsMatching(q);
-  if (titleSlugs.length > 0) {
-    or.push({ variant: { character: { series: { slug: { in: titleSlugs } } } } });
-  }
-  const qualities = qualitiesForQuery(q);
-  if (qualities.length > 0) or.push({ quality: { in: qualities } });
-  if (/^\d{1,6}$/.test(q)) or.push({ printNumber: Number(q) });
-  where.OR = or;
-  return where;
 }
 
 collectionRouter.get("/:userId/studio", async (req, res) => {
@@ -486,56 +491,51 @@ collectionRouter.get("/:userId", async (req, res) => {
   const offset = queryCount(req.query["offset"], 0, 100_000);
   const q = queryParam(req.query["q"]).trim().slice(0, 80);
   const order = collectionOrder(queryParam(req.query["order"]));
-  const where = collectionWhere(userId, q);
+  const prefilter = collectionPrefilter(q);
+  const where: Prisma.CardWhereInput = prefilter ? { ownerId: userId, ...prefilter } : { ownerId: userId };
   const titleStyle = seriesTitleStyle(req.user!.seriesTitle);
 
   const [owned, total, ranked, serverFrame, personalFrame, tags] = await Promise.all([
     prisma.card.count({ where: { ownerId: userId } }),
     prisma.card.count({ where }),
-    prisma.card.findMany({
-      where,
-      select: {
-        id: true,
-        tag: true,
-        quality: true,
-        printNumber: true,
-        obtainedAt: true,
-        variant: { select: { character: { select: { name: true, series: { select: { name: true, slug: true } } } } } },
-      },
-    }),
+    prisma.card.findMany({ where, select: RANKED_SELECT }),
     serverDefaultFrame(process.env["DISCORD_GUILD_ID"] ?? null),
     personalDefaultFrame(owner.discordId),
     prisma.tag.findMany({ where: { userId } }),
   ]);
-  const pageIds = ranked
-    .map((card) => ({
-      id: card.id,
-      tag: card.tag,
-      quality: card.quality,
-      printNumber: card.printNumber,
-      character: card.variant.character.name,
-      series: displaySeriesName(
-        card.variant.character.series.slug,
-        card.variant.character.series.name,
-        titleStyle,
-      ),
-      obtainedAt: card.obtainedAt,
-    }))
-    .sort((a, b) => compareCards(order, a, b))
+  // SQL narrows what it can see. The rest of the collection is offered to the
+  // ranker too, so an alias or a misspelling still finds the card.
+  const rankedIds = new Set(ranked.map((card) => card.id));
+  const extra = q && ranked.length < owned
+    ? await prisma.card.findMany({
+        where: { ownerId: userId, id: { notIn: [...rankedIds] } },
+        select: RANKED_SELECT,
+      })
+    : [];
+  const byId = new Map([...ranked, ...extra].map((card) => [card.id, card]));
+  // Search ranks by how well a card answers it; otherwise the chosen order wins.
+  const matches = q
+    ? rankCollection(q, ranked.map(toSearchableCard), extra.map(toSearchableCard))
+    : ranked.map((card) => card.id);
+  const rows = matches.flatMap((id) => {
+    const card = byId.get(id);
+    return card ? [toSortRow(card, titleStyle)] : [];
+  });
+  const pageIds = (q ? rows : rows.sort((a, b) => compareCards(order, a, b)))
     .slice(offset, offset + limit)
     .map((card) => card.id);
   const found = pageIds.length === 0
     ? []
     : await prisma.card.findMany({ where: { id: { in: pageIds } }, include: CARD_INCLUDE });
-  const byId = new Map(found.map((card) => [card.id, card]));
+  const cardsById = new Map(found.map((card) => [card.id, card]));
   const cards = pageIds.flatMap((id) => {
-    const card = byId.get(id);
+    const card = cardsById.get(id);
     return card ? [card] : [];
   });
   const tagEmoji = new Map(tags.map((tag) => [tag.name, tag.emoji]));
 
   res.json({
-    total,
+    total: q ? rows.length : total,
     owned,
     limit,
     offset,

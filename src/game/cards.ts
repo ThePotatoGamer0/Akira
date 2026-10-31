@@ -5,7 +5,8 @@ import { isCardCode, mintCardCode } from "./codes.js";
 import { editionNumber } from "./editions.js";
 import { GameError } from "./errors.js";
 import { applyCardFilters, type CardFilter } from "./filters.js";
-import { matchesSearch, seriesSearchFields } from "./series-meta.js";
+import { rankCharacters } from "./search-records.js";
+import { parseQuery } from "./search.js";
 import { ensureUser, findUserByDiscordId, rememberDiscordAvatars } from "./users.js";
 
 export const COLLECTION_PAGE_SIZE = 10;
@@ -123,34 +124,14 @@ const lookupInclude = {
   _count: { select: { wishlists: true } },
 } as const;
 
-function lookupScore(name: string, slug: string, query: string): number {
-  if (name === query || slug === query) return 0;
-  if (name.startsWith(query) || slug.startsWith(query)) return 1;
-  return 2;
-}
-
 /** Discord select menus hold 25 options, so lookup pages are this long. */
 export const LOOKUP_PAGE_SIZE = 25;
 
+/** Characters that match the query, best match first: names, aliases, then series. */
 export async function searchCharacters(query: string, page = 0) {
-  const q = normalize(query);
-  if (!q) return { total: 0, page: 0, characters: [] };
+  if (parseQuery(query).length === 0) return { total: 0, page: 0, characters: [] };
   const all = await prisma.character.findMany({ include: lookupInclude });
-  const matched = all
-    .filter((character) =>
-      matchesSearch(
-        query,
-        character.name,
-        character.slug,
-        character.aliases ?? "",
-        ...seriesSearchFields(character.series.slug, character.series.name),
-      ),
-    )
-    .sort((a, b) => {
-      const score = lookupScore(normalize(a.name), normalize(a.slug), q) - lookupScore(normalize(b.name), normalize(b.slug), q);
-      if (score !== 0) return score;
-      return a.name.localeCompare(b.name);
-    });
+  const matched = rankCharacters(query, all);
   const total = matched.length;
   const pages = Math.max(1, Math.ceil(total / LOOKUP_PAGE_SIZE));
   const safePage = Math.min(Math.max(0, page), pages - 1);

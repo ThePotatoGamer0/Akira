@@ -4,6 +4,7 @@ import { CardOverlay } from "../components/collection/CardOverlay.js";
 import { CollectionGrid } from "../components/collection/CollectionGrid.js";
 import { TagMenu } from "../components/collection/TagMenu.js";
 import { NappingNotice } from "../components/NappingNotice.js";
+import { SearchSuggest } from "../components/SearchSuggest.js";
 import { MenuSelect } from "../components/MenuSelect.js";
 import { COLLECTION_ORDERS, collectionOrder, type CollectionOrder } from "../lib/collectionView.js";
 import { studioFrames } from "../lib/frames.js";
@@ -513,12 +514,20 @@ export function CollectionPage(props: {
       </div>
       {napping ? null : (
       <div className={viewingSelf ? "collection-tools" : "collection-tools is-peek"}>
-        <input
+        <SearchSuggest
+          fetchApi={props.fetchApi}
           className="collection-search"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Search name, series, tag, or card code"
-          aria-label={viewingSelf ? "Search your collection" : `Search ${possessive(viewedName)} collection`}
+          query={query}
+          onChange={setQuery}
+          placeholder="Search name, series:titan, tag, or damaged"
+          ariaLabel={viewingSelf ? "Search your collection" : `Search ${possessive(viewedName)} collection`}
+          onPick={(suggestion) => {
+            if (suggestion.kind === "series") {
+              setQuery(`series:"${suggestion.label}"`);
+              return;
+            }
+            setQuery(`"${suggestion.label}"`);
+          }}
         />
         <MenuSelect
           className="collection-order"

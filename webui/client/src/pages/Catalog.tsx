@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Pin, Star, X } from "lucide-react";
 import { DeskLayout } from "../components/catalog/CharacterLayouts.js";
 import { MenuSelect } from "../components/MenuSelect.js";
+import { SearchSuggest } from "../components/SearchSuggest.js";
 import { apiUrl } from "../hooks/useAuth.js";
 import {
   CATALOG_ORDERS,
@@ -14,6 +15,7 @@ import {
   watchingAllMissing,
   type CatalogOrder,
 } from "../lib/catalogView.js";
+import { rankByWords } from "../lib/search.js";
 import type {
   CatalogCharacterCard,
   CatalogCharacterDetail,
@@ -317,17 +319,18 @@ function SeriesIndex(props: { fetchApi: FetchApi }) {
 
   const filtered = useMemo(() => {
     if (!picked) return [] as CatalogCharacterCard[];
-    const q = query.trim().toLowerCase();
-    const rows = q
-      ? picked.characters.filter(
-          (character) => character.name.toLowerCase().includes(q) || character.slug.includes(q),
-        )
-      : picked.characters;
+    // The filter searches the same way big search does, just within this series.
+    const rows = rankByWords(query, picked.characters, (character) => [character.name, character.slug]);
     return sortCatalogCharacters(rows, order);
   }, [picked, query, order]);
 
+  // The server already ranked these by the query. "Recent" is the only order the
+  // player can ask for that should move them; otherwise the best match stays first.
   const shownSeries = useMemo(() => sortCatalogSeries(series, order), [series, order]);
-  const shownHits = useMemo(() => sortCatalogCharacters(hits, order).slice(0, 48), [hits, order]);
+  const shownHits = useMemo(
+    () => (order === "recent" ? sortCatalogCharacters(hits, order) : hits).slice(0, 48),
+    [hits, order],
+  );
 
   async function togglePin(row: CatalogSeries) {
     if (pinning) return;
@@ -455,12 +458,21 @@ function SeriesIndex(props: { fetchApi: FetchApi }) {
               </button>
             </span>
           ) : null}
-          <input
+          <SearchSuggest
+            fetchApi={props.fetchApi}
             className="catalog-searchbar__input"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder={seriesSlug ? "Filter characters" : "Search a series or character"}
-            aria-label={seriesSlug ? "Filter characters in this series" : "Search a series or character"}
+            query={query}
+            onChange={setQuery}
+            enabled={!seriesSlug}
+            placeholder={seriesSlug ? "Filter characters" : "Search a character, series, or tag"}
+            ariaLabel={seriesSlug ? "Filter characters in this series" : "Search a series or character"}
+            onPick={(suggestion) => {
+              if (suggestion.kind === "series") {
+                navigate(suggestion.href);
+                return;
+              }
+              navigate(suggestion.href);
+            }}
           />
         </div>
         <MenuSelect
@@ -547,7 +559,7 @@ function SeriesIndex(props: { fetchApi: FetchApi }) {
             </>
           ) : null}
           {!loading && !error && series.length === 0 && hits.length === 0 ? (
-            <p className="webui-muted">Nothing matched that search.</p>
+            <p className="webui-muted">Nothing matches that search yet. Try a name, a series, or a card tag.</p>
           ) : null}
         </>
       )}
