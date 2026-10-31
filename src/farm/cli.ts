@@ -1,51 +1,24 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { Worker } from "node:worker_threads";
 import type { FarmRedrawJob } from "../game/card-cache.js";
 import type { FarmStatus } from "../game/card-farm.js";
 import { frameFromConfig, type FrameAsset } from "../utils/frames.js";
 import { parseFarmArgs } from "./args.js";
+import { startChild } from "./child.js";
+import { ShinePool } from "./shine-pool.js";
 import type { FarmWorkerJob, FarmWorkerResult } from "./worker.js";
 
-function isTsxImport(spec: string): boolean {
-  return spec === "tsx" || spec === "tsx/esm" || spec.includes("/tsx/dist/");
-}
-
-function workerUrl(): URL {
-  const ts = new URL("./worker.ts", import.meta.url);
-  if (fs.existsSync(ts)) return ts;
-  return new URL("./worker.js", import.meta.url);
-}
-
-function workerExecArgv(): string[] {
-  const hook = fileURLToPath(new URL("../game/card-cache-register.mjs", import.meta.url));
-  const argv: string[] = [];
-  let sawTsx = false;
-  for (let index = 0; index < process.execArgv.length; index += 1) {
-    const arg = process.execArgv[index] ?? "";
-    if (arg === "--import" || arg === "--require") {
-      const spec = process.execArgv[index + 1] ?? "";
-      argv.push(arg, spec);
-      if (arg === "--import" && isTsxImport(spec)) sawTsx = true;
-      index += 1;
-      continue;
-    }
-    if (arg.startsWith("--import=") || arg.startsWith("--require=")) {
-      const spec = arg.slice(arg.indexOf("=") + 1);
-      argv.push(arg);
-      if (arg.startsWith("--import=") && isTsxImport(spec)) sawTsx = true;
-    }
-  }
-  if (!sawTsx) argv.push("--import", "tsx");
-  argv.push("--import", hook);
-  return argv;
-}
-
+/**
+ * One worker per logical core. Encoding a card is CPU-bound, so a bigger machine
+ * should draw more cards at once; only a deliberately small farm needs fewer.
+ */
 function workerCount(): number {
   const cpus = typeof os.availableParallelism === "function" ? os.availableParallelism() : os.cpus().length;
-  return Math.max(1, Math.min(16, cpus));
+  const wanted = Number.parseInt(process.env.AKIRA_FARM_WORKERS ?? "", 10);
+  const count = Number.isFinite(wanted) && wanted > 0 ? wanted : cpus;
+  return Math.max(1, count);
 }
 
 function auth(token: string): Record<string, string> {
@@ -108,25 +81,34 @@ async function frameAsset(
   return frameFromConfig(frameId, imagePath, configRaw);
 }
 
-function askWorker(worker: Worker, job: FarmWorkerJob): Promise<FarmWorkerResult> {
-  return new Promise((resolve, reject) => {
-    const onMessage = (message: FarmWorkerResult) => {
-      if (message.id !== job.id) return;
-      cleanup();
-      resolve(message);
-    };
-    const onError = (err: Error) => {
-      cleanup();
-      reject(err);
-    };
-    const cleanup = () => {
-      worker.off("message", onMessage);
-      worker.off("error", onError);
-    };
-    worker.on("message", onMessage);
-    worker.on("error", onError);
-    worker.postMessage(job);
-  });
+/**
+ * One worker, drawing one job at a time. The farm hands over the next job as
+ * soon as this one is answered, so a worker only waits for jobs that are not
+ * downloaded yet, and the threads that are free start downloading them.
+ */
+class Drawing {
+  private readonly waiting = new Map<number, (result: FarmWorkerResult) => void>();
+  private readonly failed: Array<(err: Error) => void> = [];
+  busy = false;
+
+  constructor(readonly worker: Worker) {
+    worker.on("message", (message: FarmWorkerResult) => {
+      const settle = this.waiting.get(message.id);
+      this.waiting.delete(message.id);
+      settle?.(message);
+    });
+    worker.on("error", (err: Error) => {
+      for (const reject of this.failed.splice(0)) reject(err);
+    });
+  }
+
+  draw(job: FarmWorkerJob): Promise<FarmWorkerResult> {
+    return new Promise((resolve, reject) => {
+      this.waiting.set(job.id, resolve);
+      this.failed.push(reject);
+      this.worker.postMessage(job);
+    });
+  }
 }
 
 async function upload(url: string, token: string, jobId: number, fileName: string, data: Buffer): Promise<void> {
@@ -177,65 +159,133 @@ async function main(): Promise<void> {
   const scratch = fs.mkdtempSync(path.join(os.tmpdir(), "akira-farm-"));
   const workers: Worker[] = [];
   const count = workerCount();
+  // A quarter of the cores draw shine strips, the rest draw whole cards.
+  const shines = new ShinePool(Math.max(1, Math.floor(count / 4)));
   try {
     for (let index = 0; index < count; index += 1) {
-      workers.push(new Worker(workerUrl(), {
-        execArgv: workerExecArgv(),
-        env: { ...process.env, UV_THREADPOOL_SIZE: "2" },
-      }));
+      const worker = startChild("render-worker.ts");
+      const port = shines.port();
+      worker.postMessage({ shinePort: port }, [port]);
+      workers.push(worker);
     }
 
-    let cursor = 0;
-    const take = (queue: FarmWorkerJob[]) => (cursor < queue.length ? queue[cursor++] : undefined);
+    const running = workers.map((worker) => new Drawing(worker));
+    const ready: FarmWorkerJob[] = [];
+    let drawing = 0;
+    let claiming = true;
 
-    for (;;) {
-      const claimed = await farmFetch(args.url, args.token, "/farm/claim", {
+    const report = (view: FarmStatus) => {
+      doneFiles = view.doneFiles;
+    };
+    let doneFiles = 0;
+
+    /** Download a job's portrait and frame, sharing whatever other threads already fetched. */
+    const prepare = async (job: FarmRedrawJob): Promise<FarmWorkerJob> => {
+      const [art, frame] = await Promise.all([
+        portraitPath(args.url, args.token, scratch, job),
+        frameAsset(args.url, args.token, scratch, job.group.frameId),
+      ]);
+      return { ...job, artPath: art, frame };
+    };
+
+    const claim = async () => {
+      claiming = true;
+      const response = await farmFetch(args.url, args.token, "/farm/claim", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ count }),
       });
-      if (!claimed.ok) {
-        throw new Error(`Akira closed the farm (${claimed.status}).`);
-      }
-      const body = (await claimed.json()) as { jobs: FarmRedrawJob[] };
-      if (body.jobs.length === 0) break;
-
-      const prepared: FarmWorkerJob[] = [];
+      if (!response.ok) throw new Error(`Akira closed the farm (${response.status}).`);
+      const body = (await response.json()) as { jobs: FarmRedrawJob[] };
+      if (body.jobs.length === 0) claiming = false;
       for (const job of body.jobs) {
-        prepared.push({
-          ...job,
-          artPath: await portraitPath(args.url, args.token, scratch, job),
-          frame: await frameAsset(args.url, args.token, scratch, job.group.frameId),
-        });
+        void prepare(job).then(
+          (prepared) => {
+            ready.push(prepared);
+            dispatch();
+          },
+          (err: unknown) => {
+            console.error(`Card ${job.group.variantId} could not be fetched.`, err);
+            void finish(args.url, args.token, job.id, 0, job.group.files.length).catch(() => undefined);
+          },
+        );
       }
+    };
 
-      cursor = 0;
-      await Promise.all(workers.map(async (worker) => {
-        for (;;) {
-          const job = take(prepared);
-          if (!job) break;
-          try {
-            const result = await askWorker(worker, job);
-            if (!result.ok) {
-              console.error(`Card ${job.group.variantId} failed: ${result.error ?? "unknown"}`);
-              const view = await finish(args.url, args.token, job.id, 0, job.group.files.length);
-              console.log(`${view.doneFiles.toLocaleString("en-US")} / ${view.totalFiles.toLocaleString("en-US")}`);
-              continue;
-            }
-            for (const file of result.files) {
-              await upload(args.url, args.token, job.id, file.fileName, file.data);
-            }
-            const view = await finish(args.url, args.token, job.id, job.group.files.length, 0);
-            console.log(`${view.doneFiles.toLocaleString("en-US")} / ${view.totalFiles.toLocaleString("en-US")}`);
-          } catch (err) {
-            console.error(`Card ${job.group.variantId} failed.`, err);
-            await finish(args.url, args.token, job.id, 0, job.group.files.length).catch(() => undefined);
-          }
-        }
-      }));
+    /** Finish a card off the drawing thread: upload its pictures, then close the job. */
+    const deliver = async (job: FarmWorkerJob, result: FarmWorkerResult) => {
+      if (!result.ok) {
+        console.error(`Card ${job.group.variantId} failed: ${result.error ?? "unknown"}`);
+        report(await finish(args.url, args.token, job.id, 0, job.group.files.length));
+        return;
+      }
+      for (const file of result.files) {
+        await upload(args.url, args.token, job.id, file.fileName, file.data);
+      }
+      report(await finish(args.url, args.token, job.id, job.group.files.length, 0));
+      drawn += 1;
+      if (drawn % 10 === 0) {
+        const rate = drawn / ((performance.now() - startedAt) / 60000);
+        console.log(`${doneFiles.toLocaleString("en-US")} / ${start.totalFiles.toLocaleString("en-US")}  ${rate.toFixed(0)} cards a minute`);
+      }
+    };
+    let drawn = 0;
+    const startedAt = performance.now();
+    let idleTicks = 0;
+
+    const feed = (drawingJob: Drawing) => {
+      const job = ready.pop();
+      if (!job) return;
+      drawing += 1;
+      void drawingJob.draw(job).then(
+        (result) => deliver(job, result).catch((err: unknown) => {
+          console.error(`Card ${job.group.variantId} failed.`, err);
+          return finish(args.url, args.token, job.id, 0, job.group.files.length).catch(() => undefined);
+        }).finally(() => {
+          drawing -= 1;
+          drawingJob.busy = false;
+          dispatch();
+        }),
+        (err: unknown) => {
+          console.error(`Card ${job.group.variantId} failed.`, err);
+          drawing -= 1;
+          drawingJob.busy = false;
+          dispatch();
+        },
+      );
+    };
+
+    /** Hand every free thread a job, claiming more when the queue has run dry. */
+    function dispatch() {
+      if (claiming && ready.length === 0) void claim().catch((err: unknown) => {
+        console.error("Akira did not send more cards.", err);
+      });
+      for (const drawingJob of running) {
+        if (drawingJob.busy || ready.length === 0) continue;
+        drawingJob.busy = true;
+        feed(drawingJob);
+      }
+    }
+
+    dispatch();
+    const clock = setInterval(() => {
+      console.log(`${doneFiles.toLocaleString("en-US")} / ${start.totalFiles.toLocaleString("en-US")}  ${drawn} cards drawn`);
+    }, 30000);
+    // A run is over when nothing is claimed, drawn or waiting to be drawn.
+    try {
+      for (;;) {
+        await new Promise((resolve) => setTimeout(resolve, 20));
+        const idle = drawing === 0 && ready.length === 0;
+        idleTicks = idle && !claiming ? idleTicks + 1 : 0;
+        if (idleTicks > 25) break;
+      }
+    } finally {
+      clearInterval(clock);
+      console.log(`${doneFiles.toLocaleString("en-US")} / ${start.totalFiles.toLocaleString("en-US")}`);
     }
     console.log("Akira has the pictures. You can leave this.");
   } finally {
+    await shines.close();
     await Promise.all(workers.map((worker) => worker.terminate()));
     fs.rmSync(scratch, { recursive: true, force: true });
   }

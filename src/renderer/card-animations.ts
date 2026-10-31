@@ -1,14 +1,17 @@
 import { readFileSync } from "node:fs";
 import sharp from "sharp";
-import { encodeApng } from "../utils/apng.js";
-import { encodeGif } from "../utils/gif.js";
+import { writeApng } from "../utils/apng-write.js";
+import { encodeGifImage } from "../utils/gif.js";
+import { encodeClearedGif } from "../utils/gif-fast.js";
 import { pngBufferToRgba } from "./frames-to-rgba.js";
 
 type AnimationFrames = {
-  frames: Buffer[];
+  /** Every page, one after another, in the order libvips reads an animated GIF. */
+  image: Buffer;
   width: number;
   height: number;
   delays: number[];
+  frameCount: number;
 };
 
 export const SHINE_FRAMES = 32;
@@ -54,9 +57,8 @@ function forEachShinePixel(
 ): void {
   const center = shineCenter(progress);
   const xDenom = width <= 1 ? 1 : width - 1;
-  const yDenom = height <= 1 ? 1 : height - 1;
   for (let y = 0; y < height; y++) {
-    const v = height <= 1 ? 0 : y / yDenom;
+    const v = height <= 1 ? 0 : y / (height - 1);
     const uLow = center - SHINE_HALF - v;
     const uHigh = center + SHINE_HALF - v;
     let x0 = Math.floor(uLow * xDenom) - 1;
@@ -185,23 +187,71 @@ export function paintCardShine(rgba: Buffer, width: number, height: number, prog
   return out;
 }
 
-/** Diagonal shine that crosses the card, then loops once it has left the frame. */
-async function buildShinyFrames(base: Buffer): Promise<AnimationFrames> {
-  const meta = await sharp(base).metadata();
-  const width = meta.width ?? 0;
-  const height = meta.height ?? 0;
-  if (!width || !height) throw new Error("shiny: invalid dimensions");
+/** One frame of the shine, screened onto a copy of the card. */
+export type Patch = { pixels: Buffer };
 
-  const rgba = await pngBufferToRgba(base, width, height);
-  const frames: Buffer[] = [];
-  const delays: number[] = [];
-  for (let i = 0; i < SHINE_FRAMES; i++) {
+/** How many frames one strip of shine holds. */
+export const SHINE_TILE = 8;
+
+/** The frame a strip starts at. Strips cover the shine in order. */
+export function shineStripStart(strip: number): number {
+  return Math.min(strip * SHINE_TILE, SHINE_FRAMES);
+}
+
+/** How many strips the shine has. */
+export function shineStrips(): number {
+  return Math.ceil(SHINE_FRAMES / SHINE_TILE);
+}
+
+/** How many frames a strip holds. The last strip holds the remainder. */
+export function shineStripFrames(strip: number): number {
+  return Math.max(0, Math.min(SHINE_FRAMES, (strip + 1) * SHINE_TILE) - shineStripStart(strip));
+}
+
+/** The strip's frames, each screened onto its own copy of the card. */
+export function shinePatches(rgba: Buffer, width: number, height: number, strip: number): Patch[] {
+  const patches: Patch[] = [];
+  const start = shineStripStart(strip);
+  for (let i = start; i < Math.min(SHINE_FRAMES, start + SHINE_TILE); i++) {
     const frame = Buffer.from(rgba);
     blendShineOverlay(frame, width, 0, 0, width, height, i);
-    frames.push(frame);
-    delays.push(SHINE_DELAY_MS);
+    patches.push({ pixels: frame });
   }
-  return { frames, width, height, delays };
+  return patches;
+}
+
+/**
+ * Write one strip of shine over a block of pages. The block starts as the card,
+ * which is what the shine's first frame is too, so every strip can start from
+ * page 0 and the blocks are the pages' prefixes. Each frame after the first is
+ * the one before it with the band that moved on.
+ */
+export function layShineStrip(image: Buffer, width: number, height: number, block: number, patches: Patch[]): void {
+  const page = width * height * 4;
+  const first = patches[0];
+  if (!first) return;
+  const base = block * SHINE_TILE * page;
+  image.set(first.pixels, base);
+  for (let step = 1; step < patches.length; step++) {
+    const target = base + step * page;
+    image.copy(image, target, base, target);
+    patches[step]!.pixels.copy(image, target);
+  }
+}
+
+/**
+ * The shine's pages, built without their strips. Empty pages are the card, so
+ * a strip's block begins as the card. The farm fills the strips on other
+ * threads instead of calling this.
+ */
+function buildShinyFrames(rgba: Buffer, width: number, height: number): AnimationFrames {
+  const page = width * height * 4;
+  const image = Buffer.alloc(page * SHINE_FRAMES);
+  for (let index = 0; index < SHINE_FRAMES; index++) image.set(rgba, index * page);
+  const delays: number[] = [];
+  for (let i = 0; i < SHINE_FRAMES; i++) delays.push(SHINE_DELAY_MS);
+  for (let strip = 0; strip < shineStrips(); strip++) layShineStrip(image, width, height, strip, shinePatches(rgba, width, height, strip));
+  return { image, width, height, delays, frameCount: SHINE_FRAMES };
 }
 
 export type AnimationFormat = "gif" | "apng";
@@ -211,22 +261,44 @@ export type EncodedAnimation = {
   apng?: Buffer;
 };
 
-async function encodeAnimation(built: AnimationFrames, formats: AnimationFormat[]): Promise<EncodedAnimation> {
-  const wanted = new Set(formats);
+export async function encodeAnimation(built: AnimationFrames, formats: AnimationFormat[], apng?: Promise<Buffer>): Promise<EncodedAnimation> {
   const out: EncodedAnimation = {};
-  if (wanted.has("gif")) {
-    out.gif = await encodeGif(built.frames, built.width, built.height, built.delays);
+  if (formats.length === 0) return out;
+  if (built.frameCount === 0) throw new Error("animation: no frames");
+  if (formats.includes("gif")) {
+    out.gif = await encodeGifImage(built.image, built.width, built.height, built.frameCount, built.delays);
   }
-  if (wanted.has("apng")) {
-    out.apng = encodeApng(built.frames, built.width, built.height, built.delays);
+  if (formats.includes("apng")) {
+    out.apng = await (apng ?? Promise.resolve(writeApng(built.image, built.width, built.height, built.frameCount, built.delays)));
   }
   return out;
 }
 
-/** One shine pass, then however many encodings were asked for. */
-export async function renderShinyOutputs(base: Buffer, formats: AnimationFormat[]): Promise<EncodedAnimation> {
+
+
+/**
+ * The page a card holds when a strip is cut. A strip`s first page is the card,
+ * so every strip can start from page 0 and the blocks are the pages` prefixes.
+ */
+export async function shineBase(base: Buffer): Promise<{ rgba: Buffer; width: number; height: number }> {
+  const meta = await sharp(base).metadata();
+  const width = meta.width ?? 0;
+  const height = meta.height ?? 0;
+  if (!width || !height) throw new Error("shiny: invalid dimensions");
+  return { rgba: await pngBufferToRgba(base, width, height), width, height };
+}
+
+/** One shine pass, then however many encodings were asked for. A caller that
+ * writes the APNG in another thread passes that promise in.
+ */
+export async function renderShinyOutputs(
+  base: Buffer,
+  formats: AnimationFormat[],
+  apng?: Promise<Buffer>,
+): Promise<EncodedAnimation> {
   if (formats.length === 0) return {};
-  return encodeAnimation(await buildShinyFrames(base), formats);
+  const { rgba, width, height } = await shineBase(base);
+  return encodeAnimation(buildShinyFrames(rgba, width, height), formats, apng);
 }
 
 export async function renderShinyGif(base: Buffer): Promise<Buffer> {
@@ -241,9 +313,9 @@ export async function renderShinyApng(base: Buffer): Promise<Buffer> {
   return apng;
 }
 
-const BURN_STEPS = 40;
-const BURN_FADE_STEPS = 16;
-const BURN_DELAY_MS = 110;
+export const BURN_STEPS = 40;
+export const BURN_FADE_STEPS = 16;
+export const BURN_DELAY_MS = 110;
 const BLUE_SIZE = 128;
 
 function smoothstep(t: number): number {
@@ -393,17 +465,29 @@ function blueThreshold(x: number, y: number): number {
   return blueNoise[(y % BLUE_SIZE) * BLUE_SIZE + (x % BLUE_SIZE)] ?? 0.5;
 }
 
-/** Where the flame sits on each pixel. It does not move between frames, so a burn builds it once. */
+/**
+ * Where the flame sits on each pixel. It does not move between frames, so a burn
+ * builds it once. The two noise fields are only sampled every sixteenth of a
+ * pixel, which is far finer than noise this soft can show, and the field is the
+ * same card size on every card, so it is built once for the whole process.
+ */
+const flameEdges = new Map<number, Float32Array>();
+
 function flameEdge(width: number, height: number): Float32Array {
+  const cached = flameEdges.get(width * 65536 + height);
+  if (cached) return cached;
   const edge = new Float32Array(width * height);
   for (let y = 0; y < height; y++) {
     const v = height <= 1 ? 0 : y / (height - 1);
+    const noiseY = y * 16;
     for (let x = 0; x < width; x++) {
       const u = width <= 1 ? 0 : x / (width - 1);
-      const wander = (valueNoise(x, y, 36) - 0.5) * 0.22 + (valueNoise(x + 120, y, 14) - 0.5) * 0.07;
+      const noiseX = x * 16;
+      const wander = (valueNoise(noiseX, noiseY, 36 * 16) - 0.5) * 0.22 + (valueNoise(noiseX + 120 * 16, noiseY, 14 * 16) - 0.5) * 0.07;
       edge[y * width + x] = (u + v) * 0.5 + wander;
     }
   }
+  flameEdges.set(width * 65536 + height, edge);
   return edge;
 }
 
@@ -442,23 +526,42 @@ export function paintCornerBurn(
   return out;
 }
 
+/**
+ * The grain a fade shows, per pixel. Every frame of a fade compares the same
+ * pixel against its threshold, so the grain is laid out once per card size.
+ */
+export type FadeGrain = { width: number; height: number; threshold: Float32Array };
+
+export function fadeGrain(width: number, height: number): FadeGrain {
+  const threshold = new Float32Array(width * height);
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) threshold[y * width + x] = blueThreshold(x, y);
+  }
+  return { width, height, threshold };
+}
+
 /** Bring the intact card back. GIF transparency is on or off, so the fade is blue-noise grain. */
-export function ditherCardFade(rgba: Buffer, width: number, height: number, amount: number): Buffer {
+export function ditherCardFade(rgba: Buffer, width: number, height: number, amount: number, grain = fadeGrain(width, height)): Buffer {
   if (amount >= 1) return Buffer.from(rgba);
   const out = Buffer.from(rgba);
   const shown = smoothstep(amount);
-  for (let y = 0; y < height; y++) {
-    for (let x = 0; x < width; x++) {
-      const pixel = (y * width + x) * 4;
-      const srcA = out[pixel + 3] ?? 0;
-      if (srcA === 0) continue;
-      if ((srcA / 255) * shown < blueThreshold(x, y)) {
-        out[pixel + 3] = 0;
-        continue;
-      }
-      if (shown < 0.8) paintEmber(out, pixel, (1 - shown) * 0.35, 0.25);
-      out[pixel + 3] = 255;
+  const ember = (1 - shown) * 0.35;
+  const [emberR, emberG, emberB] = emberColor(0.25);
+  const threshold = grain.threshold;
+  for (let at = 0; at < width * height; at++) {
+    const pixel = at * 4;
+    const srcA = out[pixel + 3] ?? 0;
+    if (srcA === 0) continue;
+    if (srcA * shown < (threshold[at] ?? 0) * 255) {
+      out[pixel + 3] = 0;
+      continue;
     }
+    if (shown < 0.8) {
+      out[pixel] = Math.round((out[pixel] ?? 0) + (emberR - (out[pixel] ?? 0)) * ember);
+      out[pixel + 1] = Math.round((out[pixel + 1] ?? 0) + (emberG - (out[pixel + 1] ?? 0)) * ember);
+      out[pixel + 2] = Math.round((out[pixel + 2] ?? 0) + (emberB - (out[pixel + 2] ?? 0)) * ember);
+    }
+    out[pixel + 3] = 255;
   }
   return out;
 }
@@ -472,41 +575,52 @@ async function buildBurnFrames(base: Buffer): Promise<AnimationFrames> {
 
   const rgba = await pngBufferToRgba(base, width, height);
   const edge = flameEdge(width, height);
-  const frames: Buffer[] = [];
+  const grain = fadeGrain(width, height);
+  const total = BURN_STEPS + BURN_FADE_STEPS;
+  const page = width * height * 4;
+  const image = Buffer.alloc(page * total);
   const delays: number[] = [];
-  for (let i = 0; i < BURN_STEPS; i++) {
-    frames.push(paintCornerBurn(rgba, width, height, i / (BURN_STEPS - 1), edge));
+  const put = (index: number, frame: Buffer) => {
+    frame.copy(image, index * page);
     delays.push(BURN_DELAY_MS);
+  };
+  for (let i = 0; i < BURN_STEPS; i++) {
+    put(i, paintCornerBurn(rgba, width, height, i / (BURN_STEPS - 1), edge));
   }
   for (let i = 1; i <= BURN_FADE_STEPS; i++) {
-    frames.push(ditherCardFade(rgba, width, height, i / BURN_FADE_STEPS));
-    delays.push(BURN_DELAY_MS);
+    put(BURN_STEPS + i - 1, ditherCardFade(rgba, width, height, i / BURN_FADE_STEPS, grain));
   }
-  return { frames, width, height, delays };
+  return { image, width, height, delays, frameCount: total };
 }
 
-async function encodeBurn(built: AnimationFrames, formats: AnimationFormat[]): Promise<EncodedAnimation> {
-  const wanted = new Set(formats);
+/**
+ * A burn only adds to the cleared area, so its GIF is written from the changes
+ * between frames. That keeps each page small and skips quantizing 46 full cards.
+ */
+async function encodeBurn(built: AnimationFrames, formats: AnimationFormat[], apng?: Promise<Buffer>): Promise<EncodedAnimation> {
   const out: EncodedAnimation = {};
-  if (wanted.has("gif")) {
-    out.gif = await encodeGif(built.frames, built.width, built.height, built.delays, {
-      dither: 0,
-      reuse: true,
-      interFrameMaxError: 0,
-      effort: 1,
-      native: true,
-    });
+  if (formats.includes("gif")) {
+    const page = built.width * built.height * 4;
+    const first = built.image.subarray(0, page);
+    out.gif = await encodeClearedGif(first, built.width, built.height, built.image, built.frameCount, built.delays);
   }
-  if (wanted.has("apng")) {
-    out.apng = encodeApng(built.frames, built.width, built.height, built.delays);
+  if (formats.includes("apng")) {
+    out.apng = await (apng ?? Promise.resolve(writeApng(built.image, built.width, built.height, built.frameCount, built.delays)));
   }
   return out;
 }
 
-/** One burn pass, then however many encodings were asked for. */
-export async function renderBurnOutputs(base: Buffer, formats: AnimationFormat[]): Promise<EncodedAnimation> {
+/**
+ * One burn pass, then however many encodings were asked for. A caller that
+ * writes the APNG in another thread passes that promise in.
+ */
+export async function renderBurnOutputs(
+  base: Buffer,
+  formats: AnimationFormat[],
+  apng?: Promise<Buffer>,
+): Promise<EncodedAnimation> {
   if (formats.length === 0) return {};
-  return encodeBurn(await buildBurnFrames(base), formats);
+  return encodeBurn(await buildBurnFrames(base), formats, apng);
 }
 
 export async function renderBurnGif(base: Buffer): Promise<Buffer> {

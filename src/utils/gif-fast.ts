@@ -55,8 +55,12 @@ function usableFrom(colorCount: number, transparentIndex: number | null, extra: 
   return usable;
 }
 
-/** libimagequant picks the still's colours. Decoding its pixels is unnecessary; the table is enough. */
-async function quantizePalette(frame: Buffer, width: number, height: number, dither: number): Promise<PaletteGif> {
+/**
+ * libimagequant picks the still's colours. Decoding its pixels is unnecessary;
+ * the table is enough. `background` keeps one slot clear for transparency, since
+ * the quantizer fills every colour it is offered with card hues.
+ */
+async function quantizePalette(frame: Buffer, width: number, height: number, dither: number, background = false): Promise<PaletteGif> {
   const gif = await sharp(frame, { raw: { width, height, channels: 4 } })
     .gif({
       colours: PALETTE_SIZE - RESERVED_COLORS,
@@ -85,7 +89,19 @@ async function quantizePalette(frame: Buffer, width: number, height: number, dit
     while (pointer < gif.length && gif[pointer] !== 0) pointer += 1 + (gif[pointer] ?? 0);
     pointer += 1;
   }
-  return { palette, colorCount, transparentIndex };
+  if (!background) return { palette, colorCount, transparentIndex };
+  // Move the palette into a table with room to spare and put the clear colour last.
+  // A clear pixel must never share an index with a colour the card actually uses.
+  const slot = colorCount < PALETTE_SIZE ? colorCount : PALETTE_SIZE - 1;
+  const indexed = new Uint8Array(PALETTE_SIZE * 3);
+  indexed.set(palette.subarray(0, colorCount * 3));
+  const clear = slot * 3;
+  indexed[clear] = 0;
+  indexed[clear + 1] = 0;
+  indexed[clear + 2] = 0;
+  let table = colorCount + 1;
+  while (table < 2 && table < PALETTE_SIZE) table <<= 1;
+  return { palette: indexed, colorCount: Math.max(table, colorCount + 1), transparentIndex: slot };
 }
 
 function hasTransparentPixel(frames: Buffer[]): boolean {
@@ -442,7 +458,17 @@ function lzwEncode(indices: Uint8Array): Uint8Array {
   return packed.subarray(0, cursor);
 }
 
-function writeGif(width: number, height: number, palette: Uint8Array, transparentIndex: number | null, frames: EncodedFrame[]): Buffer {
+function writeGif(
+  width: number,
+  height: number,
+  palette: Uint8Array,
+  transparentIndex: number | null,
+  frames: EncodedFrame[],
+  /** Forces the disposal mode, even when the frame has no transparent index. */
+  disposal: number | null = null,
+  /** Colour a decoder paints where a pixel is transparent; see `CLEAR_COLOR`. */
+  background: [number, number, number] | null = null,
+): Buffer {
   const chunks: Buffer[] = [];
   const header = Buffer.alloc(13 + PALETTE_SIZE * 3 + 19);
   header.write("GIF89a", 0, "ascii");
@@ -451,6 +477,9 @@ function writeGif(width: number, height: number, palette: Uint8Array, transparen
   header[10] = 0xf7;
   header[11] = transparentIndex ?? 0;
   header.set(palette.subarray(0, PALETTE_SIZE * 3), 13);
+  if (transparentIndex !== null && background && (transparentIndex + 1) * 3 <= PALETTE_SIZE * 3) {
+    header.set(background, 13 + transparentIndex * 3);
+  }
   const netscape = 13 + PALETTE_SIZE * 3;
   header[netscape] = 0x21;
   header[netscape + 1] = 0xff;
@@ -467,7 +496,7 @@ function writeGif(width: number, height: number, palette: Uint8Array, transparen
     control[0] = 0x21;
     control[1] = 0xf9;
     control[2] = 0x04;
-    control[3] = transparentIndex === null ? 0x04 : 0x05;
+    control[3] = disposal ?? (transparentIndex === null ? 0x04 : 0x05);
     control.writeUInt16LE(frame.delayCs, 4);
     control[6] = transparentIndex ?? 0;
     control[7] = 0x00;
@@ -496,6 +525,27 @@ export async function encodeDiffGif(
   delaysMs: number[],
   dither = 1,
 ): Promise<Buffer> {
+  if (frames.length === 0) throw new Error("gif: at least one frame required");
+  return encodeDiffGifImage(Buffer.concat(frames), width, height, frames.length, delaysMs, dither);
+}
+
+/**
+ * The same as `encodeDiffGif`, for frames already gathered into one picture the
+ * way libvips reads a GIF: page after page, all of them the width of the card.
+ */
+export async function encodeDiffGifImage(
+  image: Buffer,
+  width: number,
+  height: number,
+  frameCount: number,
+  delaysMs: number[],
+  dither = 1,
+): Promise<Buffer> {
+  if (frameCount < 1) throw new Error("gif: at least one frame required");
+  const page = width * height * 4;
+  if (image.byteLength !== page * frameCount) throw new Error("gif: frames have the wrong size");
+  const frames: Buffer[] = [];
+  for (let index = 0; index < frameCount; index++) frames.push(image.subarray(index * page, (index + 1) * page));
   const first = frames[0];
   if (!first) throw new Error("gif: at least one frame required");
   const quantized = await quantizePalette(first, width, height, dither);
@@ -773,4 +823,100 @@ export async function encodeRepaintedGif(
     });
   }
   return writeGif(width, height, quantized.palette, transparentIndex, encoded);
+}
+
+/**
+ * Not every decoder reads a GIF's transparency flag. Chrome and ffmpeg both keep
+ * and paint transparent pixels, while Discord paints the clear index's colour
+ * everywhere instead. Magenta is a colour the cards never use, and one that
+ * stands out if a decoder ever does paint it.
+ */
+export const CLEAR_COLOR: [number, number, number] = [255, 0, 255];
+
+/**
+ * A burn only ever grows: each step clears one band more of the card, and the
+ * fade brings it back at the end. Every frame is the frame before with the
+ * newest band cleared, so a strip stored as the changes between frames keeps the
+ * animation intact without quantizing all 56 values.
+ */
+export async function encodeClearedGif(
+  base: Buffer,
+  width: number,
+  height: number,
+  image: Buffer,
+  frameCount: number,
+  delaysMs: number[],
+  dither = 0,
+): Promise<Buffer> {
+  const page = width * height * 4;
+  if (frameCount < 1) throw new Error("gif: at least one frame required");
+  if (image.byteLength !== page * frameCount) throw new Error("gif: frames have the wrong size");
+  if (frameCount !== delaysMs.length) throw new Error("gif: frames and delaysMs length mismatch");
+  const frames: Buffer[] = [];
+  for (let index = 0; index < frameCount; index++) frames.push(image.subarray(index * page, (index + 1) * page));
+  const first = frames[0];
+  if (!first) throw new Error("gif: at least one frame required");
+  const quantized = await quantizePalette(base, width, height, dither, true);
+  const transparentIndex = quantized.transparentIndex;
+  // Every colour the card uses is shared; a cleared pixel is the only one that is not.
+  const stillLut = buildLut(quantized.palette, usableFrom(quantized.colorCount, transparentIndex));
+  // Never reuse the still's indices for a later frame: stealing an entry they
+  // point at would paint over the card everywhere the burn has not reached.
+  const extras = installColors(
+    sampleMissingColors(frames, width, height, quantized.palette, stillLut),
+    quantized.palette,
+    quantized.colorCount,
+    transparentIndex,
+    new Uint8Array(width * height),
+  );
+  const lut = extras.length > 0
+    ? buildLut(quantized.palette, usableFrom(quantized.colorCount, transparentIndex, extras))
+    : stillLut;
+  const indexOnce = (frame: Buffer) => indexStill(frame, width, height, stillLut, quantized.palette, transparentIndex, dither);
+  const stillIndices = indexOnce(base);
+  const encodeFrame = (frame: Buffer): Uint8Array => {
+    const indices = new Uint8Array(width * height);
+    for (let pixel = 0; pixel < width * height; pixel++) {
+      const offset = pixel * 4;
+      if (samePixel(frame, base, offset)) {
+        indices[pixel] = stillIndices[pixel] ?? 0;
+        continue;
+      }
+      if ((frame[offset + 3] ?? 0) < 128) {
+        indices[pixel] = transparentIndex ?? 0;
+        continue;
+      }
+      indices[pixel] = lut[lutOffset(frame[offset] ?? 0, frame[offset + 1] ?? 0, frame[offset + 2] ?? 0)] ?? 0;
+    }
+    return indices;
+  };
+  const encoded: EncodedFrame[] = [];
+  let previous = base;
+  for (let index = 0; index < frames.length; index++) {
+    const frame = frames[index];
+    if (!frame) continue;
+    const delayCs = centiseconds(delaysMs[index] ?? 10);
+    const bounds = index === 0 ? null : changedBounds(previous, frame, width, height);
+    if (index > 0 && !bounds) {
+      const last = encoded[encoded.length - 1];
+      if (last) last.delayCs = Math.min(65535, last.delayCs + delayCs);
+      continue;
+    }
+    const left = bounds?.minX ?? 0;
+    const top = bounds?.minY ?? 0;
+    const rectWidth = bounds ? bounds.maxX - bounds.minX + 1 : width;
+    const rectHeight = bounds ? bounds.maxY - bounds.minY + 1 : height;
+    const full = encodeFrame(frame);
+    const indices = new Uint8Array(rectWidth * rectHeight);
+    for (let y = 0; y < rectHeight; y++) {
+      const src = (top + y) * width + left;
+      indices.set(full.subarray(src, src + rectWidth), y * rectWidth);
+    }
+    encoded.push({ indices, left, top, width: rectWidth, height: rectHeight, delayCs });
+    previous = frame;
+  }
+  // Disposal "restore to background" clears each rectangle before the next one,
+  // which is what a burn needs: nothing behind the card shows through anyway.
+  const disposal = transparentIndex === null ? 0x04 : 0x05;
+  return writeGif(width, height, quantized.palette, transparentIndex, encoded, disposal, transparentIndex === null ? null : CLEAR_COLOR);
 }

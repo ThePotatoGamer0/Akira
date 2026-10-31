@@ -27,6 +27,8 @@ The stack publishes port **3333**. That is the API. Put HTTPS in front of it (Ca
 
 Host prefix `arefresh` redraws that cache on the Pi. `afarm` pauses her and DMs you the Pi's wifi URL and a short code. On your PC, in the Akira folder, run the `npm run farm` line from that DM. The pictures come back over wifi and she returns. `afarm cancel` stops waiting.
 
+The farm draws with one thread per logical CPU core, so a twelve-core PC draws twelve cards at once, and a quarter of those cores draw shiny strips so a card's frames build in parallel. Threads never idle on the network: portraits and frames download, and finished pictures upload, while the other threads keep drawing. Set `AKIRA_FARM_WORKERS` to a smaller number to leave the PC usable while it draws, for example `AKIRA_FARM_WORKERS=8 npm run farm -- http://192.168.0.10:3333 CODE`. The GPU stays idle on purpose: a GIF needs a 256-colour palette, and turning frames into video to fit that on the card and back costs more than drawing them here.
+
 Character art is inside the image. After you add characters, push to `main` and pull the new image on the Pi.
 
 The first start seeds the catalog and registers slash commands. That can take a few minutes. Portainer should show the container healthy once `http://127.0.0.1:3333/health` answers.
