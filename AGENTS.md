@@ -4,9 +4,13 @@ Rules for anyone (human or agent) committing to this repository.
 
 ## Never commit
 
-- **`assets/`** — this is a generated cache of card art. It is rebuilt on every
-  deployment and must not be pushed in the image. If it shows as changed,
-  leave it alone; do not stage, restore, or "clean it up" in a commit.
+- **`assets/`** — this is only the *cache* of generated card art. The source of
+  every card is `input/`, which **is committed** — that is the project's asset
+  generation. Cards and shelves are rendered live from `input/`, and
+  `assets/` is filled in as that happens. It is rebuilt on each deployment and
+  must not be pushed in the image. If it shows as changed, leave it alone; do
+  not stage, restore, or "clean it up" in a commit, and never treat it as art
+  that was deleted from the project.
 - **`.cursor/`** — editor and agent settings for one machine.
 - **The dev database** — `prisma/akira.db` and any `*.db` copy or backup beside
   it (for example `prisma/akira.db.pre-refactor`). It is local working data.
