@@ -55,6 +55,21 @@ export function scoreCharacter(terms: QueryTerm[], character: SearchableCharacte
   return total;
 }
 
+/**
+ * How much of the typed text a name spells exactly. A name typed in full beats
+ * a name that merely starts the same way, so "d" finds "D" before "Dio" and
+ * "dio" finds "Dio" before "Diorite".
+ */
+function spelledShare(terms: QueryTerm[], name: string): number {
+  const tokens = foldSearch(name).split(/[^a-z0-9]+/).filter((token) => token.length > 0);
+  if (tokens.length === 0) return 0;
+  let spelled = 0;
+  for (const term of terms.filter((item) => !item.negated && item.field === null)) {
+    if (tokens.includes(term.text)) spelled += 1;
+  }
+  return spelled / tokens.length;
+}
+
 /** Characters that match, best first. Ties go to the shorter name, then the alphabet. */
 export function rankCharacters<T extends SearchableCharacter>(query: string, characters: T[]): T[] {
   const terms = parseQuery(query);
@@ -62,10 +77,11 @@ export function rankCharacters<T extends SearchableCharacter>(query: string, cha
   return characters
     .flatMap((character) => {
       const score = scoreCharacter(terms, character);
-      return score > 0 ? [{ character, score }] : [];
+      return score > 0 ? [{ character, score, spelled: spelledShare(terms, character.name) }] : [];
     })
     .sort((a, b) =>
       b.score - a.score
+      || b.spelled - a.spelled
       || a.character.name.length - b.character.name.length
       || a.character.name.localeCompare(b.character.name, undefined, { sensitivity: "base" }),
     )

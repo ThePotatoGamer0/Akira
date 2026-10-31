@@ -3,7 +3,6 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Pin, Star, X } from "lucide-react";
 import { DeskLayout } from "../components/catalog/CharacterLayouts.js";
 import { MenuSelect } from "../components/MenuSelect.js";
-import { SearchSuggest } from "../components/SearchSuggest.js";
 import { apiUrl } from "../hooks/useAuth.js";
 import {
   CATALOG_ORDERS,
@@ -458,21 +457,14 @@ function SeriesIndex(props: { fetchApi: FetchApi }) {
               </button>
             </span>
           ) : null}
-          <SearchSuggest
-            fetchApi={props.fetchApi}
+          <input
             className="catalog-searchbar__input"
-            query={query}
-            onChange={setQuery}
-            enabled={!seriesSlug}
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
             placeholder={seriesSlug ? "Filter characters" : "Search a character, series, or tag"}
-            ariaLabel={seriesSlug ? "Filter characters in this series" : "Search a series or character"}
-            onPick={(suggestion) => {
-              if (suggestion.kind === "series") {
-                navigate(suggestion.href);
-                return;
-              }
-              navigate(suggestion.href);
-            }}
+            aria-label={seriesSlug ? "Filter characters in this series" : "Search a series or character"}
+            autoComplete="off"
+            spellCheck={false}
           />
         </div>
         <MenuSelect
