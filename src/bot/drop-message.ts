@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import { AttachmentBuilder } from "discord.js";
-import { dropAnnouncement, processingTimeNote } from "../game/display.js";
+import { dropAnnouncement } from "../game/display.js";
 import { ensureCardImage, visualKind } from "../game/compose.js";
 import type { PresentedSlot } from "../game/drops.js";
 import { renderDropStripFromStills } from "../renderer/drop-strip.js";
@@ -29,13 +29,11 @@ export function dropMessageFromStrip(input: {
   slots: PresentedSlot[];
   strip: Buffer;
   animated: boolean;
-  elapsedMs: number;
 }) {
   const name = input.animated ? "drop.gif" : "drop.png";
   const announcement = dropAnnouncement(input.dropperDiscordId, input.slots.length);
-  const timing = input.animated ? `\n${processingTimeNote(input.elapsedMs)}` : "";
   return {
-    content: `${announcement}${timing}`,
+    content: announcement,
     embeds: [],
     files: [new AttachmentBuilder(input.strip, { name })],
   };
@@ -45,13 +43,11 @@ export async function renderDropMessage(input: {
   dropperDiscordId: string;
   slots: PresentedSlot[];
 }) {
-  const started = Date.now();
   const strip = await renderDropStripBuffer(input.slots);
   return dropMessageFromStrip({
     dropperDiscordId: input.dropperDiscordId,
     slots: input.slots,
     strip: strip.data,
     animated: strip.animated,
-    elapsedMs: Date.now() - started,
   });
 }
