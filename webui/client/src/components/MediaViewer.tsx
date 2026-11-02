@@ -103,7 +103,20 @@ export function MediaViewer(props: { media: ViewMedia; onClose: () => void }) {
   const stage = useRef<HTMLDivElement>(null);
   const drag = useRef<{ x: number; y: number; left: number; top: number; moved: boolean } | null>(null);
   const [zoomed, setZoomed] = useState(false);
+  const [fitWidth, setFitWidth] = useState<number | null>(null);
   const [copied, setCopied] = useState<"image" | "link" | null>(null);
+
+  // Zoom is a fixed factor of the fitted width -- the way Discord does it. Scaling
+  // back to the natural size instead shrinks low-res art and throws it top left.
+  const styled = zoomed && fitWidth !== null ? ({ "--media-fit-w": `${fitWidth * 2}px` } as React.CSSProperties) : undefined;
+
+  // Take the fitted width of whatever was just opened.
+  useEffect(() => {
+    setZoomed(false);
+    setFitWidth(null);
+    const img = stage.current?.querySelector("img");
+    if (img) setFitWidth(img.getBoundingClientRect().width);
+  }, [media.src]);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -152,6 +165,7 @@ export function MediaViewer(props: { media: ViewMedia; onClose: () => void }) {
       <div
         className={zoomed ? "media-viewer-stage is-zoomed" : "media-viewer-stage"}
         ref={stage}
+        style={styled}
         onClick={(event) => {
           event.stopPropagation();
           if (event.target === event.currentTarget) onClose();

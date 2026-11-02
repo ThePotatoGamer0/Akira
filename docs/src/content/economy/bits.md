@@ -10,9 +10,9 @@ Nothing here deletes your cards. Prestige does not take your bits either.
 ## How you earn them
 
 - A grab pays **5** bits.
-- Daily pays **100** bits, plus any daily bonus already on your profile, once every 24 hours. New prestiges do not add to this.
+- Daily pays **100** bits, plus any daily bonus already on your profile, once every 24 hours. New prestiges do not add to this. A small collection earns up to **1.5x** more until it has 250 cards or is a month old, so new players catch up.
 - [Compensate](/commands/compensate) pays **100** bits after Akira was down for at least 30 minutes. Each player claims once, and the claim stays open for 48 hours.
-- Burning pays from quality: common 20, uncommon 50, rare 100, epic 200, legendary 500. [Burn value](/commands/shop) doubles that on every burn while it is on you, including a [multiburn](/commands/multiburn) and a collection batch.
+- Burning pays from quality: common 20, uncommon 50, rare 100, epic 200, legendary 500. Every card pays the full amount, however big the collection. [Burn value](/commands/shop) doubles that on every burn while it is on you, including a [multiburn](/commands/multiburn) and a collection batch.
 - Claiming a [milestone](/economy/personal-milestone) pays a smaller pile of bits back. It is always less than you gave to reach it.
 
 ## Where they go

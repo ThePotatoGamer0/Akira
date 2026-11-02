@@ -31,7 +31,7 @@ A normal drop is still three cards, and a mint is still 1 in 100, until one of t
 
 - **Four cards never becomes five.** If the server has Four cards as well, your drop is still four. A fourth grab reaction is added.
 - **One card wins.** If Quality over quantity is also on, the drop is one card, not four.
-- **You do not pick the series.** Every night, at the same midnight UTC as the [server pool](/economy/server-pool), the shop chooses one series that has at least two characters and prints that name on Featured series. A series with only one card is never featured, so Ni No Kuni stays out of the roll. Buying locks that series onto your buff, so the next night does not swap what you already paid for.
+- **You do not pick the series.** Every night, at the same midnight UTC as the [server pool](/economy/server-pool), the shop chooses one series and prints that name on Featured series. The roll leans toward the series most players [track](/commands/cc): one everyone tracks is about nine times as likely as one nobody tracks. A series with fewer than three drawn pictures is never featured, so a featured drop can always show you something new. Buying locks that series onto your buff, so the next night does not swap what you already paid for.
 - **Burn value, Featured series, and Quality over quantity are shop-only.** The server pool cannot grant them.
 - **Main characters** are the leads of a series. While Quality over quantity is on, the drop is one of those leads. Supporting characters, anyone with no role stored, and a series that has no main characters are left out. Featured series still aims 90% of a card at that series, but only its main characters can be picked.
 

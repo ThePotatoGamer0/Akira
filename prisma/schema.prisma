@@ -19,6 +19,7 @@ enum CooldownType {
   GRAB
   DROP
   DAILY
+  TRADE
 }
 
 model Series {
@@ -74,6 +75,7 @@ model Card {
   dye         String?
   obtainedAt  DateTime    @default(now())
   dropSlot    DropSlot?
+  tradeEntries MultitradeEntry[]
 
   @@index([ownerId])
   @@index([variantId, frameId])
@@ -90,6 +92,8 @@ model User {
   preferredName       String?
   passwordHash        String?
   isAdmin             Boolean                @default(false)
+  /** When Akira first saw this player. The daily catch-up fades over the first month. */
+  createdAt           DateTime               @default(now())
   bits                Int                    @default(0)
   prestigeLevel       Int                    @default(0)
   milestoneCount      Int                    @default(0)
@@ -102,7 +106,7 @@ model User {
   /** Frame for this player's cards that don't have one of their own. Null uses the server frame. */
   defaultFrameId      Int?
   /** How the WebUI collection opens. The menu on that page can change it for one visit. */
-  collectionOrder     String                 @default("character")
+  collectionOrder     String                 @default("auto")
   /** WebUI collection skips page buttons and keeps loading 16 cards at a time. */
   continuousScroll    Boolean                @default(false)
   /** Series names in the WebUI: english or romaji. */
@@ -295,6 +299,8 @@ model TransferOffer {
   fromConfirmed Boolean  @default(false)
   toConfirmed   Boolean  @default(false)
   status        String   @default("pending")
+  /** Points in the finished trade, frozen so the pair's daily budget does not drift with supply. */
+  value         Int      @default(0)
   createdAt     DateTime @default(now())
 
   @@index([status, fromCardId])
@@ -315,6 +321,8 @@ model Multitrade {
   fromLocked  Boolean           @default(false)
   toLocked    Boolean           @default(false)
   closeReason String?
+  /** Points the larger side finished with, frozen so the pair's daily budget does not drift with supply. */
+  value       Int               @default(0)
   createdAt   DateTime          @default(now())
   updatedAt   DateTime          @updatedAt
   entries     MultitradeEntry[]
@@ -331,11 +339,11 @@ model MultitradeEntry {
   userId    String
   user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   cardId    String?
+  card      Card?      @relation(fields: [cardId], references: [id], onDelete: Cascade)
   bits      Int        @default(0)
   createdAt DateTime   @default(now())
 
   @@index([tradeId, userId])
-  @@index([cardId])
 }
 
 model GuildConfig {

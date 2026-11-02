@@ -40,6 +40,7 @@ import { syncApplicationIcons } from "./icon-sync.js";
 import { serverHasDropChannel } from "../game/drops.js";
 import { collaborativeAction, hostIsInGuild, privateServerMessage } from "./host-gate.js";
 import { registerGuildCommands } from "../init/register-commands.js";
+import { allowCommand } from "./rate-limit.js";
 
 const token = process.env["DISCORD_TOKEN"];
 if (!token) {
@@ -241,6 +242,7 @@ async function handleGuildMessage(message: Message): Promise<void> {
     const last = await lastGrabbedCard(message.author.id);
     if (!last) return;
     const card = await getCard(last);
+    if (!allowCommand(message.author.id, cmd)) return;
     const interaction = createPrefixInteraction(message, cmd, rest);
     try {
       if (!card) {
@@ -263,6 +265,7 @@ async function handleGuildMessage(message: Message): Promise<void> {
     return;
   }
   if (route.command === "burn" && rest === "") {
+    if (!allowCommand(message.author.id, cmd)) return;
     try {
       await offerLastGrabBurn(message);
     } catch (err) {
@@ -275,6 +278,8 @@ async function handleGuildMessage(message: Message): Promise<void> {
     return;
   }
   if (!invocationIsExpected(cmd, rest, route.subcommand)) return;
+  // Throttled commands vanish: no reply, so a spammer gets nothing back.
+  if (!allowCommand(message.author.id, cmd)) return;
   const interaction = createPrefixInteraction(message, cmd, rest, route.subcommand);
   try {
     await cmd.execute(interaction, client);
@@ -324,6 +329,8 @@ client.on(Events.InteractionCreate, async (interaction) => {
     });
     return;
   }
+  // Throttled commands are dropped without a reply, never with an error.
+  if (!allowCommand(interaction.user.id, cmd)) return;
   try {
     await cmd.execute(interaction, client);
   } catch (err) {

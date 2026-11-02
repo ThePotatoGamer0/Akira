@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { MenuSelect } from "../components/MenuSelect.js";
+import { ThemeMark } from "../components/ThemeMark.js";
+import { THEMES, currentTheme, setTheme, toggles } from "../lib/theme.js";
 import { PREFERRED_NAME_MAX, sanitizePreferredName } from "../lib/akiraAddressName.js";
 import { hapticsEnabled, hapticsSupported, setHapticsEnabled } from "../lib/haptics.js";
 import { writeCollectionPrefs } from "../lib/collectionPrefs.js";
@@ -29,6 +31,8 @@ export function SettingsPage(props: {
   const [reminderBusy, setReminderBusy] = useState<string | null>(null);
   const [reminderMsg, setReminderMsg] = useState<string | null>(null);
   const [haptics, setHaptics] = useState(hapticsEnabled);
+  const [theme, setThemeId] = useState(currentTheme);
+  const currentThemeInfo = THEMES.find((entry) => entry.id === theme);
   const [canBuzz, setCanBuzz] = useState(hapticsSupported);
 
   useEffect(() => {
@@ -249,6 +253,34 @@ export function SettingsPage(props: {
             Names on Characters, Collection, and Stats. Search still finds English and Romaji.
           </p>
         </div>
+        <div className="settings-row">
+          <span className="settings-label">Theme</span>
+          <MenuSelect
+            className="settings-menu"
+            label="Theme"
+            value={theme}
+            options={THEMES.map((entry) => ({
+              value: entry.id,
+              label: entry.label,
+              icon: <ThemeMark looks={entry.looks} />,
+            }))}
+            onChange={(value) => {
+              if (value === theme) return;
+              const next = value as (typeof THEMES)[number]["id"];
+              // Not a repaint of this page: it unloads and comes back in the new
+              // palette, so the state here is only for the moment before it goes.
+              setThemeId(next);
+              setTheme(next);
+            }}
+          />
+          <p className="settings-hint">
+            {currentThemeInfo?.hint}{" "}
+            {currentThemeInfo && toggles(currentThemeInfo)
+              ? "The moon button in the corner switches it between light and dark."
+              : "This theme has one look, so there is no moon button; the bell takes its corner."}{" "}
+            Saved on this device; the page reloads to wear it.
+          </p>
+        </div>
         {canBuzz ? (
           <div className="settings-row settings-switch">
             <div>
@@ -308,7 +340,9 @@ export function SettingsPage(props: {
               });
             }}
           />
-          <p className="settings-hint">The collection opens in this order. The menu on that page can change it while you look.</p>
+          <p className="settings-hint">
+            The collection opens in this order. The menu on that page can change it while you look. Auto puts search matches first; any other order keeps the collection sorted that way during a search.
+          </p>
         </div>
         <div className="settings-row settings-switch">
           <div>

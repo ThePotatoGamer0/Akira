@@ -156,6 +156,17 @@ export async function completionStats(userId: string, style: SeriesTitleStyle = 
 }
 
 /** Pin or unpin a series on the signed-in player's completion card. */
+/** How many players track this series, however it was tracked (bot or website). */
+export async function seriesTrackedBy(seriesIds: readonly string[]): Promise<Map<string, number>> {
+  if (seriesIds.length === 0) return new Map();
+  const rows = await prisma.trackedSeries.groupBy({
+    by: ["seriesId"],
+    where: { seriesId: { in: [...seriesIds] } },
+    _count: { _all: true },
+  });
+  return new Map(rows.map((row) => [row.seriesId, row._count._all]));
+}
+
 export async function setSeriesTracked(userId: string, seriesId: string, tracked: boolean): Promise<void> {
   const series = await prisma.series.findUnique({ where: { id: seriesId }, select: { id: true } });
   if (!series) throw new GameError("missing", "Akira couldn't find that series.");

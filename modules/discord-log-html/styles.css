@@ -282,6 +282,19 @@
   background: transparent;
 }
 
+/* A Tenor, Klipy, or GIPHY gif: the animation alone, no card and no link. */
+.dlog .dlog-gif-wrap { margin-top: 0.3rem; }
+.dlog .dlog-gif {
+  display: block;
+  max-width: min(100%, 400px);
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  margin-top: 0;
+  border-radius: 8px;
+  background: transparent;
+}
+
 .dlog-reactions,
 .dlog-action-row {
   display: flex;

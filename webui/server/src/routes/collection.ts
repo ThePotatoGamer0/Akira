@@ -99,7 +99,7 @@ function queryCount(value: unknown, fallback: number, max: number, min = 0): num
   return Math.min(max, Math.max(min, Number(raw)));
 }
 
-const COLLECTION_ORDERS = ["character", "series", "quality", "tag", "recent"] as const;
+const COLLECTION_ORDERS = ["auto", "character", "series", "quality", "tag", "recent"] as const;
 type CollectionOrder = (typeof COLLECTION_ORDERS)[number];
 
 /** Mint first, then down through damaged. SQLite would otherwise sort the enum names alphabetically. */
@@ -112,7 +112,7 @@ const QUALITY_RANK: Record<string, number> = {
 };
 
 function collectionOrder(value: string): CollectionOrder {
-  return (COLLECTION_ORDERS as readonly string[]).includes(value) ? (value as CollectionOrder) : "character";
+  return (COLLECTION_ORDERS as readonly string[]).includes(value) ? (value as CollectionOrder) : "auto";
 }
 
 function compareText(a: string, b: string): number {
@@ -447,6 +447,20 @@ collectionRouter.get("/players", async (_req, res) => {
   res.json({ players });
 });
 
+export type MentionPlayer = { id: string; name: string };
+
+/** Who the composer can turn into a `<@id>`: the site name, which is the Discord username when none is set. */
+collectionRouter.get("/mentions", async (_req, res) => {
+  const users = await prisma.user.findMany({
+    select: { discordId: true, preferredName: true, discordUsername: true },
+  });
+  const players = users
+    .filter((user) => /^\d{17,20}$/.test(user.discordId))
+    .map((user) => ({ id: user.discordId, name: akiraAddressName(user) }))
+    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
+  res.json({ players });
+});
+
 collectionRouter.get("/:userId/cards/:cardId", async (req, res) => {
   const userId = req.params["userId"] ?? "";
   const cardId = (req.params["cardId"] ?? "").toLowerCase();
@@ -513,7 +527,8 @@ collectionRouter.get("/:userId", async (req, res) => {
       })
     : [];
   const byId = new Map([...ranked, ...extra].map((card) => [card.id, card]));
-  // Search ranks by how well a card answers it; otherwise the chosen order wins.
+  // Auto hands a search to the ranker and leaves no search in the chosen order.
+  // Any other order only narrows to the matches, so the order the player picked still holds.
   const matches = q
     ? rankCollection(q, ranked.map(toSearchableCard), extra.map(toSearchableCard))
     : ranked.map((card) => card.id);
@@ -521,7 +536,7 @@ collectionRouter.get("/:userId", async (req, res) => {
     const card = byId.get(id);
     return card ? [toSortRow(card, titleStyle)] : [];
   });
-  const pageIds = (q ? rows : rows.sort((a, b) => compareCards(order, a, b)))
+  const pageIds = (order === "auto" ? rows : rows.sort((a, b) => compareCards(order, a, b)))
     .slice(offset, offset + limit)
     .map((card) => card.id);
   const found = pageIds.length === 0

@@ -1,29 +1,20 @@
-import { useCallback, useSyncExternalStore } from "react";
-
-const STORAGE_KEY = "akira-webui-theme";
-
-function getTheme(): "light" | "dark" {
-  return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
-}
-
-function subscribeTheme(cb: () => void) {
-  const obs = new MutationObserver(() => cb());
-  obs.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-  return () => obs.disconnect();
-}
+import { useCallback, useState } from "react";
+import { THEMES, currentMode, currentTheme, toggleMode, toggles as hasTwoLooks } from "../lib/theme.js";
 
 export function ThemeToggle() {
-  const theme = useSyncExternalStore(subscribeTheme, getTheme, getTheme);
+  // Read once and keep a copy: the theme is an attribute on <html>, not React state.
+  const [theme] = useState(currentTheme);
+  const [dark] = useState(() => currentMode() === "dark");
+  // A theme with one look has nothing to flip, so the button steps out of the way
+  // rather than sitting there doing nothing. The switcher lives in Settings.
+  const entry = THEMES.find((candidate) => candidate.id === theme);
+  const toggles = entry ? hasTwoLooks(entry) : true;
 
-  const toggle = useCallback(() => {
-    const next = getTheme() === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
-    try {
-      localStorage.setItem(STORAGE_KEY, next);
-    } catch {
-      /* ignore */
-    }
-  }, []);
+  // This press does not flip the icon in place: it unloads the page, which comes
+  // back with the other side of the palette already painted.
+  const toggle = useCallback(() => toggleMode(), []);
+
+  if (!toggles) return null;
 
   return (
     <div className="theme-toggle-host">
@@ -31,8 +22,8 @@ export function ThemeToggle() {
         type="button"
         className="theme-toggle"
         id="webui-theme-toggle"
-        aria-pressed={theme === "dark"}
-        aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+        aria-pressed={dark}
+        aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
         onClick={toggle}
       >
         <svg className="theme-toggle__icon theme-toggle__sun" width="20" height="20" viewBox="0 0 24 24" aria-hidden>

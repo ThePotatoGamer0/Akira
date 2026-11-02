@@ -123,3 +123,71 @@ test("a card you do not own is refused, and cancel closes the trade", async () =
   assert.equal(cancelled.status, "cancelled");
   assert.equal((await prisma.card.findUnique({ where: { id: "dan0001" } }))?.ownerId, (await prisma.user.findUnique({ where: { discordId: "dan" } }))?.id);
 });
+
+async function opened(from: string, to: string, channel: string) {
+  const trade = await proposeMultitrade({
+    fromDiscordId: from,
+    fromUsername: from,
+    toDiscordId: to,
+    toUsername: to,
+    guildId: "guild",
+    channelId: channel,
+  });
+  return agreeMultitrade(trade.id, to);
+}
+
+test("a gift is never refused for its size, and bits stay uncapped while the other side is empty", async () => {
+  await own("giver", "gift0001", 5_000);
+  await own("taker", "gift0002", 0);
+  const trade = await opened("giver", "taker", "gifts");
+  const big = await addToMultitrade("giver", "gifts", { cards: [], bits: 3_000, unknown: [] });
+  assert.equal(big?.view.from.bits, 3_000);
+  assert.equal(big?.view.fairness.level, "fair");
+  const locked = await lockMultitrade(trade.id, "giver");
+  assert.equal(locked.status, "open");
+  const done = await lockMultitrade(trade.id, "taker");
+  assert.equal(done.status, "done");
+  const taker = await prisma.user.findUnique({ where: { discordId: "taker" } });
+  assert.equal(taker?.bits, 3_000);
+});
+
+test("bits are capped once both sides have something on them", async () => {
+  await own("capped", "capdd001", 5_000);
+  await own("capper", "cappe001", 10);
+  await opened("capped", "capper", "caps");
+  await addToMultitrade("capper", "caps", { cards: ["cappe001"], bits: 0, unknown: [] });
+  const tooMany = await addToMultitrade("capped", "caps", { cards: [], bits: 2_100, unknown: [] }).then(
+    () => null,
+    (err: unknown) => err,
+  );
+  assert.ok(tooMany instanceof GameError);
+  assert.equal((tooMany as GameError).code, "bits-cap");
+  const ok = await addToMultitrade("capped", "caps", { cards: [], bits: 1_500, unknown: [] });
+  assert.equal(ok?.view.from.bits, 1_500);
+});
+
+test("a lopsided trade cancels at lock, and an admin force lets it through", async () => {
+  await own("hoarder", "hoard001", 0);
+  await own("casual", "casua001", 0);
+  const character = await prisma.character.findFirst({ where: { slug: "tetsu" } });
+  assert.ok(character);
+  await prisma.cardVariant.create({
+    data: { id: "tetsu-alt", name: "Alt", rarity: "Legendary", image: "alt.png", characterId: character.id },
+  });
+  // Six legendaries against one common is far past 5x and past the block floor.
+  for (let index = 1; index <= 6; index += 1) {
+    await prisma.card.create({
+      data: { id: `legend${index}`, variantId: "tetsu-alt", printNumber: index, quality: "LEGENDARY", ownerId: (await prisma.user.findUnique({ where: { discordId: "hoarder" } }))!.id },
+    });
+  }
+  await prisma.card.create({
+    data: { id: "casualc1", variantId: "tetsu-base", printNumber: 1, quality: "COMMON", ownerId: (await prisma.user.findUnique({ where: { discordId: "casual" } }))!.id },
+  });
+  const trade = await opened("hoarder", "casual", "lopsided");
+  await addToMultitrade("hoarder", "lopsided", { cards: ["legend1", "legend2", "legend3", "legend4", "legend5", "legend6"], bits: 0, unknown: [] });
+  const offered = await addToMultitrade("casual", "lopsided", { cards: ["casualc1"], bits: 0, unknown: [] });
+  assert.equal(offered?.view.fairness.level, "block");
+  const blocked = await lockMultitrade(trade.id, "hoarder");
+  assert.equal(blocked.status, "cancelled");
+  assert.match(blocked.closeReason ?? "", /lopsided/);
+});

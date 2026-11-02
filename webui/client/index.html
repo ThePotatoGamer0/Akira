@@ -21,24 +21,63 @@
       rel="stylesheet"
     />
     <script>
+      /*
+       * Paints the theme before the first React render, so there is no flash of
+       * the wrong palette. Mirrors src/lib/theme.ts -- keep the two in step.
+       */
       (function () {
-        function paint(theme) {
-          document.documentElement.setAttribute("data-theme", theme);
+        var k = "akira-webui-theme";
+        // Mirrors PALETTES in src/lib/theme.ts. `page` is each --page in styles.css.
+        var modes = { akira: "both", catppuccin: "both", discord: "dark", amoled: "dark", nord: "dark", dracula: "dark", solarized: "dark", paper: "light", crimson: "dark" };
+        var pages = {
+          akira: ["#f7f4fc", "#0f0c14"],
+          catppuccin: ["#eff1f5", "#1e1e2e"],
+          discord: ["#313338", "#313338"],
+          amoled: ["#000000", "#000000"],
+          nord: ["#2e3440", "#2e3440"],
+          dracula: ["#282a36", "#282a36"],
+          solarized: ["#002b36", "#002b36"],
+          paper: ["#faf9f6", "#faf9f6"],
+          crimson: ["#0b0606", "#0b0606"],
+        };
+
+        function paint(id, mode) {
+          if (!modes[id]) {
+            id = "akira";
+            mode = null;
+          }
+          var dark = modes[id] === "dark" || (modes[id] === "both" && (mode || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")) === "dark");
+          document.documentElement.setAttribute("data-theme", id);
+          document.documentElement.setAttribute("data-mode", dark ? "dark" : "light");
           var meta = document.querySelector('meta[name="theme-color"]');
-          if (meta) meta.setAttribute("content", theme === "light" ? "#f7f4fc" : "#0f0c14");
+          if (meta) meta.setAttribute("content", pages[id][dark ? 1 : 0]);
         }
+
+        function stored() {
+          var raw = null;
+          try {
+            raw = localStorage.getItem(k);
+          } catch (e) {}
+          if (!raw) return ["akira", null];
+          if (raw === "light" || raw === "dark") return ["akira", raw];
+          var at = raw.indexOf(":");
+          if (at < 0) return [raw, null];
+          var mode = raw.slice(at + 1);
+          return [raw.slice(0, at), mode === "light" || mode === "dark" ? mode : null];
+        }
+
+        var s = stored();
         try {
-          var k = "akira-webui-theme";
-          var s = localStorage.getItem(k);
-          var p = window.matchMedia("(prefers-color-scheme: dark)").matches;
-          var t = s === "dark" || s === "light" ? s : p ? "dark" : "light";
-          paint(t);
+          paint(s[0], s[1]);
         } catch (e) {}
-        new MutationObserver(function () {
-          var theme = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
-          var meta = document.querySelector('meta[name="theme-color"]');
-          if (meta) meta.setAttribute("content", theme === "light" ? "#f7f4fc" : "#0f0c14");
-        }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+        /*
+         * Deliberately no observer on the attributes above. A theme is applied by
+         * this script once per load and never swapped on a live page: the settings
+         * menu leaves and reloads instead. An earlier version watched
+         * data-theme/data-mode and repainted on each change, which looped -- once an
+         * observer with an attributeFilter is attached, it is notified of every
+         * attribute on the element, and paint() writes two of them.
+         */
       })();
     </script>
   </head>

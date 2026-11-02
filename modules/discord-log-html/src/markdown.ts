@@ -144,8 +144,12 @@ function mentionUser(id: string, ctx: InlineContext): string {
     ?.flatMap((message) => message.mentions ?? [])
     .find((user) => user.id === id);
   const author = ctx.log.messages?.find((message) => message.author?.id === id)?.author;
+  const known = ctx.log.names?.find((entry) => entry.id === id)?.name;
   const user = listed ?? author;
   const member = memberById(ctx.log, id);
+  if (!user && !member && known) {
+    return `<span class="dlog-mention dlog-mention-user">@${escapeHtml(known)}</span>`;
+  }
   const name = userName(user, member);
   const color = roleInk(topRole(member?.roles, ctx.log.roles)?.color);
   const style = color ? ` style="--dlog-mention-bg:${color};--dlog-mention-ink:${color}"` : "";

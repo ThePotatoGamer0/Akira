@@ -53,7 +53,6 @@ export const drop: AkiraCommand = {
         shelved = null;
       }
       await interaction.deferReply();
-      const started = Date.now();
       const payload =
         shelved && prepared.fromShelf
           ? dropMessageFromStrip({
@@ -61,7 +60,6 @@ export const drop: AkiraCommand = {
               slots: prepared.slots,
               strip: shelved.strip,
               animated: shelved.animated,
-              elapsedMs: Date.now() - started,
             })
           : await renderDropMessage(prepared);
       await interaction.editReply(payload);

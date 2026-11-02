@@ -16,10 +16,15 @@ channelRouter.get("/composer", authMiddleware, async (req, res) => {
     return;
   }
   try {
-    res.json(await fetchComposerAssets());
+    res.json(await fetchComposerAssets(req.user!.discordId));
   } catch (err) {
     console.error("composer assets:", err);
-    res.json({ emojis: [], stickers: [] });
+    // Unknown is not the same as denied: the website stays quiet when it cannot ask.
+    res.json({
+      emojis: [],
+      stickers: [],
+      permissions: { canAttachFiles: true, canEmbedLinks: true, unavailable: true },
+    });
   }
 });
 

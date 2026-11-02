@@ -1,10 +1,16 @@
 ---
 title: Daily
-description: Claim 100 bits, plus any passive bonus, once every 24 hours.
+description: Claim 100 bits, plus any passive bonus and a boost for a small collection, once every 24 hours.
 command: daily
 ---
 
 **/daily** pays 100 bits, plus the passive bits bonus stored on your profile. The next claim waits 24 hours.
+
+## Catch-up for new collections
+
+A daily pays up to **1.5x** while your collection is small. The boost fades as the collection grows to 250 cards, and fades over your first 30 days. Whichever finishes first ends it. The reply tells you when a boost is on.
+
+Playing on this server for a while does not bring the boost back.
 
 ## Parameters
 

@@ -139,6 +139,74 @@ function IconClose() {
   );
 }
 
+type MentionPlayer = { id: string; name: string };
+/** The player's own rights in the drop channel. Unknown rights are offered, and the bot refuses them. */
+type ComposerPermissions = {
+  canAttachFiles: boolean;
+  canEmbedLinks: boolean;
+  timedOutUntil: string | null;
+  unavailable: boolean;
+};
+
+/** "2 hours, 4 minutes", "45 seconds": how long a timeout still has to run. */
+function remainingText(ms: number): string {
+  const minutes = Math.max(1, Math.ceil(ms / 60_000));
+  const hours = Math.floor(minutes / 60);
+  const rest = minutes % 60;
+  if (hours === 0) return `${rest} minute${rest === 1 ? "" : "s"}`;
+  return `${hours} hour${hours === 1 ? "" : "s"}${rest > 0 ? `, ${rest} minute${rest === 1 ? "" : "s"}` : ""}`;
+}
+/** The `@…` being typed right before the caret, when nothing but spaces sits in front of it. */
+type MentionQuery = { start: number; end: number; query: string };
+
+function mentionAt(value: string, caret: number): MentionQuery | null {
+  for (let index = caret - 1; index >= 0; index--) {
+    const char = value[index] ?? "";
+    if (char === "@") {
+      const before = index === 0 ? "" : (value[index - 1] ?? "");
+      if (before && !/\s/.test(before)) return null;
+      return { start: index, end: caret, query: value.slice(index + 1, caret) };
+    }
+    if (!/[A-Za-z0-9_.]/.test(char)) return null;
+    if (caret - index > 32) return null;
+  }
+  return null;
+}
+
+/**
+ * The draft with every known `<@id>` cut out, so the caret can show it as
+ * `@Name` while the text still sends what Discord reads as a mention.
+ */
+function mentionsIn(draft: string, players: MentionPlayer[] = []): Array<{ text: string } | { mention: { name: string } }> {
+  const parts: Array<{ text: string } | { mention: { name: string } }> = [];
+  const pattern = /<@!?(\d{17,20})>/g;
+  let last = 0;
+  for (const match of draft.matchAll(pattern)) {
+    const at = match.index ?? 0;
+    if (at > last) parts.push({ text: draft.slice(last, at) });
+    const name = players.find((player) => player.id === match[1])?.name ?? match[1];
+    parts.push({ mention: { name } });
+    last = at + match[0].length;
+  }
+  if (last < draft.length) parts.push({ text: draft.slice(last) });
+  return parts;
+}
+
+function mentionMatches(players: MentionPlayer[], query: string): MentionPlayer[] {
+  const needle = query.toLowerCase();
+  return players
+    .flatMap((player) => {
+      const name = player.name.toLowerCase();
+      if (name === needle) return [{ player, rank: 0 }];
+      if (name.startsWith(needle)) return [{ player, rank: 1 }];
+      if (needle.length > 1 && name.includes(needle)) return [{ player, rank: 2 }];
+      return [];
+    })
+    .sort((a, b) => a.rank - b.rank || a.player.name.localeCompare(b.player.name, undefined, { sensitivity: "base" }))
+    .slice(0, 8)
+    .map((hit) => hit.player);
+}
+
 export function MessageBar(props: { channelName: string; fetchApi: FetchApi }) {
   const fileId = useId();
   const area = useRef<HTMLTextAreaElement>(null);
@@ -159,15 +227,117 @@ export function MessageBar(props: { channelName: string; fetchApi: FetchApi }) {
   const [gifNote, setGifNote] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState<string | null>(null);
+  const [players, setPlayers] = useState<MentionPlayer[]>([]);
+  const [playersLoaded, setPlayersLoaded] = useState(false);
+  const [mention, setMention] = useState<MentionQuery | null>(null);
+  const [mentionIndex, setMentionIndex] = useState(0);
+  const [permissions, setPermissions] = useState<ComposerPermissions | null>(null);
+  const [noAttach, setNoAttach] = useState(false);
+  const [now, setNow] = useState(() => Date.now());
   const root = useRef<HTMLDivElement>(null);
   const when = picked ?? openedAt;
+  const candidates = mention ? mentionMatches(players, mention.query) : [];
+  const open = mention != null && candidates.length > 0;
+  const mirror = useRef<HTMLDivElement>(null);
+  const shown = mentionsIn(draft, players);
+  // Nothing to replace until a name comes in, so the plain textarea stays as it was.
+  const labeled = shown.some((part) => "mention" in part);
+
+  // What this player may post here, so the buttons can say no before Discord does.
+  useEffect(() => {
+    let cancelled = false;
+    void props.fetchApi("/channel/composer").then(async (res) => {
+      if (!res.ok || cancelled) return;
+      const json = (await res.json()) as { permissions?: ComposerPermissions };
+      if (!cancelled && json.permissions) {
+        setPermissions(json.permissions);
+        setNow(Date.now());
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [props.fetchApi]);
+
+  // Quiet until the bot answers, so a reload never flashes the refusal.
+  const canAttach = permissions === null || permissions.unavailable || permissions.canAttachFiles;
+  const canEmbed = permissions === null || permissions.unavailable || permissions.canEmbedLinks;
+  const timedOutUntil = permissions?.timedOutUntil ? Date.parse(permissions.timedOutUntil) : 0;
+  const timedOut = timedOutUntil > now;
+
+  // The countdown ticks while it runs, then drops, so the composer comes back by itself.
+  useEffect(() => {
+    if (!timedOut) return;
+    const tick = window.setInterval(() => setNow(Date.now()), 1000);
+    return () => window.clearInterval(tick);
+  }, [timedOut]);
+
+  function pickGif(hit: GifHit) {
+    if (!canEmbed) {
+      // Without embed links the gif cannot play, so its link goes in as text.
+      insert(hit.url);
+      setPanel(null);
+      return;
+    }
+    if (!canAttach) {
+      setNoAttach(true);
+      return;
+    }
+    const next: Draft = { key: hit.id, kind: "gif", name: hit.name, url: hit.url, preview: hit.preview };
+    setFiles((current) => [...current, next].slice(0, 10));
+    setPanel(null);
+  }
+
+  function pickSticker(sticker: GuildSticker) {
+    if (!canAttach) {
+      setNoAttach(true);
+      return;
+    }
+    setFiles((current) => [
+      ...current.filter((file) => file.kind !== "sticker"),
+      { key: sticker.id, kind: "sticker", name: sticker.name, url: sticker.url },
+    ]);
+    setPanel(null);
+  }
+
+  // The names come in once, the first time someone types `@`.
+  useEffect(() => {
+    if (!mention || playersLoaded) return;
+    let cancelled = false;
+    void props.fetchApi("/collection/mentions").then(async (res) => {
+      if (!res.ok || cancelled) return;
+      const json = (await res.json()) as { players?: MentionPlayer[] };
+      if (cancelled) return;
+      setPlayers(Array.isArray(json.players) ? json.players : []);
+      setPlayersLoaded(true);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [mention, playersLoaded, props.fetchApi]);
+
+  function pickMention(player: MentionPlayer) {
+    if (!mention) return;
+    const el = area.current;
+    const rest = draft.slice(mention.end, el?.selectionEnd ?? mention.end);
+    const tail = rest.startsWith(" ") ? rest : ` ${rest}`;
+    const next = `${draft.slice(0, mention.start)}<@${player.id}>${tail}`;
+    setDraft(next);
+    setMention(null);
+    setMentionIndex(0);
+    const pos = mention.start + player.id.length + 4;
+    requestAnimationFrame(() => {
+      el?.focus();
+      el?.setSelectionRange(pos, pos);
+    });
+  }
 
   useEffect(() => {
     const el = area.current;
     if (!el) return;
     el.style.height = "0px";
     el.style.height = `${Math.min(el.scrollHeight, 160)}px`;
-  }, [draft]);
+  }, [draft, players]);
 
   useEffect(() => {
     if (panel !== "emoji" && panel !== "sticker") return;
@@ -253,7 +423,7 @@ export function MessageBar(props: { channelName: string; fetchApi: FetchApi }) {
   }
 
   async function send() {
-    if (sending) return;
+    if (sending || timedOutUntil > Date.now()) return;
     if (!draft.trim() && files.length === 0) return;
     if (files.some((item) => item.kind === "file" && item.file.size > 8 * 1024 * 1024)) {
       setSendError("Akira can take files up to 8 MB.");
@@ -305,6 +475,17 @@ export function MessageBar(props: { channelName: string; fetchApi: FetchApi }) {
   })).filter((group) => group.emoji.length > 0);
   const filteredGuild = guildEmoji.filter((item) => !emojiNeedle || item.name.toLowerCase().includes(emojiNeedle));
 
+  if (timedOut) {
+    return (
+      <div className="composer is-timed-out" ref={root}>
+        <div className="composer-timeout" role="status">
+          You're timed out. Akira can't post for you until then.
+          <span className="composer-timeout-left"> {remainingText(timedOutUntil - now)} left</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={sending ? "composer is-sending" : "composer"} ref={root}>
       {files.length > 0 ? (
@@ -325,32 +506,117 @@ export function MessageBar(props: { channelName: string; fetchApi: FetchApi }) {
       ) : null}
       {sendError ? <p className="composer-error">{sendError}</p> : null}
       <div className="composer-row">
-        <label className="composer-plus" htmlFor={fileId} aria-label="Upload a file">
-          <IconPlus />
-          <input
-            id={fileId}
-            type="file"
-            multiple
+        {canAttach ? (
+          <label className="composer-plus" htmlFor={fileId} aria-label="Upload a file">
+            <IconPlus />
+            <input
+              id={fileId}
+              type="file"
+              multiple
+              onChange={(event) => {
+                addFiles(event.target.files);
+                event.target.value = "";
+              }}
+            />
+          </label>
+        ) : (
+          <button
+            type="button"
+            className="composer-plus"
+            aria-label="Upload a file"
+            aria-disabled="true"
+            onClick={() => setNoAttach(true)}
+          >
+            <IconPlus />
+          </button>
+        )}
+        <div className={labeled ? "composer-field is-labeled" : "composer-field"}>
+          <div className={labeled ? "composer-mirror" : "composer-mirror is-empty"} aria-hidden="true" ref={mirror}>
+            {shown.map((part, index) =>
+              "mention" in part ? <span className="composer-at" key={index}>{`@${part.mention.name}`}</span> : <span key={index}>{part.text}</span>,
+            )}
+            {"\n"}
+          </div>
+          <textarea
+            ref={area}
+            rows={1}
+            value={draft}
+            placeholder={placeholder}
+            aria-label={placeholder}
             onChange={(event) => {
-              addFiles(event.target.files);
-              event.target.value = "";
+              const value = event.target.value;
+              const caret = event.target.selectionStart;
+              setDraft(value);
+              const found = mentionAt(value, caret);
+              setMention(found);
+              setMentionIndex(0);
+            }}
+            onSelect={(event) => {
+              const el = event.currentTarget;
+              setMention(mentionAt(el.value, el.selectionStart));
+            }}
+            onBlur={() => window.setTimeout(() => setMention(null), 120)}
+            onScroll={(event) => {
+              const pane = mirror.current;
+              if (pane) {
+                pane.scrollTop = event.currentTarget.scrollTop;
+                pane.scrollLeft = event.currentTarget.scrollLeft;
+              }
+            }}
+            onKeyDown={(event) => {
+              if (open) {
+                if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+                  event.preventDefault();
+                  const step = event.key === "ArrowDown" ? 1 : -1;
+                  setMentionIndex((current) => (current + step + candidates.length) % candidates.length);
+                  return;
+                }
+                if ((event.key === "Enter" || event.key === "Tab") && !event.shiftKey && !event.nativeEvent.isComposing) {
+                  event.preventDefault();
+                  const player = candidates[Math.min(mentionIndex, candidates.length - 1)];
+                  if (player) pickMention(player);
+                  return;
+                }
+                if (event.key === " " && !event.nativeEvent.isComposing) {
+                  // A typed name exactly matches one player: finish it the way Discord does.
+                  const exact = candidates.find((player) => player.name.toLowerCase() === mention?.query.toLowerCase());
+                  if (exact) {
+                    event.preventDefault();
+                    pickMention(exact);
+                    return;
+                  }
+                }
+                if (event.key === "Escape") {
+                  event.preventDefault();
+                  setMention(null);
+                  return;
+                }
+              }
+              if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) {
+                event.preventDefault();
+                void send();
+              }
             }}
           />
-        </label>
-        <textarea
-          ref={area}
-          rows={1}
-          value={draft}
-          placeholder={placeholder}
-          aria-label={placeholder}
-          onChange={(event) => setDraft(event.target.value)}
-          onKeyDown={(event) => {
-            if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) {
-              event.preventDefault();
-              void send();
-            }
-          }}
-        />
+          {open ? (
+            <div className="composer-mentions" role="listbox" aria-label="Mention someone">
+              {candidates.map((player, index) => (
+                <button
+                  type="button"
+                  role="option"
+                  aria-selected={index === Math.min(mentionIndex, candidates.length - 1)}
+                  key={player.id}
+                  className={index === Math.min(mentionIndex, candidates.length - 1) ? "is-active" : ""}
+                  onMouseDown={(event) => event.preventDefault()}
+                  onClick={() => pickMention(player)}
+                >
+                  <span className="composer-mention-at">@</span>
+                  {player.name}
+                </button>
+              ))}
+            </div>
+          ) : null}
+        </div>
         <div className="composer-tools">
           <button type="button" className={panel === "stamp" ? "is-on" : ""} aria-label="Insert timestamp" onClick={() => setPanel(panel === "stamp" ? null : "stamp")}>
             <IconCalendar />
@@ -428,13 +694,7 @@ export function MessageBar(props: { channelName: string; fetchApi: FetchApi }) {
                   type="button"
                   key={item.id}
                   aria-label={item.name}
-                  onClick={() => {
-                    setFiles((current) => [
-                      ...current.filter((file) => file.kind !== "sticker"),
-                      { key: item.id, kind: "sticker", name: item.name, url: item.url },
-                    ]);
-                    setPanel(null);
-                  }}
+                  onClick={() => pickSticker(item)}
                 >
                   <img src={item.url} alt="" />
                 </button>
@@ -458,11 +718,7 @@ export function MessageBar(props: { channelName: string; fetchApi: FetchApi }) {
                   type="button"
                   key={item.id}
                   aria-label={item.name}
-                  onClick={() => {
-                    const next: Draft = { key: item.id, kind: "gif", name: item.name, url: item.url, preview: item.preview };
-                    setFiles((current) => [...current, next].slice(0, 10));
-                    setPanel(null);
-                  }}
+                  onClick={() => pickGif(item)}
                 >
                   <img src={item.preview} alt="" />
                 </button>
@@ -554,6 +810,23 @@ export function MessageBar(props: { channelName: string; fetchApi: FetchApi }) {
               }}
             >
               Insert
+            </button>
+          </div>
+        </div>
+      ) : null}
+      {noAttach ? (
+        <div className="composer-modal-backdrop" onClick={() => setNoAttach(false)}>
+          <div
+            className="composer-modal"
+            role="alertdialog"
+            aria-modal="true"
+            aria-labelledby="composer-no-attach"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <h2 id="composer-no-attach">You can't attach files here</h2>
+            <p>This channel doesn't let you attach files, so Akira can't send your images, GIFs, or stickers.</p>
+            <button type="button" className="composer-modal-ok" onClick={() => setNoAttach(false)}>
+              Got it
             </button>
           </div>
         </div>

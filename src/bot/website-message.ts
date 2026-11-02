@@ -1,6 +1,9 @@
 import {
   AttachmentBuilder,
   DiscordAPIError,
+  MessageFlags,
+  PermissionFlagsBits,
+  PermissionsBitField,
   StickerFormatType,
   type Client,
   type Message,
@@ -181,11 +184,23 @@ export async function postWebsiteMessage(client: Client, post: WebsitePost): Pro
   const username = webhookName(member?.displayName ?? user.globalName ?? user.username);
   const avatarURL = user.displayAvatarURL({ extension: "png", size: 128 });
 
+  // A webhook posts with Akira's permissions, so the player's own rights in the
+  // channel are checked here and again at the webhook, which leaves this field out.
+  const permissions = channel.permissionsFor(post.discordId, true) ?? new PermissionsBitField();
+  const wantsFiles = post.files.length > 0 || post.stickerIds.length > 0 || post.gifUrls.length > 0;
+  if (wantsFiles && !permissions.has(PermissionFlagsBits.AttachFiles)) {
+    throw new WebsitePostError("You can't attach files in this channel, so Akira kept them out.", 403);
+  }
+  const canEmbed = permissions.has(PermissionFlagsBits.EmbedLinks);
+
   const attachments: AttachmentBuilder[] = post.files.map(
     (file, index) => new AttachmentBuilder(file.data, { name: safeFileName(file.name, `file-${index + 1}`) }),
   );
+  // Without embed links a gif cannot play, so its plain link is written into the text.
+  const bareLinks: string[] = [];
   for (const [index, url] of post.gifUrls.entries()) {
-    attachments.push(await readRemote(url, safeFileName(`gif-${index + 1}.gif`, "gif.gif")));
+    if (canEmbed) attachments.push(await readRemote(url, safeFileName(`gif-${index + 1}.gif`, "gif.gif")));
+    else bareLinks.push(url);
   }
   if (post.stickerIds.length > 0) {
     const stickers = await channel.guild.stickers.fetch().catch(() => null);
@@ -194,19 +209,23 @@ export async function postWebsiteMessage(client: Client, post: WebsitePost): Pro
       if (!sticker || sticker.format === StickerFormatType.Lottie) {
         throw new WebsitePostError("That sticker isn't on this server.", 400);
       }
+      // A sticker is an image, not an embed, so it goes as its own file either way.
       const ext = sticker.format === StickerFormatType.GIF ? "gif" : "png";
       attachments.push(await readRemote(sticker.url, safeFileName(`${sticker.name}.${ext}`, `sticker.${ext}`)));
     }
   }
+  const withLinks = [content.trim(), ...bareLinks].filter((part) => part !== "").join("\n");
+  if (withLinks.length > MAX_CONTENT) throw new WebsitePostError("That message is too long for Discord.", 400);
 
   if (!allowSend(post.discordId)) throw new WebsitePostError("Slow down a little and try that again.", 429);
 
   const send = (hook: Webhook) =>
     hook.send({
-      content,
+      content: withLinks,
       username,
       avatarURL,
       files: attachments,
+      ...(canEmbed ? {} : { flags: MessageFlags.SuppressEmbeds }),
       allowedMentions: { parse: ["users", "roles"] },
     });
 

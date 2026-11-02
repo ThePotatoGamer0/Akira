@@ -6,6 +6,7 @@ import { ensureCardImage } from "./compose.js";
 import { displayFrameId, serverDefaultFrame } from "./frames.js";
 import { GameError } from "./errors.js";
 import { cardInOpenTransfer, cardsHeldInOpenTransfers } from "./transfer.js";
+import { catchUpMultiplier } from "./trade-value.js";
 import { ensureUser } from "./users.js";
 
 const BURN_BATCH_LIMIT = 100;
@@ -30,7 +31,10 @@ export async function readTimers(discordId: string): Promise<{ dropMs: number; g
   return { dropMs: remaining("DROP"), grabMs: remaining("GRAB"), dailyMs: remaining("DAILY") };
 }
 
-export async function claimDaily(discordId: string, username: string): Promise<{ awarded: number; balance: number }> {
+export async function claimDaily(
+  discordId: string,
+  username: string,
+): Promise<{ awarded: number; balance: number; catchUp: number }> {
   const user = await ensureUser(discordId, username);
   const existing = await prisma.cooldown.findUnique({
     where: { userId_type: { userId: user.id, type: "DAILY" } },
@@ -41,7 +45,10 @@ export async function claimDaily(discordId: string, username: string): Promise<{
       `Akira already set your daily bits aside. Come back in ${formatRemaining(existing.expiresAt.getTime() - Date.now())}.`,
     );
   }
-  const awarded = dailyPayout(user.passiveBitsBonus);
+  const cards = await prisma.card.count({ where: { ownerId: user.id } });
+  const days = Math.floor((Date.now() - user.createdAt.getTime()) / (24 * 60 * 60 * 1000));
+  const catchUp = catchUpMultiplier(cards, days);
+  const awarded = Math.round(dailyPayout(user.passiveBitsBonus) * catchUp);
   const expiresAt = new Date(Date.now() + DAILY_COOLDOWN_MS);
   const updated = await prisma.$transaction(async (tx) => {
     const again = await tx.cooldown.findUnique({
@@ -61,7 +68,7 @@ export async function claimDaily(discordId: string, username: string): Promise<{
     });
     return next;
   });
-  return { awarded, balance: updated.bits };
+  return { awarded, balance: updated.bits, catchUp };
 }
 
 function normalizeBurnIds(rawIds: string[]): string[] {

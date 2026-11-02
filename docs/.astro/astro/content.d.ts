@@ -159,9 +159,23 @@ declare module 'astro:content' {
   collection: "commands";
   data: InferEntrySchema<"commands">
 } & { render(): Render[".md"] };
+"cc.md": {
+	id: "cc.md";
+  slug: "cc";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
 "collection.md": {
 	id: "collection.md";
   slug: "collection";
+  body: string;
+  collection: "commands";
+  data: InferEntrySchema<"commands">
+} & { render(): Render[".md"] };
+"compensate.md": {
+	id: "compensate.md";
+  slug: "compensate";
   body: string;
   collection: "commands";
   data: InferEntrySchema<"commands">
@@ -399,6 +413,13 @@ declare module 'astro:content' {
   collection: "contributing";
   data: InferEntrySchema<"contributing">
 } & { render(): Render[".md"] };
+"card-cache.md": {
+	id: "card-cache.md";
+  slug: "card-cache";
+  body: string;
+  collection: "contributing";
+  data: InferEntrySchema<"contributing">
+} & { render(): Render[".md"] };
 "code.md": {
 	id: "code.md";
   slug: "code";
@@ -484,6 +505,20 @@ declare module 'astro:content' {
   collection: "webui";
   data: InferEntrySchema<"webui">
 } & { render(): Render[".md"] };
+"channel.md": {
+	id: "channel.md";
+  slug: "channel";
+  body: string;
+  collection: "webui";
+  data: InferEntrySchema<"webui">
+} & { render(): Render[".md"] };
+"characters.md": {
+	id: "characters.md";
+  slug: "characters";
+  body: string;
+  collection: "webui";
+  data: InferEntrySchema<"webui">
+} & { render(): Render[".md"] };
 "collection.md": {
 	id: "collection.md";
   slug: "collection";
@@ -494,6 +529,13 @@ declare module 'astro:content' {
 "economy-and-leaderboard.md": {
 	id: "economy-and-leaderboard.md";
   slug: "economy-and-leaderboard";
+  body: string;
+  collection: "webui";
+  data: InferEntrySchema<"webui">
+} & { render(): Render[".md"] };
+"settings.md": {
+	id: "settings.md";
+  slug: "settings";
   body: string;
   collection: "webui";
   data: InferEntrySchema<"webui">

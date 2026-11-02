@@ -2,15 +2,18 @@ import type { CooldownType } from "../generated/prisma/client.js";
 import { prisma } from "../db/client.js";
 import { reminderLabel, type ReminderAction } from "./reminders.js";
 
-const ACTION: Record<CooldownType, ReminderAction> = {
+/** Trade has no reminder bell, so it never records a notice; the label keeps the record exhaustive. */
+const ACTION: Record<CooldownType, ReminderAction | null> = {
   DAILY: "daily",
   DROP: "drop",
   GRAB: "grab",
+  TRADE: null,
 };
 
 /** Same sentence the Discord DM uses, without the bold markers. */
 export function cooldownNoticeText(type: CooldownType): string {
-  return `${reminderLabel(ACTION[type])} is ready.`;
+  const action = ACTION[type];
+  return `${action ? reminderLabel(action) : "A trade"} is ready.`;
 }
 
 export type NoticeView = {

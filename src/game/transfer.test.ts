@@ -216,27 +216,27 @@ test("getting a watched character in a give takes it off the wishlist", async ()
 });
 
 test("a trade finds the other player from the cards and swaps the order if needed", async () => {
-  await own("left", "swapaa1");
-  await own("right", "swapbb1");
+  await own("swapleft", "swapaa1");
+  await own("swapright", "swapbb1");
   const swapped = await proposeTrade({
-    fromDiscordId: "left",
-    fromUsername: "left",
+    fromDiscordId: "swapleft",
+    fromUsername: "swapleft",
     cardId: "swapbb1",
     theirCardId: "swapaa1",
   });
-  assert.equal(swapped.fromDiscordId, "left");
-  assert.equal(swapped.toDiscordId, "right");
+  assert.equal(swapped.fromDiscordId, "swapleft");
+  assert.equal(swapped.toDiscordId, "swapright");
   assert.equal(swapped.fromCard?.id, "swapaa1");
   assert.equal(swapped.toCard?.id, "swapbb1");
-  await cancelTransfer(swapped.id, "left");
+  await cancelTransfer(swapped.id, "swapleft");
 
-  await own("left", "minecc1");
-  await own("right", "theird1");
+  await own("swapleft", "minecc1");
+  await own("swapright", "theird1");
   await own("other", "otherc1");
   await assert.rejects(
     () => proposeTrade({
-      fromDiscordId: "left",
-      fromUsername: "left",
+      fromDiscordId: "swapleft",
+      fromUsername: "swapleft",
       cardId: "theird1",
       theirCardId: "otherc1",
     }),
@@ -244,8 +244,8 @@ test("a trade finds the other player from the cards and swaps the order if neede
   );
   await assert.rejects(
     () => proposeTrade({
-      fromDiscordId: "left",
-      fromUsername: "left",
+      fromDiscordId: "swapleft",
+      fromUsername: "swapleft",
       cardId: "swapaa1",
       theirCardId: "minecc1",
     }),
