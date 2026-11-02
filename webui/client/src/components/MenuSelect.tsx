@@ -1,9 +1,11 @@
-import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 
 export type MenuOption = {
   value: string;
   label: string;
+  /** Sits before the label, for an option whose meaning is worth showing. */
+  icon?: ReactNode;
 };
 
 type Box = {
@@ -15,8 +17,13 @@ type Box = {
   sheet: boolean;
 };
 
+/**
+ * The bottom-sheet layout, for phones. It is gated on a coarse pointer as well as a
+ * narrow window, so a desktop window dragged narrow keeps the anchored menu and its
+ * full-screen backdrop never appears there.
+ */
 function phoneLayout(): boolean {
-  return window.matchMedia("(max-width: 700px)").matches;
+  return window.matchMedia("(max-width: 700px)").matches && window.matchMedia("(pointer: coarse)").matches;
 }
 
 function visibleFrame(): { top: number; left: number; width: number; height: number } {
@@ -153,11 +160,26 @@ export function MenuSelect(props: {
     if (value !== props.value) props.onChange(value);
   }
 
+  /*
+   * The sheet layout puts an invisible full-screen backdrop under the menu. If it
+   * ever outlives the menu it swallows every click on the page while leaving
+   * scrolling alone -- a page that looks alive and ignores you. So a press on the
+   * backdrop closes the menu.
+   *
+   * This is deliberately NOT on the options: closing on pointerdown there would
+   * tear the button out of the DOM before the browser delivers its click, and the
+   * choice would be lost. Options close on click, through `choose`.
+   */
+  function closeOnBackdropPress(event: React.PointerEvent) {
+    if (event.button !== 0) return;
+    setOpen(false);
+  }
+
   const menu =
     open && box
       ? createPortal(
           <>
-            {box.sheet ? <div className="menu-select__backdrop" /> : null}
+            {box.sheet ? <div className="menu-select__backdrop" aria-hidden onPointerDown={closeOnBackdropPress} /> : null}
             <div
               ref={menuRef}
               id={menuId}
@@ -205,6 +227,7 @@ export function MenuSelect(props: {
                         aria-selected={selected}
                         onClick={() => choose(option.value)}
                       >
+                        {option.icon ? <span className="menu-select__icon" aria-hidden>{option.icon}</span> : null}
                         {option.label}
                       </button>
                     </li>

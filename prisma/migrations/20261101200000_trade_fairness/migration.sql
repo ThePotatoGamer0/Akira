@@ -2,9 +2,12 @@
 ALTER TABLE "Multitrade" ADD COLUMN "value" INTEGER NOT NULL DEFAULT 0;
 ALTER TABLE "TransferOffer" ADD COLUMN "value" INTEGER NOT NULL DEFAULT 0;
 
--- When Akira first saw a player. Existing rows start the catch-up clock from the upgrade,
--- which is the safe direction: nobody loses a bonus they already had.
-ALTER TABLE "User" ADD COLUMN "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+-- When Akira first saw a player. The column is added bare and then filled, rather than with
+-- a DEFAULT CURRENT_TIMESTAMP, because SQLite allows only a constant default on ADD COLUMN.
+-- Existing rows start the catch-up clock from the upgrade, which is the safe direction:
+-- nobody loses a bonus they already had.
+ALTER TABLE "User" ADD COLUMN "createdAt" DATETIME;
+UPDATE "User" SET "createdAt" = CURRENT_TIMESTAMP WHERE "createdAt" IS NULL;
 
 -- Multitrade entries name their card so a trade can be priced without a second lookup.
 -- The relation is written as column plus foreign key by hand; SQLite wants the table rebuilt.

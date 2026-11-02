@@ -54,8 +54,16 @@
   }
 }
 
-:root {
+/*
+ * Themes. `data-theme` on <html> names the palette; `data-mode` says which way
+ * round it is read. The palette owns the light/dark switch itself, and anything
+ * keyed on brightness (the moon icon, the meta bar) follows `data-mode`, so a
+ * dark palette never has to pretend to be "dark" by name.
+ */
+:root,
+[data-theme="akira"][data-mode="light"] {
   color-scheme: light;
+  --page: #f7f4fc;
   --ink: #1a1225;
   --ink2: #3d2f5a;
   --muted: #7a6a90;
@@ -65,6 +73,7 @@
   --accent2: #e040fb;
   --accent3: #ff6b9d;
   --gold: #ffb830;
+  --on-accent: #fff;
   --border: #e8e0f5;
   --radius: 14px;
   --code-bg: rgba(124, 77, 255, 0.08);
@@ -76,10 +85,14 @@
   --home-shadow-strong: rgba(124, 77, 255, 0.12);
   --home-gradient-start: rgba(124, 77, 255, 0.06);
   --home-gradient-end: rgba(224, 64, 251, 0.04);
+  /* Art scrims stay dark over art in every theme, so posters keep white copy. */
+  --art-scrim: rgba(18, 10, 28, 0.94);
+  --art-ink: #f4eefc;
 }
 
-html[data-theme="dark"] {
+[data-theme="akira"][data-mode="dark"] {
   color-scheme: dark;
+  --page: #0f0c14;
   --ink: #ece9f3;
   --ink2: #c4b8d9;
   --muted: #9a90b0;
@@ -89,6 +102,7 @@ html[data-theme="dark"] {
   --accent2: #e879f5;
   --accent3: #ff7eb3;
   --gold: #fbbf24;
+  --on-accent: #fff;
   --border: #2d2640;
   --code-bg: rgba(167, 139, 250, 0.12);
   --glow-a: rgba(124, 77, 255, 0.14);
@@ -99,6 +113,282 @@ html[data-theme="dark"] {
   --home-shadow-strong: rgba(0, 0, 0, 0.45);
   --home-gradient-start: rgba(167, 139, 250, 0.14);
   --home-gradient-end: rgba(232, 121, 245, 0.1);
+  --art-scrim: rgba(12, 8, 18, 0.86);
+  --art-ink: #f4eefc;
+}
+
+/*
+ * Catppuccin: Latte by day, Mocha by night, mauve the colour in both. Muted copy
+ * is a shade darker than Latte's overline grey: white panels wash it out.
+ */
+[data-theme="catppuccin"][data-mode="light"] {
+  color-scheme: light;
+  --page: #eff1f5;
+  --bg: #eff1f5;
+  --surface: #ffffff;
+  --ink: #4c4f69;
+  --ink2: #5c5f77;
+  --muted: #686b80;
+  --border: #ccd0da;
+  --accent: #8839ef;
+  --accent2: #ea76cb;
+  --accent3: #1e66f5;
+  --gold: #df8e1d;
+  --on-accent: #fff;
+  --code-bg: rgba(136, 57, 239, 0.08);
+  --glow-a: rgba(136, 57, 239, 0.07);
+  --glow-b: rgba(234, 118, 203, 0.06);
+  --glow-c: rgba(30, 102, 245, 0.04);
+  --shadow-tint: rgba(76, 79, 105, 0.08);
+  --card-hover-bg: #e6e9ef;
+  --home-shadow-strong: rgba(76, 79, 105, 0.16);
+  --home-gradient-start: rgba(136, 57, 239, 0.06);
+  --home-gradient-end: rgba(234, 118, 203, 0.04);
+  --art-scrim: rgba(30, 30, 46, 0.94);
+  --art-ink: #cdd6f4;
+}
+
+[data-theme="catppuccin"][data-mode="dark"] {
+  color-scheme: dark;
+  --page: #1e1e2e;
+  --bg: #1e1e2e;
+  --surface: #313244;
+  --ink: #cdd6f4;
+  --ink2: #bac2de;
+  --muted: #a6adc8;
+  --border: #45475a;
+  --accent: #cba6f7;
+  --accent2: #f5c2e7;
+  --accent3: #89b4fa;
+  --gold: #f9e2af;
+  --on-accent: #11111b;
+  --code-bg: rgba(203, 166, 247, 0.12);
+  --glow-a: rgba(203, 166, 247, 0.12);
+  --glow-b: rgba(245, 194, 231, 0.08);
+  --glow-c: rgba(137, 180, 250, 0.06);
+  --shadow-tint: rgba(0, 0, 0, 0.4);
+  --card-hover-bg: #3a3b50;
+  --home-shadow-strong: rgba(0, 0, 0, 0.5);
+  --home-gradient-start: rgba(203, 166, 247, 0.12);
+  --home-gradient-end: rgba(245, 194, 231, 0.08);
+  --art-scrim: rgba(17, 17, 27, 0.9);
+  --art-ink: #cdd6f4;
+}
+
+/* Discord: Blurple on their five greys. Dark only, the way the app ships. */
+[data-theme="discord"] {
+  --page: #313338;
+  --bg: #313338;
+  --surface: #2b2d31;
+  --ink: #f2f3f5;
+  --ink2: #dbdee1;
+  --muted: #949ba4;
+  --border: #1e1f22;
+  --accent: #5865f2;
+  --accent2: #4752c4;
+  --accent3: #7289da;
+  --gold: #f0b232;
+  --on-accent: #fff;
+  --code-bg: rgba(88, 101, 242, 0.12);
+  --glow-a: rgba(88, 101, 242, 0.1);
+  --glow-b: rgba(88, 101, 242, 0.06);
+  --glow-c: rgba(88, 101, 242, 0.03);
+  --shadow-tint: rgba(0, 0, 0, 0.36);
+  --card-hover-bg: #35373c;
+  --home-shadow-strong: rgba(0, 0, 0, 0.45);
+  --home-gradient-start: rgba(88, 101, 242, 0.14);
+  --home-gradient-end: rgba(88, 101, 242, 0.06);
+  --art-scrim: rgba(12, 12, 14, 0.88);
+  --art-ink: #f2f3f5;
+}
+
+/* AMOLED: true black, so unused pixels can switch off on an OLED panel. */
+[data-theme="amoled"] {
+  color-scheme: dark;
+  --page: #000000;
+  --bg: #000000;
+  --surface: #0c0c0c;
+  --ink: #ffffff;
+  --ink2: #d0d0d0;
+  --muted: #8a8a8a;
+  --border: #242424;
+  --accent: #ffffff;
+  --accent2: #c8c8c8;
+  --accent3: #8a8a8a;
+  --gold: #ffd166;
+  /* White accents mean white fills, which need dark copy. */
+  --on-accent: #000;
+  --code-bg: rgba(255, 255, 255, 0.08);
+  /* No coloured haze: any lift off black defeats the point. */
+  --glow-a: transparent;
+  --glow-b: transparent;
+  --glow-c: transparent;
+  --shadow-tint: rgba(0, 0, 0, 0.8);
+  --card-hover-bg: #161616;
+  --home-shadow-strong: rgba(0, 0, 0, 0.9);
+  --home-gradient-start: rgba(255, 255, 255, 0.04);
+  --home-gradient-end: transparent;
+  --art-scrim: rgba(0, 0, 0, 0.92);
+  --art-ink: #ffffff;
+}
+
+/* Nord: the frost palette on Polar Night. Dark only. */
+[data-theme="nord"] {
+  color-scheme: dark;
+  --page: #2e3440;
+  --bg: #2e3440;
+  --surface: #3b4252;
+  --ink: #eceff4;
+  --ink2: #d8dee9;
+  /* A shade up from Snow Storm's muted grey, which just misses AA on the panels. */
+  --muted: #aab3c4;
+  --border: #4c566a;
+  --accent: #88c0d0;
+  --accent2: #81a1c1;
+  --accent3: #8fbcbb;
+  --gold: #ebcb8b;
+  --on-accent: #2e3440;
+  --code-bg: rgba(136, 192, 208, 0.14);
+  --glow-a: rgba(136, 192, 208, 0.1);
+  --glow-b: rgba(129, 161, 193, 0.08);
+  --glow-c: rgba(143, 188, 187, 0.05);
+  --shadow-tint: rgba(0, 0, 0, 0.32);
+  --card-hover-bg: #434c5e;
+  --home-shadow-strong: rgba(0, 0, 0, 0.45);
+  --home-gradient-start: rgba(136, 192, 208, 0.12);
+  --home-gradient-end: rgba(129, 161, 193, 0.08);
+  --art-scrim: rgba(36, 41, 51, 0.9);
+  --art-ink: #eceff4;
+}
+
+/* Dracula: purple, pink and cyan on charcoal. Dark only. */
+[data-theme="dracula"] {
+  color-scheme: dark;
+  --page: #282a36;
+  --bg: #282a36;
+  --surface: #343746;
+  --ink: #f8f8f2;
+  --ink2: #dad8e0;
+  --muted: #a9a8bd;
+  --border: #44475a;
+  --accent: #bd93f9;
+  --accent2: #ff79c6;
+  --accent3: #8be9fd;
+  --gold: #f1fa8c;
+  --on-accent: #282a36;
+  --code-bg: rgba(189, 147, 249, 0.14);
+  --glow-a: rgba(189, 147, 249, 0.12);
+  --glow-b: rgba(255, 121, 198, 0.08);
+  --glow-c: rgba(139, 233, 253, 0.05);
+  --shadow-tint: rgba(0, 0, 0, 0.38);
+  --card-hover-bg: #3d4050;
+  --home-shadow-strong: rgba(0, 0, 0, 0.48);
+  --home-gradient-start: rgba(189, 147, 249, 0.12);
+  --home-gradient-end: rgba(255, 121, 198, 0.08);
+  --art-scrim: rgba(21, 22, 30, 0.9);
+  --art-ink: #f8f8f2;
+}
+
+/* Solarized: Ethan Schoonover's accents on base03/base02. Dark only. */
+[data-theme="solarized"] {
+  color-scheme: dark;
+  --page: #002b36;
+  --bg: #002b36;
+  --surface: #073642;
+  --ink: #eee8d5;
+  --ink2: #a8b8b8;
+  /* base0 is the palette's muted grey, but over base02 it sits just under AA. */
+  --muted: #95a6a6;
+  --border: #0d4a5a;
+  /* A step up from Solarized's teal, which lands just under AA on base02. */
+  --accent: #38b8ae;
+  --accent2: #2c9be0;
+  --accent3: #c99a10;
+  --gold: #b58900;
+  --on-accent: #002b36;
+  --code-bg: rgba(42, 161, 152, 0.14);
+  --glow-a: rgba(42, 161, 152, 0.1);
+  --glow-b: rgba(38, 139, 210, 0.08);
+  --glow-c: rgba(181, 137, 0, 0.04);
+  --shadow-tint: rgba(0, 0, 0, 0.4);
+  --card-hover-bg: #0b3d4b;
+  --home-shadow-strong: rgba(0, 0, 0, 0.5);
+  --home-gradient-start: rgba(42, 161, 152, 0.1);
+  --home-gradient-end: rgba(38, 139, 210, 0.07);
+  --art-scrim: rgba(0, 22, 28, 0.92);
+  --art-ink: #eee8d5;
+}
+
+/* Paper: a plain light palette, near-white with an indigo accent. Light only. */
+[data-theme="paper"] {
+  color-scheme: light;
+  --page: #faf9f6;
+  --bg: #faf9f6;
+  --surface: #ffffff;
+  --ink: #1c1b19;
+  --ink2: #3f3d38;
+  --muted: #6f6b62;
+  --border: #e5e2da;
+  --accent: #4f46e5;
+  --accent2: #7c3aed;
+  --accent3: #0ea5e9;
+  --gold: #d97706;
+  --on-accent: #fff;
+  --code-bg: rgba(79, 70, 229, 0.07);
+  --glow-a: rgba(79, 70, 229, 0.05);
+  --glow-b: rgba(14, 165, 233, 0.04);
+  --glow-c: transparent;
+  --shadow-tint: rgba(28, 27, 25, 0.07);
+  --card-hover-bg: #f4f2ec;
+  --home-shadow-strong: rgba(28, 27, 25, 0.12);
+  --home-gradient-start: rgba(79, 70, 229, 0.05);
+  --home-gradient-end: rgba(124, 58, 237, 0.04);
+  --art-scrim: rgba(24, 23, 20, 0.92);
+  --art-ink: #faf9f6;
+}
+
+/*
+ * Crimson: red on near-black. The reds are a step brighter than a true print red
+ * so they clear AA as link and accent copy; the surfaces keep a warm cast so the
+ * black does not read as neutral grey.
+ */
+[data-theme="crimson"] {
+  color-scheme: dark;
+  --page: #0b0606;
+  --bg: #0b0606;
+  --surface: #161010;
+  --ink: #f5eeee;
+  --ink2: #dccdcd;
+  --muted: #b09a9a;
+  --border: #2e2222;
+  --accent: #ff5c5c;
+  --accent2: #e63946;
+  --accent3: #ff8f6b;
+  --gold: #ffb454;
+  --on-accent: #1a0808;
+  --code-bg: rgba(255, 92, 92, 0.12);
+  --glow-a: rgba(255, 92, 92, 0.1);
+  --glow-b: rgba(230, 57, 70, 0.07);
+  --glow-c: rgba(255, 143, 107, 0.04);
+  --shadow-tint: rgba(0, 0, 0, 0.6);
+  --card-hover-bg: #1f1515;
+  --home-shadow-strong: rgba(0, 0, 0, 0.7);
+  --home-gradient-start: rgba(255, 92, 92, 0.12);
+  --home-gradient-end: rgba(230, 57, 70, 0.08);
+  --art-scrim: rgba(8, 3, 3, 0.92);
+  --art-ink: #f5eeee;
+}
+
+/* A palette may fix its own mode; otherwise the stored mode picks the round. */
+[data-theme="discord"],
+[data-theme="amoled"],
+[data-theme="nord"],
+[data-theme="dracula"],
+[data-theme="solarized"],
+[data-theme="crimson"],
+[data-theme="akira"][data-mode="dark"],
+[data-theme="catppuccin"][data-mode="dark"] {
+  color-scheme: dark;
 }
 
 html {
@@ -150,7 +440,7 @@ select optgroup {
 body {
   margin: 0;
   font-family: "DM Sans", sans-serif;
-  background: var(--bg);
+  background: var(--page);
   color: var(--ink);
   min-height: 100vh;
   overflow-x: hidden;
@@ -215,6 +505,16 @@ body::before {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: gradient-shift 4s ease infinite;
+}
+
+/* Where the accents are close enough in hue that a gradient reads as one smudge. */
+[data-theme="amoled"] .webui-pip-brand,
+[data-theme="nord"] .webui-pip-brand,
+[data-theme="solarized"] .webui-pip-brand,
+[data-theme="paper"] .webui-pip-brand {
+  background: none;
+  -webkit-text-fill-color: var(--ink);
+  animation: none;
 }
 
 .webui-pip-line {
@@ -290,19 +590,29 @@ a:hover {
   display: none;
 }
 
-html[data-theme="dark"] .theme-toggle__sun {
+html[data-mode="dark"] .theme-toggle__sun {
   display: none;
 }
 
-html[data-theme="dark"] .theme-toggle__moon {
+html[data-mode="dark"] .theme-toggle__moon {
   display: block;
 }
 
+/*
+ * The bell keeps to the left of the moon while there is one. A palette with a
+ * single look hides the moon (ThemeToggle renders nothing outside the two that
+ * toggle), and the bell moves into that corner rather than leaving a hole. Both
+ * hosts take the same slot, so they line up pixel for pixel.
+ */
 .notice-bell-host {
   position: fixed;
   top: max(0.85rem, env(safe-area-inset-top));
-  right: calc(max(1rem, env(safe-area-inset-right)) + 2.65rem + 0.45rem);
+  right: max(1rem, env(safe-area-inset-right));
   z-index: 200;
+}
+
+html:is([data-theme="akira"], [data-theme="catppuccin"]) .notice-bell-host {
+  right: calc(max(1rem, env(safe-area-inset-right)) + 2.65rem + 0.45rem);
 }
 
 .notice-bell {
@@ -342,7 +652,7 @@ html[data-theme="dark"] .theme-toggle__moon {
   padding: 0 0.25rem;
   border-radius: 999px;
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   font-size: 0.65rem;
   font-weight: 700;
   line-height: 1.1rem;
@@ -444,9 +754,23 @@ html[data-theme="dark"] .theme-toggle__moon {
   box-shadow: 0 8px 24px var(--shadow-tint);
 }
 
+/*
+ * Room in the header for the floating controls. A one-look palette hides the moon
+ * and the bell takes its corner, so only one width is needed there. Both rules
+ * have the same value and the same specificity, so the later one wins -- keep
+ * them equal.
+ */
+.webui-header {
+  padding-right: calc(2.65rem * 2 + 0.45rem + 0.75rem);
+}
+
+html:not(:is([data-theme="akira"], [data-theme="catppuccin"])) .webui-header {
+  padding-right: calc(2.65rem + 0.75rem);
+}
+
 @media (max-width: 980px) {
   .webui-header {
-    padding-right: 6.5rem;
+    padding-right: calc(2.65rem * 2 + 0.45rem + 0.75rem);
   }
 }
 
@@ -481,17 +805,27 @@ html[data-theme="dark"] .theme-toggle__moon {
   font-size: clamp(1.35rem, 3.5vw, 1.85rem);
   font-weight: 900;
   line-height: 1.15;
-  color: var(--ink);
   letter-spacing: -0.02em;
 }
 
-.webui-brand .gradient-text {
+/* One recipe for every gradient heading, so a theme only sets --accent* and stops. */
+.gradient-text {
   background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: gradient-shift 4s ease infinite;
+}
+
+/* A palette with one colour has no shift to animate, and a 300% size would only
+ * move white past white; keep it at rest. */
+[data-theme="amoled"] .gradient-text,
+[data-theme="nord"] .gradient-text,
+[data-theme="solarized"] .gradient-text,
+[data-theme="paper"] .gradient-text {
+  animation: none;
+  background-size: 100% 100%;
 }
 
 .webui-badge {
@@ -715,7 +1049,7 @@ body.channel-lock {
   background: color-mix(in srgb, var(--ink) 6%, var(--surface));
 }
 
-html[data-theme="dark"] .composer {
+html[data-mode="dark"] .composer {
   background: #2b2d31;
 }
 
@@ -893,7 +1227,7 @@ html[data-theme="dark"] .composer {
   box-shadow: 0 8px 24px var(--shadow-tint);
 }
 
-html[data-theme="dark"] .composer-mentions {
+html[data-mode="dark"] .composer-mentions {
   background: #2b2d31;
   border-color: #1e1f22;
 }
@@ -946,7 +1280,7 @@ html[data-theme="dark"] .composer-mentions {
   box-shadow: 0 12px 40px var(--shadow-tint);
 }
 
-html[data-theme="dark"] .composer-modal {
+html[data-mode="dark"] .composer-modal {
   background: #313338;
 }
 
@@ -1062,7 +1396,7 @@ html[data-theme="dark"] .composer-modal {
   box-shadow: 0 8px 24px var(--shadow-tint);
 }
 
-html[data-theme="dark"] .composer-pop {
+html[data-mode="dark"] .composer-pop {
   background: #2b2d31;
   border-color: #1e1f22;
 }
@@ -1070,7 +1404,7 @@ html[data-theme="dark"] .composer-pop {
 .composer-pop > input {
   flex: none;
   margin-bottom: 0.45rem;
-  background: color-mix(in srgb, var(--bg) 70%, var(--surface));
+  background: color-mix(in srgb, var(--page) 70%, var(--surface));
 }
 
 .composer-pop-scroll {
@@ -1175,7 +1509,7 @@ html[data-theme="dark"] .composer-pop {
   box-shadow: 0 12px 40px var(--shadow-tint);
 }
 
-html[data-theme="dark"] .stamp-modal {
+html[data-mode="dark"] .stamp-modal {
   background: #313338;
 }
 
@@ -1229,12 +1563,12 @@ html[data-theme="dark"] .stamp-modal {
   height: 2.6rem;
   padding: 0 0.35rem 0 0.75rem;
   border-radius: 4px;
-  background: color-mix(in srgb, var(--bg) 75%, var(--surface));
+  background: color-mix(in srgb, var(--page) 75%, var(--surface));
 }
 
-html[data-theme="dark"] .stamp-date,
-html[data-theme="dark"] .stamp-format > button,
-html[data-theme="dark"] .composer-pop > input {
+html[data-mode="dark"] .stamp-date,
+html[data-mode="dark"] .stamp-format > button,
+html[data-mode="dark"] .composer-pop > input {
   background: #1e1f22;
 }
 
@@ -1277,7 +1611,7 @@ html[data-theme="dark"] .composer-pop > input {
   height: 2.6rem;
   padding: 0 0.75rem;
   border-radius: 4px;
-  background: color-mix(in srgb, var(--bg) 75%, var(--surface));
+  background: color-mix(in srgb, var(--page) 75%, var(--surface));
   color: var(--ink);
   text-align: left;
 }
@@ -1535,9 +1869,9 @@ html[data-theme="dark"] .composer-pop > input {
 }
 
 /* ── Hero (home) ── */
+/* The "Where to next" label draws its own rule, so the hero does not add a second. */
 .webui-hero {
   padding: 2.5rem 0 2rem;
-  border-bottom: 1px solid var(--border);
   margin-bottom: 2rem;
 }
 
@@ -1564,14 +1898,6 @@ html[data-theme="dark"] .composer-pop > input {
   animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
 }
 
-.webui-hero h1 .gradient-text {
-  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-shift 4s ease infinite;
-}
 
 .webui-hero-sub {
   font-size: 1.02rem;
@@ -1620,14 +1946,6 @@ html[data-theme="dark"] .composer-pop > input {
   animation: fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
 }
 
-.page-title .gradient-text {
-  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-shift 4s ease infinite;
-}
 
 /* ── Home link cards ── */
 .webui-link-grid {
@@ -1734,14 +2052,6 @@ html[data-theme="dark"] .composer-pop > input {
   border-bottom: 1px solid var(--border);
 }
 
-.panel h2 .gradient-text {
-  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-shift 4s ease infinite;
-}
 
 .shop-grid {
   display: grid;
@@ -1950,7 +2260,7 @@ html[data-theme="dark"] .composer-pop > input {
 
 .admin-switch button.active {
   background: linear-gradient(135deg, var(--accent), var(--accent2));
-  color: #fff;
+  color: var(--on-accent);
 }
 
 .admin-grid {
@@ -2085,13 +2395,15 @@ button.admin-pick:hover {
   align-self: flex-start;
 }
 
+/* A plain button is a still gradient. Only the primary buttons (.btn-shift) animate
+ * it. A background moving under every other button on the page is a frame-by-frame
+ * repaint of every control in view, which is cost for no visible reward. */
 button {
   cursor: pointer;
   font-family: "DM Sans", sans-serif;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   background-size: 200% 200%;
-  animation: gradient-shift 6s ease infinite;
-  color: #fff;
+  color: var(--on-accent);
   border: none;
   border-radius: 10px;
   padding: 0.55rem 1.15rem;
@@ -2111,6 +2423,10 @@ button:hover {
 button:active:not(:disabled) {
   transform: translateY(1px) scale(0.96);
   filter: brightness(0.92);
+}
+
+.btn-shift {
+  animation: gradient-shift 6s ease infinite;
 }
 
 button:focus:not(:focus-visible),
@@ -2276,6 +2592,7 @@ input::placeholder {
   border-radius: 10px;
   background: var(--surface);
   background-image: none;
+  background-size: auto;
   box-shadow: none;
   animation: none;
   color: var(--ink);
@@ -2286,6 +2603,8 @@ input::placeholder {
   line-height: 1.2;
   text-align: left;
   cursor: pointer;
+  /* Several menus sit on one screen. A gradient shifting under each of them is a
+   * set of animations running for nothing. The trigger and its options are still. */
 }
 
 .menu-select--field .menu-select__toggle {
@@ -2368,7 +2687,7 @@ input::placeholder {
   position: fixed;
   inset: 0;
   z-index: 499;
-  background: color-mix(in srgb, var(--bg) 55%, transparent);
+  background: color-mix(in srgb, var(--page) 55%, transparent);
 }
 
 .menu-select__menu {
@@ -2421,7 +2740,7 @@ input::placeholder {
   padding: 0.45rem 0.65rem;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: var(--bg);
+  background: var(--page);
   color: var(--ink);
   font-family: "DM Sans", sans-serif;
   font-size: 0.9rem;
@@ -2459,6 +2778,7 @@ input::placeholder {
   border-radius: 8px;
   background: transparent;
   background-image: none;
+  background-size: auto;
   box-shadow: none;
   animation: none;
   color: var(--ink);
@@ -2467,6 +2787,31 @@ input::placeholder {
   font-weight: 600;
   letter-spacing: 0;
   text-align: left;
+}
+
+/*
+ * A fixed box, so a moon, a sun and a split icon all line their labels up. It
+ * hangs off the label's line box rather than sitting in a flex row: that centres
+ * it on the text without drawing an underline through the gap.
+ */
+.menu-select__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-right: 0.55rem;
+  vertical-align: -0.17rem;
+  color: var(--muted);
+}
+
+.menu-select__option[aria-selected="true"] .menu-select__icon {
+  color: inherit;
+}
+
+.menu-select__icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .menu-select__option:hover {
@@ -2591,10 +2936,15 @@ input::placeholder {
   filter: none;
 }
 
+/* An on switch is a still pill, not a banner to animate. */
 .settings-switch button[aria-checked="true"] {
   background: linear-gradient(135deg, var(--accent), var(--accent2));
+  background-size: 100% 100%;
+  animation: none;
 }
 
+/* The knob is --surface so it reads on both the border-grey track and the accent
+ * track; a fixed white disappeared on Paper's white panel. */
 .settings-switch button span {
   position: absolute;
   top: 0.15rem;
@@ -2602,8 +2952,8 @@ input::placeholder {
   width: 1.25rem;
   height: 1.25rem;
   border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(15, 12, 20, 0.25);
+  background: var(--surface);
+  box-shadow: 0 1px 3px var(--shadow-tint);
   transition: transform 0.15s ease;
 }
 
@@ -2660,14 +3010,38 @@ input::placeholder {
   max-width: 14rem;
 }
 
+/*
+ * Danger is the one colour a palette cannot set, because the fill and its copy
+ * have to stay a red pair. The copy follows --on-accent, so a palette with pale
+ * accents takes the print-dark red and a palette with dark accents takes the
+ * print-light one.
+ */
 button.danger {
   background: #b64032;
+  color: #fff;
   animation: none;
   background-size: auto;
 }
 
 button.danger:hover {
   background: #9d3529;
+}
+
+[data-theme="amoled"] button.danger,
+[data-theme="nord"] button.danger,
+[data-theme="dracula"] button.danger,
+[data-theme="solarized"] button.danger,
+[data-theme="crimson"] button.danger {
+  background: #d7574a;
+  color: #1a0e0c;
+}
+
+[data-theme="amoled"] button.danger:hover,
+[data-theme="nord"] button.danger:hover,
+[data-theme="dracula"] button.danger:hover,
+[data-theme="solarized"] button.danger:hover,
+[data-theme="crimson"] button.danger:hover {
+  background: #c44a3e;
 }
 
 .collection-tile__check {
@@ -3312,7 +3686,7 @@ button.collection-tile:active {
 .stats-select .menu-select__toggle {
   padding: 0.38rem 0.6rem;
   font-size: 0.82rem;
-  background: var(--bg);
+  background: var(--page);
 }
 
 .stats-card button {
@@ -3701,6 +4075,8 @@ button.linkish {
   padding: 0;
   border: 0;
   background: none;
+  background-size: auto;
+  animation: none;
   color: var(--accent);
   font: inherit;
   cursor: pointer;
@@ -3854,7 +4230,7 @@ button.linkish {
   flex-direction: column;
   gap: 0.2rem;
   padding: 2.6rem 0.6rem 0.5rem;
-  background: linear-gradient(transparent, rgba(18, 10, 28, 0.94));
+  background: linear-gradient(transparent, var(--art-scrim));
 }
 
 .catalog-poster__copy {
@@ -3898,7 +4274,6 @@ button.linkish {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: gradient-shift 4s ease infinite;
 }
 
 .catalog-poster__count.is-done {
@@ -4074,7 +4449,7 @@ button.linkish {
   border-radius: 999px;
   border: 2px solid var(--surface);
   background: var(--ink);
-  color: var(--bg);
+  color: var(--page);
   font-size: 0.58rem;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -4082,7 +4457,7 @@ button.linkish {
   text-align: center;
 }
 
-html[data-theme="dark"] .catalog-face__print {
+html[data-mode="dark"] .catalog-face__print {
   border-color: color-mix(in srgb, var(--surface) 82%, #2a2438);
 }
 
@@ -4112,8 +4487,8 @@ html[data-theme="dark"] .catalog-face__print {
   right: 0;
   bottom: 0;
   padding: 2.4rem 0.85rem 0.85rem;
-  background: linear-gradient(180deg, transparent, rgba(12, 8, 18, 0.82));
-  color: #f4eefc;
+  background: linear-gradient(180deg, transparent, var(--art-scrim));
+  color: var(--art-ink);
 }
 
 .catalog-desk__caption h2 {
@@ -4193,7 +4568,7 @@ html[data-theme="dark"] .catalog-face__print {
   color: var(--ink2);
 }
 
-html[data-theme="dark"] .catalog-desk__roll h3 {
+html[data-mode="dark"] .catalog-desk__roll h3 {
   background: color-mix(in srgb, #000 46%, var(--surface));
 }
 
@@ -4241,12 +4616,12 @@ a.catalog-desk__row:focus-visible {
   background: color-mix(in srgb, var(--surface) 88%, var(--accent));
 }
 
-html[data-theme="dark"] a.catalog-desk__row:hover,
-html[data-theme="dark"] a.catalog-desk__row:focus-visible {
+html[data-mode="dark"] a.catalog-desk__row:hover,
+html[data-mode="dark"] a.catalog-desk__row:focus-visible {
   background: color-mix(in srgb, var(--surface) 70%, #3a3350);
 }
 
-html[data-theme="dark"] .catalog-desk__row {
+html[data-mode="dark"] .catalog-desk__row {
   background: color-mix(in srgb, var(--surface) 82%, #2a2438);
 }
 
@@ -4254,7 +4629,7 @@ html[data-theme="dark"] .catalog-desk__row {
   background: color-mix(in srgb, var(--accent) 14%, var(--surface));
 }
 
-html[data-theme="dark"] .catalog-desk__row.is-you {
+html[data-mode="dark"] .catalog-desk__row.is-you {
   background: color-mix(in srgb, var(--accent) 16%, var(--surface));
 }
 
@@ -4263,8 +4638,8 @@ a.catalog-desk__row.is-you:focus-visible {
   background: color-mix(in srgb, var(--accent) 22%, var(--surface));
 }
 
-html[data-theme="dark"] a.catalog-desk__row.is-you:hover,
-html[data-theme="dark"] a.catalog-desk__row.is-you:focus-visible {
+html[data-mode="dark"] a.catalog-desk__row.is-you:hover,
+html[data-mode="dark"] a.catalog-desk__row.is-you:focus-visible {
   background: color-mix(in srgb, var(--accent) 24%, var(--surface));
 }
 
