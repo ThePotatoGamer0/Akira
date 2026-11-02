@@ -34,7 +34,7 @@ Above the tiers, three goals change what the pot buys.
 - **25,000 bits.** A poll opens in the server's pool channel and closes at midnight UTC. The winning buff is guaranteed in the roll. The other buff is still chosen at random, and it is never the same one twice.
 - **50,000 bits.** The same poll, but the top two buffs are both guaranteed, with no random pick.
 
-The goals stack on the tiers. A pot at 30,000 gives the tier 4 pair, one of them chosen by the poll, plus tracked pull.
+The goals stack on the tiers. At 10,000 and above the tracked pull is always applied on top, so a tier 4 night is `tracked pull` plus two of the four tier buffs. A pot at 30,000 gives that pair with one of them chosen by the poll. That is the most a night can give: three buffs, and never a fourth from the poll.
 
 ## What stays in the pot
 

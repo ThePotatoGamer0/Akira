@@ -4,7 +4,7 @@ import {
   type ChatInputCommandInteraction,
   type Client,
 } from "discord.js";
-import { POOL_GOALS } from "../../game/buffs.js";
+import { POOL_GOALS, buffName, poolGoal, poolTier } from "../../game/buffs.js";
 import { resolveDropChannelId, setPoolChannel } from "../../game/drops.js";
 import { GameError } from "../../game/errors.js";
 import { economySnapshot, giveToPool } from "../../game/live-buffs.js";
@@ -15,8 +15,24 @@ import { sendGameError } from "../reply.js";
 
 const POLL_GOAL = POOL_GOALS.find((row) => row.kind === "poll")!.bits;
 
+/** What tonight's roll will actually do, in one or two lines. */
+export function poolOutlook(bits: number, choices: readonly string[]): string[] {
+  const tier = poolTier(bits);
+  const goal = poolGoal(bits);
+  if (choices.length === 0) return ["Tonight: nothing is chosen until the pot reaches 10,000 bits."];
+  const slots = tier >= 4 ? 2 : 1;
+  const pickable = choices.filter((name) => name !== buffName("tracked_pull"));
+  const lines = [
+    goal >= 10_000
+      ? `Tonight: always ${buffName("tracked_pull")}, plus ${slots} of ${pickable.join(", ")}.`
+      : `Tonight: ${slots} of ${pickable.join(", ")}.`,
+  ];
+  if (goal >= 50_000) lines.push("Choose at random: none. The poll's top two are guaranteed.");
+  else if (goal >= 25_000) lines.push("Choose at random: the slot the poll does not pick.");
+  return lines;
+}
+
 function poolText(view: Awaited<ReturnType<typeof economySnapshot>>): string {
-  const choices = view.pool.choices.length > 0 ? view.pool.choices.join(", ") : "none until the pot reaches 500 bits";
   const live = view.pool.live.length > 0 ? `${view.pool.live.join(", ")} until ${view.pool.buffExpiry?.replace("T", " ").slice(0, 16)} UTC` : "none";
   const carried = view.pool.carriedBits > 0 ? `${view.pool.carriedBits.toLocaleString("en-US")} of it carried from last night` : null;
   const lines = [
@@ -25,7 +41,7 @@ function poolText(view: Awaited<ReturnType<typeof economySnapshot>>): string {
   ];
   if (carried) lines.push(`Carried: ${carried}`);
   lines.push(
-    `Can be chosen tonight: ${choices}`,
+    ...poolOutlook(view.pool.totalBits, view.pool.choices),
     `Live: ${live}`,
     `At ${POLL_GOAL.toLocaleString("en-US")} bits the server votes on a buff; at 50,000 it takes the top two.`,
     `Give bits with \`/pool give\`. That also fills your milestone bar.`,
