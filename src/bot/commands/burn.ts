@@ -118,8 +118,8 @@ export const burn: AkiraCommand = {
       const result = await burnOwnedCard(interaction.user.id, interaction.user.username, cardId, interaction.guildId);
       const file = new AttachmentBuilder(result.imagePath, { name: "burn.gif" });
       await interaction.editReply({
-        content: `Akira burned **${result.characterName}** #${result.printNumber} and tucked ${result.awarded} bits away. You now have ${result.balance}.`,
-        files: [file],
+      content: `Akira burned **${result.characterName}** #${result.printNumber} and tucked ${result.awarded} bits away. You now have ${result.balance}.`,
+      files: [file],
       });
     } catch (err) {
       await sendGameError(interaction, err);

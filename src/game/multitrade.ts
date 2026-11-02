@@ -1,12 +1,125 @@
 import { prisma } from "../db/client.js";
+import { TRADE_DAILY_PAIR_VALUE, TRADE_SETTLE_COOLDOWN_MS, formatRemaining } from "./balance.js";
 import { clearWishlistsForOwnedCards, noteWishlistReceipts } from "./cards.js";
 import { mintCardCode } from "./codes.js";
 import { GameError } from "./errors.js";
 import type { ParsedTradeOffer } from "./multitrade-text.js";
+import { bitsCapNote, multitradeVerdict, pairBudget, pairValueToday, verdictFromEntries, type Fairness } from "./trade-value.js";
 import { ensureUser } from "./users.js";
 
 /** Closes after this long with no agree, offer, or lock. */
 export const MULTITRADE_WINDOW_MS = 10 * 60 * 1000;
+
+/**
+ * A gift with nothing on the other side goes through even when the pair is over today's budget.
+ * Both players press Release; one alone could otherwise drain the pair's allowance on the other.
+ * Held here rather than in the database: a restart loses the list, and gifts are the forgiving path.
+ */
+const budgetReleases = new Map<string, Set<string>>();
+const forcePasses = new Set<string>();
+const RELEASE_MS = 10 * 60 * 1000;
+
+export type ReleaseState = { releasedBy: string[]; needed: string[]; reopened: boolean };
+
+/**
+ * Everything on a gift sits on one side. Returns which player, worked out from the entry owners.
+ */
+function giftSides(
+  trade: { fromUserId: string; toUserId: string },
+  entries: Array<{ userId: string; cardId: string | null; bits: number }>,
+): { gift: boolean; giverId: string | null } {
+  const offered = (userId: string) =>
+    entries.some((entry) => entry.userId === userId && (entry.cardId !== null || entry.bits > 0));
+  const fromEmpty = !offered(trade.fromUserId);
+  const toEmpty = !offered(trade.toUserId);
+  return { gift: fromEmpty !== toEmpty, giverId: fromEmpty ? trade.toUserId : toEmpty ? trade.fromUserId : null };
+}
+
+/** A cancelled multitrade, put back to `open` so it can be locked again. */
+async function reopen(id: string): Promise<TradeRow> {
+  return prisma.multitrade.update({
+    where: { id },
+    data: { status: "open", fromLocked: false, toLocked: false, closeReason: null, updatedAt: new Date() },
+    include: tradeInclude,
+  });
+}
+
+/** Read a trade for the embed, expiring it first if it has gone stale. */
+export async function viewMultitrade(id: string): Promise<MultitradeView> {
+  return toView(await liveTrade(id));
+}
+
+/**
+ * One player agreeing to send a gift past the pair's budget. The trade reopens once both have;
+ * before that it stays cancelled with the reason on it.
+ */
+export async function releaseGift(id: string, discordId: string): Promise<ReleaseState> {
+  const trade = await liveTrade(id);
+  const who = party(trade, discordId);
+  const entries = await prisma.multitradeEntry.findMany({ where: { tradeId: id } });
+  const sides = giftSides({ fromUserId: trade.fromUser.id, toUserId: trade.toUser.id }, entries);
+  const from = trade.fromUser.discordId;
+  const to = trade.toUser.discordId;
+  if (!sides.gift) {
+    throw new GameError("not-gift", "Only a gift can go past the daily budget. A trade between two sides waits until tomorrow.");
+  }
+  if (sides.giverId !== (who === "from" ? trade.fromUser.id : trade.toUser.id)) {
+    throw new GameError("not-waiting", "The player giving has to press Release.");
+  }
+  if (trade.status === "done") throw new GameError("closed", "This trade is already complete.");
+  const until = budgetReleases.get(id) ?? new Set<string>();
+  until.add(discordId);
+  budgetReleases.set(id, until);
+  setTimeout(() => budgetReleases.delete(id), RELEASE_MS).unref();
+  const releasedBy = [from, to].filter((player) => until.has(player));
+  const needed = [from, to].filter((player) => !until.has(player));
+  if (needed.length === 0 && trade.status === "cancelled") {
+    await reopen(id);
+    return { releasedBy, needed, reopened: true };
+  }
+  return { releasedBy, needed, reopened: false };
+}
+
+/** An admin waving a blocked (lopsided) trade through. The pass lasts until the deal completes. */
+export function forceMultitrade(id: string): void {
+  forcePasses.add(id);
+  setTimeout(() => forcePasses.delete(id), RELEASE_MS).unref();
+}
+
+/** The trade cooldown both players rest in after a deal completes. */
+export async function tradeCooldownLeft(userId: string, now = Date.now()): Promise<number> {
+  const row = await prisma.cooldown.findUnique({ where: { userId_type: { userId, type: "TRADE" } } });
+  if (!row) return 0;
+  return Math.max(0, row.expiresAt.getTime() - now);
+}
+
+/**
+ * Refuse a new offer while either player rests after a trade.
+ * The 30-second offer throttle is the in-memory command limiter, not this.
+ */
+export async function refuseTradeCooldown(discordIds: string[], verb = "trade"): Promise<void> {
+  for (const discordId of discordIds) {
+    const user = await prisma.user.findUnique({ where: { discordId }, select: { id: true } });
+    if (!user) continue;
+    const left = await tradeCooldownLeft(user.id);
+    if (left <= 0) continue;
+    throw new GameError(
+      "trade-cooldown",
+      `You just finished a trade. Akira needs ${formatRemaining(left)} before you can ${verb}.`,
+    );
+  }
+}
+
+export async function startTradeCooldown(userIds: string[]): Promise<void> {
+  const expiresAt = new Date(Date.now() + TRADE_SETTLE_COOLDOWN_MS);
+  for (const userId of userIds) {
+    await prisma.cooldown.upsert({
+      where: { userId_type: { userId, type: "TRADE" } },
+      create: { userId, type: "TRADE", expiresAt },
+      update: { expiresAt },
+    });
+  }
+}
 
 const OPEN = ["request", "open"] as const;
 
@@ -31,6 +144,8 @@ export type MultitradeView = {
   closeReason: string | null;
   from: MultitradeSide;
   to: MultitradeSide;
+  /** Points each side is worth, and whether the deal is lopsided. Gifts come back fair. */
+  fairness: Fairness & { fromValue: number; toValue: number; pairValue: number; remaining: number };
   /** Characters each side started watching and no longer needs to, keyed by Discord id. */
   wishlistCleared: Array<{ discordId: string; names: string[] }>;
 };
@@ -85,6 +200,10 @@ async function toView(trade: TradeRow): Promise<MultitradeView> {
     include: { variant: { include: { character: true } } },
   });
   const names = new Map(cards.map((card) => [card.id, card.variant.character.name]));
+  const offer = hasOffer(entries);
+  const verdict = offer
+    ? await multitradeVerdict({ id: trade.id, fromUserId: trade.fromUser.id, toUserId: trade.toUser.id })
+    : { fairness: { level: "fair" as const, ratio: 0, note: "" }, fromValue: 0, toValue: 0, pairValue: 0, remaining: TRADE_DAILY_PAIR_VALUE };
   return {
     id: trade.id,
     status: asStatus(trade.status),
@@ -93,6 +212,7 @@ async function toView(trade: TradeRow): Promise<MultitradeView> {
     closeReason: trade.closeReason,
     from: sideOf(trade.fromUser, trade.fromLocked, entries, names),
     to: sideOf(trade.toUser, trade.toLocked, entries, names),
+    fairness: { ...verdict.fairness, fromValue: verdict.fromValue, toValue: verdict.toValue, pairValue: verdict.pairValue, remaining: verdict.remaining },
     wishlistCleared: [],
   };
 }
@@ -142,6 +262,7 @@ export async function proposeMultitrade(input: {
   if (await busyWithSomeone([from.id, to.id])) {
     throw new GameError("busy", "One of you is already in a multitrade.");
   }
+  await refuseTradeCooldown([input.fromDiscordId, input.toDiscordId], "open another multitrade");
   const id = await mintCardCode(async (code) => {
     const existing = await prisma.multitrade.findUnique({ where: { id: code }, select: { id: true } });
     return existing !== null;
@@ -212,15 +333,34 @@ export async function lockMultitrade(id: string, discordId: string): Promise<Mul
     throw new GameError("accepted", "You already locked in.");
   }
 
+  const pairValue = await pairValueToday(current.fromUser.id, current.toUser.id);
+  const released = (budgetReleases.get(id)?.size ?? 0) >= 2;
+  const forced = forcePasses.has(id);
   const saved = await prisma.$transaction(async (tx) => {
     const trade = await tx.multitrade.findUnique({ where: { id }, include: tradeInclude });
     if (!trade || trade.status !== "open") throw new GameError("closed", "This trade is no longer open.");
-    const entries = await tx.multitradeEntry.findMany({ where: { tradeId: id } });
+    const entries = await tx.multitradeEntry.findMany({ where: { tradeId: id }, include: { card: { select: { variantId: true, quality: true, printNumber: true } } } });
     if (!hasOffer(entries)) {
       throw new GameError("empty", "Add a card or some bits before locking.");
     }
+    // Checked on every lock, so a lopsided deal cannot slip through by locking early.
+    const verdict = await verdictFromEntries(trade, entries, pairValue);
+    const gift = entries.every((entry) => entry.userId === trade.fromUserId) || entries.every((entry) => entry.userId === trade.toUserId);
+    const budget = pairBudget(pairValue, Math.max(verdict.fromValue, verdict.toValue));
+    const blocked = verdict.fairness.level === "block" && !forced
+      ? verdict.fairness.note
+      : budget.over && !released
+        ? (gift ? `${budget.note} A gift can still go through: press **Release**.` : budget.note)
+        : null;
     const fromLocked = trade.fromLocked || who === "from";
     const toLocked = trade.toLocked || who === "to";
+    if (blocked) {
+      return tx.multitrade.update({
+        where: { id },
+        data: { status: "cancelled", fromLocked, toLocked, closeReason: blocked },
+        include: tradeInclude,
+      });
+    }
     if (!fromLocked || !toLocked) {
       const waiting = await tx.multitrade.update({
         where: { id },
@@ -274,12 +414,15 @@ export async function lockMultitrade(id: string, discordId: string): Promise<Mul
     });
     return tx.multitrade.update({
       where: { id },
-      data: { status: "done", fromLocked: true, toLocked: true },
+      data: { status: "done", fromLocked: true, toLocked: true, value: Math.max(verdict.fromValue, verdict.toValue) },
       include: tradeInclude,
     });
   });
   let wishlistCleared: Array<{ discordId: string; names: string[] }> = [];
   if (saved.status === "done") {
+    budgetReleases.delete(saved.id);
+    forcePasses.delete(saved.id);
+    await startTradeCooldown([saved.fromUser.id, saved.toUser.id]);
     const moved = await prisma.multitradeEntry.findMany({
       where: { tradeId: saved.id, cardId: { not: null } },
       select: { cardId: true },
@@ -349,6 +492,14 @@ export async function addToMultitrade(
     if (nextBits > balance) {
       throw new GameError("bits", `You have ${balance} bits. ${nextBits} is more than that.`);
     }
+    // The cap only bites once the other side has something on it; a gift can be any size.
+    const theirs = await tx.multitradeEntry.findMany({
+      where: { tradeId: fresh.id, userId: { not: user.id } },
+      include: { card: { select: { variantId: true, quality: true, printNumber: true } } },
+    });
+    const otherEmpty = !hasOffer(theirs);
+    const capNote = bitsCapNote(nextBits, otherEmpty);
+    if (capNote) throw new GameError("bits-cap", capNote);
     for (const cardId of pending) {
       await tx.multitradeEntry.create({ data: { tradeId: fresh.id, userId: user.id, cardId } });
     }

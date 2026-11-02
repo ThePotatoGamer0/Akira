@@ -2,6 +2,8 @@ import { prisma } from "../db/client.js";
 import { noteWishlistReceipts } from "./cards.js";
 import { mintCardCode } from "./codes.js";
 import { GameError } from "./errors.js";
+import { refuseTradeCooldown, startTradeCooldown } from "./multitrade.js";
+import { offerVerdict, pairBudget, pairValueToday, type Fairness } from "./trade-value.js";
 import { ensureUser } from "./users.js";
 
 /** How long both players have to accept. */
@@ -39,6 +41,8 @@ export type TransferView = {
   toCard: TransferCard | null;
   /** Set when the cards moved before both players accepted. */
   changed: boolean;
+  /** Points each card is worth. A give is a gift, so it reads fair. */
+  fairness: Fairness & { fromValue: number; toValue: number; remaining: number };
   /** Characters the recipient already watched, now off their list. */
   wishlistCleared: string[];
 };
@@ -141,6 +145,10 @@ async function toView(offer: OfferRow, changed = false): Promise<TransferView> {
   const status = offer.status === "done" || offer.status === "cancelled" || offer.status === "expired"
     ? offer.status
     : "pending";
+  const verdict = offer.kind === "trade" && fromCard && toCard
+    ? await offerVerdict(cardItem(fromCard), cardItem(toCard))
+    : { fromValue: 0, toValue: 0, fairness: { level: "fair" as const, ratio: 0, note: "" } };
+  const pairValue = offer.status === "pending" ? await pairValueToday(offer.fromUserId, offer.toUserId) : 0;
   return {
     id: offer.id,
     kind: offer.kind === "trade" ? "trade" : "give",
@@ -152,8 +160,18 @@ async function toView(offer: OfferRow, changed = false): Promise<TransferView> {
     fromCard: fromCard ? asCard(fromCard) : null,
     toCard: toCard ? asCard(toCard) : null,
     changed,
+    fairness: {
+      ...verdict.fairness,
+      fromValue: verdict.fromValue,
+      toValue: verdict.toValue,
+      remaining: pairBudget(pairValue, Math.max(verdict.fromValue, verdict.toValue)).remaining,
+    },
     wishlistCleared: [],
   };
+}
+
+function cardItem(card: { variantId: string; quality: string; printNumber: number }) {
+  return { bits: 0 as const, card: { variantId: card.variantId, quality: card.quality, printNumber: card.printNumber } };
 }
 
 const offerInclude = { fromUser: true, toUser: true } as const;
@@ -177,6 +195,7 @@ export async function proposeGive(input: {
   }
   const from = await ensureUser(input.fromDiscordId, input.fromUsername);
   const to = await ensureUser(input.toDiscordId, input.toUsername);
+  await refuseTradeCooldown([input.fromDiscordId, input.toDiscordId], "give cards");
   const card = await loadCard(input.cardId);
   if (!card) throw new GameError("missing", `Akira couldn't find a card with the id \`${input.cardId.trim().toLowerCase()}\`.`);
   if (card.ownerId !== from.id) throw new GameError("not-owner", "That card isn't yours.");
@@ -222,6 +241,7 @@ export async function proposeTrade(input: {
     throw new GameError("not-owner", "Akira needs one of your cards and one of theirs.");
   }
   const to = await ensureUser(theirs.owner.discordId, theirs.owner.discordUsername ?? theirs.owner.discordId);
+  await refuseTradeCooldown([input.fromDiscordId, theirs.owner.discordId], "trade");
   await assertCardsFree([mine.id, theirs.id]);
   const id = await mintOfferId();
   const offer = await prisma.transferOffer.create({
@@ -313,6 +333,7 @@ export async function acceptTransfer(offerId: string, discordId: string): Promis
       });
       return { offer: cancelled, changed: true };
     }
+    const value = offer.kind === "trade" && toCard ? (await offerVerdict(cardItem(fromCard), cardItem(toCard))).fromValue : 0;
     const receivedAt = new Date();
     await tx.card.update({ where: { id: fromCard.id }, data: { ownerId: offer.toUserId, tag: null, obtainedAt: receivedAt } });
     if (offer.kind === "trade" && toCard) {
@@ -320,13 +341,14 @@ export async function acceptTransfer(offerId: string, discordId: string): Promis
     }
     const done = await tx.transferOffer.update({
       where: { id: offer.id },
-      data: { status: "done", fromConfirmed: true, toConfirmed: true },
+      data: { status: "done", fromConfirmed: true, toConfirmed: true, value },
       include: offerInclude,
     });
     return { offer: done, changed: false };
   });
   let cleared: string[] = [];
   if (saved.offer.status === "done") {
+    await startTradeCooldown([saved.offer.fromUserId, saved.offer.toUserId]);
     const moved = saved.offer.kind === "trade" && saved.offer.toCardId
       ? [saved.offer.fromCardId, saved.offer.toCardId]
       : [saved.offer.fromCardId];

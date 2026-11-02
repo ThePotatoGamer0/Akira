@@ -9,6 +9,8 @@ The words after the name have to be exactly the parameters that command accepts.
 
 The full command name always works after the prefix (`acollection`). The short aliases below are the extra names.
 
+Akira ignores a command that comes too soon after the last one. Ordinary commands have to wait **5 seconds**; `/give` and `/multitrade` wait **30 seconds**. Nothing is said back, so the spam disappears quietly. `/ping` never waits, and buttons and menus are never throttled.
+
 ## Cards
 
 | Command | Parameters | Aliases |

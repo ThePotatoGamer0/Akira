@@ -15,10 +15,22 @@ import {
 import { rollFreshSlots, type PresentedSlot } from "../game/drops.js";
 import { displayFrameId, serverDefaultFrame } from "../game/frames.js";
 import { parseServerBuffs } from "../game/live-buffs.js";
+import { FEATURED_ART_DEPTH, pickFeatured, type FeaturedCandidate } from "../game/featured.js";
+import { seriesTrackedBy } from "../game/stats.js";
 import { isInitLocked } from "../utils/init-lock.js";
 import { loadFrame } from "../utils/frames.js";
 
 const PLAIN_DEPTH = 2;
+/** Only this often does a series whose art is not drawn yet get reported. */
+const THIN_FEATURED_NOTE_MS = 60 * 60 * 1000;
+let thinFeaturedAt = 0;
+
+function reportThinFeatured(seriesId: string, pictures: number): void {
+  const now = Date.now();
+  if (now - thinFeaturedAt < THIN_FEATURED_NOTE_MS) return;
+  thinFeaturedAt = now;
+  console.warn(`Featured drop leans on ${seriesId}, which has only ${pictures} picture(s) drawn. Run the farm to fill it in.`);
+}
 
 export type ShelvedDrop = {
   key: string;
@@ -213,12 +225,13 @@ async function nextStrip(limit: number): Promise<{ key: string; slots: Presented
   return { key: dropShapeKey(shape), slots };
 }
 
-async function seriesOrder(): Promise<string[]> {
+/** The featured series to draw, or null when there are none. Reported when art is missing. */
+async function seriesOrder(onArtMissing: (seriesId: string, pictures: number) => void): Promise<string[]> {
   const now = new Date();
   const [catalog, locked, shop] = await Promise.all([
     prisma.series.findMany({
       where: { characters: { some: { variants: { some: {} } } } },
-      select: { id: true },
+      select: { id: true, _count: { select: { characters: true } } },
       orderBy: { slug: "asc" },
     }),
     prisma.buff.findMany({
@@ -228,6 +241,14 @@ async function seriesOrder(): Promise<string[]> {
     prisma.featuredSeries.findUnique({ where: { id: "shop" } }),
   ]);
   const catalogIds = new Set(catalog.map((row) => row.id));
+  const lockedIds = new Set(locked.map((row) => row.seriesId).filter((id): id is string => id !== null && catalogIds.has(id)));
+  const shopId = shop?.day === utcDay(now) && shop.seriesId && catalogIds.has(shop.seriesId) ? shop.seriesId : null;
+  const byId = new Map(catalog.map((row) => [row.id, row]));
+  const tracked = await seriesTrackedBy([...byId.keys()]);
+  const candidates: FeaturedCandidate[] = [...byId.values()]
+    .filter((row) => !lockedIds.has(row.id) && row.id !== shopId)
+    .map((row) => ({ id: row.id, tracked: tracked.get(row.id) ?? 0, pictures: row._count.characters }));
+  const picked = pickFeatured(candidates);
   const first: string[] = [];
   const seen = new Set<string>();
   const prefer = (id: string | null | undefined) => {
@@ -235,14 +256,21 @@ async function seriesOrder(): Promise<string[]> {
     seen.add(id);
     first.push(id);
   };
+  // A series someone bought keeps its place, and the shop's pick of the day goes next.
   for (const row of locked) prefer(row.seriesId);
-  if (shop?.day === utcDay(now)) prefer(shop.seriesId);
+  prefer(shopId);
+  if (picked >= 0) {
+    const chosen = candidates[picked]!;
+    if (chosen.pictures < FEATURED_ART_DEPTH) onArtMissing(chosen.id, chosen.pictures);
+    prefer(chosen.id);
+  }
+  // The rest stay only as a fallback for when the picked one already has a drop waiting.
   for (const row of catalog) prefer(row.id);
   return first;
 }
 
 async function nextFeatured(): Promise<{ key: string; slots: PresentedSlot[] } | null> {
-  const seriesIds = await seriesOrder();
+  const seriesIds = await seriesOrder(reportThinFeatured);
   const known = new Set(seriesIds);
   for (const key of queues.keys()) {
     const seriesId = key.split(":").slice(4).join(":");

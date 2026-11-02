@@ -5,10 +5,12 @@ import { recordCooldownNotice } from "../game/notices.js";
 import { reminderLabel, type ReminderAction } from "../game/reminders.js";
 import { REMINDER_DM_TTL_MS, rememberEphemeralDm } from "./dm-mailbox.js";
 
-const LABEL: Record<CooldownType, ReminderAction> = {
+/** A trade timer is set silently after a deal; there is no reminder to schedule for it. */
+const LABEL: Record<CooldownType, ReminderAction | null> = {
   DAILY: "daily",
   DROP: "drop",
   GRAB: "grab",
+  TRADE: null,
 };
 
 const timers = new Map<string, NodeJS.Timeout>();
@@ -59,7 +61,9 @@ async function deliver(discordId: string, type: CooldownType): Promise<void> {
   }
   try {
     const discordUser = await bound.users.fetch(discordId);
-    const label = reminderLabel(LABEL[type]);
+    const action = LABEL[type];
+    if (!action) return;
+    const label = reminderLabel(action);
     const sent = await discordUser.send(`**${label}** is ready.`);
     await rememberEphemeralDm(sent, new Date(Date.now() + REMINDER_DM_TTL_MS));
   } catch (err) {

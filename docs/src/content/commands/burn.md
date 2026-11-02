@@ -14,7 +14,6 @@ shortcuts: b
 | Rare | 100 |
 | Epic | 200 |
 | Legendary | 500 |
-
 ## Parameters
 
 | Name | Required | What it is |

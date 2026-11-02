@@ -32,6 +32,7 @@ ad
 - Dropping, grabbing, the server pool, and choosing the drop channel only run in a server Akira's owner is in. Anywhere else she says you cannot do that in a private server. Collection, trades, and the other personal commands still work.
 - For the first 20 seconds, if someone else takes a card, you can grab that same card and take it back. Akira waits to say who grabbed until you take a card, or until those 20 seconds end. If you take their card, she says you fought them off, and their grab is ready again. You get the card, 5 bits, and your own grab cooldown.
 - Each card is a separate draw. The same character can appear more than once. Base art is equally likely. Alternate arts are rarer. Quality is rolled on its own and does not change which picture was drawn. Only a legendary is shiny.
+- Daily, Akira picks a featured series for the [shop](/commands/shop), and the pick leans toward the series most players [track](/commands/cc). A series tracked by everyone is about nine times as likely to be picked as one nobody tracks, so the featured series is usually one people want. A series with fewer than three drawn pictures is skipped, so a featured drop can always show you something new.
 - When the drop expires, the message gains a line that the cards can no longer be grabbed.
 
 ## See also
