@@ -106,7 +106,7 @@ model User {
   /** Frame for this player's cards that don't have one of their own. Null uses the server frame. */
   defaultFrameId      Int?
   /** How the WebUI collection opens. The menu on that page can change it for one visit. */
-  collectionOrder     String                 @default("character")
+  collectionOrder     String                 @default("auto")
   /** WebUI collection skips page buttons and keeps loading 16 cards at a time. */
   continuousScroll    Boolean                @default(false)
   /** Series names in the WebUI: english or romaji. */

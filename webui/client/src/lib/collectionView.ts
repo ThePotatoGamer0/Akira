@@ -1,4 +1,5 @@
 export const COLLECTION_ORDERS = [
+  { id: "auto", label: "Auto (best match)" },
   { id: "character", label: "Character name" },
   { id: "series", label: "Series, then character" },
   { id: "quality", label: "Quality" },
@@ -9,5 +10,5 @@ export const COLLECTION_ORDERS = [
 export type CollectionOrder = (typeof COLLECTION_ORDERS)[number]["id"];
 
 export function collectionOrder(value: string | null | undefined): CollectionOrder {
-  return COLLECTION_ORDERS.some((option) => option.id === value) ? (value as CollectionOrder) : "character";
+  return COLLECTION_ORDERS.some((option) => option.id === value) ? (value as CollectionOrder) : "auto";
 }

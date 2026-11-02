@@ -526,7 +526,11 @@ export function CollectionPage(props: {
           className="collection-order"
           label="Order"
           value={search.order}
-          options={COLLECTION_ORDERS.map((option) => ({ value: option.id, label: option.label }))}
+          options={COLLECTION_ORDERS.map((option) => ({
+            value: option.id,
+            // A search under a fixed order narrows the collection; it does not outrank it.
+            label: option.id === "auto" && search.q ? "Auto (best match)" : option.label,
+          }))}
           onChange={(order) => {
             const next = order as CollectionOrder;
             setSearch((current) => (current.order === next ? current : { ...current, order: next, page: 0 }));

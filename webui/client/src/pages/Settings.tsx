@@ -308,7 +308,9 @@ export function SettingsPage(props: {
               });
             }}
           />
-          <p className="settings-hint">The collection opens in this order. The menu on that page can change it while you look.</p>
+          <p className="settings-hint">
+            The collection opens in this order. The menu on that page can change it while you look. Auto puts search matches first; any other order keeps the collection sorted that way during a search.
+          </p>
         </div>
         <div className="settings-row settings-switch">
           <div>

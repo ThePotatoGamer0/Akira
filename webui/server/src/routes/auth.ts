@@ -13,7 +13,7 @@ import { userIsAdmin } from "../host.js";
 import { seriesTitleStyle } from "../../../../src/game/series-meta.js";
 import { akiraAddressName, sanitizePreferredName } from "../utils/akira-address-name.js";
 
-const COLLECTION_ORDERS = new Set(["character", "series", "quality", "tag", "recent"]);
+const COLLECTION_ORDERS = new Set(["auto", "character", "series", "quality", "tag", "recent"]);
 const SERIES_TITLES = new Set(["romaji", "english"]);
 
 export const authRouter = Router();
@@ -38,7 +38,7 @@ function serializeMe(u: {
     discordId: u.discordId,
     discordUsername: u.discordUsername,
     preferredName: u.preferredName ? sanitizePreferredName(u.preferredName) : null,
-    collectionOrder: COLLECTION_ORDERS.has(u.collectionOrder) ? u.collectionOrder : "character",
+    collectionOrder: COLLECTION_ORDERS.has(u.collectionOrder) ? u.collectionOrder : "auto",
     continuousScroll: u.continuousScroll === true,
     seriesTitle: seriesTitleStyle(u.seriesTitle),
     displayName: akiraAddressName(u),
