@@ -227,10 +227,16 @@ model ServerPool {
   id         String    @id @default(cuid())
   guildId    String    @unique
   totalBits  Int       @default(0)
+  /** What the last midnight left behind, fresh in the pot for this morning. */
+  carriedBits Int      @default(0)
   lastReset  DateTime?
   activeBuff String?
   buffTier   Int       @default(0)
   buffExpiry DateTime?
+  /** `channelId/messageId` of today's buff poll, cleared at midnight. */
+  pollMessage String?
+  /** The UTC day the poll went out, so a pot cannot open two in one day. */
+  pollDay     String?
 }
 
 model UserPoolContribution {
@@ -349,6 +355,8 @@ model MultitradeEntry {
 model GuildConfig {
   guildId       String  @id
   dropChannelId String?
+  /** Where the pool's buff poll is posted. Null skips the poll and rolls at random. */
+  poolChannelId String?
   /** Also accept Karuta's k and k! prefixes. Incompatible with Karuta on those prefixes. */
   karutaPrefix  Boolean @default(false)
   /** Frame drawn on cards that do not have one of their own. */

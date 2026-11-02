@@ -127,6 +127,21 @@ export async function setDropChannel(guildId: string, channelId: string): Promis
   });
 }
 
+/** Where the pool's buff poll is posted, or null when the server has not picked one. */
+/** The channel an admin picked for the pool poll, or null to fall back to the drop channel. */
+export async function resolvePoolChannelId(guildId: string): Promise<string | null> {
+  const row = await prisma.guildConfig.findUnique({ where: { guildId } });
+  return row?.poolChannelId ?? null;
+}
+
+export async function setPoolChannel(guildId: string, channelId: string | null): Promise<void> {
+  await prisma.guildConfig.upsert({
+    where: { guildId },
+    create: { guildId, poolChannelId: channelId },
+    update: { poolChannelId: channelId },
+  });
+}
+
 async function cooldownRemaining(userId: string, type: "DROP" | "GRAB" | "DAILY"): Promise<number> {
   const row = await prisma.cooldown.findUnique({
     where: { userId_type: { userId, type } },

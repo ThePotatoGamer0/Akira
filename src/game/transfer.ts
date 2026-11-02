@@ -2,7 +2,6 @@ import { prisma } from "../db/client.js";
 import { noteWishlistReceipts } from "./cards.js";
 import { mintCardCode } from "./codes.js";
 import { GameError } from "./errors.js";
-import { refuseTradeCooldown, startTradeCooldown } from "./multitrade.js";
 import { offerVerdict, pairBudget, pairValueToday, type Fairness } from "./trade-value.js";
 import { ensureUser } from "./users.js";
 
@@ -195,7 +194,6 @@ export async function proposeGive(input: {
   }
   const from = await ensureUser(input.fromDiscordId, input.fromUsername);
   const to = await ensureUser(input.toDiscordId, input.toUsername);
-  await refuseTradeCooldown([input.fromDiscordId, input.toDiscordId], "give cards");
   const card = await loadCard(input.cardId);
   if (!card) throw new GameError("missing", `Akira couldn't find a card with the id \`${input.cardId.trim().toLowerCase()}\`.`);
   if (card.ownerId !== from.id) throw new GameError("not-owner", "That card isn't yours.");
@@ -241,7 +239,6 @@ export async function proposeTrade(input: {
     throw new GameError("not-owner", "Akira needs one of your cards and one of theirs.");
   }
   const to = await ensureUser(theirs.owner.discordId, theirs.owner.discordUsername ?? theirs.owner.discordId);
-  await refuseTradeCooldown([input.fromDiscordId, theirs.owner.discordId], "trade");
   await assertCardsFree([mine.id, theirs.id]);
   const id = await mintOfferId();
   const offer = await prisma.transferOffer.create({
@@ -348,7 +345,6 @@ export async function acceptTransfer(offerId: string, discordId: string): Promis
   });
   let cleared: string[] = [];
   if (saved.offer.status === "done") {
-    await startTradeCooldown([saved.offer.fromUserId, saved.offer.toUserId]);
     const moved = saved.offer.kind === "trade" && saved.offer.toCardId
       ? [saved.offer.fromCardId, saved.offer.toCardId]
       : [saved.offer.fromCardId];

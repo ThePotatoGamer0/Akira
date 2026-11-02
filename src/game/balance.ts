@@ -22,8 +22,6 @@ export const DROP_PROTECTION_MS = 20 * 1000;
 export const DEFAULT_RATE_LIMIT_MS = 5 * 1000;
 /** Opening a trade, a multitrade, or a give offer. */
 export const TRADE_RATE_LIMIT_MS = 30 * 1000;
-/** Both players rest this long after a trade completes, so a big deal cannot be split up. */
-export const TRADE_SETTLE_COOLDOWN_MS = 10 * 60 * 1000;
 /** Bits one player can put up in a two-sided trade. A one-sided gift is not capped. */
 export const MAX_TRADE_BITS = 2000;
 /** Points (cards plus bits) two players can trade between them in one UTC day, both directions. */
@@ -31,6 +29,10 @@ export const TRADE_DAILY_PAIR_VALUE = 4000;
 
 export const GRAB_BITS = 5;
 export const DAILY_BITS = 100;
+
+/** How much a tracked pull leans art from a player's own series over everything else. */
+export const TRACKED_PULL_MULTIPLIER = 5;
+
 /** One daily. Enough to notice, and short of the cheapest buff. */
 export const OUTAGE_BITS = DAILY_BITS;
 /** A restart shorter than this is a blip, not an outage players missed. */
