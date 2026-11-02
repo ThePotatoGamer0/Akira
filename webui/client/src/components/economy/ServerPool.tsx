@@ -10,12 +10,24 @@ type PoolState = {
   buffExpiry: string | null;
 };
 
-/** What the pot's next milestone is, in the words the bot uses. */
+/** What the pot's next milestone buys, in the words the bot uses. */
 function goalLine(pool: PoolState): string {
   if (pool.goal >= 50_000) return "Tonight's poll names both buffs.";
   if (pool.goal >= 25_000) return "Tonight's poll names one buff and the other is rolled at random.";
-  if (pool.goal >= 10_000) return "Tonight's buffs include the tracked pull, and the rest is rolled at random.";
+  if (pool.goal >= 10_000) return "Tracked pull is guaranteed tonight. The two tier buffs are rolled at random.";
   return `${(10_000 - pool.totalBits).toLocaleString()} more bits unlocks the tracked pull.`;
+}
+
+/** The bot's `/pool show` wording, so the site and the bot say the same thing. */
+function outlookLines(pool: PoolState): string[] {
+  if (pool.choices.length === 0) return ["Tonight: nothing is chosen until the pot reaches 10,000 bits."];
+  const slots = pool.tier >= 4 ? 2 : 1;
+  const pickable = pool.choices.filter((name) => name !== "Tracked pull");
+  const always = pool.goal >= 10_000 ? "always Tracked pull, plus " : "";
+  const lines = [`Tonight: ${always}${slots} of ${pickable.join(", ")}.`];
+  if (pool.goal >= 50_000) lines.push("Choose at random: none. The poll's top two are guaranteed.");
+  else if (pool.goal >= 25_000) lines.push("Choose at random: the slot the poll does not pick.");
+  return lines;
 }
 
 export function ServerPool(props: {
@@ -78,7 +90,9 @@ export function ServerPool(props: {
         {pool.carriedBits > 0 ? ` ${pool.carriedBits.toLocaleString()} of it carried from last night.` : ""}
       </p>
       <p>{goalLine(pool)}</p>
-      <p>Can be chosen tonight: {pool.choices.length > 0 ? pool.choices.join(", ") : "nothing until 500 bits"}.</p>
+      {outlookLines(pool).map((line) => (
+        <p key={line}>{line}</p>
+      ))}
       <p>
         Live: {pool.live.length > 0 ? `${pool.live.join(", ")} until ${pool.buffExpiry?.replace("T", " ").slice(0, 16)} UTC` : "none"}.
       </p>
