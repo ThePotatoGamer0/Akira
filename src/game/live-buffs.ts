@@ -8,8 +8,10 @@ import {
   MILESTONES,
   missedMidnight,
   nextMilestone,
-  pickServerBuffs,
+  pickGoalBuffs,
   poolChoices,
+  poolGoal,
+  poolSpend,
   poolTier,
   prestigeKinds,
   prestigeLine,
@@ -17,6 +19,7 @@ import {
   resolveEffects,
   shopItem,
   SHOP_ITEMS,
+  buffName,
   utcDay,
   type ActiveEffects,
   type BuffKind,
@@ -26,6 +29,7 @@ import {
 } from "./buffs.js";
 
 const EMPTY: PrestigeStacks = { burn: 0, grab: 0, drop: 0, mint: 0, main: 0 };
+const POOL_BUFF_MS = 24 * 60 * 60 * 1000;
 
 function isBuffKind(value: string): value is BuffKind {
   return (BUFF_KINDS as readonly string[]).includes(value);
@@ -79,11 +83,17 @@ export async function activeEffects(userId: string, guildId: string | null, now 
   const shop = buffs.map((row) => row.kind).filter(isBuffKind);
   const series = buffs.find((row) => row.kind === "featured_series")?.seriesId ?? null;
   const serverLive = pool?.buffExpiry && pool.buffExpiry.getTime() > now.getTime();
+  const server = serverLive ? parseServerBuffs(pool?.activeBuff) : [];
+  // Only looked up when it changes a drop, so most drops skip the query.
+  const trackedSeriesIds = server.includes("tracked_pull")
+    ? (await prisma.trackedSeries.findMany({ where: { userId }, orderBy: { position: "asc" } })).map((row) => row.seriesId)
+    : [];
   const input: ActiveEffects = {
     shop,
-    server: serverLive ? parseServerBuffs(pool?.activeBuff) : [],
+    server,
     seriesId: series,
     prestige: stacksFrom(prestige),
+    trackedSeriesIds,
   };
   return resolveEffects(input);
 }
@@ -234,52 +244,68 @@ export type PoolRollResult = {
   guildId: string;
   spent: boolean;
   tier: number;
-  buffs: BuffKind[];
+  /** The goal paid out of the pot: 0, 10,000, 25,000 or 50,000. */
+  goal: number;
+  /** What the pot had when the roll ran. */
   pot: number;
+  /** What stays in the pot for today. */
+  carried: number;
+  buffs: BuffKind[];
 };
 
-export async function rollServerPool(guildId: string, now = new Date(), rng: () => number = Math.random): Promise<PoolRollResult | null> {
+/** The poll's winners for a pot that passed 25,000, in vote order. */
+export type PoolPollVotes = { winners: BuffKind[] };
+
+export async function rollServerPool(
+  guildId: string,
+  now = new Date(),
+  rng: () => number = Math.random,
+  poll: PoolPollVotes | null = null,
+): Promise<PoolRollResult | null> {
   const pool = await prisma.serverPool.findUnique({ where: { guildId } });
   if (!pool || !missedMidnight(pool.lastReset, now)) return null;
-  const tier = poolTier(pool.totalBits);
+  const spend = poolSpend(pool.totalBits);
+  const tier = poolTier(spend.goal);
   if (tier === 0) {
+    // Nothing spent and nothing carried: the pot was too small to buy anything.
     await prisma.serverPool.update({
       where: { guildId },
-      data: { lastReset: now },
+      data: { lastReset: now, carriedBits: 0, pollMessage: null },
     });
-    return { guildId, spent: false, tier: 0, buffs: [], pot: pool.totalBits };
+    return { guildId, spent: false, tier: 0, goal: 0, pot: pool.totalBits, carried: 0, buffs: [] };
   }
-  const buffs = pickServerBuffs(tier, rng);
+  const buffs = pickGoalBuffs(spend.goal, tier, rng, poll?.winners ?? []);
+  if (spend.goal >= 10_000) buffs.push("tracked_pull");
   await prisma.serverPool.update({
     where: { guildId },
     data: {
-      totalBits: 0,
+      totalBits: spend.carried,
+      carriedBits: spend.carried,
       lastReset: now,
       activeBuff: buffs.join(","),
       buffTier: tier,
-      buffExpiry: new Date(now.getTime() + 24 * 60 * 60 * 1000),
+      buffExpiry: new Date(now.getTime() + POOL_BUFF_MS),
+      pollMessage: null,
     },
   });
-  return { guildId, spent: true, tier, buffs, pot: pool.totalBits };
+  return { guildId, spent: true, tier, goal: spend.goal, pot: pool.totalBits, carried: spend.carried, buffs };
 }
 
 export async function rollDuePools(
   now = new Date(),
   rng: () => number = Math.random,
   guildIds?: ReadonlySet<string>,
+  pollFor?: (guildId: string) => Promise<PoolPollVotes | null>,
 ): Promise<PoolRollResult[]> {
   const pools = await prisma.serverPool.findMany();
   const results: PoolRollResult[] = [];
   for (const pool of pools) {
     if (guildIds && !guildIds.has(pool.guildId)) continue;
-    const result = await rollServerPool(pool.guildId, now, rng);
+    const poll = pollFor ? await pollFor(pool.guildId) : null;
+    const result = await rollServerPool(pool.guildId, now, rng, poll);
     if (result) results.push(result);
   }
   return results;
-}
-
-function buffName(kind: string): string {
-  return shopItem(kind)?.name ?? kind;
 }
 
 export async function economySnapshot(userId: string, guildId: string | null, now = new Date()) {
@@ -296,12 +322,22 @@ export async function economySnapshot(userId: string, guildId: string | null, no
   const serverLive = Boolean(pool?.buffExpiry && pool.buffExpiry.getTime() > now.getTime());
   const serverKinds = serverLive ? parseServerBuffs(pool?.activeBuff) : [];
   const stacks = stacksFrom(prestige);
-  const effects: ActiveEffects = { shop: shopKinds, server: serverKinds, seriesId, prestige: stacks };
+  const effects: ActiveEffects = {
+    shop: shopKinds,
+    server: serverKinds,
+    seriesId,
+    prestige: stacks,
+    trackedSeriesIds: serverKinds.includes("tracked_pull")
+      ? (await prisma.trackedSeries.findMany({ where: { userId } })).map((row) => row.seriesId)
+      : [],
+  };
   const claimed = user.milestoneCount;
   const preview = prestigePreview(claimed, user.milestoneProgress);
   const upcoming = nextMilestone(claimed);
   const tier = poolTier(pool?.totalBits ?? 0);
+  const goal = poolGoal(pool?.totalBits ?? 0);
   const choices = poolChoices(tier).map(buffName);
+  if (goal >= 10_000) choices.push(buffName("tracked_pull"));
   const seriesName = seriesId
     ? (await prisma.series.findUnique({ where: { id: seriesId } }))?.name ?? null
     : null;
@@ -336,7 +372,9 @@ export async function economySnapshot(userId: string, guildId: string | null, no
     combined: combinedLines(effects),
     pool: {
       totalBits: pool?.totalBits ?? 0,
+      carriedBits: pool?.carriedBits ?? 0,
       tier,
+      goal,
       choices,
       live: serverKinds.map(buffName),
       buffExpiry: serverLive ? pool?.buffExpiry?.toISOString() ?? null : null,

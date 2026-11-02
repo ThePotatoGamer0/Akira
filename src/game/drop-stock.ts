@@ -70,6 +70,7 @@ export function effectsForShape(shape: DropShape): ResolvedEffects {
     featuredSeriesChance: shape.seriesId ? FEATURED_SERIES_CHANCE : 0,
     qualityOverQuantity: shape.qualityOverQuantity,
     mainMultiplier: 1,
+    trackedSeriesIds: [],
   };
 }
 

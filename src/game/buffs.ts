@@ -1,4 +1,4 @@
-import { artWeight, DROP_COOLDOWN_MS, GRAB_COOLDOWN_MS, pickWeighted, rollArts } from "./balance.js";
+import { artWeight, DROP_COOLDOWN_MS, GRAB_COOLDOWN_MS, pickWeighted, rollArts, TRACKED_PULL_MULTIPLIER } from "./balance.js";
 
 /**
  * Chance each card in a featured-series drop comes from that series.
@@ -14,6 +14,7 @@ export const BUFF_KINDS = [
   "shiny_luck",
   "featured_series",
   "quality_over_quantity",
+  "tracked_pull",
 ] as const;
 
 export type BuffKind = (typeof BUFF_KINDS)[number];
@@ -82,6 +83,15 @@ export function shopItem(id: string): ShopItem | null {
   return SHOP_ITEMS.find((item) => item.id === id) ?? null;
 }
 
+/** The name for a buff, including the server pool's own tracked pull, which is never sold. */
+export function buffName(kind: string): string {
+  if (kind === "tracked_pull") return "Tracked pull";
+  return shopItem(kind)?.name ?? kind;
+}
+
+/** What a tracked pull does, in one line. */
+export const TRACKED_PULL_LINE = "Each drop leans toward the series its player tracks.";
+
 const SERVER_POOL: BuffKind[][] = [
   ["grab_cooldown"],
   ["drop_cooldown", "shiny_luck"],
@@ -99,6 +109,56 @@ export function poolTier(bits: number): number {
 export function poolChoices(tier: number): BuffKind[] {
   if (tier <= 0) return [];
   return SERVER_POOL.slice(0, Math.min(tier, 3)).flat();
+}
+
+/**
+ * The large goals above the tiers. 10,000 adds the tracked pull on top of whatever
+ * the tier rolled; 25,000 and 50,000 only change how the tier's two slots are filled.
+ */
+export const POOL_GOALS = [
+  { bits: 10_000, kind: "tracked_pull" as const },
+  { bits: 25_000, kind: "poll" as const },
+  { bits: 50_000, kind: "poll" as const },
+] as const;
+
+/** The highest goal a pot passed, or 0 under the first one. */
+export function poolGoal(bits: number): number {
+  let goal = 0;
+  for (const row of POOL_GOALS) if (bits >= row.bits) goal = row.bits;
+  return goal;
+}
+
+/** How many slots the poll fills: one at 25,000, two at 50,000. */
+export function pollSlots(goal: number): number {
+  if (goal >= 50_000) return 2;
+  if (goal >= 25_000) return 1;
+  return 0;
+}
+
+export type PoolSpend = { goal: number; spent: number; carried: number };
+
+/**
+ * Only the goal reached comes out of the pot and the rest carries to tomorrow, so a
+ * big pot is not spent on a buff worth a fifth of it.
+ */
+export function poolSpend(bits: number): PoolSpend {
+  const goal = poolGoal(bits);
+  return { goal, spent: goal, carried: bits - goal };
+}
+
+/** The tier's buffs with the poll's winners (asked for from 25,000) guaranteed in. */
+export function pickGoalBuffs(goal: number, tier: number, rng: () => number, winners: readonly BuffKind[] = []): BuffKind[] {
+  const picked = pickServerBuffs(tier, rng);
+  const chosen = winners.slice(0, pollSlots(goal));
+  if (chosen.length === 0) return picked;
+  const rest = poolChoices(tier).filter((kind) => !chosen.includes(kind));
+  const out = [...chosen];
+  while (out.length < picked.length && rest.length > 0) {
+    const index = Math.min(rest.length - 1, Math.floor(rng() * rest.length));
+    const [next] = rest.splice(index, 1);
+    if (next && !out.includes(next)) out.push(next);
+  }
+  return out;
 }
 
 export function pickServerBuffs(tier: number, rng: () => number): BuffKind[] {
@@ -213,6 +273,8 @@ export type ActiveEffects = {
   server: BuffKind[];
   seriesId: string | null;
   prestige: PrestigeStacks;
+  /** Series the player tracks. Only read while the server has the tracked pull. */
+  trackedSeriesIds?: string[];
 };
 
 export type ResolvedEffects = {
@@ -226,6 +288,8 @@ export type ResolvedEffects = {
   featuredSeriesChance: number;
   qualityOverQuantity: boolean;
   mainMultiplier: number;
+  /** The series this player's drop leans toward while the server has the tracked pull. */
+  trackedSeriesIds: string[];
 };
 
 function has(list: BuffKind[], kind: BuffKind): boolean {
@@ -256,6 +320,7 @@ export function resolveEffects(input: ActiveEffects): ResolvedEffects {
   const seriesId = has(input.shop, "featured_series") ? input.seriesId : null;
   const featuredSeriesChance = seriesId ? FEATURED_SERIES_CHANCE : 0;
   const mainMultiplier = 1 + 0.01 * input.prestige.main;
+  const trackedSeriesIds = has(input.server, "tracked_pull") ? [...(input.trackedSeriesIds ?? [])] : [];
 
   return {
     dropCooldownMs,
@@ -267,6 +332,7 @@ export function resolveEffects(input: ActiveEffects): ResolvedEffects {
     featuredSeriesChance,
     qualityOverQuantity,
     mainMultiplier,
+    trackedSeriesIds,
   };
 }
 
@@ -339,6 +405,7 @@ export function combinedLines(input: ActiveEffects): string[] {
   if (resolved.seriesId) {
     lines.push(`Each card has a ${Math.round(resolved.featuredSeriesChance * 100)}% chance to come from today's bought series.`);
   }
+  if (has(input.server, "tracked_pull")) lines.push(TRACKED_PULL_LINE);
   if (input.prestige.main > 0) lines.push(`MAIN characters are ${input.prestige.main}% more likely.`);
   return lines;
 }
@@ -356,8 +423,10 @@ export function dropWeight(input: {
   role: string | null;
   effects: ResolvedEffects;
 }): number {
-  const weight = artWeight(input.variantId, input.rarity);
-  if (input.role === "MAIN") return weight * input.effects.mainMultiplier;
+  let weight = artWeight(input.variantId, input.rarity);
+  if (input.role === "MAIN") weight *= input.effects.mainMultiplier;
+  // A tracked pull leans a drop toward the series its own player pinned, not the server's.
+  if (input.effects.trackedSeriesIds.includes(input.seriesId)) weight *= TRACKED_PULL_MULTIPLIER;
   return weight;
 }
 

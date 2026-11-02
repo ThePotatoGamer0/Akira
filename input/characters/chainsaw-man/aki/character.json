@@ -14,10 +14,10 @@
       "image": "base.png"
     },
     {
-      "id": "aki-curse",
-      "name": "Curse Devil's Price",
+      "id": "aki-maid",
+      "name": "Maid",
       "rarity": "Rare",
-      "image": "curse_devil.png"
+      "image": "maid.png"
     }
   ],
   "role": "MAIN"

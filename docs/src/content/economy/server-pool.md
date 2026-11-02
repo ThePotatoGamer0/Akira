@@ -17,14 +17,37 @@ A gift stays a gift. The milestone payout is always smaller than the bits you pu
 
 ## What tonight can be
 
-The tier is the highest one the pot reached. Akira picks from that tier and every tier below it.
+The tier is the highest one the pot reached. Akira picks from that tier and every tier below it. A pot only buys a buff once it passes 10,000 bits; until then the tiers still decide which buff that is.
 
 - **500 bits, tier 1.** Grab cooldown. That is the only choice, so 500 bits always gives grab cooldown.
 - **2,000 bits, tier 2.** One of grab cooldown, drop cooldown, or shiny luck.
 - **2,500 bits, tier 3.** Four cards joins that list. One buff is still chosen.
 - **5,000 bits, tier 4.** No new buff. Two different buffs are chosen from the tier 3 list, and the second one is guaranteed.
 
-At 500 or more, the pot is spent down to 0. The buff lasts 24 hours.
+The buff lasts 24 hours.
+
+## The large goals
+
+Above the tiers, three goals change what the pot buys.
+
+- **10,000 bits.** The night's buffs include **tracked pull**. It is a server buff, so everyone gets it while it runs: each drop leans toward the series its own player tracks, five times as heavily as any other series. A player who tracks nothing drops as usual.
+- **25,000 bits.** A poll opens in the server's pool channel and closes at midnight UTC. The winning buff is guaranteed in the roll. The other buff is still chosen at random, and it is never the same one twice.
+- **50,000 bits.** The same poll, but the top two buffs are both guaranteed, with no random pick.
+
+The goals stack on the tiers. A pot at 30,000 gives the tier 4 pair, one of them chosen by the poll, plus tracked pull.
+
+## What stays in the pot
+
+Only the goal reached is spent. Everything above it stays in the pot for the next night.
+
+| Pot | Goal reached | Spent | Carried to tomorrow |
+| ---: | ---: | ---: | ---: |
+| 52,000 | 50,000 | 50,000 | 2,000 |
+| 31,250 | 25,000 | 25,000 | 6,250 |
+| 10,400 | 10,000 | 10,000 | 400 |
+| 7,000 | none | 0 | 7,000 |
+
+A pot under 10,000 spends nothing at all and keeps building.
 
 ## How it sits with the shop
 
@@ -35,11 +58,13 @@ The server copy and your shop copy of the same buff meet in the middle, then sto
 - Shiny luck from one of them makes mints **1 in 51** cards. From both, mints are **1 in 34** cards. It does not go further.
 - Four cards from both is still four cards. If you also have Quality over quantity, the drop is one card.
 
-Drop cooldown, shiny luck, grab cooldown, and four cards are the only pool buffs. Burn value, featured series, and Quality over quantity stay in the shop.
+Drop cooldown, shiny luck, grab cooldown, four cards, and tracked pull are the only pool buffs. Burn value, featured series, and Quality over quantity stay in the shop.
 
 A [prestige](/prestige/overview) percent applies after those stops. The 5 minute and 1 minute 15 second floors do not block the small prestige shorten.
 
 `/pool` shows the pot, the tier, which buffs can be chosen tonight, and the buff or buffs that are already live. The Economy page shows the same thing.
+
+An admin sets where the poll goes with `/pool channel`. Without one, the poll falls back to the drop channel. With neither, the night's buffs are chosen at random.
 
 ## See also
 

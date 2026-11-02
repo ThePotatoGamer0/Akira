@@ -1,5 +1,5 @@
 import { prisma } from "../db/client.js";
-import { TRADE_DAILY_PAIR_VALUE, TRADE_SETTLE_COOLDOWN_MS, formatRemaining } from "./balance.js";
+import { TRADE_DAILY_PAIR_VALUE } from "./balance.js";
 import { clearWishlistsForOwnedCards, noteWishlistReceipts } from "./cards.js";
 import { mintCardCode } from "./codes.js";
 import { GameError } from "./errors.js";
@@ -84,41 +84,6 @@ export async function releaseGift(id: string, discordId: string): Promise<Releas
 export function forceMultitrade(id: string): void {
   forcePasses.add(id);
   setTimeout(() => forcePasses.delete(id), RELEASE_MS).unref();
-}
-
-/** The trade cooldown both players rest in after a deal completes. */
-export async function tradeCooldownLeft(userId: string, now = Date.now()): Promise<number> {
-  const row = await prisma.cooldown.findUnique({ where: { userId_type: { userId, type: "TRADE" } } });
-  if (!row) return 0;
-  return Math.max(0, row.expiresAt.getTime() - now);
-}
-
-/**
- * Refuse a new offer while either player rests after a trade.
- * The 30-second offer throttle is the in-memory command limiter, not this.
- */
-export async function refuseTradeCooldown(discordIds: string[], verb = "trade"): Promise<void> {
-  for (const discordId of discordIds) {
-    const user = await prisma.user.findUnique({ where: { discordId }, select: { id: true } });
-    if (!user) continue;
-    const left = await tradeCooldownLeft(user.id);
-    if (left <= 0) continue;
-    throw new GameError(
-      "trade-cooldown",
-      `You just finished a trade. Akira needs ${formatRemaining(left)} before you can ${verb}.`,
-    );
-  }
-}
-
-export async function startTradeCooldown(userIds: string[]): Promise<void> {
-  const expiresAt = new Date(Date.now() + TRADE_SETTLE_COOLDOWN_MS);
-  for (const userId of userIds) {
-    await prisma.cooldown.upsert({
-      where: { userId_type: { userId, type: "TRADE" } },
-      create: { userId, type: "TRADE", expiresAt },
-      update: { expiresAt },
-    });
-  }
 }
 
 const OPEN = ["request", "open"] as const;
@@ -262,7 +227,6 @@ export async function proposeMultitrade(input: {
   if (await busyWithSomeone([from.id, to.id])) {
     throw new GameError("busy", "One of you is already in a multitrade.");
   }
-  await refuseTradeCooldown([input.fromDiscordId, input.toDiscordId], "open another multitrade");
   const id = await mintCardCode(async (code) => {
     const existing = await prisma.multitrade.findUnique({ where: { id: code }, select: { id: true } });
     return existing !== null;
@@ -422,7 +386,6 @@ export async function lockMultitrade(id: string, discordId: string): Promise<Mul
   if (saved.status === "done") {
     budgetReleases.delete(saved.id);
     forcePasses.delete(saved.id);
-    await startTradeCooldown([saved.fromUser.id, saved.toUser.id]);
     const moved = await prisma.multitradeEntry.findMany({
       where: { tradeId: saved.id, cardId: { not: null } },
       select: { cardId: true },

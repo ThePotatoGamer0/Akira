@@ -210,6 +210,13 @@ function prune(frames: number[]): void {
 }
 
 async function plainShapes(): Promise<DropShape[]> {
+  const pools = await prisma.serverPool.findMany({ select: { activeBuff: true, buffExpiry: true } });
+  const now = Date.now();
+  // A tracked pull makes a strip depend on who drops it, so it cannot come off the shelf.
+  const leaning = pools.some(
+    (pool) => pool.buffExpiry && pool.buffExpiry.getTime() > now && parseServerBuffs(pool.activeBuff).includes("tracked_pull"),
+  );
+  if (leaning) return [];
   const frames = await framesInUse();
   prune(frames);
   const shapes: DropShape[] = [];
@@ -219,6 +226,7 @@ async function plainShapes(): Promise<DropShape[]> {
 
 async function nextStrip(limit: number): Promise<{ key: string; slots: PresentedSlot[] } | null> {
   const shapes = await plainShapes();
+  if (shapes.length === 0) return null;
   const shape = shapes.find((candidate) => (queues.get(dropShapeKey(candidate))?.length ?? 0) < limit);
   if (!shape) return null;
   const slots = await rollFreshSlots(effectsForShape(shape), shape.frameId);

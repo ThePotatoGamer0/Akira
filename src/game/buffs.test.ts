@@ -10,12 +10,19 @@ import {
   MILESTONES,
   mintSentence,
   missedMidnight,
+  buffName,
+  pickGoalBuffs,
   pickServerBuffs,
+  POOL_GOALS,
+  pollSlots,
   poolChoices,
+  poolGoal,
+  poolSpend,
   poolTier,
   prestigeKinds,
   resolveEffects,
   rollDropArts,
+  shopItem,
   SHOP_ITEMS,
   type ActiveEffects,
 } from "./buffs.js";
@@ -48,6 +55,105 @@ describe("server pool tiers", () => {
       for (const kind of picked) seen.add(kind);
     }
     assert.ok(seen.size >= 2);
+  });
+
+  it("puts the goals at 10, 25 and 50 thousand", () => {
+    assert.deepEqual(
+      POOL_GOALS.map((row) => row.bits),
+      [10_000, 25_000, 50_000],
+    );
+    assert.equal(poolGoal(9_999), 0);
+    assert.equal(poolGoal(10_000), 10_000);
+    assert.equal(poolGoal(24_999), 10_000);
+    assert.equal(poolGoal(25_000), 25_000);
+    assert.equal(poolGoal(50_000), 50_000);
+    assert.equal(poolGoal(90_000), 50_000);
+    assert.deepEqual([10_000, 25_000, 50_000].map(pollSlots), [0, 1, 2]);
+  });
+
+  it("spends only the goal reached and carries the rest", () => {
+    assert.deepEqual(poolSpend(7_000), { goal: 0, spent: 0, carried: 7_000 });
+    assert.deepEqual(poolSpend(10_400), { goal: 10_000, spent: 10_000, carried: 400 });
+    assert.deepEqual(poolSpend(31_250), { goal: 25_000, spent: 25_000, carried: 6_250 });
+    assert.deepEqual(poolSpend(72_000), { goal: 50_000, spent: 50_000, carried: 22_000 });
+    // The carried part alone is still a tier 4 roll tomorrow.
+    assert.equal(poolTier(poolSpend(31_250).carried), 4);
+  });
+
+  it("gives the 10k tracked pull, which is not sold in the shop", () => {
+    assert.equal(buffName("tracked_pull"), "Tracked pull");
+    assert.equal(shopItem("tracked_pull"), null);
+    assert.equal(shopItem("four_cards")?.name, "Four cards");
+  });
+
+  it("guarantees the poll winner and rolls the second slot without repeating it", () => {
+    for (let i = 0; i < 40; i++) {
+      const rng = () => (i % 9) / 9;
+      const one = pickGoalBuffs(25_000, 4, rng, ["four_cards"]);
+      assert.equal(one.length, 2);
+      assert.ok(one.includes("four_cards"), `random pick lost the vote: ${one.join(", ")}`);
+      assert.equal(new Set(one).size, 2);
+      const two = pickGoalBuffs(50_000, 4, rng, ["shiny_luck", "drop_cooldown"]);
+      assert.deepEqual(two.sort(), ["drop_cooldown", "shiny_luck"]);
+    }
+  });
+
+  it("never bumps a winner into a slot the tier does not have", () => {
+    // Under 10,000 nobody voted.
+    assert.deepEqual(pickGoalBuffs(0, 1, () => 0.99, ["four_cards"]), pickServerBuffs(1, () => 0.99));
+    // A poll winner only fills a slot the tier would have rolled anyway. Tier 3 has one.
+    const four = pickGoalBuffs(50_000, 3, () => 0.5, ["four_cards"]);
+    assert.equal(four.length, 1);
+    assert.ok(["four_cards", "drop_cooldown", "shiny_luck"].includes(four[0]!));
+    // Everything the poll asks for lands once the tier has the slots.
+    const both = pickGoalBuffs(50_000, 4, () => 0.5, ["grab_cooldown", "four_cards"]);
+    assert.deepEqual(both.sort(), ["four_cards", "grab_cooldown"]);
+  });
+});
+
+describe("tracked pull", () => {
+  const pool = [
+    ...Array.from({ length: 10 }, (_, index) => ({ id: `mine-${index}`, rarity: "Common", seriesId: "mine", role: "SUPPORTING" })),
+    ...Array.from({ length: 50 }, (_, index) => ({ id: `other-${index}`, rarity: "Common", seriesId: "other", role: "SUPPORTING" })),
+  ];
+  const seeded = () => {
+    let seed = 11;
+    return () => {
+      seed = (seed * 16807) % 2147483647;
+      return seed / 2147483647;
+    };
+  };
+  const share = (cards: { seriesId: string }[]) => cards.filter((card) => card.seriesId === "mine").length / cards.length;
+
+  it("does nothing unless the server holds the buff", () => {
+    const off = resolveEffects(base({ trackedSeriesIds: ["mine"] }));
+    assert.deepEqual(off.trackedSeriesIds, []);
+    const on = resolveEffects(base({ server: ["tracked_pull"], trackedSeriesIds: ["mine"] }));
+    assert.deepEqual(on.trackedSeriesIds, ["mine"]);
+    assert.match(combinedLines(base({ server: ["tracked_pull"] })).join(" "), /leans toward the series its player tracks/);
+  });
+
+  it("leans five times toward the dropper's own series", () => {
+    const effects = resolveEffects(base({ server: ["tracked_pull"], trackedSeriesIds: ["mine"] }));
+    assert.equal(
+      dropWeight({ variantId: "mine-1", rarity: "Common", seriesId: "mine", role: null, effects }),
+      5 * dropWeight({ variantId: "other-1", rarity: "Common", seriesId: "other", role: null, effects }),
+    );
+    const plain = rollDropArts(pool, seeded(), 4000, resolveEffects(base()));
+    const leaned = rollDropArts(pool, seeded(), 4000, effects);
+    // Chance alone is 10 of 60, about 17%. A 5x lean on those puts them near 45%.
+    assert.ok(share(plain) > 0.13 && share(plain) < 0.2, `plain share was ${share(plain).toFixed(2)}`);
+    assert.ok(share(leaned) > 0.4 && share(leaned) < 0.5, `leaned share was ${share(leaned).toFixed(2)}`);
+  });
+
+  it("follows the player dropping, not the server", () => {
+    const mine = resolveEffects(base({ server: ["tracked_pull"], trackedSeriesIds: ["mine"] }));
+    const theirs = resolveEffects(base({ server: ["tracked_pull"], trackedSeriesIds: ["other"] }));
+    const mineShare = share(rollDropArts(pool, seeded(), 3000, mine));
+    const theirsShare = share(rollDropArts(pool, seeded(), 3000, theirs));
+    assert.ok(mineShare > theirsShare, `mine ${mineShare.toFixed(2)} vs theirs ${theirsShare.toFixed(2)}`);
+    // "other" is the larger series, so leaning on it should push "mine" below plain chance.
+    assert.ok(theirsShare < 0.2);
   });
 });
 

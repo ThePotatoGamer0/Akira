@@ -28,7 +28,6 @@ Akira prices every card from its quality, how rare that print is, and its print 
 - **Blocked past 5x.** When the larger side is at least 2,000 points and more than five times the smaller, Lock cancels the trade. An admin can press **Allow anyway** to complete it.
 - **2,000 bits per side.** Once both of you have something on your side, neither can put up more than 2,000 bits. A one-sided gift is not capped.
 - **4,000 points a day per pair.** Everything you two trade in a day, both directions, adds up. Past it, a two-sided trade waits until tomorrow. A gift can still go through: press **Release**, and the other player presses it too.
-- **10 minutes after a trade.** Both of you rest before opening another give or multitrade. Cancelled trades do not start this. A [give](/commands/give) counts as a completed trade too.
 - **A modest pace.** `/multitrade` and `/give` wait 30 seconds between uses, per player.
 
 ## Parameters
