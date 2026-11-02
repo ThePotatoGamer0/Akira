@@ -79,12 +79,14 @@ export async function postChannelAction(action: ChannelAction): Promise<{ notice
   throw error;
 }
 
-/** Guild emoji and stickers for the message bar. */
-export async function fetchComposerAssets(): Promise<unknown> {
+/** Guild emoji and stickers for the message bar, and what this player may post there. */
+export async function fetchComposerAssets(discordId: string): Promise<unknown> {
   const base = process.env["BOT_INTERNAL_URL"]?.replace(/\/$/, "");
   const secret = process.env["AKIRA_INTERNAL_SECRET"] ?? "";
   if (!base || !secret) throw new Error("missing");
-  const res = await fetch(`${base}/internal/composer`, {
+  const url = new URL(`${base}/internal/composer`);
+  if (/^\d{17,20}$/.test(discordId)) url.searchParams.set("discordId", discordId);
+  const res = await fetch(url, {
     headers: { Authorization: `Bearer ${secret}` },
   });
   if (!res.ok) throw new Error(`Bot composer failed: ${res.status}`);

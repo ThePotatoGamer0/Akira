@@ -447,6 +447,20 @@ collectionRouter.get("/players", async (_req, res) => {
   res.json({ players });
 });
 
+export type MentionPlayer = { id: string; name: string };
+
+/** Who the composer can turn into a `<@id>`: the site name, which is the Discord username when none is set. */
+collectionRouter.get("/mentions", async (_req, res) => {
+  const users = await prisma.user.findMany({
+    select: { discordId: true, preferredName: true, discordUsername: true },
+  });
+  const players = users
+    .filter((user) => /^\d{17,20}$/.test(user.discordId))
+    .map((user) => ({ id: user.discordId, name: akiraAddressName(user) }))
+    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
+  res.json({ players });
+});
+
 collectionRouter.get("/:userId/cards/:cardId", async (req, res) => {
   const userId = req.params["userId"] ?? "";
   const cardId = (req.params["cardId"] ?? "").toLowerCase();

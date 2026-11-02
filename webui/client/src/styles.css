@@ -719,6 +719,21 @@ html[data-theme="dark"] .composer {
   background: #2b2d31;
 }
 
+/* A timed-out player has no composer at all, only the reason the bar is empty. */
+.composer.is-timed-out {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 0.9rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.composer-timeout-left {
+  font-weight: 600;
+  color: var(--ink);
+}
+
 .composer.is-sending {
   opacity: 0.72;
 }
@@ -814,6 +829,157 @@ html[data-theme="dark"] .composer {
 
 .composer-plus:active {
   transform: scale(0.92);
+}
+
+/*
+ * The caret's text sits in a read-only copy of what the textarea shows, with
+ * @mentions painted in. The textarea's own words are transparent while a name
+ * is known, and its caret and selection colour are kept so it still reads as
+ * the caret.
+ */
+.composer-field {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+.composer-mirror {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  padding: 11px 0;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.35;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  pointer-events: none;
+}
+
+.composer-mirror.is-empty { display: none; }
+
+.composer-mirror .composer-at {
+  padding: 0 1px;
+  border-radius: 3px;
+  background: color-mix(in srgb, #5865f2 28%, transparent);
+  color: #dee0fc;
+}
+
+.composer-field.is-labeled textarea {
+  color: transparent;
+  caret-color: var(--ink);
+}
+
+.composer-field.is-labeled textarea::selection {
+  color: transparent;
+}
+
+.composer-mentions {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 0.5rem);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  width: min(18rem, calc(100vw - 2rem));
+  max-height: 14rem;
+  overflow: auto;
+  padding: 0.3rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 8px 24px var(--shadow-tint);
+}
+
+html[data-theme="dark"] .composer-mentions {
+  background: #2b2d31;
+  border-color: #1e1f22;
+}
+
+.composer-mentions button {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.4rem 0.5rem;
+  border: 0;
+  border-radius: 5px;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.92rem;
+  text-align: left;
+  box-shadow: none;
+  animation: none;
+}
+
+.composer-mentions button:hover,
+.composer-mentions button.is-active {
+  background: color-mix(in srgb, #5865f2 24%, transparent);
+  transform: none;
+  box-shadow: none;
+}
+
+.composer-mention-at {
+  color: var(--muted);
+}
+
+/* The button that asks for something the player may not do opens this. */
+.composer-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 450;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.composer-modal {
+  width: min(24rem, calc(100vw - 2rem));
+  padding: 1rem 1.1rem 0.9rem;
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 12px 40px var(--shadow-tint);
+}
+
+html[data-theme="dark"] .composer-modal {
+  background: #313338;
+}
+
+.composer-modal h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.composer-modal p {
+  margin: 0 0 0.9rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.composer-modal-ok {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: 5px;
+  background: #5865f2;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+/* The plus still looks like the upload button, but it says no. */
+.composer-plus[aria-disabled="true"] {
+  opacity: 0.55;
 }
 
 .composer textarea {
@@ -1291,20 +1457,28 @@ html[data-theme="dark"] .composer-pop > input {
   object-fit: contain;
   border-radius: 4px;
   cursor: zoom-in;
+  /* Fitted view: smooth, standard scaling. Zoomed view below uses crisp edges. */
+  image-rendering: auto;
   user-select: none;
 }
 
+/* Zoom is a fixed factor of the fitted size, so a small GIF and a large screenshot
+   both grow by the same amount instead of a low-res image jumping to the top left. */
 .media-viewer-stage.is-zoomed {
   overflow: auto;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: safe center;
+  justify-content: safe center;
+  padding: 0.5rem 1.5rem;
   cursor: grab;
 }
 
 .media-viewer-stage.is-zoomed img {
+  width: var(--media-fit-w);
   max-width: none;
   max-height: none;
   cursor: grab;
+  /* Enlarged, so keep pixels square instead of blending them into mush. */
+  image-rendering: pixelated;
 }
 
 .dlog {

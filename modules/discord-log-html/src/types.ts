@@ -8,6 +8,8 @@ export type ChatLog = {
   roles?: ChatRole[];
   members?: ChatMember[];
   channels?: Array<{ id: string; name: string }>;
+  /** Names to show for `<@id>` when the message mentions otherwise nobody in the log. */
+  names?: Array<{ id: string; name: string }>;
   messages?: RawMessage[];
 };
 
@@ -60,6 +62,8 @@ export type RawEmbed = {
   video?: { url?: string; proxy_url?: string; width?: number | null; height?: number | null };
   footer?: { text?: string; icon_url?: string };
   fields?: Array<{ name?: string; value?: string; inline?: boolean }>;
+  /** Tenor, Klipy, and GIPHY all name themselves here. */
+  provider?: { name?: string; url?: string };
 };
 
 export type RawEmoji = {

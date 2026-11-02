@@ -169,7 +169,31 @@ function embedVideo(embed: RawEmbed, video: string): string {
   return `<video class="dlog-video dlog-embed-video" src="${escapeAttr(video)}" controls playsinline${gif} preload="metadata"${size}></video>`;
 }
 
+/**
+ * A gif from Tenor, Klipy, or GIPHY is the whole message in Discord, not a card
+ * around one. It shows as the animation alone, like the gif it is.
+ */
+function isGifOnlyEmbed(embed: RawEmbed): boolean {
+  if (embed.title || embed.description || embed.author || (embed.fields && embed.fields.length > 0)) return false;
+  if (embed.thumbnail) return false;
+  const video = embed.video?.url || embed.video?.proxy_url || "";
+  if (!video || !isGifVideo(embed, video)) return false;
+  const provider = embed.provider?.name ?? "";
+  return /tenor|giphy|klipy/i.test(`${provider} ${video}`);
+}
+
+/** The animation on its own, with no embed card, link, or frame around it. */
+function bareGif(embed: RawEmbed): string {
+  const width = embed.video?.width;
+  const height = embed.video?.height;
+  const size = width && height
+    ? ` width="${width}" height="${height}" style="width:min(100%,${width}px);aspect-ratio:${width}/${height};height:auto"`
+    : "";
+  return `<video class="dlog-gif" src="${escapeAttr(embed.video?.url || embed.video?.proxy_url || "")}" autoplay loop muted playsinline preload="metadata"${size}></video>`;
+}
+
 function renderEmbed(embed: RawEmbed, ctx: InlineContext): string {
+  if (isGifOnlyEmbed(embed)) return bareGif(embed);
   const color = roleInk(embed.color) ?? "#202225";
   const media = embedMedia(embed);
   const thumb = safeHttpUrl(embed.thumbnail?.proxy_url || embed.thumbnail?.url || "");
@@ -354,7 +378,7 @@ function renderMessage(message: RawMessage, log: ChatLog, grouped: boolean): str
     ? ""
     : (message.embeds ?? [])
         .filter((embed) => !bareMediaEmbed(embed, ctx.media))
-        .map((embed) => renderEmbed(embed, ctx))
+        .map((embed) => (isGifOnlyEmbed(embed) ? `<div class="dlog-gif-wrap">${renderEmbed(embed, ctx)}</div>` : renderEmbed(embed, ctx)))
         .join("");
   const attachments = (message.attachments ?? []).map((file) => renderAttachment(file, ctx)).join("");
   const nameStyle = color ? ` style="color:${color}"` : "";

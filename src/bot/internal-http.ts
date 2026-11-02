@@ -3,7 +3,7 @@ import { URL } from "node:url";
 import type { Client } from "discord.js";
 import { WebSocketServer } from "ws";
 import type { CooldownType } from "../generated/prisma/client.js";
-import { readComposerAssets } from "./composer-assets.js";
+import { readComposerAssets, readComposerPermissions } from "./composer-assets.js";
 import { readDropChannelLog } from "./drop-log.js";
 import { bindDropLive, subscribeDropLive } from "./drop-live.js";
 import { rememberEphemeralDm } from "./dm-mailbox.js";
@@ -60,7 +60,10 @@ export function startInternalApi(bot: Client): void {
       }
       if (req.method === "GET" && url.pathname === "/internal/composer") {
         const assets = await readComposerAssets(bot);
-        res.writeHead(200, { "Content-Type": "application/json" }).end(JSON.stringify(assets));
+        const permissions = await readComposerPermissions(bot, url.searchParams.get("discordId") ?? "");
+        res
+          .writeHead(200, { "Content-Type": "application/json" })
+          .end(JSON.stringify({ ...assets, permissions }));
         return;
       }
       if (req.method === "POST" && url.pathname === "/internal/channel-message") {
