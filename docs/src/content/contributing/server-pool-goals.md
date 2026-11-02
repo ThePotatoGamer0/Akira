@@ -1,3 +1,8 @@
+---
+title: Server pool goals
+description: The 10k, 25k, and 50k goals above the pool tiers, the tracked pull, the buff poll, and how the pot carries over.
+---
+
 # Server pool: 10k, 25k, 50k goals
 
 Design note. The pot is inflating past what the current tiers were built for (5,000
