@@ -89,12 +89,13 @@ export function catchUpMultiplier(cardCount: number, daysSinceFirstSeen: number)
 async function supplyOf(keys: Array<{ variantId: string; printNumber: number }>): Promise<(key: string) => number> {
   if (keys.length === 0) return () => 1;
   const variants = [...new Set(keys.map((key) => key.variantId))];
+  // A card outlives its edition, so supply counts by the id it was minted from, not the variant row.
   const rows = await prisma.card.groupBy({
-    by: ["variantId", "printNumber"],
-    where: { variantId: { in: variants } },
+    by: ["assetKey", "printNumber"],
+    where: { OR: [{ variantId: { in: variants } }, { assetKey: { in: variants } }] },
     _count: { _all: true },
   });
-  const supply = new Map(rows.map((row) => [`${row.variantId}#${row.printNumber}`, row._count._all]));
+  const supply = new Map(rows.map((row) => [`${row.assetKey ?? ""}#${row.printNumber}`, row._count._all]));
   return (key) => supply.get(key) ?? 1;
 }
 
@@ -155,12 +156,21 @@ export type TradeVerdict = {
   remaining: number;
 };
 
-type EntryWithVariant = { userId: string; bits: number; card: { variantId: string; quality: string; printNumber: number } | null };
+type EntryWithVariant = {
+  userId: string;
+  bits: number;
+  card: { variantId: string | null; assetKey: string | null; quality: string; printNumber: number } | null;
+};
+
+/** The id a card was minted from, whether or not its edition still exists. */
+function mintedId(card: { variantId: string | null; assetKey: string | null } | null | undefined): string {
+  return card ? card.assetKey ?? card.variantId ?? "" : "";
+}
 
 async function readEntries(tradeId: string): Promise<EntryWithVariant[]> {
   return prisma.multitradeEntry.findMany({
     where: { tradeId },
-    include: { card: { select: { variantId: true, quality: true, printNumber: true } } },
+    include: { card: { select: { variantId: true, assetKey: true, quality: true, printNumber: true } } },
   });
 }
 
@@ -177,8 +187,8 @@ export async function verdictFromEntries(
   const from = rows.filter((entry) => entry.userId === trade.fromUserId);
   const to = rows.filter((entry) => entry.userId === trade.toUserId);
   const [fromValue = 0, toValue = 0] = await lotValues([
-    { items: from.map(itemOf), variantOf: (index) => from[index]?.card?.variantId ?? "" },
-    { items: to.map(itemOf), variantOf: (index) => to[index]?.card?.variantId ?? "" },
+    { items: from.map(itemOf), variantOf: (index) => mintedId(from[index]?.card) },
+    { items: to.map(itemOf), variantOf: (index) => mintedId(to[index]?.card) },
   ]);
   const budget = pairBudget(pairValue, Math.max(fromValue, toValue));
   return {

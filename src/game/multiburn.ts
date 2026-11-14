@@ -92,7 +92,7 @@ export async function planTaggedBurn(
     .map((card) => ({
       id: card.id,
       quality: asQuality(card.quality),
-      characterName: card.variant.character.name,
+      characterName: card.variant?.character.name ?? "Deleted edition",
     }));
   if (cards.length === 0) throw new GameError("busy", "Those cards are in an open trade.");
   const multiplier = (await activeEffects(user.id, guildId)).burnMultiplier;

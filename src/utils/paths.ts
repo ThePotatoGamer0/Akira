@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 
-export const ROOT = path.join(here, "..", "..");
+export const ROOT = process.env["AKIRA_ROOT"] ? path.resolve(process.env["AKIRA_ROOT"]) : path.join(here, "..", "..");
 
 export const INIT_LOCK = path.join(ROOT, "init.lock");
 
@@ -45,6 +45,12 @@ export function dyeCacheKey(dye: string | null): string {
 
 export type CardCacheFileName = "normal.png" | "shiny.gif" | "shiny.apng" | "burn.gif" | "burn.apng";
 
+/** The folder holding every drawn picture of one edition. */
+export function cardCacheDir(variantId: string): string {
+  if (!SAFE_SEGMENT.test(variantId)) throw new Error(`Unsafe cache key: ${variantId}`);
+  return path.join(DIR_ASSETS_CARDS, variantId);
+}
+
 export function cardCacheFile(input: {
   variantId: string;
   frameId: number;
@@ -61,8 +67,7 @@ export function cardCacheFile(input: {
     throw new Error("Unsafe frame id");
   }
   return path.join(
-    DIR_ASSETS_CARDS,
-    input.variantId,
+    cardCacheDir(input.variantId),
     String(input.frameId),
     input.printKey,
     input.dyeKey,

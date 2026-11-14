@@ -22,6 +22,10 @@ export const view: AkiraCommand = {
       if (!card) {
         throw new GameError("missing", `Akira couldn't find a card with the id \`${cardId}\`.`);
       }
+      // The card is kept but its edition is gone, so there is no art or character to show.
+      if (!card.variant) {
+        throw new GameError("gone", `Card \`${card.id}\` is from an edition that was deleted from Akira's input.`);
+      }
       const kind = visualKind(card.quality, card.dye);
       const frameId = displayFrameId(
         card.frameId,

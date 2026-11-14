@@ -99,7 +99,7 @@ export const tag: AkiraCommand = {
       }
       const result = await applyTag(interaction.user.id, interaction.user.username, interaction.options.getString("tag_name", true), ids);
       const lines = result.cards.map(
-        (card) => `added tag '${result.tag.name}' ${result.tag.emoji} to card \`${card.id}\` **${card.variant.character.name}**.`,
+        (card) => `added tag '${result.tag.name}' ${result.tag.emoji} to card \`${card.id}\` **${card.variant?.character.name ?? "Deleted edition"}**.`,
       );
       await interaction.reply({ content: lines.join("\n") });
     } catch (err) {
@@ -134,8 +134,8 @@ export const untag: AkiraCommand = {
           quality: card.quality,
           printNumber: card.printNumber,
           frameId: displayFrameId(card.frameId, serverFrame, personalFrame),
-          seriesName: card.variant.character.series.name,
-          characterName: card.variant.character.name,
+          seriesName: card.variant?.character.series.name ?? "Deleted edition",
+          characterName: card.variant?.character.name ?? card.assetKey ?? "",
           tagEmoji: icon("square"),
         }),
       );

@@ -135,6 +135,7 @@ async function collectionRecency(userId: string): Promise<CollectionRecency> {
   const characterAt = new Map<string, number>();
   const seriesAt = new Map<string, number>();
   for (const card of cards) {
+    if (!card.variant) continue;
     const at = card.obtainedAt.getTime();
     const characterId = card.variant.characterId;
     const seriesId = card.variant.character.seriesId;

@@ -23,9 +23,12 @@ export type TransferCard = {
   characterName: string;
   seriesSlug: string;
   characterSlug: string;
+  /** The id the card was minted from. A deleted edition keeps this id but loses its variant row. */
   variantId: string;
   imageFile: string;
   tag: string | null;
+  /** The edition is still in input/. A deleted edition can still be given, but not drawn. */
+  live: boolean;
 };
 
 export type TransferView = {
@@ -68,8 +71,9 @@ function asCard(card: {
   frameId: number | null;
   dye: string | null;
   tag: string | null;
-  variantId: string;
-  variant: { image: string; character: { slug: string; name: string; series: { slug: string; name: string } } };
+  variantId: string | null;
+  assetKey: string | null;
+  variant: { image: string; character: { slug: string; name: string; series: { slug: string; name: string } } } | null;
 }): TransferCard {
   return {
     id: card.id,
@@ -77,13 +81,14 @@ function asCard(card: {
     printNumber: card.printNumber,
     frameId: card.frameId,
     dye: card.dye,
-    seriesName: card.variant.character.series.name,
-    characterName: card.variant.character.name,
-    seriesSlug: card.variant.character.series.slug,
-    characterSlug: card.variant.character.slug,
-    variantId: card.variantId,
-    imageFile: card.variant.image,
+    seriesName: card.variant?.character.series.name ?? "",
+    characterName: card.variant?.character.name ?? "",
+    seriesSlug: card.variant?.character.series.slug ?? "",
+    characterSlug: card.variant?.character.slug ?? "",
+    variantId: card.assetKey ?? card.variantId ?? "",
+    imageFile: card.variant?.image ?? "",
     tag: card.tag,
+    live: card.variantId !== null,
   };
 }
 
@@ -169,8 +174,11 @@ async function toView(offer: OfferRow, changed = false): Promise<TransferView> {
   };
 }
 
-function cardItem(card: { variantId: string; quality: string; printNumber: number }) {
-  return { bits: 0 as const, card: { variantId: card.variantId, quality: card.quality, printNumber: card.printNumber } };
+function cardItem(card: { assetKey: string | null; variantId: string | null; quality: string; printNumber: number }) {
+  return {
+    bits: 0 as const,
+    card: { variantId: card.assetKey ?? card.variantId ?? "", quality: card.quality, printNumber: card.printNumber },
+  };
 }
 
 const offerInclude = { fromUser: true, toUser: true } as const;

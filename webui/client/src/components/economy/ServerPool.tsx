@@ -20,7 +20,7 @@ function goalLine(pool: PoolState): string {
 
 /** The bot's `/pool show` wording, so the site and the bot say the same thing. */
 function outlookLines(pool: PoolState): string[] {
-  if (pool.choices.length === 0) return ["Tonight: nothing is chosen until the pot reaches 10,000 bits."];
+  if (pool.choices.length === 0) return ["Tonight: nothing is chosen until the pot reaches 500 bits."];
   const slots = pool.tier >= 4 ? 2 : 1;
   const pickable = pool.choices.filter((name) => name !== "Tracked pull");
   const always = pool.goal >= 10_000 ? "always Tracked pull, plus " : "";

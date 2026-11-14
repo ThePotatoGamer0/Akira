@@ -78,8 +78,8 @@ async function collectionPayload(ownerId: string, page: number, guildId: string 
       quality: card.quality,
       printNumber: card.printNumber,
       frameId: displayFrameId(card.frameId, serverFrame, personalFrame),
-      seriesName: card.variant.character.series.name,
-      characterName: card.variant.character.name,
+      seriesName: card.variant?.character.series.name ?? "Deleted edition",
+      characterName: card.variant?.character.name ?? card.assetKey ?? "",
       tagEmoji: emojiForTag(tags, card.tag),
     }),
   );

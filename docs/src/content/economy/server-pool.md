@@ -17,7 +17,7 @@ A gift stays a gift. The milestone payout is always smaller than the bits you pu
 
 ## What tonight can be
 
-The tier is the highest one the pot reached. Akira picks from that tier and every tier below it. A pot only buys a buff once it passes 10,000 bits; until then the tiers still decide which buff that is.
+The tier is the highest one the pot reached. Akira picks from that tier and every tier below it. Under 10,000 bits the night still rolls that way and empties the pot. From 10,000 up, the large goals change what is spent and what is added on top.
 
 - **500 bits, tier 1.** Grab cooldown. That is the only choice, so 500 bits always gives grab cooldown.
 - **2,000 bits, tier 2.** One of grab cooldown, drop cooldown, or shiny luck.
@@ -38,16 +38,14 @@ The goals stack on the tiers. At 10,000 and above the tracked pull is always app
 
 ## What stays in the pot
 
-Only the goal reached is spent. Everything above it stays in the pot for the next night.
+Under 10,000 the whole pot is spent on the tier roll. From 10,000 up, only the goal reached is spent and everything above it stays for the next night.
 
 | Pot | Goal reached | Spent | Carried to tomorrow |
 | ---: | ---: | ---: | ---: |
 | 52,000 | 50,000 | 50,000 | 2,000 |
 | 31,250 | 25,000 | 25,000 | 6,250 |
 | 10,400 | 10,000 | 10,000 | 400 |
-| 7,000 | none | 0 | 7,000 |
-
-A pot under 10,000 spends nothing at all and keeps building.
+| 7,000 | none (tier 4) | 7,000 | 0 |
 
 ## How it sits with the shop
 

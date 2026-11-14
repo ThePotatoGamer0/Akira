@@ -10,6 +10,10 @@ function rollLine(result: PoolRollResult): string {
     return `Midnight pool: ${result.pot.toLocaleString("en-US")} bits is still under 500, so the pot stays and no buff was applied.`;
   }
   const names = result.buffs.map(buffName);
+  // A night under 10,000 still empties the pot on its tier; goals only rewrite the spend line.
+  if (result.goal === 0) {
+    return `Midnight pool: tier ${result.tier} spent ${result.pot.toLocaleString("en-US")} bits on ${names.join(" and ")}.`;
+  }
   const carried = result.carried > 0 ? ` ${result.carried.toLocaleString("en-US")} bits carry into today.` : "";
   return `Midnight pool: ${result.goal.toLocaleString("en-US")} of ${result.pot.toLocaleString("en-US")} bits went on ${names.join(" and ")}.${carried}`;
 }

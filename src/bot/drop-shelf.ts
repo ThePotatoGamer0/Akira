@@ -308,7 +308,8 @@ async function burnRequest(): Promise<CardImageRequest | null> {
       variant: { include: { character: { include: { series: true } } } },
     },
   });
-  if (!card) return null;
+  // A burn line is only drawn for a card whose art still exists.
+  if (!card?.variant) return null;
   return {
     variantId: card.variant.id,
     seriesSlug: card.variant.character.series.slug,

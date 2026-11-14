@@ -62,7 +62,7 @@ export async function offerLastGrabBurn(message: Message): Promise<void> {
         .setColor("#2b2d31")
         .setTitle("Are you sure?")
         .setDescription(
-          `Burn **${card.variant.character.name}** #${card.printNumber} (\`${card.id}\`) for **${quote.awarded}** bits?`,
+          `Burn **${card.variant?.character.name ?? "Deleted edition"}** #${card.printNumber} (\`${card.id}\`) for **${quote.awarded}** bits?`,
         ),
     ],
     components: [row],

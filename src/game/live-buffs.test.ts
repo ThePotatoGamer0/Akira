@@ -59,14 +59,19 @@ test("a pot under 500 stays and grants nothing", async () => {
   assert.equal(row.activeBuff, null);
 });
 
-test("a pot between goals spends nothing and keeps every bit", async () => {
+test("a pot under 10k still rolls its tier and empties the pot", async () => {
   const guildId = await pool(7_000);
   const result = await live.rollServerPool(guildId, morning, () => 0.5);
-  assert.equal(result?.spent, false);
+  assert.equal(result?.spent, true);
   assert.equal(result?.goal, 0);
+  assert.equal(result?.tier, 4);
   assert.equal(result?.carried, 0);
+  assert.equal(result?.buffs.includes("tracked_pull"), false);
+  assert.equal(result?.buffs.length, 2);
   const row = await prisma.serverPool.findUniqueOrThrow({ where: { guildId } });
-  assert.equal(row.totalBits, 7_000);
+  assert.equal(row.totalBits, 0);
+  assert.ok(row.activeBuff);
+  assert.equal(row.activeBuff?.includes("tracked_pull"), false);
 });
 
 test("10,400 spends the 10k goal, adds the tracked pull, and carries 400", async () => {

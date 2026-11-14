@@ -138,8 +138,8 @@ export function pollSlots(goal: number): number {
 export type PoolSpend = { goal: number; spent: number; carried: number };
 
 /**
- * Only the goal reached comes out of the pot and the rest carries to tomorrow, so a
- * big pot is not spent on a buff worth a fifth of it.
+ * How a goal night spends the pot. Callers only use this once the pot has hit 10,000;
+ * below that the night empties the pot on its tier instead.
  */
 export function poolSpend(bits: number): PoolSpend {
   const goal = poolGoal(bits);

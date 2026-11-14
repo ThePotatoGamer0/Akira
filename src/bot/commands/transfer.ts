@@ -67,6 +67,11 @@ function attachmentName(view: TransferView): string {
   return shiny ? "card.gif" : "card.png";
 }
 
+/** A deleted edition has no picture left, so the embed shows the lines without one. */
+function canDraw(...cards: Array<TransferCard | null>): boolean {
+  return cards.every((card) => card === null || card.live);
+}
+
 function transferButtons(view: TransferView) {
   if (view.status !== "pending") return [];
   return [
@@ -92,8 +97,8 @@ async function transferMessage(
   const embed = new EmbedBuilder()
     .setTitle(view.kind === "trade" ? "Card Trade" : "Card Transfer")
     .setColor("#2b2d31")
-    .setDescription(body + banner(view))
-    .setImage(`attachment://${name}`);
+    .setDescription(body + banner(view));
+  if (file) embed.setImage(`attachment://${name}`);
   const payload: {
     embeds: EmbedBuilder[];
     components: ActionRowBuilder<ButtonBuilder>[];
@@ -129,6 +134,10 @@ async function replyOffer(interaction: ChatInputCommandInteraction, view: Transf
   const toFrame = await personalDefaultFrame(view.toDiscordId);
   if (view.kind === "trade") {
     if (!view.fromCard || !view.toCard) throw new GameError("missing", "Akira couldn't find that card anymore.");
+    if (!canDraw(view.fromCard, view.toCard)) {
+      await interaction.reply(await transferMessage(view, interaction.guildId));
+      return;
+    }
     const [left, right] = await Promise.all([
       readCard(view.fromCard, displayFrameId(view.fromCard.frameId, serverFrame, fromFrame)),
       readCard(view.toCard, displayFrameId(view.toCard.frameId, serverFrame, toFrame)),
@@ -139,6 +148,10 @@ async function replyOffer(interaction: ChatInputCommandInteraction, view: Transf
     return;
   }
   if (!view.fromCard) throw new GameError("missing", "Akira couldn't find that card anymore.");
+  if (!canDraw(view.fromCard)) {
+    await interaction.reply(await transferMessage(view, interaction.guildId));
+    return;
+  }
   const image = await readCard(view.fromCard, displayFrameId(view.fromCard.frameId, serverFrame, fromFrame));
   const file = { data: image.data, name: image.animated ? "card.gif" : "card.png" };
   await interaction.reply(await transferMessage(view, interaction.guildId, file));
