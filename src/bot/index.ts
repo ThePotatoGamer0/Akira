@@ -249,6 +249,10 @@ async function handleGuildMessage(message: Message): Promise<void> {
         await interaction.reply({ content: `Akira couldn't find a card with the id \`${last}\`.` });
         return;
       }
+      if (!card.variant) {
+        await interaction.reply({ content: `Card \`${card.id}\` is from an edition that was deleted from Akira's input.` });
+        return;
+      }
       await replyCharacterEdition(
         interaction,
         card.variant.character.id,

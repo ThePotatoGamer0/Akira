@@ -194,6 +194,10 @@ export async function burnOwnedCard(discordId: string, username: string, cardId:
   if (await cardInOpenTransfer(card.id)) {
     throw new GameError("busy", "That card is in an open trade.");
   }
+  // A deleted edition has no art left to draw for the burn line.
+  if (!card.variant) {
+    throw new GameError("gone", "That edition was deleted from Akira's input, so it cannot be burned. It can still be traded.");
+  }
 
   const imagePath = await ensureCardImage({
     variantId: card.variant.id,

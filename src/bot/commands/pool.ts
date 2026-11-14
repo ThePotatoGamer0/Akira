@@ -19,7 +19,7 @@ const POLL_GOAL = POOL_GOALS.find((row) => row.kind === "poll")!.bits;
 export function poolOutlook(bits: number, choices: readonly string[]): string[] {
   const tier = poolTier(bits);
   const goal = poolGoal(bits);
-  if (choices.length === 0) return ["Tonight: nothing is chosen until the pot reaches 10,000 bits."];
+  if (choices.length === 0) return ["Tonight: nothing is chosen until the pot reaches 500 bits."];
   const slots = tier >= 4 ? 2 : 1;
   const pickable = choices.filter((name) => name !== buffName("tracked_pull"));
   const lines = [

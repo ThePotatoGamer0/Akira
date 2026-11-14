@@ -222,6 +222,7 @@ export async function wishlistHeadsUps(
       select: { variant: { select: { characterId: true } } },
     });
     for (const card of cards) {
+      if (!card.variant) continue;
       const list = held.get(card.variant.characterId) ?? [];
       list.push(drop.dropperId);
       held.set(card.variant.characterId, list);
@@ -670,10 +671,11 @@ export async function claimReaction(input: {
         const existing = await tx.card.findUnique({ where: { id }, select: { id: true } });
         return existing !== null;
       });
-      const card = await tx.card.create({
-        data: {
-          id: cardId,
-          variantId: slot.variantId,
+        const card = await tx.card.create({
+          data: {
+            id: cardId,
+            variantId: slot.variantId,
+            assetKey: slot.variantId,
           frameId: slot.frameId,
           printNumber: printed.printNumber,
           quality: slot.quality,

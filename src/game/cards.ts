@@ -42,13 +42,14 @@ export async function listCollection(discordId: string, page = 0, filter: CardFi
     where: { ownerId: user.id },
     include: collectionInclude,
   });
+  // A card from a deleted edition keeps its id but has no variant row to read.
   const filtered = applyCardFilters(
     ownedCards.map((card) => ({
       ...card,
-      edition: editionNumber(card.variant.character.variants, card.variant.id),
-      wishlistCount: card.variant.character._count.wishlists,
-      seriesName: card.variant.character.series.name,
-      characterName: card.variant.character.name,
+      edition: card.variant ? editionNumber(card.variant.character.variants, card.variant.id) : 0,
+      wishlistCount: card.variant?.character._count.wishlists ?? 0,
+      seriesName: card.variant?.character.series.name ?? "Deleted edition",
+      characterName: card.variant?.character.name ?? card.assetKey ?? "",
     })),
     filter,
   );
@@ -321,7 +322,7 @@ export async function clearWishlistsForOwnedCards(cardIds: string[]): Promise<vo
   for (const card of cards) {
     if (!card.ownerId) continue;
     const list = byOwner.get(card.ownerId) ?? [];
-    list.push(card.variant.characterId);
+    if (card.variant) list.push(card.variant.characterId);
     byOwner.set(card.ownerId, list);
   }
   await Promise.all([...byOwner.entries()].map(([userId, characterIds]) => clearWishlistOnObtain(userId, characterIds)));
@@ -341,7 +342,8 @@ export async function noteWishlistReceipts(cardIds: string[]): Promise<Array<{ o
   const cleared = await Promise.all(
     cards.map(async (card) => {
       if (!card.ownerId) return [];
-      const names = await clearWishlistOnObtain(card.ownerId, [card.variant.characterId]);
+      const characterId = card.variant?.characterId ?? "";
+      const names = await clearWishlistOnObtain(card.ownerId, [characterId]);
       return names.map((characterName) => ({ ownerId: card.ownerId!, characterName }));
     }),
   );

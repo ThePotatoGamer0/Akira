@@ -164,7 +164,7 @@ async function toView(trade: TradeRow): Promise<MultitradeView> {
     where: { id: { in: entries.flatMap((entry) => (entry.cardId ? [entry.cardId] : [])) } },
     include: { variant: { include: { character: true } } },
   });
-  const names = new Map(cards.map((card) => [card.id, card.variant.character.name]));
+  const names = new Map(cards.map((card) => [card.id, card.variant?.character.name ?? "Deleted edition"]));
   const offer = hasOffer(entries);
   const verdict = offer
     ? await multitradeVerdict({ id: trade.id, fromUserId: trade.fromUser.id, toUserId: trade.toUser.id })
@@ -303,7 +303,7 @@ export async function lockMultitrade(id: string, discordId: string): Promise<Mul
   const saved = await prisma.$transaction(async (tx) => {
     const trade = await tx.multitrade.findUnique({ where: { id }, include: tradeInclude });
     if (!trade || trade.status !== "open") throw new GameError("closed", "This trade is no longer open.");
-    const entries = await tx.multitradeEntry.findMany({ where: { tradeId: id }, include: { card: { select: { variantId: true, quality: true, printNumber: true } } } });
+    const entries = await tx.multitradeEntry.findMany({ where: { tradeId: id }, include: { card: { select: { variantId: true, assetKey: true, quality: true, printNumber: true } } } });
     if (!hasOffer(entries)) {
       throw new GameError("empty", "Add a card or some bits before locking.");
     }
@@ -458,7 +458,7 @@ export async function addToMultitrade(
     // The cap only bites once the other side has something on it; a gift can be any size.
     const theirs = await tx.multitradeEntry.findMany({
       where: { tradeId: fresh.id, userId: { not: user.id } },
-      include: { card: { select: { variantId: true, quality: true, printNumber: true } } },
+      include: { card: { select: { variantId: true, assetKey: true, quality: true, printNumber: true } } },
     });
     const otherEmpty = !hasOffer(theirs);
     const capNote = bitsCapNote(nextBits, otherEmpty);

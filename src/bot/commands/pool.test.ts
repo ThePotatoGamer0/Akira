@@ -6,7 +6,7 @@ const FOUR = ["Grab cooldown", "Drop cooldown", "Shiny luck", "Four cards"];
 const ALL = [...FOUR, "Tracked pull"];
 
 test("below the first goal nothing is promised", () => {
-  assert.deepEqual(poolOutlook(0, []), ["Tonight: nothing is chosen until the pot reaches 10,000 bits."]);
+  assert.deepEqual(poolOutlook(0, []), ["Tonight: nothing is chosen until the pot reaches 500 bits."]);
 });
 
 test("at 10k the tracked pull is called out as always on", () => {

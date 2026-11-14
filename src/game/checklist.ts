@@ -108,7 +108,7 @@ export async function trackedMissing(userId: string): Promise<MissingSeries[]> {
       select: { variant: { select: { characterId: true } } },
     }),
   ]);
-  const ownedIds = new Set(owned.map((card) => card.variant.characterId));
+  const ownedIds = new Set(owned.flatMap((card) => (card.variant ? [card.variant.characterId] : [])));
   return tracked.map((row) => ({
     name: row.series.name,
     missing: row.series.characters

@@ -112,6 +112,7 @@ export async function completionStats(userId: string, style: SeriesTitleStyle = 
 
   const ownedBySeries = new Map<string, Set<string>>();
   for (const card of ownedCards) {
+    if (!card.variant) continue;
     const seriesId = card.variant.character.seriesId;
     const held = ownedBySeries.get(seriesId) ?? new Set<string>();
     held.add(card.variant.characterId);

@@ -61,8 +61,10 @@ model CardVariant {
 
 model Card {
   id          String      @id
-  variantId   String
-  variant     CardVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+  variantId   String?
+  variant     CardVariant? @relation(fields: [variantId], references: [id], onDelete: SetNull)
+  /** The id the variant had in input/ when this card was minted. A kept card outlives its variant. */
+  assetKey    String?
   /** Null uses the server's default frame. A number is a frame chosen for this card. */
   frameId     Int?
   printNumber Int
@@ -130,6 +132,24 @@ model User {
   buffs               Buff[]
   prestigeBuffs       PrestigeBuff[]
   outageClaims        OutageClaim[]
+}
+
+/** A card or edition whose input/ entry was deleted. Claimed copies stay owned; unclaimed ones went with it. */
+model RemovedCard {
+  id            String   @id @default(cuid())
+  /** The variant id from input/ that no longer exists. */
+  variantId     String
+  /** The card's id. Null for an edition that no longer exists at all. */
+  cardId        String?
+  characterName String
+  variantName   String
+  seriesName    String
+  rarity        String
+  /** The freed cache folder, relative to assets/cards. */
+  cacheFolder   String
+  removedAt     DateTime @default(now())
+
+  @@index([removedAt])
 }
 
 /** One row. The last time the bot process was alive, and whether it exited on purpose. */

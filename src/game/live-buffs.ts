@@ -264,18 +264,21 @@ export async function rollServerPool(
 ): Promise<PoolRollResult | null> {
   const pool = await prisma.serverPool.findUnique({ where: { guildId } });
   if (!pool || !missedMidnight(pool.lastReset, now)) return null;
-  const spend = poolSpend(pool.totalBits);
-  const tier = poolTier(spend.goal);
+  // Tier comes from the live pot. Goals only change spend/carry once the pot hits 10k.
+  const tier = poolTier(pool.totalBits);
+  const goal = poolGoal(pool.totalBits);
   if (tier === 0) {
-    // Nothing spent and nothing carried: the pot was too small to buy anything.
+    // Under 500: nothing is bought and the bits stay for another night.
     await prisma.serverPool.update({
       where: { guildId },
       data: { lastReset: now, carriedBits: 0, pollMessage: null },
     });
     return { guildId, spent: false, tier: 0, goal: 0, pot: pool.totalBits, carried: 0, buffs: [] };
   }
-  const buffs = pickGoalBuffs(spend.goal, tier, rng, poll?.winners ?? []);
-  if (spend.goal >= 10_000) buffs.push("tracked_pull");
+  // Below the first goal the night still rolls and empties the pot, same as before the goals.
+  const spend = goal === 0 ? { goal: 0, spent: pool.totalBits, carried: 0 } : poolSpend(pool.totalBits);
+  const buffs = pickGoalBuffs(goal, tier, rng, poll?.winners ?? []);
+  if (goal >= 10_000) buffs.push("tracked_pull");
   await prisma.serverPool.update({
     where: { guildId },
     data: {
