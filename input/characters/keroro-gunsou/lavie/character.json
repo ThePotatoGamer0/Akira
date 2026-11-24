@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-lavie",
+  "name": "Lavie",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-lavie-base",
+      "name": "Lavie",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

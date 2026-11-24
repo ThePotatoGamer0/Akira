@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-chiroro",
+  "name": "Chiroro",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-chiroro-base",
+      "name": "Chiroro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

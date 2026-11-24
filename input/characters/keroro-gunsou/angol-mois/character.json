@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-angol-mois",
+  "name": "Angol Mois",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-angol-mois-base",
+      "name": "Angol Mois",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

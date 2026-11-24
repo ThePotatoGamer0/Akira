@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-satsuki-shiwasu",
+  "name": "Satsuki Shiwasu",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-satsuki-shiwasu-base",
+      "name": "Satsuki Shiwasu",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

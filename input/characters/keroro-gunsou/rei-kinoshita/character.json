@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-rei-kinoshita",
+  "name": "Rei Kinoshita",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-rei-kinoshita-base",
+      "name": "Rei Kinoshita",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

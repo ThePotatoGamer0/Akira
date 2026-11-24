@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-alisa-southerncross",
+  "name": "Alisa Southerncross",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-alisa-southerncross-base",
+      "name": "Alisa Southerncross",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

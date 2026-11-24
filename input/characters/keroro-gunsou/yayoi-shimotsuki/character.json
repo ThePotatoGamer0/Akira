@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-yayoi-shimotsuki",
+  "name": "Yayoi Shimotsuki",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-yayoi-shimotsuki-base",
+      "name": "Yayoi Shimotsuki",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

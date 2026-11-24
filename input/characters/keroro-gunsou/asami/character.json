@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-asami",
+  "name": "Asami",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-asami-base",
+      "name": "Asami",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-tamama",
+  "name": "Tamama",
+  "gender": "Male",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "keroro-gunsou-tamama-base",
+      "name": "Tamama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

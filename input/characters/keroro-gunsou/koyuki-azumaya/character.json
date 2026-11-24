@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-koyuki-azumaya",
+  "name": "Koyuki Azumaya",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-koyuki-azumaya-base",
+      "name": "Koyuki Azumaya",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

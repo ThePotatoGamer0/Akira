@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-mother",
+  "name": "Mother",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-mother-base",
+      "name": "Mother",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

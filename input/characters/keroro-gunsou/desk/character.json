@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-desk",
+  "name": "Desk",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-desk-base",
+      "name": "Desk",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

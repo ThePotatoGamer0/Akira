@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-moa-no-chichi",
+  "name": "Moa no Chichi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-moa-no-chichi-base",
+      "name": "Moa no Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

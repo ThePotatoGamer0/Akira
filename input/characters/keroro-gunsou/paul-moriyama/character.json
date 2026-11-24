@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-paul-moriyama",
+  "name": "Paul Moriyama",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-paul-moriyama-base",
+      "name": "Paul Moriyama",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

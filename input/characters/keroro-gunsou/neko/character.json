@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-neko",
+  "name": "Neko",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-neko-base",
+      "name": "Neko",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

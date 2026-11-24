@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-keroro",
+  "name": "Keroro",
+  "gender": "Male",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "keroro-gunsou-keroro-base",
+      "name": "Keroro",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

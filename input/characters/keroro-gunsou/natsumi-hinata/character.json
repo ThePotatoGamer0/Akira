@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-natsumi-hinata",
+  "name": "Natsumi Hinata",
+  "gender": "Female",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "keroro-gunsou-natsumi-hinata-base",
+      "name": "Natsumi Hinata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}
