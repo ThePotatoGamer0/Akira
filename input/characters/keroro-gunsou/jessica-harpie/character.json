@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-jessica-harpie",
+  "name": "Jessica Harpie",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-jessica-harpie-base",
+      "name": "Jessica Harpie",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

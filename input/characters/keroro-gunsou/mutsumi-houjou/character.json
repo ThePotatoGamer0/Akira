@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-mutsumi-houjou",
+  "name": "Mutsumi Houjou",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-mutsumi-houjou-base",
+      "name": "Mutsumi Houjou",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

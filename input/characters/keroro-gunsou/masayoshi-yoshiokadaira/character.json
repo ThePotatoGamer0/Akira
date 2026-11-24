@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-masayoshi-yoshiokadaira",
+  "name": "Masayoshi Yoshiokadaira",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-masayoshi-yoshiokadaira-base",
+      "name": "Masayoshi Yoshiokadaira",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

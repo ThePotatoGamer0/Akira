@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-momoka-nishizawa",
+  "name": "Momoka Nishizawa",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-momoka-nishizawa-base",
+      "name": "Momoka Nishizawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

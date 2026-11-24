@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-kiruru",
+  "name": "Kiruru.",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-kiruru-base",
+      "name": "Kiruru.",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

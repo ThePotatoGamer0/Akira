@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-baio-nishizawa",
+  "name": "Baio Nishizawa",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-baio-nishizawa-base",
+      "name": "Baio Nishizawa",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

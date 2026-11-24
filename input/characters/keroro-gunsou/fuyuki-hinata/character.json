@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-fuyuki-hinata",
+  "name": "Fuyuki Hinata",
+  "gender": "Male",
+  "role": "MAIN",
+  "cards": [
+    {
+      "id": "keroro-gunsou-fuyuki-hinata-base",
+      "name": "Fuyuki Hinata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

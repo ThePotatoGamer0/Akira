@@ -30,6 +30,9 @@ export const ANILIST_SEARCH: Record<string, string | null> = {
   "way-of-the-househusband": "The Way of the Househusband",
   "jibaku-shounen-hanako-kun": "Toilet-Bound Hanako-kun",
   "the-saga-of-tanya-the-evil": "Youjo Senki",
+  "keroro-gunsou": "Keroro Gunsou",
+  "limbus-company": null,
+  "rune-factory": null,
 };
 
 export function searchTitle(seriesSlug: string): string | null {

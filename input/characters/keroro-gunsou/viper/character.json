@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-viper",
+  "name": "Viper",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-viper-base",
+      "name": "Viper",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

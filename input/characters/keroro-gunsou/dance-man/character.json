@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-dance-man",
+  "name": "DANCE☆MAN",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-dance-man-base",
+      "name": "DANCE☆MAN",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-mr-g",
+  "name": "Mr. G",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-mr-g-base",
+      "name": "Mr. G",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-aki-hinata",
+  "name": "Aki Hinata",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-aki-hinata-base",
+      "name": "Aki Hinata",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

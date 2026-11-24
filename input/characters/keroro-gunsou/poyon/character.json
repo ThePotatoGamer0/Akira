@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-poyon",
+  "name": "Poyon",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-poyon-base",
+      "name": "Poyon",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

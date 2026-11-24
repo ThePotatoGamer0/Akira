@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-melody-honey",
+  "name": "Melody Honey",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-melody-honey-base",
+      "name": "Melody Honey",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

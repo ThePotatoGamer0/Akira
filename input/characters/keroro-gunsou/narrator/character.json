@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-narrator",
+  "name": "Narrator",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-narrator-base",
+      "name": "Narrator",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-rie-imogo",
+  "name": "Rie Imogo",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-rie-imogo-base",
+      "name": "Rie Imogo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

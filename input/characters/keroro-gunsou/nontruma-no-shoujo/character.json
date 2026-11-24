@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-nontruma-no-shoujo",
+  "name": "Nontruma no Shoujo",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-nontruma-no-shoujo-base",
+      "name": "Nontruma no Shoujo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

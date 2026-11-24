@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-sumomo",
+  "name": "Sumomo",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-sumomo-base",
+      "name": "Sumomo",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

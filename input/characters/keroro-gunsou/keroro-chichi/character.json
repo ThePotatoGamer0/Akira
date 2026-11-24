@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-keroro-chichi",
+  "name": "Keroro Chichi",
+  "gender": "Male",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-keroro-chichi-base",
+      "name": "Keroro Chichi",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

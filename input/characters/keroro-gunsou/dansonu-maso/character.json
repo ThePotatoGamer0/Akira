@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-dansonu-maso",
+  "name": "Dansonu Maso",
+  "gender": null,
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-dansonu-maso-base",
+      "name": "Dansonu Maso",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}

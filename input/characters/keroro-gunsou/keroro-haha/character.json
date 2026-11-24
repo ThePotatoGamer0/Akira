@@ -1,0 +1,14 @@
+{
+  "id": "keroro-gunsou-keroro-haha",
+  "name": "Keroro Haha",
+  "gender": "Female",
+  "role": "SUPPORTING",
+  "cards": [
+    {
+      "id": "keroro-gunsou-keroro-haha-base",
+      "name": "Keroro Haha",
+      "rarity": "Common",
+      "image": "base.png"
+    }
+  ]
+}
