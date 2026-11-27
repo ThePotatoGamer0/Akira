@@ -3,6 +3,7 @@ import { MenuSelect } from "../components/MenuSelect.js";
 import { ThemeMark } from "../components/ThemeMark.js";
 import { THEMES, currentTheme, setTheme, toggles } from "../lib/theme.js";
 import { PREFERRED_NAME_MAX, sanitizePreferredName } from "../lib/akiraAddressName.js";
+import { chromeRailSupported, setChromeLayout, type ChromeLayout } from "../lib/chromeLayout.js";
 import { hapticsEnabled, hapticsSupported, setHapticsEnabled } from "../lib/haptics.js";
 import { writeCollectionPrefs } from "../lib/collectionPrefs.js";
 import { COLLECTION_ORDERS, collectionOrder } from "../lib/collectionView.js";
@@ -15,6 +16,8 @@ export function SettingsPage(props: {
   me: Me;
   fetchApi: (path: string, init?: RequestInit) => Promise<Response>;
   readOnly?: boolean;
+  chrome: ChromeLayout;
+  onChromeChange: (layout: ChromeLayout) => void;
   onSaved: () => void;
 }) {
   const [preferredName, setPreferredName] = useState(sanitizePreferredName(props.me.preferredName ?? "") ?? "");
@@ -34,10 +37,19 @@ export function SettingsPage(props: {
   const [theme, setThemeId] = useState(currentTheme);
   const currentThemeInfo = THEMES.find((entry) => entry.id === theme);
   const [canBuzz, setCanBuzz] = useState(hapticsSupported);
+  const [wideScreen, setWideScreen] = useState(chromeRailSupported);
 
   useEffect(() => {
     const query = window.matchMedia("(pointer: coarse)");
     const sync = () => setCanBuzz(hapticsSupported());
+    sync();
+    query.addEventListener("change", sync);
+    return () => query.removeEventListener("change", sync);
+  }, []);
+
+  useEffect(() => {
+    const query = window.matchMedia("(min-width: 900px)");
+    const sync = () => setWideScreen(query.matches);
     sync();
     query.addEventListener("change", sync);
     return () => query.removeEventListener("change", sync);
@@ -302,6 +314,29 @@ export function SettingsPage(props: {
             </button>
           </div>
         ) : null}
+        <div className="settings-row settings-switch">
+          <div>
+            <span className="settings-label">Left navigation</span>
+            <p className="settings-hint">
+              {wideScreen
+                ? "Put the title and page links in a column on the left, using the empty space beside the page."
+                : "On a wide desktop window, put the title and page links in a column on the left. Phones keep the top bar."}
+            </p>
+          </div>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={props.chrome === "rail"}
+            aria-label="Left navigation"
+            onClick={() => {
+              const next: ChromeLayout = props.chrome === "rail" ? "top" : "rail";
+              setChromeLayout(next);
+              props.onChromeChange(next);
+            }}
+          >
+            <span />
+          </button>
+        </div>
       </div>
 
       <div className="panel">

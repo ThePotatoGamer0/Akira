@@ -16,6 +16,7 @@ import { AdminPage } from "./pages/Admin.js";
 import { NoticeBell } from "./components/NoticeBell.js";
 import { SettingsPage } from "./pages/Settings.js";
 import { ChannelPage } from "./pages/Channel.js";
+import { chromeLayout, type ChromeLayout } from "./lib/chromeLayout.js";
 import "./styles.css";
 
 type AuthView = "login" | "verify" | "setpass";
@@ -38,9 +39,11 @@ export function App() {
   const location = useLocation();
   const [authView, setAuthView] = useState<AuthView>("login");
   const [authUsername, setAuthUsername] = useState("");
+  const [chrome, setChrome] = useState<ChromeLayout>(chromeLayout);
   const compact = auth.activityLayout === "pip" || auth.activityLayout === "grid";
   const pokeConnection = useCallback(() => auth.checkConnection({ quiet: true }), [auth.checkConnection]);
   const readOnly = !auth.apiUp && Boolean(auth.me);
+  const rail = chrome === "rail";
 
   useEffect(() => {
     if (!readOnly) return;
@@ -156,118 +159,124 @@ export function App() {
   const me = auth.me;
 
   return (
-    <WebUiShell>
+    <WebUiShell rail={rail}>
       <NoticeBell fetchApi={auth.fetchApi} />
-      <header className="webui-header">
-        <div>
-          <div className="webui-kana">ア キ ラ - WebUI</div>
-          <div className="webui-brand">
-            <span className="gradient-text">Akira</span>
+      <div className="webui-chrome">
+        <header className="webui-header">
+          <div>
+            <div className="webui-kana">ア キ ラ - WebUI</div>
+            <div className="webui-brand">
+              <span className="gradient-text">Akira</span>
+            </div>
           </div>
-        </div>
-        <div className="webui-badge">
-          Signed in · {me.displayName}
-          {me.isAdmin ? (
-            <>
-              {" "}
-              · <strong>Admin</strong>
-            </>
+          <div className="webui-badge">
+            Signed in · {me.displayName}
+            {me.isAdmin ? (
+              <>
+                {" "}
+                · <strong>Admin</strong>
+              </>
+            ) : null}
+          </div>
+        </header>
+        <nav className="webui-nav">
+          <NavLink to="/" end className={({ isActive }) => (isActive ? "active" : "")}>
+            Home
+          </NavLink>
+          <NavLink to="/collection" className={({ isActive }) => (isActive ? "active" : "")}>
+            Collection
+          </NavLink>
+          <NavLink to="/characters" className={({ isActive }) => (isActive ? "active" : "")}>
+            Characters
+          </NavLink>
+          <NavLink to="/economy" className={({ isActive }) => (isActive ? "active" : "")}>
+            Economy
+          </NavLink>
+          <NavLink to="/stats" className={({ isActive }) => (isActive ? "active" : "")}>
+            Stats
+          </NavLink>
+          <NavLink to="/settings" className={({ isActive }) => (isActive ? "active" : "")}>
+            Settings
+          </NavLink>
+          {auth.isDiscordActivity ? null : (
+            <NavLink to="/channel" className={({ isActive }) => (isActive ? "active" : "")}>
+              Channel <span className="beta-tag">BETA</span>
+            </NavLink>
+          )}
+          {me.isAdmin && !readOnly ? (
+            <NavLink to="/admin" className={({ isActive }) => (isActive ? "active" : "")}>
+              Admin
+            </NavLink>
           ) : null}
-        </div>
-      </header>
-      <nav className="webui-nav">
-        <NavLink to="/" end className={({ isActive }) => (isActive ? "active" : "")}>
-          Home
-        </NavLink>
-        <NavLink to="/collection" className={({ isActive }) => (isActive ? "active" : "")}>
-          Collection
-        </NavLink>
-        <NavLink to="/characters" className={({ isActive }) => (isActive ? "active" : "")}>
-          Characters
-        </NavLink>
-        <NavLink to="/economy" className={({ isActive }) => (isActive ? "active" : "")}>
-          Economy
-        </NavLink>
-        <NavLink to="/stats" className={({ isActive }) => (isActive ? "active" : "")}>
-          Stats
-        </NavLink>
-        <NavLink to="/settings" className={({ isActive }) => (isActive ? "active" : "")}>
-          Settings
-        </NavLink>
-        {auth.isDiscordActivity ? null : (
-          <NavLink to="/channel" className={({ isActive }) => (isActive ? "active" : "")}>
-            Channel <span className="beta-tag">BETA</span>
-          </NavLink>
-        )}
-        {me.isAdmin && !readOnly ? (
-          <NavLink to="/admin" className={({ isActive }) => (isActive ? "active" : "")}>
-            Admin
-          </NavLink>
+        </nav>
+      </div>
+      <div className="webui-stage">
+        {readOnly ? (
+          <ReadOnlyBanner
+            onPoke={() => void pokeConnection()}
+            message={
+              location.pathname === "/settings"
+                ? "Akira is napping. Some settings are unavailable."
+                : undefined
+            }
+          />
         ) : null}
-      </nav>
-      {readOnly ? (
-        <ReadOnlyBanner
-          onPoke={() => void pokeConnection()}
-          message={
-            location.pathname === "/settings"
-              ? "Akira is napping. Some settings are unavailable."
-              : undefined
-          }
-        />
-      ) : null}
-      <div className="webui-main">
-        <Routes>
-          <Route path="/" element={<Home me={me} showChannel={!auth.isDiscordActivity} />} />
-          <Route
-            path="/channel"
-            element={
-              auth.isDiscordActivity ? <Navigate to="/" replace /> : <ChannelPage fetchApi={auth.fetchApi} />
-            }
-          />
-          <Route
-            path="/admin"
-            element={
-              me.isAdmin && !readOnly ? (
-                <AdminPage fetchApi={auth.fetchApi} />
-              ) : (
-                <Navigate to="/" replace />
-              )
-            }
-          />
-          <Route path="/collection" element={<CollectionPage me={me} fetchApi={auth.fetchApi} liveRev={auth.liveRev} />} />
-          <Route
-            path="/characters/:seriesSlug/:characterSlug"
-            element={<CatalogPage fetchApi={auth.fetchApi} />}
-          />
-          <Route path="/characters/:seriesSlug" element={<CatalogPage fetchApi={auth.fetchApi} />} />
-          <Route path="/characters" element={<CatalogPage fetchApi={auth.fetchApi} />} />
-          <Route
-            path="/economy"
-            element={
-              <EconomyPage
-                me={me}
-                fetchApi={auth.fetchApi}
-                liveRev={auth.liveRev}
-                onRefreshMe={() => void auth.refreshMe()}
-              />
-            }
-          />
-          <Route path="/stats" element={<StatsPage me={me} fetchApi={auth.fetchApi} liveRev={auth.liveRev} />} />
-          <Route path="/leaderboard" element={<Navigate to="/stats" replace />} />
-          <Route path="/personalise" element={<Navigate to="/settings" replace />} />
-          <Route
-            path="/settings"
-            element={
-              <SettingsPage
-                me={me}
-                fetchApi={auth.fetchApi}
-                readOnly={readOnly}
-                onSaved={() => void auth.refreshMe()}
-              />
-            }
-          />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        <div className="webui-main">
+          <Routes>
+            <Route path="/" element={<Home me={me} showChannel={!auth.isDiscordActivity} />} />
+            <Route
+              path="/channel"
+              element={
+                auth.isDiscordActivity ? <Navigate to="/" replace /> : <ChannelPage fetchApi={auth.fetchApi} />
+              }
+            />
+            <Route
+              path="/admin"
+              element={
+                me.isAdmin && !readOnly ? (
+                  <AdminPage fetchApi={auth.fetchApi} />
+                ) : (
+                  <Navigate to="/" replace />
+                )
+              }
+            />
+            <Route path="/collection" element={<CollectionPage me={me} fetchApi={auth.fetchApi} liveRev={auth.liveRev} />} />
+            <Route
+              path="/characters/:seriesSlug/:characterSlug"
+              element={<CatalogPage fetchApi={auth.fetchApi} />}
+            />
+            <Route path="/characters/:seriesSlug" element={<CatalogPage fetchApi={auth.fetchApi} />} />
+            <Route path="/characters" element={<CatalogPage fetchApi={auth.fetchApi} />} />
+            <Route
+              path="/economy"
+              element={
+                <EconomyPage
+                  me={me}
+                  fetchApi={auth.fetchApi}
+                  liveRev={auth.liveRev}
+                  onRefreshMe={() => void auth.refreshMe()}
+                />
+              }
+            />
+            <Route path="/stats" element={<StatsPage me={me} fetchApi={auth.fetchApi} liveRev={auth.liveRev} />} />
+            <Route path="/leaderboard" element={<Navigate to="/stats" replace />} />
+            <Route path="/personalise" element={<Navigate to="/settings" replace />} />
+            <Route
+              path="/settings"
+              element={
+                <SettingsPage
+                  me={me}
+                  fetchApi={auth.fetchApi}
+                  readOnly={readOnly}
+                  chrome={chrome}
+                  onChromeChange={setChrome}
+                  onSaved={() => void auth.refreshMe()}
+                />
+              }
+            />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </div>
       </div>
     </WebUiShell>
   );
