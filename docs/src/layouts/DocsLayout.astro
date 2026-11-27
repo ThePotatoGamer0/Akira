@@ -71,11 +71,16 @@ const showShortcuts =
       {slug === "server-pool" ? <BuffTierTable /> : null}
 
       <footer class="doc-footer">
-        <div class="doc-footer-name"><span>Akira</span> - Documentation</div>
-        <div class="doc-footer-note">Made with care for a small group of friends.</div>
-        <div style="margin-top: 1rem;">
-          <SocialLinks />
+        <div class="doc-footer-copy">
+          <div class="doc-footer-name"><span>Akira</span> - Documentation</div>
+          <div class="doc-footer-note">Made with care for a small group of friends.</div>
+          <div class="doc-footer-legal">
+            <a href="/legal/terms-of-service">Terms</a>
+            <span aria-hidden="true">·</span>
+            <a href="/legal/privacy-policy">Privacy</a>
+          </div>
         </div>
+        <SocialLinks />
       </footer>
     </div>
   </body>
