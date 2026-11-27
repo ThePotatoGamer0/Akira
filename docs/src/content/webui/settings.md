@@ -1,6 +1,6 @@
 ---
 title: Settings in the WebUI
-description: The name Akira uses for you, English or Romaji series titles, a phone buzz for button presses, collection choices that stay between visits, and cooldown reminders.
+description: The name Akira uses for you, English or Romaji series titles, a phone buzz for button presses, left-column navigation on desktop, collection choices that stay between visits, and cooldown reminders.
 ---
 
 When you are [signed in](/webui/authentication), **Settings** holds the choices you rarely change. Search, the order for this visit, tags, and select stay on [Collection](/webui/collection).
@@ -12,6 +12,8 @@ When you are [signed in](/webui/authentication), **Settings** holds the choices 
 **Series titles** starts on English. Switch to Romaji for AniList romanization. Show names on Characters, Collection, and Stats follow this. Search still finds English and Romaji.
 
 **Button buzz** appears on a phone or tablet that can vibrate, and it is on at first. A press or a menu choice gives a short buzz. The switch is saved on this device.
+
+**Left navigation** is off at first. On a wide desktop window it moves the title and page links into a column on the left, using the empty space beside the page. Phones keep the top bar. The switch is saved on this device.
 
 ## Collection
 

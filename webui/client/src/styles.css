@@ -939,6 +939,10 @@ body.channel-lock {
   padding-bottom: 0.75rem;
 }
 
+.webui-root.channel-lock .webui-chrome {
+  flex: none;
+}
+
 .webui-root.channel-lock .webui-header {
   flex: none;
   margin-bottom: 0.35rem;
@@ -950,6 +954,14 @@ body.channel-lock {
   flex: none;
   margin-bottom: 0.35rem;
   padding-top: 0.35rem;
+}
+
+.webui-root.channel-lock .webui-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .webui-root.channel-lock .webui-main {
@@ -1841,6 +1853,96 @@ html[data-mode="dark"] .composer-pop > input {
   color: var(--accent);
   border-color: var(--accent);
   background: var(--code-bg);
+}
+
+/*
+ * Left-column chrome on wide desktops. The preference lives in localStorage; this
+ * media query keeps phones on the top bar even when the switch is on.
+ */
+@media (min-width: 900px) {
+  .webui-root--rail {
+    display: flex;
+    align-items: flex-start;
+    gap: 0 2.25rem;
+    max-width: 1120px;
+  }
+
+  .webui-root--rail .webui-chrome {
+    flex: 0 0 12rem;
+    position: sticky;
+    top: max(0.85rem, env(safe-area-inset-top));
+    max-height: calc(100dvh - 1.5rem);
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    padding-bottom: 1rem;
+  }
+
+  .webui-root--rail .webui-header {
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 0.85rem;
+    margin-bottom: 0.85rem;
+    padding: 1.35rem 0 0.85rem;
+    padding-right: 0;
+    border-bottom: none;
+  }
+
+  .webui-root--rail .webui-kana {
+    letter-spacing: 0.22em;
+  }
+
+  .webui-root--rail .webui-brand {
+    font-size: clamp(1.35rem, 2vw, 1.7rem);
+  }
+
+  .webui-root--rail .webui-badge {
+    white-space: normal;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.4rem 0.75rem;
+  }
+
+  .webui-root--rail .webui-nav {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 0.3rem;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .webui-root--rail .webui-nav a {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.45rem 0.75rem;
+    border-radius: 10px;
+  }
+
+  .webui-root--rail .webui-stage {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding-top: 0.35rem;
+  }
+
+  .webui-root--rail.channel-lock {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .webui-root--rail.channel-lock .webui-chrome {
+    position: relative;
+    top: auto;
+    max-height: none;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .webui-root--rail.channel-lock .webui-stage {
+    padding-top: 0;
+  }
 }
 
 /* ── Main content stagger ── */
