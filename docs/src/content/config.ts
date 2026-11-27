@@ -14,4 +14,5 @@ export const collections = {
   "getting-started": defineCollection({ type: "content", schema }),
   webui: defineCollection({ type: "content", schema }),
   contributing: defineCollection({ type: "content", schema }),
+  legal: defineCollection({ type: "content", schema }),
 };

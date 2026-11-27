@@ -281,12 +281,31 @@ import botPkg from "../../../package.json";
     </a>
   </div>
 
+  <div class="section-label s6">Legal</div>
+  <div class="topic-grid">
+    <a href="/legal/terms-of-service" class="topic-card" style="--card-accent: var(--ink2)">
+      <div class="topic-icon">📜</div>
+      <div class="topic-title">Terms of Service</div>
+      <div class="topic-desc">The ground rules for using the bot, the WebUI, and these docs.</div>
+    </a>
+    <a href="/legal/privacy-policy" class="topic-card" style="--card-accent: var(--ink2)">
+      <div class="topic-icon">🔒</div>
+      <div class="topic-title">Privacy Policy</div>
+      <div class="topic-desc">What Akira stores about players, where it lives, and what stays on your device.</div>
+    </a>
+  </div>
+
   <div class="footer">
-    <div class="footer-name"><span>Akira</span> - Documentation</div>
-    <div class="footer-note">Made with care for a small group of friends.</div>
-    <div style="margin-top: 1rem;">
-      <SocialLinks />
+    <div class="footer-copy">
+      <div class="footer-name"><span>Akira</span> - Documentation</div>
+      <div class="footer-note">Made with care for a small group of friends.</div>
+      <div class="footer-legal">
+        <a href="/legal/terms-of-service">Terms</a>
+        <span aria-hidden="true">·</span>
+        <a href="/legal/privacy-policy">Privacy</a>
+      </div>
     </div>
+    <SocialLinks />
   </div>
 
 </div>
